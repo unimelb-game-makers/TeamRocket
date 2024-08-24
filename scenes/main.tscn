@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scripts/terrain/Obstacles.gd" id="2_2xlwh"]
 [ext_resource type="Script" path="res://scripts/terrain/ground.gd" id="2_qcte5"]
 [ext_resource type="PackedScene" uid="uid://cqhi6f4pwyyf2" path="res://scenes/enemy/enemy_prototype.tscn" id="3_x6ofj"]
+[ext_resource type="PackedScene" uid="uid://bvopbqrmivic0" path="res://scenes/player/Player.tscn" id="1_5rnxh"]
 
 [node name="Node2D" type="Node2D"]
 
