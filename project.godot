@@ -24,6 +24,10 @@ window/size/viewport_height=720
 
 enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
 
+[global_group]
+
+navigation="For Navigation Layer"
+
 [input]
 
 up={

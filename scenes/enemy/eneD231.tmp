@@ -28,20 +28,21 @@ shape = SubResource("CircleShape2D_rpcqo")
 debug_enabled = true
 
 [node name="DetectionRadius" type="Area2D" parent="."]
-modulate = Color(0.86167, 0, 0.0943718, 1)
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
 shape = SubResource("CircleShape2D_ublvn")
 
 [node name="ChaseRadius" type="Area2D" parent="."]
-modulate = Color(0.875952, 0.326569, 0, 1)
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseRadius"]
 shape = SubResource("CircleShape2D_q5oxs")
 
 [node name="RecalculatePath" type="Timer" parent="."]
+wait_time = 4.0
 autostart = true
 
 [connection signal="area_entered" from="DetectionRadius" to="." method="_on_detection_radius_area_entered"]
-[connection signal="area_exited" from="ChaseRadius" to="." method="_on_chase_radius_area_exited"]
+[connection signal="area_exited" from="DetectionRadius" to="." method="_on_detection_radius_area_exited"]
 [connection signal="timeout" from="RecalculatePath" to="." method="_on_recalculate_path_timeout"]
