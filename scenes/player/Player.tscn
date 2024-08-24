@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvopbqrmivic0"]
+[gd_scene load_steps=10 format=3 uid="uid://bp53g1jmqlap"]
 
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_lvdue"]
@@ -10,6 +10,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0p80"]
 size = Vector2(40, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0215d"]
+radius = 60.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_lvdue")
@@ -27,10 +30,10 @@ shape = SubResource("RectangleShape2D_d0p80")
 zoom = Vector2(0.84, 0.84)
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("2_7c1ag")]
-offset_left = 113.0
-offset_top = -292.0
-offset_right = 648.0
-offset_bottom = 287.0
+offset_left = 347.0
+offset_top = -417.0
+offset_right = 744.0
+offset_bottom = -82.0
 initial_node_to_watch = NodePath("../StateChart")
 
 [node name="StateChart" type="Node" parent="."]
@@ -114,6 +117,11 @@ script = ExtResource("5_6l3qh")
 to = NodePath("../../Run")
 event = &"shift_hold"
 delay_in_seconds = "0.0"
+
+[node name="PlayerDetectionRadius" type="Area2D" parent="." groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionRadius"]
+shape = SubResource("CircleShape2D_0215d")
 
 [connection signal="state_entered" from="StateChart/Movement/Basic/Run" to="." method="_on_run_state_entered"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Crouched" to="." method="_on_crouched_state_entered"]

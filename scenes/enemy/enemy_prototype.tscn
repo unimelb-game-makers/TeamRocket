@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqhi6f4pwyyf2"]
+
+[ext_resource type="Script" path="res://scripts/enemy/enemy_prototype.gd" id="1_by6io"]
+[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="1_jqao1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2pqi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ublvn"]
+radius = 400.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q5oxs"]
+radius = 800.0
+
+[node name="Prototype_Enemy" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+wall_min_slide_angle = 3.14159
+script = ExtResource("1_by6io")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6, 6)
+shape = SubResource("RectangleShape2D_k2pqi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.0862455, 0.095945, 1)
+texture = ExtResource("1_jqao1")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="DetectionRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
+shape = SubResource("CircleShape2D_ublvn")
+
+[node name="ChaseRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseRadius"]
+shape = SubResource("CircleShape2D_q5oxs")
+
+[connection signal="area_entered" from="DetectionRadius" to="." method="_on_detection_radius_area_entered"]
+[connection signal="area_exited" from="DetectionRadius" to="." method="_on_detection_radius_area_exited"]

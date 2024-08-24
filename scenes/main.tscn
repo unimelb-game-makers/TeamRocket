@@ -1,8 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=6 format=4 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="1_5rnxh"]
+[ext_resource type="TileSet" uid="uid://c018cpgpmun08" path="res://assets/prototype_tileset.tres" id="1_hbjld"]
+[ext_resource type="Script" path="res://scripts/terrain/Obstacles.gd" id="2_2xlwh"]
+[ext_resource type="Script" path="res://scripts/terrain/ground.gd" id="2_qcte5"]
+[ext_resource type="PackedScene" uid="uid://cqhi6f4pwyyf2" path="res://scenes/enemy/enemy_prototype.tscn" id="3_x6ofj"]
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Map" type="Node" parent="."]
+
+[node name="Ground" type="TileMapLayer" parent="Map"]
+unique_name_in_owner = true
+z_index = -1
+tile_map_data = PackedByteArray("AAACAAAAAQADAAAAAAACAAEAAQADAAAAAAACAAIAAQADAAAAAAACAAMAAQADAAAAAAACAAQAAQADAAAAAAADAAAAAQADAAAAAAADAAEAAQADAAAAAAADAAIAAQADAAAAAAADAAMAAQADAAAAAAADAAQAAQADAAAAAAAEAAAAAQADAAAAAAAEAAIAAQADAAAAAAAEAAMAAQADAAAAAAAEAAQAAQADAAAAAAAFAAAAAQADAAAAAAAFAAEAAQADAAAAAAAFAAIAAQADAAAAAAAFAAMAAQADAAAAAAAFAAQAAQADAAAAAAAGAAAAAQADAAAAAAAGAAEAAQADAAAAAAAGAAIAAQADAAAAAAAGAAMAAQADAAAAAAAGAAQAAQADAAAAAAAHAAAAAQADAAAAAAAHAAEAAQADAAAAAAAHAAIAAQADAAAAAAAHAAMAAQADAAAAAAAHAAQAAQADAAAAAAAIAAAAAQADAAAAAAAIAAEAAQADAAAAAAAIAAIAAQADAAAAAAAIAAMAAQADAAAAAAAIAAQAAQADAAAAAAAJAAAAAQADAAAAAAAJAAEAAQADAAAAAAAJAAIAAQADAAAAAAAJAAMAAQADAAAAAAAJAAQAAQADAAAAAAAEAAEAAQADAAAAAAA=")
+tile_set = ExtResource("1_hbjld")
+navigation_visibility_mode = 1
+script = ExtResource("2_qcte5")
+
+[node name="Walls" type="TileMapLayer" parent="Map"]
+unique_name_in_owner = true
+z_index = -1
+tile_map_data = PackedByteArray("AAACAP//AQAEAAAAAAADAP//AQAEAAAAAAAEAP//AQAEAAAAAAAFAP//AQAEAAAAAAAGAP//AQAEAAAAAAAHAP//AQAEAAAAAAAIAP//AQAEAAAAAAAJAP//AQAEAAAAAAABAP//AQAEAAAAAAABAAAAAQAEAAAAAAABAAEAAQAEAAAAAAABAAIAAQAEAAAAAAABAAMAAQAEAAAAAAABAAQAAQAEAAAAAAABAAUAAQAEAAAAAAACAAUAAQAEAAAAAAADAAUAAQAEAAAAAAAEAAUAAQAEAAAAAAAFAAUAAQAEAAAAAAAGAAUAAQAEAAAAAAAHAAUAAQAEAAAAAAAIAAUAAQAEAAAAAAAJAAUAAQAEAAAAAAAEAAEAAQAEAAAAAAA=")
+tile_set = ExtResource("1_hbjld")
+navigation_visibility_mode = 1
+script = ExtResource("2_2xlwh")
+
 [node name="Player" parent="." instance=ExtResource("1_5rnxh")]
-position = Vector2(557, 333)
+z_index = 1
+position = Vector2(533, 480)
+
+[node name="Prototype_Enemy" parent="." instance=ExtResource("3_x6ofj")]
+position = Vector2(1066, 475)
