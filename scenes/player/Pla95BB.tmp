@@ -168,6 +168,7 @@ color = Color(0.598604, 0.411888, 0.154298, 1)
 
 [node name="RayCast2D" type="RayCast2D" parent="Rifle"]
 position = Vector2(54, 4)
+enabled = false
 target_position = Vector2(200, 0)
 
 [connection signal="state_entered" from="StateChart/Movement/Roll" to="." method="_on_roll_state_entered"]
