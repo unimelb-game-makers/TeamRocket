@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvopbqrmivic0"]
+[gd_scene load_steps=13 format=3 uid="uid://bp53g1jmqlap"]
 
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_lvdue"]
@@ -7,11 +7,18 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_u8x7w"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_px21u"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="5_6l3qh"]
+[ext_resource type="Texture2D" uid="uid://c2td7omrl6sqn" path="res://assets/textures/basic_light.webp" id="8_emt8s"]
+[ext_resource type="Script" path="res://scripts/player/rifle.gd" id="9_usf71"]
+[ext_resource type="PackedScene" uid="uid://c3jnad7h7ggpt" path="res://scenes/player/bullet.tscn" id="10_c4h7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0p80"]
 size = Vector2(40, 40)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0215d"]
+radius = 60.0
+
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 30
 script = ExtResource("1_lvdue")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -27,10 +34,10 @@ shape = SubResource("RectangleShape2D_d0p80")
 zoom = Vector2(0.84, 0.84)
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("2_7c1ag")]
-offset_left = 113.0
-offset_top = -292.0
-offset_right = 648.0
-offset_bottom = 287.0
+offset_left = 347.0
+offset_top = -417.0
+offset_right = 744.0
+offset_bottom = -82.0
 initial_node_to_watch = NodePath("../StateChart")
 
 [node name="StateChart" type="Node" parent="."]
@@ -132,6 +139,37 @@ script = ExtResource("5_6l3qh")
 to = NodePath("../../Walk")
 event = &"wasd_hold"
 delay_in_seconds = "0.0"
+
+[node name="On Shift Press2" type="Node" parent="StateChart/Movement/Basic/Stance"]
+script = ExtResource("5_6l3qh")
+to = NodePath("../../Run")
+event = &"shift_hold"
+delay_in_seconds = "0.0"
+
+[node name="PlayerDetectionRadius" type="Area2D" parent="." groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionRadius"]
+shape = SubResource("CircleShape2D_0215d")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+texture = ExtResource("8_emt8s")
+texture_scale = 3.0
+
+[node name="Rifle" type="Node2D" parent="."]
+script = ExtResource("9_usf71")
+bullet_scene = ExtResource("10_c4h7y")
+
+[node name="RifleSprite" type="Sprite2D" parent="Rifle"]
+
+[node name="ColorRect" type="ColorRect" parent="Rifle"]
+offset_right = 53.0
+offset_bottom = 10.0
+color = Color(0.598604, 0.411888, 0.154298, 1)
+
+[node name="RayCast2D" type="RayCast2D" parent="Rifle"]
+position = Vector2(54, 4)
+target_position = Vector2(200, 0)
 
 [connection signal="state_entered" from="StateChart/Movement/Roll" to="." method="_on_roll_state_entered"]
 [connection signal="state_exited" from="StateChart/Movement/Roll" to="." method="_on_roll_state_exited"]
