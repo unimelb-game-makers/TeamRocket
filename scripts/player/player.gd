@@ -21,6 +21,8 @@ const ROLL_COOLDOWN : float = 0
 var roll_cd_timer : float = 0
 var can_roll : bool = true
 
+@onready var item_pickup_radius: Area2D = $ItemPickupRadius
+
 func _ready() -> void:
 	pass
 
@@ -131,3 +133,14 @@ func roll_speed(elapsed_time : float) -> float:
 	#var start_speed = ROLL_SPEED * roll_start_speed_multiplier
 	#var end_speed = CROUCH_SPEED * roll_end_speed_multiplier
 	#return start_speed - (start_speed - end_speed) * curve
+
+func _process(_delta: float) -> void:
+	# Code for item pickup
+	if (item_pickup_radius.has_overlapping_areas()):
+		if (Input.is_action_just_pressed("interact")):
+			var item = item_pickup_radius.get_overlapping_areas()[0].get_parent()
+			Inventory_Global.add_item(item.item_name) # Replace this with an actual item object later
+			item.delete_item()
+			
+	if (Input.is_action_just_pressed("inventory")):
+		print(Inventory_Global.inventory_array)

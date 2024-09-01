@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=4 uid="uid://po4lym4qrmng"]
 
 [ext_resource type="TileSet" uid="uid://j21xtjiceu2t" path="res://scenes/levels/DungeonTileMap.tres" id="1_jod1m"]
-[ext_resource type="PackedScene" uid="uid://bvopbqrmivic0" path="res://scenes/player/Player.tscn" id="2_rhb4r"]
+[ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="2_rhb4r"]
 
 [node name="TestMovement" type="Node2D"]
 
@@ -34,4 +34,4 @@ tile_map_data = PackedByteArray("AAAbABgAAAAAABgAAAAcABgAAAAAABkAAAAdABgAAAAAABk
 tile_set = ExtResource("1_jod1m")
 
 [node name="Player" parent="." instance=ExtResource("2_rhb4r")]
-position = Vector2(659, 343)
+position = Vector2(658, 331)

@@ -9,7 +9,7 @@
 radius = 400.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5oxs"]
-radius = 800.0
+radius = 1000.0
 
 [node name="Prototype_Enemy" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
