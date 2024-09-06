@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwh41d0t3w2qm"]
+
+[ext_resource type="Texture2D" uid="uid://bch4e7k55utkd" path="res://assets/textures/2d_cooking_mats_by_lotus_garden/pot4.png" id="1_8oa26"]
+
+[node name="CookingItem" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8oa26")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-20, -35.6, -20, -32.6, -36.7, -27, -41.8, -27, -46.5, -9.9, -58.2, -10, -34, 37.3, -34, 41.9, 25, 43, 30.7, 43, 42.7, 34, 45.7, 34, 54.7, 4, 57, 4, 57, -14.3, 44, -25.3, 44, -28.5)

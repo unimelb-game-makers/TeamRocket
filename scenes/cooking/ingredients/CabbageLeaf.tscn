@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwiwscdl4ixsi"]
+
+[ext_resource type="Script" path="res://scripts/cooking/cabbage_leaf.gd" id="1_dw603"]
+[ext_resource type="Texture2D" uid="uid://pnerb643wavy" path="res://assets/textures/2d_cooking_mats_by_lotus_garden/cabbage 2.png" id="1_hc8mm"]
+
+[node name="CabbageLeaf" type="Node2D"]
+script = ExtResource("1_dw603")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hc8mm")
+
+[node name="Button" type="Button" parent="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[connection signal="button_down" from="Sprite2D/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Sprite2D/Button" to="." method="_on_button_button_up"]

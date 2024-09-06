@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmwf4ubeqh602"]
+
+[ext_resource type="Script" path="res://scripts/cooking/next_arrow.gd" id="1_vp2tu"]
+[ext_resource type="Texture2D" uid="uid://bc4tgrcoiell4" path="res://assets/textures/cooking_test/nextarrow.png" id="2_dw6kg"]
+
+[node name="Next" type="Node2D"]
+script = ExtResource("1_vp2tu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(634, 360)
+texture = ExtResource("2_dw6kg")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(634, 360)
+polygon = PackedVector2Array(565.5, -72.9, 559, -70.5, 559, -69.1, 557, -68.1, 557, -29.9, 440.9, -27, 434.8, -27, 438, 49.2, 438, 55, 558.2, 55, 560.2, 104, 572.7, 104, 634, 13.5, 634, 5.10001)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

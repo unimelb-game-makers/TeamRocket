@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctau5r7efkgkr"]
+
+[ext_resource type="Texture2D" uid="uid://cu1kgp6klbq6n" path="res://assets/textures/cooking_test/countdown_bar.png" id="1_s46u6"]
+[ext_resource type="Script" path="res://scripts/cooking/countdown.gd" id="2_bfgoa"]
+[ext_resource type="Texture2D" uid="uid://0r5viwno7wo1" path="res://assets/textures/cooking_test/timer_bar.png" id="3_cjswf"]
+[ext_resource type="Texture2D" uid="uid://crg8w4gin10vg" path="res://assets/textures/cooking_test/timer_frame.png" id="4_88mai"]
+
+[node name="Timer" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_s46u6")
+script = ExtResource("2_bfgoa")
+
+[node name="TimerBar" type="Sprite2D" parent="."]
+position = Vector2(-240, -15)
+texture = ExtResource("3_cjswf")
+centered = false
+
+[node name="TimerFrame" type="Sprite2D" parent="."]
+texture = ExtResource("4_88mai")

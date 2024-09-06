@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://po35vdjaxfk"]
+
+[ext_resource type="Texture2D" uid="uid://bfemyr18ra37b" path="res://assets/textures/2d_cooking_mats_by_lotus_garden/cabbage.png" id="1_h1148"]
+[ext_resource type="Script" path="res://scripts/cooking/big_cabbage.gd" id="1_s3one"]
+
+[node name="Cabbage" type="Node2D"]
+script = ExtResource("1_s3one")
+
+[node name="BigCabbage" type="Sprite2D" parent="."]
+texture = ExtResource("1_h1148")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-11, -41.7, -11, -39.2, -22.4, -37, -26.7, -37, -44.7, -10, -48, -10, -48, 19.8, -32, 38.7, -32, 43, 26.7, 43, 51.6, 6, 53, 6, 55.8, 0.800003, 36, -30.5, 36, -35.4)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
