@@ -35,5 +35,6 @@ position = Vector2(630, 75)
 [node name="Next" parent="." instance=ExtResource("5_s78c1")]
 visible = false
 
+[connection signal="leaf_spawned" from="Cabbage" to="." method="_on_cabbage_leaf_spawned"]
 [connection signal="gameover" from="Timer" to="." method="_on_timer_gameover"]
 [connection signal="next_scene" from="Next" to="." method="_on_next_next_scene"]

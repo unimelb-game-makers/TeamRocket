@@ -42,7 +42,7 @@ func _process(delta):
 	#bar.set_scale(Vector2(percentage, 1))
 
 func update_rate():
-	
+	pass
 	# Rate
 	if (percentage < thresh_1 && curr_rate > thresh_1_rate):
 		change_rate(thresh_1_rate)
