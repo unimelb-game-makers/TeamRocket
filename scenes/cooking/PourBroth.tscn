@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://by6djkpjca73k"]
+
+[ext_resource type="Script" path="res://scripts/cooking/minigame_dispense_fluid.gd" id="1_1o4v8"]
+[ext_resource type="PackedScene" uid="uid://3gjjy8kr8801" path="res://scenes/cooking/FluidGenerator.tscn" id="1_a3c5g"]
+[ext_resource type="Texture2D" uid="uid://bod6v7i4bodxk" path="res://assets/textures/cooking_test/dispenser.png" id="1_nucv6"]
+[ext_resource type="Texture2D" uid="uid://bjsttrd4008f6" path="res://assets/textures/cooking_test/bowl.png" id="3_l31cx"]
+[ext_resource type="PackedScene" uid="uid://cmwf4ubeqh602" path="res://scenes/cooking/NextArrow.tscn" id="5_gro11"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fahe"]
+size = Vector2(1413, 68)
+
+[node name="PourBroth" type="Node2D"]
+script = ExtResource("1_1o4v8")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1315.0
+offset_bottom = 751.0
+color = Color(1, 0.721692, 0.573841, 1)
+
+[node name="Dispenser" type="Sprite2D" parent="."]
+position = Vector2(859, 260)
+scale = Vector2(1.22606, 1.22606)
+texture = ExtResource("1_nucv6")
+
+[node name="FluidGenerator" parent="." instance=ExtResource("1_a3c5g")]
+position = Vector2(710, 161)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Countertop" type="ColorRect" parent="StaticBody2D"]
+offset_left = -51.0
+offset_top = 568.0
+offset_right = 1363.0
+offset_bottom = 637.0
+color = Color(0.537255, 0.537255, 0.537255, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(656.5, 602)
+shape = SubResource("RectangleShape2D_8fahe")
+
+[node name="Bowl" type="RigidBody2D" parent="."]
+collision_mask = 3
+mass = 1000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Bowl"]
+position = Vector2(644.6, 354.25)
+texture = ExtResource("3_l31cx")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bowl"]
+position = Vector2(644.6, 354.25)
+polygon = PackedVector2Array(353.5, -118.5, 281, -119, 227, 61, -226, 61, -279, -119, -353.5, -118.5, -353.5, -101, -348.5, -85, -373.5, -84.5, -373.5, -59.6, -341.9, -57.6, -299.5, 115.7, -299.5, 118.5, 299.6, 118.5, 342.8, -59.5, 373.5, -59.5, 373.5, -84.5, 349.3, -84.5, 353.5, -101.1)
+
+[node name="Next" parent="." instance=ExtResource("5_gro11")]
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="created_blob" from="FluidGenerator" to="." method="_on_fluid_generator_created_blob"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dci0ndgdhkjb2"]
 
-[ext_resource type="Script" path="res://scripts/cooking/mg_peel_cabbage.gd" id="1_4axpd"]
+[ext_resource type="Script" path="res://scripts/cooking/minigame_peel_cabbage.gd" id="1_4axpd"]
 [ext_resource type="Texture2D" uid="uid://74krcjwnk3a1" path="res://assets/textures/cooking_test/countertop.png" id="1_rfxfd"]
 [ext_resource type="PackedScene" uid="uid://po35vdjaxfk" path="res://scenes/cooking/ingredients/BigCabbage.tscn" id="2_spvvq"]
 [ext_resource type="PackedScene" uid="uid://ctau5r7efkgkr" path="res://scenes/cooking/Countdown.tscn" id="4_bd8gv"]

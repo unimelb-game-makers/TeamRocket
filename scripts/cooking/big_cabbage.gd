@@ -19,7 +19,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			
 			leaves_taken += 1
 			
-			# Scale down lettuce
+			# Scale down
 			var new_scale = (1 - (float(leaves_taken) / leaves_limit)) * orig_scale
 			scale = new_scale
 		
