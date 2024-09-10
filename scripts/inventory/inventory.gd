@@ -8,3 +8,8 @@ func get_inventory() -> Array:
 func add_item(item: String) -> void:
 	inventory_array.append(item)
 	
+	# Update UI 
+	var ui = get_tree().get_first_node_in_group("ui")
+	print(ui)
+	var inventory_ui = ui.inventory_container
+	inventory_ui.update_inventory()

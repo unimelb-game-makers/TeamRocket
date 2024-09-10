@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=4 uid="uid://bt2ju64bl0yrp"]
+[gd_scene load_steps=9 format=4 uid="uid://bt2ju64bl0yrp"]
 
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="1_5rnxh"]
 [ext_resource type="TileSet" uid="uid://c018cpgpmun08" path="res://assets/prototype_tileset.tres" id="1_hbjld"]
 [ext_resource type="Script" path="res://scripts/terrain/Obstacles.gd" id="2_2xlwh"]
 [ext_resource type="Script" path="res://scripts/terrain/ground.gd" id="2_qcte5"]
 [ext_resource type="PackedScene" uid="uid://cqhi6f4pwyyf2" path="res://scenes/enemy/enemy_prototype.tscn" id="3_x6ofj"]
+[ext_resource type="Script" path="res://scenes/ui.gd" id="6_c3tlj"]
+[ext_resource type="Script" path="res://scenes/inventory.gd" id="6_lfdxl"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o4lb4"]
 vertices = PackedVector2Array(703, 319, 703, 65, 1219.91, 63, 1222.17, 577, 319, 63, 449, 65, 319, 577, 449, 319)
@@ -47,3 +49,28 @@ position = Vector2(533, 480)
 [node name="Prototype_Enemy" parent="." node_paths=PackedStringArray("navigation_region") instance=ExtResource("3_x6ofj")]
 position = Vector2(1066, 475)
 navigation_region = NodePath("../Map/NavigationRegion2D")
+
+[node name="UI" type="Control" parent="." groups=["ui"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_c3tlj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/CanvasLayer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -636.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="InventoryContainer" type="VBoxContainer" parent="UI/CanvasLayer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("6_lfdxl")
