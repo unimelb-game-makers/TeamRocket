@@ -54,7 +54,7 @@ script = ExtResource("4_px21u")
 
 [node name="On Roll Finish" type="Node" parent="StateChart/Movement/Roll"]
 script = ExtResource("5_6l3qh")
-to = NodePath("../../Basic/Stance/Motion")
+to = NodePath("../../Basic")
 event = &"roll_finished"
 delay_in_seconds = "0"
 
@@ -67,7 +67,7 @@ script = ExtResource("4_px21u")
 
 [node name="On Shift Release" type="Node" parent="StateChart/Movement/Basic/Run"]
 script = ExtResource("5_6l3qh")
-to = NodePath("../../Stance/Motion/Walk")
+to = NodePath("../../Stance/Motion")
 event = &"shift_release"
 delay_in_seconds = "0.0"
 
@@ -85,12 +85,6 @@ delay_in_seconds = "0.0"
 
 [node name="Stance" type="Node" parent="StateChart/Movement/Basic"]
 script = ExtResource("2_44kvc")
-
-[node name="On Shift Press" type="Node" parent="StateChart/Movement/Basic/Stance"]
-script = ExtResource("5_6l3qh")
-to = NodePath("../../Run")
-event = &"shift_hold"
-delay_in_seconds = "0.0"
 
 [node name="Posture" type="Node" parent="StateChart/Movement/Basic/Stance"]
 script = ExtResource("3_u8x7w")
@@ -121,10 +115,19 @@ initial_state = NodePath("Idle")
 [node name="Walk" type="Node" parent="StateChart/Movement/Basic/Stance/Motion"]
 script = ExtResource("4_px21u")
 
-[node name="On No Movement" type="Node" parent="StateChart/Movement/Basic/Stance/Motion/Walk"]
+[node name="On WASD Release" type="Node" parent="StateChart/Movement/Basic/Stance/Motion/Walk"]
 script = ExtResource("5_6l3qh")
 to = NodePath("../../Idle")
 event = &"wasd_release"
+delay_in_seconds = "0.0"
+
+[node name="Idle" type="Node" parent="StateChart/Movement/Basic/Stance/Motion"]
+script = ExtResource("4_px21u")
+
+[node name="On WASD Hold" type="Node" parent="StateChart/Movement/Basic/Stance/Motion/Idle"]
+script = ExtResource("5_6l3qh")
+to = NodePath("../../Walk")
+event = &"wasd_hold"
 delay_in_seconds = "0.0"
 
 [node name="On Space Press" type="Node" parent="StateChart/Movement/Basic/Stance/Motion"]
@@ -133,16 +136,7 @@ to = NodePath("../../../../Roll")
 event = &"space_press"
 delay_in_seconds = "0.0"
 
-[node name="Idle" type="Node" parent="StateChart/Movement/Basic/Stance/Motion"]
-script = ExtResource("4_px21u")
-
-[node name="On Movement" type="Node" parent="StateChart/Movement/Basic/Stance/Motion/Idle"]
-script = ExtResource("5_6l3qh")
-to = NodePath("../../Walk")
-event = &"wasd_hold"
-delay_in_seconds = "0.0"
-
-[node name="On Shift Press2" type="Node" parent="StateChart/Movement/Basic/Stance"]
+[node name="On Shift Hold" type="Node" parent="StateChart/Movement/Basic/Stance"]
 script = ExtResource("5_6l3qh")
 to = NodePath("../../Run")
 event = &"shift_hold"
