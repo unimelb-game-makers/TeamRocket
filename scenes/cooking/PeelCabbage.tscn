@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dci0ndgdhkjb2"]
+[gd_scene load_steps=7 format=3 uid="uid://dci0ndgdhkjb2"]
 
 [ext_resource type="Script" path="res://scripts/cooking/minigame_peel_cabbage.gd" id="1_4axpd"]
 [ext_resource type="Texture2D" uid="uid://74krcjwnk3a1" path="res://assets/textures/cooking_test/countertop.png" id="1_rfxfd"]
 [ext_resource type="PackedScene" uid="uid://po35vdjaxfk" path="res://scenes/cooking/ingredients/BigCabbage.tscn" id="2_spvvq"]
 [ext_resource type="PackedScene" uid="uid://ctau5r7efkgkr" path="res://scenes/cooking/Countdown.tscn" id="4_bd8gv"]
 [ext_resource type="PackedScene" uid="uid://cmwf4ubeqh602" path="res://scenes/cooking/NextArrow.tscn" id="5_s78c1"]
+[ext_resource type="Texture2D" uid="uid://cemmchtor5cqr" path="res://assets/textures/2d_cooking_mats_by_lotus_garden/knife 4.png" id="6_06ho2"]
 
 [node name="PeelCabbage" type="Node2D"]
 script = ExtResource("1_4axpd")
@@ -34,6 +35,11 @@ position = Vector2(630, 75)
 
 [node name="Next" parent="." instance=ExtResource("5_s78c1")]
 visible = false
+
+[node name="Knife" type="Sprite2D" parent="."]
+position = Vector2(210, 464)
+scale = Vector2(1.61719, 1.61719)
+texture = ExtResource("6_06ho2")
 
 [connection signal="leaf_spawned" from="Cabbage" to="." method="_on_cabbage_leaf_spawned"]
 [connection signal="gameover" from="Timer" to="." method="_on_timer_gameover"]

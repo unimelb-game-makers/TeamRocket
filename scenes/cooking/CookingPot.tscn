@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://crs4s2xupmpxx"]
+
+[ext_resource type="Texture2D" uid="uid://dh6vkqbxwr1p3" path="res://assets/textures/cooking_test/pot.png" id="1_l6jxc"]
+[ext_resource type="Script" path="res://scenes/cooking/cooking_pot.gd" id="2_1a62b"]
+[ext_resource type="Texture2D" uid="uid://cob36bwie5vda" path="res://assets/textures/cooking_test/pot_soup.png" id="2_472n8"]
+[ext_resource type="Texture2D" uid="uid://ccge8eb667855" path="res://assets/textures/2d_cooking_mats_by_lotus_garden/dinner spoon 1.png" id="3_7m8na"]
+[ext_resource type="Script" path="res://scenes/cooking/mouse_hang.gd" id="4_f1njb"]
+[ext_resource type="Texture2D" uid="uid://bp07ekxjmcp2r" path="res://assets/textures/cooking_test/pot_soup_lower.png" id="4_xbhp3"]
+[ext_resource type="Texture2D" uid="uid://dej27on6pfllb" path="res://assets/textures/cooking_test/pot_lower.png" id="5_7kts2"]
+[ext_resource type="Script" path="res://scenes/cooking/spoon.gd" id="5_mcpeh"]
+
+[node name="CookingPot" type="Sprite2D"]
+texture = ExtResource("1_l6jxc")
+script = ExtResource("2_1a62b")
+
+[node name="Soup" type="Sprite2D" parent="."]
+texture = ExtResource("2_472n8")
+
+[node name="MouseHang" type="StaticBody2D" parent="." node_paths=PackedStringArray("spoon")]
+script = ExtResource("4_f1njb")
+spoon = NodePath("../Spoon")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="MouseHang"]
+node_a = NodePath("..")
+
+[node name="Spoon" type="RigidBody2D" parent="."]
+unique_name_in_owner = true
+input_pickable = true
+script = ExtResource("5_mcpeh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Spoon"]
+position = Vector2(143, -176)
+rotation = -2.38237
+scale = Vector2(5.49743, 5.49743)
+texture = ExtResource("3_7m8na")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spoon"]
+position = Vector2(143, -176)
+rotation = -2.38237
+scale = Vector2(5.49743, 5.49743)
+polygon = PackedVector2Array(-41, -57.3, -49, -51, -49, -37.3, -45, -32.3, -38, -25, -25.1707, -21.5035, 24, 55.6, 39.3, 55.9, -22.0107, -24.2515, -18, -30.5, -18, -36.5, -24, -47.7, -30, -54.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("4_xbhp3")
+
+[node name="PotLower" type="Sprite2D" parent="."]
+texture = ExtResource("5_7kts2")
+
+[node name="PotBoundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PotBoundary"]
+polygon = PackedVector2Array(-316, -208, -287, 175, -254, 250, -167, 301, -4, 339, 137, 319, 220, 284, 289, 221, 289, 221, 298, 196, 328, -196, 300, -267, 246, -289, 231, 203, 1, 275, -227, 205, -243, -289)
+
+[connection signal="clicked" from="Spoon" to="." method="_on_spoon_clicked"]
+[connection signal="input_event" from="Spoon" to="Spoon" method="_on_input_event"]
