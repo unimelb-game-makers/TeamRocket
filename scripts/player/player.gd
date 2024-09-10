@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+# For smoother movement
 const CROUCH_SPEED : int = 100
 const CROUCH_ACCEL : int = 10
 const STAND_SPEED : int = 200
@@ -13,9 +14,12 @@ var curr_accel : float = STAND_ACCEL
 var direction : Vector2
 var is_moving : bool
 
+# roll_timer affects speed over the course of the roll
 const ROLL_SPEED : int = 500
 const ROLL_DURATION : float = 0.5
 var roll_timer : float = 0
+
+# Roll cooldown
 # TODO: Integrate cooldown into statechart
 const ROLL_COOLDOWN : float = 0
 var roll_cd_timer : float = 0
@@ -25,6 +29,17 @@ var can_roll : bool = true
 
 func _ready() -> void:
 	pass
+
+func _process(_delta: float) -> void:
+	# Code for item pickup
+	if (item_pickup_radius.has_overlapping_areas()):
+		if (Input.is_action_just_pressed("interact")):
+			var item = item_pickup_radius.get_overlapping_areas()[0].get_parent()
+			Inventory_Global.add_item(item.item_name) # Replace this with an actual item object later
+			item.delete_item()
+			
+	if (Input.is_action_just_pressed("inventory")):
+		print(Inventory_Global.inventory_array)
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -71,6 +86,8 @@ func _on_basic_state_input(event: InputEvent) -> void:
 	if event.is_action_pressed("crouch"):
 		$StateChart.send_event("ctrl_press") # Crouch <-> Standing
 
+### Changing player size manually (until player sprite comes around) ###
+
 func _on_crouched_state_entered() -> void:
 	curr_speed = CROUCH_SPEED
 	curr_accel = CROUCH_ACCEL
@@ -92,6 +109,8 @@ func change_size(length : int) -> void:
 
 ### Rolling ###
 
+# roll_timer affects speed over the course of the roll
+
 func _on_roll_state_entered() -> void:
 	if direction == Vector2.ZERO:
 		$StateChart.send_event("roll_finished")
@@ -100,7 +119,7 @@ func _on_roll_state_entered() -> void:
 	change_size(10)
 
 func _on_roll_state_exited() -> void:
-	can_roll = false
+	can_roll = false # For roll cooldown
 	roll_cd_timer = 0
 
 func _on_roll_state_physics_processing(delta: float) -> void:
@@ -133,14 +152,3 @@ func roll_speed(elapsed_time : float) -> float:
 	#var start_speed = ROLL_SPEED * roll_start_speed_multiplier
 	#var end_speed = CROUCH_SPEED * roll_end_speed_multiplier
 	#return start_speed - (start_speed - end_speed) * curve
-
-func _process(_delta: float) -> void:
-	# Code for item pickup
-	if (item_pickup_radius.has_overlapping_areas()):
-		if (Input.is_action_just_pressed("interact")):
-			var item = item_pickup_radius.get_overlapping_areas()[0].get_parent()
-			Inventory_Global.add_item(item.item_name) # Replace this with an actual item object later
-			item.delete_item()
-			
-	if (Input.is_action_just_pressed("inventory")):
-		print(Inventory_Global.inventory_array)
