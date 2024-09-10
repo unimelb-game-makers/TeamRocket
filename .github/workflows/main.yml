@@ -127,6 +127,6 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_API_KEY }}
           CHANNEL: HTML
-          ITCH_GAME: godot-ci
+          ITCH_GAME: ${{ env.PROJECT_NAME }}
           ITCH_USER: gmcunimelb
           PACKAGE: ${{ env.PROJECT_NAME }}_web.zip
