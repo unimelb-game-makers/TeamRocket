@@ -7,7 +7,7 @@ func update_inventory():
 	# Render Inventory Items
 	for item in Inventory_Global.get_inventory():
 		var item_label = Label.new()
-		item_label.text = item
+		item_label.text = item.item_name
 		add_child(item_label)
 
 func _process(delta: float) -> void:

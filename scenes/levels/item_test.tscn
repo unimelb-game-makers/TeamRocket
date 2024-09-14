@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://b33jqqmsjmmin"]
+[gd_scene load_steps=12 format=4 uid="uid://b33jqqmsjmmin"]
 
 [ext_resource type="TileSet" uid="uid://c018cpgpmun08" path="res://assets/prototype_tileset.tres" id="1_5tmv4"]
 [ext_resource type="Script" path="res://scripts/terrain/ground.gd" id="2_1jag6"]
 [ext_resource type="Script" path="res://scripts/terrain/Obstacles.gd" id="3_saguv"]
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="4_ln28l"]
-[ext_resource type="PackedScene" uid="uid://yw75vu274ne0" path="res://scenes/item/item.tscn" id="5_owmts"]
+[ext_resource type="PackedScene" uid="uid://yw75vu274ne0" path="res://scenes/item/item_floor.tscn" id="5_owmts"]
 [ext_resource type="Script" path="res://scenes/ui.gd" id="6_5wyeq"]
+[ext_resource type="Script" path="res://scenes/item/item.gd" id="6_uhwmp"]
 [ext_resource type="Script" path="res://scenes/inventory.gd" id="7_h2p8g"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o4lb4"]
@@ -15,6 +16,16 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(129, -136, 127, 780, 12
 source_geometry_mode = 1
 source_geometry_group_name = &"navigation"
 agent_radius = 63.0
+
+[sub_resource type="Resource" id="Resource_0sxpt"]
+script = ExtResource("6_uhwmp")
+item_name = "Sandwich"
+weight = 0.0
+
+[sub_resource type="Resource" id="Resource_3kkp7"]
+script = ExtResource("6_uhwmp")
+item_name = "Water Bottle"
+weight = 0.0
 
 [node name="Node2D" type="Node2D"]
 
@@ -52,12 +63,11 @@ position = Vector2(533, 480)
 
 [node name="Sandwich" parent="Items" instance=ExtResource("5_owmts")]
 position = Vector2(1007, 556)
-item_name = "Sandwich"
-item_weight = 0.5
+item = SubResource("Resource_0sxpt")
 
 [node name="Water Bottle" parent="Items" instance=ExtResource("5_owmts")]
 position = Vector2(450, 184)
-item_name = "Water Bottle"
+item = SubResource("Resource_3kkp7")
 
 [node name="UI" type="Control" parent="." groups=["ui"]]
 layout_mode = 3
@@ -81,5 +91,6 @@ grow_vertical = 2
 
 [node name="InventoryContainer" type="VBoxContainer" parent="UI/CanvasLayer/CenterContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 script = ExtResource("7_h2p8g")

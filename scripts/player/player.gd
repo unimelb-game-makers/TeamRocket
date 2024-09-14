@@ -35,7 +35,7 @@ func _process(_delta: float) -> void:
 	if (item_pickup_radius.has_overlapping_areas()):
 		if (Input.is_action_just_pressed("interact")):
 			var item = item_pickup_radius.get_overlapping_areas()[0].get_parent()
-			Inventory_Global.add_item(item.item_name) # Replace this with an actual item object later
+			Inventory_Global.add_item(item.item)
 			item.delete_item()
 			
 	if (Input.is_action_just_pressed("inventory")):

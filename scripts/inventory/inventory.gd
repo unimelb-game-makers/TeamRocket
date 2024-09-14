@@ -1,11 +1,11 @@
 extends Node
 
-var inventory_array = []
+var inventory_array: Array[Item] = []
 
 func get_inventory() -> Array:
 	return inventory_array
 	
-func add_item(item: String) -> void:
+func add_item(item: Item) -> void:
 	inventory_array.append(item)
 	
 	# Update UI 
