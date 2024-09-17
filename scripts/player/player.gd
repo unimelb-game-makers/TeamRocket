@@ -26,6 +26,7 @@ var roll_cd_timer : float = 0
 var can_roll : bool = true
 
 @onready var item_pickup_radius: Area2D = $ItemPickupRadius
+@onready var rifle: Node2D = $Rifle
 
 func _ready() -> void:
 	pass
@@ -40,6 +41,11 @@ func _process(_delta: float) -> void:
 			
 	if (Input.is_action_just_pressed("inventory")):
 		print(Inventory_Global.inventory_array)
+		
+	if (is_moving):
+		rifle.inaccuracy += rifle.INACCURACY_CHANGE_RATE
+	else:
+		rifle.inaccuracy -= rifle.INACCURACY_CHANGE_RATE
 
 func _physics_process(delta: float) -> void:
 	pass
