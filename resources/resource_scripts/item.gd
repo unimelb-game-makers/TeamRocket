@@ -4,5 +4,3 @@ extends Resource
 @export var texture: Image
 @export var item_name: String
 @export var weight: float
-
-# @export var recipe 

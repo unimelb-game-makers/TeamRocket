@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://buf4kh8ua4yh"]
+
+[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="1_32jn2"]
+
+[resource]
+script = ExtResource("1_32jn2")
+item_name = "Cheese Sandwich"
+weight = 0.4
