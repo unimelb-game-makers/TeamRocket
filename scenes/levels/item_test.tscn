@@ -90,8 +90,15 @@ offset_left = -636.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="InventoryContainer" type="VBoxContainer" parent="UI/CanvasLayer/CenterContainer"]
+[node name="RightMenu" type="VBoxContainer" parent="UI/CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="InventoryLabel" type="Label" parent="UI/CanvasLayer/CenterContainer/RightMenu"]
 unique_name_in_owner = true
-visible = false
+layout_mode = 2
+text = "Inventory"
+
+[node name="InventoryContainer" type="VBoxContainer" parent="UI/CanvasLayer/CenterContainer/RightMenu"]
+unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("7_h2p8g")
