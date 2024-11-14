@@ -110,8 +110,9 @@ func _on_run_state_entered() -> void:
 	change_size(60)
 
 func change_size(length : int) -> void:
-	$ColorRect.size.y = length
-	$ColorRect.position.y = -length
+	pass
+	#$ColorRect.size.y = length
+	#$ColorRect.position.y = -length
 
 ### Rolling ###
 

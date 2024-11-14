@@ -12,10 +12,11 @@ var inaccuracy: float = 0.0:
 		
 func _process(_delta):
 	look_at(get_global_mouse_position())
+	raycast.rotation_degrees = 0
+	raycast.rotation_degrees += randf_range(-inaccuracy, inaccuracy)
 	if Input.is_action_just_pressed("fire"):
-		raycast.rotation_degrees = 0
-		raycast.rotation_degrees += randf_range(-inaccuracy, inaccuracy)
+		print("Fired!")
+		print("Inaccuracy: " + str(inaccuracy))
 		var target_hit = raycast.get_collider()
-		print(inaccuracy)
 		if (target_hit):
 			print(target_hit)
