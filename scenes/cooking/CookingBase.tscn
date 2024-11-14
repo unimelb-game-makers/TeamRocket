@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://b23qiygihwv2h"]
+
+[ext_resource type="Script" path="res://scripts/cooking/cooking_scene.gd" id="1_2bn3c"]
+
+[node name="CookingScene" type="Node2D"]
+script = ExtResource("1_2bn3c")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+custom_minimum_size = Vector2(560, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.462291, 0.462291, 0.462291, 1)
+
+[node name="IngredientHandler" type="Node2D" parent="."]
+
+[node name="Activity" type="Node2D" parent="."]
