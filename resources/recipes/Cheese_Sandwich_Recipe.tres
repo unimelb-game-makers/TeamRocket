@@ -8,6 +8,6 @@
 
 [resource]
 script = ExtResource("4_egprj")
-items = Array[ExtResource("1_1c46y")]([ExtResource("2_h6j7o"), ExtResource("3_qjv4e")])
+required_items = Array[ExtResource("1_1c46y")]([ExtResource("3_qjv4e"), ExtResource("2_h6j7o")])
 output_item = ExtResource("4_gbghd")
 activity = "Assembly"
