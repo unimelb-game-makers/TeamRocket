@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://wv12mpqwbndl"]
+
+[ext_resource type="Texture2D" uid="uid://dpk1lc27epwy4" path="res://assets/textures/chopping_board.png" id="1_81vwt"]
+[ext_resource type="Script" path="res://scenes/cooking/workbenches/activity_station.gd" id="1_obet7"]
+[ext_resource type="PackedScene" uid="uid://de7jdm6b6jkob" path="res://scenes/cooking/activities/Chopping.tscn" id="2_qmss5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrrf5"]
+size = Vector2(15, 11)
+
+[node name="ChoppingBoard" type="Node2D" groups=["Workbench"]]
+script = ExtResource("1_obet7")
+activity = ExtResource("2_qmss5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_81vwt")
+
+[node name="InteractArea" type="Area2D" parent="." groups=["Workbench"]]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_yrrf5")

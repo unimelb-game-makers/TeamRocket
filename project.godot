@@ -33,6 +33,8 @@ enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
 [global_group]
 
 navigation="For Navigation Layer"
+Item=""
+Workbench=""
 
 [input]
 

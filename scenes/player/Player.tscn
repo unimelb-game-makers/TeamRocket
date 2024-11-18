@@ -142,11 +142,11 @@ to = NodePath("../../Run")
 event = &"shift_hold"
 delay_in_seconds = "0.0"
 
-[node name="ItemPickupRadius" type="Area2D" parent="."]
+[node name="InteractRadius" type="Area2D" parent="."]
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemPickupRadius"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRadius"]
 shape = SubResource("CircleShape2D_rwbdg")
 
 [node name="DetectionRadius" type="Area2D" parent="." groups=["Player"]]
