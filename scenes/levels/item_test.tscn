@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b33jqqmsjmmin"]
+[gd_scene load_steps=17 format=4 uid="uid://b33jqqmsjmmin"]
 
 [ext_resource type="TileSet" uid="uid://c018cpgpmun08" path="res://assets/prototype_tileset.tres" id="1_5tmv4"]
 [ext_resource type="Script" path="res://scripts/terrain/ground.gd" id="2_1jag6"]
@@ -12,6 +12,8 @@
 [ext_resource type="Resource" uid="uid://c8fxovoqdspin" path="res://resources/items/Burger.tres" id="8_tou6f"]
 [ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="11_dr1ic"]
 [ext_resource type="Script" path="res://scripts/cooking/cooking_handler.gd" id="11_k4ddl"]
+[ext_resource type="Script" path="res://scripts/ui/item_containers.gd" id="11_nm0r3"]
+[ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="13_vyoqw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o4lb4"]
 vertices = PackedVector2Array(703, 319, 703, 65, 1219.91, 63, 1222.17, 577, 319, 63, 449, 65, 319, 577, 449, 319)
@@ -88,22 +90,24 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -636.0
+offset_left = -324.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="RightMenu" type="VBoxContainer" parent="UI/CanvasLayer/CenterContainer"]
-layout_mode = 2
-
-[node name="InventoryLabel" type="Label" parent="UI/CanvasLayer/CenterContainer/RightMenu"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Inventory"
-
-[node name="InventoryContainer" type="VBoxContainer" parent="UI/CanvasLayer/CenterContainer/RightMenu"]
-unique_name_in_owner = true
+[node name="InventoryUI" type="VBoxContainer" parent="UI/CanvasLayer/CenterContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("7_h2p8g")
+
+[node name="InventoryLabel" type="Label" parent="UI/CanvasLayer/CenterContainer/InventoryUI"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Inventory:"
+
+[node name="InventoryContainer" type="VBoxContainer" parent="UI/CanvasLayer/CenterContainer/InventoryUI"]
+unique_name_in_owner = true
+layout_mode = 2
+script = ExtResource("11_nm0r3")
 
 [node name="CookingHandler" type="Control" parent="UI/CanvasLayer"]
 layout_mode = 3
@@ -113,6 +117,7 @@ offset_bottom = 40.0
 script = ExtResource("11_k4ddl")
 
 [node name="ChoppingBoard" parent="." instance=ExtResource("11_dr1ic")]
-position = Vector2(801, 295)
+position = Vector2(708, 346)
+script = ExtResource("13_vyoqw")
 
 [connection signal="activity_interact" from="Player" to="UI" method="_on_player_activity_interact"]

@@ -36,10 +36,11 @@ shape = SubResource("RectangleShape2D_d0p80")
 zoom = Vector2(0.84, 0.84)
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("2_7c1ag")]
-offset_left = 347.0
-offset_top = -417.0
-offset_right = 744.0
-offset_bottom = -82.0
+visible = false
+offset_left = 79.0
+offset_top = -202.0
+offset_right = 367.0
+offset_bottom = 51.0
 initial_node_to_watch = NodePath("../StateChart")
 
 [node name="StateChart" type="Node" parent="."]
