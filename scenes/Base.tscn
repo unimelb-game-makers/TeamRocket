@@ -17,13 +17,13 @@ color = Color(0.18359, 0.18359, 0.18359, 1)
 
 [node name="Map" type="Node" parent="."]
 
+[node name="Items" type="Node" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("1_2xv6m")]
 z_index = 1
 position = Vector2(533, 480)
 
 [node name="Enemies" type="Node" parent="."]
-
-[node name="Items" type="Node" parent="."]
 
 [node name="UI" type="Control" parent="." groups=["ui"]]
 layout_mode = 3
@@ -66,3 +66,5 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_qul5e")
+
+[connection signal="activity_interact" from="Player" to="UI" method="_on_player_activity_interact"]
