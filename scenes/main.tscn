@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://scripts/terrain/Obstacles.gd" id="2_2xlwh"]
 [ext_resource type="Script" path="res://scripts/terrain/ground.gd" id="2_qcte5"]
 [ext_resource type="PackedScene" uid="uid://cqhi6f4pwyyf2" path="res://scenes/enemy/enemy_prototype.tscn" id="3_x6ofj"]
-[ext_resource type="Script" path="res://scenes/ui.gd" id="6_c3tlj"]
-[ext_resource type="Script" path="res://scenes/inventory.gd" id="6_lfdxl"]
+[ext_resource type="Script" path="res://scripts/ui/ui.gd" id="6_c3tlj"]
+[ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="6_lfdxl"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o4lb4"]
 vertices = PackedVector2Array(703, 319, 703, 65, 1219.91, 63, 1222.17, 577, 319, 63, 449, 65, 319, 577, 449, 319)
