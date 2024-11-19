@@ -171,6 +171,7 @@ offset_bottom = 10.0
 color = Color(0.598604, 0.411888, 0.154298, 1)
 
 [node name="RayCast2D" type="RayCast2D" parent="Rifle"]
+visible = false
 position = Vector2(54, 4)
 target_position = Vector2(1000, 0)
 
