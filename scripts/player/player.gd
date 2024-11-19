@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal activity_interact(activity)
+
 # For smoother movement
 const CROUCH_SPEED : int = 100
 const CROUCH_ACCEL : int = 10
@@ -25,7 +27,7 @@ const ROLL_COOLDOWN : float = 0
 var roll_cd_timer : float = 0
 var can_roll : bool = true
 
-@onready var item_pickup_radius: Area2D = $ItemPickupRadius
+@onready var interact_radius: Area2D = $InteractRadius
 @onready var rifle: Node2D = $Rifle
 
 func _ready() -> void:
@@ -33,11 +35,16 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# Code for item pickup
-	if (item_pickup_radius.has_overlapping_areas()):
+	if (interact_radius.has_overlapping_areas()):
 		if (Input.is_action_just_pressed("interact")):
-			var item = item_pickup_radius.get_overlapping_areas()[0].get_parent()
-			Inventory_Global.add_item(item.item)
-			item.delete_item()
+			var area = interact_radius.get_overlapping_areas()[0]
+			if area.is_in_group("Item"):
+				var item = area.get_parent()
+				Inventory_Global.add_item(item.item)
+				item.delete_item()
+			elif area.is_in_group("Workbench"):
+				var workbench = area.get_parent()
+				activity_interact.emit(workbench.activity)
 			
 	if (Input.is_action_just_pressed("inventory")):
 		print(Inventory_Global.inventory_array)
@@ -110,8 +117,9 @@ func _on_run_state_entered() -> void:
 	change_size(60)
 
 func change_size(length : int) -> void:
-	$ColorRect.size.y = length
-	$ColorRect.position.y = -length
+	pass
+	#$ColorRect.size.y = length
+	#$ColorRect.position.y = -length
 
 ### Rolling ###
 
