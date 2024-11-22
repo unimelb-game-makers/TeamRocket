@@ -18,7 +18,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if (progress_bar.value == 100):
 		progress_bar.value = 0
-	progress_bar.value += 1
+	progress_bar.value += 0.05
 	
 	if (Input.is_action_just_pressed("roll")):
 		if (target_progress - leniency < progress_bar.value and progress_bar.value < target_progress + leniency):
