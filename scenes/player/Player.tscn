@@ -164,6 +164,12 @@ texture_scale = 2.0
 script = ExtResource("9_usf71")
 bullet_scene = ExtResource("10_c4h7y")
 
+[node name="FireTimer" type="Timer" parent="Rifle"]
+one_shot = true
+
+[node name="ReloadTimer" type="Timer" parent="Rifle"]
+one_shot = true
+
 [node name="RifleSprite" type="Sprite2D" parent="Rifle"]
 
 [node name="ColorRect" type="ColorRect" parent="Rifle"]
@@ -183,3 +189,4 @@ target_position = Vector2(1000, 0)
 [connection signal="state_entered" from="StateChart/Movement/Basic/Run" to="." method="_on_run_state_entered"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Crouched" to="." method="_on_crouched_state_entered"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Standing" to="." method="_on_standing_state_entered"]
+[connection signal="timeout" from="Rifle/ReloadTimer" to="Rifle" method="_on_reload_timer_timeout"]
