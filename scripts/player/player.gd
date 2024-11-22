@@ -49,10 +49,10 @@ func _process(_delta: float) -> void:
 	if (Input.is_action_just_pressed("inventory")):
 		print(Inventory_Global.inventory_array)
 		
-	if (is_moving):
-		rifle.inaccuracy += rifle.INACCURACY_CHANGE_RATE
+	if (is_moving and curr_speed > CROUCH_SPEED):
+		rifle.inaccuracy_limit += 0.05
 	else:
-		rifle.inaccuracy -= rifle.INACCURACY_CHANGE_RATE
+		rifle.inaccuracy_limit -= 0.01
 
 func _physics_process(delta: float) -> void:
 	pass
