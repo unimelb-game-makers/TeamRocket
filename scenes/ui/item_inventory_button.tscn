@@ -50,3 +50,6 @@ texture_pressed = ExtResource("4_uaypk")
 position = Vector2(23, 21)
 rotation = -1.5708
 texture = ExtResource("5_0ox5t")
+
+[connection signal="pressed" from="FoodButton" to="." method="_on_food_button_pressed"]
+[connection signal="pressed" from="DropButton" to="." method="_on_drop_button_pressed"]

@@ -34,6 +34,10 @@ item = ExtResource("6_v8h04")
 position = Vector2(998, 166)
 item = ExtResource("7_p677i")
 
+[node name="Item4" parent="Items" index="3" instance=ExtResource("4_56ul8")]
+position = Vector2(998, 166)
+item = ExtResource("7_p677i")
+
 [node name="Player" parent="." index="3"]
 position = Vector2(758, 540)
 

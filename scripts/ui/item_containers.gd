@@ -10,5 +10,13 @@ func update_inventory_list():
 	for item in Inventory_Global.get_inventory():
 		var item_label = item_container_scene.instantiate()
 		item_label.item = item
-		item_label.amount = 1
+		item_label.amount = Inventory_Global.get_inventory()[item]
+		item_label.item_selected.connect(select_item)
+		item_label.item_dropped.connect(drop_item)
 		add_child(item_label)
+
+func select_item(item, amount):
+	pass
+
+func drop_item(item, amount):
+	Inventory_Global.remove_item(item, amount)

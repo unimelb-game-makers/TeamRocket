@@ -46,6 +46,7 @@ script = ExtResource("3_kflo4")
 item_container_scene = ExtResource("4_qmpco")
 
 [node name="CookingHandler" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
