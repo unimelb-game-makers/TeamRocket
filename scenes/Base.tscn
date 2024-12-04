@@ -1,10 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cass2bjp3d6eq"]
+[gd_scene load_steps=3 format=3 uid="uid://cass2bjp3d6eq"]
 
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="1_2xv6m"]
-[ext_resource type="Script" path="res://scripts/ui/ui.gd" id="2_fh763"]
-[ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="3_ggf5e"]
-[ext_resource type="Script" path="res://scripts/ui/item_containers.gd" id="4_lesgq"]
-[ext_resource type="Script" path="res://scripts/cooking/cooking_handler.gd" id="5_qul5e"]
+[ext_resource type="PackedScene" uid="uid://bxuu77kvbmixu" path="res://scenes/ui/ui.tscn" id="2_a8oao"]
 
 [node name="Base" type="Node2D"]
 
@@ -25,46 +22,4 @@ position = Vector2(533, 480)
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="UI" type="Control" parent="." groups=["ui"]]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_fh763")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
-
-[node name="CenterContainer" type="CenterContainer" parent="UI/CanvasLayer"]
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -324.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="InventoryUI" type="VBoxContainer" parent="UI/CanvasLayer/CenterContainer"]
-visible = false
-layout_mode = 2
-script = ExtResource("3_ggf5e")
-
-[node name="InventoryLabel" type="Label" parent="UI/CanvasLayer/CenterContainer/InventoryUI"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Inventory:"
-
-[node name="InventoryContainer" type="VBoxContainer" parent="UI/CanvasLayer/CenterContainer/InventoryUI"]
-unique_name_in_owner = true
-layout_mode = 2
-script = ExtResource("4_lesgq")
-
-[node name="CookingHandler" type="Control" parent="UI/CanvasLayer"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("5_qul5e")
-
-[connection signal="activity_interact" from="Player" to="UI" method="_on_player_activity_interact"]
+[node name="UI" parent="." instance=ExtResource("2_a8oao")]

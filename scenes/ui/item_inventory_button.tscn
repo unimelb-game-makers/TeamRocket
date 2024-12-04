@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cik7cck2oky1w"]
+
+[ext_resource type="Texture2D" uid="uid://dgcn3fv1c6r3e" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="1_l2cwe"]
+[ext_resource type="Script" path="res://scripts/ui/item_inventory_button.gd" id="1_vipfs"]
+[ext_resource type="Texture2D" uid="uid://b1nr4nwk72xrh" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown_pressed.png" id="2_okhfe"]
+[ext_resource type="Texture2D" uid="uid://cl3nktlqu747p" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_brown.png" id="3_0n6g7"]
+[ext_resource type="Texture2D" uid="uid://blocbouydvwko" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_brown_pressed.png" id="4_uaypk"]
+[ext_resource type="Texture2D" uid="uid://fplx23lf5mw1" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/arrowSilver_left.png" id="5_0ox5t"]
+
+[node name="FoodButton" type="Control"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 3
+anchor_right = 0.194
+anchor_bottom = 0.069
+script = ExtResource("1_vipfs")
+
+[node name="FoodButton" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_l2cwe")
+texture_pressed = ExtResource("2_okhfe")
+
+[node name="FoodLabel" type="Label" parent="FoodButton"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 184.0
+offset_bottom = 40.0
+text = "Food"
+vertical_alignment = 1
+
+[node name="WeightLabel" type="Label" parent="FoodButton"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 5.0
+offset_right = 186.0
+offset_bottom = 41.0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="DropButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 201.0
+offset_right = 246.0
+offset_bottom = 49.0
+texture_normal = ExtResource("3_0n6g7")
+texture_pressed = ExtResource("4_uaypk")
+
+[node name="ArrowSilverLeft" type="Sprite2D" parent="DropButton"]
+position = Vector2(23, 21)
+rotation = -1.5708
+texture = ExtResource("5_0ox5t")

@@ -36,3 +36,5 @@ item = ExtResource("7_p677i")
 
 [node name="Player" parent="." index="3"]
 position = Vector2(758, 540)
+
+[connection signal="activity_interact" from="Player" to="UI" method="_on_player_activity_interact"]
