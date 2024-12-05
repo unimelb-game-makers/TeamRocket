@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://kbiiliwk7uc4"]
+[gd_scene load_steps=11 format=4 uid="uid://kbiiliwk7uc4"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/Base.tscn" id="1_pvklr"]
 [ext_resource type="TileSet" uid="uid://c018cpgpmun08" path="res://assets/prototype_tileset.tres" id="2_n2hyq"]
@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://cixgvojl6jk0w" path="res://resources/items/Cheese.tres" id="6_v8h04"]
 [ext_resource type="Resource" uid="uid://bdrp5ddjko1ov" path="res://resources/items/Water_Bottle.tres" id="7_p677i"]
 [ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="8_0ahpv"]
+[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/Carrot.tres" id="10_w45ei"]
 
 [node name="Base" instance=ExtResource("1_pvklr")]
 
@@ -41,7 +42,7 @@ item = ExtResource("7_p677i")
 
 [node name="Item4" parent="Items" index="3" instance=ExtResource("4_56ul8")]
 position = Vector2(998, 166)
-item = ExtResource("7_p677i")
+item = ExtResource("10_w45ei")
 
 [node name="Player" parent="." index="3"]
 position = Vector2(758, 540)
