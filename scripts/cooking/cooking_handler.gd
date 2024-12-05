@@ -18,3 +18,7 @@ func init_activity(activity) -> void:
 	
 func finish() -> void:
 	current_scene.queue_free()
+
+func _on_inventory_container_selected_item(item: Variant, amount: Variant) -> void:
+	if (scene_active):
+		current_scene.add_item(item)

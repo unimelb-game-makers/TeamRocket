@@ -17,6 +17,20 @@ script = ExtResource("1_pred7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="CookingHandler" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 8.0
+offset_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_nipys")
+
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,16 +61,4 @@ layout_mode = 2
 script = ExtResource("3_kflo4")
 item_container_scene = ExtResource("4_qmpco")
 
-[node name="CookingHandler" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 8.0
-offset_right = 1.0
-offset_bottom = 8.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("4_nipys")
+[connection signal="selected_item" from="CanvasLayer/CenterContainer/InventoryUI/ScrollContainer/InventoryContainer" to="CanvasLayer/CookingHandler" method="_on_inventory_container_selected_item"]

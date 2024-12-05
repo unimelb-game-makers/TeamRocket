@@ -10,10 +10,16 @@ func _ready() -> void:
 	activity_game.complete.connect(finish)
 	ingredient_handler.max_slots = activity_res.max_ingredients
 	ingredient_handler.create_slots()
+	Globals.inventory_ui.toggle_inventory(true)
 
 func start() -> void:
 	activity_game.start()
+	Globals.inventory_ui.toggle_inventory(false)
 	
+func add_item(item: Item):
+	ingredient_handler.add_item(item)
+
 func finish():
 	print("Chop Signal Received")
 	complete.emit()
+	
