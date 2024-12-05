@@ -1,16 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://de7jdm6b6jkob"]
+[gd_scene load_steps=4 format=3 uid="uid://de7jdm6b6jkob"]
 
 [ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/CookingBase.tscn" id="1_6gdr5"]
+[ext_resource type="Resource" uid="uid://befjbqm64vutk" path="res://resources/activities/chopping.tres" id="2_5hfpq"]
 [ext_resource type="Script" path="res://scripts/cooking/ChoppingActivity.gd" id="2_hs7ow"]
 
 [node name="CookingScene" instance=ExtResource("1_6gdr5")]
+activity_res = ExtResource("2_5hfpq")
 
 [node name="Activity" parent="." index="2"]
 script = ExtResource("2_hs7ow")
 
 [node name="ProgressBar" type="ProgressBar" parent="Activity" index="0"]
-offset_left = 120.0
-offset_top = 240.0
-offset_right = 520.0
-offset_bottom = 286.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 113.0
+offset_right = 200.0
+offset_bottom = 159.0
+grow_horizontal = 2
+grow_vertical = 2
 show_percentage = false

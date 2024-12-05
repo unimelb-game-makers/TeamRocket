@@ -19,4 +19,4 @@ func select_item(item, amount):
 	pass
 
 func drop_item(item, amount):
-	Inventory_Global.remove_item(item, amount)
+	Inventory_Global.drop_item(item, amount)

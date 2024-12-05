@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Food" load_steps=2 format=3 uid="uid://c7undn0xyxewt"]
+
+[ext_resource type="Script" path="res://resources/resource_scripts/food.gd" id="1_2gc52"]
+
+[resource]
+script = ExtResource("1_2gc52")
+food_value = 0
+buffs = Array[String]([])
+rating = 0
+item_name = "Carrot"
+weight = 0.2
+rarity = 0

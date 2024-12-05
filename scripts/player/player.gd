@@ -31,7 +31,7 @@ var can_roll : bool = true
 @onready var rifle: Node2D = $Rifle
 
 func _ready() -> void:
-	pass
+	Globals.player = self
 
 func _process(_delta: float) -> void:
 	# Code for item pickup
@@ -40,7 +40,7 @@ func _process(_delta: float) -> void:
 			var area = interact_radius.get_overlapping_areas()[0]
 			if area.is_in_group("Item"):
 				var item = area.get_parent()
-				Inventory_Global.add_item(item.item)
+				Inventory_Global.add_item(item.item, item.amount)
 				item.delete_item()
 			elif area.is_in_group("Workbench"):
 				var workbench = area.get_parent()
