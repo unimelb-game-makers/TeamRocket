@@ -35,7 +35,7 @@ script = ExtResource("4_nipys")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 625.0
+offset_left = 780.0
 grow_horizontal = 2
 grow_vertical = 2
 

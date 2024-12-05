@@ -14,3 +14,5 @@ script = ExtResource("3_10ak5")
 [node name="FoodLabel" type="Label" parent="."]
 offset_right = 47.0
 offset_bottom = 49.0
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

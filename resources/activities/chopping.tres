@@ -7,4 +7,4 @@
 [resource]
 script = ExtResource("2_yt4ns")
 recipes = Array[ExtResource("1_osn8p")]([ExtResource("2_exhet")])
-max_ingredients = 1
+max_ingredients = 3
