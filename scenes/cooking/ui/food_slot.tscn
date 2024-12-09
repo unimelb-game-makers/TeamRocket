@@ -12,6 +12,7 @@ script = ExtResource("3_10ak5")
 [node name="FoodTexture" type="Sprite2D" parent="."]
 
 [node name="FoodLabel" type="Label" parent="."]
+layout_mode = 0
 offset_right = 47.0
 offset_bottom = 49.0
 

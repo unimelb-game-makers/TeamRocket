@@ -14,7 +14,8 @@ func init_activity(activity) -> void:
 	else:
 		scene_active = false
 		visible = false
-		get_child(0).queue_free()
+		if (get_child(0)):
+			get_child(0).queue_free()
 	
 func finish() -> void:
 	current_scene.queue_free()
