@@ -11,18 +11,19 @@ config_version=5
 [application]
 
 config/name="Team-Rocket Game"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/TestMap.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Inventory_Global="*res://scripts/inventory/inventory.gd"
+Globals="*res://scripts/globals.gd"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/size/mode=2
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=0

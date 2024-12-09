@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxuu77kvbmixu"]
+
+[ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_pred7"]
+[ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="2_twpgx"]
+[ext_resource type="Script" path="res://scripts/ui/item_containers.gd" id="3_kflo4"]
+[ext_resource type="Script" path="res://scripts/cooking/cooking_handler.gd" id="4_nipys"]
+[ext_resource type="PackedScene" uid="uid://cik7cck2oky1w" path="res://scenes/ui/item_inventory_button.tscn" id="4_qmpco"]
+
+[node name="UI" type="Control" groups=["ui"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pred7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CookingHandler" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 8.0
+offset_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_nipys")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 780.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InventoryUI" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+visible = false
+layout_mode = 2
+script = ExtResource("2_twpgx")
+
+[node name="InventoryLabel" type="Label" parent="CanvasLayer/CenterContainer/InventoryUI"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Inventory:"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/CenterContainer/InventoryUI"]
+custom_minimum_size = Vector2(250, 300)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="InventoryContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/InventoryUI/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+script = ExtResource("3_kflo4")
+item_container_scene = ExtResource("4_qmpco")
+
+[connection signal="selected_item" from="CanvasLayer/CenterContainer/InventoryUI/ScrollContainer/InventoryContainer" to="CanvasLayer/CookingHandler" method="_on_inventory_container_selected_item"]

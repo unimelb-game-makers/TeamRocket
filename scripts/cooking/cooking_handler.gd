@@ -1,21 +1,25 @@
 extends Control
 
 var current_scene
-## Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	#pass # Replace with function body.
-#
-#
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-	#pass
+var scene_active = false
 
 func init_activity(activity) -> void:
-	var cooking_scene = activity.instantiate()
-	add_child(cooking_scene)
-	cooking_scene.complete.connect(finish)
-	current_scene = get_child(0)
+	if (not scene_active):
+		visible = true
+		scene_active = true
+		var cooking_scene = activity.instantiate()
+		add_child(cooking_scene)
+		cooking_scene.complete.connect(finish)
+		current_scene = get_child(0)
+	else:
+		scene_active = false
+		visible = false
+		if (get_child(0)):
+			get_child(0).queue_free()
 	
 func finish() -> void:
 	current_scene.queue_free()
-	print("Activity Finished")
+
+func _on_inventory_container_selected_item(item: Variant, amount: Variant) -> void:
+	if (scene_active):
+		current_scene.add_item(item)

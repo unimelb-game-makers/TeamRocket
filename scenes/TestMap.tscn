@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=4 uid="uid://kbiiliwk7uc4"]
+[gd_scene load_steps=11 format=4 uid="uid://kbiiliwk7uc4"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/Base.tscn" id="1_pvklr"]
 [ext_resource type="TileSet" uid="uid://c018cpgpmun08" path="res://assets/prototype_tileset.tres" id="2_n2hyq"]
 [ext_resource type="Script" path="res://scripts/terrain/Obstacles.gd" id="3_hcsuq"]
 [ext_resource type="PackedScene" uid="uid://yw75vu274ne0" path="res://scenes/item/item_floor.tscn" id="4_56ul8"]
 [ext_resource type="Resource" uid="uid://c8fxovoqdspin" path="res://resources/items/Burger.tres" id="5_05whj"]
+[ext_resource type="Script" path="res://scripts/item/item_handler.gd" id="5_s4dcp"]
 [ext_resource type="Resource" uid="uid://cixgvojl6jk0w" path="res://resources/items/Cheese.tres" id="6_v8h04"]
 [ext_resource type="Resource" uid="uid://bdrp5ddjko1ov" path="res://resources/items/Water_Bottle.tres" id="7_p677i"]
 [ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="8_0ahpv"]
+[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/Carrot.tres" id="10_w45ei"]
 
 [node name="Base" instance=ExtResource("1_pvklr")]
 
@@ -22,6 +24,9 @@ script = ExtResource("3_hcsuq")
 [node name="ChoppingBoard" parent="Map" index="1" instance=ExtResource("8_0ahpv")]
 position = Vector2(578, 443)
 
+[node name="Items" parent="." index="2"]
+script = ExtResource("5_s4dcp")
+
 [node name="Item" parent="Items" index="0" instance=ExtResource("4_56ul8")]
 position = Vector2(628, 175)
 item = ExtResource("5_05whj")
@@ -29,10 +34,17 @@ item = ExtResource("5_05whj")
 [node name="Item2" parent="Items" index="1" instance=ExtResource("4_56ul8")]
 position = Vector2(818, 164)
 item = ExtResource("6_v8h04")
+amount = 2
 
 [node name="Item3" parent="Items" index="2" instance=ExtResource("4_56ul8")]
 position = Vector2(998, 166)
 item = ExtResource("7_p677i")
 
+[node name="Item4" parent="Items" index="3" instance=ExtResource("4_56ul8")]
+position = Vector2(998, 166)
+item = ExtResource("10_w45ei")
+
 [node name="Player" parent="." index="3"]
 position = Vector2(758, 540)
+
+[connection signal="activity_interact" from="Player" to="UI" method="_on_player_activity_interact"]
