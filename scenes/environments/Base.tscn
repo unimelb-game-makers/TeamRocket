@@ -23,3 +23,5 @@ position = Vector2(533, 480)
 [node name="Enemies" type="Node" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("2_a8oao")]
+
+[connection signal="activity_interact" from="Player" to="UI" method="_on_player_activity_interact"]

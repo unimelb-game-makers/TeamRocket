@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://8o3mlc7okpi7"]
+
+[ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
+[ext_resource type="Texture2D" uid="uid://dms8p5hhjkjcc" path="res://assets/interiors/Kitchen.jpg" id="2_em0kq"]
+[ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="3_xytjo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oov5x"]
+size = Vector2(3186.99, 854.059)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyev3"]
+size = Vector2(626.667, 1256.67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rso0x"]
+size = Vector2(813.334, 2587.5)
+
+[node name="Base" instance=ExtResource("1_4boqu")]
+
+[node name="Kitchen" type="Sprite2D" parent="Map" index="0"]
+position = Vector2(696, 392)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_em0kq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map/Kitchen" index="0"]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Kitchen/StaticBody2D" index="0"]
+position = Vector2(-100.164, -863.696)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_oov5x")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Map/Kitchen" index="1"]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Kitchen/StaticBody2D2" index="0"]
+position = Vector2(-2006.67, -678.333)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_xyev3")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Map/Kitchen" index="2"]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Kitchen/StaticBody2D3" index="0"]
+position = Vector2(1903.33, 6.25)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_rso0x")
+
+[node name="ChoppingBoard" parent="Map" index="1" instance=ExtResource("3_xytjo")]
+position = Vector2(595, 535)
+scale = Vector2(5, 5)
