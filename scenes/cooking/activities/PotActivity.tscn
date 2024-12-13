@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bggmbfoo43i86"]
+
+[ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/CookingBase.tscn" id="1_bg34l"]
+[ext_resource type="Script" path="res://scripts/cooking/PotActivity.gd" id="2_gp5o6"]
+[ext_resource type="Resource" uid="uid://d0er8kaqjpcsl" path="res://resources/activities/stewing.tres" id="2_ykihi"]
+
+[node name="CookingScene" instance=ExtResource("1_bg34l")]
+activity_res = ExtResource("2_ykihi")
+
+[node name="Activity" parent="." index="2"]
+script = ExtResource("2_gp5o6")

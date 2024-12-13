@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cdrbar832duc6"]
+
+[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="1_pykg7"]
+[ext_resource type="Texture2D" uid="uid://dc6mt81avbf6a" path="res://assets/food/mince raw.png" id="2_bfy25"]
+
+[resource]
+script = ExtResource("1_pykg7")
+texture = ExtResource("2_bfy25")
+item_name = "Raw Ground Beef"
+weight = 0.5
+rarity = 0

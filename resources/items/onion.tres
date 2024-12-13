@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://b1x4ow0n4q31r"]
+
+[ext_resource type="Script" path="res://resources/resource_scripts/food.gd" id="1_h4q45"]
+[ext_resource type="Texture2D" uid="uid://b07kivrp37jh3" path="res://assets/food/onion raw.png" id="2_w2fcr"]
+
+[resource]
+script = ExtResource("1_h4q45")
+food_value = 0
+buffs = Array[String]([])
+rating = 0
+texture = ExtResource("2_w2fcr")
+item_name = "Onion"
+weight = 0.1
+rarity = 0

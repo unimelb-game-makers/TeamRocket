@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5fbsmwagky6i"]
+[gd_scene load_steps=4 format=3 uid="uid://c5fbsmwagky6i"]
 
 [ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_gbujv"]
+[ext_resource type="PackedScene" uid="uid://bggmbfoo43i86" path="res://scenes/cooking/activities/PotActivity.tscn" id="2_5al3h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yrrf5"]
 size = Vector2(15, 11)
 
 [node name="Pot" type="Node2D" groups=["Workbench"]]
 script = ExtResource("1_gbujv")
+activity = ExtResource("2_5al3h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 

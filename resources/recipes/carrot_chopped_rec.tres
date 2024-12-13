@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://bfwue41nr3epe"]
 
+[ext_resource type="Resource" uid="uid://mywli41k181b" path="res://resources/items/carrot_chopped.tres" id="1_25p3q"]
 [ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="1_b1ggh"]
-[ext_resource type="Resource" uid="uid://mywli41k181b" path="res://resources/items/Chopped_Veg.tres" id="1_cqtbk"]
 [ext_resource type="Script" path="res://resources/resource_scripts/recipe.gd" id="2_flox7"]
-[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/Carrot.tres" id="2_gkaj0"]
+[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="2_gkaj0"]
 
 [resource]
 script = ExtResource("2_flox7")
 required_items = Array[ExtResource("1_b1ggh")]([ExtResource("2_gkaj0")])
-output_item = ExtResource("1_cqtbk")
+output_item = ExtResource("1_25p3q")

@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="Activity" load_steps=4 format=3 uid="uid://befjbqm64vutk"]
+[gd_resource type="Resource" script_class="Activity" load_steps=6 format=3 uid="uid://befjbqm64vutk"]
 
 [ext_resource type="Script" path="res://resources/resource_scripts/recipe.gd" id="1_osn8p"]
-[ext_resource type="Resource" uid="uid://bfwue41nr3epe" path="res://resources/recipes/chopped_vegetables.tres" id="2_exhet"]
+[ext_resource type="Resource" uid="uid://bfwue41nr3epe" path="res://resources/recipes/carrot_chopped_rec.tres" id="2_pv62s"]
 [ext_resource type="Script" path="res://resources/resource_scripts/activity.gd" id="2_yt4ns"]
+[ext_resource type="Resource" uid="uid://cc53kuuugxarg" path="res://resources/recipes/tomato_chopped_rec.tres" id="3_5177j"]
+[ext_resource type="Resource" uid="uid://03e6q22xpcdp" path="res://resources/recipes/onion_chopped_rec.tres" id="4_7i00h"]
 
 [resource]
 script = ExtResource("2_yt4ns")
-recipes = Array[ExtResource("1_osn8p")]([ExtResource("2_exhet")])
+recipes = Array[ExtResource("1_osn8p")]([ExtResource("2_pv62s"), ExtResource("3_5177j"), ExtResource("4_7i00h")])
 max_ingredients = 1

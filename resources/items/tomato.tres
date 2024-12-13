@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://c2s6lwbyk5fkd"]
+
+[ext_resource type="Script" path="res://resources/resource_scripts/food.gd" id="1_frc5k"]
+[ext_resource type="Texture2D" uid="uid://cevkjrlj4y5qd" path="res://assets/food/tomato raw.png" id="2_n2jer"]
+
+[resource]
+script = ExtResource("1_frc5k")
+food_value = 0
+buffs = Array[String]([])
+rating = 0
+texture = ExtResource("2_n2jer")
+item_name = "Tomato"
+weight = 0.1
+rarity = 0

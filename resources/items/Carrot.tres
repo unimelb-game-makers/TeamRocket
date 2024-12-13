@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Food" load_steps=2 format=3 uid="uid://c7undn0xyxewt"]
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://c7undn0xyxewt"]
 
-[ext_resource type="Script" path="res://resources/resource_scripts/food.gd" id="1_2gc52"]
+[ext_resource type="Script" path="res://resources/resource_scripts/food.gd" id="1_hha8b"]
+[ext_resource type="Texture2D" uid="uid://po2e2hxrnnr4" path="res://assets/food/carrot raw.png" id="2_ib68o"]
 
 [resource]
-script = ExtResource("1_2gc52")
+script = ExtResource("1_hha8b")
 food_value = 0
 buffs = Array[String]([])
 rating = 0
+texture = ExtResource("2_ib68o")
 item_name = "Carrot"
-weight = 0.2
+weight = 0.1
 rarity = 0

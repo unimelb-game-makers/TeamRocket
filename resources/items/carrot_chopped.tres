@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://mywli41k181b"]
+
+[ext_resource type="Script" path="res://resources/resource_scripts/food.gd" id="1_evbwb"]
+[ext_resource type="Texture2D" uid="uid://ykp7dqbdgdtc" path="res://assets/food/carrot sliced.png" id="2_jwgfx"]
+
+[resource]
+script = ExtResource("1_evbwb")
+food_value = 0
+buffs = Array[String]([])
+rating = 0
+texture = ExtResource("2_jwgfx")
+item_name = "Chopped Carrot"
+weight = 0.1
+rarity = 0

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://crgwevfrmuvpk"]
+
+[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="1_05i3g"]
+[ext_resource type="Texture2D" uid="uid://d242sxkaq3idj" path="res://assets/food/tomato cut.png" id="2_8fpd1"]
+
+[resource]
+script = ExtResource("1_05i3g")
+texture = ExtResource("2_8fpd1")
+item_name = "Chopped Tomato"
+weight = 0.1
+rarity = 0
