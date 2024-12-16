@@ -13,7 +13,7 @@ visible = false
 position = Vector2(533, 480)
 color = Color(0.18359, 0.18359, 0.18359, 1)
 
-[node name="Map" type="Node" parent="."]
+[node name="Map" type="Node2D" parent="."]
 
 [node name="Items" type="Node" parent="."]
 script = ExtResource("1_p3mrr")

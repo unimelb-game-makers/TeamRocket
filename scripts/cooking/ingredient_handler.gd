@@ -4,6 +4,8 @@ var selected_ingredients: Array[Item]
 var max_slots = 1
 @export var food_slot_scene: PackedScene
 
+signal update_list
+
 func ready() -> void:
 	pass
 
@@ -20,12 +22,13 @@ func add_item(item: Item) -> void:
 	if (len(selected_ingredients) < max_slots):
 		selected_ingredients.append(item)
 		Inventory_Global.remove_item(item, 1)
-		
+		update_list.emit()
 		update_slots()
 
 func remove_item(index):
 	Inventory_Global.add_item(selected_ingredients[index], 1)
 	selected_ingredients.remove_at(index)
+	update_list.emit()
 	update_slots()
 
 func update_slots() -> void:

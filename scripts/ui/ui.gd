@@ -1,7 +1,7 @@
 extends Control
 
 @onready var inventory_label: Label = %InventoryLabel
-@onready var inventory_container: VBoxContainer = %InventoryContainer
+@onready var inventory_container: Control = %InventoryContainer
 
 @onready var cooking_handler: Control = $CanvasLayer/CookingHandler
 

@@ -10,5 +10,6 @@ buffs = Array[String]([])
 rating = 0
 texture = ExtResource("2_n2jer")
 item_name = "Tomato"
+description = ""
 weight = 0.1
 rarity = 0

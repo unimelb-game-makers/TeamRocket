@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxuu77kvbmixu"]
+[gd_scene load_steps=7 format=3 uid="uid://bxuu77kvbmixu"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_pred7"]
 [ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="2_twpgx"]
-[ext_resource type="Script" path="res://scripts/ui/item_containers.gd" id="3_kflo4"]
+[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://resources/inventory_select_list.tscn" id="4_br31h"]
 [ext_resource type="Script" path="res://scripts/cooking/cooking_handler.gd" id="4_nipys"]
-[ext_resource type="PackedScene" uid="uid://cik7cck2oky1w" path="res://scenes/ui/item_inventory_button.tscn" id="4_qmpco"]
+[ext_resource type="Script" path="res://scripts/ui/item_description_box.gd" id="5_60gg5"]
+[ext_resource type="Texture2D" uid="uid://fh2nehpger30" path="res://assets/food/carrot peeled.png" id="6_rbjyu"]
 
 [node name="UI" type="Control" groups=["ui"]]
 layout_mode = 3
@@ -31,34 +32,78 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_nipys")
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+[node name="InventoryCenterer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 780.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="InventoryUI" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
-visible = false
-layout_mode = 2
 script = ExtResource("2_twpgx")
 
-[node name="InventoryLabel" type="Label" parent="CanvasLayer/CenterContainer/InventoryUI"]
+[node name="Inventory" type="Control" parent="CanvasLayer/InventoryCenterer"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="ItemListBackground" type="ColorRect" parent="CanvasLayer/InventoryCenterer/Inventory"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+offset_left = -210.0
+offset_top = -321.0
+offset_right = 598.0
+offset_bottom = 46.0
+mouse_filter = 1
+color = Color(0.212305, 0.212305, 0.212305, 1)
+
+[node name="InventoryLabel" type="Label" parent="CanvasLayer/InventoryCenterer/Inventory/ItemListBackground"]
 unique_name_in_owner = true
 layout_mode = 2
+offset_left = 23.0
+offset_top = 15.0
+offset_right = 135.0
+offset_bottom = 55.0
 text = "Inventory:"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/CenterContainer/InventoryUI"]
-custom_minimum_size = Vector2(250, 300)
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="InventoryContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/InventoryUI/ScrollContainer"]
+[node name="InventoryContainer" parent="CanvasLayer/InventoryCenterer/Inventory/ItemListBackground" instance=ExtResource("4_br31h")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-script = ExtResource("3_kflo4")
-item_container_scene = ExtResource("4_qmpco")
+offset_left = 23.0
+offset_top = 45.0
+offset_right = 281.0
+offset_bottom = 345.0
 
-[connection signal="selected_item" from="CanvasLayer/CenterContainer/InventoryUI/ScrollContainer/InventoryContainer" to="CanvasLayer/CookingHandler" method="_on_inventory_container_selected_item"]
+[node name="ItemDescriptionBackground" type="ColorRect" parent="CanvasLayer/InventoryCenterer/Inventory"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+offset_left = -210.0
+offset_top = 78.0
+offset_right = 598.0
+offset_bottom = 278.0
+color = Color(0.212305, 0.212305, 0.212305, 1)
+script = ExtResource("5_60gg5")
+
+[node name="ItemName" type="Label" parent="CanvasLayer/InventoryCenterer/Inventory/ItemDescriptionBackground"]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 12.0
+offset_right = 428.0
+offset_bottom = 48.0
+text = "TEST"
+
+[node name="ItemDesc" type="Label" parent="CanvasLayer/InventoryCenterer/Inventory/ItemDescriptionBackground"]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 59.0
+offset_right = 600.0
+offset_bottom = 152.0
+text = "Insert Item Description"
+
+[node name="ItemImage" type="TextureRect" parent="CanvasLayer/InventoryCenterer/Inventory/ItemDescriptionBackground"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 19.0
+offset_right = 168.0
+offset_bottom = 169.0
+texture = ExtResource("6_rbjyu")
+expand_mode = 1
+
+[connection signal="item_selected" from="CanvasLayer/InventoryCenterer/Inventory/ItemListBackground/InventoryContainer" to="CanvasLayer/InventoryCenterer" method="update_description"]
