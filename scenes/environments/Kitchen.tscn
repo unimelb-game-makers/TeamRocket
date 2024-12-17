@@ -1,34 +1,40 @@
-[gd_scene load_steps=15 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=17 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
-[ext_resource type="Texture2D" uid="uid://bh2ktmcom7uhq" path="res://assets/interiors/kitchen/obstacles.png" id="3_7bin4"]
 [ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="3_xytjo"]
 [ext_resource type="Texture2D" uid="uid://b5jgmaxgknpb0" path="res://assets/interiors/kitchen/walls.png" id="3_yjya3"]
 [ext_resource type="PackedScene" uid="uid://c5fbsmwagky6i" path="res://scenes/cooking/workbenches/Pot.tscn" id="4_hcw55"]
+[ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
 [ext_resource type="PackedScene" uid="uid://yw75vu274ne0" path="res://scenes/item/item_floor.tscn" id="5_vbmf8"]
+[ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
 [ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="7_083nx"]
 [ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="8_f86gd"]
 [ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="9_2oqyj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oov5x"]
-size = Vector2(3186.99, 854.059)
+size = Vector2(4006.99, 854.059)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyev3"]
 size = Vector2(626.667, 1256.67)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rso0x"]
-size = Vector2(813.334, 2587.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jyq"]
+size = Vector2(326.664, 2611.67)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qda8"]
-size = Vector2(1793.33, 260)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk1kv"]
+size = Vector2(1840, 266.667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4v1f"]
+size = Vector2(556.667, 516.666)
 
 [node name="Base" instance=ExtResource("1_4boqu")]
+y_sort_enabled = true
 
 [node name="Map" parent="." index="1"]
 y_sort_enabled = true
 
 [node name="KitchenFloor" type="Sprite2D" parent="Map" index="0"]
+z_index = -1
 position = Vector2(696, 392)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_86nue")
@@ -39,7 +45,7 @@ texture = ExtResource("3_yjya3")
 [node name="StaticBody2D" type="StaticBody2D" parent="Map/KitchenFloor" index="1"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D" index="0"]
-position = Vector2(-100.164, -863.696)
+position = Vector2(309.837, -863.696)
 shape = SubResource("RectangleShape2D_oov5x")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Map/KitchenFloor" index="2"]
@@ -49,27 +55,38 @@ position = Vector2(-2006.67, -678.333)
 shape = SubResource("RectangleShape2D_xyev3")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Map/KitchenFloor" index="3"]
+position = Vector2(4640, 16.6667)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D3" index="0"]
-position = Vector2(1903.33, 6.25)
-shape = SubResource("RectangleShape2D_rso0x")
+position = Vector2(-2160, -2.5)
+shape = SubResource("RectangleShape2D_h4jyq")
 
-[node name="Obstacles" type="Sprite2D" parent="Map" index="1"]
-z_index = 1
+[node name="Bench" type="Sprite2D" parent="Map" index="1"]
 y_sort_enabled = true
-position = Vector2(696, 392)
+position = Vector2(684, 578)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("3_7bin4")
+texture = ExtResource("5_uiv4g")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Map/Obstacles" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Map/Bench" index="0"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Obstacles/StaticBody2D" index="0"]
-position = Vector2(-36.6667, 420)
-shape = SubResource("RectangleShape2D_8qda8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Bench/StaticBody2D" index="0"]
+position = Vector2(-6.66675, -136.667)
+shape = SubResource("RectangleShape2D_gk1kv")
+
+[node name="Fryer" type="Sprite2D" parent="Map" index="2"]
+position = Vector2(1282, 484)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_47cob")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map/Fryer" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Fryer/StaticBody2D" index="0"]
+position = Vector2(78.335, 11.6669)
+shape = SubResource("RectangleShape2D_c4v1f")
 
 [node name="ChoppingBoard" parent="." index="2" instance=ExtResource("3_xytjo")]
-position = Vector2(595, 535)
-scale = Vector2(5, 5)
+z_index = 1
+position = Vector2(637, 536)
 
 [node name="Pot" parent="." index="3" instance=ExtResource("4_hcw55")]
 position = Vector2(793, 232)
@@ -87,4 +104,5 @@ position = Vector2(294, 317)
 item = ExtResource("8_f86gd")
 
 [node name="Player" parent="." index="5"]
+z_index = 0
 y_sort_enabled = true
