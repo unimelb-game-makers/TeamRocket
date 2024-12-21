@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxuu77kvbmixu"]
+[gd_scene load_steps=6 format=3 uid="uid://bxuu77kvbmixu"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_pred7"]
 [ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="2_twpgx"]
 [ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://resources/inventory_select_list.tscn" id="4_br31h"]
 [ext_resource type="Script" path="res://scripts/cooking/cooking_handler.gd" id="4_nipys"]
 [ext_resource type="Script" path="res://scripts/ui/item_description_box.gd" id="5_60gg5"]
-[ext_resource type="Texture2D" uid="uid://fh2nehpger30" path="res://assets/food/carrot peeled.png" id="6_rbjyu"]
 
 [node name="UI" type="Control" groups=["ui"]]
 layout_mode = 3
@@ -88,7 +87,6 @@ offset_left = 186.0
 offset_top = 12.0
 offset_right = 428.0
 offset_bottom = 48.0
-text = "TEST"
 
 [node name="ItemDesc" type="Label" parent="CanvasLayer/InventoryCenterer/Inventory/ItemDescriptionBackground"]
 layout_mode = 0
@@ -96,7 +94,6 @@ offset_left = 185.0
 offset_top = 59.0
 offset_right = 773.0
 offset_bottom = 182.0
-text = "Insert Item Description"
 autowrap_mode = 2
 
 [node name="ItemImage" type="TextureRect" parent="CanvasLayer/InventoryCenterer/Inventory/ItemDescriptionBackground"]
@@ -105,7 +102,6 @@ offset_left = 18.0
 offset_top = 19.0
 offset_right = 168.0
 offset_bottom = 169.0
-texture = ExtResource("6_rbjyu")
 expand_mode = 1
 
 [connection signal="item_selected" from="CanvasLayer/InventoryCenterer/Inventory/ItemListBackground/InventoryContainer" to="CanvasLayer/InventoryCenterer" method="update_description"]
