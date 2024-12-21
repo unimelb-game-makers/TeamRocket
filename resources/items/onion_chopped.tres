@@ -7,5 +7,6 @@
 script = ExtResource("1_hd5ai")
 texture = ExtResource("2_3ru8y")
 item_name = "Chopped Onion"
+description = "A powerfully pungent vegetable. Eating it raw is not recommended. \\n“Back in **my** day, kids used to eat their onion **raw**, and they’d have it no other way! - Grandpa Sims, the Lee’s front porch”"
 weight = 0.1
 rarity = 0

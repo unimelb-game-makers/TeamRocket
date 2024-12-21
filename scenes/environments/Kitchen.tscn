@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=19 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
@@ -11,6 +11,8 @@
 [ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="7_083nx"]
 [ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="8_f86gd"]
 [ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="9_2oqyj"]
+[ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="12_xaknj"]
+[ext_resource type="Resource" uid="uid://dbw3pp6i2fhp4" path="res://resources/items/spaghetti.tres" id="13_icu43"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oov5x"]
 size = Vector2(4006.99, 854.059)
@@ -96,12 +98,20 @@ position = Vector2(386, 317)
 item = ExtResource("9_2oqyj")
 
 [node name="Item2" parent="Items" index="1" instance=ExtResource("5_vbmf8")]
-position = Vector2(294, 317)
+position = Vector2(243, 339)
 item = ExtResource("7_083nx")
 
 [node name="Item3" parent="Items" index="2" instance=ExtResource("5_vbmf8")]
 position = Vector2(294, 317)
 item = ExtResource("8_f86gd")
+
+[node name="Item4" parent="Items" index="3" instance=ExtResource("5_vbmf8")]
+position = Vector2(480, 312)
+item = ExtResource("12_xaknj")
+
+[node name="Item5" parent="Items" index="4" instance=ExtResource("5_vbmf8")]
+position = Vector2(561, 312)
+item = ExtResource("13_icu43")
 
 [node name="Player" parent="." index="5"]
 z_index = 0

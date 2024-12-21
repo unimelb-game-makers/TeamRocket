@@ -10,6 +10,6 @@ buffs = Array[String]([])
 rating = 0
 texture = ExtResource("2_ib68o")
 item_name = "Carrot"
-description = ""
+description = "Snappy, crunchy, and with a hint of sweetness. Nothing beats the good ol’ carrot.\\n“You know they’re good for your eyes and the interdimensional radiation right, kids? - Jack, the shady alley”"
 weight = 0.1
 rarity = 0

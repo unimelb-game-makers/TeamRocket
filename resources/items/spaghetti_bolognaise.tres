@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://d4fvdxgm3d6pq"]
+
+[ext_resource type="Script" path="res://resources/resource_scripts/food.gd" id="1_4ihah"]
+[ext_resource type="Texture2D" uid="uid://bltjurbemos4c" path="res://assets/food/spaghetti bolognese.png" id="2_6gwif"]
+
+[resource]
+script = ExtResource("1_4ihah")
+food_value = 2
+buffs = Array[String]([])
+rating = 0
+texture = ExtResource("2_6gwif")
+item_name = "Spaghetti Bolognaise"
+description = "Springy and chewy noodles drenched in a thick and lucious savory meat sauce. Reminds you of a much simpler time.\\n“Rain or shine, gramma’s ghetti’ just tastes so fine! - Tommo, Bunker Kindergarten”"
+weight = 0.3
+rarity = 1
