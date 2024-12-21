@@ -1,0 +1,15 @@
+extends CenterContainer
+
+@onready var inventory_container: VBoxContainer = %InventoryContainer
+signal item_selected(item: Item, amount: int)
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	inventory_container.update_inventory_list()
+
+func select_item(item: Item, amount: int):
+	item_selected.emit(item, amount)
+	print("Emitting Signal")
+
+func update_inventory_list() -> void:
+	inventory_container.update_inventory_list()

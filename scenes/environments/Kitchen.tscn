@@ -1,0 +1,118 @@
+[gd_scene load_steps=19 format=3 uid="uid://8o3mlc7okpi7"]
+
+[ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
+[ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
+[ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="3_xytjo"]
+[ext_resource type="Texture2D" uid="uid://b5jgmaxgknpb0" path="res://assets/interiors/kitchen/walls.png" id="3_yjya3"]
+[ext_resource type="PackedScene" uid="uid://c5fbsmwagky6i" path="res://scenes/cooking/workbenches/Pot.tscn" id="4_hcw55"]
+[ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
+[ext_resource type="PackedScene" uid="uid://yw75vu274ne0" path="res://scenes/item/item_floor.tscn" id="5_vbmf8"]
+[ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
+[ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="7_083nx"]
+[ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="8_f86gd"]
+[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="9_2oqyj"]
+[ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="12_xaknj"]
+[ext_resource type="Resource" uid="uid://dbw3pp6i2fhp4" path="res://resources/items/spaghetti.tres" id="13_icu43"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oov5x"]
+size = Vector2(4006.99, 854.059)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyev3"]
+size = Vector2(626.667, 1256.67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jyq"]
+size = Vector2(326.664, 2611.67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gk1kv"]
+size = Vector2(1840, 266.667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4v1f"]
+size = Vector2(556.667, 516.666)
+
+[node name="Base" instance=ExtResource("1_4boqu")]
+y_sort_enabled = true
+
+[node name="Map" parent="." index="1"]
+y_sort_enabled = true
+
+[node name="KitchenFloor" type="Sprite2D" parent="Map" index="0"]
+z_index = -1
+position = Vector2(696, 392)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_86nue")
+
+[node name="KitchenWalls" type="Sprite2D" parent="Map/KitchenFloor" index="0"]
+texture = ExtResource("3_yjya3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map/KitchenFloor" index="1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D" index="0"]
+position = Vector2(309.837, -863.696)
+shape = SubResource("RectangleShape2D_oov5x")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Map/KitchenFloor" index="2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D2" index="0"]
+position = Vector2(-2006.67, -678.333)
+shape = SubResource("RectangleShape2D_xyev3")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Map/KitchenFloor" index="3"]
+position = Vector2(4640, 16.6667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D3" index="0"]
+position = Vector2(-2160, -2.5)
+shape = SubResource("RectangleShape2D_h4jyq")
+
+[node name="Bench" type="Sprite2D" parent="Map" index="1"]
+y_sort_enabled = true
+position = Vector2(684, 578)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_uiv4g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map/Bench" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Bench/StaticBody2D" index="0"]
+position = Vector2(-6.66675, -136.667)
+shape = SubResource("RectangleShape2D_gk1kv")
+
+[node name="Fryer" type="Sprite2D" parent="Map" index="2"]
+position = Vector2(1282, 484)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("6_47cob")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Map/Fryer" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Fryer/StaticBody2D" index="0"]
+position = Vector2(78.335, 11.6669)
+shape = SubResource("RectangleShape2D_c4v1f")
+
+[node name="ChoppingBoard" parent="." index="2" instance=ExtResource("3_xytjo")]
+z_index = 1
+position = Vector2(637, 536)
+
+[node name="Pot" parent="." index="3" instance=ExtResource("4_hcw55")]
+position = Vector2(793, 232)
+
+[node name="Item" parent="Items" index="0" instance=ExtResource("5_vbmf8")]
+position = Vector2(386, 317)
+item = ExtResource("9_2oqyj")
+
+[node name="Item2" parent="Items" index="1" instance=ExtResource("5_vbmf8")]
+position = Vector2(243, 339)
+item = ExtResource("7_083nx")
+
+[node name="Item3" parent="Items" index="2" instance=ExtResource("5_vbmf8")]
+position = Vector2(294, 317)
+item = ExtResource("8_f86gd")
+
+[node name="Item4" parent="Items" index="3" instance=ExtResource("5_vbmf8")]
+position = Vector2(480, 312)
+item = ExtResource("12_xaknj")
+
+[node name="Item5" parent="Items" index="4" instance=ExtResource("5_vbmf8")]
+position = Vector2(561, 312)
+item = ExtResource("13_icu43")
+
+[node name="Player" parent="." index="5"]
+z_index = 0
+y_sort_enabled = true

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=6 format=3 uid="uid://g4a47xmw2c3d"]
+
+[ext_resource type="Resource" uid="uid://d4fvdxgm3d6pq" path="res://resources/items/spaghetti_bolognaise.tres" id="1_gqnir"]
+[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="1_tr272"]
+[ext_resource type="Script" path="res://resources/resource_scripts/recipe.gd" id="2_38tqr"]
+[ext_resource type="Resource" uid="uid://dbw3pp6i2fhp4" path="res://resources/items/spaghetti.tres" id="2_gest7"]
+[ext_resource type="Resource" uid="uid://cwice6h0ybtkl" path="res://resources/items/bolognaise_sauce.tres" id="3_o4ycg"]
+
+[resource]
+script = ExtResource("2_38tqr")
+required_items = Array[ExtResource("1_tr272")]([ExtResource("2_gest7"), ExtResource("3_o4ycg")])
+output_item = ExtResource("1_gqnir")

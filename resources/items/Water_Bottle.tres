@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://bdrp5ddjko1ov"]
-
-[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="1_3v0eg"]
-
-[resource]
-script = ExtResource("1_3v0eg")
-item_name = "Water Bottle"
-weight = 0.2

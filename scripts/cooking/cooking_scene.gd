@@ -3,6 +3,7 @@ class_name CookingScene extends Control
 @onready var activity_game: Control = %Activity
 @onready var ingredient_handler: HBoxContainer = %IngredientHandler
 @onready var start_button: TextureButton = $StartButton
+@onready var inventory_select_list: CenterContainer = $InventorySelectList
 
 @export var activity_res: Activity
 
@@ -14,9 +15,8 @@ func _ready() -> void:
 	activity_game.complete.connect(finish)
 	ingredient_handler.max_slots = activity_res.max_ingredients
 	ingredient_handler.create_slots()
-	Globals.inventory_ui.toggle_inventory(true)
 	
-func add_item(item: Item):
+func add_item(item: Item, amount: int):
 	ingredient_handler.add_item(item)
 
 func finish():
@@ -30,4 +30,6 @@ func _on_start_button_pressed() -> void:
 		ingredient_handler.visible = false
 		activity_game.visible = true
 		activity_game.start()
-		Globals.inventory_ui.toggle_inventory(false)
+
+func _on_ingredient_handler_update_list() -> void:
+	inventory_select_list.update_inventory_list()

@@ -13,23 +13,24 @@
 [ext_resource type="PackedScene" uid="uid://c3jnad7h7ggpt" path="res://scenes/player/bullet.tscn" id="10_c4h7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0p80"]
-size = Vector2(40, 40)
+size = Vector2(63, 120)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwbdg"]
-radius = 35.0
+radius = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0215d"]
-radius = 60.0
+radius = 90.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_lvdue")
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 position = Vector2(-0.5, 0.179898)
-scale = Vector2(0.152439, 0.152439)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_g3tp0")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_d0p80")
 
 [node name="Camera2D" type="Camera2D" parent="."]
