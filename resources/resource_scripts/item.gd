@@ -8,3 +8,8 @@ enum Rarity {COMMON, UNCOMMON, RARE, LEGENDARY}
 @export var description: String
 @export var weight: float
 @export var rarity: Rarity
+
+func is_item(item: Item) -> bool:
+	if item_name == item.item_name:
+		return true
+	return false
