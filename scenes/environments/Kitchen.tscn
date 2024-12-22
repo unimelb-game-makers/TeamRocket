@@ -86,11 +86,11 @@ texture = ExtResource("6_47cob")
 position = Vector2(78.335, 11.6669)
 shape = SubResource("RectangleShape2D_c4v1f")
 
-[node name="ChoppingBoard" parent="." index="2" instance=ExtResource("3_xytjo")]
+[node name="ChoppingBoard" parent="Interactables" index="0" instance=ExtResource("3_xytjo")]
 z_index = 1
 position = Vector2(637, 536)
 
-[node name="Pot" parent="." index="3" instance=ExtResource("4_hcw55")]
+[node name="Pot" parent="Interactables" index="1" instance=ExtResource("4_hcw55")]
 position = Vector2(793, 232)
 
 [node name="Item" parent="Items" index="0" instance=ExtResource("5_vbmf8")]
@@ -113,6 +113,6 @@ item = ExtResource("12_xaknj")
 position = Vector2(561, 312)
 item = ExtResource("13_icu43")
 
-[node name="Player" parent="." index="5"]
+[node name="Player" parent="." index="4"]
 z_index = 0
 y_sort_enabled = true
