@@ -21,7 +21,6 @@ color = Color(0.18359, 0.18359, 0.18359, 1)
 script = ExtResource("1_p3mrr")
 
 [node name="Player" parent="." instance=ExtResource("1_2xv6m")]
-z_index = 1
 position = Vector2(533, 480)
 
 [node name="Enemies" type="Node" parent="."]
