@@ -23,6 +23,7 @@ var gun_enabled = true
 
 var bullets = MAX_BULLETS:
 	set(bullets_in):
+		Globals.player_ui.update_bullets(bullets_in, MAX_BULLETS)
 		bullets = bullets_in
 		if (bullets <= 0):
 			$ReloadTimer.start()
