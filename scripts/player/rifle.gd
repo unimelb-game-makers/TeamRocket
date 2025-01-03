@@ -48,7 +48,6 @@ func _process(_delta):
 					print(target_hit)
 				bullets -= 1
 				fire_timer.start()
-				print("Bullets: " + str(bullets))
 
 func _on_reload_timer_timeout() -> void:
 	bullets = MAX_BULLETS
