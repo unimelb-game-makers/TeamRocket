@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c052mvm4gby07"]
+
+[ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_q33m7"]
+
+[node name="City" instance=ExtResource("1_7mlma")]
+
+[node name="GameHandler" type="Node" parent="." index="0"]
+
+[node name="Dark" parent="Lighting" index="0"]
+visible = true
+
+[node name="TextureRect" type="TextureRect" parent="Map" index="0"]
+offset_right = 4270.0
+offset_bottom = 2855.0
+texture = SubResource("CanvasTexture_q33m7")
+
+[node name="EnemyHandler" type="Node2D" parent="Enemies" index="0"]
