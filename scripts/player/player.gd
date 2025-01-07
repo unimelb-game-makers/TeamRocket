@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 signal activity_interact(activity)
 
+# ----- MOVEMENT VARS -----
 # For smoother movement
 const CROUCH_SPEED : int = 100
 const CROUCH_ACCEL : int = 10
@@ -27,8 +28,15 @@ const ROLL_COOLDOWN : float = 0
 var roll_cd_timer : float = 0
 var can_roll : bool = true
 
+# ----- Node References ----- 
 @onready var interact_radius: Area2D = $InteractRadius
 @onready var rifle: Node2D = $Rifle
+
+# ----- Player Stats -----
+@export var max_health = 50
+var health = max_health:
+	set(value):
+		Globals.player_ui.update_health(health, max_health)
 
 func _ready() -> void:
 	Globals.player = self
