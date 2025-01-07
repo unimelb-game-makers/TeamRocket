@@ -6,3 +6,4 @@ var map
 
 var inventory_ui
 var player_ui
+var enemy_handler

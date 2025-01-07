@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://kbiiliwk7uc4"]
+[gd_scene load_steps=5 format=4 uid="uid://kbiiliwk7uc4"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_pvklr"]
 [ext_resource type="TileSet" uid="uid://c018cpgpmun08" path="res://assets/prototype_tileset.tres" id="2_n2hyq"]
 [ext_resource type="Script" path="res://scripts/terrain/Obstacles.gd" id="3_hcsuq"]
-[ext_resource type="Script" path="res://scripts/item/item_handler.gd" id="5_s4dcp"]
 [ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="8_0ahpv"]
 
 [node name="Base" instance=ExtResource("1_pvklr")]
@@ -19,8 +18,5 @@ script = ExtResource("3_hcsuq")
 [node name="ChoppingBoard" parent="Map" index="1" instance=ExtResource("8_0ahpv")]
 position = Vector2(578, 443)
 
-[node name="Items" parent="." index="2"]
-script = ExtResource("5_s4dcp")
-
-[node name="Player" parent="." index="3"]
+[node name="Player" parent="." index="4"]
 position = Vector2(758, 540)
