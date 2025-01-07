@@ -1,19 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=4 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
+[ext_resource type="Script" path="res://scripts/Game/game_handler.gd" id="2_nxt6u"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_q33m7"]
 
 [node name="City" instance=ExtResource("1_7mlma")]
 
 [node name="GameHandler" type="Node" parent="." index="0"]
+script = ExtResource("2_nxt6u")
+
+[node name="GameTimer" type="Timer" parent="GameHandler" index="0"]
+autostart = true
 
 [node name="Dark" parent="Lighting" index="0"]
 visible = true
+color = Color(0.462291, 0.462291, 0.462291, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Map" index="0"]
 offset_right = 4270.0
 offset_bottom = 2855.0
 texture = SubResource("CanvasTexture_q33m7")
 
-[node name="EnemyHandler" type="Node2D" parent="Enemies" index="0"]
+[connection signal="timeout" from="GameHandler/GameTimer" to="GameHandler" method="_on_game_timer_timeout"]
