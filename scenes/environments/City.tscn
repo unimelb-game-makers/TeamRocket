@@ -1,9 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=6 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="Script" path="res://scripts/Game/game_handler.gd" id="2_nxt6u"]
 
+[sub_resource type="Gradient" id="Gradient_8toex"]
+colors = PackedColorArray(0, 0.373805, 0.273783, 1, 0.162227, 0.490701, 0.458936, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6vl00"]
+gradient = SubResource("Gradient_8toex")
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_q33m7"]
+diffuse_texture = SubResource("GradientTexture1D_6vl00")
 
 [node name="City" instance=ExtResource("1_7mlma")]
 

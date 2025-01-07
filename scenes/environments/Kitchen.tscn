@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=24 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
+[ext_resource type="Script" path="res://scripts/Game/kitchen_handler.gd" id="2_watt5"]
 [ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="3_xytjo"]
 [ext_resource type="Texture2D" uid="uid://b5jgmaxgknpb0" path="res://assets/interiors/kitchen/walls.png" id="3_yjya3"]
 [ext_resource type="PackedScene" uid="uid://c5fbsmwagky6i" path="res://scenes/cooking/workbenches/Pot.tscn" id="4_hcw55"]
@@ -18,10 +19,13 @@
 size = Vector2(4006.99, 854.059)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyev3"]
-size = Vector2(626.667, 1256.67)
+size = Vector2(1910, 1256.67)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jyq"]
 size = Vector2(326.664, 2611.67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2qpi"]
+size = Vector2(1875.25, 211)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gk1kv"]
 size = Vector2(1840, 266.667)
@@ -29,10 +33,22 @@ size = Vector2(1840, 266.667)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4v1f"]
 size = Vector2(556.667, 516.666)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvgon"]
+size = Vector2(332, 395)
+
+[sub_resource type="Gradient" id="Gradient_wmmsd"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dupnr"]
+gradient = SubResource("Gradient_wmmsd")
+
 [node name="Base" instance=ExtResource("1_4boqu")]
 y_sort_enabled = true
 
-[node name="Map" parent="." index="1"]
+[node name="KitchenHandler" type="Node" parent="." index="0"]
+script = ExtResource("2_watt5")
+
+[node name="Map" parent="." index="2"]
 y_sort_enabled = true
 
 [node name="KitchenFloor" type="Sprite2D" parent="Map" index="0"]
@@ -53,7 +69,7 @@ shape = SubResource("RectangleShape2D_oov5x")
 [node name="StaticBody2D2" type="StaticBody2D" parent="Map/KitchenFloor" index="2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D2" index="0"]
-position = Vector2(-2006.67, -678.333)
+position = Vector2(-2648.34, -678.333)
 shape = SubResource("RectangleShape2D_xyev3")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Map/KitchenFloor" index="3"]
@@ -62,6 +78,14 @@ position = Vector2(4640, 16.6667)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D3" index="0"]
 position = Vector2(-2160, -2.5)
 shape = SubResource("RectangleShape2D_h4jyq")
+
+[node name="FrontWall" type="StaticBody2D" parent="Map/KitchenFloor" index="4"]
+position = Vector2(-2320, -1306.67)
+scale = Vector2(3.33333, 3.33333)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/FrontWall" index="0"]
+position = Vector2(550.625, 891)
+shape = SubResource("RectangleShape2D_g2qpi")
 
 [node name="Bench" type="Sprite2D" parent="Map" index="1"]
 y_sort_enabled = true
@@ -85,6 +109,22 @@ texture = ExtResource("6_47cob")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Fryer/StaticBody2D" index="0"]
 position = Vector2(78.335, 11.6669)
 shape = SubResource("RectangleShape2D_c4v1f")
+
+[node name="ExitArea" type="Area2D" parent="Map" index="3"]
+position = Vector2(-216, 780)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/ExitArea" index="0"]
+position = Vector2(-274, -204.5)
+shape = SubResource("RectangleShape2D_jvgon")
+
+[node name="TextureRect" type="TextureRect" parent="Map/ExitArea" index="1"]
+z_index = 5
+offset_left = -441.0
+offset_top = -406.0
+offset_right = 213.0
+offset_bottom = 10.0
+texture = SubResource("GradientTexture1D_dupnr")
 
 [node name="ChoppingBoard" parent="Interactables" index="0" instance=ExtResource("3_xytjo")]
 z_index = 1
@@ -113,5 +153,11 @@ item = ExtResource("12_xaknj")
 position = Vector2(561, 312)
 item = ExtResource("13_icu43")
 
-[node name="Player" parent="." index="4"]
+[node name="Player" parent="." index="5"]
 y_sort_enabled = true
+
+[node name="UI" parent="." index="7"]
+offset_top = -2.0
+offset_bottom = -2.0
+
+[connection signal="body_entered" from="Map/ExitArea" to="KitchenHandler" method="_on_exit_area_body_entered"]
