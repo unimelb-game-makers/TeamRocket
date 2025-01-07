@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxuu77kvbmixu"]
+[gd_scene load_steps=10 format=3 uid="uid://bxuu77kvbmixu"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_pred7"]
 [ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="2_twpgx"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://dgctlmfq5mj0j" path="res://assets/textures/rifle_placeholder.png" id="6_tctv1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1yyuo"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_jjt75"]
 font_size = 32
 
 [node name="UI" type="Control" groups=["ui"]]
@@ -70,6 +73,20 @@ offset_right = 230.0
 offset_bottom = -2.0
 text = "5/5"
 label_settings = SubResource("LabelSettings_1yyuo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Label" parent="CanvasLayer/PlayerUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 31.0
+offset_right = -28.0
+offset_bottom = 113.0
+grow_horizontal = 0
+label_settings = SubResource("LabelSettings_jjt75")
 horizontal_alignment = 1
 vertical_alignment = 1
 

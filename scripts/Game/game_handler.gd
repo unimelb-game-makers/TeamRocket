@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_game_timer_timeout() -> void:
-	print(str(time / 60) + ":" + str(time % 60))
+	Globals.player_ui.update_time(time)
 	time += TIME_STEP
 	if time >= MAX_TIME:
 		print("Time out")
