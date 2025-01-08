@@ -18,7 +18,6 @@ diffuse_texture = SubResource("GradientTexture1D_6vl00")
 script = ExtResource("2_nxt6u")
 
 [node name="GameTimer" type="Timer" parent="GameHandler" index="0"]
-autostart = true
 
 [node name="Dark" parent="Lighting" index="0"]
 visible = true
