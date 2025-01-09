@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=3 uid="uid://llcwm4r8fp7p"]
+
+[ext_resource type="PackedScene" uid="uid://bqk4fuu77ojdy" path="res://scenes/enemy/Enemy.tscn" id="1_wudko"]
+[ext_resource type="Texture2D" uid="uid://dvyvvkfim8wwf" path="res://assets/enemies/Predator/7.png" id="2_b0q7q"]
+[ext_resource type="Texture2D" uid="uid://dj1at8d7odmxx" path="res://assets/enemies/Predator/6.png" id="3_pxmh2"]
+[ext_resource type="Texture2D" uid="uid://bxork027tbsxx" path="res://assets/enemies/Predator/5.png" id="4_tutoq"]
+[ext_resource type="Texture2D" uid="uid://ca0tyqqwprt16" path="res://assets/enemies/Predator/4.png" id="5_4o0s7"]
+[ext_resource type="Texture2D" uid="uid://bmuon4jveodiu" path="res://assets/enemies/Predator/3.png" id="6_8kcy6"]
+[ext_resource type="Texture2D" uid="uid://b522gsf8lety2" path="res://assets/enemies/Predator/2.png" id="7_t03jt"]
+[ext_resource type="Texture2D" uid="uid://rbggs8e6pn5f" path="res://assets/enemies/Predator/1.png" id="8_slqvl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_on2te"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b0q7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pxmh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tutoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4o0s7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8kcy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t03jt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_slqvl")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eeo3f"]
+size = Vector2(90, 100)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lt1xo"]
+radius = 400.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pg4fe"]
+radius = 700.0
+
+[node name="Enemy" instance=ExtResource("1_wudko")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(21, -176)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_on2te")
+animation = &"move"
+autoplay = "move"
+frame_progress = 0.718274
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(41, 10)
+shape = SubResource("RectangleShape2D_eeo3f")
+
+[node name="CollisionShape2D" parent="DetectionRadius" index="0"]
+shape = SubResource("CircleShape2D_lt1xo")
+
+[node name="CollisionShape2D" parent="ChaseRadius" index="0"]
+shape = SubResource("CircleShape2D_pg4fe")

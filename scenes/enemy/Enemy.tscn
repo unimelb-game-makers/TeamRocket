@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bqk4fuu77ojdy"]
+
+[node name="Enemy" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6, 6)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="DetectionRadius" type="Area2D" parent="."]
+modulate = Color(0.86167, 0, 0.0943718, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
+
+[node name="ChaseRadius" type="Area2D" parent="."]
+modulate = Color(0.875952, 0.326569, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseRadius"]
+
+[node name="RecalculatePath" type="Timer" parent="."]
+autostart = true
