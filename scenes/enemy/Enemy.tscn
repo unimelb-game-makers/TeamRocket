@@ -27,3 +27,7 @@ collision_layer = 0
 
 [node name="RecalculatePath" type="Timer" parent="."]
 autostart = true
+
+[connection signal="area_entered" from="DetectionRadius" to="." method="_on_detection_radius_area_entered"]
+[connection signal="area_exited" from="ChaseRadius" to="." method="_on_chase_radius_area_exited"]
+[connection signal="timeout" from="RecalculatePath" to="." method="_on_recalculate_path_timeout"]

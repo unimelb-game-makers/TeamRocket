@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bqk4fuu77ojdy" path="res://scenes/enemy/Enemy.tscn" id="1_wudko"]
 [ext_resource type="Texture2D" uid="uid://dvyvvkfim8wwf" path="res://assets/enemies/Predator/7.png" id="2_b0q7q"]
-[ext_resource type="Script" path="res://scripts/enemy/enemy_prototype.gd" id="2_vfsmk"]
+[ext_resource type="Script" path="res://scripts/enemy/Predator.gd" id="2_yrf6v"]
 [ext_resource type="Texture2D" uid="uid://dj1at8d7odmxx" path="res://assets/enemies/Predator/6.png" id="3_pxmh2"]
 [ext_resource type="Texture2D" uid="uid://bxork027tbsxx" path="res://assets/enemies/Predator/5.png" id="4_tutoq"]
 [ext_resource type="Texture2D" uid="uid://ca0tyqqwprt16" path="res://assets/enemies/Predator/4.png" id="5_4o0s7"]
@@ -51,7 +51,8 @@ radius = 700.0
 [node name="Enemy" instance=ExtResource("1_wudko")]
 collision_layer = 2
 collision_mask = 4
-script = ExtResource("2_vfsmk")
+script = ExtResource("2_yrf6v")
+base_move_speed = 100.0
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(21, -176)
@@ -70,7 +71,3 @@ shape = SubResource("CircleShape2D_lt1xo")
 
 [node name="CollisionShape2D" parent="ChaseRadius" index="0"]
 shape = SubResource("CircleShape2D_pg4fe")
-
-[connection signal="area_entered" from="DetectionRadius" to="." method="_on_detection_radius_area_entered"]
-[connection signal="area_exited" from="ChaseRadius" to="." method="_on_chase_radius_area_exited"]
-[connection signal="timeout" from="RecalculatePath" to="." method="_on_recalculate_path_timeout"]

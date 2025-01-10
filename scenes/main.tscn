@@ -24,7 +24,7 @@ color = Color(0.151276, 0.151276, 0.151276, 1)
 
 [node name="Map" type="Node" parent="."]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map" groups=["navigation"]]
 navigation_polygon = SubResource("NavigationPolygon_o4lb4")
 
 [node name="Ground" type="TileMapLayer" parent="Map"]

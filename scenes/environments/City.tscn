@@ -34,11 +34,10 @@ offset_right = 4270.0
 offset_bottom = 2855.0
 texture = SubResource("CanvasTexture_q33m7")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map" index="1"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map" index="1" groups=["navigation"]]
 navigation_polygon = SubResource("NavigationPolygon_14vv3")
 
-[node name="Enemy" parent="." index="8" node_paths=PackedStringArray("navigation_region") instance=ExtResource("3_c520u")]
-position = Vector2(1642, 1244)
-navigation_region = NodePath("../Map/NavigationRegion2D")
+[node name="Enemy" parent="Enemies" index="0" instance=ExtResource("3_c520u")]
+position = Vector2(1739, 1518)
 
 [connection signal="timeout" from="GameHandler/GameTimer" to="GameHandler" method="_on_game_timer_timeout"]
