@@ -80,6 +80,7 @@ func move_along_path(distance):
 	set_process(false)
 
 func _on_detection_radius_area_entered(area: Area2D) -> void:
+	print("Detected!")
 	if area.is_in_group("Player"):
 		target_creature = area.get_parent();
 

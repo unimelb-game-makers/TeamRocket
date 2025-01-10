@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://llcwm4r8fp7p"]
+[gd_scene load_steps=14 format=3 uid="uid://llcwm4r8fp7p"]
 
 [ext_resource type="PackedScene" uid="uid://bqk4fuu77ojdy" path="res://scenes/enemy/Enemy.tscn" id="1_wudko"]
 [ext_resource type="Texture2D" uid="uid://dvyvvkfim8wwf" path="res://assets/enemies/Predator/7.png" id="2_b0q7q"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_prototype.gd" id="2_vfsmk"]
 [ext_resource type="Texture2D" uid="uid://dj1at8d7odmxx" path="res://assets/enemies/Predator/6.png" id="3_pxmh2"]
 [ext_resource type="Texture2D" uid="uid://bxork027tbsxx" path="res://assets/enemies/Predator/5.png" id="4_tutoq"]
 [ext_resource type="Texture2D" uid="uid://ca0tyqqwprt16" path="res://assets/enemies/Predator/4.png" id="5_4o0s7"]
@@ -39,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eeo3f"]
-size = Vector2(90, 100)
+size = Vector2(89.8333, 104.167)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lt1xo"]
 radius = 400.0
@@ -48,8 +49,11 @@ radius = 400.0
 radius = 700.0
 
 [node name="Enemy" instance=ExtResource("1_wudko")]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("2_vfsmk")
 
-[node name="AnimatedSprite2D" parent="." index="0"]
+[node name="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(21, -176)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_on2te")
@@ -57,8 +61,8 @@ animation = &"move"
 autoplay = "move"
 frame_progress = 0.718274
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(41, 10)
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(43.5, 11.5)
 shape = SubResource("RectangleShape2D_eeo3f")
 
 [node name="CollisionShape2D" parent="DetectionRadius" index="0"]
@@ -66,3 +70,7 @@ shape = SubResource("CircleShape2D_lt1xo")
 
 [node name="CollisionShape2D" parent="ChaseRadius" index="0"]
 shape = SubResource("CircleShape2D_pg4fe")
+
+[connection signal="area_entered" from="DetectionRadius" to="." method="_on_detection_radius_area_entered"]
+[connection signal="area_exited" from="ChaseRadius" to="." method="_on_chase_radius_area_exited"]
+[connection signal="timeout" from="RecalculatePath" to="." method="_on_recalculate_path_timeout"]

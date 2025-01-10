@@ -2,6 +2,8 @@
 
 [node name="Enemy" type="CharacterBody2D"]
 
+[node name="BehaviorHandler" type="Node" parent="."]
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 autoplay = "default"
 
@@ -13,11 +15,13 @@ debug_enabled = true
 
 [node name="DetectionRadius" type="Area2D" parent="."]
 modulate = Color(0.86167, 0, 0.0943718, 1)
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
 
 [node name="ChaseRadius" type="Area2D" parent="."]
 modulate = Color(0.875952, 0.326569, 0, 1)
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseRadius"]
 

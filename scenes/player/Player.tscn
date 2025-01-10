@@ -186,6 +186,7 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_rwbdg")
 
 [node name="DetectionRadius" type="Area2D" parent="." groups=["Player"]]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
 shape = SubResource("CircleShape2D_0215d")

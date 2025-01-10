@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=8 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="Script" path="res://scripts/Game/game_handler.gd" id="2_nxt6u"]
@@ -12,6 +12,11 @@ gradient = SubResource("Gradient_8toex")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_q33m7"]
 diffuse_texture = SubResource("GradientTexture1D_6vl00")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_14vv3"]
+vertices = PackedVector2Array(4275.04, 27.9531, 4287.95, 2866.05, 8.90625, 2890.94, -15.9063, 9.03906)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-26, -1, -1, 2901, 4298, 2876, 4285, 18)])
 
 [node name="City" instance=ExtResource("1_7mlma")]
 
@@ -29,7 +34,11 @@ offset_right = 4270.0
 offset_bottom = 2855.0
 texture = SubResource("CanvasTexture_q33m7")
 
-[node name="Enemy" parent="." index="8" instance=ExtResource("3_c520u")]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map" index="1"]
+navigation_polygon = SubResource("NavigationPolygon_14vv3")
+
+[node name="Enemy" parent="." index="8" node_paths=PackedStringArray("navigation_region") instance=ExtResource("3_c520u")]
 position = Vector2(1642, 1244)
+navigation_region = NodePath("../Map/NavigationRegion2D")
 
 [connection signal="timeout" from="GameHandler/GameTimer" to="GameHandler" method="_on_game_timer_timeout"]
