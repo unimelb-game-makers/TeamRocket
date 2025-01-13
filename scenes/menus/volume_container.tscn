@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://hoiacky4452m"]
+
+[ext_resource type="Script" path="res://scripts/Menus/volume_container.gd" id="1_7e3c8"]
+
+[node name="MasterVolumeContainer" type="HBoxContainer"]
+script = ExtResource("1_7e3c8")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Master Volume: "
+
+[node name="Slider" type="HSlider" parent="."]
+custom_minimum_size = Vector2(250, 20)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Amount" type="Label" parent="."]
+layout_mode = 2
+text = "100%"
+
+[connection signal="value_changed" from="Slider" to="." method="_on_slider_value_changed"]
