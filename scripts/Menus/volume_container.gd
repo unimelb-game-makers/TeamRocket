@@ -12,7 +12,6 @@ func _ready() -> void:
 	label.text = setting_name
 
 func change_slider_value(setting, value):
-	print(value)
 	match setting:
 		SETTING_NAME.MASTER:
 			Settings.master_volume = value
