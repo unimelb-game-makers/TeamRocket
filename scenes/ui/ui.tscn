@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/ui/item_description_box.gd" id="5_60gg5"]
 [ext_resource type="Script" path="res://scripts/ui/player_ui.gd" id="6_hhsni"]
 [ext_resource type="Texture2D" uid="uid://dgctlmfq5mj0j" path="res://assets/textures/rifle_placeholder.png" id="6_tctv1"]
-[ext_resource type="PackedScene" uid="uid://ck0jasabkl7co" path="res://scenes/menus/pause_menu.tscn" id="8_1b1tq"]
+[ext_resource type="PackedScene" uid="uid://ck0jasabkl7co" path="res://scenes/menus/PauseMenu.tscn" id="8_1b1tq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1yyuo"]
 font_size = 32

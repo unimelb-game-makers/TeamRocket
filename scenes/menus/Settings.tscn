@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://j00qr7dcyhv4"]
 
-[ext_resource type="PackedScene" uid="uid://hoiacky4452m" path="res://scenes/menus/volume_container.tscn" id="1_ponht"]
+[ext_resource type="PackedScene" uid="uid://hoiacky4452m" path="res://scenes/menus/VolumeContainer.tscn" id="1_ponht"]
 [ext_resource type="Script" path="res://scripts/Menus/settings.gd" id="1_q578m"]
 
 [node name="Settings" type="Control"]

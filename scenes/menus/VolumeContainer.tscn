@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Menus/volume_container.gd" id="1_7e3c8"]
 
-[node name="MasterVolumeContainer" type="HBoxContainer"]
+[node name="VolumeContainer" type="HBoxContainer"]
 script = ExtResource("1_7e3c8")
 
 [node name="Label" type="Label" parent="."]
