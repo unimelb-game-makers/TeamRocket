@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
 [ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="7_083nx"]
 [ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="8_f86gd"]
-[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="9_2oqyj"]
+[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/Carrot.tres" id="9_2oqyj"]
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="12_xaknj"]
 [ext_resource type="Resource" uid="uid://dbw3pp6i2fhp4" path="res://resources/items/spaghetti.tres" id="13_icu43"]
 

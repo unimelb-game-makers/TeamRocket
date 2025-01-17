@@ -5,7 +5,7 @@
 
 [node name="CookingScene" instance=ExtResource("1_3sw0t")]
 
-[node name="Activity" parent="." index="2"]
+[node name="Activity" parent="." index="4"]
 script = ExtResource("2_ojnvx")
 
 [node name="ProgressBar" type="ProgressBar" parent="Activity" index="0"]
