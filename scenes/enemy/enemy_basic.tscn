@@ -123,19 +123,19 @@ script = ExtResource("5_wma0b")
 [node name="To Search Area" type="Node" parent="StateChart/EnemyBehaviour/Active/Search/Pause"]
 script = ExtResource("6_7s1cm")
 to = NodePath("../../SearchArea")
-delay_in_seconds = ".1"
-
-[node name="To Return" type="Node" parent="StateChart/EnemyBehaviour/Active/Search/Pause"]
-script = ExtResource("6_7s1cm")
-to = NodePath("../../../Return")
-event = &"target_not_found"
-delay_in_seconds = "6.0"
+delay_in_seconds = "1"
 
 [node name="To Chase" type="Node" parent="StateChart/EnemyBehaviour/Active/Search"]
 script = ExtResource("6_7s1cm")
 to = NodePath("../../Chase")
 event = &"found_target"
 delay_in_seconds = "0.0"
+
+[node name="To Return" type="Node" parent="StateChart/EnemyBehaviour/Active/Search"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Return")
+event = &"target_not_found"
+delay_in_seconds = ""
 
 [node name="Return" type="Node" parent="StateChart/EnemyBehaviour/Active"]
 script = ExtResource("5_wma0b")
@@ -144,6 +144,12 @@ script = ExtResource("5_wma0b")
 script = ExtResource("6_7s1cm")
 to = NodePath("../../../Passive")
 event = &"reach_initial_position"
+delay_in_seconds = "0.0"
+
+[node name="To Chase" type="Node" parent="StateChart/EnemyBehaviour/Active/Return"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Chase")
+event = &"found_target"
 delay_in_seconds = "0.0"
 
 [connection signal="area_entered" from="DetectionRadius" to="." method="_on_detection_radius_area_entered"]
@@ -155,5 +161,10 @@ delay_in_seconds = "0.0"
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Active/Chase" to="." method="_on_chase_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Active/Search/SearchLastSeenPosition" to="." method="_on_search_last_seen_position_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Search/SearchArea" to="." method="_on_search_area_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Active/Search/SearchArea" to="." method="_on_search_area_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Active/Search/SearchArea" to="." method="_on_search_area_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Search/Pause" to="." method="_on_pause_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Active/Search/Pause" to="." method="_on_pause_state_exited"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Return" to="." method="_on_return_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Active/Return" to="." method="_on_return_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Active/Return" to="." method="_on_return_state_physics_processing"]
