@@ -11,23 +11,23 @@ var target_creature: CharacterBody2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @export var navigation_region: NavigationRegion2D
 
-@onready var statechart = $StateChart
-
 var map
 var path = []
 
-var last_known_position: Vector2
+@onready var statechart = $StateChart
+
+var last_known_position: Vector2 # Last known position of player
 
 # Search Area variables
-var num_searches = 0
-
-var time_searching: float = 0
+var num_searches = 0                  # Total number of "Search Areas" 
+var time_searching: float = 0         # Amount of time searching in one direction in Search Area
 var search_min_duration: float = 0.3
 var search_max_duration: float = 0.8
 var search_direction: Vector2
 
-var time_pausing: float = 0
-var pause_duration = .5
+# Pause duration set in state chart
+
+var original_position: Vector2
 
 func _ready():
 	# These values need to be adjusted for the actor's speed
@@ -40,6 +40,7 @@ func _ready():
 	call_deferred("setup_navserver")
 	
 	movement_speed = PASSIVE_SPEED
+	original_position = Vector2(position)
 
 #func actor_setup():
 	## Wait for the first physics frame so the NavigationServer can sync.
@@ -96,18 +97,14 @@ func _on_recalculate_path_timeout() -> void:
 	if (target_creature):
 		update_navigation_path(position, target_creature.global_position)
 
-
-
-
-
-
+## Detection and Chase Radius interactions
 
 func _on_detection_radius_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		target_creature = area.get_parent();
 		
-		statechart.send_event("on_detection_radius_entered")
-		# Idea for an "Alerted" state for a split second?
+		statechart.send_event("on_detection_radius_entered") # Triggers To Chase State
+
 
 
 func _on_chase_radius_area_entered(area: Area2D) -> void:
@@ -116,7 +113,7 @@ func _on_chase_radius_area_entered(area: Area2D) -> void:
 		
 		# When this enemy is searching for the player,
 		# if they are still in the chase radius, then continue chasing.
-		statechart.send_event("found_target")
+		statechart.send_event("found_target") # Triggers To Chase
 
 func _on_chase_radius_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player"):
@@ -127,10 +124,7 @@ func _on_chase_radius_area_exited(area: Area2D) -> void:
 		last_known_position = target_creature.position
 		
 		target_creature = null
-		statechart.send_event("target_exit_chase_radius")
-
-
-
+		statechart.send_event("target_exit_chase_radius") # Triggers To Search
 
 
 ### Passive States (Idle or Wandering)
@@ -141,16 +135,19 @@ func _on_passive_state_entered() -> void:
 ### Active States (Chasing or Searching)
 
 func _on_active_state_entered() -> void:
-	movement_speed = ACTIVE_SPEED	
+	movement_speed = ACTIVE_SPEED
+
+## Chase
 
 func _on_chase_state_physics_processing(delta: float) -> void:
+	# Travels along points in path.
 	var walk_distance = movement_speed * delta
 	move_along_path(walk_distance)
 	move_and_slide()
-	
-### Searching
+
 
 ## Search Last Seen Position
+
 func _on_search_last_seen_position_state_physics_processing(delta: float) -> void:
 	
 	# Finish walking along path first
@@ -158,6 +155,8 @@ func _on_search_last_seen_position_state_physics_processing(delta: float) -> voi
 		var walk_distance = movement_speed * delta
 		move_along_path(walk_distance)
 		move_and_slide()
+	
+	# When no more points in path, walk to last known position
 	else:
 		var direction = position.direction_to(last_known_position)
 		
@@ -165,8 +164,11 @@ func _on_search_last_seen_position_state_physics_processing(delta: float) -> voi
 		
 		move_and_slide()
 		
-		if position.distance_to(last_known_position) < 10: # less tolerance results in jittering
+		if position.distance_to(last_known_position) < 10: # less tolerance = jittering
 			statechart.send_event("reach_last_seen_position")
+
+
+## Search Area
 
 func _on_search_area_state_entered() -> void:
 	# Move in a random direction for a random duration, 3 times.
@@ -174,26 +176,45 @@ func _on_search_area_state_entered() -> void:
 	search_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	time_searching = randf_range(search_min_duration, search_max_duration)
 
-
 func _on_search_area_state_physics_processing(delta: float) -> void:
-	if num_searches == 3:
-		statechart.send_event("target_not_found")
-		return
-	
 	time_searching -= delta
 	
-	#position = position.lerp(last_known_position, movement_speed * delta / position.distance_to(search_position))
 	velocity = search_direction * PASSIVE_SPEED
 	move_and_slide()
 	
 	if time_searching < 0:
 		velocity = Vector2.ZERO
-		statechart.send_event("search_area_pause")
-
-
-func _on_return_state_physics_processing(delta: float) -> void:
-	pass
-
+		statechart.send_event("search_area_pause") # Triggers To Pause
 
 func _on_search_area_state_exited() -> void:
-	pass # Replace with function body.
+	num_searches += 1
+	
+
+## Pause
+
+func _on_pause_state_entered() -> void:
+	velocity = Vector2.ZERO
+
+func _on_pause_state_exited() -> void:
+	if num_searches == 3:
+		statechart.send_event("target_not_found") # Triggers To Return
+		num_searches = 0
+
+
+## Return to original position
+
+func _on_return_state_entered() -> void:
+	navigation_agent.target_position = original_position
+
+func _on_return_state_physics_processing(delta: float) -> void:
+	var direction = navigation_agent.get_next_path_position() - global_position
+	velocity = direction.normalized() * PASSIVE_SPEED
+	move_and_slide()
+	
+	if position.distance_to(original_position) < 10:
+			statechart.send_event("reach_initial_position")
+	
+func _on_return_state_exited() -> void:
+	#navigation_agent.target_position = null
+	velocity = Vector2.ZERO # If removed conflicts with chase speed when player re-enters chase radius, still taking a look
+	pass 
