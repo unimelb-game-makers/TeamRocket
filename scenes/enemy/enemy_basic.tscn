@@ -1,0 +1,170 @@
+[gd_scene load_steps=10 format=3 uid="uid://dl4d2r5o22lcf"]
+
+[ext_resource type="Script" path="res://scripts/enemy/enemy_basic.gd" id="1_mi47r"]
+[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="2_0rjcf"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="3_q7ouv"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_2dodv"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_wma0b"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="6_7s1cm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i0ffd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qi61h"]
+radius = 400.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o434b"]
+radius = 1000.0
+
+[node name="Basic_Enemy" type="CharacterBody2D"]
+script = ExtResource("1_mi47r")
+
+[node name="StateController" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.0862455, 0.095945, 1)
+texture = ExtResource("2_0rjcf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(6, 6)
+shape = SubResource("CircleShape2D_i0ffd")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="DetectionRadius" type="Area2D" parent="."]
+modulate = Color(0.862, 0, 0.094, 0.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
+shape = SubResource("CircleShape2D_qi61h")
+
+[node name="ChaseRadius" type="Area2D" parent="."]
+modulate = Color(0.876, 0.327, 0, 0.486)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseRadius"]
+shape = SubResource("CircleShape2D_o434b")
+
+[node name="RecalculatePath" type="Timer" parent="."]
+wait_time = 0.16
+autostart = true
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("3_q7ouv")
+
+[node name="EnemyBehaviour" type="Node" parent="StateChart"]
+script = ExtResource("4_2dodv")
+initial_state = NodePath("Passive")
+
+[node name="Passive" type="Node" parent="StateChart/EnemyBehaviour"]
+script = ExtResource("4_2dodv")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
+script = ExtResource("5_wma0b")
+
+[node name="To Wander State" type="Node" parent="StateChart/EnemyBehaviour/Passive/Idle"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Wander")
+event = &"wander"
+delay_in_seconds = "0.0"
+
+[node name="Wander" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
+script = ExtResource("5_wma0b")
+
+[node name="To Idle State" type="Node" parent="StateChart/EnemyBehaviour/Passive/Wander"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Idle")
+event = &"idle"
+delay_in_seconds = "0.0"
+
+[node name="To Chase State" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Active/Chase")
+event = &"on_detection_radius_entered"
+delay_in_seconds = "0.0"
+
+[node name="Active" type="Node" parent="StateChart/EnemyBehaviour"]
+script = ExtResource("4_2dodv")
+initial_state = NodePath("Chase")
+
+[node name="Chase" type="Node" parent="StateChart/EnemyBehaviour/Active"]
+script = ExtResource("5_wma0b")
+
+[node name="To Search" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Search")
+event = &"target_exit_chase_radius"
+delay_in_seconds = "0.0"
+
+[node name="Search" type="Node" parent="StateChart/EnemyBehaviour/Active"]
+script = ExtResource("4_2dodv")
+initial_state = NodePath("SearchLastSeenPosition")
+
+[node name="SearchLastSeenPosition" type="Node" parent="StateChart/EnemyBehaviour/Active/Search"]
+script = ExtResource("5_wma0b")
+
+[node name="To Search Area" type="Node" parent="StateChart/EnemyBehaviour/Active/Search/SearchLastSeenPosition"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../SearchArea")
+event = &"reach_last_seen_position"
+delay_in_seconds = "0.0"
+
+[node name="SearchArea" type="Node" parent="StateChart/EnemyBehaviour/Active/Search"]
+script = ExtResource("5_wma0b")
+
+[node name="To Pause" type="Node" parent="StateChart/EnemyBehaviour/Active/Search/SearchArea"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Pause")
+event = &"search_area_pause"
+delay_in_seconds = "0.0"
+
+[node name="Pause" type="Node" parent="StateChart/EnemyBehaviour/Active/Search"]
+script = ExtResource("5_wma0b")
+
+[node name="To Search Area" type="Node" parent="StateChart/EnemyBehaviour/Active/Search/Pause"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../SearchArea")
+delay_in_seconds = "1"
+
+[node name="To Chase" type="Node" parent="StateChart/EnemyBehaviour/Active/Search"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Chase")
+event = &"found_target"
+delay_in_seconds = "0.0"
+
+[node name="To Return" type="Node" parent="StateChart/EnemyBehaviour/Active/Search"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Return")
+event = &"target_not_found"
+delay_in_seconds = ""
+
+[node name="Return" type="Node" parent="StateChart/EnemyBehaviour/Active"]
+script = ExtResource("5_wma0b")
+
+[node name="To Passive State" type="Node" parent="StateChart/EnemyBehaviour/Active/Return"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../../Passive")
+event = &"reach_initial_position"
+delay_in_seconds = "0.0"
+
+[node name="To Chase" type="Node" parent="StateChart/EnemyBehaviour/Active/Return"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Chase")
+event = &"found_target"
+delay_in_seconds = "0.0"
+
+[connection signal="area_entered" from="DetectionRadius" to="." method="_on_detection_radius_area_entered"]
+[connection signal="area_entered" from="ChaseRadius" to="." method="_on_chase_radius_area_entered"]
+[connection signal="area_exited" from="ChaseRadius" to="." method="_on_chase_radius_area_exited"]
+[connection signal="timeout" from="RecalculatePath" to="." method="_on_recalculate_path_timeout"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Passive" to="." method="_on_passive_state_entered"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Active" to="." method="_on_active_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Active/Chase" to="." method="_on_chase_state_physics_processing"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Active/Search/SearchLastSeenPosition" to="." method="_on_search_last_seen_position_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Search/SearchArea" to="." method="_on_search_area_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Active/Search/SearchArea" to="." method="_on_search_area_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Active/Search/SearchArea" to="." method="_on_search_area_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Search/Pause" to="." method="_on_pause_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Active/Search/Pause" to="." method="_on_pause_state_exited"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Return" to="." method="_on_return_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Active/Return" to="." method="_on_return_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Active/Return" to="." method="_on_return_state_physics_processing"]
