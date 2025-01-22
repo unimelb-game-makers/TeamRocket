@@ -36,24 +36,24 @@ GitHub provides version control for your project, allowing you to track changes,
 **Steps to Configure Godot Project with GitHub Desktop:**
 
 1. **Clone a Repository:**
-    - Open GitHub Desktop.
-    - Click on "File" > "Clone Repository..."
-    - In the "URL" tab, enter the URL of the repository you want to clone.
-    - Choose the local path where you want to clone the repository.
-    - Click "Clone".
+	- Open GitHub Desktop.
+	- Click on "File" > "Clone Repository..."
+	- In the "URL" tab, enter the URL of the repository you want to clone.
+	- Choose the local path where you want to clone the repository.
+	- Click "Clone".
 
 2. **Commit Your Changes:**
-    - Make changes to your Godot project.
-    - Open GitHub Desktop, and you should see your project files listed in the "Changes" tab.
-    - Write a commit message describing the changes.
-    - Click the "Commit to main" button.
+	- Make changes to your Godot project.
+	- Open GitHub Desktop, and you should see your project files listed in the "Changes" tab.
+	- Write a commit message describing the changes.
+	- Click the "Commit to main" button.
 
 3. **Push Your Changes:**
-    - After committing your changes, click the "Push origin" button at the top of GitHub Desktop to sync your changes with the GitHub repository.
+	- After committing your changes, click the "Push origin" button at the top of GitHub Desktop to sync your changes with the GitHub repository.
 
 4. **Sync Changes:**
-    - If there are changes in the remote repository that you don't have locally, click the "Fetch origin" button in GitHub Desktop.
-    - Review the changes and, if everything looks good, click the "Pull origin" button to sync the changes to your local repository.
+	- If there are changes in the remote repository that you don't have locally, click the "Fetch origin" button in GitHub Desktop.
+	- Review the changes and, if everything looks good, click the "Pull origin" button to sync the changes to your local repository.
 
 ## Folder Structure
 
@@ -143,28 +143,28 @@ extends Node
 
 # Initialization methods
 func _ready():
-    pass
+	pass
 
 func _enter_tree():
-    pass
+	pass
 
 func _exit_tree():
-    pass
+	pass
 
 # Update methods
 func _process(delta):
-    pass
+	pass
 
 func _physics_process(delta):
-    pass
+	pass
 
 # Event handlers
 func _on_area_entered(area):
-    pass
+	pass
 
 # Utility methods
 func move_player():
-    pass
+	pass
 ```
 
 ### Comments
