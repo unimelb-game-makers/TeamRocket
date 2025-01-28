@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c28jljdwevpa5" path="res://assets/textures/workstation_textures/ChoppingZone_Texture.png" id="3_bjcle"]
 [ext_resource type="Texture2D" uid="uid://bxgr0wfopjh0d" path="res://assets/textures/workstation_textures/ChoppingMarker_Texture.png" id="4_cxobc"]
 
-[node name="CookingScene" instance=ExtResource("1_3sw0t")]
+[node name="CookingScene2" instance=ExtResource("1_3sw0t")]
 
 [node name="Activity" parent="." index="4"]
 script = ExtResource("2_ojnvx")
