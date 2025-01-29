@@ -61,12 +61,14 @@ texture = ExtResource("2_86nue")
 texture = ExtResource("3_yjya3")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Map/KitchenFloor" index="1"]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D" index="0"]
 position = Vector2(309.837, -863.696)
 shape = SubResource("RectangleShape2D_oov5x")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Map/KitchenFloor" index="2"]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D2" index="0"]
 position = Vector2(-2648.34, -678.333)
@@ -74,6 +76,7 @@ shape = SubResource("RectangleShape2D_xyev3")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Map/KitchenFloor" index="3"]
 position = Vector2(4640, 16.6667)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D3" index="0"]
 position = Vector2(-2160, -2.5)
@@ -82,6 +85,7 @@ shape = SubResource("RectangleShape2D_h4jyq")
 [node name="FrontWall" type="StaticBody2D" parent="Map/KitchenFloor" index="4"]
 position = Vector2(-2320, -1306.67)
 scale = Vector2(3.33333, 3.33333)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/FrontWall" index="0"]
 position = Vector2(550.625, 891)

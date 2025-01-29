@@ -1,18 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=19 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="Script" path="res://scripts/Game/game_handler.gd" id="2_nxt6u"]
-
-[sub_resource type="Gradient" id="Gradient_8toex"]
-colors = PackedColorArray(0, 0.373805, 0.273783, 1, 0.162227, 0.490701, 0.458936, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6vl00"]
-gradient = SubResource("Gradient_8toex")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_q33m7"]
-diffuse_texture = SubResource("GradientTexture1D_6vl00")
+[ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="3_pa65j"]
+[ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="4_2cddj"]
+[ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="5_oq3tf"]
+[ext_resource type="PackedScene" uid="uid://p6jrdiqo23p1" path="res://scenes/objects/Obstacles/WreckedCar3.tscn" id="6_fuahw"]
+[ext_resource type="PackedScene" uid="uid://vk8s3qx7g5vu" path="res://scenes/objects/Obstacles/Debris1.tscn" id="7_ttjpc"]
+[ext_resource type="PackedScene" uid="uid://di1iud0i6uaou" path="res://scenes/objects/Obstacles/Debris2.tscn" id="8_xlu3i"]
+[ext_resource type="PackedScene" uid="uid://id6e3hwthctu" path="res://scenes/objects/Obstacles/Debris3.tscn" id="9_q3pse"]
+[ext_resource type="PackedScene" uid="uid://dpnpt3tyed25k" path="res://scenes/objects/Swing.tscn" id="10_8y6gr"]
+[ext_resource type="PackedScene" uid="uid://kv30bbcxclw0" path="res://scenes/objects/Slide.tscn" id="11_k1iil"]
+[ext_resource type="PackedScene" uid="uid://cca4vmq1qi27o" path="res://scenes/objects/Sandbox.tscn" id="12_jr6eu"]
+[ext_resource type="PackedScene" uid="uid://ctpickf81rn6t" path="res://scenes/objects/Lights/StreetlightDown.tscn" id="13_acy3a"]
+[ext_resource type="PackedScene" uid="uid://spuhih5te5ck" path="res://scenes/objects/Lights/StreetlightLeft.tscn" id="14_k0ehx"]
+[ext_resource type="PackedScene" uid="uid://c0acap2jmh2f" path="res://scenes/objects/Lights/StreetlightUp.tscn" id="15_lpuh7"]
+[ext_resource type="PackedScene" uid="uid://drxotm8osb7q0" path="res://scenes/objects/Lights/StreetlightRight.tscn" id="16_4lsvx"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="17_jlhq4"]
+[ext_resource type="PackedScene" uid="uid://cd6fc47tx6cyd" path="res://scenes/objects/Lake.tscn" id="18_l3vkc"]
 
 [node name="City" instance=ExtResource("1_7mlma")]
+y_sort_enabled = true
 
 [node name="GameHandler" type="Node" parent="." index="0"]
 script = ExtResource("2_nxt6u")
@@ -23,9 +31,60 @@ script = ExtResource("2_nxt6u")
 visible = true
 color = Color(0.462291, 0.462291, 0.462291, 1)
 
+[node name="Map" parent="." index="2"]
+y_sort_enabled = true
+
 [node name="TextureRect" type="TextureRect" parent="Map" index="0"]
 offset_right = 4270.0
 offset_bottom = 2855.0
-texture = SubResource("CanvasTexture_q33m7")
+texture = ExtResource("3_pa65j")
+
+[node name="WreckedCar" parent="Map" index="1" instance=ExtResource("4_2cddj")]
+position = Vector2(762, 1600)
+
+[node name="WreckedCar2" parent="Map" index="2" instance=ExtResource("5_oq3tf")]
+position = Vector2(2412, 1284)
+
+[node name="WreckedCar3" parent="Map" index="3" instance=ExtResource("6_fuahw")]
+position = Vector2(2959, 1602)
+
+[node name="Debris" parent="Map" index="4" instance=ExtResource("7_ttjpc")]
+position = Vector2(1592, 2512)
+
+[node name="Debris2" parent="Map" index="5" instance=ExtResource("8_xlu3i")]
+position = Vector2(3520, 419)
+
+[node name="Debris3" parent="Map" index="6" instance=ExtResource("9_q3pse")]
+position = Vector2(4149, 1301)
+
+[node name="Slide" parent="Map" index="7" instance=ExtResource("10_8y6gr")]
+position = Vector2(712, 2576)
+
+[node name="Slide2" parent="Map" index="8" instance=ExtResource("11_k1iil")]
+position = Vector2(339, 2712)
+
+[node name="Sandbox" parent="Map" index="9" instance=ExtResource("12_jr6eu")]
+position = Vector2(314, 2334)
+
+[node name="Streetlight" parent="Map" index="10" instance=ExtResource("13_acy3a")]
+position = Vector2(2269, 738)
+
+[node name="Streetlight2" parent="Map" index="11" instance=ExtResource("14_k0ehx")]
+position = Vector2(4122, 418)
+
+[node name="Streetlight3" parent="Map" index="12" instance=ExtResource("15_lpuh7")]
+position = Vector2(3860, 1571)
+
+[node name="Streetlight4" parent="Map" index="13" instance=ExtResource("16_4lsvx")]
+position = Vector2(1319, 2869)
+
+[node name="Crate" parent="Map" index="14" instance=ExtResource("17_jlhq4")]
+position = Vector2(2199, 1663)
+
+[node name="Lake" parent="Map" index="15" instance=ExtResource("18_l3vkc")]
+position = Vector2(4236, 3577)
+
+[node name="Player" parent="." index="5"]
+position = Vector2(1727, 1598)
 
 [connection signal="timeout" from="GameHandler/GameTimer" to="GameHandler" method="_on_game_timer_timeout"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpnpt3tyed25k"]
+
+[ext_resource type="Texture2D" uid="uid://dgk2wogad4fpl" path="res://assets/Park/Objects/swings.png" id="1_beww4"]
+
+[node name="Slide" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_beww4")

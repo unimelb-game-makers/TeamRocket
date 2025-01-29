@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cca4vmq1qi27o"]
+
+[ext_resource type="Texture2D" uid="uid://qbpil3m45e80" path="res://assets/Park/Objects/sandbox.png" id="1_8cxui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgr28"]
+size = Vector2(123.297, 151.759)
+
+[node name="Sandbox" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8cxui")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-3.5, -7)
+rotation = 0.872665
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_sgr28")
