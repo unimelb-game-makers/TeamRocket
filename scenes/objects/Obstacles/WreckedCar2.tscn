@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfpsvidalrjjs"]
+
+[ext_resource type="Texture2D" uid="uid://g1205wedqcf" path="res://assets/Park/Objects/car 2.png" id="1_j2yp1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8bqy"]
+size = Vector2(494.745, 116.346)
+
+[node name="WreckedCar" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j2yp1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-15.1129, -13.2154)
+rotation = -0.261799
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_b8bqy")

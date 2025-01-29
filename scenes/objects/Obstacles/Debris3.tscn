@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://id6e3hwthctu"]
+
+[ext_resource type="Texture2D" uid="uid://bhoptyd4st4qu" path="res://assets/Park/Objects/debris 3.png" id="1_bt11s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgr28"]
+size = Vector2(215, 113)
+
+[node name="Debris" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bt11s")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-3.5, -1.5)
+shape = SubResource("RectangleShape2D_sgr28")

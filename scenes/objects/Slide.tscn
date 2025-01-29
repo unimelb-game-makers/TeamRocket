@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://kv30bbcxclw0"]
+
+[ext_resource type="Texture2D" uid="uid://dloba4qo6a1ma" path="res://assets/Park/Objects/slide.png" id="1_qttkh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgr28"]
+size = Vector2(143, 224.88)
+
+[node name="Slide" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qttkh")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-126, 8)
+shape = SubResource("RectangleShape2D_sgr28")

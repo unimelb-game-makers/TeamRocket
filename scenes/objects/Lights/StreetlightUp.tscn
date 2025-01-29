@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0acap2jmh2f"]
+
+[ext_resource type="Texture2D" uid="uid://digqpopb1qno3" path="res://assets/light_cone.jpg" id="1_bxm7v"]
+[ext_resource type="Texture2D" uid="uid://ckanrucqx3lyb" path="res://assets/Park/Objects/streetlight up.png" id="2_udwl3"]
+
+[node name="Streetlight" type="Node2D"]
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-12, -81)
+color = Color(0.928184, 0.675873, 0.397279, 1)
+texture = ExtResource("1_bxm7v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_udwl3")

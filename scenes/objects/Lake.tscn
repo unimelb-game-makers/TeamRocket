@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd6fc47tx6cyd"]
+
+[ext_resource type="Texture2D" uid="uid://bxu1nd01y0cb4" path="res://assets/Park/Objects/lake.png" id="1_dai5b"]
+
+[node name="Lake" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_dai5b")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(767, -53, 431, -270, 91, -281, -144, -136, -351, 30, -587, 180, -658, 430, 776, 432)
