@@ -55,15 +55,13 @@ func setup_navserver():
 	NavigationServer2D.map_set_active(map, true)
 	
 	# Create a new navigation region and add it to the map
-	var region = NavigationServer2D.region_create()
-	NavigationServer2D.region_set_transform(region, Transform2D())
-	NavigationServer2D.region_set_map(region, map)
+	var region = get_tree().get_first_node_in_group("navigation")
 	
 	# Set navigation mesh for the Navigation Region from main scene
-	var navigation_poly = NavigationMesh.new()
-	navigation_poly = navigation_region.navigation_polygon
-	NavigationServer2D.map_set_cell_size(map, 1)
-	NavigationServer2D.region_set_navigation_polygon(region, navigation_poly)
+	#var navigation_poly = NavigationMesh.new()
+	#navigation_poly = navigation_region.navigation_polygon
+	#NavigationServer2D.map_set_cell_size(map, 1)
+	#NavigationServer2D.region_set_navigation_polygon(region, navigation_poly)
 	
 func update_navigation_path(start_pos, end_pos):
 	path = NavigationServer2D.map_get_path(map, start_pos, end_pos, true)

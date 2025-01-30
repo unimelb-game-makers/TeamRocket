@@ -13,7 +13,9 @@ visible = false
 position = Vector2(533, 480)
 color = Color(0.18359, 0.18359, 0.18359, 1)
 
-[node name="Map" type="Node2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["navigation"]]
+
+[node name="Map" type="Node2D" parent="NavigationRegion2D"]
 
 [node name="Interactables" type="Node" parent="."]
 

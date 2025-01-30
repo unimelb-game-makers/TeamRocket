@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=25 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
@@ -14,6 +14,8 @@
 [ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="9_2oqyj"]
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="12_xaknj"]
 [ext_resource type="Resource" uid="uid://dbw3pp6i2fhp4" path="res://resources/items/spaghetti.tres" id="13_icu43"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5vy8l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oov5x"]
 size = Vector2(4006.99, 854.059)
@@ -48,87 +50,88 @@ y_sort_enabled = true
 [node name="KitchenHandler" type="Node" parent="." index="0"]
 script = ExtResource("2_watt5")
 
-[node name="Map" parent="." index="2"]
-y_sort_enabled = true
+[node name="NavigationRegion2D" parent="." index="2"]
+navigation_polygon = SubResource("NavigationPolygon_5vy8l")
 
-[node name="KitchenFloor" type="Sprite2D" parent="Map" index="0"]
+[node name="KitchenFloor" type="Sprite2D" parent="NavigationRegion2D/Map" index="0"]
 z_index = -1
 position = Vector2(696, 392)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_86nue")
 
-[node name="KitchenWalls" type="Sprite2D" parent="Map/KitchenFloor" index="0"]
+[node name="KitchenWalls" type="Sprite2D" parent="NavigationRegion2D/Map/KitchenFloor" index="0"]
 texture = ExtResource("3_yjya3")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Map/KitchenFloor" index="1"]
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Map/KitchenFloor" index="1"]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/KitchenFloor/StaticBody2D" index="0"]
 position = Vector2(309.837, -863.696)
 shape = SubResource("RectangleShape2D_oov5x")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Map/KitchenFloor" index="2"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="NavigationRegion2D/Map/KitchenFloor" index="2"]
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D2" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/KitchenFloor/StaticBody2D2" index="0"]
 position = Vector2(-2648.34, -678.333)
 shape = SubResource("RectangleShape2D_xyev3")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Map/KitchenFloor" index="3"]
+[node name="StaticBody2D3" type="StaticBody2D" parent="NavigationRegion2D/Map/KitchenFloor" index="3"]
 position = Vector2(4640, 16.6667)
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/StaticBody2D3" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/KitchenFloor/StaticBody2D3" index="0"]
 position = Vector2(-2160, -2.5)
 shape = SubResource("RectangleShape2D_h4jyq")
 
-[node name="FrontWall" type="StaticBody2D" parent="Map/KitchenFloor" index="4"]
+[node name="FrontWall" type="StaticBody2D" parent="NavigationRegion2D/Map/KitchenFloor" index="4"]
 position = Vector2(-2320, -1306.67)
 scale = Vector2(3.33333, 3.33333)
 collision_layer = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/KitchenFloor/FrontWall" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/KitchenFloor/FrontWall" index="0"]
 position = Vector2(550.625, 891)
 shape = SubResource("RectangleShape2D_g2qpi")
 
-[node name="Bench" type="Sprite2D" parent="Map" index="1"]
+[node name="Bench" type="Sprite2D" parent="NavigationRegion2D/Map" index="1"]
 y_sort_enabled = true
 position = Vector2(684, 578)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("5_uiv4g")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Map/Bench" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Map/Bench" index="0"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Bench/StaticBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/Bench/StaticBody2D" index="0"]
 position = Vector2(-6.66675, -136.667)
 shape = SubResource("RectangleShape2D_gk1kv")
 
-[node name="Fryer" type="Sprite2D" parent="Map" index="2"]
+[node name="Fryer" type="Sprite2D" parent="NavigationRegion2D/Map" index="2"]
 position = Vector2(1282, 484)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_47cob")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Map/Fryer" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Map/Fryer" index="0"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/Fryer/StaticBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/Fryer/StaticBody2D" index="0"]
 position = Vector2(78.335, 11.6669)
 shape = SubResource("RectangleShape2D_c4v1f")
 
-[node name="ExitArea" type="Area2D" parent="Map" index="3"]
+[node name="ExitArea" type="Area2D" parent="NavigationRegion2D/Map" index="3"]
 position = Vector2(-216, 780)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Map/ExitArea" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/ExitArea" index="0"]
 position = Vector2(-274, -204.5)
 shape = SubResource("RectangleShape2D_jvgon")
 
-[node name="TextureRect" type="TextureRect" parent="Map/ExitArea" index="1"]
+[node name="TextureRect" type="TextureRect" parent="NavigationRegion2D/Map/ExitArea" index="1"]
 z_index = 5
 offset_left = -441.0
 offset_top = -406.0
 offset_right = 213.0
 offset_bottom = 10.0
 texture = SubResource("GradientTexture1D_dupnr")
+metadata/_edit_use_anchors_ = true
 
 [node name="ChoppingBoard" parent="Interactables" index="0" instance=ExtResource("3_xytjo")]
 z_index = 1
@@ -164,4 +167,4 @@ y_sort_enabled = true
 offset_top = -2.0
 offset_bottom = -2.0
 
-[connection signal="body_entered" from="Map/ExitArea" to="KitchenHandler" method="_on_exit_area_body_entered"]
+[connection signal="body_entered" from="NavigationRegion2D/Map/ExitArea" to="KitchenHandler" method="_on_exit_area_body_entered"]
