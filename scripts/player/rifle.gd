@@ -4,7 +4,7 @@ extends Node2D
 @onready var raycast = $RayCast2D
 
 # Inaccuracy value in degrees. Raycast will fire on a random degrees within -inaccuracy to +inaccuracy
-@export var MAX_INACCURACY: float = 45.0
+@export var MAX_INACCURACY: float = 30.0
 @export var INACCURACY_CHANGE_RATE_BASE: float = 0.05
 var inaccuracy_limit: float = 0.0:
 	set(limit):
@@ -44,9 +44,11 @@ func _process(_delta):
 		if Input.is_action_just_pressed("fire"):
 			if (fire_timer.is_stopped() and reload_timer.is_stopped()):
 				raycast.rotation_degrees = randf_range(-inaccuracy_limit, inaccuracy_limit)
-				var target_hit = raycast.get_collider()
-				if (target_hit):
-					print(target_hit)
+				var target = raycast.get_collider()
+				if (target):
+					print(target)
+					if (target is Enemy):
+						target.health -= 5
 				bullets -= 1
 				fire_timer.start()
 

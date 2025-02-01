@@ -21,7 +21,6 @@ func _on_game_timer_timeout() -> void:
 	Globals.player_ui.update_time(time)
 	time += 1
 	if time >= MAX_TIME:
-		print("Time out")
 		switch_to_kitchen()
 		
 func switch_to_kitchen():
@@ -29,3 +28,6 @@ func switch_to_kitchen():
 
 func load_character_info():
 	pass
+
+func _on_player_death() -> void:
+	switch_to_kitchen()

@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://cass2bjp3d6eq"]
+[gd_scene load_steps=5 format=3 uid="uid://cass2bjp3d6eq"]
 
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="1_2xv6m"]
+[ext_resource type="Script" path="res://scripts/Game/game_handler.gd" id="1_eaqps"]
 [ext_resource type="Script" path="res://scripts/item/item_handler.gd" id="1_p3mrr"]
 [ext_resource type="PackedScene" uid="uid://bxuu77kvbmixu" path="res://scenes/ui/ui.tscn" id="2_a8oao"]
 
 [node name="Base" type="Node2D"]
+
+[node name="GameHandler" type="Node" parent="."]
+script = ExtResource("1_eaqps")
+
+[node name="GameTimer" type="Timer" parent="GameHandler"]
 
 [node name="Lighting" type="Node" parent="."]
 
@@ -33,4 +39,6 @@ position_smoothing_enabled = true
 
 [node name="UI" parent="." instance=ExtResource("2_a8oao")]
 
+[connection signal="timeout" from="GameHandler/GameTimer" to="GameHandler" method="_on_game_timer_timeout"]
 [connection signal="activity_interact" from="Player" to="UI" method="_on_player_activity_interact"]
+[connection signal="death" from="Player" to="GameHandler" method="_on_player_death"]

@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 signal activity_interact(activity)
+signal death
+
+var can_move: bool = true
 
 # ----- MOVEMENT VARS -----
 # For smoother movement
@@ -36,6 +39,9 @@ var can_roll : bool = true
 @export var max_health = 50
 var health = max_health:
 	set(value):
+		health = value
+		if health <= 0:
+			die()
 		Globals.player_ui.update_health(health, max_health)
 
 func _ready() -> void:
@@ -67,6 +73,10 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	pass
+	
+func die() -> void:
+	can_move = false
+	death.emit()
 
 ### BASIC MOVEMENTS (Idle, Crouching, Walking, Running, NOT Rolling) ###
 

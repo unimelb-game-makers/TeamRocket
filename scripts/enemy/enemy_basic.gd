@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Enemy
 
 const PASSIVE_SPEED : int = 85
 const ACTIVE_SPEED : int = 180
