@@ -94,6 +94,6 @@ limit_right = 5000
 limit_bottom = 4000
 
 [node name="Basic_Enemy" parent="Enemies" index="0" instance=ExtResource("19_movql")]
-position = Vector2(2094, 2023)
+position = Vector2(2659, 2709)
 
 [node name="Node2D" type="Node2D" parent="." index="7"]

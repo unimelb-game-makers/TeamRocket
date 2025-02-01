@@ -106,8 +106,6 @@ func _on_detection_radius_area_entered(area: Area2D) -> void:
 		
 		statechart.send_event("on_detection_radius_entered") # Triggers To Chase State
 
-
-
 func _on_chase_radius_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		target_creature = area.get_parent();
