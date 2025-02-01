@@ -4,7 +4,6 @@ extends CharacterBody2D
 var attack_damage: int
 @export var health: int:
 	set(value):
-		print(value)
 		if health > value:
 			damage()
 		health = value

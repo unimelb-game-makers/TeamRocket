@@ -11,6 +11,8 @@ var inaccuracy_limit: float = 0.0:
 		inaccuracy_limit = clamp(limit, 0, MAX_INACCURACY)
 var inaccuracy_change_rate: float = INACCURACY_CHANGE_RATE_BASE
 
+@export var damage = 5
+
 @export var MAX_BULLETS = 5
 @export var FIRE_RATE = 1.0
 @export var RELOAD_SPEED = 0.6
@@ -46,11 +48,14 @@ func _process(_delta):
 				raycast.rotation_degrees = randf_range(-inaccuracy_limit, inaccuracy_limit)
 				var target = raycast.get_collider()
 				if (target):
-					print(target)
 					if (target is Enemy):
-						target.health -= 5
+						target.health -= damage
 				bullets -= 1
 				fire_timer.start()
+				
+		if Input.is_action_just_pressed("reload"):
+			if (fire_timer.is_stopped() and reload_timer.is_stopped()):
+				reload_timer.start()
 
 func _on_reload_timer_timeout() -> void:
 	bullets = MAX_BULLETS

@@ -36,18 +36,21 @@ debug_enabled = true
 
 [node name="DetectionRadius" type="Area2D" parent="."]
 modulate = Color(0.862, 0, 0.094, 0.2)
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
 shape = SubResource("CircleShape2D_qi61h")
 
 [node name="ChaseRadius" type="Area2D" parent="."]
 modulate = Color(0.876, 0.327, 0, 0.486)
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseRadius"]
 shape = SubResource("CircleShape2D_o434b")
 
 [node name="RecalculatePath" type="Timer" parent="."]
 wait_time = 0.16
+autostart = true
 
 [node name="StateChart" type="Node" parent="."]
 script = ExtResource("3_q7ouv")
