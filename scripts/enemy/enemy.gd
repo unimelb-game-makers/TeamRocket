@@ -13,7 +13,9 @@ var attack_damage: int
 func damage() -> void:
 	# Override in subclass
 	# Play any damaged effects/animations
-	pass
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(0.8, 0.5, 0.5), 0.2)
+	tween.tween_property(self, "modulate", Color(1,1,1), 0.2)
 
 func die() -> void:
 	# Override in subclass
