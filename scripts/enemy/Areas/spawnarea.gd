@@ -16,9 +16,9 @@ extends Area2D
 
 func _ready() -> void:
 	#assert(len(allowed_enemies) > 0)
-	#assert(allowed_enemies.size() > 0)
-	print(allowed_enemies.size())
-	print(radius)
+	assert(allowed_enemies.size() > 0)
+	#print(allowed_enemies.size())
+	#print(radius)
 	
 	collisionshape.set("radius", radius)
 
