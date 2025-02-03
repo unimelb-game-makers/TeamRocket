@@ -1,6 +1,9 @@
 extends Area2D
 
 # Spawns enemy within radius
+# The CollisionShape2D is local to scene, so if there are multiple of this node,
+# the radius or even shape can be changed dynamically in the editor. You just need 
+# to right click this scene and select "Editable Children".
 
 # Make sure this is not 0
 @export var allowed_enemies: Array[PackedScene] = []
