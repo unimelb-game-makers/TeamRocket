@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=21 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="3_pa65j"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://drxotm8osb7q0" path="res://scenes/objects/Lights/StreetlightRight.tscn" id="16_4lsvx"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="17_jlhq4"]
 [ext_resource type="PackedScene" uid="uid://cd6fc47tx6cyd" path="res://scenes/objects/Lake.tscn" id="18_l3vkc"]
+[ext_resource type="PackedScene" uid="uid://baj1vsgkcdjdb" path="res://scenes/enemy/enemy_chicken.tscn" id="19_bml6j"]
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/enemy_basic.tscn" id="19_movql"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5hw28"]
@@ -97,3 +98,6 @@ limit_bottom = 4000
 position = Vector2(2659, 2709)
 
 [node name="Node2D" type="Node2D" parent="." index="7"]
+
+[node name="EnemyChicken" parent="." index="9" instance=ExtResource("19_bml6j")]
+position = Vector2(1364, 1226)
