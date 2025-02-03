@@ -64,7 +64,7 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_xpy87")
 animation = &"walk"
 autoplay = "neutral"
-frame_progress = 0.900185
+frame_progress = 0.466235
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, -3)

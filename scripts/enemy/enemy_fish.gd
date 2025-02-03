@@ -1,6 +1,6 @@
 extends Enemy
 
-@export var SPEEDS = [0, 45, 200]
+const SPEEDS = [0, 45, 200]
 
 var movement_speed : float # Current default state is Passive
 

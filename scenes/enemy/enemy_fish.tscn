@@ -1,0 +1,98 @@
+[gd_scene load_steps=15 format=3 uid="uid://c23naolscyluq"]
+
+[ext_resource type="Script" path="res://scripts/enemy/enemy_chicken.gd" id="1_3ewc1"]
+[ext_resource type="Texture2D" uid="uid://dwt5vp4lbx08o" path="res://assets/creatures/animal_fish/fish1.png" id="2_f3oqb"]
+[ext_resource type="Texture2D" uid="uid://d7mpnird2ljx" path="res://assets/creatures/animal_fish/fish2.png" id="3_oywh2"]
+[ext_resource type="Texture2D" uid="uid://b8yvb1jueea1m" path="res://assets/creatures/animal_fish/fish3.png" id="4_aehow"]
+[ext_resource type="Texture2D" uid="uid://ctprthcfrimf5" path="res://assets/creatures/animal_fish/fish4.png" id="5_6wh2f"]
+[ext_resource type="Texture2D" uid="uid://cn7e45kg3etbj" path="res://assets/creatures/animal_fish/fish5.png" id="6_eac0q"]
+[ext_resource type="Texture2D" uid="uid://cdujq5unnfn2r" path="res://assets/creatures/animal_fish/fish6.png" id="7_841o8"]
+[ext_resource type="Texture2D" uid="uid://dxyefcsfbbl7y" path="res://assets/creatures/animal_fish/fish7.png" id="8_x534c"]
+[ext_resource type="Texture2D" uid="uid://d06mj1bvo4bhh" path="res://assets/creatures/animal_fish/fish8.png" id="9_1mjm0"]
+[ext_resource type="Texture2D" uid="uid://dh420q4bo33dg" path="res://assets/creatures/animal_fish/fish9.png" id="10_7sxbn"]
+[ext_resource type="Texture2D" uid="uid://2lahvdbpkgim" path="res://assets/creatures/animal_fish/fish10.png" id="11_6i5px"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lw4cd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f3oqb")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f3oqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oywh2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_aehow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6wh2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eac0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_841o8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x534c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1mjm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7sxbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_6i5px")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h0ywl"]
+radius = 25.318
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5pyw"]
+radius = 400.0
+
+[node name="EnemyFish" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_3ewc1")
+SPEEDS = [0, 30, 300]
+health = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 1)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_lw4cd")
+animation = &"walk"
+autoplay = "neutral"
+frame_progress = 0.994277
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-19, -21)
+shape = SubResource("CircleShape2D_h0ywl")
+
+[node name="StateChangeTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_l5pyw")
+
+[connection signal="timeout" from="StateChangeTimer" to="." method="_on_state_change_timer_timeout"]
