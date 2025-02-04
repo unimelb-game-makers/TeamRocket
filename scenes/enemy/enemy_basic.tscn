@@ -97,8 +97,6 @@ shape = SubResource("CircleShape2D_o434b")
 wait_time = 0.16
 autostart = true
 
-[node name="AttackTimer" type="Timer" parent="."]
-
 [node name="StateChart" type="Node" parent="."]
 script = ExtResource("3_q7ouv")
 
