@@ -86,6 +86,8 @@ position = Vector2(2199, 1663)
 [node name="Lake" parent="NavigationRegion2D/Map" index="15" instance=ExtResource("18_l3vkc")]
 position = Vector2(4236, 3577)
 
+[node name="Items" parent="." index="4" groups=["ItemHandler"]]
+
 [node name="Player" parent="." index="5"]
 position = Vector2(1727, 1598)
 
@@ -94,6 +96,8 @@ limit_left = 0
 limit_top = 0
 limit_right = 5000
 limit_bottom = 4000
+
+[node name="Enemies" parent="." index="6" groups=["EnemyHandler"]]
 
 [node name="Basic_Enemy" parent="Enemies" index="0" instance=ExtResource("19_movql")]
 position = Vector2(2659, 2709)
