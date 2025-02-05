@@ -15,7 +15,7 @@ var target_creature: CharacterBody2D
 var map
 var path = []
 
-@onready var statechart = $StateChart
+@onready var statechart: StateChart = $StateChart
 
 var last_known_position: Vector2 # Last known position of player
 
@@ -80,6 +80,7 @@ func set_movement_target(movement_target: Vector2):
 
 func _physics_process(delta):
 	### Moved to chase_state_physics_processing
+	print(global_position)
 	pass
 
 func move_along_path(distance):
