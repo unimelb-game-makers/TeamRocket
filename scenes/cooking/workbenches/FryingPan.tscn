@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://r0tcq7hhhit4"]
+
+[ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_7vxoe"]
+[ext_resource type="PackedScene" uid="uid://bvmlxiyx7jesg" path="res://scenes/cooking/activities/FryActivity.tscn" id="2_uc0tk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6d15y"]
+size = Vector2(140, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrrf5"]
+size = Vector2(67, 88)
+
+[node name="Pan" type="Node2D" groups=["Workbench"]]
+script = ExtResource("1_7vxoe")
+activity = ExtResource("2_uc0tk")
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = SubResource("PlaceholderTexture2D_6d15y")
+
+[node name="InteractArea" type="Area2D" parent="." groups=["Workbench"]]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(0.5, -6)
+shape = SubResource("RectangleShape2D_yrrf5")

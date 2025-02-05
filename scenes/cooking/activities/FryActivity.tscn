@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvmlxiyx7jesg"]
+
+[ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/CookingBase.tscn" id="1_8tnn7"]
+[ext_resource type="Script" path="res://scripts/cooking/FryActivity.gd" id="2_8d3b5"]
+[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="3_pkhxo"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wpo1k"]
+size = Vector2(10, 10)
+
+[node name="CookingScene" instance=ExtResource("1_8tnn7")]
+
+[node name="Activity" parent="." index="4"]
+script = ExtResource("2_8d3b5")
+
+[node name="FryingPan" type="Sprite2D" parent="Activity" index="0"]
+z_index = 7
+position = Vector2(638, 345)
+texture = ExtResource("3_pkhxo")
+
+[node name="Ingredient" type="Sprite2D" parent="Activity/FryingPan" index="0"]
+self_modulate = Color(0, 0, 0, 1)
+texture = SubResource("PlaceholderTexture2D_wpo1k")
+
+[node name="Label" type="Label" parent="Activity/FryingPan/Ingredient" index="0"]
+visible = false
+offset_left = -2.0
+offset_top = -25.0
+offset_right = 38.0
+offset_bottom = -2.0
+text = "!"
+
+[node name="Areas" type="Sprite2D" parent="Activity/FryingPan" index="1"]
+
+[node name="ProgressDebug" type="Label" parent="Activity" index="1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0

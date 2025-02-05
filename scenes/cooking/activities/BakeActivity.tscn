@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bki0uvr50vnun"]
+
+[ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/CookingBase.tscn" id="1_ayed6"]
+[ext_resource type="Resource" uid="uid://bx7y1s5155421" path="res://resources/activities/baking.tres" id="2_ke3hq"]
+[ext_resource type="Script" path="res://scripts/cooking/BakeActivity.gd" id="3_qssr3"]
+[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="4_glhh3"]
+
+[node name="CookingScene" instance=ExtResource("1_ayed6")]
+activity_res = ExtResource("2_ke3hq")
+
+[node name="Activity" parent="." index="4"]
+script = ExtResource("3_qssr3")
+
+[node name="Pot" type="Sprite2D" parent="Activity" index="0"]
+position = Vector2(638, 349)
+texture = ExtResource("4_glhh3")
+
+[node name="Label" type="Label" parent="Activity" index="1"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
