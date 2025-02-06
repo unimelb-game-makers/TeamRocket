@@ -80,7 +80,6 @@ func set_movement_target(movement_target: Vector2):
 
 func _physics_process(delta):
 	### Moved to chase_state_physics_processing
-	print(global_position)
 	pass
 
 func move_along_path(distance):
