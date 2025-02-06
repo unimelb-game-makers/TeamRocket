@@ -15,6 +15,9 @@ signal complete(output)
 @export var perfect_progress = 10  # Progress for perfect chop
 @export var okay_progress = 5     # Progress for okay chop
 
+@onready var sfx_chop_randomiser: AudioStreamPlayer2D = $SFX_ChopRandomiser
+
+
 var chop_progress = 0
 var playing = false
 var moving_right = true
@@ -74,11 +77,13 @@ func check_chop() -> void:
 		chop_progress += perfect_progress
 		result_label.text = "Perfect!"
 		result_label.modulate = Color(0, 1, 0)  # Green
+		sfx_chop_randomiser.play()
 	elif marker_percentage >= okay_left and marker_percentage <= okay_right:
 		# Okay chop
 		chop_progress += okay_progress
 		result_label.text = "Okay!"
 		result_label.modulate = Color(1, 1, 0)  # Yellow
+		sfx_chop_randomiser.play()
 	else:
 		# Missed chop
 		result_label.text = "Missed!"

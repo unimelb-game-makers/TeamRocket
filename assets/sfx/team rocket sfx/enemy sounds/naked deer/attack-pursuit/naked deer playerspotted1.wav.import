@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dwci7x2kvnq3e"
+path="res://.godot/imported/naked deer playerspotted1.wav-340291af912b9373ad337638260a69c3.sample"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer playerspotted1.wav"
+dest_files=["res://.godot/imported/naked deer playerspotted1.wav-340291af912b9373ad337638260a69c3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

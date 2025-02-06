@@ -6,6 +6,8 @@ signal complete(success: bool)
 @onready var inner_circle = $InnerCircle  # Draggable circle.
 @onready var timer_label = $TimerLabel  # Displays time left.
 @onready var feedback_label = $FeedbackLabel  # Shows feedback messages.
+@onready var sfx_boil_loop: AudioStreamPlayer2D = $SFX_BoilLoop
+@onready var sfx_boil_init: AudioStreamPlayer2D = $SFX_BoilInit
 
 var required_speed = 2.0  # Minimum velocity required.
 var stirring_speed = 0.0  # Current speed of stirring.
@@ -17,8 +19,10 @@ var is_dragging = false  # Tracks whether the user is dragging the circle.
 
 func _ready() -> void:
 	# Store the position of the inner circle as defined in the editor.
+	sfx_boil_init.play()
 	initial_inner_circle_position = inner_circle.position
 	reset_game()
+	
 
 func reset_game() -> void:
 	# Reset the inner circle to its original editor-defined position.
@@ -34,6 +38,8 @@ func reset_game() -> void:
 func start() -> void:
 	reset_game()
 	is_playing = true
+	sfx_boil_loop.play()
+	
 
 func _process(delta: float) -> void:
 	if not is_playing:

@@ -1,9 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://de7jdm6b6jkob"]
+[gd_scene load_steps=13 format=3 uid="uid://de7jdm6b6jkob"]
 
 [ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/CookingBase.tscn" id="1_3sw0t"]
 [ext_resource type="Script" path="res://scripts/cooking/ChoppingActivity.gd" id="2_ojnvx"]
 [ext_resource type="Texture2D" uid="uid://c28jljdwevpa5" path="res://assets/textures/workstation_textures/ChoppingZone_Texture.png" id="3_bjcle"]
 [ext_resource type="Texture2D" uid="uid://bxgr0wfopjh0d" path="res://assets/textures/workstation_textures/ChoppingMarker_Texture.png" id="4_cxobc"]
+[ext_resource type="AudioStream" uid="uid://b2acn5b5gib7i" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut1.wav" id="5_bhn3j"]
+[ext_resource type="AudioStream" uid="uid://vcg221bt5aiw" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut2.wav" id="6_8bat3"]
+[ext_resource type="AudioStream" uid="uid://c58ters8lxu0g" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut3.wav" id="7_3fpex"]
+[ext_resource type="AudioStream" uid="uid://251aww0a3858" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut4.wav" id="8_vhigo"]
+[ext_resource type="AudioStream" uid="uid://dhqafchw70kua" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut5.wav" id="9_4hnjx"]
+[ext_resource type="AudioStream" uid="uid://dxotqhdiila3a" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut6.wav" id="10_17sga"]
+[ext_resource type="AudioStream" uid="uid://ddy086m470tx7" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut7.wav" id="11_cdwm0"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7m32a"]
+streams_count = 7
+stream_0/stream = ExtResource("5_bhn3j")
+stream_1/stream = ExtResource("6_8bat3")
+stream_2/stream = ExtResource("7_3fpex")
+stream_3/stream = ExtResource("8_vhigo")
+stream_4/stream = ExtResource("9_4hnjx")
+stream_5/stream = ExtResource("10_17sga")
+stream_6/stream = ExtResource("11_cdwm0")
 
 [node name="CookingScene2" instance=ExtResource("1_3sw0t")]
 
@@ -55,3 +72,6 @@ offset_left = 935.0
 offset_top = 133.0
 offset_right = 975.0
 offset_bottom = 156.0
+
+[node name="SFX_ChopRandomiser" type="AudioStreamPlayer2D" parent="Activity" index="5"]
+stream = SubResource("AudioStreamRandomizer_7m32a")
