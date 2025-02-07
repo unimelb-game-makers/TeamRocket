@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://wxmwtggc58kw"]
+
+[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/enemy_basic.tscn" id="1_cno7g"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_dasher.gd" id="2_1leqm"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="2_e75rs"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="3_klj4n"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="4_dhk6e"]
+
+[node name="Dasher" instance=ExtResource("1_cno7g")]
+script = ExtResource("2_1leqm")
+
+[node name="To Attack State" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
+script = ExtResource("4_dhk6e")
+to = NodePath("../../../Attack")
+delay_in_seconds = "6.0"
+
+[node name="Attack" type="Node" parent="StateChart/EnemyBehaviour" index="2"]
+script = ExtResource("2_e75rs")
+initial_state = NodePath("Wind Up")
+
+[node name="Wind Up" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="0"]
+script = ExtResource("3_klj4n")
+
+[node name="To Dash Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack/Wind Up" index="0"]
+script = ExtResource("4_dhk6e")
+to = NodePath("../../Dash Attack")
+delay_in_seconds = ".25"
+
+[node name="Dash Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="1"]
+script = ExtResource("3_klj4n")
+
+[node name="To Wind Up" type="Node" parent="StateChart/EnemyBehaviour/Attack/Dash Attack" index="0"]
+script = ExtResource("4_dhk6e")
+to = NodePath("../../Wind Up")
+event = &"on_dash_attack_finish"
+delay_in_seconds = "0.0"
+
+[node name="To Active State" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="2"]
+script = ExtResource("4_dhk6e")
+to = NodePath("../../Active")
+event = &"on_attack_finish"
+delay_in_seconds = "0.0"
+
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Wind Up" to="." method="_on_wind_up_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Wind Up" to="." method="_on_wind_up_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Dash Attack" to="." method="_on_dash_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack/Dash Attack" to="." method="_on_dash_attack_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Dash Attack" to="." method="_on_dash_attack_state_physics_processing"]
