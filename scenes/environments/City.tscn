@@ -27,6 +27,9 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-49, -55, -42, 4029, 50
 [node name="City" instance=ExtResource("1_7mlma")]
 y_sort_enabled = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GameHandler" index="1"]
+bus = &"Music"
+
 [node name="Dark" parent="Lighting" index="0"]
 visible = true
 color = Color(0.462291, 0.462291, 0.462291, 1)
