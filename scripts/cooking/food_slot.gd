@@ -8,7 +8,10 @@ var index
 signal remove_food(index)
 
 func set_ingredient(item: Item):
-	food_texture.texture = item.texture
+	if (item):
+		food_texture.texture = item.texture
+	else:
+		food_texture.texture = null
 
 func _on_pressed() -> void:
 	remove_food.emit(index)

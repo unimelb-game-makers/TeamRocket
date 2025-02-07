@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://pu3eafcj7feu"]
+
+[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="1_5q004"]
+[ext_resource type="Texture2D" uid="uid://bw11fr51fq4sj" path="res://assets/food/spaghetti raw.png" id="2_733ci"]
+
+[resource]
+script = ExtResource("1_5q004")
+texture = ExtResource("2_733ci")
+item_name = "Raw Spaghetti"
+description = "Noodle"
+weight = 0.5
+rarity = 0
