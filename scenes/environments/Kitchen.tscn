@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
 [ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="7_083nx"]
 [ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="8_f86gd"]
-[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/Carrot.tres" id="9_2oqyj"]
+[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="9_2oqyj"]
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="12_xaknj"]
 [ext_resource type="Resource" uid="uid://dbw3pp6i2fhp4" path="res://resources/items/spaghetti.tres" id="13_icu43"]
 
@@ -50,7 +50,7 @@ y_sort_enabled = true
 [node name="KitchenHandler" type="Node" parent="." index="0"]
 script = ExtResource("2_watt5")
 
-[node name="NavigationRegion2D" parent="." index="2"]
+[node name="NavigationRegion2D" parent="." index="3"]
 navigation_polygon = SubResource("NavigationPolygon_5vy8l")
 
 [node name="KitchenFloor" type="Sprite2D" parent="NavigationRegion2D/Map" index="0"]
@@ -160,10 +160,10 @@ item = ExtResource("12_xaknj")
 position = Vector2(561, 312)
 item = ExtResource("13_icu43")
 
-[node name="Player" parent="." index="5"]
+[node name="Player" parent="." index="6"]
 y_sort_enabled = true
 
-[node name="UI" parent="." index="7"]
+[node name="UI" parent="." index="8"]
 offset_top = -2.0
 offset_bottom = -2.0
 
