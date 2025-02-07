@@ -1,5 +1,10 @@
 extends BasicEnemy
 
+@onready var idle_effect: AudioStreamPlayer2D = $SoundEffects/IdleEffect
+@onready var attack_effect: AudioStreamPlayer2D = $SoundEffects/AttackEffect
+@onready var pursuit_effect: AudioStreamPlayer2D = $SoundEffects/PursuitEffect
+@onready var hunt_effect: AudioStreamPlayer2D = $SoundEffects/HuntEffect
+
 var dash_attack_vector: Vector2 # Position of player when winding up
 var dash_attack_speed: float = 1000
 
@@ -13,6 +18,7 @@ var in_attack_state: bool = false
 
 # Stop moving, and prepare to dash. Delay to Dash Attack set in Inspector
 func _on_wind_up_state_entered() -> void:
+	pursuit_effect.play()
 	velocity = Vector2.ZERO
 	
 func _on_wind_up_state_physics_processing(delta: float) -> void:
@@ -20,6 +26,7 @@ func _on_wind_up_state_physics_processing(delta: float) -> void:
 
 # Get direction to player
 func _on_dash_attack_state_entered() -> void:
+	attack_effect.play()
 	dash_attack_timer = 0
 	current_dashes += 1
 	dash_attack_vector = global_position.direction_to(target_creature.global_position)
@@ -64,3 +71,11 @@ func _on_attack_state_exited() -> void:
 	current_dashes = 0
 	dash_attack_timer = 0
 	in_attack_state = false
+
+func _on_passive_state_entered() -> void:
+	super()
+	idle_effect.play()
+
+func _on_active_state_entered() -> void:
+	super()
+	hunt_effect.play()
