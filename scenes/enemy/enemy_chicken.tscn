@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://baj1vsgkcdjdb"]
+
+[ext_resource type="Script" path="res://scripts/enemy/enemy_chicken.gd" id="1_qyhrq"]
+[ext_resource type="Texture2D" uid="uid://cq1iguugfglwg" path="res://assets/creatures/animal_headless_chicken/chicken1.png" id="2_djc8e"]
+[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="2_ngw0k"]
+[ext_resource type="Texture2D" uid="uid://bjt1wxo78e541" path="res://assets/creatures/animal_headless_chicken/chicken2.png" id="3_dtvso"]
+[ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="3_vxd5f"]
+[ext_resource type="Texture2D" uid="uid://bmv2eumk5dj8d" path="res://assets/creatures/animal_headless_chicken/chicken3.png" id="4_0ugvd"]
+[ext_resource type="Texture2D" uid="uid://fxdbni0g5067" path="res://assets/creatures/animal_headless_chicken/chicken4.png" id="5_tsj1i"]
+[ext_resource type="Texture2D" uid="uid://dbsp4ofn4wrqa" path="res://assets/creatures/animal_headless_chicken/chicken5.png" id="6_voquw"]
+[ext_resource type="Texture2D" uid="uid://c1an4ursjb2fq" path="res://assets/creatures/animal_headless_chicken/chicken6.png" id="7_cebfr"]
+[ext_resource type="Texture2D" uid="uid://c86ut846p2fsl" path="res://assets/creatures/animal_headless_chicken/chicken7.png" id="8_nq1op"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xpy87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_djc8e")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_djc8e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dtvso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0ugvd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tsj1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_voquw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cebfr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nq1op")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h0ywl"]
+radius = 25.318
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l5pyw"]
+radius = 400.0
+
+[node name="EnemyChicken" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
+script = ExtResource("1_qyhrq")
+health = 2
+dropped_items = Array[ExtResource("2_ngw0k")]([ExtResource("3_vxd5f")])
+dropped_item_chances = Array[float]([0.5])
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -33)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_xpy87")
+animation = &"walk"
+autoplay = "neutral"
+frame_progress = 0.466235
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -3)
+shape = SubResource("CircleShape2D_h0ywl")
+
+[node name="StateChangeTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_l5pyw")
+
+[connection signal="timeout" from="StateChangeTimer" to="." method="_on_state_change_timer_timeout"]
