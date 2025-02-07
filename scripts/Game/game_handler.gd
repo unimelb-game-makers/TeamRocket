@@ -5,7 +5,7 @@ extends Node
 var time
 var paused = false
 
-@export var TIME_STEP = 8 # How fast the clock ticks per second
+@export var TIME_STEP = 2 # How fast the clock ticks per second
 @export var START_TIME = 420
 @export var MAX_TIME = 1440
 
