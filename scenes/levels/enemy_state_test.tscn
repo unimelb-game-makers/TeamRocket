@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scripts/terrain/ground.gd" id="2_8vjk7"]
 [ext_resource type="Script" path="res://scripts/terrain/Obstacles.gd" id="3_plhiw"]
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="4_meq4f"]
-[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/enemy_basic.tscn" id="5_nyal1"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="6_jqvsv"]
+[ext_resource type="PackedScene" uid="uid://wxmwtggc58kw" path="res://scenes/enemy/enemy_dasher.tscn" id="6_pfm7v"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_uen1e"]
 vertices = PackedVector2Array(167.922, 1191.92, 1752.08, 1240.08, -472.078, 1240.08, -295.922, 1191.92, 1752.08, -216.078, 1575.92, 935.922, 1575.92, -39.9219, -472.078, -216.078, 344.078, -39.9219, 1240.08, 935.922, -295.922, 600.078, 344.078, 295.922, 167.922, 600.078, 1240.08, 295.922)
@@ -18,7 +18,7 @@ agent_radius = 39.92
 
 [node name="Map" type="Node" parent="."]
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Map" groups=["navigation"]]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_uen1e")
 
@@ -50,9 +50,9 @@ offset_top = -601.0
 offset_right = -764.0
 offset_bottom = -235.0
 scale = Vector2(1.765, 1.765)
-initial_node_to_watch = NodePath("../../Basic_Enemy")
+initial_node_to_watch = NodePath("../../Dasher")
 
-[node name="Basic_Enemy" parent="." node_paths=PackedStringArray("navigation_region") instance=ExtResource("5_nyal1")]
-position = Vector2(1028, 414)
+[node name="Dasher" parent="." node_paths=PackedStringArray("navigation_region") instance=ExtResource("6_pfm7v")]
+position = Vector2(1034, 438)
 scale = Vector2(0.5, 0.5)
-navigation_region = NodePath("../Map/NavigationRegion2D")
+navigation_region = NodePath("")

@@ -5,6 +5,8 @@
 [ext_resource type="Script" path="res://scripts/cooking/food_slot.gd" id="3_10ak5"]
 
 [node name="FoodSlot" type="TextureButton"]
+offset_right = 45.0
+offset_bottom = 49.0
 texture_normal = ExtResource("1_gh5eo")
 texture_pressed = ExtResource("2_kwbnh")
 script = ExtResource("3_10ak5")

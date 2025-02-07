@@ -9,9 +9,9 @@ var can_move: bool = true
 # For smoother movement
 const CROUCH_SPEED : int = 100
 const CROUCH_ACCEL : int = 10
-const STAND_SPEED : int = 200
+const STAND_SPEED : int = 400
 const STAND_ACCEL : int = 40
-const RUN_SPEED : int = 300
+const RUN_SPEED : int = 600
 const RUN_ACCEL : int = 50
 
 var curr_speed : float = STAND_SPEED
@@ -59,6 +59,9 @@ func _process(_delta: float) -> void:
 			elif area.is_in_group("Workbench"):
 				var workbench = area.get_parent()
 				activity_interact.emit(workbench.activity)
+			elif area.is_in_group("Interactables"):
+				var interactable = area.get_parent()
+				interactable.interact()
 			
 	if (Input.is_action_just_pressed("inventory")):
 		print(Inventory_Global.inventory_array)
