@@ -1,4 +1,4 @@
-class_name Basic_Enemy
+class_name BasicEnemy
 extends Enemy
 
 const PASSIVE_SPEED : int = 85

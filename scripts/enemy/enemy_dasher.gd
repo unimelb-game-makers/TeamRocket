@@ -1,4 +1,4 @@
-extends Basic_Enemy
+extends BasicEnemy
 
 var dash_attack_vector: Vector2 # Position of player when winding up
 var dash_attack_speed: float = 1000

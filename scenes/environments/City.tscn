@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://drxotm8osb7q0" path="res://scenes/objects/Lights/StreetlightRight.tscn" id="16_4lsvx"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="17_jlhq4"]
 [ext_resource type="PackedScene" uid="uid://cd6fc47tx6cyd" path="res://scenes/objects/Lake.tscn" id="18_l3vkc"]
-[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/enemy_basic.tscn" id="19_movql"]
+[ext_resource type="PackedScene" uid="uid://wxmwtggc58kw" path="res://scenes/enemy/enemy_dasher.tscn" id="19_sv1o8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5hw28"]
 vertices = PackedVector2Array(1766.5, 2611, 4670.1, 3297.09, 4324.31, 3285.91, 294.5, 2842.44, 1409.5, 2611, 1077, 1651, 2994.84, 1803.85, 1766.5, 2440, 1409.5, 2440, 422.352, 2326.68, 330.227, 2216.91, 447, 1651, 3135.48, 1705.38, 4028, 1366, 4263, 1366, 5039.98, -38.0078, 5033.01, 4038.96, 5022.19, 4019.01, 5012.9, 3518.49, 4263, 1233, 3732, 484, 3732, 354, 4028, 1233, 4086.22, 3432.81, 3879.14, 3598.87, 3640.42, 3750.6, 2768.52, 1480.62, 1077, 1556, 2165.93, 1403.25, -32.0078, 4019.03, 3564.77, 4016.98, -38.9766, -44.9766, 3312, 354, 3312, 484, 2909.16, 1382.15, 2663.14, 1270.02, 2627.84, 1138.32, 294.5, 2597.56, 290.773, 2437.09, 131.5, 2597.56, 131.5, 2842.44, 198.648, 2327.32, 447, 1556, 2130.64, 1271.55)
@@ -87,13 +87,7 @@ position = Vector2(4236, 3577)
 [node name="Player" parent="." index="5"]
 position = Vector2(1727, 1598)
 
-[node name="Camera2D" parent="Player" index="8"]
-limit_left = 0
-limit_top = 0
-limit_right = 5000
-limit_bottom = 4000
-
-[node name="Basic_Enemy" parent="Enemies" index="0" instance=ExtResource("19_movql")]
-position = Vector2(2659, 2709)
+[node name="Dasher" parent="Enemies" index="0" instance=ExtResource("19_sv1o8")]
+position = Vector2(2263, 2272)
 
 [node name="Node2D" type="Node2D" parent="." index="7"]
