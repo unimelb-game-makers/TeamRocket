@@ -59,6 +59,9 @@ func _process(_delta: float) -> void:
 			elif area.is_in_group("Workbench"):
 				var workbench = area.get_parent()
 				activity_interact.emit(workbench.activity)
+			elif area.is_in_group("Interactables"):
+				var interactable = area.get_parent()
+				interactable.interact()
 			
 	if (Input.is_action_just_pressed("inventory")):
 		print(Inventory_Global.inventory_array)
