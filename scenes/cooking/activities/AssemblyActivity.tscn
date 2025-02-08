@@ -1,0 +1,118 @@
+[gd_scene load_steps=19 format=3 uid="uid://ba627rbvu2ts6"]
+
+[ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/CookingBase.tscn" id="1_yibeg"]
+[ext_resource type="Resource" uid="uid://cvigfq53abx63" path="res://resources/activities/assembly.tres" id="2_5xf6s"]
+[ext_resource type="Texture2D" uid="uid://chmpi1n4p1apn" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_li561"]
+[ext_resource type="Script" path="res://scripts/cooking/assembly_activity.gd" id="4_qactl"]
+[ext_resource type="Texture2D" uid="uid://ccsaoleicyf63" path="res://assets/workstations/stew_game/stew_top3.png" id="5_egdik"]
+[ext_resource type="FontFile" uid="uid://iqracr2sqomh" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="5_rmlgf"]
+[ext_resource type="Texture2D" uid="uid://cdtofnyg3fpkq" path="res://assets/workstations/stew_game/stew_top2.png" id="6_f03gr"]
+[ext_resource type="Texture2D" uid="uid://tq63nq80td5t" path="res://assets/workstations/stew_game/stew_top1.png" id="7_ws01a"]
+[ext_resource type="Texture2D" uid="uid://3i4vvw4e5j8q" path="res://assets/workstations/stew_game/wooden_spoon_tr.png" id="8_68jci"]
+[ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="9_m36jv"]
+[ext_resource type="AudioStream" uid="uid://cqeq1rwqjwdif" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/boil loop.wav" id="11_ro1c3"]
+[ext_resource type="AudioStream" uid="uid://cg16c5wqo76pc" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/boil init.wav" id="12_rofam"]
+[ext_resource type="Texture2D" uid="uid://ctkeslcjhp4qx" path="res://assets/textures/ui/Circle_Under.png" id="13_6d0or"]
+[ext_resource type="Texture2D" uid="uid://dlmhvkumh44c7" path="res://assets/textures/ui/Circle_Progress.png" id="14_byiuv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7huus"]
+texture = ExtResource("2_li561")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_38lbn"]
+font = ExtResource("9_m36jv")
+font_size = 22
+font_color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vnopq"]
+font = ExtResource("5_rmlgf")
+font_size = 42
+outline_size = 12
+outline_color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ihmn"]
+radius = 83.1505
+
+[node name="CookingScene" instance=ExtResource("1_yibeg")]
+activity_res = ExtResource("2_5xf6s")
+
+[node name="ColorRect" parent="Control/CenterContainer" index="0"]
+color = Color(1, 0.776471, 0.537255, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/CenterContainer/ColorRect" index="0"]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 721.0
+offset_bottom = 501.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7huus")
+
+[node name="Activity" parent="." index="4"]
+script = ExtResource("4_qactl")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Activity" index="0"]
+position = Vector2(645.995, 347.938)
+scale = Vector2(0.385766, 0.385766)
+texture = ExtResource("5_egdik")
+
+[node name="StewBase" type="Sprite2D" parent="Activity" index="1"]
+position = Vector2(646, 349)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_f03gr")
+
+[node name="OuterCircle" type="Sprite2D" parent="Activity" index="2"]
+position = Vector2(643, 338.165)
+scale = Vector2(0.391781, 0.391781)
+texture = ExtResource("7_ws01a")
+offset = Vector2(0, 20)
+
+[node name="InnerCircle" type="Sprite2D" parent="Activity" index="3"]
+position = Vector2(690, 264)
+rotation = 0.363028
+scale = Vector2(0.36648, 0.36648)
+texture = ExtResource("8_68jci")
+
+[node name="TimerLabel" type="Label" parent="Activity" index="4"]
+layout_mode = 0
+offset_left = 845.0
+offset_top = 485.0
+offset_right = 946.0
+offset_bottom = 512.0
+text = "4.2 SECONDS"
+label_settings = SubResource("LabelSettings_38lbn")
+horizontal_alignment = 1
+
+[node name="FeedbackLabel" type="Label" parent="Activity" index="5"]
+layout_mode = 0
+offset_left = 522.0
+offset_top = 505.0
+offset_right = 766.0
+offset_bottom = 558.0
+text = "KEEP STIRRING"
+label_settings = SubResource("LabelSettings_vnopq")
+
+[node name="SFX_BoilLoop" type="AudioStreamPlayer2D" parent="Activity" index="6"]
+stream = ExtResource("11_ro1c3")
+
+[node name="SFX_BoilInit" type="AudioStreamPlayer2D" parent="Activity" index="7"]
+stream = ExtResource("12_rofam")
+
+[node name="DragBoundary" type="Area2D" parent="Activity" index="8"]
+position = Vector2(696, 264)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Activity/DragBoundary" index="0"]
+position = Vector2(-58, 73)
+shape = SubResource("CircleShape2D_3ihmn")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Activity" index="9"]
+layout_mode = 0
+offset_left = 807.0
+offset_top = 409.0
+offset_right = 1151.0
+offset_bottom = 753.0
+scale = Vector2(0.5, 0.5)
+fill_mode = 4
+texture_under = ExtResource("13_6d0or")
+texture_progress = ExtResource("14_byiuv")

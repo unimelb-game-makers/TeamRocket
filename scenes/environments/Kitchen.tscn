@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=26 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
@@ -12,8 +12,9 @@
 [ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="7_083nx"]
 [ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="8_f86gd"]
 [ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/Carrot.tres" id="9_2oqyj"]
+[ext_resource type="PackedScene" uid="uid://csf03f13m5wmx" path="res://scenes/cooking/workbenches/assembly_plate.tscn" id="9_5i564"]
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="12_xaknj"]
-[ext_resource type="Resource" uid="uid://dbw3pp6i2fhp4" path="res://resources/items/spaghetti.tres" id="13_icu43"]
+[ext_resource type="Resource" path="res://resources/items/spaghetti_raw.tres" id="15_kfbqe"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5vy8l"]
 
@@ -143,6 +144,9 @@ position = Vector2(637, 536)
 [node name="Pot" parent="Interactables" index="1" instance=ExtResource("4_hcw55")]
 position = Vector2(793, 232)
 
+[node name="AssemblyPlate" parent="Interactables" index="2" instance=ExtResource("9_5i564")]
+position = Vector2(900, 500)
+
 [node name="Item" parent="Items" index="0" instance=ExtResource("5_vbmf8")]
 position = Vector2(386, 317)
 item = ExtResource("9_2oqyj")
@@ -161,7 +165,7 @@ item = ExtResource("12_xaknj")
 
 [node name="Item5" parent="Items" index="4" instance=ExtResource("5_vbmf8")]
 position = Vector2(561, 312)
-item = ExtResource("13_icu43")
+item = ExtResource("15_kfbqe")
 
 [node name="Player" parent="." index="6"]
 y_sort_enabled = true
