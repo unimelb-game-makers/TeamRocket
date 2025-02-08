@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3i4vvw4e5j8q"
-path="res://.godot/imported/wooden_spoon_tr.png-873be4da3b5be43410ea122308f9d3b1.ctex"
+uid="uid://ctkeslcjhp4qx"
+path="res://.godot/imported/Circle_Under.png-7ff8856482be02bb1a127fdf3edc51c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/workstations/stew_pot_top/wooden_spoon_tr.png"
-dest_files=["res://.godot/imported/wooden_spoon_tr.png-873be4da3b5be43410ea122308f9d3b1.ctex"]
+source_file="res://assets/textures/ui/Circle_Under.png"
+dest_files=["res://.godot/imported/Circle_Under.png-7ff8856482be02bb1a127fdf3edc51c8.ctex"]
 
 [params]
 

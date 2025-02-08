@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccsaoleicyf63"
-path="res://.godot/imported/stew_top3.png-a3a349bdbe0ed141c49c5612d532435e.ctex"
+uid="uid://dlmhvkumh44c7"
+path="res://.godot/imported/Circle_Progress.png-7f658968daf8c8fa4a5c7b0bc98f67c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/workstations/stew_pot_top/stew_top3.png"
-dest_files=["res://.godot/imported/stew_top3.png-a3a349bdbe0ed141c49c5612d532435e.ctex"]
+source_file="res://assets/textures/ui/Circle_Progress.png"
+dest_files=["res://.godot/imported/Circle_Progress.png-7f658968daf8c8fa4a5c7b0bc98f67c0.ctex"]
 
 [params]
 

@@ -3,7 +3,6 @@ extends Control
 signal complete(success: bool)
 
 @onready var inner_circle = $InnerCircle  # Draggable circle.
-@onready var timer_label = $TimerLabel  # Displays time left.
 @onready var feedback_label = $FeedbackLabel  # Shows feedback messages.
 @onready var sfx_boil_loop: AudioStreamPlayer2D = $SFX_BoilLoop
 @onready var sfx_boil_init: AudioStreamPlayer2D = $SFX_BoilInit
@@ -15,8 +14,10 @@ signal complete(success: bool)
 @onready var drag_boundary: Area2D = $DragBoundary  # New boundary area.
 @onready var boundary_radius: float = ($DragBoundary/CollisionShape2D).shape.radius  # Get boundary radius.
 @onready var stew_base: Sprite2D = $StewBase  # Sprite2D to rotate (StewBase).
+@onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar  # The progress bar
+@onready var timer_label: Label = $TimerLabel  # The timer label
 
-var required_speed = 2.0  # Minimum velocity required.
+var required_speed = 1.5  # Minimum velocity required.
 var stirring_speed = 0.0  # Current speed of stirring.
 var rotation_speed = 0.0  # Rotation speed of the stew base (adjustable).
 var target_rotation_speed = 0.0  # Target rotation speed for smooth lerp.
@@ -39,9 +40,10 @@ func reset_game() -> void:
 	rotation_speed = 0.0  # Reset rotation speed
 	target_rotation_speed = 0.0  # Reset target speed
 	elapsed_time = 0.0
-	timer_label.text = "Time Left: 5.0"
 	feedback_label.text = ""
 	feedback_label.modulate = Color(1, 1, 1)  # Reset to white.
+	texture_progress_bar.value = 0.0  # Reset progress bar
+	timer_label.text = "Time Left: 5.0"  # Reset timer label to 5.0 seconds
 	is_playing = false
 	is_dragging = false
 
@@ -64,13 +66,13 @@ func _process(delta: float) -> void:
 	# Slowly decrease stirring speed when not moving
 	if stirring_speed < required_speed:
 		feedback_label.text = "Speed Too Low!"
-		feedback_label.modulate = Color(1, 0, 0)  # Red text.
+		feedback_label.modulate = Color("#E75757")  # Red text.
 		elapsed_time = max(elapsed_time - delta, 0)  # Slowly decrease progress.
 		# Decrease rotation speed gradually when stirring speed is too low
 		target_rotation_speed = lerp(target_rotation_speed, 0.0, 0.2)
 	else:
 		feedback_label.text = "Keep Stirring!"
-		feedback_label.modulate = Color(0, 1, 0)  # Green text.
+		feedback_label.modulate = Color("#6BDE77")  # Green text.
 		elapsed_time += delta
 		# Increase rotation speed gradually when stirring speed is sufficient
 		target_rotation_speed = lerp(target_rotation_speed, stirring_speed * 0.5, 0.2)
@@ -78,12 +80,17 @@ func _process(delta: float) -> void:
 	# Gradually adjust the current rotation speed to the target rotation speed (smooth acceleration/deceleration)
 	rotation_speed = lerp(rotation_speed, target_rotation_speed, 0.2)
 
+	# Calculate time left as a percentage and update the progress bar
 	var time_left = max(5.0 - elapsed_time, 0)
-	timer_label.text = "Time Left: " + str(round(time_left * 10) / 10.0)
+	var progress_value = (1 - time_left / 5.0) * 100.0  # Convert time left to a progress percentage
+	texture_progress_bar.value = progress_value
+
+	# Update timer label text
+	timer_label.text = str(round(time_left * 10) / 10.0) + " SECONDS"
 
 	if elapsed_time >= 5.0:
 		is_playing = false
-		timer_label.text = "Time Left: 0.0"
+		timer_label.text = "0.0"  # Final time left
 		feedback_label.text = "Success!"
 		feedback_label.modulate = Color(0, 1, 0)  # Green text for success.
 		finish()

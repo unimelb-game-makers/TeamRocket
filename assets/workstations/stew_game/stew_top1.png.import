@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdtofnyg3fpkq"
-path="res://.godot/imported/stew_top2.png-81ec617af40aba3a8c212d79d3ca9d4a.ctex"
+uid="uid://tq63nq80td5t"
+path="res://.godot/imported/stew_top1.png-3ad39ddd45f5f0e70ec5429f68e01142.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/workstations/stew_pot_top/stew_top2.png"
-dest_files=["res://.godot/imported/stew_top2.png-81ec617af40aba3a8c212d79d3ca9d4a.ctex"]
+source_file="res://assets/workstations/stew_game/stew_top1.png"
+dest_files=["res://.godot/imported/stew_top1.png-3ad39ddd45f5f0e70ec5429f68e01142.ctex"]
 
 [params]
 
