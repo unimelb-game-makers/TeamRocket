@@ -49,15 +49,19 @@ delay_in_seconds = "0.0"
 
 [node name="IdleEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="0"]
 stream = ExtResource("6_glnb7")
+bus = &"Effects"
 
 [node name="AttackEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="1"]
 stream = ExtResource("7_1cnyq")
+bus = &"Effects"
 
 [node name="PursuitEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="2"]
 stream = ExtResource("8_lig7d")
+bus = &"Effects"
 
 [node name="HuntEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="3"]
 stream = ExtResource("9_ufi2l")
+bus = &"Effects"
 
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]

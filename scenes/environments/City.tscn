@@ -55,8 +55,10 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-49, -55, -42, 4029, 50
 y_sort_enabled = true
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler" index="1"]
+process_mode = 3
 stream = SubResource("AudioStreamInteractive_y1gkg")
 autoplay = true
+bus = &"Music"
 
 [node name="Dark" parent="Lighting" index="0"]
 visible = true
