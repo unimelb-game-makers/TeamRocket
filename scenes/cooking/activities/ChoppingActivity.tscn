@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://scripts/cooking/ChoppingActivity.gd" id="2_ojnvx"]
 [ext_resource type="Texture2D" uid="uid://chmpi1n4p1apn" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_pk5pp"]
 [ext_resource type="Texture2D" uid="uid://c28jljdwevpa5" path="res://assets/textures/workstation_textures/ChoppingZone_Texture.png" id="3_bjcle"]
-[ext_resource type="Texture2D" uid="uid://bxgr0wfopjh0d" path="res://assets/textures/workstation_textures/ChoppingMarker_Texture.png" id="4_cxobc"]
-[ext_resource type="Texture2D" uid="uid://cbg7dcha6kjh8" path="res://assets/interiors/kitchen/cutting board only.png" id="4_koast"]
+[ext_resource type="Texture2D" uid="uid://cbg7dcha6kjh8" path="res://assets/workstations/chopping_game/cutting board only.png" id="4_yn4oy"]
 [ext_resource type="AudioStream" uid="uid://b2acn5b5gib7i" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut1.wav" id="5_bhn3j"]
 [ext_resource type="FontFile" uid="uid://iqracr2sqomh" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="5_ihd3f"]
 [ext_resource type="AudioStream" uid="uid://vcg221bt5aiw" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut2.wav" id="6_8bat3"]
 [ext_resource type="AudioStream" uid="uid://c58ters8lxu0g" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut3.wav" id="7_3fpex"]
+[ext_resource type="Texture2D" uid="uid://bthdxl8mhhfga" path="res://assets/workstations/chopping_game/knife_top_down.png" id="7_be1gm"]
 [ext_resource type="AudioStream" uid="uid://251aww0a3858" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut4.wav" id="8_vhigo"]
 [ext_resource type="AudioStream" uid="uid://dhqafchw70kua" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut5.wav" id="9_4hnjx"]
 [ext_resource type="AudioStream" uid="uid://dxotqhdiila3a" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut6.wav" id="10_17sga"]
@@ -60,7 +60,7 @@ offset_left = 484.0
 offset_top = 250.0
 offset_right = 812.0
 offset_bottom = 457.0
-texture = ExtResource("4_koast")
+texture = ExtResource("4_yn4oy")
 
 [node name="OldProgressBar" type="ProgressBar" parent="Activity" index="1"]
 visible = false
@@ -89,30 +89,15 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("5_ihd3f")
 
-[node name="ChoppingTrack" type="TextureRect" parent="Activity" index="3"]
+[node name="PanelContainer" type="PanelContainer" parent="Activity" index="3"]
 layout_mode = 0
 offset_left = 491.0
-offset_top = 506.0
-offset_right = 801.0
-offset_bottom = 571.0
-texture = ExtResource("3_bjcle")
-
-[node name="PanelContainer" type="PanelContainer" parent="Activity/ChoppingTrack" index="0"]
-layout_mode = 0
-offset_top = -2.0
-offset_right = 315.0
-offset_bottom = 71.0
+offset_top = 456.0
+offset_right = 806.0
+offset_bottom = 504.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_vp0tf")
 
-[node name="Marker" type="TextureRect" parent="Activity" index="4"]
-layout_mode = 0
-offset_left = 643.0
-offset_top = 477.0
-offset_right = 651.0
-offset_bottom = 595.0
-texture = ExtResource("4_cxobc")
-
-[node name="ScoreLabel" type="Label" parent="Activity" index="5"]
+[node name="ScoreLabel" type="Label" parent="Activity" index="4"]
 visible = false
 layout_mode = 0
 offset_left = 320.0
@@ -121,7 +106,7 @@ offset_right = 360.0
 offset_bottom = 160.0
 text = "Progress: 0%"
 
-[node name="ResultLabel" type="Label" parent="Activity" index="6"]
+[node name="ResultLabel" type="Label" parent="Activity" index="5"]
 layout_mode = 0
 offset_left = 566.0
 offset_top = 169.0
@@ -131,10 +116,10 @@ text = "Perfect!"
 label_settings = SubResource("LabelSettings_v5067")
 horizontal_alignment = 1
 
-[node name="SFX_ChopRandomiser" type="AudioStreamPlayer2D" parent="Activity" index="7"]
+[node name="SFX_ChopRandomiser" type="AudioStreamPlayer2D" parent="Activity" index="6"]
 stream = SubResource("AudioStreamRandomizer_7m32a")
 
-[node name="IngredientImageDisplay" type="TextureRect" parent="Activity" index="8"]
+[node name="IngredientImageDisplay" type="TextureRect" parent="Activity" index="7"]
 layout_mode = 0
 offset_left = 550.0
 offset_top = 233.0
@@ -142,3 +127,25 @@ offset_right = 850.0
 offset_bottom = 533.0
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("12_ihp6r")
+
+[node name="ChoppingTrack" type="Sprite2D" parent="Activity" index="8"]
+position = Vector2(648.5, 480.125)
+scale = Vector2(0.977419, 0.580769)
+texture = ExtResource("3_bjcle")
+
+[node name="Boundary" type="TextureRect" parent="Activity" index="9"]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 250.0
+offset_right = 806.0
+offset_bottom = 504.0
+
+[node name="Marker" type="TextureRect" parent="Activity/Boundary" index="0"]
+z_index = 1
+layout_mode = 0
+offset_left = 132.0
+offset_top = -3.0
+offset_right = 180.0
+offset_bottom = 495.0
+scale = Vector2(0.85, 0.85)
+texture = ExtResource("7_be1gm")

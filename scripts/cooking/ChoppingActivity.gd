@@ -2,13 +2,14 @@ extends Control
 
 signal complete(output)
 
-@onready var chopping_track: TextureRect = $ChoppingTrack
-@onready var marker: TextureRect = $Marker
+@onready var marker: TextureRect = $Boundary/Marker  # Marker is now a child of Boundary
 @onready var result_label: Label = $ResultLabel
+@onready var boundary: TextureRect = $Boundary  # Boundary node
+@onready var score_bar: ProgressBar = $ScoreBar  # The ProgressBar node
 
 # Settings
-@export var perfect_range = 10  # The range (percentage) for the perfect region (20% of track width)
-@export var okay_range = 40     # The range (percentage) for the okay region (40% of track width)
+@export var perfect_range = 10  # The range (percentage) for the perfect region
+@export var okay_range = 40     # The range (percentage) for the okay region
 @export var target = 50         # Total chop progress required
 @export var speed = 300         # Speed of marker movement (pixels/sec)
 @export var perfect_progress = 10  # Progress for perfect chop
@@ -26,8 +27,6 @@ var selected_ingredient = Item  # To store the passed ingredients
 var chop_progress = 0
 var playing = false
 var moving_right = true
-
-@onready var score_bar: ProgressBar = $ScoreBar  # The ProgressBar node
 
 func _ready() -> void:
 	reset_game()
@@ -49,6 +48,13 @@ func set_ingredient_image(ingredient: Item) -> void:
 	else:
 		ingredient_image_display.visible = false  # Hide the display if no ingredient is provided
 
+func reset_marker_position() -> void:
+	# Center the marker inside the boundary
+	var boundary_pos = boundary.position
+	var boundary_width = boundary.size.x
+	# Position marker in the middle of the boundary (local coordinates)
+	marker.position.x = (boundary_width - marker.size.x) / 2  # Center marker within boundary width
+
 func _process(delta: float) -> void:
 	if playing:
 		move_marker(delta)
@@ -56,32 +62,27 @@ func _process(delta: float) -> void:
 			check_chop()
 
 func move_marker(delta: float) -> void:
-	# Get the bounds of the chopping track
-	var track_pos = chopping_track.global_position.x
-	var track_width = chopping_track.size.x
-	var marker_width = marker.size.x
+	var boundary_width = boundary.size.x
 	var marker_pos = marker.position
 
 	if moving_right:
 		marker_pos.x += speed * delta
-		if marker_pos.x + marker_width >= track_pos + track_width:
-			marker_pos.x = track_pos + track_width - marker_width
+		# Reverse direction if marker hits the right side of the boundary
+		if marker_pos.x + marker.size.x*marker.scale.x >= boundary_width:
+			marker_pos.x = boundary_width - marker.size.x*marker.scale.x
 			moving_right = false
 	else:
 		marker_pos.x -= speed * delta
-		if marker_pos.x <= track_pos:
-			marker_pos.x = track_pos
+		# Reverse direction if marker hits the left side of the boundary
+		if marker_pos.x <= 0:
+			marker_pos.x = 0
 			moving_right = true
 
 	marker.position = marker_pos
 
 func check_chop() -> void:
-	# Get the width of the chopping track and the global position
-	var track_width = chopping_track.size.x
-	var track_pos = chopping_track.global_position.x
-	
-	# Calculate the marker's position as a percentage of the chopping track width
-	var marker_percentage = (marker.position.x - track_pos) / track_width * 100
+	# Calculate marker's local position as a percentage of boundary width
+	var marker_percentage = (marker.position.x / boundary.size.x) * 100
 	print("Marker position: %f%%" % marker_percentage)  # Only print when the button is pressed
 
 	# Define the perfect and okay ranges based on percentages
@@ -126,8 +127,7 @@ func modulate_ingredient() -> void:
 
 func reset_game() -> void:
 	# Align marker to the start of the chopping track
-	marker.position = chopping_track.global_position + Vector2(0, -marker.size.y / 2)
-	moving_right = true
+	reset_marker_position()  # Center marker inside the boundary
 	chop_progress = 0
 	playing = false
 	if score_bar:
