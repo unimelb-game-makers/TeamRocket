@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://de7jdm6b6jkob"]
+[gd_scene load_steps=20 format=3 uid="uid://de7jdm6b6jkob"]
 
 [ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/CookingBase.tscn" id="1_3sw0t"]
 [ext_resource type="Script" path="res://scripts/cooking/ChoppingActivity.gd" id="2_ojnvx"]
@@ -22,6 +22,9 @@ texture_margin_left = 24.0
 texture_margin_top = 24.0
 texture_margin_right = 24.0
 texture_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pqpiy"]
+bg_color = Color(1, 0.638184, 0.276091, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_v5067"]
 font = ExtResource("5_ihd3f")
@@ -88,6 +91,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("5_ihd3f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pqpiy")
 
 [node name="PanelContainer" type="PanelContainer" parent="Activity" index="3"]
 layout_mode = 0

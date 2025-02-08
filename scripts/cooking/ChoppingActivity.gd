@@ -21,8 +21,7 @@ signal complete(output)
 @onready var inventory_select_list: CenterContainer = $"../InventorySelectList"
 @onready var start_button: TextureButton = $"../StartButton"
 @onready var ingredient_image_display: TextureRect = $IngredientImageDisplay
-
-var selected_ingredient = Item  # To store the passed ingredients
+@onready var cooking_scene_2: CookingScene = $".."
 
 var chop_progress = 0
 var playing = false
@@ -31,15 +30,13 @@ var moving_right = true
 func _ready() -> void:
 	reset_game()
 
-func start(ingredient: Item) -> void:
+func start() -> void:
 	playing = true
 	result_label.text = ""  # Clear result label on start
 	selected_food_list.visible = false
 	inventory_select_list.visible = false
 	start_button.visible = false
-	selected_ingredient = ingredient
-	print(selected_ingredient)
-	set_ingredient_image(selected_ingredient)
+	set_ingredient_image(cooking_scene_2.ingredient_handler.selected_ingredients[0])
 
 func set_ingredient_image(ingredient: Item) -> void:
 	if ingredient and ingredient_image_display:

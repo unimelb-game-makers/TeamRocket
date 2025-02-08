@@ -6,16 +6,15 @@ extends Control
 signal complete(output)
 
 var playing = false
-var selected_ingredient = Item
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 	
 
-func start(ingredient: Item) -> void:
-	selected_ingredient = ingredient
-	feedback_label.text = ("You made " + str(cooking_scene.activity_res.recipes[1].output_item.item_name))
-	set_ingredient_image(cooking_scene.activity_res.recipes[1].output_item)
+func start() -> void:
+	feedback_label.text = ("You made " + str(cooking_scene.recipe.output_item.item_name))
+	set_ingredient_image(cooking_scene.recipe.output_item)
 	playing = true
 	await get_tree().create_timer(3).timeout
 	finish()

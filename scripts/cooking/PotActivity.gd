@@ -27,7 +27,6 @@ var elapsed_time = 0.0  # Tracks valid stirring time.
 var initial_inner_circle_position: Vector2  # To store the editor-defined position of the inner circle.
 var is_dragging = false  # Tracks whether the user is dragging the circle.
 
-var selected_ingredient = Item  # To store the passed ingredients
 
 func _ready() -> void:
 	sfx_boil_init.play()
@@ -47,14 +46,13 @@ func reset_game() -> void:
 	is_playing = false
 	is_dragging = false
 
-func start(ingredient: Item) -> void:
+func start() -> void:
 	reset_game()
 	is_playing = true
 	sfx_boil_loop.play()
 	selected_food_list.visible = false
 	inventory_select_list.visible = false
 	start_button.visible = false
-	selected_ingredient = ingredient
 
 func _process(delta: float) -> void:
 	if not is_playing:
