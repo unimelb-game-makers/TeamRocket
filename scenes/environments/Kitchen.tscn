@@ -50,6 +50,9 @@ y_sort_enabled = true
 [node name="KitchenHandler" type="Node" parent="." index="0"]
 script = ExtResource("2_watt5")
 
+[node name="FadeToBlack" parent="GameHandler/CanvasLayer" index="0"]
+visible = false
+
 [node name="NavigationRegion2D" parent="." index="3"]
 navigation_polygon = SubResource("NavigationPolygon_5vy8l")
 
