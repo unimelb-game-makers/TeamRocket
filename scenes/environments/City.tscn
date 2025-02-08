@@ -60,6 +60,9 @@ stream = SubResource("AudioStreamInteractive_y1gkg")
 autoplay = true
 bus = &"Music"
 
+[node name="FadeToBlack" parent="GameHandler/CanvasLayer" index="0"]
+mouse_filter = 2
+
 [node name="Dark" parent="Lighting" index="0"]
 visible = true
 color = Color(0.462291, 0.462291, 0.462291, 1)
