@@ -9,6 +9,10 @@ signal complete(success: bool)
 @onready var sfx_boil_loop: AudioStreamPlayer2D = $SFX_BoilLoop
 @onready var sfx_boil_init: AudioStreamPlayer2D = $SFX_BoilInit
 
+@onready var selected_food_list: CenterContainer = $"../SelectedFoodList"
+@onready var inventory_select_list: CenterContainer = $"../InventorySelectList"
+@onready var start_button: TextureButton = $"../StartButton"
+
 var required_speed = 2.0  # Minimum velocity required.
 var stirring_speed = 0.0  # Current speed of stirring.
 var is_playing = false
@@ -16,6 +20,8 @@ var elapsed_time = 0.0  # Tracks valid stirring time.
 
 var initial_inner_circle_position: Vector2  # To store the editor-defined position of the inner circle.
 var is_dragging = false  # Tracks whether the user is dragging the circle.
+
+var selected_ingredient = Item  # To store the passed ingredients
 
 func _ready() -> void:
 	# Store the position of the inner circle as defined in the editor.
@@ -35,10 +41,15 @@ func reset_game() -> void:
 	is_playing = false
 	is_dragging = false
 
-func start() -> void:
+func start(ingredient: Item) -> void:
 	reset_game()
 	is_playing = true
 	sfx_boil_loop.play()
+	selected_food_list.visible = false
+	inventory_select_list.visible = false
+	start_button.visible = false
+	selected_ingredient = ingredient
+
 	
 
 func _process(delta: float) -> void:
