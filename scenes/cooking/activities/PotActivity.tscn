@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bggmbfoo43i86"]
+[gd_scene load_steps=13 format=3 uid="uid://bggmbfoo43i86"]
 
 [ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/CookingBase.tscn" id="1_bg34l"]
 [ext_resource type="Script" path="res://scripts/cooking/PotActivity.gd" id="2_gp5o6"]
@@ -18,6 +18,9 @@ texture_margin_top = 24.0
 texture_margin_right = 24.0
 texture_margin_bottom = 24.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ihmn"]
+radius = 83.1505
+
 [node name="CookingScene" instance=ExtResource("1_bg34l")]
 activity_res = ExtResource("2_ykihi")
 
@@ -36,17 +39,17 @@ script = ExtResource("2_gp5o6")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Activity" index="0"]
 position = Vector2(645.995, 347.938)
-scale = Vector2(0.364327, 0.364327)
+scale = Vector2(0.385766, 0.385766)
 texture = ExtResource("7_ykhlr")
 
-[node name="Sprite2D" type="Sprite2D" parent="Activity" index="1"]
+[node name="StewBase" type="Sprite2D" parent="Activity" index="1"]
 position = Vector2(646, 349)
-scale = Vector2(0.363935, 0.363935)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("6_xa1cm")
 
 [node name="OuterCircle" type="Sprite2D" parent="Activity" index="2"]
-position = Vector2(643, 338.846)
-scale = Vector2(0.357724, 0.357724)
+position = Vector2(643, 338.165)
+scale = Vector2(0.391781, 0.391781)
 texture = ExtResource("5_vbh60")
 offset = Vector2(0, 20)
 
@@ -75,3 +78,10 @@ stream = ExtResource("6_8i5cn")
 
 [node name="SFX_BoilInit" type="AudioStreamPlayer2D" parent="Activity" index="7"]
 stream = ExtResource("7_yt634")
+
+[node name="DragBoundary" type="Area2D" parent="Activity" index="8"]
+position = Vector2(696, 264)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Activity/DragBoundary" index="0"]
+position = Vector2(-58, 73)
+shape = SubResource("CircleShape2D_3ihmn")
