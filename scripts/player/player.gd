@@ -64,7 +64,7 @@ func _process(_delta: float) -> void:
 				interactable.interact()
 			
 	if (Input.is_action_just_pressed("inventory")):
-		print(Inventory_Global.inventory_array)
+		pass
 		
 	if (is_moving and curr_speed > CROUCH_SPEED):
 		rifle.inaccuracy_limit += 0.05
