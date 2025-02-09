@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://r0tcq7hhhit4"]
+[gd_scene load_steps=5 format=3 uid="uid://4it65gtsq581"]
 
 [ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_7vxoe"]
-[ext_resource type="PackedScene" uid="uid://bvmlxiyx7jesg" path="res://scenes/cooking/activities/FryActivity.tscn" id="2_uc0tk"]
+[ext_resource type="PackedScene" uid="uid://cbh34urkn0wrk" path="res://scenes/cooking/activities/FryActivity.tscn" id="2_uc0tk"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6d15y"]
 size = Vector2(140, 160)
