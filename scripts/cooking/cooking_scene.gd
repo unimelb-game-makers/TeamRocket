@@ -30,6 +30,9 @@ func _on_start_button_pressed() -> void:
 		ingredient_handler.visible = false
 		activity_game.visible = true
 		activity_game.start()
+	else:
+		print("No valid recipe found.")
+		
 
 func _on_ingredient_handler_update_list() -> void:
 	inventory_select_list.update_inventory_list()
