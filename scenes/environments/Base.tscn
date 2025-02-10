@@ -42,7 +42,7 @@ chest_scene = ExtResource("3_ld3e5")
 
 [node name="InteractableHolder" type="Node2D" parent="InteractableHandler"]
 
-[node name="ItemHandler" type="Node" parent="."]
+[node name="ItemHandler" type="Node" parent="." groups=["ItemHandler"]]
 script = ExtResource("1_p3mrr")
 
 [node name="Player" parent="." instance=ExtResource("1_2xv6m")]
