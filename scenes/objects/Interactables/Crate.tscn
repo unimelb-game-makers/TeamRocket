@@ -1,11 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8ni7apwy8dyx"]
+[gd_scene load_steps=5 format=3 uid="uid://c8ni7apwy8dyx"]
 
 [ext_resource type="Texture2D" uid="uid://fw7m087mo0ka" path="res://assets/Park/Objects/crate.png" id="1_0l3g5"]
 [ext_resource type="Script" path="res://scripts/objects/interactables/storage.gd" id="1_td6ss"]
 [ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="2_rw46d"]
-[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="3_slyib"]
-[ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="4_ybecm"]
-[ext_resource type="Resource" uid="uid://bicl6a3rvlqmi" path="res://resources/items/onion_chopped.tres" id="5_on7tt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o8un"]
 size = Vector2(219, 161)
@@ -13,7 +10,7 @@ size = Vector2(219, 161)
 [node name="Crate" type="Node2D"]
 script = ExtResource("1_td6ss")
 slots_num = 9
-items = Array[ExtResource("2_rw46d")]([ExtResource("3_slyib"), ExtResource("4_ybecm"), ExtResource("5_on7tt"), null, null, null, null, null, null])
+items = Array[ExtResource("2_rw46d")]([null, null, null, null, null, null, null, null, null])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0l3g5")

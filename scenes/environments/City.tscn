@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=29 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="AudioStream" uid="uid://bd77f8tivpj3o" path="res://assets/sfx/team rocket sfx/area themes/central district/central district intro.wav" id="2_auyuh"]
@@ -19,7 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://drxotm8osb7q0" path="res://scenes/objects/Lights/StreetlightRight.tscn" id="16_4lsvx"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="17_jlhq4"]
 [ext_resource type="PackedScene" uid="uid://cd6fc47tx6cyd" path="res://scenes/objects/Lake.tscn" id="18_l3vkc"]
-[ext_resource type="PackedScene" uid="uid://wxmwtggc58kw" path="res://scenes/enemy/enemy_dasher.tscn" id="19_sv1o8"]
+[ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/enemy_dasher.tscn" id="19_sv1o8"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="21_5cojw"]
+[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/enemy_chicken.tscn" id="22_ykjv2"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_y1gkg"]
 clip_count = 2
@@ -130,10 +132,7 @@ position = Vector2(3860, 1571)
 [node name="Streetlight4" parent="NavigationRegion2D/Map" index="13" instance=ExtResource("16_4lsvx")]
 position = Vector2(1319, 2869)
 
-[node name="Crate" parent="NavigationRegion2D/Map" index="14" instance=ExtResource("17_jlhq4")]
-position = Vector2(2199, 1663)
-
-[node name="Lake" parent="NavigationRegion2D/Map" index="15" instance=ExtResource("18_l3vkc")]
+[node name="Lake" parent="NavigationRegion2D/Map" index="14" instance=ExtResource("18_l3vkc")]
 position = Vector2(4236, 3577)
 
 [node name="Walls" type="Node2D" parent="NavigationRegion2D" index="1"]
@@ -166,7 +165,20 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Walls/Down" index="0"]
 shape = SubResource("WorldBoundaryShape2D_sbhhl")
 
-[node name="Items" parent="." index="4" groups=["ItemHandler"]]
+[node name="SpawnPoint1" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="0"]
+position = Vector2(2523, 1646)
+
+[node name="SpawnPoint2" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="1"]
+position = Vector2(162, 1286)
+
+[node name="SpawnPoint3" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="2"]
+position = Vector2(1019, 992)
+
+[node name="Node2D" type="Node2D" parent="InteractableHandler" index="1"]
+y_sort_enabled = true
+
+[node name="Crate" parent="InteractableHandler/Node2D" index="0" instance=ExtResource("17_jlhq4")]
+position = Vector2(2271, 1607)
 
 [node name="Player" parent="." index="5"]
 position = Vector2(1727, 1598)
@@ -178,7 +190,19 @@ limit_right = 5000
 limit_bottom = 4000
 limit_smoothed = true
 
-[node name="Dasher" parent="Enemies" index="0" instance=ExtResource("19_sv1o8")]
-position = Vector2(2263, 2272)
+[node name="Node2D" type="Node2D" parent="." index="6"]
 
-[node name="Node2D" type="Node2D" parent="." index="7"]
+[node name="LandEnemySpawnAreas" parent="EnemyHandler/SpawnAreas" index="0" instance=ExtResource("21_5cojw")]
+position = Vector2(3274, 2731)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
+[node name="LandEnemySpawnAreas2" parent="EnemyHandler/SpawnAreas" index="1" instance=ExtResource("21_5cojw")]
+position = Vector2(602, 3363)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
+[node name="LandEnemySpawnAreas3" parent="EnemyHandler/SpawnAreas" index="2" instance=ExtResource("21_5cojw")]
+position = Vector2(2514, 435)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0

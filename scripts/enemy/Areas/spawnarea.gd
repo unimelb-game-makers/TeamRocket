@@ -28,7 +28,7 @@ func _ready() -> void:
 # Make sure 
 func spawn_single():
 	var e = allowed_enemies.pick_random().instantiate()
-	e.global_position = global_position + collisionshape.radius * get_random_point()
+	e.global_position = global_position + collisionshape.shape.radius * get_random_point()
 	
 	# Add child to root node
 	get_tree().root.add_child(e)
@@ -39,7 +39,7 @@ func spawn_batch(amount: int):
 		spawn_single()
 
 func get_random_point():
-	var r = collisionshape.radius
+	var r = collisionshape.shape.radius
 	var x = sin(randf_range(-r, r))
 	var y = cos(randf_range(-r, r))
 	return Vector2(x , y)
