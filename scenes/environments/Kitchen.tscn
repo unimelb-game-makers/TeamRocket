@@ -149,23 +149,23 @@ position = Vector2(793, 232)
 [node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("9_5i564")]
 position = Vector2(900, 500)
 
-[node name="Item1" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("5_vbmf8")]
+[node name="Item1" parent="ItemHandler" index="0" instance=ExtResource("5_vbmf8")]
 position = Vector2(386, 317)
 item = ExtResource("9_2oqyj")
 
-[node name="Item2" parent="InteractableHandler/InteractableHolder" index="4" instance=ExtResource("5_vbmf8")]
+[node name="Item2" parent="ItemHandler" index="1" instance=ExtResource("5_vbmf8")]
 position = Vector2(243, 339)
 item = ExtResource("7_083nx")
 
-[node name="Item3" parent="InteractableHandler/InteractableHolder" index="5" instance=ExtResource("5_vbmf8")]
+[node name="Item3" parent="ItemHandler" index="2" instance=ExtResource("5_vbmf8")]
 position = Vector2(294, 317)
 item = ExtResource("8_f86gd")
 
-[node name="Item4" parent="InteractableHandler/InteractableHolder" index="6" instance=ExtResource("5_vbmf8")]
+[node name="Item4" parent="ItemHandler" index="3" instance=ExtResource("5_vbmf8")]
 position = Vector2(480, 312)
 item = ExtResource("12_xaknj")
 
-[node name="Item5" parent="InteractableHandler/InteractableHolder" index="7" instance=ExtResource("5_vbmf8")]
+[node name="Item5" parent="ItemHandler" index="4" instance=ExtResource("5_vbmf8")]
 position = Vector2(561, 312)
 item = ExtResource("15_kfbqe")
 
