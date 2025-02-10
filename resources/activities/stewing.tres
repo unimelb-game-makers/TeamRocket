@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://resources/resource_scripts/activity.gd" id="2_rqhk3"]
 [ext_resource type="Resource" uid="uid://cjpgf0lpg0byq" path="res://resources/recipes/bolognaise_sauce_rec.tres" id="3_3l16s"]
 [ext_resource type="Resource" uid="uid://g4a47xmw2c3d" path="res://resources/recipes/spaghetti_bolognaise_rec.tres" id="4_n34fb"]
-[ext_resource type="Resource" uid="uid://bftrkdg52hqp7" path="res://resources/recipes/spaghetti_cooked_rec.tres" id="5_hwr6w"]
+[ext_resource type="Resource" uid="uid://dq1w8y8sr0c1f" path="res://resources/recipes/spaghetti_cooked_rec.tres" id="5_hwr6w"]
 
 [resource]
 script = ExtResource("2_rqhk3")
