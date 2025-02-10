@@ -10,6 +10,14 @@ Minigame for frying ingredients.
 6. Ingredients have 2 sides (for simplicity's sake)
 """
 
+"""
+Permanent note (remove this if the shader script is removed):
+There is a shader script attached to "FryingPan", intended
+to manage visual indicators for point ranges on the pan
+Currently, this is unused, as we just use a texture2D instead
+"""
+
+
 signal complete(output)
 
 @onready var frying_pan: Sprite2D = $FryingPan
@@ -17,9 +25,16 @@ signal complete(output)
 @onready var warning: Label = $FryingPan/Ingredient/Label
 @onready var progress_debug: Label = $ProgressDebug
 
-# Frying pan size
-const PAN_SIZE = 60
-const PAN_SIZE_SQUARED = 3600
+## Radius of frying pan
+@export var PAN_SIZE: float = 60
+# We do this calculation just once and store it, since it
+# will be used a lot
+var PAN_SIZE_SQUARED = PAN_SIZE * PAN_SIZE
+## The 2nd outermost range for points scoring.
+## The further out, the less score is rewarded.
+#@export var RANGE_2: float = 40
+#@export var RANGE_3: float = 20
+#@export var RANGE_4: float = 10
 
 # How long to fry for
 var progress: Array = [0, 0]
@@ -51,7 +66,6 @@ func start() -> void:
 	playing = true
 	cooking = true
 	drop_ingredient()
-	
 
 
 func _process(delta: float) -> void:
@@ -62,7 +76,7 @@ func _process(delta: float) -> void:
 		# This actually always works; if side == 0 -> progress[-1] -> progress[1]
 		# if side == 1 -> progress[0]
 		if cooking:
-			progress[side - 1] += delta * calculate_area()
+			progress[side - 1] += delta * calculate_area(delta)
 		if progress[0] >= target_progress and progress[1] >= target_progress:
 			print("Fried successfully!")
 			fried += 1
@@ -90,8 +104,8 @@ func _physics_process(delta: float) -> void:
 		if sizzle_timer <= 0:
 			# This moves the ingredient randomly
 			sizzle_timer = randf_range(1, 4)
-			velocity *= randf_range(0.7, 1.2)
-			velocity += Vector2(randf_range(0, 5), randf_range(0, 5))
+			velocity *= randf_range(0.5, 2)
+			velocity += Vector2(randf_range(-15, 15), randf_range(-15, 15))
 	move_ingredient(delta)
 
  
@@ -102,13 +116,16 @@ func move_ingredient(delta: float) -> void:
 		ingr.position = ingr.position.limit_length(PAN_SIZE)
 
 
-func calculate_area() -> float:
+func calculate_area(delta) -> float:
 	var d = ingr.position.length_squared()
-	if d < PAN_SIZE_SQUARED / 4.0:
+	if d < PAN_SIZE_SQUARED / 36.0:
+		$FryingPan/Rings.modulate.a = clampf($FryingPan/Rings.modulate.a - delta, 0, 1)
 		return 1
-	if d < PAN_SIZE_SQUARED / 2.0:
-		return 0.75
-	if d < 3 * PAN_SIZE_SQUARED / 4.0:
+	if d < PAN_SIZE_SQUARED / 9.0:
+		$FryingPan/Rings.modulate.a = clampf($FryingPan/Rings.modulate.a - delta, 0, 1)
+		return 0.5
+	$FryingPan/Rings.modulate.a = clampf($FryingPan/Rings.modulate.a + delta, 0, 1)
+	if d < 4 * PAN_SIZE_SQUARED / 9.0:
 		return 0.25
 	return 0.1
 
