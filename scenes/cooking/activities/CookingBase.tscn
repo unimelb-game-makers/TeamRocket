@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/cooking/ingredient_handler.gd" id="2_tf1d0"]
 [ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/food_slot.tscn" id="3_ndn03"]
 [ext_resource type="Texture2D" uid="uid://dgcn3fv1c6r3e" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="5_a7f7f"]
-[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://resources/inventory_select_list.tscn" id="5_ocogg"]
+[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="5_ocogg"]
 [ext_resource type="Texture2D" uid="uid://b1nr4nwk72xrh" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown_pressed.png" id="6_5lhg1"]
 
 [node name="CookingScene" type="Control"]
