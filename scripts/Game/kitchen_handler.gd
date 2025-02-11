@@ -11,4 +11,10 @@ func switch_to_city():
 func submit_food(item: Item):
 	var buff_i = randi_range(0,3)
 	print(buff_i)
-	
+	match buff_i:
+		1:
+			Globals.player_hp_increase += 0.2
+		2:
+			Globals.player_speed_increase += 0.2
+		3:
+			Globals.player_damage_increase += 0.2

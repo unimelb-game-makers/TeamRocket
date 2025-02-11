@@ -185,3 +185,4 @@ offset_top = -2.0
 offset_bottom = -2.0
 
 [connection signal="body_entered" from="NavigationRegion2D/Map/ExitArea" to="KitchenHandler" method="_on_exit_area_body_entered"]
+[connection signal="submit" from="InteractableHandler/InteractableHolder/Altar" to="KitchenHandler" method="submit_food"]
