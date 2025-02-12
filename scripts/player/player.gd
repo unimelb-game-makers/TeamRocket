@@ -113,11 +113,14 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 		if roll_cd_timer >= ROLL_COOLDOWN:
 			can_roll = true
 	
-	
 	# Handle Aim State
 	if Input.is_action_pressed("aim"):
 		statechart.send_event("enter_aiming_mode")
-	
+	if Input.is_action_just_released("aim"):
+		statechart.send_event("exit_aiming_mode")
+
+
+
 
 # Polling (single key presses)
 func _on_basic_state_input(event: InputEvent) -> void:
@@ -156,3 +159,10 @@ func _on_roll_state_physics_processing(delta: float) -> void:
 func roll_speed(elapsed_time : float) -> float:
 	var t : float = elapsed_time / ROLL_DURATION
 	return ROLL_SPEED - (ROLL_SPEED - CROUCH_SPEED) * t * t
+
+
+func _on_aiming_state_entered() -> void:
+	rifle.gun_enabled = true
+
+func _on_aiming_state_exited() -> void:
+	rifle.gun_enabled = false
