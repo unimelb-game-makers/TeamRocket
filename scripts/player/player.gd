@@ -171,19 +171,3 @@ func _on_roll_state_physics_processing(delta: float) -> void:
 func roll_speed(elapsed_time : float) -> float:
 	var t : float = elapsed_time / ROLL_DURATION
 	return ROLL_SPEED - (ROLL_SPEED - CROUCH_SPEED) * t * t
-	
-	# Ease in-ease out curve
-	#var t = elapsed_time / ROLL_DURATION
-	#var t2 = t * t
-	#var t3 = t2 * t
-	#var curve = 3 * t2 - 2 * t3
-	#return ROLL_SPEED - (ROLL_SPEED - CROUCH_SPEED) * curve
-	
-	# Adjust curve better
-	#var roll_start_speed_multiplier = 1.5
-	#var roll_end_speed_multiplier = 0.5
-	#var t = elapsed_time / ROLL_DURATION
-	#var curve = 1 - t * t  # Quick start and smooth slowdown
-	#var start_speed = ROLL_SPEED * roll_start_speed_multiplier
-	#var end_speed = CROUCH_SPEED * roll_end_speed_multiplier
-	#return start_speed - (start_speed - end_speed) * curve
