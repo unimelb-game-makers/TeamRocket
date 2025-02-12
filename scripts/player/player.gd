@@ -68,9 +68,9 @@ func _process(_delta: float) -> void:
 		pass
 		
 	if (is_moving and curr_speed > CROUCH_SPEED):
-		rifle.inaccuracy_limit += 0.05
+		rifle.inaccuracy += 0.05
 	else:
-		rifle.inaccuracy_limit -= 0.025
+		rifle.inaccuracy -= 0.025
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -162,7 +162,7 @@ func roll_speed(elapsed_time : float) -> float:
 
 
 func _on_aiming_state_entered() -> void:
-	rifle.gun_enabled = true
+	rifle.enter_aiming_mode()
 
 func _on_aiming_state_exited() -> void:
-	rifle.gun_enabled = false
+	rifle.exit_aiming_mode()
