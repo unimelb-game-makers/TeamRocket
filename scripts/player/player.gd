@@ -34,6 +34,7 @@ var can_roll : bool = true
 # ----- Node References ----- 
 @onready var interact_radius: Area2D = $InteractRadius
 @onready var rifle: Node2D = $Rifle
+@onready var statechart: StateChart = $StateChart
 
 # ----- Player Stats -----
 @export var max_health = 50
@@ -96,15 +97,15 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 	
 	# Handle Motion State
 	if not is_moving: # To Idle
-		$StateChart.send_event("wasd_release") # Sprint to Idle, Walk to Idle
+		statechart.send_event("wasd_release") # Sprint to Idle, Walk to Idle
 	else: # To Walk
-		$StateChart.send_event("wasd_hold") # Idle To Walk
+		statechart.send_event("wasd_hold") # Idle To Walk
 	
 	# Handle Basic State
 	if Input.is_action_pressed("sprint") and is_moving:
-		$StateChart.send_event("shift_hold") # Stance to Sprint
+		statechart.send_event("shift_hold") # Stance to Sprint
 	if Input.is_action_just_released("sprint"):
-		$StateChart.send_event("shift_release") # Sprint To Walk
+		statechart.send_event("shift_release") # Sprint To Walk
 	
 	# Roll cooldown
 	if not can_roll:
@@ -115,16 +116,16 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 	
 	# Handle Aim State
 	if Input.is_action_pressed("aim"):
-		$StateChart.send_event("enter_aiming_mode")
+		statechart.send_event("enter_aiming_mode")
 	
 
 # Polling (single key presses)
 func _on_basic_state_input(event: InputEvent) -> void:
 	# Rolling supercedes all states
 	if event.is_action_pressed("roll") and can_roll:
-		$StateChart.send_event("space_press")
+		statechart.send_event("space_press")
 	if event.is_action_pressed("crouch"):
-		$StateChart.send_event("ctrl_press") # Crouch <-> Standing
+		statechart.send_event("ctrl_press") # Crouch <-> Standing
 
 
 ### Rolling ###
@@ -133,7 +134,7 @@ func _on_basic_state_input(event: InputEvent) -> void:
 
 func _on_roll_state_entered() -> void:
 	if direction == Vector2.ZERO:
-		$StateChart.send_event("roll_finished")
+		statechart.send_event("roll_finished")
 	
 	roll_timer = 0
 
@@ -145,7 +146,7 @@ func _on_roll_state_physics_processing(delta: float) -> void:
 	roll_timer += delta
 	
 	if roll_timer >= ROLL_DURATION:
-		$StateChart.send_event("roll_finished")
+		statechart.send_event("roll_finished")
 	else:
 		curr_speed = roll_speed(roll_timer)
 		velocity = direction * curr_speed
