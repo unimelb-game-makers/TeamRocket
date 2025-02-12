@@ -124,23 +124,23 @@ delay_in_seconds = "0.0"
 [node name="Stance" type="Node" parent="StateChart/Movement/Basic"]
 script = ExtResource("2_44kvc")
 
-[node name="Aiming" type="Node" parent="StateChart/Movement/Basic/Stance"]
+[node name="Aim" type="Node" parent="StateChart/Movement/Basic/Stance"]
 script = ExtResource("3_u8x7w")
 initial_state = NodePath("Unarmed")
 
-[node name="Unarmed" type="Node" parent="StateChart/Movement/Basic/Stance/Aiming"]
+[node name="Unarmed" type="Node" parent="StateChart/Movement/Basic/Stance/Aim"]
 script = ExtResource("4_px21u")
 
-[node name="Transition" type="Node" parent="StateChart/Movement/Basic/Stance/Aiming/Unarmed"]
+[node name="To Aiming" type="Node" parent="StateChart/Movement/Basic/Stance/Aim/Unarmed"]
 script = ExtResource("5_6l3qh")
 to = NodePath("../../Aiming")
 event = &"enter_aiming_mode"
 delay_in_seconds = "0.0"
 
-[node name="Aiming" type="Node" parent="StateChart/Movement/Basic/Stance/Aiming"]
+[node name="Aiming" type="Node" parent="StateChart/Movement/Basic/Stance/Aim"]
 script = ExtResource("4_px21u")
 
-[node name="Transition" type="Node" parent="StateChart/Movement/Basic/Stance/Aiming/Aiming"]
+[node name="To Unarmed" type="Node" parent="StateChart/Movement/Basic/Stance/Aim/Aiming"]
 script = ExtResource("5_6l3qh")
 to = NodePath("../../Unarmed")
 event = &"exit_aiming_mode"
