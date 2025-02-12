@@ -42,6 +42,7 @@ func _ready() -> void:
 	fire_timer.wait_time = 1.0 / FIRE_RATE
 	reload_timer.wait_time = 1.0 / RELOAD_SPEED
 
+
 func _process(_delta):
 	
 	if (gun_enabled):
@@ -66,6 +67,9 @@ func _process(_delta):
 				bullets -= 1
 				fire_timer.start()
 				
+				# Add inaccuracy
+				inaccuracy = MAX_INACCURACY
+				
 		if Input.is_action_just_pressed("reload"):
 			if (fire_timer.is_stopped() and reload_timer.is_stopped()):
 				reload_timer.start()
@@ -77,11 +81,13 @@ func update_aiming_ui() -> void:
 	aiming_curve.angle = inaccuracy
 	aiming_curve.queue_redraw()
 
-
 func enter_aiming_mode():
 	aiming_mode = true
-	
 	inaccuracy = MAX_INACCURACY
+	
+	aiming_curve.visible = true
 
 func exit_aiming_mode():
 	aiming_mode = false
+	
+	aiming_curve.visible = false
