@@ -111,6 +111,12 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 		roll_cd_timer += delta
 		if roll_cd_timer >= ROLL_COOLDOWN:
 			can_roll = true
+	
+	
+	# Handle Aim State
+	if Input.is_action_pressed("aim"):
+		$StateChart.send_event("enter_aiming_mode")
+	
 
 # Polling (single key presses)
 func _on_basic_state_input(event: InputEvent) -> void:
