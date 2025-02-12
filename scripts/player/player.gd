@@ -46,6 +46,7 @@ var health = max_health:
 
 func _ready() -> void:
 	Globals.player = self
+	max_health *= 1 + Globals.player_hp_increase
 
 func _process(_delta: float) -> void:
 	# Code for item pickup

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=27 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" path="res://scenes/cooking/workbenches/assembly_plate.tscn" id="9_5i564"]
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="12_xaknj"]
 [ext_resource type="Resource" path="res://resources/items/spaghetti_raw.tres" id="15_kfbqe"]
+[ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5vy8l"]
 
@@ -50,6 +51,12 @@ y_sort_enabled = true
 
 [node name="KitchenHandler" type="Node" parent="." index="0"]
 script = ExtResource("2_watt5")
+
+[node name="GameHandler" parent="." index="1"]
+TIMER = false
+
+[node name="CanvasLayer" parent="GameHandler" index="1"]
+visible = false
 
 [node name="NavigationRegion2D" parent="." index="3"]
 navigation_polygon = SubResource("NavigationPolygon_5vy8l")
@@ -136,33 +143,36 @@ offset_bottom = 10.0
 texture = SubResource("GradientTexture1D_dupnr")
 metadata/_edit_use_anchors_ = true
 
-[node name="ChoppingBoard" parent="Interactables" index="0" instance=ExtResource("3_xytjo")]
+[node name="ChoppingBoard" parent="InteractableHandler/InteractableHolder" index="0" instance=ExtResource("3_xytjo")]
 z_index = 1
 position = Vector2(637, 536)
 
-[node name="Pot" parent="Interactables" index="1" instance=ExtResource("4_hcw55")]
+[node name="Pot" parent="InteractableHandler/InteractableHolder" index="1" instance=ExtResource("4_hcw55")]
 position = Vector2(793, 232)
 
-[node name="AssemblyPlate" parent="Interactables" index="2" instance=ExtResource("9_5i564")]
+[node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("9_5i564")]
 position = Vector2(900, 500)
 
-[node name="Item" parent="Items" index="0" instance=ExtResource("5_vbmf8")]
+[node name="Altar" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("16_7km4m")]
+position = Vector2(85, 427)
+
+[node name="Item1" parent="ItemHandler" index="0" instance=ExtResource("5_vbmf8")]
 position = Vector2(386, 317)
 item = ExtResource("9_2oqyj")
 
-[node name="Item2" parent="Items" index="1" instance=ExtResource("5_vbmf8")]
+[node name="Item2" parent="ItemHandler" index="1" instance=ExtResource("5_vbmf8")]
 position = Vector2(243, 339)
 item = ExtResource("7_083nx")
 
-[node name="Item3" parent="Items" index="2" instance=ExtResource("5_vbmf8")]
+[node name="Item3" parent="ItemHandler" index="2" instance=ExtResource("5_vbmf8")]
 position = Vector2(294, 317)
 item = ExtResource("8_f86gd")
 
-[node name="Item4" parent="Items" index="3" instance=ExtResource("5_vbmf8")]
+[node name="Item4" parent="ItemHandler" index="3" instance=ExtResource("5_vbmf8")]
 position = Vector2(480, 312)
 item = ExtResource("12_xaknj")
 
-[node name="Item5" parent="Items" index="4" instance=ExtResource("5_vbmf8")]
+[node name="Item5" parent="ItemHandler" index="4" instance=ExtResource("5_vbmf8")]
 position = Vector2(561, 312)
 item = ExtResource("15_kfbqe")
 
@@ -175,3 +185,4 @@ offset_top = -2.0
 offset_bottom = -2.0
 
 [connection signal="body_entered" from="NavigationRegion2D/Map/ExitArea" to="KitchenHandler" method="_on_exit_area_body_entered"]
+[connection signal="submit" from="InteractableHandler/InteractableHolder/Altar" to="KitchenHandler" method="submit_food"]

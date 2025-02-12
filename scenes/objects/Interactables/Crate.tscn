@@ -30,6 +30,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="ItemContainers" type="GridContainer" parent="UI"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 100.0
 offset_top = -200.0
@@ -37,3 +38,5 @@ offset_right = 235.0
 offset_bottom = -50.0
 scale = Vector2(1.5, 1.5)
 columns = 3
+
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

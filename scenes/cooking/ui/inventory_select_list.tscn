@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://tq5lx00lkfo2"]
 
-[ext_resource type="Script" path="res://scripts/ui/inventory_select_list.gd" id="1_gio1f"]
-[ext_resource type="Script" path="res://scripts/ui/item_containers.gd" id="2_33a36"]
-[ext_resource type="PackedScene" uid="uid://cik7cck2oky1w" path="res://scenes/ui/item_inventory_button.tscn" id="3_6m847"]
+[ext_resource type="Script" path="res://scripts/ui/inventory_select_list.gd" id="1_cqgrg"]
+[ext_resource type="Script" path="res://scripts/ui/item_containers.gd" id="2_kwblm"]
+[ext_resource type="PackedScene" uid="uid://cik7cck2oky1w" path="res://scenes/ui/item_inventory_button.tscn" id="3_pmgis"]
 
 [node name="InventorySelectList" type="CenterContainer"]
 offset_top = 2.0
 offset_right = 258.0
 offset_bottom = 302.0
-script = ExtResource("1_gio1f")
+script = ExtResource("1_cqgrg")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 custom_minimum_size = Vector2(250, 300)
@@ -19,7 +19,7 @@ horizontal_scroll_mode = 0
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-script = ExtResource("2_33a36")
-item_container_scene = ExtResource("3_6m847")
+script = ExtResource("2_kwblm")
+item_container_scene = ExtResource("3_pmgis")
 
 [connection signal="selected_item" from="ScrollContainer/InventoryContainer" to="." method="select_item"]

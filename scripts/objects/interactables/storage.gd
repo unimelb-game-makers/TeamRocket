@@ -6,7 +6,7 @@ extends Node
 
 @export var item_slot_scene: PackedScene = preload("res://scenes/cooking/ui/food_slot.tscn")
 
-@onready var item_containers: GridContainer = $UI/ItemContainers
+@onready var item_containers: GridContainer = %ItemContainers
 
 signal get_item(item, amount)
 
@@ -38,3 +38,6 @@ func update_display():
 	var slots = item_containers.get_children()
 	for slot in range(slots.size()):
 		slots[slot].set_ingredient(items[slot])
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	$UI.hide()
