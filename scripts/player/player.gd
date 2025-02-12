@@ -120,27 +120,6 @@ func _on_basic_state_input(event: InputEvent) -> void:
 	if event.is_action_pressed("crouch"):
 		$StateChart.send_event("ctrl_press") # Crouch <-> Standing
 
-### Changing player size manually (until player sprite comes around) ###
-
-func _on_crouched_state_entered() -> void:
-	curr_speed = CROUCH_SPEED
-	curr_accel = CROUCH_ACCEL
-	change_size(20)
-
-func _on_standing_state_entered() -> void:
-	curr_speed = STAND_SPEED
-	curr_accel = STAND_ACCEL
-	change_size(40)
-
-func _on_run_state_entered() -> void:
-	curr_speed = RUN_SPEED
-	curr_accel = RUN_ACCEL
-	change_size(60)
-
-func change_size(length : int) -> void:
-	pass
-	#$ColorRect.size.y = length
-	#$ColorRect.position.y = -length
 
 ### Rolling ###
 
@@ -151,7 +130,6 @@ func _on_roll_state_entered() -> void:
 		$StateChart.send_event("roll_finished")
 	
 	roll_timer = 0
-	change_size(10)
 
 func _on_roll_state_exited() -> void:
 	can_roll = false # For roll cooldown
