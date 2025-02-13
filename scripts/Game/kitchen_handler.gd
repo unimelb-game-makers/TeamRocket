@@ -17,3 +17,5 @@ func submit_food(item: Item):
 			Globals.player_speed_increase += 0.2
 		3:
 			Globals.player_damage_increase += 0.2
+			
+	Globals.inventory_ui.update_character_stats()

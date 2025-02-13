@@ -1,7 +1,6 @@
 extends Control
 
-@onready var inventory: Control = $CanvasLayer/InventoryCenterer/Inventory
-
+@onready var inventory: Control = $CanvasLayer/Inventory
 
 @onready var cooking_handler: Control = $CanvasLayer/CookingHandler
 var inventory_container: Control
