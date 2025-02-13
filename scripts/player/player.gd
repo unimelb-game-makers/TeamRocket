@@ -71,6 +71,7 @@ func _process(_delta: float) -> void:
 		rifle.inaccuracy_limit -= 0.025
 	
 	if velocity == Vector2(0,0):
+		animated_sprite_2d.scale = Vector2(0.12, 0.12)
 		animated_sprite_2d.play("idle")
 
 func _physics_process(delta: float) -> void:
@@ -118,12 +119,14 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 	# If x movement > 0 and y movement < x then left/right movement
 	# Else if y movement > x then up/down movement
 	if (abs(direction.x) > abs(direction.y)):
+		animated_sprite_2d.scale = Vector2(0.14, 0.14)
 		# Left/Right movement
 		if (direction.x > 0):
 			animated_sprite_2d.play("move_right")
 		else:
 			animated_sprite_2d.play("move_left")
 	else:
+		animated_sprite_2d.scale = Vector2(0.12, 0.12)
 		if (direction.y > 0):
 			animated_sprite_2d.play("move_down")
 		else:

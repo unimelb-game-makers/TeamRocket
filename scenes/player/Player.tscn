@@ -189,6 +189,7 @@ one_shot = true
 one_shot = true
 
 [node name="RifleSprite" type="Sprite2D" parent="Rifle"]
+visible = false
 z_index = 1
 position = Vector2(36, 9)
 scale = Vector2(1.2, 1.2)
@@ -218,7 +219,7 @@ default_color = Color(1, 1, 1, 0.239216)
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_web4h")
 animation = &"idle"
-frame_progress = 0.543276
+frame_progress = 0.958032
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
