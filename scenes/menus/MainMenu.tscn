@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://eg1evlw6ow0i"]
+[gd_scene load_steps=5 format=3 uid="uid://eg1evlw6ow0i"]
 
 [ext_resource type="Script" path="res://scripts/Menus/main_menu.gd" id="1_fjdek"]
+[ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="2_ik0mn"]
+[ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_atwnr"]
+[ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="3_cx0kh"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,10 +14,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fjdek")
 
-[node name="BackgroundMap" type="Node2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
+[node name="BackgroundMap" type="Node2D" parent="Camera2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/BackgroundMap"]
+position = Vector2(816, 840)
+texture = ExtResource("2_ik0mn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -26,49 +37,74 @@ offset_right = 419.0
 offset_bottom = -152.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 100
-text = "WORKING TITLE"
+theme = ExtResource("3_atwnr")
+theme_override_fonts/font = ExtResource("3_cx0kh")
+theme_override_font_sizes/font_size = 150
+text = "The Last Diner"
+horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -235.0
-offset_top = -77.0
-offset_right = 236.0
-offset_bottom = 204.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Buttons" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
+[node name="PlayButton" type="Button" parent="CanvasLayer/Buttons"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+offset_left = 405.0
+offset_top = 256.0
+offset_right = 866.0
+offset_bottom = 324.0
+rotation = -0.0349066
+theme = ExtResource("3_atwnr")
+theme_override_font_sizes/font_size = 50
 text = "Play"
 
-[node name="Settings" type="Button" parent="VBoxContainer"]
+[node name="Settings" type="Button" parent="CanvasLayer/Buttons"]
 layout_mode = 2
+offset_left = 405.0
+offset_top = 334.0
+offset_right = 876.0
+offset_bottom = 381.0
+rotation = 0.0174533
+theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 32
 text = "Settings"
 
-[node name="Credits" type="Button" parent="VBoxContainer"]
+[node name="Credits" type="Button" parent="CanvasLayer/Buttons"]
 layout_mode = 2
+offset_left = 405.0
+offset_top = 415.0
+offset_right = 876.0
+offset_bottom = 462.0
+rotation = -0.0523599
+theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 32
 text = "Credits"
 
-[node name="Load Game" type="Button" parent="VBoxContainer"]
+[node name="Load Game" type="Button" parent="CanvasLayer/Buttons"]
 layout_mode = 2
+offset_left = 406.0
+offset_top = 463.0
+offset_right = 877.0
+offset_bottom = 510.0
+rotation = 0.0174533
+theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 32
 text = "Load Game (Not available yet)"
 
-[node name="Exit" type="Button" parent="VBoxContainer"]
+[node name="Exit" type="Button" parent="CanvasLayer/Buttons"]
 layout_mode = 2
+offset_left = 409.0
+offset_top = 545.0
+offset_right = 880.0
+offset_bottom = 592.0
+rotation = -0.0349066
+theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
 
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/Exit" to="." method="_on_exit_pressed"]
