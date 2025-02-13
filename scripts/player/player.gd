@@ -34,6 +34,7 @@ var can_roll : bool = true
 # ----- Node References ----- 
 @onready var interact_radius: Area2D = $InteractRadius
 @onready var rifle: Node2D = $Rifle
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 # ----- Player Stats -----
 @export var max_health = 50
@@ -63,14 +64,14 @@ func _process(_delta: float) -> void:
 			elif area.is_in_group("Interactables"):
 				var interactable = area.get_parent()
 				interactable.interact()
-			
-	if (Input.is_action_just_pressed("inventory")):
-		pass
 		
 	if (is_moving and curr_speed > CROUCH_SPEED):
 		rifle.inaccuracy_limit += 0.05
 	else:
 		rifle.inaccuracy_limit -= 0.025
+	
+	if velocity == Vector2(0,0):
+		animated_sprite_2d.play("idle")
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -112,6 +113,21 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 		roll_cd_timer += delta
 		if roll_cd_timer >= ROLL_COOLDOWN:
 			can_roll = true
+			
+	# Handle Movement Animations (Temp Solution)
+	# If x movement > 0 and y movement < x then left/right movement
+	# Else if y movement > x then up/down movement
+	if (abs(direction.x) > abs(direction.y)):
+		# Left/Right movement
+		if (direction.x > 0):
+			animated_sprite_2d.play("move_right")
+		else:
+			animated_sprite_2d.play("move_left")
+	else:
+		if (direction.y > 0):
+			animated_sprite_2d.play("move_down")
+		else:
+			animated_sprite_2d.play('move_up')
 
 # Polling (single key presses)
 func _on_basic_state_input(event: InputEvent) -> void:
