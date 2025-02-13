@@ -9,7 +9,7 @@ var can_move: bool = true
 # For smoother movement
 const CROUCH_SPEED : int = 100
 const CROUCH_ACCEL : int = 10
-const STAND_SPEED : int = 400
+const STAND_SPEED : int = 300
 const STAND_ACCEL : int = 40
 const RUN_SPEED : int = 600
 const RUN_ACCEL : int = 50
@@ -118,20 +118,21 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 	# Handle Movement Animations (Temp Solution)
 	# If x movement > 0 and y movement < x then left/right movement
 	# Else if y movement > x then up/down movement
+	var animation_speed = curr_speed / (STAND_SPEED)
 	if (direction.length() > 0.1):
 		if (abs(direction.x) > abs(direction.y)):
 			animated_sprite_2d.scale = Vector2(0.14, 0.14)
 			# Left/Right movement
 			if (direction.x > 0):
-				animated_sprite_2d.play("move_right")
+				animated_sprite_2d.play("move_right", animation_speed)
 			else:
-				animated_sprite_2d.play("move_left")
+				animated_sprite_2d.play("move_left", animation_speed)
 		else:
 			animated_sprite_2d.scale = Vector2(0.12, 0.12)
 			if (direction.y > 0):
-				animated_sprite_2d.play("move_down")
+				animated_sprite_2d.play("move_down", animation_speed)
 			else:
-				animated_sprite_2d.play('move_up')
+				animated_sprite_2d.play('move_up', animation_speed)
 
 # Polling (single key presses)
 func _on_basic_state_input(event: InputEvent) -> void:
