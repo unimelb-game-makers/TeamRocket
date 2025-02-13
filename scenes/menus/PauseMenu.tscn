@@ -22,24 +22,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="MainPauseMenu" type="Control" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="ResumeButton" type="Button" parent="CenterContainer/MainContainer"]
+[node name="ResumeButton" type="Button" parent="CenterContainer/MainPauseMenu"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+offset_left = -200.0
+offset_top = -133.0
+offset_right = 200.0
+offset_bottom = -65.0
+rotation = -0.0174533
 theme = ExtResource("2_ixun4")
+theme_override_font_sizes/font_size = 50
 text = "Resume"
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/MainContainer"]
+[node name="SettingsButton" type="Button" parent="CenterContainer/MainPauseMenu"]
 layout_mode = 2
+offset_left = -172.0
+offset_top = -39.0
+offset_right = 178.0
+offset_bottom = 21.0
+rotation = 0.0174533
 theme = ExtResource("2_ixun4")
+theme_override_font_sizes/font_size = 40
 text = "Settings
 "
 
-[node name="MainMenu" type="Button" parent="CenterContainer/MainContainer"]
+[node name="MainMenu" type="Button" parent="CenterContainer/MainPauseMenu"]
 layout_mode = 2
+offset_left = -200.0
+offset_top = 61.0
+offset_right = 200.0
+offset_bottom = 121.0
+rotation = -0.0349066
 theme = ExtResource("2_ixun4")
+theme_override_font_sizes/font_size = 30
 text = "Main Menu"
 
 [node name="SoundSettingsContainer" type="VBoxContainer" parent="CenterContainer"]
@@ -67,9 +85,11 @@ setting_name = "UI Volume"
 
 [node name="Back" type="Button" parent="CenterContainer/SoundSettingsContainer"]
 layout_mode = 2
+theme = ExtResource("2_ixun4")
+theme_override_font_sizes/font_size = 40
 text = "Back"
 
-[connection signal="pressed" from="CenterContainer/MainContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="CenterContainer/MainContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="CenterContainer/MainContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="CenterContainer/MainPauseMenu/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainPauseMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CenterContainer/MainPauseMenu/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="CenterContainer/SoundSettingsContainer/Back" to="." method="_on_back_pressed"]
