@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck0jasabkl7co"]
+[gd_scene load_steps=4 format=3 uid="uid://ck0jasabkl7co"]
 
 [ext_resource type="Script" path="res://scripts/Menus/pause_menu.gd" id="1_jkfna"]
 [ext_resource type="PackedScene" uid="uid://hoiacky4452m" path="res://scenes/menus/VolumeContainer.tscn" id="2_4ug2j"]
+[ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="2_ixun4"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,15 +28,18 @@ layout_mode = 2
 [node name="ResumeButton" type="Button" parent="CenterContainer/MainContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme = ExtResource("2_ixun4")
 text = "Resume"
 
 [node name="SettingsButton" type="Button" parent="CenterContainer/MainContainer"]
 layout_mode = 2
+theme = ExtResource("2_ixun4")
 text = "Settings
 "
 
 [node name="MainMenu" type="Button" parent="CenterContainer/MainContainer"]
 layout_mode = 2
+theme = ExtResource("2_ixun4")
 text = "Main Menu"
 
 [node name="SoundSettingsContainer" type="VBoxContainer" parent="CenterContainer"]
