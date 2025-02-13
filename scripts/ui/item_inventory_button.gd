@@ -1,7 +1,8 @@
 extends Control
 
-@onready var food_label: Label = $FoodButton/FoodLabel
-@onready var weight_label: Label = $FoodButton/WeightLabel
+@onready var item_label: Label = $NameButton/ItemLabel
+@onready var weight_label: Label = $NameButton/WeightLabel
+@onready var item_sprite: Sprite2D = $ItemButton/ItemSprite
 
 var item: Item
 var amount: int
@@ -13,11 +14,12 @@ func _ready() -> void:
 	set_displays()
  	
 func set_displays() -> void:
-	food_label.text = item.item_name + " x" + str(amount)
+	item_label.text = item.item_name + " x" + str(amount)
 	weight_label.text = str(amount * item.weight) + "kg"
-
-func _on_food_button_pressed() -> void:
-	item_selected.emit(item, amount)
+	item_sprite.texture = item.texture
 
 func _on_drop_button_pressed() -> void:
 	item_dropped.emit(item, 1)
+
+func _on_name_button_pressed() -> void:
+	item_selected.emit(item, amount)

@@ -35,7 +35,7 @@ func update_ui() -> void:
 	var ui = get_tree().get_first_node_in_group("ui")
 	var inventory_ui = ui.inventory_container
 	inventory_ui.update_inventory_list()
-	ui.inventory_label.text = "Inventory: " + str(get_total_weight()) + "kg"
+	#ui.inventory_label.text = "Inventory: " + str(get_total_weight()) + "kg"
 
 func get_total_weight() -> float:
 	var total: float = 0
