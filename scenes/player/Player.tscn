@@ -219,7 +219,7 @@ default_color = Color(1, 1, 1, 0.239216)
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_web4h")
 animation = &"idle"
-frame_progress = 0.958032
+frame_progress = 0.541289
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
