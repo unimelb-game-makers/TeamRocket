@@ -108,6 +108,7 @@ script = ExtResource("4_nipys")
 visible = false
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("6_xyb2j")]
+visible = false
 offset_left = 640.0
 offset_top = 360.0
 offset_right = 640.0

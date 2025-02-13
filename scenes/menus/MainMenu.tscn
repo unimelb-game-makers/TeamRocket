@@ -87,10 +87,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -422.0
-offset_top = -289.0
-offset_right = 419.0
-offset_bottom = -152.0
+offset_left = -445.0
+offset_top = -261.0
+offset_right = 396.0
+offset_bottom = -81.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_atwnr")
@@ -107,10 +107,10 @@ offset_bottom = 40.0
 
 [node name="PlayButton" type="Button" parent="CanvasLayer/MainMenuButtons"]
 layout_mode = 2
-offset_left = 405.0
-offset_top = 256.0
-offset_right = 866.0
-offset_bottom = 324.0
+offset_left = 384.82
+offset_top = 329.089
+offset_right = 845.82
+offset_bottom = 397.089
 rotation = -0.0349066
 theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 50
@@ -118,10 +118,10 @@ text = "Play"
 
 [node name="Settings" type="Button" parent="CanvasLayer/MainMenuButtons"]
 layout_mode = 2
-offset_left = 405.0
-offset_top = 334.0
-offset_right = 876.0
-offset_bottom = 381.0
+offset_left = 384.82
+offset_top = 407.089
+offset_right = 855.82
+offset_bottom = 454.089
 rotation = 0.0174533
 theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 32
@@ -129,10 +129,10 @@ text = "Settings"
 
 [node name="Credits" type="Button" parent="CanvasLayer/MainMenuButtons"]
 layout_mode = 2
-offset_left = 405.0
-offset_top = 415.0
-offset_right = 876.0
-offset_bottom = 462.0
+offset_left = 384.82
+offset_top = 488.089
+offset_right = 855.82
+offset_bottom = 535.089
 rotation = -0.0523599
 theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 32
@@ -141,10 +141,10 @@ text = "Credits"
 
 [node name="Load Game" type="Button" parent="CanvasLayer/MainMenuButtons"]
 layout_mode = 2
-offset_left = 406.0
-offset_top = 463.0
-offset_right = 877.0
-offset_bottom = 510.0
+offset_left = 385.82
+offset_top = 536.089
+offset_right = 856.82
+offset_bottom = 583.089
 rotation = 0.0174533
 theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 32
@@ -153,10 +153,10 @@ text = "Load Game (Not available yet)"
 
 [node name="Exit" type="Button" parent="CanvasLayer/MainMenuButtons"]
 layout_mode = 2
-offset_left = 409.0
-offset_top = 545.0
-offset_right = 880.0
-offset_bottom = 592.0
+offset_left = 388.82
+offset_top = 618.089
+offset_right = 859.82
+offset_bottom = 665.089
 rotation = -0.0349066
 theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 32

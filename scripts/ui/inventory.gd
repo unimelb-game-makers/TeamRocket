@@ -19,7 +19,7 @@ func _on_inventory_container_item_selected(item: Item, amount: int) -> void:
 	item_descriptor.update_description_info(item)
 
 func update_character_stats():
-	$CharacterStats/Stats/HpLabel.text = "HP: " + str(20*(1+Globals.player_hp_increase))
+	$CharacterStats/Stats/HpLabel.text = "HP: " + str(50*(1+Globals.player_hp_increase))
 	$CharacterStats/Stats/DmgLabel.text = "DMG: " + str(5*(1+Globals.player_damage_increase))
 	$CharacterStats/Stats/SpdLabel.text = "SPD: " + str(1+Globals.player_damage_increase)
 	
