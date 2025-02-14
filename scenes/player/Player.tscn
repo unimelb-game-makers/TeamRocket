@@ -229,7 +229,5 @@ texture_scale = 2.0
 [connection signal="state_entered" from="StateChart/Movement/Basic/Run" to="." method="_on_run_state_entered"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Aim/Aiming" to="." method="_on_aiming_state_entered"]
 [connection signal="state_exited" from="StateChart/Movement/Basic/Stance/Aim/Aiming" to="." method="_on_aiming_state_exited"]
-[connection signal="state_input" from="StateChart/Movement/Basic/Stance/Aim/Aiming" to="." method="_on_aiming_state_input"]
-[connection signal="state_processing" from="StateChart/Movement/Basic/Stance/Aim/Aiming" to="." method="_on_aiming_state_processing"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Crouched" to="." method="_on_crouched_state_entered"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Standing" to="." method="_on_standing_state_entered"]
