@@ -1,0 +1,130 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpwdv7vvm7kdc"]
+
+[ext_resource type="Script" path="res://scripts/ui/inventory.gd" id="1_a3tyl"]
+[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="1_k45lh"]
+[ext_resource type="Script" path="res://scripts/ui/item_description_box.gd" id="2_l5ycy"]
+[ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="2_rcx7t"]
+[ext_resource type="Texture2D" uid="uid://cr0213ac36mtj" path="res://assets/Player/PlayerAnimations/Idle/down idle.png" id="5_ljvxe"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_a3tyl")
+
+[node name="ItemListBackground" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 2
+offset_left = -171.0
+offset_top = -313.0
+offset_right = 488.0
+offset_bottom = 54.0
+rotation = 0.0174533
+mouse_filter = 1
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+
+[node name="InventoryContainer" parent="ItemListBackground" instance=ExtResource("1_k45lh")]
+layout_mode = 2
+offset_left = 23.0
+offset_top = 45.0
+offset_right = 523.0
+offset_bottom = 345.0
+
+[node name="WeightLabel" type="Label" parent="ItemListBackground"]
+layout_mode = 0
+offset_left = 564.0
+offset_top = 310.0
+offset_right = 647.0
+offset_bottom = 352.0
+theme = ExtResource("2_rcx7t")
+text = "Weight: xxxxkg"
+vertical_alignment = 1
+
+[node name="ItemDescriptionBackground" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+offset_left = -175.0
+offset_top = 122.0
+offset_right = 486.0
+offset_bottom = 322.0
+rotation = -0.0174533
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+script = ExtResource("2_l5ycy")
+
+[node name="ItemName" type="Label" parent="ItemDescriptionBackground"]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 12.0
+offset_right = 428.0
+offset_bottom = 48.0
+
+[node name="ItemDesc" type="Label" parent="ItemDescriptionBackground"]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 59.0
+offset_right = 636.0
+offset_bottom = 182.0
+autowrap_mode = 2
+
+[node name="ItemImage" type="TextureRect" parent="ItemDescriptionBackground"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 19.0
+offset_right = 168.0
+offset_bottom = 169.0
+expand_mode = 1
+
+[node name="CharacterStats" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+offset_left = -517.0
+offset_top = -307.0
+offset_right = -233.0
+offset_bottom = 59.0
+rotation = -0.0349066
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+
+[node name="Character" type="Sprite2D" parent="CharacterStats"]
+position = Vector2(80, 171)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_ljvxe")
+
+[node name="StatLabel" type="Label" parent="CharacterStats"]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 22.0
+offset_right = 266.0
+offset_bottom = 59.0
+theme = ExtResource("2_rcx7t")
+theme_override_font_sizes/font_size = 30
+text = "Stats
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats" type="VBoxContainer" parent="CharacterStats"]
+layout_mode = 0
+offset_left = 149.0
+offset_top = 66.0
+offset_right = 265.0
+offset_bottom = 306.0
+
+[node name="HpLabel" type="Label" parent="CharacterStats/Stats"]
+layout_mode = 2
+theme = ExtResource("2_rcx7t")
+theme_override_font_sizes/font_size = 30
+text = "HP: "
+
+[node name="DmgLabel" type="Label" parent="CharacterStats/Stats"]
+layout_mode = 2
+theme = ExtResource("2_rcx7t")
+theme_override_font_sizes/font_size = 30
+text = "Dmg: "
+
+[node name="SpdLabel" type="Label" parent="CharacterStats/Stats"]
+layout_mode = 2
+theme = ExtResource("2_rcx7t")
+theme_override_font_sizes/font_size = 30
+text = "Spd: "
+
+[connection signal="item_selected" from="ItemListBackground/InventoryContainer" to="." method="_on_inventory_container_item_selected"]
