@@ -2,14 +2,18 @@ extends Camera2D
 
 var in_aim_mode = false
 
+var original_position
 var target_position: Vector2
 var target_distance = 0
+var max_distance_from_player = 500
+
 var center_pos = position
 
 func _ready():
-	connect("aim_mode_enter", Callable(self, "enter_aim_mode"))
-	connect("aim_mode_exit", Callable(self, "exit_aim_mode"))
+	#connect("aim_mode_enter", Callable(self, "enter_aim_mode"))
+	#connect("aim_mode_exit", Callable(self, "exit_aim_mode"))
 	
+	original_position = Vector2(position)
 	target_position = position
 
 func _process(delta: float) -> void:
@@ -19,13 +23,14 @@ func _process(delta: float) -> void:
 		target_position = center_pos + direction * mouse_distance
 		
 		target_position = target_position.clamp(
-			center_pos - Vector2(20, 20), 
-			center_pos + Vector2(20, 20)
+			center_pos - Vector2(max_distance_from_player, max_distance_from_player), 
+			center_pos + Vector2(max_distance_from_player, max_distance_from_player)
 		)
+		print("Hi")
 	else:
-		target_position = position
+		target_position = original_position
 	
-	position = lerp(position, target_position, 5 * delta)
+	position = lerp(position, target_position, 15 * delta)
 
 func enter_aim_mode():
 	in_aim_mode = true

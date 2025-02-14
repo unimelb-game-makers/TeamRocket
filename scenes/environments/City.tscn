@@ -224,3 +224,6 @@ radius = 1000.0
 position = Vector2(2514, 435)
 allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
 radius = 1000.0
+
+[connection signal="aim_mode_enter" from="Player" to="Player/Camera2D" method="enter_aim_mode"]
+[connection signal="aim_mode_exit" from="Player" to="Player/Camera2D" method="exit_aim_mode"]
