@@ -9,9 +9,9 @@ var can_move: bool = true
 # For smoother movement
 const CROUCH_SPEED : int = 100
 const CROUCH_ACCEL : int = 10
-const STAND_SPEED : int = 200
+const STAND_SPEED : int = 300
 const STAND_ACCEL : int = 40
-const RUN_SPEED : int = 300
+const RUN_SPEED : int = 600
 const RUN_ACCEL : int = 50
 
 var curr_speed : float = STAND_SPEED
@@ -34,6 +34,7 @@ var can_roll : bool = true
 # ----- Node References ----- 
 @onready var interact_radius: Area2D = $InteractRadius
 @onready var rifle: Node2D = $Rifle
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 # ----- Player Stats -----
 @export var max_health = 50
@@ -46,6 +47,7 @@ var health = max_health:
 
 func _ready() -> void:
 	Globals.player = self
+	max_health *= 1 + Globals.player_hp_increase
 
 func _process(_delta: float) -> void:
 	# Code for item pickup
@@ -59,14 +61,18 @@ func _process(_delta: float) -> void:
 			elif area.is_in_group("Workbench"):
 				var workbench = area.get_parent()
 				activity_interact.emit(workbench.activity)
-			
-	if (Input.is_action_just_pressed("inventory")):
-		print(Inventory_Global.inventory_array)
+			elif area.is_in_group("Interactables"):
+				var interactable = area.get_parent()
+				interactable.interact()
 		
 	if (is_moving and curr_speed > CROUCH_SPEED):
 		rifle.inaccuracy_limit += 0.05
 	else:
 		rifle.inaccuracy_limit -= 0.025
+	
+	if velocity == Vector2(0,0):
+		animated_sprite_2d.scale = Vector2(0.12, 0.12)
+		animated_sprite_2d.play("idle")
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -108,6 +114,25 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 		roll_cd_timer += delta
 		if roll_cd_timer >= ROLL_COOLDOWN:
 			can_roll = true
+			
+	# Handle Movement Animations (Temp Solution)
+	# If x movement > 0 and y movement < x then left/right movement
+	# Else if y movement > x then up/down movement
+	var animation_speed = curr_speed / (STAND_SPEED)
+	if (direction.length() > 0.1):
+		if (abs(direction.x) > abs(direction.y)):
+			animated_sprite_2d.scale = Vector2(0.14, 0.14)
+			# Left/Right movement
+			if (direction.x > 0):
+				animated_sprite_2d.play("move_right", animation_speed)
+			else:
+				animated_sprite_2d.play("move_left", animation_speed)
+		else:
+			animated_sprite_2d.scale = Vector2(0.12, 0.12)
+			if (direction.y > 0):
+				animated_sprite_2d.play("move_down", animation_speed)
+			else:
+				animated_sprite_2d.play('move_up', animation_speed)
 
 # Polling (single key presses)
 func _on_basic_state_input(event: InputEvent) -> void:

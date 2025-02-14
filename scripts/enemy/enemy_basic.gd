@@ -1,3 +1,4 @@
+class_name BasicEnemy
 extends Enemy
 
 const PASSIVE_SPEED : int = 85
@@ -14,7 +15,7 @@ var target_creature: CharacterBody2D
 var map
 var path = []
 
-@onready var statechart = $StateChart
+@onready var statechart: StateChart = $StateChart
 
 var last_known_position: Vector2 # Last known position of player
 

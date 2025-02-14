@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bghvdl8vuhlod"
+path="res://.godot/imported/ui3.wav-5005dda586be5cb49fcad6cd7d7dba7e.sample"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/ui3.wav"
+dest_files=["res://.godot/imported/ui3.wav-5005dda586be5cb49fcad6cd7d7dba7e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

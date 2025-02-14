@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://dq1w8y8sr0c1f"]
+
+[ext_resource type="Resource" uid="uid://dbw3pp6i2fhp4" path="res://resources/items/spaghetti.tres" id="1_6id3q"]
+[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="1_lbqca"]
+[ext_resource type="Script" path="res://resources/resource_scripts/recipe.gd" id="2_kihnc"]
+[ext_resource type="Resource" path="res://resources/items/spaghetti_raw.tres" id="3_sxog0"]
+
+[resource]
+script = ExtResource("2_kihnc")
+required_items = Array[ExtResource("1_lbqca")]([ExtResource("3_sxog0")])
+output_item = ExtResource("1_6id3q")

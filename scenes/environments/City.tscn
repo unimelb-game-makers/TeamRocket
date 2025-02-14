@@ -1,7 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=33 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
+[ext_resource type="AudioStream" uid="uid://bd77f8tivpj3o" path="res://assets/sfx/team rocket sfx/area themes/central district/central district intro.wav" id="2_auyuh"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="3_pa65j"]
+[ext_resource type="AudioStream" uid="uid://dlc1kwo6dv7e3" path="res://assets/sfx/team rocket sfx/area themes/central district/central district loop.wav" id="3_vmjra"]
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="4_2cddj"]
 [ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="5_oq3tf"]
 [ext_resource type="PackedScene" uid="uid://p6jrdiqo23p1" path="res://scenes/objects/Obstacles/WreckedCar3.tscn" id="6_fuahw"]
@@ -15,17 +17,73 @@
 [ext_resource type="PackedScene" uid="uid://spuhih5te5ck" path="res://scenes/objects/Lights/StreetlightLeft.tscn" id="14_k0ehx"]
 [ext_resource type="PackedScene" uid="uid://c0acap2jmh2f" path="res://scenes/objects/Lights/StreetlightUp.tscn" id="15_lpuh7"]
 [ext_resource type="PackedScene" uid="uid://drxotm8osb7q0" path="res://scenes/objects/Lights/StreetlightRight.tscn" id="16_4lsvx"]
-[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="17_jlhq4"]
 [ext_resource type="PackedScene" uid="uid://cd6fc47tx6cyd" path="res://scenes/objects/Lake.tscn" id="18_l3vkc"]
-[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/enemy_basic.tscn" id="19_movql"]
+[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="19_ryaas"]
+[ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/enemy_dasher.tscn" id="19_sv1o8"]
+[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="20_0qh7k"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="21_5cojw"]
+[ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="21_a7p7e"]
+[ext_resource type="Resource" uid="uid://dbw3pp6i2fhp4" path="res://resources/items/spaghetti.tres" id="22_rcmxg"]
+[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/enemy_chicken.tscn" id="22_ykjv2"]
+[ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="23_p6fkx"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_y1gkg"]
+clip_count = 2
+clip_0/name = &"Central District Intro"
+clip_0/stream = ExtResource("2_auyuh")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Central District Loop"
+clip_1/stream = ExtResource("3_vmjra")
+clip_1/auto_advance = 1
+clip_1/next_clip = 1
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(1, 1): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 3,
+"to_time": 1
+}
+}
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5hw28"]
 vertices = PackedVector2Array(1766.5, 2611, 4670.1, 3297.09, 4324.31, 3285.91, 294.5, 2842.44, 1409.5, 2611, 1077, 1651, 2994.84, 1803.85, 1766.5, 2440, 1409.5, 2440, 422.352, 2326.68, 330.227, 2216.91, 447, 1651, 3135.48, 1705.38, 4028, 1366, 4263, 1366, 5039.98, -38.0078, 5033.01, 4038.96, 5022.19, 4019.01, 5012.9, 3518.49, 4263, 1233, 3732, 484, 3732, 354, 4028, 1233, 4086.22, 3432.81, 3879.14, 3598.87, 3640.42, 3750.6, 2768.52, 1480.62, 1077, 1556, 2165.93, 1403.25, -32.0078, 4019.03, 3564.77, 4016.98, -38.9766, -44.9766, 3312, 354, 3312, 484, 2909.16, 1382.15, 2663.14, 1270.02, 2627.84, 1138.32, 294.5, 2597.56, 290.773, 2437.09, 131.5, 2597.56, 131.5, 2842.44, 198.648, 2327.32, 447, 1556, 2130.64, 1271.55)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9, 10, 11), PackedInt32Array(12, 13, 14, 6), PackedInt32Array(15, 16, 17, 18), PackedInt32Array(14, 19, 15, 18, 1), PackedInt32Array(20, 21, 15, 19, 22), PackedInt32Array(3, 2, 23), PackedInt32Array(3, 23, 24, 25), PackedInt32Array(26, 6, 5, 27, 28), PackedInt32Array(17, 16, 29, 30), PackedInt32Array(14, 1, 0, 7, 6), PackedInt32Array(31, 15, 21, 32), PackedInt32Array(33, 20, 22, 13, 34, 35, 36), PackedInt32Array(8, 4, 3, 37, 9), PackedInt32Array(38, 9, 37, 39), PackedInt32Array(3, 25, 30, 29, 40), PackedInt32Array(40, 29, 31, 39), PackedInt32Array(41, 38, 39), PackedInt32Array(41, 39, 31), PackedInt32Array(10, 41, 31, 42, 11), PackedInt32Array(31, 32, 33, 36, 43), PackedInt32Array(13, 12, 34), PackedInt32Array(35, 34, 26, 28), PackedInt32Array(31, 43, 28, 27, 42)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-49, -55, -42, 4029, 5043, 4049, 5050, -48)])
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gxp03"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7dyqd"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_502q6"]
+normal = Vector2(-1, 0)
+distance = -5000.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sbhhl"]
+distance = -4000.0
+
 [node name="City" instance=ExtResource("1_7mlma")]
 y_sort_enabled = true
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler" index="1"]
+process_mode = 3
+stream = SubResource("AudioStreamInteractive_y1gkg")
+autoplay = true
+bus = &"Music"
+
+[node name="CanvasLayer" parent="GameHandler" index="2"]
+visible = false
+
+[node name="FadeToBlack" parent="GameHandler/CanvasLayer" index="0"]
+mouse_filter = 2
 
 [node name="Dark" parent="Lighting" index="0"]
 visible = true
@@ -78,11 +136,65 @@ position = Vector2(3860, 1571)
 [node name="Streetlight4" parent="NavigationRegion2D/Map" index="13" instance=ExtResource("16_4lsvx")]
 position = Vector2(1319, 2869)
 
-[node name="Crate" parent="NavigationRegion2D/Map" index="14" instance=ExtResource("17_jlhq4")]
-position = Vector2(2199, 1663)
-
-[node name="Lake" parent="NavigationRegion2D/Map" index="15" instance=ExtResource("18_l3vkc")]
+[node name="Lake" parent="NavigationRegion2D/Map" index="14" instance=ExtResource("18_l3vkc")]
 position = Vector2(4236, 3577)
+
+[node name="Walls" type="Node2D" parent="NavigationRegion2D" index="1"]
+
+[node name="Left" type="StaticBody2D" parent="NavigationRegion2D/Walls" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Walls/Left" index="0"]
+shape = SubResource("WorldBoundaryShape2D_gxp03")
+
+[node name="Top" type="StaticBody2D" parent="NavigationRegion2D/Walls" index="1"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Walls/Top" index="0"]
+shape = SubResource("WorldBoundaryShape2D_7dyqd")
+
+[node name="Right" type="StaticBody2D" parent="NavigationRegion2D/Walls" index="2"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Walls/Right" index="0"]
+shape = SubResource("WorldBoundaryShape2D_502q6")
+
+[node name="Down" type="StaticBody2D" parent="NavigationRegion2D/Walls" index="3"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Walls/Down" index="0"]
+shape = SubResource("WorldBoundaryShape2D_sbhhl")
+
+[node name="InteractableHandler" parent="." index="3"]
+loot_table = Array[ExtResource("19_ryaas")]([ExtResource("20_0qh7k"), ExtResource("21_a7p7e"), ExtResource("22_rcmxg"), ExtResource("23_p6fkx"), null, null, null, null, null, null, null])
+
+[node name="SpawnPoint1" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="0"]
+position = Vector2(2523, 1646)
+
+[node name="SpawnPoint2" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="1"]
+position = Vector2(162, 1286)
+
+[node name="SpawnPoint3" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="2"]
+position = Vector2(1019, 992)
+
+[node name="SpawnPoint4" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="3"]
+position = Vector2(4213, 929)
+
+[node name="SpawnPoint5" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="4"]
+position = Vector2(3489, 154)
+
+[node name="SpawnPoint6" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="5"]
+position = Vector2(1843, 3915)
+
+[node name="SpawnPoint7" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="6"]
+position = Vector2(4833, 3228)
+
+[node name="SpawnPoint8" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="7"]
+position = Vector2(182, 3938)
 
 [node name="Player" parent="." index="5"]
 position = Vector2(1727, 1598)
@@ -92,8 +204,21 @@ limit_left = 0
 limit_top = 0
 limit_right = 5000
 limit_bottom = 4000
+limit_smoothed = true
 
-[node name="Basic_Enemy" parent="Enemies" index="0" instance=ExtResource("19_movql")]
-position = Vector2(2659, 2709)
+[node name="Node2D" type="Node2D" parent="." index="6"]
 
-[node name="Node2D" type="Node2D" parent="." index="7"]
+[node name="LandEnemySpawnAreas" parent="EnemyHandler/SpawnAreas" index="0" instance=ExtResource("21_5cojw")]
+position = Vector2(3274, 2731)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
+[node name="LandEnemySpawnAreas2" parent="EnemyHandler/SpawnAreas" index="1" instance=ExtResource("21_5cojw")]
+position = Vector2(602, 3363)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
+[node name="LandEnemySpawnAreas3" parent="EnemyHandler/SpawnAreas" index="2" instance=ExtResource("21_5cojw")]
+position = Vector2(2514, 435)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0

@@ -49,7 +49,7 @@ func _process(_delta):
 				var target = raycast.get_collider()
 				if (target):
 					if (target is Enemy):
-						target.health -= damage
+						target.health -= damage * (1 + Globals.player_damage_increase)
 				bullets -= 1
 				fire_timer.start()
 				

@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://bacf4n55kn6yy"]
+[gd_scene load_steps=3 format=3 uid="uid://bacf4n55kn6yy"]
+
+[ext_resource type="Script" path="res://scripts/Menus/credits.gd" id="1_4g6ph"]
+[ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="2_s4hms"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -7,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_4g6ph")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -15,10 +19,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -22.5
-offset_top = -15.5
-offset_right = 22.5
-offset_bottom = 15.5
+offset_left = -24.0
+offset_top = 151.0
+offset_right = 21.0
+offset_bottom = 182.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_s4hms")
+theme_override_font_sizes/font_size = 30
 text = "Back"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
