@@ -24,21 +24,23 @@ signal complete(output)
 @onready var ingr: Sprite2D = $FryingPan/Ingredient
 @onready var warning: Label = $FryingPan/Ingredient/Label
 @onready var progress_debug: Label = $ProgressDebug
+@onready var ingredient_handler: HBoxContainer = %IngredientHandler
+@onready var ingr_sprite: Sprite2D = $FryingPan/Ingredient/Sprite
+@onready var tip_text: Label = $TipText
+@onready var fry_progress: TextureProgressBar = $FryProgress
+
 
 ## Radius of frying pan
-@export var PAN_SIZE: float = 60
+@export var PAN_SIZE: float = 75
 # We do this calculation just once and store it, since it
 # will be used a lot
-var PAN_SIZE_SQUARED = PAN_SIZE * PAN_SIZE
-## The 2nd outermost range for points scoring.
-## The further out, the less score is rewarded.
-#@export var RANGE_2: float = 40
-#@export var RANGE_3: float = 20
-#@export var RANGE_4: float = 10
+@onready var PAN_SIZE_SQUARED = PAN_SIZE * PAN_SIZE
+
 
 # How long to fry for
 var progress: Array = [0, 0]
 var side: int = 0
+## How long to fry each side for, in number of seconds
 @export var target_progress := 5.0
 
 # A brief cooldown for the warning "!" flash
@@ -51,21 +53,25 @@ var sizzle_timer: float
 var velocity: Vector2
 
 # Target to fry and amount fried so far
-var fried = 0
-@export var target = 2
+var fried := 0
+var target := 0
 
 # This will go to false when flipping the pan
-var cooking = false
+var cooking: bool = false
 
 # This will go to false when the activity is finished
-var playing = false
+var playing: bool = false
 
 
 func start() -> void:
-	#ingr.texture # = ingredient item texture here
+	fry_progress.max_value = 2 * target_progress
+	tip_text.self_modulate.a = 0
+	target = ingredient_handler.selected_ingredients.size()
+	$FryingPan/Rings.scale *= PAN_SIZE / 55.0
 	playing = true
 	cooking = true
 	drop_ingredient()
+	print(PAN_SIZE, ", ", PAN_SIZE_SQUARED)
 
 
 func _process(delta: float) -> void:
@@ -77,6 +83,7 @@ func _process(delta: float) -> void:
 		# if side == 1 -> progress[0]
 		if cooking:
 			progress[side - 1] += delta * calculate_area(delta)
+			fry_progress.value = clampf(progress[0], 0, target_progress) + clampf(progress[1], 0, target_progress)
 		if progress[0] >= target_progress and progress[1] >= target_progress:
 			print("Fried successfully!")
 			fried += 1
@@ -91,7 +98,7 @@ func _process(delta: float) -> void:
 			if warning_timer <= 0:
 				warning_timer = 0.5
 				warning.visible = !warning.visible
-	progress_debug.text = "%.2f, %.2f" % [progress[0], progress[1]]
+	progress_debug.text = "%.2f, %.2f | %.1f/%.1f" % [progress[0], progress[1], fry_progress.value, fry_progress.max_value]
 
 
 func _physics_process(delta: float) -> void:
@@ -119,11 +126,14 @@ func move_ingredient(delta: float) -> void:
 func calculate_area(delta) -> float:
 	var d = ingr.position.length_squared()
 	if d < PAN_SIZE_SQUARED / 36.0:
+		tip_text.self_modulate.a = clampf(tip_text.self_modulate.a - delta * 4, 0, 1)
 		$FryingPan/Rings.modulate.a = clampf($FryingPan/Rings.modulate.a - delta, 0, 1)
 		return 1
 	if d < PAN_SIZE_SQUARED / 9.0:
+		tip_text.self_modulate.a = clampf(tip_text.self_modulate.a - delta * 4, 0, 1)
 		$FryingPan/Rings.modulate.a = clampf($FryingPan/Rings.modulate.a - delta, 0, 1)
 		return 0.5
+	tip_text.self_modulate.a = clampf(tip_text.self_modulate.a + delta * 4, 0, 1)
 	$FryingPan/Rings.modulate.a = clampf($FryingPan/Rings.modulate.a + delta, 0, 1)
 	if d < 4 * PAN_SIZE_SQUARED / 9.0:
 		return 0.25
@@ -137,16 +147,19 @@ func _input(event: InputEvent) -> void:
 		side = (side + 1) % 2
 		warning.hide()
 		warning_timer = 0
-		ingr.self_modulate.v = (target_progress - progress[side] * 0.6) / (target_progress)
+		ingr_sprite.self_modulate.v = (target_progress - progress[side] * 0.6) / (target_progress)
 		$AnimationPlayer.play("flip")
 		await $AnimationPlayer.animation_finished
 		cooking = true
 
 
+## Use this whenever the game starts a new ingredient
 func drop_ingredient() -> void:
 	cooking = false
+	ingr_sprite.texture = (ingredient_handler.selected_ingredients[fried]).texture
+	ingr.scale = Vector2(20.0, 20.0) / ingr_sprite.texture.get_size()
 	ingr.position = Vector2.ZERO
-	ingr.self_modulate.v = (target_progress - progress[side] * 0.6) / (target_progress)
+	ingr_sprite.self_modulate.v = (target_progress - progress[side] * 0.6) / (target_progress)
 	$AnimationPlayer.play("drop")
 	await $AnimationPlayer.animation_finished
 	cooking = true
