@@ -16,6 +16,10 @@ func interact():
 	canvas_layer.visible = not canvas_layer.visible
 	inventory_select_list.update_inventory_list()
 
+func take_item(slot):
+	super(slot)
+	inventory_select_list.update_inventory_list()
+
 func _on_submit_button_pressed() -> void:
 	if (items[0] in acceptable_foods):
 		submit_item(items[0])

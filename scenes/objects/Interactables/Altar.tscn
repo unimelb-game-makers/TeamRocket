@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://unbm0ush87sw"]
+[gd_scene load_steps=9 format=3 uid="uid://unbm0ush87sw"]
 
 [ext_resource type="Script" path="res://scripts/objects/interactables/altar.gd" id="1_rfv52"]
 [ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="2_upo2r"]
 [ext_resource type="Resource" uid="uid://d4fvdxgm3d6pq" path="res://resources/items/spaghetti_bolognaise.tres" id="3_ikw8l"]
 [ext_resource type="Texture2D" uid="uid://ck6wk3lfpwesd" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="4_eda5l"]
-[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="4_g8vrs"]
 [ext_resource type="Texture2D" uid="uid://dfs8ar6bwmgc1" path="res://assets/interiors/kitchen/altar.png" id="5_75tl3"]
 [ext_resource type="Texture2D" uid="uid://dc2fhcnhwqdg2" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown_pressed.png" id="5_d4yib"]
 [ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="6_2ofly"]
@@ -14,7 +13,7 @@ size = Vector2(99, 148)
 
 [node name="Altar" type="Node2D"]
 script = ExtResource("1_rfv52")
-acceptable_foods = Array[ExtResource("2_upo2r")]([ExtResource("3_ikw8l"), ExtResource("4_g8vrs")])
+acceptable_foods = Array[ExtResource("2_upo2r")]([ExtResource("3_ikw8l")])
 slots_num = 1
 items = Array[ExtResource("2_upo2r")]([null])
 
