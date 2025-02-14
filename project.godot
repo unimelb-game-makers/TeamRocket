@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
 navigation="For Navigation Layer"
 Item=""
 Workbench=""
+Camera=""
 
 [input]
 
