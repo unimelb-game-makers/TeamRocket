@@ -4,6 +4,7 @@ extends BasicEnemy
 @onready var attack_effect: AudioStreamPlayer2D = $SoundEffects/AttackEffect
 @onready var pursuit_effect: AudioStreamPlayer2D = $SoundEffects/PursuitEffect
 @onready var hunt_effect: AudioStreamPlayer2D = $SoundEffects/HuntEffect
+@onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
 
 @onready var dash_attack_hurtbox: Area2D = $DashAttackHurtbox
 
@@ -84,7 +85,12 @@ func _on_active_state_entered() -> void:
 	super()
 	hunt_effect.play()
 
-
 func _on_dash_attack_hurtbox_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.health -= 5
+
+func damage():
+	super()
+	hurt_effect.play()
+	target_creature = Globals.player
+	statechart.send_event("on_detection_radius_entered")

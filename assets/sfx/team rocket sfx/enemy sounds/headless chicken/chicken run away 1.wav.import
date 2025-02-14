@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c2v4gn4gq86qi"
+path="res://.godot/imported/chicken run away 1.wav-634b58d3ad1c388dd301b22eb4d73bd7.sample"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken run away 1.wav"
+dest_files=["res://.godot/imported/chicken run away 1.wav-634b58d3ad1c388dd301b22eb4d73bd7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

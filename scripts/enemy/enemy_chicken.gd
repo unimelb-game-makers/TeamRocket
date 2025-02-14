@@ -14,6 +14,10 @@ var direction = Vector2(0,0)
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @export var navigation_region: NavigationRegion2D
 
+@onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
+@onready var idle_effect: AudioStreamPlayer2D = $SoundEffects/IdleEffect
+@onready var run_effect: AudioStreamPlayer2D = $SoundEffects/RunEffect
+
 var map
 var path = []
 
@@ -51,11 +55,14 @@ func change_state(new_state: ChickenState) -> void:
 	match state:
 		ChickenState.NEUTRAL:
 			animated_sprite_2d.play("neutral")
+			idle_effect.play()
 		ChickenState.WALKING:
 			animated_sprite_2d.play("walk")
 		ChickenState.RUNNING:
 			animated_sprite_2d.play("walk", 3.0)
+			run_effect.play()
 
 func damage() -> void:
 	super()
+	hurt_effect.play()
 	enter_running_state()
