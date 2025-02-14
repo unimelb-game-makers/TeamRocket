@@ -23,7 +23,7 @@
 [ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="20_0qh7k"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="21_5cojw"]
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="21_a7p7e"]
-[ext_resource type="Resource" uid="uid://dbw3pp6i2fhp4" path="res://resources/items/spaghetti.tres" id="22_rcmxg"]
+[ext_resource type="Resource" uid="uid://pu3eafcj7feu" path="res://resources/items/spaghetti_raw.tres" id="22_rpnyl"]
 [ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/enemy_chicken.tscn" id="22_ykjv2"]
 [ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="23_p6fkx"]
 [ext_resource type="Script" path="res://scripts/player/camera_control.gd" id="24_s3lfa"]
@@ -78,9 +78,6 @@ process_mode = 3
 stream = SubResource("AudioStreamInteractive_y1gkg")
 autoplay = true
 bus = &"Music"
-
-[node name="FadeToBlack" parent="GameHandler/CanvasLayer" index="0"]
-mouse_filter = 2
 
 [node name="Dark" parent="Lighting" index="0"]
 visible = true
@@ -169,7 +166,7 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_sbhhl")
 
 [node name="InteractableHandler" parent="." index="3"]
-loot_table = Array[ExtResource("19_ryaas")]([ExtResource("20_0qh7k"), ExtResource("21_a7p7e"), ExtResource("22_rcmxg"), ExtResource("23_p6fkx"), null, null, null, null, null, null, null])
+loot_table = Array[ExtResource("19_ryaas")]([ExtResource("20_0qh7k"), ExtResource("21_a7p7e"), ExtResource("22_rpnyl"), ExtResource("23_p6fkx"), null, null, null, null, null, null, null])
 
 [node name="SpawnPoint1" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="0"]
 position = Vector2(2523, 1646)

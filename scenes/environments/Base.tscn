@@ -23,6 +23,7 @@ visible = false
 z_index = 200
 offset_right = 5000.0
 offset_bottom = 4000.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Lighting" type="Node" parent="."]

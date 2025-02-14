@@ -35,7 +35,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI"]
-visible = false
 
 [node name="ItemContainers" type="GridContainer" parent="UI/CanvasLayer"]
 unique_name_in_owner = true
@@ -64,10 +63,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InventorySelectList" parent="UI/CanvasLayer" instance=ExtResource("6_2ofly")]
-offset_left = 123.0
-offset_top = 141.0
-offset_right = 467.0
-offset_bottom = 569.0
+offset_left = 109.0
+offset_top = 117.0
+offset_right = 464.0
+offset_bottom = 545.0
 
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="pressed" from="UI/CanvasLayer/SubmitButton" to="." method="_on_submit_button_pressed"]
