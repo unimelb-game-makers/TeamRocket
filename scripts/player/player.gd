@@ -35,6 +35,7 @@ var can_roll : bool = true
 @onready var interact_radius: Area2D = $InteractRadius
 @onready var rifle: Node2D = $Rifle
 @onready var statechart: StateChart = $StateChart
+@onready var camera: Camera2D = null
 
 # ----- Player Stats -----
 @export var max_health = 50
@@ -47,6 +48,11 @@ var health = max_health:
 
 func _ready() -> void:
 	Globals.player = self
+	
+	# Attempt to get Camera2D node since Camera2D is not a node under the player scene
+	var cam = get_tree().get_nodes_in_group("Camera")
+	if len(cam) == 1:
+		camera = cam[0]
 
 func _process(_delta: float) -> void:
 	# Code for item pickup
@@ -160,9 +166,29 @@ func roll_speed(elapsed_time : float) -> float:
 	var t : float = elapsed_time / ROLL_DURATION
 	return ROLL_SPEED - (ROLL_SPEED - CROUCH_SPEED) * t * t
 
-
 func _on_aiming_state_entered() -> void:
 	rifle.enter_aiming_mode()
 
 func _on_aiming_state_exited() -> void:
 	rifle.exit_aiming_mode()
+
+func _on_aiming_state_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		if camera:
+			pass
+
+func _on_aiming_state_processing(delta: float) -> void:
+	if camera:
+		var center_pos = camera.position
+		
+		var to_mouse = center_pos.direction_to(get_local_mouse_position())
+		var mouse_distance = center_pos.distance_to(get_local_mouse_position()) / 2
+		var cam_position = center_pos + to_mouse * mouse_distance
+		
+		cam_position = cam_position.clamp(
+			center_pos - Vector2(20, 20), 
+			center_pos + Vector2(20, 20)
+		)
+			
+		camera.position = cam_position
+	pass
