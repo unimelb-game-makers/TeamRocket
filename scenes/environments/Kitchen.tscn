@@ -12,9 +12,9 @@
 [ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="7_083nx"]
 [ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="8_f86gd"]
 [ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="9_2oqyj"]
-[ext_resource type="PackedScene" path="res://scenes/cooking/workbenches/assembly_plate.tscn" id="9_5i564"]
+[ext_resource type="PackedScene" uid="uid://csf03f13m5wmx" path="res://scenes/cooking/workbenches/assembly_plate.tscn" id="9_5i564"]
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="12_xaknj"]
-[ext_resource type="Resource" path="res://resources/items/spaghetti_raw.tres" id="15_kfbqe"]
+[ext_resource type="Resource" uid="uid://pu3eafcj7feu" path="res://resources/items/spaghetti_raw.tres" id="15_kfbqe"]
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5vy8l"]

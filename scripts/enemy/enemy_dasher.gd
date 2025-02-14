@@ -5,6 +5,8 @@ extends BasicEnemy
 @onready var pursuit_effect: AudioStreamPlayer2D = $SoundEffects/PursuitEffect
 @onready var hunt_effect: AudioStreamPlayer2D = $SoundEffects/HuntEffect
 
+@onready var dash_attack_hurtbox: Area2D = $DashAttackHurtbox
+
 var dash_attack_vector: Vector2 # Position of player when winding up
 var dash_attack_speed: float = 1000
 
@@ -30,6 +32,7 @@ func _on_dash_attack_state_entered() -> void:
 	dash_attack_timer = 0
 	current_dashes += 1
 	dash_attack_vector = global_position.direction_to(target_creature.global_position)
+	dash_attack_hurtbox.monitoring = true
 
 # Dash to player. Dash speed determined by dash_attack_duration.
 func _on_dash_attack_state_physics_processing(delta: float) -> void:
@@ -43,6 +46,7 @@ func _on_dash_attack_state_physics_processing(delta: float) -> void:
 
 # Exit Attack state after dashing 3 times.
 func _on_dash_attack_state_exited() -> void:
+	dash_attack_hurtbox.monitoring = false
 	# Exit entire Attack state, go back to Active state
 	if current_dashes >= num_dashes:
 		statechart.send_event("on_attack_finish")
@@ -79,3 +83,8 @@ func _on_passive_state_entered() -> void:
 func _on_active_state_entered() -> void:
 	super()
 	hunt_effect.play()
+
+
+func _on_dash_attack_hurtbox_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.health -= 5

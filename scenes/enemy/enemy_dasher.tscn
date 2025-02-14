@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bysb5hk8pdva0"]
+[gd_scene load_steps=11 format=3 uid="uid://bysb5hk8pdva0"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/enemy_basic.tscn" id="1_cno7g"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_dasher.gd" id="2_1leqm"]
@@ -10,7 +10,11 @@
 [ext_resource type="AudioStream" uid="uid://dwci7x2kvnq3e" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer playerspotted1.wav" id="8_lig7d"]
 [ext_resource type="AudioStream" uid="uid://diehj1recln7s" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/hunt/naked deer hunt1.wav" id="9_ufi2l"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_37sxb"]
+radius = 200.0
+
 [node name="Dasher" instance=ExtResource("1_cno7g")]
+motion_mode = 1
 script = ExtResource("2_1leqm")
 
 [node name="To Attack State" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
@@ -45,7 +49,7 @@ to = NodePath("../../Active")
 event = &"on_attack_finish"
 delay_in_seconds = "0.0"
 
-[node name="SoundEffects" type="Node2D" parent="." index="10"]
+[node name="SoundEffects" type="Node2D" parent="." index="9"]
 
 [node name="IdleEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="0"]
 stream = ExtResource("6_glnb7")
@@ -63,6 +67,13 @@ bus = &"Effects"
 stream = ExtResource("9_ufi2l")
 bus = &"Effects"
 
+[node name="DashAttackHurtbox" type="Area2D" parent="." index="10"]
+collision_layer = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackHurtbox" index="0"]
+shape = SubResource("CircleShape2D_37sxb")
+
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Wind Up" to="." method="_on_wind_up_state_entered"]
@@ -70,3 +81,4 @@ bus = &"Effects"
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Dash Attack" to="." method="_on_dash_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack/Dash Attack" to="." method="_on_dash_attack_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Dash Attack" to="." method="_on_dash_attack_state_physics_processing"]
+[connection signal="body_entered" from="DashAttackHurtbox" to="." method="_on_dash_attack_hurtbox_body_entered"]

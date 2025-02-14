@@ -202,8 +202,6 @@ to = NodePath("../../Chase")
 event = &"found_target"
 delay_in_seconds = "0.0"
 
-[node name="Area2D" type="Area2D" parent="."]
-
 [connection signal="area_entered" from="DetectionRadius" to="." method="_on_detection_radius_area_entered"]
 [connection signal="area_entered" from="ChaseRadius" to="." method="_on_chase_radius_area_entered"]
 [connection signal="area_exited" from="ChaseRadius" to="." method="_on_chase_radius_area_exited"]
