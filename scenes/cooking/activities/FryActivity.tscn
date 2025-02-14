@@ -1,16 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://bgrsak6sy4dcb"]
+[gd_scene load_steps=18 format=3 uid="uid://bgrsak6sy4dcb"]
 
 [ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/CookingBase.tscn" id="1_8tnn7"]
 [ext_resource type="Script" path="res://scripts/cooking/FryActivity.gd" id="2_8d3b5"]
 [ext_resource type="Resource" uid="uid://dhf01em6mwxa8" path="res://resources/activities/frying.tres" id="2_bhayt"]
-[ext_resource type="Texture2D" uid="uid://chmpi1n4p1apn" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_ibkdy"]
-[ext_resource type="Shader" path="res://shaders/activities/FryActivity.gdshader" id="3_kiewf"]
-[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="3_pkhxo"]
+[ext_resource type="Texture2D" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_ibkdy"]
+[ext_resource type="Texture2D" uid="uid://weorr57ynm3" path="res://assets/workstations/fry_game/frying_pan.png" id="5_1mvg8"]
 [ext_resource type="Texture2D" uid="uid://ctqn7ohdkuvgc" path="res://assets/textures/blank_circle_200x200.png" id="5_wim56"]
-[ext_resource type="Texture2D" uid="uid://c1olneunkcl2j" path="res://assets/workstations/fry_game/fry_top.png" id="7_4b0kj"]
-[ext_resource type="FontFile" uid="uid://iqracr2sqomh" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="8_pgche"]
-[ext_resource type="Texture2D" uid="uid://ctkeslcjhp4qx" path="res://assets/textures/ui/Circle_Under.png" id="10_pv65g"]
-[ext_resource type="Texture2D" uid="uid://dlmhvkumh44c7" path="res://assets/textures/ui/Circle_Progress.png" id="11_2b6kp"]
+[ext_resource type="FontFile" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="8_pgche"]
+[ext_resource type="Texture2D" path="res://assets/textures/ui/Circle_Under.png" id="10_pv65g"]
+[ext_resource type="Texture2D" path="res://assets/textures/ui/Circle_Progress.png" id="11_2b6kp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iy2k6"]
 texture = ExtResource("2_ibkdy")
@@ -18,9 +16,6 @@ texture_margin_left = 24.0
 texture_margin_top = 24.0
 texture_margin_right = 24.0
 texture_margin_bottom = 24.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wpnry"]
-shader = ExtResource("3_kiewf")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rtp03"]
 size = Vector2(20, 20)
@@ -118,18 +113,17 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_iy2k6")
 
 [node name="Activity" parent="." index="4"]
+visible = true
 script = ExtResource("2_8d3b5")
 
 [node name="FryingPan" type="Sprite2D" parent="Activity" index="0"]
 z_index = 7
-material = SubResource("ShaderMaterial_wpnry")
-position = Vector2(638, 360)
-texture = ExtResource("3_pkhxo")
+position = Vector2(638, 390)
 
 [node name="Sprite2D" type="Sprite2D" parent="Activity/FryingPan" index="0"]
-position = Vector2(-5, 47)
-scale = Vector2(0.285, 0.285)
-texture = ExtResource("7_4b0kj")
+position = Vector2(-26, 25)
+scale = Vector2(0.230019, 0.230019)
+texture = ExtResource("5_1mvg8")
 
 [node name="Rings" type="Control" parent="Activity/FryingPan" index="1"]
 layout_mode = 3
@@ -211,7 +205,7 @@ texture = ExtResource("5_wim56")
 
 [node name="Ingredient" type="Sprite2D" parent="Activity/FryingPan" index="2"]
 self_modulate = Color(0.4, 0.4, 0.4, 1)
-position = Vector2(0, -75)
+position = Vector2(75, 0)
 
 [node name="Label" type="Label" parent="Activity/FryingPan/Ingredient" index="0"]
 visible = false
