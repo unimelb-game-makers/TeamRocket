@@ -6,6 +6,7 @@
 size = Vector2(610, 75)
 
 [node name="WreckedCar" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_1etd7")

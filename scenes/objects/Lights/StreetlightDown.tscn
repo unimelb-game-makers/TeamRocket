@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctpickf81rn6t"]
+[gd_scene load_steps=4 format=3 uid="uid://ctpickf81rn6t"]
 
 [ext_resource type="Texture2D" uid="uid://deji1ddld7gif" path="res://assets/Park/Objects/streetlight down.png" id="1_vhwi8"]
 [ext_resource type="Texture2D" uid="uid://digqpopb1qno3" path="res://assets/light_cone.jpg" id="2_8bafw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mf4xa"]
+size = Vector2(41, 278)
 
 [node name="Streetlight" type="Node2D"]
 
@@ -12,3 +15,11 @@ texture = ExtResource("1_vhwi8")
 position = Vector2(-4, 82)
 color = Color(0.928184, 0.675873, 0.397279, 1)
 texture = ExtResource("2_8bafw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1.5, 151)
+shape = SubResource("RectangleShape2D_mf4xa")

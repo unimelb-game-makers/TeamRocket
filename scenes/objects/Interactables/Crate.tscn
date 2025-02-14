@@ -13,6 +13,7 @@ slots_num = 9
 items = Array[ExtResource("2_rw46d")]([null, null, null, null, null, null, null, null, null])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
 texture = ExtResource("1_0l3g5")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Interactables"]]
