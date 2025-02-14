@@ -2,12 +2,15 @@ extends Camera2D
 
 var in_aim_mode = false
 
+# Aiming mode
 var original_position
 var target_position: Vector2
 var target_distance = 0
 var max_distance_from_player = 500
-
 var center_pos = position
+
+# Shoot screen shake
+var shake_strength: float = 0
 
 func _ready():
 	#connect("aim_mode_enter", Callable(self, "enter_aim_mode"))
@@ -26,7 +29,6 @@ func _process(delta: float) -> void:
 			center_pos - Vector2(max_distance_from_player, max_distance_from_player), 
 			center_pos + Vector2(max_distance_from_player, max_distance_from_player)
 		)
-		print("Hi")
 	else:
 		target_position = original_position
 	
