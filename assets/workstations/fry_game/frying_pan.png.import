@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1olneunkcl2j"
-path="res://.godot/imported/fry_top.png-13a6aabd413cdeac46ccdcebadb4b9a8.ctex"
+uid="uid://weorr57ynm3"
+path="res://.godot/imported/frying_pan.png-ede4005b88a2d2458d1b1aa1d0cec04b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/workstations/fry_game/fry_top.png"
-dest_files=["res://.godot/imported/fry_top.png-13a6aabd413cdeac46ccdcebadb4b9a8.ctex"]
+source_file="res://assets/workstations/fry_game/frying_pan.png"
+dest_files=["res://.godot/imported/frying_pan.png-ede4005b88a2d2458d1b1aa1d0cec04b.ctex"]
 
 [params]
 
