@@ -9,7 +9,6 @@ func _ready() -> void:
 
 func select_item(item: Item, amount: int):
 	item_selected.emit(item, amount)
-	print("Emitting Signal")
 
 func update_inventory_list() -> void:
 	inventory_container.update_inventory_list()

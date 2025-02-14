@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxuu77kvbmixu"]
+[gd_scene load_steps=9 format=3 uid="uid://bxuu77kvbmixu"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_pred7"]
-[ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="2_twpgx"]
-[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://resources/inventory_select_list.tscn" id="4_br31h"]
 [ext_resource type="Script" path="res://scripts/cooking/cooking_handler.gd" id="4_nipys"]
-[ext_resource type="Script" path="res://scripts/ui/item_description_box.gd" id="5_60gg5"]
 [ext_resource type="Script" path="res://scripts/ui/player_ui.gd" id="6_hhsni"]
 [ext_resource type="Texture2D" uid="uid://dgctlmfq5mj0j" path="res://assets/textures/rifle_placeholder.png" id="6_tctv1"]
+[ext_resource type="PackedScene" uid="uid://cpwdv7vvm7kdc" path="res://scenes/ui/inventory.tscn" id="6_xyb2j"]
 [ext_resource type="PackedScene" uid="uid://ck0jasabkl7co" path="res://scenes/menus/PauseMenu.tscn" id="8_1b1tq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1yyuo"]
@@ -26,7 +24,7 @@ script = ExtResource("1_pred7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayerUI" type="Control" parent="CanvasLayer"]
+[node name="HUD" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +34,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("6_hhsni")
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/PlayerUI"]
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD"]
 modulate = Color(1, 0.196078, 0.203922, 1)
 layout_mode = 0
 offset_left = 28.0
@@ -47,7 +45,7 @@ max_value = 50.0
 value = 50.0
 show_percentage = false
 
-[node name="GunInfo" type="Control" parent="CanvasLayer/PlayerUI"]
+[node name="GunInfo" type="Control" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -59,7 +57,7 @@ offset_top = -140.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="GunTexture" type="TextureRect" parent="CanvasLayer/PlayerUI/GunInfo"]
+[node name="GunTexture" type="TextureRect" parent="CanvasLayer/HUD/GunInfo"]
 layout_mode = 0
 offset_left = 44.0
 offset_top = -63.0
@@ -67,7 +65,7 @@ offset_right = 243.0
 offset_bottom = 126.0
 texture = ExtResource("6_tctv1")
 
-[node name="AmmoCount" type="Label" parent="CanvasLayer/PlayerUI/GunInfo"]
+[node name="AmmoCount" type="Label" parent="CanvasLayer/HUD/GunInfo"]
 layout_mode = 0
 offset_left = 76.0
 offset_top = -89.0
@@ -78,7 +76,7 @@ label_settings = SubResource("LabelSettings_1yyuo")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Label" parent="CanvasLayer/PlayerUI"]
+[node name="Timer" type="Label" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -106,79 +104,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_nipys")
 
-[node name="InventoryCenterer" type="CenterContainer" parent="CanvasLayer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_twpgx")
-
-[node name="Inventory" type="Control" parent="CanvasLayer/InventoryCenterer"]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="ItemListBackground" type="ColorRect" parent="CanvasLayer/InventoryCenterer/Inventory"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-offset_left = -210.0
-offset_top = -321.0
-offset_right = 598.0
-offset_bottom = 46.0
-mouse_filter = 1
-color = Color(0.212305, 0.212305, 0.212305, 1)
-
-[node name="InventoryLabel" type="Label" parent="CanvasLayer/InventoryCenterer/Inventory/ItemListBackground"]
-unique_name_in_owner = true
-layout_mode = 2
-offset_left = 23.0
-offset_top = 15.0
-offset_right = 135.0
-offset_bottom = 55.0
-text = "Inventory:"
-
-[node name="InventoryContainer" parent="CanvasLayer/InventoryCenterer/Inventory/ItemListBackground" instance=ExtResource("4_br31h")]
-unique_name_in_owner = true
-layout_mode = 2
-offset_left = 23.0
-offset_top = 45.0
-offset_right = 281.0
-offset_bottom = 345.0
-
-[node name="ItemDescriptionBackground" type="ColorRect" parent="CanvasLayer/InventoryCenterer/Inventory"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-offset_left = -210.0
-offset_top = 78.0
-offset_right = 598.0
-offset_bottom = 278.0
-color = Color(0.212305, 0.212305, 0.212305, 1)
-script = ExtResource("5_60gg5")
-
-[node name="ItemName" type="Label" parent="CanvasLayer/InventoryCenterer/Inventory/ItemDescriptionBackground"]
-layout_mode = 0
-offset_left = 186.0
-offset_top = 12.0
-offset_right = 428.0
-offset_bottom = 48.0
-
-[node name="ItemDesc" type="Label" parent="CanvasLayer/InventoryCenterer/Inventory/ItemDescriptionBackground"]
-layout_mode = 0
-offset_left = 185.0
-offset_top = 59.0
-offset_right = 773.0
-offset_bottom = 182.0
-autowrap_mode = 2
-
-[node name="ItemImage" type="TextureRect" parent="CanvasLayer/InventoryCenterer/Inventory/ItemDescriptionBackground"]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 19.0
-offset_right = 168.0
-offset_bottom = 169.0
-expand_mode = 1
-
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_1b1tq")]
+visible = false
 
-[connection signal="item_selected" from="CanvasLayer/InventoryCenterer/Inventory/ItemListBackground/InventoryContainer" to="CanvasLayer/InventoryCenterer" method="update_description"]
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("6_xyb2j")]
+visible = false
+offset_left = 640.0
+offset_top = 360.0
+offset_right = 640.0
+offset_bottom = 360.0
