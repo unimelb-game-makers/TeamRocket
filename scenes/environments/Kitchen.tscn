@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=31 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
@@ -18,6 +18,7 @@
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="12_xaknj"]
 [ext_resource type="Resource" uid="uid://pu3eafcj7feu" path="res://resources/items/spaghetti_raw.tres" id="15_kfbqe"]
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
+[ext_resource type="Resource" uid="uid://d4fvdxgm3d6pq" path="res://resources/items/spaghetti_bolognaise.tres" id="19_m1anj"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_5wnhy"]
 clip_count = 2
@@ -204,6 +205,10 @@ item = ExtResource("12_xaknj")
 [node name="Item5" parent="ItemHandler" index="4" instance=ExtResource("5_vbmf8")]
 position = Vector2(561, 312)
 item = ExtResource("15_kfbqe")
+
+[node name="Item6" parent="ItemHandler" index="5" instance=ExtResource("5_vbmf8")]
+position = Vector2(656, 314)
+item = ExtResource("19_m1anj")
 
 [node name="Player" parent="." index="6"]
 position = Vector2(269, 549)

@@ -21,7 +21,7 @@ func _on_inventory_container_item_selected(item: Item, amount: int) -> void:
 func update_character_stats():
 	$CharacterStats/Stats/HpLabel.text = "HP: " + str(50*(1+Globals.player_hp_increase))
 	$CharacterStats/Stats/DmgLabel.text = "DMG: " + str(5*(1+Globals.player_damage_increase))
-	$CharacterStats/Stats/SpdLabel.text = "SPD: " + str(1+Globals.player_damage_increase)
+	$CharacterStats/Stats/SpdLabel.text = "SPD: " + str(1+Globals.player_speed_increase)
 	
 func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("inventory")):

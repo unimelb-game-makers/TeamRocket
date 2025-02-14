@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="1_k45lh"]
 [ext_resource type="Script" path="res://scripts/ui/item_description_box.gd" id="2_l5ycy"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="2_rcx7t"]
-[ext_resource type="Texture2D" uid="uid://cr0213ac36mtj" path="res://assets/Player/PlayerAnimations/Idle/down idle.png" id="5_ljvxe"]
+[ext_resource type="Texture2D" uid="uid://bqaed0kw83mxe" path="res://assets/Player/PlayerAnimations/Idle/down idle.png" id="5_ljvxe"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -27,7 +27,7 @@ color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 layout_mode = 2
 offset_left = 23.0
 offset_top = 45.0
-offset_right = 523.0
+offset_right = 323.0
 offset_bottom = 345.0
 
 [node name="WeightLabel" type="Label" parent="ItemListBackground"]

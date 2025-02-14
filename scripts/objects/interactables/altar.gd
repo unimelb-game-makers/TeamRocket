@@ -9,7 +9,8 @@ signal submit(item)
 
 func submit_item(item):
 	submit.emit(item)
-	take_item(0)
+	items[0] = null
+	update_display()
 
 func interact():
 	super()
