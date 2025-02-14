@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=34 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="AudioStream" uid="uid://bd77f8tivpj3o" path="res://assets/sfx/team rocket sfx/area themes/central district/central district intro.wav" id="2_auyuh"]
@@ -20,12 +20,13 @@
 [ext_resource type="PackedScene" uid="uid://cd6fc47tx6cyd" path="res://scenes/objects/Lake.tscn" id="18_l3vkc"]
 [ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="19_ryaas"]
 [ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/enemy_dasher.tscn" id="19_sv1o8"]
-[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="20_0qh7k"]
+[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/Carrot.tres" id="20_0qh7k"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="21_5cojw"]
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="21_a7p7e"]
 [ext_resource type="Resource" uid="uid://dbw3pp6i2fhp4" path="res://resources/items/spaghetti.tres" id="22_rcmxg"]
 [ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/enemy_chicken.tscn" id="22_ykjv2"]
 [ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="23_p6fkx"]
+[ext_resource type="Script" path="res://scripts/player/camera_control.gd" id="24_s3lfa"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_y1gkg"]
 clip_count = 2
@@ -199,12 +200,13 @@ position = Vector2(182, 3938)
 [node name="Player" parent="." index="5"]
 position = Vector2(1727, 1598)
 
-[node name="Camera2D" parent="Player" index="8"]
+[node name="Camera2D" parent="Player" index="8" groups=["Camera"]]
 limit_left = 0
 limit_top = 0
 limit_right = 5000
 limit_bottom = 4000
 limit_smoothed = true
+script = ExtResource("24_s3lfa")
 
 [node name="Node2D" type="Node2D" parent="." index="6"]
 
@@ -222,3 +224,6 @@ radius = 1000.0
 position = Vector2(2514, 435)
 allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
 radius = 1000.0
+
+[connection signal="aim_mode_enter" from="Player" to="Player/Camera2D" method="enter_aim_mode"]
+[connection signal="aim_mode_exit" from="Player" to="Player/Camera2D" method="exit_aim_mode"]

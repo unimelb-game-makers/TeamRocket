@@ -197,7 +197,7 @@ texture = ExtResource("12_o5gnq")
 
 [node name="RayCast2D" type="RayCast2D" parent="Rifle"]
 position = Vector2(41, 1)
-target_position = Vector2(1000, 0)
+target_position = Vector2(2000, 0)
 collision_mask = 6
 
 [node name="AimingUI" type="Node2D" parent="Rifle"]
@@ -276,6 +276,28 @@ delay_in_seconds = "0.0"
 
 [node name="Stance" type="Node" parent="StateChart/Movement/Basic"]
 script = ExtResource("2_44kvc")
+
+[node name="Aim" type="Node" parent="StateChart/Movement/Basic/Stance"]
+script = ExtResource("3_u8x7w")
+initial_state = NodePath("Unarmed")
+
+[node name="Unarmed" type="Node" parent="StateChart/Movement/Basic/Stance/Aim"]
+script = ExtResource("4_px21u")
+
+[node name="To Aiming" type="Node" parent="StateChart/Movement/Basic/Stance/Aim/Unarmed"]
+script = ExtResource("5_6l3qh")
+to = NodePath("../../Aiming")
+event = &"enter_aiming_mode"
+delay_in_seconds = "0.0"
+
+[node name="Aiming" type="Node" parent="StateChart/Movement/Basic/Stance/Aim"]
+script = ExtResource("4_px21u")
+
+[node name="To Unarmed" type="Node" parent="StateChart/Movement/Basic/Stance/Aim/Aiming"]
+script = ExtResource("5_6l3qh")
+to = NodePath("../../Unarmed")
+event = &"exit_aiming_mode"
+delay_in_seconds = "0.0"
 
 [node name="Posture" type="Node" parent="StateChart/Movement/Basic/Stance"]
 script = ExtResource("3_u8x7w")
@@ -358,5 +380,7 @@ texture_scale = 2.0
 [connection signal="state_input" from="StateChart/Movement/Basic" to="." method="_on_basic_state_input"]
 [connection signal="state_physics_processing" from="StateChart/Movement/Basic" to="." method="_on_basic_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Run" to="." method="_on_run_state_entered"]
+[connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Aim/Aiming" to="." method="_on_aiming_state_entered"]
+[connection signal="state_exited" from="StateChart/Movement/Basic/Stance/Aim/Aiming" to="." method="_on_aiming_state_exited"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Crouched" to="." method="_on_crouched_state_entered"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Standing" to="." method="_on_standing_state_entered"]
