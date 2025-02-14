@@ -169,7 +169,9 @@ func roll_speed(elapsed_time : float) -> float:
 func _on_aiming_state_entered() -> void:
 	rifle.enter_aiming_mode()
 	aim_mode_enter.emit()
+	curr_speed = curr_speed / 2
 
 func _on_aiming_state_exited() -> void:
 	rifle.exit_aiming_mode()
 	aim_mode_exit.emit()
+	curr_speed = curr_speed * 2
