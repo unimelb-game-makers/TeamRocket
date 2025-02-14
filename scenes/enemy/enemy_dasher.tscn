@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://bysb5hk8pdva0"]
+[gd_scene load_steps=14 format=3 uid="uid://bysb5hk8pdva0"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/enemy_basic.tscn" id="1_cno7g"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_dasher.gd" id="2_1leqm"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="2_e75rs"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="3_klj4n"]
+[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="3_v7e55"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="4_dhk6e"]
+[ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="4_du2uk"]
 [ext_resource type="AudioStream" uid="uid://dbdh8lin0ln5n" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/idle/naked deer idle1.wav" id="6_glnb7"]
 [ext_resource type="AudioStream" uid="uid://b7dsn3hcvd0g3" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer attack1.wav" id="7_1cnyq"]
 [ext_resource type="AudioStream" uid="uid://dwci7x2kvnq3e" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer playerspotted1.wav" id="8_lig7d"]
@@ -17,6 +19,9 @@ radius = 200.0
 [node name="Dasher" instance=ExtResource("1_cno7g")]
 motion_mode = 1
 script = ExtResource("2_1leqm")
+health = 50
+dropped_items = Array[ExtResource("3_v7e55")]([ExtResource("4_du2uk")])
+dropped_item_chances = Array[float]([1.0])
 
 [node name="To Attack State" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
 script = ExtResource("4_dhk6e")

@@ -7,6 +7,7 @@ extends BasicEnemy
 @onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
 
 @onready var dash_attack_hurtbox: Area2D = $DashAttackHurtbox
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var dash_attack_vector: Vector2 # Position of player when winding up
 var dash_attack_speed: float = 1000
@@ -18,6 +19,12 @@ var current_dashes = 0
 var num_dashes = 3
 
 var in_attack_state: bool = false
+
+func _process(delta: float) -> void:
+	if (velocity.x > 0.0):
+		animated_sprite_2d.flip_h = true
+	else:
+		animated_sprite_2d.flip_h = false
 
 # Stop moving, and prepare to dash. Delay to Dash Attack set in Inspector
 func _on_wind_up_state_entered() -> void:
@@ -39,7 +46,6 @@ func _on_dash_attack_state_entered() -> void:
 func _on_dash_attack_state_physics_processing(delta: float) -> void:
 	dash_attack_timer += delta
 	if dash_attack_timer >= dash_attack_duration:
-		print(dash_attack_timer)
 		$StateChart.send_event("on_dash_attack_finish")
 	else:
 		velocity = dash_attack_vector * roll_speed(dash_attack_timer)
@@ -87,7 +93,7 @@ func _on_active_state_entered() -> void:
 
 func _on_dash_attack_hurtbox_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.health -= 5
+		body.health -= 30
 
 func damage():
 	super()
