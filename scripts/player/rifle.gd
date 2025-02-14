@@ -41,7 +41,7 @@ var bullets = MAX_BULLETS:
 func _ready() -> void:
 	fire_timer.wait_time = 1.0 / FIRE_RATE
 	reload_timer.wait_time = 1.0 / RELOAD_SPEED
-
+	aiming_curve.visible = false
 
 func _process(_delta):
 	
