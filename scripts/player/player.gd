@@ -188,6 +188,10 @@ func roll_speed(elapsed_time : float) -> float:
 	var t : float = elapsed_time / ROLL_DURATION
 	return ROLL_SPEED - (ROLL_SPEED - CROUCH_SPEED) * t * t
 
+func _on_run_state_entered() -> void:
+	curr_speed = RUN_SPEED
+	curr_accel = RUN_ACCEL
+
 func _on_aiming_state_entered() -> void:
 	rifle.enter_aiming_mode()
 	aim_mode_enter.emit()
