@@ -183,7 +183,7 @@ position = Vector2(793, 232)
 position = Vector2(900, 500)
 
 [node name="Altar" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("16_7km4m")]
-position = Vector2(85, 427)
+position = Vector2(88, 454)
 
 [node name="Item1" parent="ItemHandler" index="0" instance=ExtResource("5_vbmf8")]
 position = Vector2(386, 317)
