@@ -1,15 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgrsak6sy4dcb"]
+[gd_scene load_steps=21 format=3 uid="uid://bgrsak6sy4dcb"]
 
 [ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/CookingBase.tscn" id="1_8tnn7"]
 [ext_resource type="Script" path="res://scripts/cooking/FryActivity.gd" id="2_8d3b5"]
+[ext_resource type="Resource" uid="uid://dhf01em6mwxa8" path="res://resources/activities/frying.tres" id="2_bhayt"]
+[ext_resource type="Texture2D" uid="uid://chmpi1n4p1apn" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_ibkdy"]
 [ext_resource type="Shader" path="res://shaders/activities/FryActivity.gdshader" id="3_kiewf"]
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="3_pkhxo"]
 [ext_resource type="Texture2D" uid="uid://ctqn7ohdkuvgc" path="res://assets/textures/blank_circle_200x200.png" id="5_wim56"]
+[ext_resource type="Texture2D" uid="uid://c1olneunkcl2j" path="res://assets/workstations/fry_game/fry_top.png" id="7_4b0kj"]
+[ext_resource type="FontFile" uid="uid://iqracr2sqomh" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="8_pgche"]
+[ext_resource type="Texture2D" uid="uid://ctkeslcjhp4qx" path="res://assets/textures/ui/Circle_Under.png" id="10_pv65g"]
+[ext_resource type="Texture2D" uid="uid://dlmhvkumh44c7" path="res://assets/textures/ui/Circle_Progress.png" id="11_2b6kp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iy2k6"]
+texture = ExtResource("2_ibkdy")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wpnry"]
 shader = ExtResource("3_kiewf")
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pjecu"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rtp03"]
 size = Vector2(20, 20)
 
 [sub_resource type="Animation" id="Animation_cao5g"]
@@ -17,7 +30,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FryingPan/Ingredient:scale")
+tracks/0/path = NodePath("FryingPan/Ingredient/Sprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,7 +46,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FryingPan/Ingredient:scale")
+tracks/0/path = NodePath("FryingPan/Ingredient/Sprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -49,7 +62,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FryingPan/Ingredient:scale")
+tracks/0/path = NodePath("FryingPan/Ingredient/Sprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -65,7 +78,7 @@ length = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FryingPan/Ingredient:scale")
+tracks/0/path = NodePath("FryingPan/Ingredient/Sprite:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -83,7 +96,26 @@ _data = {
 "idle": SubResource("Animation_v12b5")
 }
 
-[node name="CookingScene" instance=ExtResource("1_8tnn7")]
+[sub_resource type="LabelSettings" id="LabelSettings_gmnpu"]
+font = ExtResource("8_pgche")
+font_size = 42
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CookingScene2" instance=ExtResource("1_8tnn7")]
+activity_res = ExtResource("2_bhayt")
+
+[node name="ColorRect" parent="Control/CenterContainer" index="0"]
+color = Color(1, 0.776471, 0.537255, 1)
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/CenterContainer/ColorRect" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_iy2k6")
 
 [node name="Activity" parent="." index="4"]
 script = ExtResource("2_8d3b5")
@@ -91,10 +123,15 @@ script = ExtResource("2_8d3b5")
 [node name="FryingPan" type="Sprite2D" parent="Activity" index="0"]
 z_index = 7
 material = SubResource("ShaderMaterial_wpnry")
-position = Vector2(638, 345)
+position = Vector2(638, 360)
 texture = ExtResource("3_pkhxo")
 
-[node name="Rings" type="Control" parent="Activity/FryingPan" index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="Activity/FryingPan" index="0"]
+position = Vector2(-5, 47)
+scale = Vector2(0.285, 0.285)
+texture = ExtResource("7_4b0kj")
+
+[node name="Rings" type="Control" parent="Activity/FryingPan" index="1"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -172,19 +209,23 @@ scale = Vector2(0.1, 0.1)
 pivot_offset = Vector2(100, 100)
 texture = ExtResource("5_wim56")
 
-[node name="Ingredient" type="Sprite2D" parent="Activity/FryingPan" index="1"]
+[node name="Ingredient" type="Sprite2D" parent="Activity/FryingPan" index="2"]
 self_modulate = Color(0.4, 0.4, 0.4, 1)
-texture = SubResource("PlaceholderTexture2D_pjecu")
+position = Vector2(0, -75)
 
 [node name="Label" type="Label" parent="Activity/FryingPan/Ingredient" index="0"]
 visible = false
 offset_left = -2.0
-offset_top = -25.0
+offset_top = -31.0
 offset_right = 38.0
-offset_bottom = -2.0
+offset_bottom = -8.0
 text = "!"
 
+[node name="Sprite" type="Sprite2D" parent="Activity/FryingPan/Ingredient" index="1"]
+texture = SubResource("PlaceholderTexture2D_rtp03")
+
 [node name="ProgressDebug" type="Label" parent="Activity" index="1"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
@@ -193,8 +234,30 @@ offset_bottom = 23.0
 libraries = {
 "": SubResource("AnimationLibrary_4sm8j")
 }
+autoplay = "idle"
 
 [node name="Background" type="TextureRect" parent="Activity" index="3"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="TipText" type="Label" parent="Activity" index="4"]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 202.0
+offset_right = 826.0
+offset_bottom = 255.0
+text = "Stay near the center!"
+label_settings = SubResource("LabelSettings_gmnpu")
+
+[node name="FryProgress" type="TextureProgressBar" parent="Activity" index="5"]
+layout_mode = 0
+offset_left = 807.0
+offset_top = 409.0
+offset_right = 1151.0
+offset_bottom = 753.0
+scale = Vector2(0.5, 0.5)
+step = 0.0
+fill_mode = 4
+texture_under = ExtResource("10_pv65g")
+texture_progress = ExtResource("11_2b6kp")
