@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ba6sk0si4xgoh"
-path="res://.godot/imported/down03.png-18d0bc0defdf593873dfa1049a3f00b8.ctex"
+uid="uid://1fuk5rxd48wb"
+path="res://.godot/imported/frame_2_delay-0.13s.png-847ab35abdd2ca9bb1d59c745f4af467.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down03.png"
-dest_files=["res://.godot/imported/down03.png-18d0bc0defdf593873dfa1049a3f00b8.ctex"]
+source_file="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_2_delay-0.13s.png"
+dest_files=["res://.godot/imported/frame_2_delay-0.13s.png-847ab35abdd2ca9bb1d59c745f4af467.ctex"]
 
 [params]
 
