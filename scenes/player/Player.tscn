@@ -166,10 +166,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0p80"]
-size = Vector2(60, 182)
+size = Vector2(67, 177)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwbdg"]
-radius = 60.0
+radius = 85.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0215d"]
 radius = 90.0
@@ -222,7 +222,7 @@ animation = &"idle"
 frame_progress = 0.465304
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
+position = Vector2(3.5, 15.5)
 shape = SubResource("RectangleShape2D_d0p80")
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("2_7c1ag")]
