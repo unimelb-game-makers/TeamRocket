@@ -40,7 +40,7 @@ grow_vertical = 2
 [node name="ColorRect" type="ColorRect" parent="Control/CenterContainer"]
 custom_minimum_size = Vector2(720, 500)
 layout_mode = 2
-color = Color(0.462291, 0.462291, 0.462291, 1)
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 
 [node name="SelectedFoodList" type="CenterContainer" parent="."]
 layout_mode = 1

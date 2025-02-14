@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://j00qr7dcyhv4"]
+[gd_scene load_steps=4 format=3 uid="uid://j00qr7dcyhv4"]
 
 [ext_resource type="PackedScene" uid="uid://hoiacky4452m" path="res://scenes/menus/VolumeContainer.tscn" id="1_ponht"]
 [ext_resource type="Script" path="res://scripts/Menus/settings.gd" id="1_q578m"]
+[ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_iod7p"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -44,6 +45,8 @@ setting_name = "UI Volume"
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("3_iod7p")
+theme_override_font_sizes/font_size = 30
 text = "Back"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

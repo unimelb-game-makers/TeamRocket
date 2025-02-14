@@ -11,7 +11,7 @@ offset_bottom = 302.0
 script = ExtResource("1_cqgrg")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-custom_minimum_size = Vector2(250, 300)
+custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 horizontal_scroll_mode = 0
 

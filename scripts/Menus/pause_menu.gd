@@ -1,6 +1,7 @@
 extends Control
 
-@onready var main_container: VBoxContainer = $CenterContainer/MainContainer
+@onready var main_container: Control = $CenterContainer/MainPauseMenu
+
 @onready var sound_settings_container: VBoxContainer = $CenterContainer/SoundSettingsContainer
 
 func _process(delta: float) -> void:
