@@ -197,7 +197,7 @@ texture = ExtResource("12_o5gnq")
 
 [node name="RayCast2D" type="RayCast2D" parent="Rifle"]
 position = Vector2(41, 1)
-target_position = Vector2(1000, 0)
+target_position = Vector2(2000, 0)
 collision_mask = 6
 
 [node name="AimingUI" type="Node2D" parent="Rifle"]
