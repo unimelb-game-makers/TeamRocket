@@ -205,6 +205,10 @@ script = ExtResource("24_s3lfa")
 
 [node name="Node2D" type="Node2D" parent="." index="6"]
 
+[node name="EnemyHandler" parent="." index="7"]
+min_spawns_per_area = 0
+max_spawns_per_area = 3
+
 [node name="LandEnemySpawnAreas" parent="EnemyHandler/SpawnAreas" index="0" instance=ExtResource("21_5cojw")]
 position = Vector2(3274, 2731)
 allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
@@ -217,6 +221,21 @@ radius = 1000.0
 
 [node name="LandEnemySpawnAreas3" parent="EnemyHandler/SpawnAreas" index="2" instance=ExtResource("21_5cojw")]
 position = Vector2(2514, 435)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
+[node name="LandEnemySpawnAreas4" parent="EnemyHandler/SpawnAreas" index="3" instance=ExtResource("21_5cojw")]
+position = Vector2(4599, 469)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
+[node name="LandEnemySpawnAreas5" parent="EnemyHandler/SpawnAreas" index="4" instance=ExtResource("21_5cojw")]
+position = Vector2(4506, 2562)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
+[node name="LandEnemySpawnAreas6" parent="EnemyHandler/SpawnAreas" index="5" instance=ExtResource("21_5cojw")]
+position = Vector2(683, 375)
 allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
 radius = 1000.0
 
