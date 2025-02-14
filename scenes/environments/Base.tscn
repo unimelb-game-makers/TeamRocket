@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/enemy/Areas/enemy_handler.gd" id="4_omi12"]
 
 [node name="Base" type="Node2D"]
+y_sort_enabled = true
 
 [node name="GameHandler" type="Node" parent="."]
 script = ExtResource("1_eaqps")
@@ -31,16 +32,20 @@ position = Vector2(533, 480)
 color = Color(0.18359, 0.18359, 0.18359, 1)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["navigation"]]
+y_sort_enabled = true
 
 [node name="Map" type="Node2D" parent="NavigationRegion2D"]
+y_sort_enabled = true
 
-[node name="InteractableHandler" type="Node" parent="."]
+[node name="InteractableHandler" type="Node2D" parent="."]
+y_sort_enabled = true
 script = ExtResource("2_nlyqa")
 chest_scene = ExtResource("3_ld3e5")
 
 [node name="InteractableSpawnPoints" type="Node" parent="InteractableHandler"]
 
 [node name="InteractableHolder" type="Node2D" parent="InteractableHandler"]
+y_sort_enabled = true
 
 [node name="ItemHandler" type="Node" parent="." groups=["ItemHandler"]]
 script = ExtResource("1_p3mrr")

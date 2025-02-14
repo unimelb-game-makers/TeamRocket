@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @onready var interactable_spawn_points: Node = $InteractableSpawnPoints
 @onready var interactable_holder: Node2D = $InteractableHolder

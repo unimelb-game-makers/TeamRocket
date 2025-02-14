@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8ni7apwy8dyx"]
+[gd_scene load_steps=6 format=3 uid="uid://c8ni7apwy8dyx"]
 
 [ext_resource type="Texture2D" uid="uid://fw7m087mo0ka" path="res://assets/Park/Objects/crate.png" id="1_0l3g5"]
 [ext_resource type="Script" path="res://scripts/objects/interactables/storage.gd" id="1_td6ss"]
 [ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="2_rw46d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o8un"]
-size = Vector2(219, 161)
+size = Vector2(193, 145)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqr6h"]
+size = Vector2(159, 30)
 
 [node name="Crate" type="Node2D"]
 script = ExtResource("1_td6ss")
@@ -14,13 +17,14 @@ items = Array[ExtResource("2_rw46d")]([null, null, null, null, null, null, null,
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
+scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_0l3g5")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Interactables"]]
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-3.5, -9.5)
+position = Vector2(-1.5, -0.5)
 shape = SubResource("RectangleShape2D_5o8un")
 
 [node name="UI" type="Control" parent="."]
@@ -39,5 +43,13 @@ offset_right = 235.0
 offset_bottom = -50.0
 scale = Vector2(1.5, 1.5)
 columns = 3
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, -8)
+shape = SubResource("RectangleShape2D_hqr6h")
 
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
