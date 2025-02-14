@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 signal activity_interact(activity)
 signal death
+signal channel_complete
 
 var can_move: bool = true
 
@@ -37,6 +38,8 @@ var can_roll : bool = true
 @onready var rifle: Node2D = $Rifle
 @onready var statechart: StateChart = $StateChart
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var channel_timer: Timer = $ChannelTimer
+@onready var channeling_particles: CPUParticles2D = $Particles/ChannelingParticles
 
 # ----- Player Stats -----
 @export var max_health = 50
@@ -81,6 +84,14 @@ func _process(_delta: float) -> void:
 	if velocity == Vector2(0,0):
 		animated_sprite_2d.scale = Vector2(0.12, 0.12)
 		animated_sprite_2d.play("idle")
+		
+	if Input.is_action_just_pressed("channel"):
+		channel_timer.start(0)
+	elif Input.is_action_just_released("channel") or velocity != Vector2(0,0):
+		channel_timer.stop()
+	
+	if (not channel_timer.is_stopped()):
+		channeling_particles.emitting = true
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -202,3 +213,6 @@ func _on_aiming_state_exited() -> void:
 	rifle.exit_aiming_mode()
 	aim_mode_exit.emit()
 	curr_speed = curr_speed * 2
+
+func _on_channel_timer_timeout() -> void:
+	channel_complete.emit()

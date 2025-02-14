@@ -47,16 +47,12 @@ colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_wmmsd")
 
 [node name="Base" instance=ExtResource("1_4boqu")]
-y_sort_enabled = true
 
 [node name="KitchenHandler" type="Node" parent="." index="0"]
 script = ExtResource("2_watt5")
 
 [node name="GameHandler" parent="." index="1"]
 TIMER = false
-
-[node name="CanvasLayer" parent="GameHandler" index="1"]
-visible = false
 
 [node name="NavigationRegion2D" parent="." index="3"]
 navigation_polygon = SubResource("NavigationPolygon_5vy8l")

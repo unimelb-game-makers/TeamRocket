@@ -13,6 +13,7 @@ var paused = false
 @export var MAX_TIME = 1440
 
 func _ready() -> void:
+	$CanvasLayer.show()
 	if TIMER:
 		time = START_TIME
 		game_timer.wait_time = 1.0 / TIME_STEP
@@ -39,4 +40,8 @@ func load_character_info():
 	pass
 
 func _on_player_death() -> void:
+	switch_to_kitchen()
+
+# Temp Signal so player can return to home easier
+func _on_player_channel_complete() -> void:
 	switch_to_kitchen()

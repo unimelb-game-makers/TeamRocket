@@ -17,6 +17,7 @@ script = ExtResource("1_eaqps")
 [node name="GameTimer" type="Timer" parent="GameHandler"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameHandler"]
+visible = false
 
 [node name="FadeToBlack" type="ColorRect" parent="GameHandler/CanvasLayer"]
 z_index = 200
@@ -66,4 +67,5 @@ script = ExtResource("4_omi12")
 
 [connection signal="timeout" from="GameHandler/GameTimer" to="GameHandler" method="_on_game_timer_timeout"]
 [connection signal="activity_interact" from="Player" to="UI" method="_on_player_activity_interact"]
+[connection signal="channel_complete" from="Player" to="GameHandler" method="_on_player_channel_complete"]
 [connection signal="death" from="Player" to="GameHandler" method="_on_player_death"]
