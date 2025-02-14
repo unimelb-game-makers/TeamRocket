@@ -1,11 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=30 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
 [ext_resource type="Script" path="res://scripts/Game/kitchen_handler.gd" id="2_watt5"]
+[ext_resource type="AudioStream" uid="uid://dvo41lawvkv1r" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen intro.wav" id="3_5yo2p"]
 [ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="3_xytjo"]
 [ext_resource type="Texture2D" uid="uid://b5jgmaxgknpb0" path="res://assets/interiors/kitchen/walls.png" id="3_yjya3"]
 [ext_resource type="PackedScene" uid="uid://c5fbsmwagky6i" path="res://scenes/cooking/workbenches/Pot.tscn" id="4_hcw55"]
+[ext_resource type="AudioStream" uid="uid://bfesfhdqban7e" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen loop.wav" id="4_hl741"]
 [ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
 [ext_resource type="PackedScene" uid="uid://yw75vu274ne0" path="res://scenes/item/item_floor.tscn" id="5_vbmf8"]
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
@@ -16,6 +18,31 @@
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="12_xaknj"]
 [ext_resource type="Resource" uid="uid://pu3eafcj7feu" path="res://resources/items/spaghetti_raw.tres" id="15_kfbqe"]
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_5wnhy"]
+clip_count = 2
+clip_0/name = &"Kitchen Intro"
+clip_0/stream = ExtResource("3_5yo2p")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Kitchen Loop"
+clip_1/stream = ExtResource("4_hl741")
+clip_1/auto_advance = 1
+clip_1/next_clip = 1
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(1, 1): {
+"fade_beats": 1,
+"fade_mode": 4,
+"from_time": 3,
+"to_time": 1
+}
+}
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5vy8l"]
 
@@ -53,6 +80,12 @@ script = ExtResource("2_watt5")
 
 [node name="GameHandler" parent="." index="1"]
 TIMER = false
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler" index="1"]
+process_mode = 3
+stream = SubResource("AudioStreamInteractive_5wnhy")
+autoplay = true
+bus = &"Music"
 
 [node name="NavigationRegion2D" parent="." index="3"]
 navigation_polygon = SubResource("NavigationPolygon_5vy8l")
