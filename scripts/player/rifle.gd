@@ -51,10 +51,11 @@ func _process(_delta):
 	if (aiming_mode):
 		inaccuracy = lerp(inaccuracy, 0.0, 2.5 * _delta)
 		
-		aiming_line_1.rotation_degrees = -inaccuracy
-		aiming_line_2.rotation_degrees = inaccuracy
+		aiming_curve.scale.x = remap(inaccuracy, MAX_INACCURACY, 0.0, 1.0, 2.0)
 		
 		update_aiming_ui()
+		aiming_line_1.rotation_degrees = -inaccuracy
+		aiming_line_2.rotation_degrees = inaccuracy
 		
 		if Input.is_action_just_pressed("fire"):
 			if (fire_timer.is_stopped() and reload_timer.is_stopped()):
