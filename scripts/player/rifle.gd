@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var bullet_scene: Resource
+@export var impact_scene: PackedScene
 @onready var raycast = $RayCast2D
 
 # Inaccuracy value in degrees. Raycast will fire on a random degrees within -inaccuracy to +inaccuracy
@@ -65,6 +66,12 @@ func _process(_delta):
 				if (target):
 					if (target is Enemy):
 						target.health -= damage * (1 + Globals.player_damage_increase)
+						
+				var hit_location = raycast.get_collision_point()
+				var impact = impact_scene.instantiate()
+				add_child(impact)
+				impact.global_position = hit_location
+				
 				bullets -= 1
 				fire_timer.start()
 				
