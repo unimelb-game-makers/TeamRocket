@@ -133,7 +133,6 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 		roll_cd_timer += delta
 		if roll_cd_timer >= ROLL_COOLDOWN:
 			can_roll = true
-	
 
 	# Handle Aim State
 	if Input.is_action_pressed("aim"):
@@ -160,7 +159,6 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 				animated_sprite_2d.play("move_down", animation_speed)
 			else:
 				animated_sprite_2d.play('move_up', animation_speed)
-
 
 # Polling (single key presses)
 func _on_basic_state_input(event: InputEvent) -> void:
