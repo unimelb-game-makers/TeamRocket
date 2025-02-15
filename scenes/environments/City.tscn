@@ -205,7 +205,7 @@ script = ExtResource("24_s3lfa")
 
 [node name="Node2D" type="Node2D" parent="." index="6"]
 
-[node name="EnemyHandler" parent="." index="7"]
+[node name="EnemyHandler" parent="." index="7" groups=["EnemyHandler"]]
 min_spawns_per_area = 0
 max_spawns_per_area = 3
 

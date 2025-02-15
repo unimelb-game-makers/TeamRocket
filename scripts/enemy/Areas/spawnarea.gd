@@ -31,7 +31,7 @@ func spawn_single():
 	e.global_position = global_position + collisionshape.shape.radius * get_random_point()
 	
 	# Add child to root node
-	get_tree().root.add_child(e)
+	get_tree().get_first_node_in_group("EnemyHandler").add_child(e)
 
 
 func spawn_batch(amount: int):
