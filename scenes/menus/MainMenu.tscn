@@ -99,6 +99,27 @@ theme_override_font_sizes/font_size = 150
 text = "The Last Diner"
 horizontal_alignment = 1
 
+[node name="Label2" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -269.0
+offset_right = 704.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.174533
+theme = ExtResource("3_atwnr")
+theme_override_colors/font_color = Color(0.604813, 0.00188793, 0.158301, 1)
+theme_override_fonts/font = ExtResource("3_cx0kh")
+theme_override_font_sizes/font_size = 50
+text = "Prototype"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MainMenuButtons" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
@@ -164,6 +185,65 @@ text = "Exit"
 
 [node name="Settings" parent="CanvasLayer" instance=ExtResource("2_r7byj")]
 visible = false
+
+[node name="ControlLabels" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 1030.0
+offset_top = 518.0
+offset_right = 1254.0
+offset_bottom = 703.0
+
+[node name="Title" type="Label" parent="CanvasLayer/ControlLabels"]
+layout_mode = 2
+text = "Controls
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/ControlLabels"]
+layout_mode = 2
+text = "WASD - Movement"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/ControlLabels"]
+layout_mode = 2
+text = "Shift - Sprint, Space - Dash"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="CanvasLayer/ControlLabels"]
+layout_mode = 2
+text = "RClick - Aim, RClick - Fire"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="CanvasLayer/ControlLabels"]
+layout_mode = 2
+text = "R - Reload, E - Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="CanvasLayer/ControlLabels"]
+layout_mode = 2
+text = "I - Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="CanvasLayer/ControlLabels"]
+layout_mode = 2
+text = "Hold C - Return to Kitchen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Disclaimer" type="Label" parent="CanvasLayer"]
+offset_left = 13.0
+offset_top = 630.0
+offset_right = 237.0
+offset_bottom = 705.0
+text = "Disclaimer: Gameplay is not indicitive of final product and is subject to change"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="BackgroundMap" type="Node2D" parent="."]
 
