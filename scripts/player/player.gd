@@ -61,7 +61,6 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	print(curr_speed)
 	# Code for item pickup
 	if (interact_radius.has_overlapping_areas()):
 		if (Input.is_action_just_pressed("interact")):

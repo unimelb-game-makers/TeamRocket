@@ -168,13 +168,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ChoppingBoard" parent="InteractableHandler/InteractableHolder" index="0" instance=ExtResource("3_xytjo")]
 z_index = 1
-position = Vector2(637, 536)
+y_sort_enabled = true
+position = Vector2(535, 501)
 
 [node name="Pot" parent="InteractableHandler/InteractableHolder" index="1" instance=ExtResource("4_hcw55")]
+y_sort_enabled = true
 position = Vector2(793, 232)
 
 [node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("9_5i564")]
-position = Vector2(900, 500)
+z_index = 1
+position = Vector2(919, 506)
 
 [node name="Altar" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("16_7km4m")]
 position = Vector2(88, 454)
@@ -183,7 +186,9 @@ position = Vector2(88, 454)
 position = Vector2(269, 549)
 
 [node name="UI" parent="." index="8"]
+offset_left = -6.0
 offset_top = -2.0
+offset_right = -6.0
 offset_bottom = -2.0
 
 [connection signal="body_entered" from="NavigationRegion2D/Map/ExitArea" to="KitchenHandler" method="_on_exit_area_body_entered"]
