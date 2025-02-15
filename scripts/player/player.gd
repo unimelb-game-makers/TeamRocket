@@ -233,10 +233,8 @@ func _on_aiming_state_physics_processing(delta: float) -> void:
 			else:
 				animated_sprite_2d.scale = Vector2(0.12, 0.12)
 				if (mouse_direction.y > 0):
-					print("Aiming down")
 					animated_sprite_2d.play("stand_down_aim", animation_speed)
 				else:
-					print("Aiming up")
 					animated_sprite_2d.play('stand_up_aim', animation_speed)
 
 func _on_unarmed_state_physics_processing(delta: float) -> void:
@@ -284,3 +282,19 @@ func _on_run_state_physics_processing(delta: float) -> void:
 
 func _on_rifle_fired() -> void:
 	fired = true
+	var mouse_pos = get_global_mouse_position()
+	var mouse_direction = (mouse_pos - global_position).normalized()
+	if (mouse_direction.length() > 0.1):
+		if (abs(mouse_direction.x) > abs(mouse_direction.y)):
+			animated_sprite_2d.scale = Vector2(0.14, 0.14)
+			# Left/Right movement
+			if (mouse_direction.x > 0):
+				animated_sprite_2d.play("move_right")
+			else:
+				animated_sprite_2d.play("move_left")
+		else:
+			animated_sprite_2d.scale = Vector2(0.12, 0.12)
+			if (mouse_direction.y > 0):
+				animated_sprite_2d.play("shoot_down")
+			else:
+				animated_sprite_2d.play('shoot_up')

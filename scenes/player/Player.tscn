@@ -417,7 +417,7 @@ bus = &"Effects"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_web4h")
-animation = &"stand_down_aim"
+animation = &"shoot_down"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 15.5)
