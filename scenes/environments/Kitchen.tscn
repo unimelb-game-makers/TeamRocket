@@ -62,7 +62,7 @@ size = Vector2(556.667, 516.666)
 size = Vector2(332, 395)
 
 [sub_resource type="Gradient" id="Gradient_wmmsd"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.176419, 0.176419, 0.176419, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_dupnr"]
 gradient = SubResource("Gradient_wmmsd")
@@ -159,9 +159,9 @@ shape = SubResource("RectangleShape2D_jvgon")
 
 [node name="TextureRect" type="TextureRect" parent="NavigationRegion2D/Map/ExitArea" index="1"]
 z_index = 5
-offset_left = -441.0
+offset_left = -435.0
 offset_top = -406.0
-offset_right = 213.0
+offset_right = 219.0
 offset_bottom = 10.0
 texture = SubResource("GradientTexture1D_dupnr")
 metadata/_edit_use_anchors_ = true
