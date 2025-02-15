@@ -1,5 +1,7 @@
 extends Node2D
 
+signal fired
+
 @export var bullet_scene: Resource
 @export var impact_scene: PackedScene
 @onready var raycast = $RayCast2D
@@ -77,6 +79,7 @@ func _process(_delta):
 				impact.global_position = hit_location
 				
 				fire_effect.play(0.3)
+				fired.emit()
 				
 				bullets -= 1
 				fire_timer.start()

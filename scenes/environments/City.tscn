@@ -211,7 +211,7 @@ position = Vector2(1727, 1598)
 
 [node name="Camera2D" parent="Player" index="10" groups=["Camera"]]
 limit_left = 0
-limit_top = 0
+limit_top = -300
 limit_right = 5000
 limit_bottom = 4000
 limit_smoothed = true

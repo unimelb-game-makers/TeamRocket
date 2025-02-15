@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bp53g1jmqlap"]
+[gd_scene load_steps=85 format=3 uid="uid://bp53g1jmqlap"]
 
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_lvdue"]
@@ -27,17 +27,29 @@
 [ext_resource type="Texture2D" uid="uid://nv4brp6g5h2a" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_0_delay-0.13s.png" id="15_t2p34"]
 [ext_resource type="Texture2D" uid="uid://di86pwnyqattg" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_1_delay-0.13s.png" id="16_j11n7"]
 [ext_resource type="Texture2D" uid="uid://uv8ow42xi6qp" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_2_delay-0.13s.png" id="17_3j5gf"]
+[ext_resource type="Texture2D" uid="uid://dwyxlehdbfq2m" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 00.png" id="18_odnkq"]
 [ext_resource type="Texture2D" uid="uid://bp7y6kdy4yh1d" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_3_delay-0.13s.png" id="18_pa30l"]
 [ext_resource type="Texture2D" uid="uid://b52b675kybqqa" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_4_delay-0.13s.png" id="19_3oooa"]
+[ext_resource type="Texture2D" uid="uid://vqlkx4v2wvd8" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 01.png" id="19_jiyrq"]
+[ext_resource type="Texture2D" uid="uid://bc4u5goj4ffr2" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 02.png" id="20_2pgx4"]
 [ext_resource type="Texture2D" uid="uid://wcd73g7til3i" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_5_delay-0.13s.png" id="20_cetet"]
+[ext_resource type="Texture2D" uid="uid://bfvbv5xtj1j63" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 03.png" id="21_fvpc7"]
 [ext_resource type="Texture2D" uid="uid://ca53u11ldlory" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_6_delay-0.13s.png" id="21_qjn0l"]
+[ext_resource type="Texture2D" uid="uid://di8360caqy7c8" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 04.png" id="22_1a5nx"]
 [ext_resource type="Texture2D" uid="uid://yab1oufid13y" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_7_delay-0.13s.png" id="22_nxogw"]
 [ext_resource type="Texture2D" uid="uid://bdjdcpo225fq7" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_0_delay-0.13s.png" id="23_ewgrd"]
+[ext_resource type="Texture2D" uid="uid://br53fiqh6v3hm" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 05.png" id="23_y8xoq"]
 [ext_resource type="Texture2D" uid="uid://cfqpnxb7qjir1" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_1_delay-0.13s.png" id="24_cq5lk"]
+[ext_resource type="Texture2D" uid="uid://c1xrl6na61w0g" path="res://assets/Player/PlayerAnimations/Running/Run Down/run down 00.png" id="24_ng3yo"]
+[ext_resource type="Texture2D" uid="uid://d188fvg4x3ble" path="res://assets/Player/PlayerAnimations/Running/Run Down/run down 01.png" id="25_g8nah"]
 [ext_resource type="Texture2D" uid="uid://1fuk5rxd48wb" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_2_delay-0.13s.png" id="25_tch83"]
+[ext_resource type="Texture2D" uid="uid://brfebtxhjb0ov" path="res://assets/Player/PlayerAnimations/Running/Run Down/run down 02.png" id="26_7e4j6"]
 [ext_resource type="Texture2D" uid="uid://dbwqkau3h0647" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_3_delay-0.13s.png" id="26_ukwyt"]
+[ext_resource type="Texture2D" uid="uid://bdaajbipwxa00" path="res://assets/Player/PlayerAnimations/Running/Run Down/run down 03.png" id="27_rmv3m"]
 [ext_resource type="Texture2D" uid="uid://gqm8o2w6mfvb" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_4_delay-0.13s.png" id="27_vi73o"]
 [ext_resource type="Texture2D" uid="uid://blws51lgkcnoq" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_5_delay-0.13s.png" id="28_a8xye"]
+[ext_resource type="Texture2D" uid="uid://c5ew85glti42p" path="res://assets/Player/PlayerAnimations/Running/Run Down/run down 04.png" id="28_anqsc"]
+[ext_resource type="Texture2D" uid="uid://dwo04e0nf3s6v" path="res://assets/Player/PlayerAnimations/Running/Run Down/run down 05.png" id="29_7gyx0"]
 [ext_resource type="Texture2D" uid="uid://e4ycheuds5d2" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_6_delay-0.13s.png" id="29_rxytg"]
 [ext_resource type="Texture2D" uid="uid://bk73q34mywfx7" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_7_delay-0.13s.png" id="30_8o04s"]
 [ext_resource type="Texture2D" uid="uid://cjc6sxe1n8ghj" path="res://assets/Player/PlayerAnimations/Walking/Walk Up Animation/up00.png" id="31_wk045"]
@@ -46,6 +58,26 @@
 [ext_resource type="Texture2D" uid="uid://mmwsi16uaa0c" path="res://assets/Player/PlayerAnimations/Walking/Walk Up Animation/up03.png" id="34_5vfpo"]
 [ext_resource type="Texture2D" uid="uid://2mgfrxuc6jr3" path="res://assets/Player/PlayerAnimations/Walking/Walk Up Animation/up04.png" id="35_twwor"]
 [ext_resource type="Texture2D" uid="uid://o0dvipm5p7rd" path="res://assets/Player/PlayerAnimations/Walking/Walk Up Animation/up05.png" id="36_gwplf"]
+[ext_resource type="Texture2D" uid="uid://h33aiig6311g" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up 00.png" id="52_eejnx"]
+[ext_resource type="Texture2D" uid="uid://k8lpjbqhxjo2" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up 01.png" id="53_5hlu0"]
+[ext_resource type="Texture2D" uid="uid://b41edwjfr5alo" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up 02.png" id="54_wwj3l"]
+[ext_resource type="Texture2D" uid="uid://dvjih0yn0gg1q" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up 03.png" id="55_nvqmg"]
+[ext_resource type="Texture2D" uid="uid://oc556460tx0j" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up 04.png" id="56_cfa7w"]
+[ext_resource type="Texture2D" uid="uid://blwu4e1nhpxo0" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up 05.png" id="57_t7nkm"]
+[ext_resource type="Texture2D" uid="uid://b81o76wsmtyaj" path="res://assets/Player/PlayerAnimations/Running/Run Up/run up 00.png" id="58_311yl"]
+[ext_resource type="Texture2D" uid="uid://c4i7mxhpm1kmb" path="res://assets/Player/PlayerAnimations/Running/Run Up/run up 01.png" id="59_y1p2v"]
+[ext_resource type="Texture2D" uid="uid://v6jposqjjgd8" path="res://assets/Player/PlayerAnimations/Running/Run Up/run up 02.png" id="60_wp5og"]
+[ext_resource type="Texture2D" uid="uid://bw08xeolnfop0" path="res://assets/Player/PlayerAnimations/Running/Run Up/run up 03.png" id="61_x30al"]
+[ext_resource type="Texture2D" uid="uid://bl8phlndx7i6y" path="res://assets/Player/PlayerAnimations/Running/Run Up/run up 04.png" id="62_lti8u"]
+[ext_resource type="Texture2D" uid="uid://ckiuaktduf0c" path="res://assets/Player/PlayerAnimations/Running/Run Up/run up 05.png" id="63_013ep"]
+[ext_resource type="Texture2D" uid="uid://b7no0m413uhsl" path="res://assets/Player/PlayerAnimations/Shooting/Shoot Down/shoot down 00.png" id="64_c0hfj"]
+[ext_resource type="Texture2D" uid="uid://b27oqg3saptha" path="res://assets/Player/PlayerAnimations/Shooting/Shoot Down/shoot down 01.png" id="65_d0832"]
+[ext_resource type="Texture2D" uid="uid://bw1fyx8cw3f3n" path="res://assets/Player/PlayerAnimations/Shooting/Shoot Down/shoot down 02.png" id="66_jak5q"]
+[ext_resource type="Texture2D" uid="uid://d1ya8vjd2g5hs" path="res://assets/Player/PlayerAnimations/Shooting/Shoot Up/shoot up 00.png" id="67_t6q0x"]
+[ext_resource type="Texture2D" uid="uid://bcqix6pcalhd8" path="res://assets/Player/PlayerAnimations/Shooting/Shoot Up/shoot up 01.png" id="68_28ln3"]
+[ext_resource type="Texture2D" uid="uid://6nvxa4infxns" path="res://assets/Player/PlayerAnimations/Shooting/Shoot Up/shoot up 02.png" id="69_o36ey"]
+[ext_resource type="Texture2D" uid="uid://d24fwmg68bfm7" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down idle.png" id="70_yipqk"]
+[ext_resource type="Texture2D" uid="uid://compg52v578w8" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up idle.png" id="71_i2uqt"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_web4h"]
 animations = [{
@@ -84,6 +116,52 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_down",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_odnkq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_jiyrq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_2pgx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_fvpc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1a5nx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_y8xoq")
+}],
+"loop": true,
+"name": &"move_down_aim",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_ng3yo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_g8nah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_7e4j6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_rmv3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_anqsc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_7gyx0")
+}],
+"loop": true,
+"name": &"move_down_run",
 "speed": 6.0
 }, {
 "frames": [{
@@ -166,6 +244,96 @@ animations = [{
 "loop": true,
 "name": &"move_up",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("52_eejnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_5hlu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_wwj3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_nvqmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_cfa7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_t7nkm")
+}],
+"loop": true,
+"name": &"move_up_aim",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("58_311yl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_y1p2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_wp5og")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_x30al")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_lti8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_013ep")
+}],
+"loop": true,
+"name": &"move_up_run",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("64_c0hfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_d0832")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_jak5q")
+}],
+"loop": false,
+"name": &"shoot_down",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("67_t6q0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_28ln3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_o36ey")
+}],
+"loop": false,
+"name": &"shoot_up",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("70_yipqk")
+}],
+"loop": true,
+"name": &"stand_down_aim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("71_i2uqt")
+}],
+"loop": true,
+"name": &"stand_up_aim",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0p80"]
@@ -249,8 +417,7 @@ bus = &"Effects"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_web4h")
-animation = &"idle"
-frame_progress = 0.465304
+animation = &"stand_down_aim"
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 15.5)
@@ -423,6 +590,7 @@ radial_accel_min = -1000.0
 radial_accel_max = -800.0
 color = Color(0.905882, 0.713726, 0.176471, 1)
 
+[connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]
 [connection signal="timeout" from="Rifle/ReloadTimer" to="Rifle" method="_on_reload_timer_timeout"]
 [connection signal="state_entered" from="StateChart/Movement/Roll" to="." method="_on_roll_state_entered"]
 [connection signal="state_exited" from="StateChart/Movement/Roll" to="." method="_on_roll_state_exited"]
@@ -430,8 +598,11 @@ color = Color(0.905882, 0.713726, 0.176471, 1)
 [connection signal="state_input" from="StateChart/Movement/Basic" to="." method="_on_basic_state_input"]
 [connection signal="state_physics_processing" from="StateChart/Movement/Basic" to="." method="_on_basic_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Run" to="." method="_on_run_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/Movement/Basic/Run" to="." method="_on_run_state_physics_processing"]
+[connection signal="state_physics_processing" from="StateChart/Movement/Basic/Stance/Aim/Unarmed" to="." method="_on_unarmed_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Aim/Aiming" to="." method="_on_aiming_state_entered"]
 [connection signal="state_exited" from="StateChart/Movement/Basic/Stance/Aim/Aiming" to="." method="_on_aiming_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/Movement/Basic/Stance/Aim/Aiming" to="." method="_on_aiming_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Crouched" to="." method="_on_crouched_state_entered"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Standing" to="." method="_on_standing_state_entered"]
 [connection signal="timeout" from="ChannelTimer" to="." method="_on_channel_timer_timeout"]

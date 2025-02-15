@@ -33,6 +33,9 @@ const ROLL_COOLDOWN : float = 0
 var roll_cd_timer : float = 0
 var can_roll : bool = true
 
+
+var fired = false
+
 # ----- Node References ----- 
 @onready var interact_radius: Area2D = $InteractRadius
 @onready var rifle: Node2D = $Rifle
@@ -59,7 +62,6 @@ func _ready() -> void:
 	Globals.player = self
 	max_health *= 1 + Globals.player_hp_increase
 
-
 func _process(_delta: float) -> void:
 	# Code for item pickup
 	if (interact_radius.has_overlapping_areas()):
@@ -80,10 +82,6 @@ func _process(_delta: float) -> void:
 		rifle.inaccuracy += 0.05
 	else:
 		rifle.inaccuracy -= 0.025
-	
-	if velocity == Vector2(0,0):
-		animated_sprite_2d.scale = Vector2(0.12, 0.12)
-		animated_sprite_2d.play("idle")
 		
 	if Input.is_action_just_pressed("channel"):
 		channel_timer.start(0)
@@ -139,26 +137,6 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 		statechart.send_event("enter_aiming_mode")
 	if Input.is_action_just_released("aim"):
 		statechart.send_event("exit_aiming_mode")
-
-
-	# Handle Movement Animations (Temp Solution)
-	# If x movement > 0 and y movement < x then left/right movement
-	# Else if y movement > x then up/down movement
-	var animation_speed = curr_speed / (STAND_SPEED)
-	if (direction.length() > 0.1):
-		if (abs(direction.x) > abs(direction.y)):
-			animated_sprite_2d.scale = Vector2(0.14, 0.14)
-			# Left/Right movement
-			if (direction.x > 0):
-				animated_sprite_2d.play("move_right", animation_speed)
-			else:
-				animated_sprite_2d.play("move_left", animation_speed)
-		else:
-			animated_sprite_2d.scale = Vector2(0.12, 0.12)
-			if (direction.y > 0):
-				animated_sprite_2d.play("move_down", animation_speed)
-			else:
-				animated_sprite_2d.play('move_up', animation_speed)
 
 # Polling (single key presses)
 func _on_basic_state_input(event: InputEvent) -> void:
@@ -222,3 +200,87 @@ func _on_aiming_state_exited() -> void:
 
 func _on_channel_timer_timeout() -> void:
 	channel_complete.emit()
+
+# ALL OF THESE ARE TO HANDLE ANIMATIONS: REDO AFTER PROTOTYPE IS DONE
+
+func _on_aiming_state_physics_processing(delta: float) -> void:
+	var animation_speed = curr_speed / (STAND_SPEED)
+	if (direction.length() > 0.1):
+		if (abs(direction.x) > abs(direction.y)):
+			animated_sprite_2d.scale = Vector2(0.14, 0.14)
+			# Left/Right movement
+			if (direction.x > 0):
+				animated_sprite_2d.play("move_right", animation_speed)
+			else:
+				animated_sprite_2d.play("move_left", animation_speed)
+		else:
+			animated_sprite_2d.scale = Vector2(0.12, 0.12)
+			if (direction.y > 0):
+				animated_sprite_2d.play("move_down_aim", animation_speed)
+			else:
+				animated_sprite_2d.play('move_up_aim', animation_speed)
+	else:
+		var mouse_pos = get_global_mouse_position()
+		var mouse_direction = (mouse_pos - global_position).normalized()
+		if (mouse_direction.length() > 0.1):
+			if (abs(mouse_direction.x) > abs(mouse_direction.y)):
+				animated_sprite_2d.scale = Vector2(0.14, 0.14)
+				# Left/Right movement
+				if (mouse_direction.x > 0):
+					animated_sprite_2d.play("move_right", animation_speed)
+				else:
+					animated_sprite_2d.play("move_left", animation_speed)
+			else:
+				animated_sprite_2d.scale = Vector2(0.12, 0.12)
+				if (mouse_direction.y > 0):
+					print("Aiming down")
+					animated_sprite_2d.play("stand_down_aim", animation_speed)
+				else:
+					print("Aiming up")
+					animated_sprite_2d.play('stand_up_aim', animation_speed)
+
+func _on_unarmed_state_physics_processing(delta: float) -> void:
+	# Handle Movement Animations (Temp Solution)
+	# If x movement > 0 and y movement < x then left/right movement
+	# Else if y movement > x then up/down movement
+	var animation_speed = curr_speed / (STAND_SPEED)
+	if (direction.length() > 0.1):
+		if (abs(direction.x) > abs(direction.y)):
+			animated_sprite_2d.scale = Vector2(0.14, 0.14)
+			# Left/Right movement
+			if (direction.x > 0):
+				animated_sprite_2d.play("move_right", animation_speed)
+			else:
+				animated_sprite_2d.play("move_left", animation_speed)
+		else:
+			animated_sprite_2d.scale = Vector2(0.12, 0.12)
+			if (direction.y > 0):
+				animated_sprite_2d.play("move_down", animation_speed)
+			else:
+				animated_sprite_2d.play('move_up', animation_speed)
+	else:
+		animated_sprite_2d.scale = Vector2(0.12, 0.12)
+		animated_sprite_2d.play("idle")
+
+func _on_run_state_physics_processing(delta: float) -> void:
+	# Handle Movement Animations (Temp Solution)
+	# If x movement > 0 and y movement < x then left/right movement
+	# Else if y movement > x then up/down movement
+	var animation_speed = curr_speed / (STAND_SPEED)
+	if (direction.length() > 0.1):
+		if (abs(direction.x) > abs(direction.y)):
+			animated_sprite_2d.scale = Vector2(0.14, 0.14)
+			# Left/Right movement
+			if (direction.x > 0):
+				animated_sprite_2d.play("move_right", animation_speed)
+			else:
+				animated_sprite_2d.play("move_left", animation_speed)
+		else:
+			animated_sprite_2d.scale = Vector2(0.12, 0.12)
+			if (direction.y > 0):
+				animated_sprite_2d.play("move_down_run", animation_speed)
+			else:
+				animated_sprite_2d.play('move_up_run', animation_speed)
+
+func _on_rifle_fired() -> void:
+	fired = true
