@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @export var min_spawns_per_area: int = 1
 @export var max_spawns_per_area: int = 1

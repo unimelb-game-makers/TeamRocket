@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxqyl5m3yie2u"]
+
+[ext_resource type="Texture2D" uid="uid://cmgtccb4b2w4y" path="res://assets/Park/Objects/Building 4.png" id="1_65acl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_quagk"]
+size = Vector2(1620, 974)
+
+[node name="Building4" type="Sprite2D"]
+texture = ExtResource("1_65acl")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(27, 468)
+shape = SubResource("RectangleShape2D_quagk")

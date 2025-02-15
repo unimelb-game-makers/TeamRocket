@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 			show()
 			main_container.show()
 			sound_settings_container.hide()
+			$"../Inventory".hide()
 
 func _on_resume_button_pressed() -> void:
 	get_tree().paused = false

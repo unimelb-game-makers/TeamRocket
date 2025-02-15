@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=27 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
@@ -9,16 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://c5fbsmwagky6i" path="res://scenes/cooking/workbenches/Pot.tscn" id="4_hcw55"]
 [ext_resource type="AudioStream" uid="uid://bfesfhdqban7e" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen loop.wav" id="4_hl741"]
 [ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
-[ext_resource type="PackedScene" uid="uid://yw75vu274ne0" path="res://scenes/item/item_floor.tscn" id="5_vbmf8"]
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
-[ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="7_083nx"]
-[ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="8_f86gd"]
-[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="9_2oqyj"]
 [ext_resource type="PackedScene" uid="uid://csf03f13m5wmx" path="res://scenes/cooking/workbenches/assembly_plate.tscn" id="9_5i564"]
-[ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="12_xaknj"]
-[ext_resource type="Resource" uid="uid://pu3eafcj7feu" path="res://resources/items/spaghetti_raw.tres" id="15_kfbqe"]
+[ext_resource type="Texture2D" uid="uid://kn0k2fmakmpr" path="res://assets/prototype/diagram.jpg" id="13_7t8ns"]
+[ext_resource type="Script" path="res://scripts/objects/interactables/prototype_diagram.gd" id="14_vcdmk"]
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
-[ext_resource type="Resource" uid="uid://d4fvdxgm3d6pq" path="res://resources/items/spaghetti_bolognaise.tres" id="19_m1anj"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_5wnhy"]
 clip_count = 2
@@ -69,10 +64,13 @@ size = Vector2(556.667, 516.666)
 size = Vector2(332, 395)
 
 [sub_resource type="Gradient" id="Gradient_wmmsd"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.176419, 0.176419, 0.176419, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_dupnr"]
 gradient = SubResource("Gradient_wmmsd")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlym8"]
+size = Vector2(1977.32, 1367.29)
 
 [node name="Base" instance=ExtResource("1_4boqu")]
 
@@ -166,56 +164,59 @@ shape = SubResource("RectangleShape2D_jvgon")
 
 [node name="TextureRect" type="TextureRect" parent="NavigationRegion2D/Map/ExitArea" index="1"]
 z_index = 5
-offset_left = -441.0
+offset_left = -435.0
 offset_top = -406.0
-offset_right = 213.0
+offset_right = 219.0
 offset_bottom = 10.0
 texture = SubResource("GradientTexture1D_dupnr")
 metadata/_edit_use_anchors_ = true
 
 [node name="ChoppingBoard" parent="InteractableHandler/InteractableHolder" index="0" instance=ExtResource("3_xytjo")]
 z_index = 1
-position = Vector2(637, 536)
+y_sort_enabled = true
+position = Vector2(535, 501)
 
 [node name="Pot" parent="InteractableHandler/InteractableHolder" index="1" instance=ExtResource("4_hcw55")]
+y_sort_enabled = true
 position = Vector2(793, 232)
 
 [node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("9_5i564")]
-position = Vector2(900, 500)
+z_index = 1
+position = Vector2(919, 506)
 
 [node name="Altar" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("16_7km4m")]
 position = Vector2(88, 454)
 
-[node name="Item1" parent="ItemHandler" index="0" instance=ExtResource("5_vbmf8")]
-position = Vector2(386, 317)
-item = ExtResource("9_2oqyj")
+[node name="PrototypeDiagram" type="Sprite2D" parent="InteractableHandler/InteractableHolder" index="4"]
+position = Vector2(530.125, 223.5)
+scale = Vector2(0.0445048, 0.057047)
+texture = ExtResource("13_7t8ns")
+script = ExtResource("14_vcdmk")
 
-[node name="Item2" parent="ItemHandler" index="1" instance=ExtResource("5_vbmf8")]
-position = Vector2(243, 339)
-item = ExtResource("7_083nx")
+[node name="UI" type="CanvasLayer" parent="InteractableHandler/InteractableHolder/PrototypeDiagram" index="0"]
+visible = false
 
-[node name="Item3" parent="ItemHandler" index="2" instance=ExtResource("5_vbmf8")]
-position = Vector2(294, 317)
-item = ExtResource("8_f86gd")
+[node name="Diagram" type="Sprite2D" parent="InteractableHandler/InteractableHolder/PrototypeDiagram/UI" index="0"]
+position = Vector2(645, 341)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("13_7t8ns")
 
-[node name="Item4" parent="ItemHandler" index="3" instance=ExtResource("5_vbmf8")]
-position = Vector2(480, 312)
-item = ExtResource("12_xaknj")
+[node name="Area2D" type="Area2D" parent="InteractableHandler/InteractableHolder/PrototypeDiagram" index="1" groups=["Interactables"]]
+collision_layer = 8
 
-[node name="Item5" parent="ItemHandler" index="4" instance=ExtResource("5_vbmf8")]
-position = Vector2(561, 312)
-item = ExtResource("15_kfbqe")
-
-[node name="Item6" parent="ItemHandler" index="5" instance=ExtResource("5_vbmf8")]
-position = Vector2(656, 314)
-item = ExtResource("19_m1anj")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableHandler/InteractableHolder/PrototypeDiagram/Area2D" index="0"]
+position = Vector2(-47.749, 8.76465)
+shape = SubResource("RectangleShape2D_vlym8")
 
 [node name="Player" parent="." index="6"]
 position = Vector2(269, 549)
 
 [node name="UI" parent="." index="8"]
-offset_top = -2.0
-offset_bottom = -2.0
+offset_left = -5.0
+offset_top = 16.0
+offset_right = -5.0
+offset_bottom = 16.0
 
 [connection signal="body_entered" from="NavigationRegion2D/Map/ExitArea" to="KitchenHandler" method="_on_exit_area_body_entered"]
 [connection signal="submit" from="InteractableHandler/InteractableHolder/Altar" to="KitchenHandler" method="submit_food"]
+[connection signal="body_exited" from="InteractableHandler/InteractableHolder/PrototypeDiagram/Area2D" to="InteractableHandler/InteractableHolder/PrototypeDiagram" method="_on_area_2d_body_exited"]

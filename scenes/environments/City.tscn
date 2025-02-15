@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=37 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="AudioStream" uid="uid://bd77f8tivpj3o" path="res://assets/sfx/team rocket sfx/area themes/central district/central district intro.wav" id="2_auyuh"]
@@ -18,11 +18,14 @@
 [ext_resource type="PackedScene" uid="uid://c0acap2jmh2f" path="res://scenes/objects/Lights/StreetlightUp.tscn" id="15_lpuh7"]
 [ext_resource type="PackedScene" uid="uid://drxotm8osb7q0" path="res://scenes/objects/Lights/StreetlightRight.tscn" id="16_4lsvx"]
 [ext_resource type="PackedScene" uid="uid://cd6fc47tx6cyd" path="res://scenes/objects/Lake.tscn" id="18_l3vkc"]
+[ext_resource type="PackedScene" uid="uid://boou7kaxracje" path="res://scenes/objects/Buildings/Building.tscn" id="19_r84yg"]
 [ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="19_ryaas"]
 [ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/enemy_dasher.tscn" id="19_sv1o8"]
 [ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="20_0qh7k"]
+[ext_resource type="PackedScene" uid="uid://b0q3wyjdxrql8" path="res://scenes/objects/Buildings/Building2.tscn" id="20_wckc8"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="21_5cojw"]
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="21_a7p7e"]
+[ext_resource type="PackedScene" uid="uid://cxqyl5m3yie2u" path="res://scenes/objects/Buildings/Building3.tscn" id="21_qrjp7"]
 [ext_resource type="Resource" uid="uid://pu3eafcj7feu" path="res://resources/items/spaghetti_raw.tres" id="22_rpnyl"]
 [ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/enemy_chicken.tscn" id="22_ykjv2"]
 [ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="23_p6fkx"]
@@ -87,6 +90,7 @@ color = Color(0.462291, 0.462291, 0.462291, 1)
 navigation_polygon = SubResource("NavigationPolygon_5hw28")
 
 [node name="TextureRect" type="TextureRect" parent="NavigationRegion2D/Map" index="0"]
+z_index = -1
 offset_right = 5000.0
 offset_bottom = 4000.0
 texture = ExtResource("3_pa65j")
@@ -134,6 +138,16 @@ position = Vector2(1319, 2869)
 
 [node name="Lake" parent="NavigationRegion2D/Map" index="14" instance=ExtResource("18_l3vkc")]
 position = Vector2(4236, 3577)
+
+[node name="Building1" parent="NavigationRegion2D/Map" index="15" instance=ExtResource("19_r84yg")]
+
+[node name="Building2" parent="NavigationRegion2D/Map" index="16" instance=ExtResource("20_wckc8")]
+
+[node name="Building3" parent="NavigationRegion2D/Map" index="17" instance=ExtResource("19_r84yg")]
+position = Vector2(4251, -240)
+
+[node name="Building4" parent="NavigationRegion2D/Map" index="18" instance=ExtResource("21_qrjp7")]
+position = Vector2(2410, -734)
 
 [node name="Walls" type="Node2D" parent="NavigationRegion2D" index="1"]
 
@@ -197,7 +211,7 @@ position = Vector2(1727, 1598)
 
 [node name="Camera2D" parent="Player" index="10" groups=["Camera"]]
 limit_left = 0
-limit_top = 0
+limit_top = -300
 limit_right = 5000
 limit_bottom = 4000
 limit_smoothed = true

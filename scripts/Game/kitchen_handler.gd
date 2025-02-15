@@ -6,7 +6,10 @@ func _on_exit_area_body_entered(body: Node2D) -> void:
 	switch_to_city()
 	
 func switch_to_city():
-	call_deferred("change_scene_to_file", "res://scenes/environments/City.tscn")
+	var tween = create_tween()
+	tween.tween_property($"../GameHandler/CanvasLayer/FadeToBlack", "modulate", Color(0,0,0,2.0), 2.0)
+	await tween.finished
+	get_tree().change_scene_to_file("res://scenes/environments/City.tscn")
 
 func submit_food(item: Item):
 	var buff_i = randi_range(0,3)
