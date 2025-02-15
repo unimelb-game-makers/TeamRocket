@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bp53g1jmqlap"]
+[gd_scene load_steps=53 format=3 uid="uid://bp53g1jmqlap"]
 
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_lvdue"]
@@ -10,7 +10,9 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="5_6l3qh"]
 [ext_resource type="Script" path="res://scripts/ui/aiming_ui.gd" id="5_bb4ct"]
 [ext_resource type="Texture2D" uid="uid://bqaed0kw83mxe" path="res://assets/Player/PlayerAnimations/Idle/down idle.png" id="6_yux1i"]
+[ext_resource type="AudioStream" uid="uid://cb5elyjnvnfcx" path="res://assets/sfx/team rocket sfx/gun/gun_fire.wav" id="7_brdgo"]
 [ext_resource type="Texture2D" uid="uid://b8bbug4hlqigi" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down00.png" id="7_eh15l"]
+[ext_resource type="AudioStream" uid="uid://dii8tfwe5ol0t" path="res://assets/sfx/team rocket sfx/gun/gun_reload.wav" id="7_ukr26"]
 [ext_resource type="Texture2D" uid="uid://c2td7omrl6sqn" path="res://assets/textures/basic_light.webp" id="8_emt8s"]
 [ext_resource type="Texture2D" uid="uid://d3fhg66m1c0rh" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down01.png" id="8_x6n1m"]
 [ext_resource type="Texture2D" uid="uid://bj3fwesi5fljg" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down02.png" id="9_8ufqp"]
@@ -200,6 +202,7 @@ impact_scene = ExtResource("4_wuv7n")
 one_shot = true
 
 [node name="ReloadTimer" type="Timer" parent="Rifle"]
+wait_time = 3.5
 one_shot = true
 
 [node name="RifleSprite" type="Sprite2D" parent="Rifle"]
@@ -228,6 +231,20 @@ default_color = Color(1, 1, 1, 0.239216)
 points = PackedVector2Array(0, 0, 100, 0)
 width = 5.0
 default_color = Color(1, 1, 1, 0.239216)
+
+[node name="SoundEffects" type="Node2D" parent="Rifle"]
+
+[node name="FireEffect" type="AudioStreamPlayer2D" parent="Rifle/SoundEffects"]
+stream = ExtResource("7_brdgo")
+bus = &"Effects"
+
+[node name="ReloadEffect" type="AudioStreamPlayer2D" parent="Rifle/SoundEffects"]
+stream = ExtResource("7_ukr26")
+pitch_scale = 2.0
+bus = &"Effects"
+
+[node name="EquipEffect" type="AudioStreamPlayer2D" parent="Rifle/SoundEffects"]
+bus = &"Effects"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.12, 0.12)
