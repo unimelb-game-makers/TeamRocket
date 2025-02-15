@@ -557,12 +557,12 @@ delay_in_seconds = "0.0"
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRadius"]
+[node name="InteractShape" type="CollisionShape2D" parent="InteractRadius"]
 shape = SubResource("CircleShape2D_rwbdg")
 
 [node name="DetectionRadius" type="Area2D" parent="." groups=["Player"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
+[node name="DetectionShape" type="CollisionShape2D" parent="DetectionRadius"]
 shape = SubResource("CircleShape2D_0215d")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

@@ -19,7 +19,7 @@ radius = 200.0
 [node name="Dasher" instance=ExtResource("1_cno7g")]
 motion_mode = 1
 script = ExtResource("2_1leqm")
-health = 50
+health = 80
 dropped_items = Array[ExtResource("3_v7e55")]([ExtResource("4_du2uk")])
 dropped_item_chances = Array[float]([1.0])
 
