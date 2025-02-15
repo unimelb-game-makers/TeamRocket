@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=24 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
@@ -9,16 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://c5fbsmwagky6i" path="res://scenes/cooking/workbenches/Pot.tscn" id="4_hcw55"]
 [ext_resource type="AudioStream" uid="uid://bfesfhdqban7e" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen loop.wav" id="4_hl741"]
 [ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
-[ext_resource type="PackedScene" uid="uid://yw75vu274ne0" path="res://scenes/item/item_floor.tscn" id="5_vbmf8"]
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
-[ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="7_083nx"]
-[ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="8_f86gd"]
-[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="9_2oqyj"]
 [ext_resource type="PackedScene" uid="uid://csf03f13m5wmx" path="res://scenes/cooking/workbenches/assembly_plate.tscn" id="9_5i564"]
-[ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="12_xaknj"]
-[ext_resource type="Resource" uid="uid://pu3eafcj7feu" path="res://resources/items/spaghetti_raw.tres" id="15_kfbqe"]
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
-[ext_resource type="Resource" uid="uid://d4fvdxgm3d6pq" path="res://resources/items/spaghetti_bolognaise.tres" id="19_m1anj"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_5wnhy"]
 clip_count = 2
@@ -185,30 +178,6 @@ position = Vector2(900, 500)
 
 [node name="Altar" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("16_7km4m")]
 position = Vector2(88, 454)
-
-[node name="Item1" parent="ItemHandler" index="0" instance=ExtResource("5_vbmf8")]
-position = Vector2(386, 317)
-item = ExtResource("9_2oqyj")
-
-[node name="Item2" parent="ItemHandler" index="1" instance=ExtResource("5_vbmf8")]
-position = Vector2(243, 339)
-item = ExtResource("7_083nx")
-
-[node name="Item3" parent="ItemHandler" index="2" instance=ExtResource("5_vbmf8")]
-position = Vector2(294, 317)
-item = ExtResource("8_f86gd")
-
-[node name="Item4" parent="ItemHandler" index="3" instance=ExtResource("5_vbmf8")]
-position = Vector2(480, 312)
-item = ExtResource("12_xaknj")
-
-[node name="Item5" parent="ItemHandler" index="4" instance=ExtResource("5_vbmf8")]
-position = Vector2(561, 312)
-item = ExtResource("15_kfbqe")
-
-[node name="Item6" parent="ItemHandler" index="5" instance=ExtResource("5_vbmf8")]
-position = Vector2(656, 314)
-item = ExtResource("19_m1anj")
 
 [node name="Player" parent="." index="6"]
 position = Vector2(269, 549)

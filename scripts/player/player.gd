@@ -11,9 +11,9 @@ var can_move: bool = true
 # For smoother movement
 const CROUCH_SPEED : int = 100
 const CROUCH_ACCEL : int = 10
-const STAND_SPEED : int = 300
+const STAND_SPEED : int = 200
 const STAND_ACCEL : int = 40
-const RUN_SPEED : int = 600
+const RUN_SPEED : int = 400
 const RUN_ACCEL : int = 50
 
 var curr_speed : float = STAND_SPEED
@@ -23,7 +23,7 @@ var direction : Vector2
 var is_moving : bool
 
 # roll_timer affects speed over the course of the roll
-const ROLL_SPEED : int = 500
+const ROLL_SPEED : int = 800
 const ROLL_DURATION : float = 0.5
 var roll_timer : float = 0
 
@@ -61,6 +61,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	print(curr_speed)
 	# Code for item pickup
 	if (interact_radius.has_overlapping_areas()):
 		if (Input.is_action_just_pressed("interact")):
@@ -200,9 +201,17 @@ func roll_speed(elapsed_time : float) -> float:
 	var t : float = elapsed_time / ROLL_DURATION
 	return ROLL_SPEED - (ROLL_SPEED - CROUCH_SPEED) * t * t
 
+func _on_standing_state_entered() -> void:
+	curr_speed = STAND_SPEED
+	curr_accel = STAND_ACCEL
+
 func _on_run_state_entered() -> void:
 	curr_speed = RUN_SPEED
 	curr_accel = RUN_ACCEL
+
+func _on_crouched_state_entered() -> void:
+	curr_speed = CROUCH_SPEED
+	curr_accel = CROUCH_ACCEL
 
 func _on_aiming_state_entered() -> void:
 	rifle.enter_aiming_mode()
