@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dk6a5jgkvuwwt"]
+
+[ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_kib3k"]
+[ext_resource type="Texture2D" uid="uid://exr5tyv2uhg6" path="res://assets/workstations/pot/stew2.png" id="2_u141n"]
+[ext_resource type="PackedScene" uid="uid://bgrsak6sy4dcb" path="res://scenes/cooking/activities/FryActivity.tscn" id="3_nngo4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvo21"]
+size = Vector2(82, 74)
+
+[node name="FryingPan" instance=ExtResource("1_kib3k")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_xvo21")
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_u141n")
+
+[node name="CookingScene" parent="CanvasLayer" index="0" instance=ExtResource("3_nngo4")]

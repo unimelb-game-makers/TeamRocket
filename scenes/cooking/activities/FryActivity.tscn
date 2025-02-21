@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/CookingBase.tscn" id="1_8tnn7"]
 [ext_resource type="Script" path="res://scripts/cooking/FryActivity.gd" id="2_8d3b5"]
 [ext_resource type="Resource" uid="uid://dhf01em6mwxa8" path="res://resources/activities/frying.tres" id="2_bhayt"]
-[ext_resource type="Texture2D" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_ibkdy"]
+[ext_resource type="Texture2D" uid="uid://chmpi1n4p1apn" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_ibkdy"]
 [ext_resource type="Texture2D" uid="uid://weorr57ynm3" path="res://assets/workstations/fry_game/frying_pan.png" id="5_1mvg8"]
 [ext_resource type="Texture2D" uid="uid://ctqn7ohdkuvgc" path="res://assets/textures/blank_circle_200x200.png" id="5_wim56"]
-[ext_resource type="FontFile" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="8_pgche"]
-[ext_resource type="Texture2D" path="res://assets/textures/ui/Circle_Under.png" id="10_pv65g"]
-[ext_resource type="Texture2D" path="res://assets/textures/ui/Circle_Progress.png" id="11_2b6kp"]
+[ext_resource type="FontFile" uid="uid://iqracr2sqomh" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="8_pgche"]
+[ext_resource type="Texture2D" uid="uid://ctkeslcjhp4qx" path="res://assets/textures/ui/Circle_Under.png" id="10_pv65g"]
+[ext_resource type="Texture2D" uid="uid://dlmhvkumh44c7" path="res://assets/textures/ui/Circle_Progress.png" id="11_2b6kp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iy2k6"]
 texture = ExtResource("2_ibkdy")

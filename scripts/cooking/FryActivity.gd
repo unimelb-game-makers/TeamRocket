@@ -62,6 +62,8 @@ var cooking: bool = false
 # This will go to false when the activity is finished
 var playing: bool = false
 
+func reset_game():
+	pass
 
 func start() -> void:
 	fry_progress.max_value = 2 * target_progress
