@@ -7,6 +7,7 @@ class_name CookingScene extends Control
 @onready var selected_food_list: CenterContainer = $SelectedFoodList
 
 @export var activity_res: Activity
+@export var activity_scene: PackedScene
 
 var recipe: Recipe
 

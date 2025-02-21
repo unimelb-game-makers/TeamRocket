@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=32 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dvo41lawvkv1r" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen intro.wav" id="3_5yo2p"]
 [ext_resource type="PackedScene" uid="uid://dj4u0n4uqbwvg" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="3_xytjo"]
 [ext_resource type="Texture2D" uid="uid://b5jgmaxgknpb0" path="res://assets/interiors/kitchen/walls.png" id="3_yjya3"]
+[ext_resource type="PackedScene" uid="uid://bqjhwwixj8hir" path="res://scenes/cooking/workbenches/Pot.tscn" id="4_hcw55"]
 [ext_resource type="AudioStream" uid="uid://bfesfhdqban7e" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen loop.wav" id="4_hl741"]
 [ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
@@ -202,6 +203,9 @@ shape = SubResource("RectangleShape2D_vlym8")
 [node name="ChoppingBoard" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("3_xytjo")]
 z_index = 1
 position = Vector2(526, 502)
+
+[node name="Pot" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("4_hcw55")]
+position = Vector2(705, 234)
 
 [node name="Item" parent="ItemHandler" index="0" instance=ExtResource("15_4j2un")]
 position = Vector2(321, 361)

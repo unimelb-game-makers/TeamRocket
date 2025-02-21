@@ -10,4 +10,4 @@ func reset_game():
 	pass
 
 func finish():
-	pass
+	complete.emit()
