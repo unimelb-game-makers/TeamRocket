@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0wrkas2vs7rm"]
+
+[ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_vsmah"]
+
+[node name="Workbench" type="Area2D"]
+collision_layer = 32
+script = ExtResource("1_vsmah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

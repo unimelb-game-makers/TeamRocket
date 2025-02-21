@@ -17,9 +17,6 @@ signal complete(output)
 
 @onready var sfx_chop_randomiser: AudioStreamPlayer2D = $SFX_ChopRandomiser
 
-@onready var selected_food_list: CenterContainer = $"../SelectedFoodList"
-@onready var inventory_select_list: CenterContainer = $"../InventorySelectList"
-@onready var start_button: TextureButton = $"../StartButton"
 @onready var ingredient_image_display: TextureRect = $IngredientImageDisplay
 @onready var cooking_scene_2: CookingScene = $".."
 
@@ -33,9 +30,6 @@ func _ready() -> void:
 func start() -> void:
 	playing = true
 	result_label.text = ""  # Clear result label on start
-	selected_food_list.visible = false
-	inventory_select_list.visible = false
-	start_button.visible = false
 	set_ingredient_image(cooking_scene_2.ingredient_handler.selected_ingredients[0])
 
 func set_ingredient_image(ingredient: Item) -> void:

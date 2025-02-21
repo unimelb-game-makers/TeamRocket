@@ -42,7 +42,7 @@ stream_4/stream = ExtResource("9_4hnjx")
 stream_5/stream = ExtResource("10_17sga")
 stream_6/stream = ExtResource("11_cdwm0")
 
-[node name="CookingScene2" instance=ExtResource("1_3sw0t")]
+[node name="CookingScene" instance=ExtResource("1_3sw0t")]
 
 [node name="ColorRect" parent="Control/CenterContainer" index="0"]
 color = Color(1, 0.776471, 0.537255, 1)

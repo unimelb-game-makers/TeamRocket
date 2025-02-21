@@ -74,9 +74,8 @@ func _process(_delta: float) -> void:
 			elif area.is_in_group("Workbench"):
 				var workbench = area.get_parent()
 				activity_interact.emit(workbench.activity)
-			elif area.is_in_group("Interactables"):
-				var interactable = area.get_parent()
-				interactable.interact()
+			else:
+				area.interact()
 		
 	if (is_moving and curr_speed > CROUCH_SPEED):
 		rifle.inaccuracy += 0.05

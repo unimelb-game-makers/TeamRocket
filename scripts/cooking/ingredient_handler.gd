@@ -31,6 +31,9 @@ func remove_item(index):
 	update_list.emit()
 	update_slots()
 
+func clear_slots():
+	selected_ingredients = []
+
 func update_slots() -> void:
 	# KILL ALL CHILDREN
 	for child in get_children():

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Team-Rocket Game"
-run/main_scene="res://scenes/menus/MainMenu.tscn"
+run/main_scene="res://scenes/environments/Kitchen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -130,8 +130,10 @@ channel={
 2d_physics/layer_3="Terrain"
 2d_physics/layer_4="Items"
 2d_physics/layer_5="Projectiles"
+2d_physics/layer_6="Interactables"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
