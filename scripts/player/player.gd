@@ -64,8 +64,8 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# Code for item pickup
-	if (interact_radius.has_overlapping_areas()):
-		if (Input.is_action_just_pressed("interact")):
+	if (Input.is_action_just_pressed("interact")):
+		if (interact_radius.has_overlapping_areas()):
 			var area = interact_radius.get_overlapping_areas()[0]
 			area.interact()
 		
