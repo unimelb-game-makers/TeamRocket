@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqjhwwixj8hir"]
+[gd_scene load_steps=4 format=3 uid="uid://bqjhwwixj8hir"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_j278a"]
-[ext_resource type="PackedScene" uid="uid://bggmbfoo43i86" path="res://scenes/cooking/activities/PotActivity.tscn" id="2_5al3h"]
 [ext_resource type="Texture2D" uid="uid://dhgbxnc7av4lx" path="res://assets/workstations/pot/stew0.png" id="3_an7p1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ocb8"]
@@ -17,7 +16,8 @@ shape = SubResource("RectangleShape2D_8ocb8")
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_an7p1")
 
-[node name="CookingScene" parent="CanvasLayer" index="0" instance=ExtResource("2_5al3h")]
-visible = false
+[node name="InventorySelectList" parent="CanvasLayer/CookingScene" index="2"]
+layout_mode = 0
 
-[connection signal="complete" from="CanvasLayer/CookingScene" to="." method="_on_cooking_scene_complete"]
+[node name="StartButton" parent="CanvasLayer/CookingScene" index="3"]
+layout_mode = 0

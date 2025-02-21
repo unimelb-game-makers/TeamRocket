@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_st23u"]
 [ext_resource type="Texture2D" uid="uid://3qh2j5dy8t8i" path="res://assets/workstations/assembly_plate/assembly_plate.png" id="2_nv7a3"]
-[ext_resource type="PackedScene" uid="uid://6q86j45i48m5" path="res://scenes/cooking/activities/AssemblyActivity.tscn" id="2_yxv4v"]
+[ext_resource type="PackedScene" uid="uid://6q86j45i48m5" path="res://scenes/cooking/activities/Old/AssemblyActivity.tscn" id="2_yxv4v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1xkw"]
 size = Vector2(83, 62)

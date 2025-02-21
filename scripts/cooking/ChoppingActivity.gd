@@ -1,6 +1,4 @@
-extends Control
-
-signal complete(output)
+extends CookingActivity
 
 @onready var marker: TextureRect = $Boundary/Marker  # Marker is now a child of Boundary
 @onready var result_label: Label = $ResultLabel

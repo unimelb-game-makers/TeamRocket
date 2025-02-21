@@ -1,12 +1,10 @@
 class_name CookingScene extends Control
 
-@onready var activity_game: Control = %Activity
 @onready var ingredient_handler: HBoxContainer = %IngredientHandler
 @onready var start_button: TextureButton = $StartButton
 @onready var inventory_select_list: CenterContainer = $InventorySelectList
-@onready var activity: Control = %Activity
+@onready var activity: Control = $Activity
 @onready var selected_food_list: CenterContainer = $SelectedFoodList
-
 
 @export var activity_res: Activity
 
@@ -24,10 +22,10 @@ func reset():
 	ingredient_handler.visible = true
 	inventory_select_list.visible = true
 	selected_food_list.visible = true
-	activity_game.visible = false
+	activity.visible = false
 
 func _ready() -> void:
-	activity_game.complete.connect(finish)
+	activity.complete.connect(finish)
 	reset()
 	
 func add_item(item: Item, amount: int):
@@ -44,12 +42,10 @@ func _on_start_button_pressed() -> void:
 	if (recipe):
 		start_button.visible = false
 		ingredient_handler.visible = false
-		activity_game.visible = true
+		activity.visible = true
 		selected_food_list.visible = false
 		inventory_select_list.visible = false
-		activity_game.start()
-	else:
-		print("No valid recipe found.")
+		activity.start()
 
 func _on_ingredient_handler_update_list() -> void:
 	inventory_select_list.update_inventory_list()
