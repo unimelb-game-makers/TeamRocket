@@ -1,5 +1,5 @@
 class_name Storage
-extends Node
+extends Area2D
 
 @export var slots_num: int
 @export var items: Array[Item]

@@ -71,9 +71,6 @@ func _process(_delta: float) -> void:
 				var item = area.get_parent()
 				Inventory_Global.add_item(item.item, item.amount)
 				item.delete_item()
-			elif area.is_in_group("Workbench"):
-				var workbench = area.get_parent()
-				activity_interact.emit(workbench.activity)
 			else:
 				area.interact()
 		

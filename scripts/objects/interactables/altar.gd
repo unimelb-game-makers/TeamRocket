@@ -34,3 +34,7 @@ func _on_inventory_select_list_item_selected(item: Item, amount: int) -> void:
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	canvas_layer.hide()
+
+
+func _on_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

@@ -11,20 +11,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xptoa"]
 size = Vector2(99, 148)
 
-[node name="Altar" type="Node2D"]
+[node name="Area2D" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_rfv52")
 acceptable_foods = Array[ExtResource("2_upo2r")]([ExtResource("3_ikw8l")])
 slots_num = 1
 items = Array[ExtResource("2_upo2r")]([null])
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("5_75tl3")
-
-[node name="Area2D" type="Area2D" parent="." groups=["Interactables"]]
-collision_layer = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -7)
 shape = SubResource("RectangleShape2D_xptoa")
 
@@ -69,6 +63,10 @@ offset_top = 117.0
 offset_right = 464.0
 offset_bottom = 545.0
 
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_75tl3")
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="pressed" from="UI/CanvasLayer/SubmitButton" to="." method="_on_submit_button_pressed"]
 [connection signal="item_selected" from="UI/CanvasLayer/InventorySelectList" to="." method="_on_inventory_select_list_item_selected"]
