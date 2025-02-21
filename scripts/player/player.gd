@@ -67,12 +67,7 @@ func _process(_delta: float) -> void:
 	if (interact_radius.has_overlapping_areas()):
 		if (Input.is_action_just_pressed("interact")):
 			var area = interact_radius.get_overlapping_areas()[0]
-			if area.is_in_group("Item"):
-				var item = area.get_parent()
-				Inventory_Global.add_item(item.item, item.amount)
-				item.delete_item()
-			else:
-				area.interact()
+			area.interact()
 		
 	if (is_moving and curr_speed > CROUCH_SPEED):
 		rifle.inaccuracy += 0.05
