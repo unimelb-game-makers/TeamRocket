@@ -1,12 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0wrkas2vs7rm"]
+[gd_scene load_steps=3 format=3 uid="uid://d0wrkas2vs7rm"]
 
 [ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_vsmah"]
-[ext_resource type="Script" path="res://scripts/cooking/ingredient_handler.gd" id="2_bq7de"]
-[ext_resource type="Script" path="res://scripts/cooking/cooking_scene.gd" id="2_d5iq5"]
-[ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/food_slot.tscn" id="3_2ia8o"]
-[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="4_p82ar"]
-[ext_resource type="Texture2D" uid="uid://dgcn3fv1c6r3e" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="5_ytcit"]
-[ext_resource type="Texture2D" uid="uid://b1nr4nwk72xrh" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown_pressed.png" id="6_mee4i"]
+[ext_resource type="PackedScene" uid="uid://dcfegerycc50x" path="res://scenes/cooking/activities/cooking_scene.tscn" id="2_7qqeh"]
 
 [node name="Workbench" type="Area2D"]
 collision_layer = 32
@@ -18,95 +13,6 @@ script = ExtResource("1_vsmah")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="CookingScene" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_d5iq5")
-
-[node name="Control" type="Control" parent="CanvasLayer/CookingScene"]
-custom_minimum_size = Vector2(640, 360)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CookingScene/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/CookingScene/Control/CenterContainer"]
-custom_minimum_size = Vector2(720, 500)
-layout_mode = 2
-color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
-
-[node name="SelectedFoodList" type="CenterContainer" parent="CanvasLayer/CookingScene"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 654.0
-offset_top = 113.0
-offset_right = -283.0
-offset_bottom = -314.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="IngredientHandler" type="HBoxContainer" parent="CanvasLayer/CookingScene/SelectedFoodList"]
-unique_name_in_owner = true
-layout_mode = 2
-script = ExtResource("2_bq7de")
-food_slot_scene = ExtResource("3_2ia8o")
-
-[node name="InventorySelectList" parent="CanvasLayer/CookingScene" instance=ExtResource("4_p82ar")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -324.0
-offset_top = -209.0
-offset_right = -24.0
-offset_bottom = 188.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="StartButton" type="TextureButton" parent="CanvasLayer/CookingScene"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 112.0
-offset_top = 154.0
-offset_right = 302.0
-offset_bottom = 203.0
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("5_ytcit")
-texture_pressed = ExtResource("6_mee4i")
-
-[node name="Label" type="Label" parent="CanvasLayer/CookingScene/StartButton"]
-layout_mode = 0
-offset_left = 75.0
-offset_top = 10.0
-offset_right = 115.0
-offset_bottom = 33.0
-text = "Cook"
+[node name="CookingScene" parent="CanvasLayer" instance=ExtResource("2_7qqeh")]
 
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="update_list" from="CanvasLayer/CookingScene/SelectedFoodList/IngredientHandler" to="CanvasLayer/CookingScene" method="_on_ingredient_handler_update_list"]
-[connection signal="item_selected" from="CanvasLayer/CookingScene/InventorySelectList" to="CanvasLayer/CookingScene" method="add_item"]
-[connection signal="pressed" from="CanvasLayer/CookingScene/StartButton" to="CanvasLayer/CookingScene" method="_on_start_button_pressed"]

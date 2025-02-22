@@ -1,0 +1,233 @@
+[gd_scene load_steps=14 format=3 uid="uid://dw0k3wxf1ktoo"]
+
+[ext_resource type="Script" path="res://scripts/cooking/FryActivity.gd" id="1_hkju0"]
+[ext_resource type="Texture2D" uid="uid://weorr57ynm3" path="res://assets/workstations/fry_game/frying_pan.png" id="2_0essr"]
+[ext_resource type="Texture2D" uid="uid://ctqn7ohdkuvgc" path="res://assets/textures/blank_circle_200x200.png" id="3_1px4q"]
+[ext_resource type="FontFile" uid="uid://iqracr2sqomh" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="4_2363y"]
+[ext_resource type="Texture2D" uid="uid://ctkeslcjhp4qx" path="res://assets/textures/ui/Circle_Under.png" id="5_yvg57"]
+[ext_resource type="Texture2D" uid="uid://dlmhvkumh44c7" path="res://assets/textures/ui/Circle_Progress.png" id="6_gkapq"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nq03i"]
+size = Vector2(20, 20)
+
+[sub_resource type="Animation" id="Animation_cao5g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FryingPan/Ingredient/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_acu07"]
+resource_name = "drop"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FryingPan/Ingredient/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1.8, 1.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wrcnx"]
+resource_name = "flip"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FryingPan/Ingredient/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.8, 1.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v12b5"]
+resource_name = "idle"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FryingPan/Ingredient/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4sm8j"]
+_data = {
+"RESET": SubResource("Animation_cao5g"),
+"drop": SubResource("Animation_acu07"),
+"flip": SubResource("Animation_wrcnx"),
+"idle": SubResource("Animation_v12b5")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0qk3"]
+font = ExtResource("4_2363y")
+font_size = 42
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="FryActivity" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hkju0")
+
+[node name="FryingPan" type="Sprite2D" parent="."]
+z_index = 7
+position = Vector2(638, 390)
+
+[node name="Sprite2D" type="Sprite2D" parent="FryingPan"]
+position = Vector2(-26, 25)
+scale = Vector2(0.230019, 0.230019)
+texture = ExtResource("2_0essr")
+
+[node name="Rings" type="Control" parent="FryingPan"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Ring1" type="TextureRect" parent="FryingPan/Rings"]
+self_modulate = Color(0.23, 0.2116, 0.2116, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(100, 100)
+texture = ExtResource("3_1px4q")
+
+[node name="Ring2" type="TextureRect" parent="FryingPan/Rings"]
+self_modulate = Color(0.87, 0.78909, 0.3306, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(100, 100)
+texture = ExtResource("3_1px4q")
+
+[node name="Ring3" type="TextureRect" parent="FryingPan/Rings"]
+self_modulate = Color(0.86, 0.56072, 0.2408, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(100, 100)
+texture = ExtResource("3_1px4q")
+
+[node name="Ring4" type="TextureRect" parent="FryingPan/Rings"]
+self_modulate = Color(0.89, 0.286283, 0.2314, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 80.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(100, 100)
+texture = ExtResource("3_1px4q")
+
+[node name="Ingredient" type="Sprite2D" parent="FryingPan"]
+self_modulate = Color(0.4, 0.4, 0.4, 1)
+position = Vector2(75, 0)
+
+[node name="Label" type="Label" parent="FryingPan/Ingredient"]
+visible = false
+offset_left = -2.0
+offset_top = -31.0
+offset_right = 38.0
+offset_bottom = -8.0
+text = "!"
+
+[node name="Sprite" type="Sprite2D" parent="FryingPan/Ingredient"]
+texture = SubResource("PlaceholderTexture2D_nq03i")
+
+[node name="ProgressDebug" type="Label" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4sm8j")
+}
+autoplay = "idle"
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TipText" type="Label" parent="."]
+offset_left = 458.0
+offset_top = 202.0
+offset_right = 826.0
+offset_bottom = 255.0
+text = "Stay near the center!"
+label_settings = SubResource("LabelSettings_f0qk3")
+
+[node name="FryProgress" type="TextureProgressBar" parent="."]
+offset_left = 807.0
+offset_top = 409.0
+offset_right = 1151.0
+offset_bottom = 753.0
+scale = Vector2(0.5, 0.5)
+step = 0.0
+fill_mode = 4
+texture_under = ExtResource("5_yvg57")
+texture_progress = ExtResource("6_gkapq")

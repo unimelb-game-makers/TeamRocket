@@ -1,4 +1,4 @@
-extends Control
+extends CookingActivity
 
 """
 Minigame for frying ingredients.
@@ -16,9 +16,6 @@ There is a shader script attached to "FryingPan", intended
 to manage visual indicators for point ranges on the pan
 Currently, this is unused, as we just use a texture2D instead
 """
-
-
-signal complete(output)
 
 @onready var frying_pan: Sprite2D = $FryingPan
 @onready var ingr: Sprite2D = $FryingPan/Ingredient

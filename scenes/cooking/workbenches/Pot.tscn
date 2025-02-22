@@ -5,49 +5,22 @@
 [ext_resource type="Texture2D" uid="uid://dhgbxnc7av4lx" path="res://assets/workstations/pot/stew0.png" id="3_an7p1"]
 [ext_resource type="Resource" uid="uid://d0er8kaqjpcsl" path="res://resources/activities/stewing.tres" id="3_b6teh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ocb8"]
-size = Vector2(86, 69)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r2mod"]
+size = Vector2(73, 59)
 
 [node name="Pot" instance=ExtResource("1_j278a")]
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, -5.5)
-shape = SubResource("RectangleShape2D_8ocb8")
+position = Vector2(0.5, -4.5)
+shape = SubResource("RectangleShape2D_r2mod")
 
 [node name="Sprite2D" parent="." index="1"]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_an7p1")
 
 [node name="CookingScene" parent="CanvasLayer" index="0"]
+visible = false
 activity_res = ExtResource("3_b6teh")
-
-[node name="InventorySelectList" parent="CanvasLayer/CookingScene" index="2"]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 300.0
-offset_bottom = 300.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="StartButton" parent="CanvasLayer/CookingScene" index="3"]
-layout_mode = 0
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 190.0
-offset_bottom = 49.0
-grow_horizontal = 1
-grow_vertical = 1
 
 [node name="Activity" parent="CanvasLayer/CookingScene" index="4" instance=ExtResource("2_5al3h")]
 visible = false

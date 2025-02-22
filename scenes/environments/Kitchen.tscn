@@ -205,7 +205,7 @@ z_index = 1
 position = Vector2(526, 502)
 
 [node name="Pot" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("4_hcw55")]
-position = Vector2(705, 234)
+position = Vector2(716, 244)
 
 [node name="Item" parent="ItemHandler" index="0" instance=ExtResource("15_4j2un")]
 position = Vector2(321, 361)
