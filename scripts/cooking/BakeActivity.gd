@@ -1,4 +1,4 @@
-extends Control
+extends CookingActivity
 
 """
 Baking activity
@@ -11,8 +11,6 @@ Baking activity
 6. Player must take out baking at perfect time (within a few seconds)
 7. Otherwise, baking may be undercooked or overcooked
 """
-
-signal complete(output)
 
 
 @onready var POT_POS: Vector2 = $Pot.position
