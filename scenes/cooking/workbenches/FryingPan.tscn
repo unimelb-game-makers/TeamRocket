@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk6a5jgkvuwwt"]
+[gd_scene load_steps=6 format=3 uid="uid://dk6a5jgkvuwwt"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_kib3k"]
 [ext_resource type="Texture2D" uid="uid://exr5tyv2uhg6" path="res://assets/workstations/pot/stew2.png" id="2_u141n"]
+[ext_resource type="Resource" uid="uid://dhf01em6mwxa8" path="res://resources/activities/frying.tres" id="3_adn2l"]
 [ext_resource type="PackedScene" uid="uid://dw0k3wxf1ktoo" path="res://scenes/cooking/activities/FryActivity.tscn" id="3_cs31w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvo21"]
@@ -17,5 +18,8 @@ shape = SubResource("RectangleShape2D_xvo21")
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_u141n")
 
-[node name="FryActivity" parent="CanvasLayer/CookingScene" index="4" instance=ExtResource("3_cs31w")]
+[node name="CookingScene" parent="CanvasLayer" index="0"]
+activity_res = ExtResource("3_adn2l")
+
+[node name="Activity" parent="CanvasLayer/CookingScene" index="4" instance=ExtResource("3_cs31w")]
 layout_mode = 1

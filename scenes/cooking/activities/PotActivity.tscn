@@ -58,6 +58,7 @@ scale = Vector2(0.36648, 0.36648)
 texture = ExtResource("8_n6sfw")
 
 [node name="TimerLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 845.0
 offset_top = 485.0
 offset_right = 946.0
@@ -67,6 +68,7 @@ label_settings = SubResource("LabelSettings_o7mta")
 horizontal_alignment = 1
 
 [node name="FeedbackLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 522.0
 offset_top = 505.0
 offset_right = 766.0
@@ -88,6 +90,7 @@ position = Vector2(-58, 73)
 shape = SubResource("CircleShape2D_jmwn4")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
 offset_left = 807.0
 offset_top = 409.0
 offset_right = 1151.0

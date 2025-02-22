@@ -1,9 +1,7 @@
-extends Control
+extends CookingActivity
 @onready var ingredient_image_display: TextureRect = $IngredientImageDisplay
 @onready var feedback_label: Label = $FeedbackLabel
 @onready var cooking_scene: CookingScene = $".."
-
-signal complete(output)
 
 var playing = false
 
