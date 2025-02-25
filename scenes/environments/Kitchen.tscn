@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=27 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
@@ -12,13 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
 [ext_resource type="Texture2D" uid="uid://kn0k2fmakmpr" path="res://assets/prototype/diagram.jpg" id="13_7t8ns"]
 [ext_resource type="Script" path="res://scripts/objects/interactables/prototype_diagram.gd" id="14_vcdmk"]
-[ext_resource type="PackedScene" uid="uid://yw75vu274ne0" path="res://scenes/item/item_floor.tscn" id="15_4j2un"]
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
-[ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="16_qru3a"]
-[ext_resource type="Resource" uid="uid://pu3eafcj7feu" path="res://resources/items/spaghetti_raw.tres" id="17_ffx4m"]
-[ext_resource type="Resource" uid="uid://mywli41k181b" path="res://resources/items/carrot_chopped.tres" id="18_hlgti"]
-[ext_resource type="Resource" uid="uid://bicl6a3rvlqmi" path="res://resources/items/onion_chopped.tres" id="19_u1a4j"]
-[ext_resource type="Resource" uid="uid://bqvxryq244ry3" path="res://resources/items/mince_cooked.tres" id="20_cxvjb"]
 [ext_resource type="PackedScene" uid="uid://bhlarqiey25gc" path="res://scenes/cooking/workbenches/AssemblyPlate.tscn" id="20_twwyk"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_5wnhy"]
@@ -211,36 +205,6 @@ position = Vector2(716, 244)
 [node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="4" instance=ExtResource("20_twwyk")]
 z_index = 1
 position = Vector2(920, 492)
-
-[node name="Item" parent="ItemHandler" index="0" instance=ExtResource("15_4j2un")]
-position = Vector2(321, 361)
-item = ExtResource("16_qru3a")
-amount = 5
-
-[node name="Item2" parent="ItemHandler" index="1" instance=ExtResource("15_4j2un")]
-position = Vector2(321, 361)
-item = ExtResource("17_ffx4m")
-amount = 5
-
-[node name="Item3" parent="ItemHandler" index="2" instance=ExtResource("15_4j2un")]
-position = Vector2(321, 361)
-item = ExtResource("18_hlgti")
-amount = 5
-
-[node name="Item4" parent="ItemHandler" index="3" instance=ExtResource("15_4j2un")]
-position = Vector2(321, 361)
-item = ExtResource("19_u1a4j")
-amount = 5
-
-[node name="Item5" parent="ItemHandler" index="4" instance=ExtResource("15_4j2un")]
-position = Vector2(321, 361)
-item = ExtResource("20_cxvjb")
-amount = 5
-
-[node name="Item6" parent="ItemHandler" index="5" instance=ExtResource("15_4j2un")]
-position = Vector2(321, 361)
-item = ExtResource("16_qru3a")
-amount = 5
 
 [node name="Player" parent="." index="6"]
 position = Vector2(269, 549)
