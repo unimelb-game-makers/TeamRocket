@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 @export var activity: PackedScene
 @onready var cooking_scene: CookingScene = $CanvasLayer/CookingScene

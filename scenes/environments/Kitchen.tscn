@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
 [ext_resource type="Script" path="res://scripts/Game/kitchen_handler.gd" id="2_watt5"]
 [ext_resource type="AudioStream" uid="uid://ca653a6ueta86" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_intro.ogg" id="3_u2yjv"]
-[ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="3_xytjo"]
 [ext_resource type="Texture2D" uid="uid://b5jgmaxgknpb0" path="res://assets/interiors/kitchen/walls.png" id="3_yjya3"]
 [ext_resource type="AudioStream" uid="uid://bt6iaxioqyqdj" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_loop.ogg" id="4_0hx8f"]
-[ext_resource type="PackedScene" uid="uid://c5fbsmwagky6i" path="res://scenes/cooking/workbenches/Pot.tscn" id="4_hcw55"]
 [ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
 [ext_resource type="Texture2D" uid="uid://kn0k2fmakmpr" path="res://assets/prototype/diagram.jpg" id="13_7t8ns"]
+[ext_resource type="PackedScene" uid="uid://dj4u0n4uqbwvg" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="13_y6d8o"]
+[ext_resource type="PackedScene" uid="uid://bqjhwwixj8hir" path="res://scenes/cooking/workbenches/Pot.tscn" id="14_l7h17"]
 [ext_resource type="Script" path="res://scripts/objects/interactables/prototype_diagram.gd" id="14_vcdmk"]
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
 [ext_resource type="PackedScene" uid="uid://bhlarqiey25gc" path="res://scenes/cooking/workbenches/AssemblyPlate.tscn" id="20_twwyk"]
@@ -195,16 +195,16 @@ collision_layer = 8
 position = Vector2(-47.749, 8.76465)
 shape = SubResource("RectangleShape2D_vlym8")
 
-[node name="ChoppingBoard" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("3_xytjo")]
-z_index = 1
-position = Vector2(526, 502)
-
-[node name="Pot" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("4_hcw55")]
-position = Vector2(716, 244)
-
-[node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="4" instance=ExtResource("20_twwyk")]
+[node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("20_twwyk")]
 z_index = 1
 position = Vector2(920, 492)
+
+[node name="ChoppingBoard" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("13_y6d8o")]
+z_index = 1
+position = Vector2(521, 503)
+
+[node name="Pot" parent="InteractableHandler/InteractableHolder" index="4" instance=ExtResource("14_l7h17")]
+position = Vector2(712, 244)
 
 [node name="Player" parent="." index="6"]
 position = Vector2(269, 549)
