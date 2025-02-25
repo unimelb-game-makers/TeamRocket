@@ -10,10 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://c5fbsmwagky6i" path="res://scenes/cooking/workbenches/Pot.tscn" id="4_hcw55"]
 [ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
-[ext_resource type="PackedScene" uid="uid://csf03f13m5wmx" path="res://scenes/cooking/workbenches/assembly_plate.tscn" id="9_5i564"]
 [ext_resource type="Texture2D" uid="uid://kn0k2fmakmpr" path="res://assets/prototype/diagram.jpg" id="13_7t8ns"]
 [ext_resource type="Script" path="res://scripts/objects/interactables/prototype_diagram.gd" id="14_vcdmk"]
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
+[ext_resource type="PackedScene" uid="uid://bhlarqiey25gc" path="res://scenes/cooking/workbenches/AssemblyPlate.tscn" id="20_twwyk"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_5wnhy"]
 clip_count = 2
@@ -171,23 +171,10 @@ offset_bottom = 10.0
 texture = SubResource("GradientTexture1D_dupnr")
 metadata/_edit_use_anchors_ = true
 
-[node name="ChoppingBoard" parent="InteractableHandler/InteractableHolder" index="0" instance=ExtResource("3_xytjo")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(535, 501)
-
-[node name="Pot" parent="InteractableHandler/InteractableHolder" index="1" instance=ExtResource("4_hcw55")]
-y_sort_enabled = true
-position = Vector2(793, 232)
-
-[node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("9_5i564")]
-z_index = 1
-position = Vector2(919, 506)
-
-[node name="Altar" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("16_7km4m")]
+[node name="Altar" parent="InteractableHandler/InteractableHolder" index="0" instance=ExtResource("16_7km4m")]
 position = Vector2(88, 454)
 
-[node name="PrototypeDiagram" type="Sprite2D" parent="InteractableHandler/InteractableHolder" index="4"]
+[node name="PrototypeDiagram" type="Sprite2D" parent="InteractableHandler/InteractableHolder" index="1"]
 position = Vector2(530.125, 223.5)
 scale = Vector2(0.0445048, 0.057047)
 texture = ExtResource("13_7t8ns")
@@ -207,6 +194,17 @@ collision_layer = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableHandler/InteractableHolder/PrototypeDiagram/Area2D" index="0"]
 position = Vector2(-47.749, 8.76465)
 shape = SubResource("RectangleShape2D_vlym8")
+
+[node name="ChoppingBoard" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("3_xytjo")]
+z_index = 1
+position = Vector2(526, 502)
+
+[node name="Pot" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("4_hcw55")]
+position = Vector2(716, 244)
+
+[node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="4" instance=ExtResource("20_twwyk")]
+z_index = 1
+position = Vector2(920, 492)
 
 [node name="Player" parent="." index="6"]
 position = Vector2(269, 549)

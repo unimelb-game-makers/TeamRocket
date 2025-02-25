@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 @onready var sprite: Sprite2D = $Sprite
 
@@ -13,3 +13,7 @@ func delete_item() -> void:
 	
 func set_item() -> void:
 	sprite.texture = item.texture
+
+func interact() -> void:
+	Inventory_Global.add_item(item, amount)
+	delete_item()

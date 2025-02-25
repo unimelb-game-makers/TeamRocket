@@ -64,19 +64,10 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# Code for item pickup
-	if (interact_radius.has_overlapping_areas()):
-		if (Input.is_action_just_pressed("interact")):
+	if (Input.is_action_just_pressed("interact")):
+		if (interact_radius.has_overlapping_areas()):
 			var area = interact_radius.get_overlapping_areas()[0]
-			if area.is_in_group("Item"):
-				var item = area.get_parent()
-				Inventory_Global.add_item(item.item, item.amount)
-				item.delete_item()
-			elif area.is_in_group("Workbench"):
-				var workbench = area.get_parent()
-				activity_interact.emit(workbench.activity)
-			elif area.is_in_group("Interactables"):
-				var interactable = area.get_parent()
-				interactable.interact()
+			area.interact()
 		
 	if (is_moving and curr_speed > CROUCH_SPEED):
 		rifle.inaccuracy += 0.05
