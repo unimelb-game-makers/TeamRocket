@@ -1,9 +1,9 @@
 [gd_scene load_steps=37 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
-[ext_resource type="AudioStream" uid="uid://bd77f8tivpj3o" path="res://assets/sfx/team rocket sfx/area themes/central district/central district intro.wav" id="2_auyuh"]
+[ext_resource type="AudioStream" uid="uid://csjr1bs7pcsax" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg" id="2_1ecv6"]
+[ext_resource type="AudioStream" uid="uid://diyeciedxupvy" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg" id="3_8hg87"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="3_pa65j"]
-[ext_resource type="AudioStream" uid="uid://dlc1kwo6dv7e3" path="res://assets/sfx/team rocket sfx/area themes/central district/central district loop.wav" id="3_vmjra"]
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="4_2cddj"]
 [ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="5_oq3tf"]
 [ext_resource type="PackedScene" uid="uid://p6jrdiqo23p1" path="res://scenes/objects/Obstacles/WreckedCar3.tscn" id="6_fuahw"]
@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://boou7kaxracje" path="res://scenes/objects/Buildings/Building.tscn" id="19_r84yg"]
 [ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="19_ryaas"]
 [ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/enemy_dasher.tscn" id="19_sv1o8"]
-[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/carrot.tres" id="20_0qh7k"]
+[ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/Carrot.tres" id="20_0qh7k"]
 [ext_resource type="PackedScene" uid="uid://b0q3wyjdxrql8" path="res://scenes/objects/Buildings/Building2.tscn" id="20_wckc8"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="21_5cojw"]
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="21_a7p7e"]
@@ -34,11 +34,11 @@
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_y1gkg"]
 clip_count = 2
 clip_0/name = &"Central District Intro"
-clip_0/stream = ExtResource("2_auyuh")
+clip_0/stream = ExtResource("2_1ecv6")
 clip_0/auto_advance = 1
 clip_0/next_clip = 1
 clip_1/name = &"Central District Loop"
-clip_1/stream = ExtResource("3_vmjra")
+clip_1/stream = ExtResource("3_8hg87")
 clip_1/auto_advance = 1
 clip_1/next_clip = 1
 _transitions = {
