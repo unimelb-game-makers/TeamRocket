@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://5w6yv33vt4tg"]
+
+[ext_resource type="Script" path="res://addons/last_diner_recipe_manager/food_manager/food_manager.gd" id="1_qdcyy"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qdcyy")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 1
+
+[node name="Food" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Button" type="Button" parent="TabContainer/Food"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = 39.0
+offset_right = -1071.0
+offset_bottom = -577.0
+text = "Test Button 1"
+
+[node name="Recipes" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Button" type="Button" parent="TabContainer/Recipes"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 166.0
+offset_top = 127.0
+offset_right = -776.0
+offset_bottom = -427.0
+text = "Test Button 1"
+
+[node name="Workstations" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Button" type="Button" parent="TabContainer/Workstations"]
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 51.0
+offset_top = 39.0
+offset_right = -1071.0
+offset_bottom = -577.0
+text = "Test Button 1"
