@@ -1,67 +1,69 @@
-[gd_scene load_steps=2 format=3 uid="uid://5w6yv33vt4tg"]
+[gd_scene load_steps=4 format=3 uid="uid://ttv8jiqo50yc"]
 
-[ext_resource type="Script" path="res://addons/last_diner_recipe_manager/food_manager/food_manager.gd" id="1_qdcyy"]
+[ext_resource type="Script" path="res://addons/last_diner_recipe_manager/food_manager/food_list.gd" id="1_jleq0"]
+[ext_resource type="PackedScene" uid="uid://dm2ismq2x41wo" path="res://addons/last_diner_recipe_manager/food_manager/food_instance.tscn" id="2_k64g5"]
 
-[node name="Control" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4fn7"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[node name="FoodManager" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qdcyy")
 
-[node name="TabContainer" type="TabContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(300, 500)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-current_tab = 1
+offset_left = 75.0
+offset_top = 60.0
+offset_right = 404.0
+offset_bottom = 560.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4fn7")
 
-[node name="Food" type="TabBar" parent="TabContainer"]
-visible = false
+[node name="FoodList" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
-metadata/_tab_index = 0
+script = ExtResource("1_jleq0")
+food_res_folder = "res://resources/items/"
+food_instance_scene = ExtResource("2_k64g5")
 
-[node name="Button" type="Button" parent="TabContainer/Food"]
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 51.0
-offset_top = 39.0
-offset_right = -1071.0
-offset_bottom = -577.0
-text = "Test Button 1"
+[node name="FoodEditorUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 574.0
+offset_right = 1279.0
+offset_bottom = 722.0
 
-[node name="Recipes" type="TabBar" parent="TabContainer"]
+[node name="FoodNameInput" type="LineEdit" parent="FoodEditorUI"]
 layout_mode = 2
-metadata/_tab_index = 1
+offset_left = 11.0
+offset_top = 40.0
+offset_right = 397.0
+offset_bottom = 71.0
+text = "FoodNameInput"
 
-[node name="Button" type="Button" parent="TabContainer/Recipes"]
+[node name="FileNameInput" type="LineEdit" parent="FoodEditorUI"]
 layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 166.0
-offset_top = 127.0
-offset_right = -776.0
-offset_bottom = -427.0
-text = "Test Button 1"
+offset_left = 11.0
+offset_top = 75.0
+offset_right = 397.0
+offset_bottom = 106.0
+text = "FileNameInput"
 
-[node name="Workstations" type="TabBar" parent="TabContainer"]
-visible = false
+[node name="Saved As" type="Label" parent="FoodEditorUI"]
 layout_mode = 2
-metadata/_tab_index = 2
+offset_left = 11.0
+offset_top = 110.0
+offset_right = 397.0
+offset_bottom = 133.0
+text = "Will be saved under: "
 
-[node name="Button" type="Button" parent="TabContainer/Workstations"]
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 51.0
-offset_top = 39.0
-offset_right = -1071.0
-offset_bottom = -577.0
-text = "Test Button 1"
+[node name="TextureRect" type="TextureRect" parent="FoodEditorUI"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 0
+offset_left = 437.0
+offset_top = 41.0
+offset_right = 611.0
+offset_bottom = 199.0
