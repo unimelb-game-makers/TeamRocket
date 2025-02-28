@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dm2ismq2x41wo"]
 
-[ext_resource type="Script" path="res://addons/last_diner_recipe_manager/food_manager/food_instance.gd" id="1_c4buc"]
+[ext_resource type="Script" path="res://addons/last_diner_recipe_manager/food_manager/food_instance.gd" id="1_n054h"]
 
 [node name="FoodInstance" type="Control"]
 custom_minimum_size = Vector2(300, 50)
@@ -12,7 +12,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-script = ExtResource("1_c4buc")
+script = ExtResource("1_n054h")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -38,3 +38,5 @@ offset_right = 392.0
 offset_bottom = 38.0
 text = "FoodNameHere"
 vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
