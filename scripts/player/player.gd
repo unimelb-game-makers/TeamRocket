@@ -36,7 +36,7 @@ var can_roll : bool = true
 
 var fired = false
 
-# ----- Node References ----- 
+# ----- Node References -----
 @onready var interact_radius: Area2D = $InteractRadius
 @onready var rifle: Node2D = $Rifle
 @onready var statechart: StateChart = $StateChart
@@ -68,17 +68,17 @@ func _process(_delta: float) -> void:
 		if (interact_radius.has_overlapping_areas()):
 			var area = interact_radius.get_overlapping_areas()[0]
 			area.interact()
-		
+
 	if (is_moving and curr_speed > CROUCH_SPEED):
 		rifle.inaccuracy += 0.05
 	else:
 		rifle.inaccuracy -= 0.025
-		
+
 	if Input.is_action_just_pressed("channel"):
 		channel_timer.start(0)
 	elif Input.is_action_just_released("channel") or velocity != Vector2(0,0):
 		channel_timer.stop()
-	
+
 	if (not channel_timer.is_stopped()):
 		channeling_particles.emitting = true
 
@@ -87,7 +87,7 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	pass
-	
+
 func die() -> void:
 	can_move = false
 	death.emit()
@@ -100,23 +100,23 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, curr_speed * direction.x, curr_accel)
 	velocity.y = move_toward(velocity.y, curr_speed * direction.y, curr_accel)
 	move_and_slide()
-	
+
 	### State Chart ###
-	
+
 	is_moving = velocity.length_squared() >= 0.005
-	
+
 	# Handle Motion State
 	if not is_moving: # To Idle
 		statechart.send_event("wasd_release") # Sprint to Idle, Walk to Idle
 	else: # To Walk
 		statechart.send_event("wasd_hold") # Idle To Walk
-	
+
 	# Handle Basic State
 	if Input.is_action_pressed("sprint") and is_moving:
 		statechart.send_event("shift_hold") # Stance to Sprint
 	if Input.is_action_just_released("sprint"):
 		statechart.send_event("shift_release") # Sprint To Walk
-	
+
 	# Roll cooldown
 	if not can_roll:
 		roll_cd_timer += delta
@@ -145,7 +145,7 @@ func _on_basic_state_input(event: InputEvent) -> void:
 func _on_roll_state_entered() -> void:
 	if direction == Vector2.ZERO:
 		statechart.send_event("roll_finished")
-	
+
 	roll_timer = 0
 
 func _on_roll_state_exited() -> void:
@@ -154,7 +154,7 @@ func _on_roll_state_exited() -> void:
 
 func _on_roll_state_physics_processing(delta: float) -> void:
 	roll_timer += delta
-	
+
 	if roll_timer >= ROLL_DURATION:
 		statechart.send_event("roll_finished")
 	else:
