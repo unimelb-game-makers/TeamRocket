@@ -94,6 +94,9 @@ func get_savefile_name(slot_id: int) -> String:
 	return "user://savegame_slot{0}.save".format([slot_id])
 
 
+## These are code for saving game setting. Should implement them
+## after improve the setting menu to have more options.
+
 # func save_setting_config():
 # 	var config = ConfigFile.new()
 
