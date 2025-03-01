@@ -21,6 +21,7 @@ func _on_resume_button_pressed() -> void:
 	hide()
 
 func _on_main_menu_pressed() -> void:
+	Globals.reset_save_data()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/menus/MainMenu.tscn")
 

@@ -44,4 +44,5 @@ func _on_player_death() -> void:
 
 # Temp Signal so player can return to home easier
 func _on_player_channel_complete() -> void:
+	SaveManager.save_game(Globals.chosen_slot_id)
 	switch_to_kitchen()

@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_5q004")
+item_id = 50
 texture = ExtResource("2_733ci")
 item_name = "Raw Spaghetti"
 description = "Noodle"

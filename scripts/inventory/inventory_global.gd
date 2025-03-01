@@ -50,3 +50,6 @@ func drop_item(item: Item, amount: int) -> void:
 		dropped_item.amount = amount
 		dropped_item.global_position = Globals.player.global_position
 		Globals.item_handler.add_child(dropped_item)
+
+func reset_save_data():
+	inventory_dict = {}

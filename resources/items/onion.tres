@@ -7,7 +7,8 @@
 script = ExtResource("1_h4q45")
 food_value = 0
 buffs = Array[String]([])
-rating = 0
+food_stats = {}
+item_id = 30
 texture = ExtResource("2_w2fcr")
 item_name = "Onion"
 description = "A powerfully pungent vegetable. Eating it raw is not recommended. \\n“Back in **my** day, kids used to eat their onion **raw**, and they’d have it no other way! - Grandpa Sims, the Lee’s front porch”"

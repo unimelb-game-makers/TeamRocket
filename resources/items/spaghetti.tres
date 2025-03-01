@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_2mh28")
+item_id = 51
 texture = ExtResource("2_l774h")
 item_name = "Spaghetti"
 description = "Made from a blend of the finest semolina and durum flour. It tastes bland.\\n“Spaghetti’s spaghetti, whaddya mean it tastes ‘off’ - Pete, Pete’s Pizzas”"
