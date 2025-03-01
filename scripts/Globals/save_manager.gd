@@ -37,6 +37,7 @@ func delete_save_file(slot_id: int):
 
 
 func save_game(slot_id):
+	Globals.update_total_playtime()
 	is_saving = true
 	started_saving.emit()
 	var save_dict = {
@@ -45,7 +46,7 @@ func save_game(slot_id):
 		"player_hp_increase": Globals.player_hp_increase,
 		"player_speed_increase": Globals.player_speed_increase,
 		"player_damage_increase": Globals.player_damage_increase,
-		"playtime_total": Globals.playtime_total,
+		"total_playtime": Globals.total_playtime,
 	}
 	var save_file = FileAccess.open(get_savefile_name(slot_id), FileAccess.WRITE)
 	var json_string = JSON.stringify(save_dict)
@@ -86,7 +87,7 @@ func load_game(slot_id):
 	Globals.player_hp_increase = save_data["player_hp_increase"]
 	Globals.player_speed_increase = save_data["player_speed_increase"]
 	Globals.player_damage_increase = save_data["player_damage_increase"]
-	Globals.playtime_total = save_data["playtime_total"]
+	Globals.total_playtime = save_data["total_playtime"]
 
 
 func get_savefile_name(slot_id: int) -> String:

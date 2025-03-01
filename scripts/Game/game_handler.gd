@@ -31,6 +31,7 @@ func _on_game_timer_timeout() -> void:
 		switch_to_kitchen()
 		
 func switch_to_kitchen():
+	SaveManager.save_game(Globals.chosen_slot_id)
 	var tween = create_tween()
 	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 2.0), 2.0)
 	await tween.finished
@@ -44,5 +45,4 @@ func _on_player_death() -> void:
 
 # Temp Signal so player can return to home easier
 func _on_player_channel_complete() -> void:
-	SaveManager.save_game(Globals.chosen_slot_id)
 	switch_to_kitchen()

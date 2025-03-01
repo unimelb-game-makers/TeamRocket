@@ -9,7 +9,8 @@ var player_ui: PlayerUI
 var enemy_handler
 
 var chosen_slot_id = -1 # For saving
-var playtime_total = 0
+var start_record_timestamp = 0
+var total_playtime = 0
 
 var player_level = 1
 var player_hp_increase = 0.0
@@ -43,4 +44,14 @@ func reset_save_data():
 	player_hp_increase = 0.0
 	player_speed_increase = 0.0
 	player_damage_increase = 0.0
+	start_record_timestamp = 0
+	total_playtime = 0
 	InventoryGlobal.reset_save_data()
+
+func start_record_playtime():
+	start_record_timestamp = Time.get_ticks_msec()
+
+func update_total_playtime():
+	var current_time = Time.get_ticks_msec()
+	var played_time = current_time - start_record_timestamp
+	total_playtime += played_time

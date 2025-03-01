@@ -21,6 +21,7 @@ func _on_play_button_pressed() -> void:
 func start_game():
 	get_tree().change_scene_to_file("res://scenes/environments/City.tscn")
 	SaveManager.load_game(Globals.chosen_slot_id)
+	Globals.start_record_playtime()
 	
 func _on_settings_pressed() -> void:
 	main_menu_buttons.hide()
