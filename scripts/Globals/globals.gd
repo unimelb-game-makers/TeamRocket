@@ -1,11 +1,11 @@
 extends Node
 
-var player
+var player: Player
 var item_handler
 var map
 
-var inventory_ui
-var player_ui
+var inventory_ui: InventoryUI
+var player_ui: PlayerUI
 var enemy_handler
 
 var player_hp_increase = 0.0

@@ -1,6 +1,5 @@
 extends Node
 
-var inventory_array: Array[Item] = []
 var inventory_dict: Dictionary = {}
 var floor_item_scene: PackedScene = preload("res://scenes/item/item_floor.tscn")
 
@@ -8,7 +7,6 @@ func get_inventory() -> Dictionary:
 	return inventory_dict
 	
 func add_item(item: Item, amount) -> void:
-	#inventory_array.append(item)
 	if (inventory_dict.has(item)):
 		inventory_dict[item] += amount
 	else:
