@@ -15,5 +15,5 @@ func set_item() -> void:
 	sprite.texture = item.texture
 
 func interact() -> void:
-	Inventory_Global.add_item(item, amount)
+	InventoryGlobal.add_item(item, amount)
 	delete_item()

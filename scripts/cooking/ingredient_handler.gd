@@ -21,12 +21,12 @@ func create_slots() -> void:
 func add_item(item: Item) -> void:
 	if (len(selected_ingredients) < max_slots):
 		selected_ingredients.append(item)
-		Inventory_Global.remove_item(item, 1)
+		InventoryGlobal.remove_item(item, 1)
 		update_list.emit()
 		update_slots()
 
 func remove_item(index):
-	Inventory_Global.add_item(selected_ingredients[index], 1)
+	InventoryGlobal.add_item(selected_ingredients[index], 1)
 	selected_ingredients.remove_at(index)
 	update_list.emit()
 	update_slots()

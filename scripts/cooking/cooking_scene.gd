@@ -34,7 +34,7 @@ func add_item(item: Item, amount: int):
 
 func finish():
 	complete.emit(recipe.output_item)
-	Inventory_Global.add_item(recipe.output_item, 1)
+	InventoryGlobal.add_item(recipe.output_item, 1)
 	ingredient_handler.clear_slots()
 	reset()
 

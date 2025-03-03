@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://eg1evlw6ow0i"]
+[gd_scene load_steps=24 format=3 uid="uid://eg1evlw6ow0i"]
 
 [ext_resource type="Script" path="res://scripts/Menus/main_menu.gd" id="1_fjdek"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="2_ik0mn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_atwnr"]
 [ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="3_cx0kh"]
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="5_gkg36"]
+[ext_resource type="PackedScene" uid="uid://dif5ua57y8udh" path="res://scenes/ui/SaveSlotItem.tscn" id="5_v3mkp"]
 [ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="6_hmsnk"]
 [ext_resource type="PackedScene" uid="uid://p6jrdiqo23p1" path="res://scenes/objects/Obstacles/WreckedCar3.tscn" id="7_s88nw"]
 [ext_resource type="PackedScene" uid="uid://vk8s3qx7g5vu" path="res://scenes/objects/Obstacles/Debris1.tscn" id="8_03kpm"]
@@ -88,9 +89,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -445.0
-offset_top = -261.0
+offset_top = -288.0
 offset_right = 396.0
-offset_bottom = -81.0
+offset_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_atwnr")
@@ -106,9 +107,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -137.0
-offset_top = -269.0
+offset_top = -296.0
 offset_right = 704.0
-offset_bottom = -89.0
+offset_bottom = -116.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.174533
@@ -244,6 +245,42 @@ text = "Disclaimer: Gameplay is not indicitive of final product and is subject t
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="SaveUI" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -383.0
+offset_top = -105.0
+offset_right = 383.0
+offset_bottom = 323.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SaveUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SaveSlotItem" parent="CanvasLayer/SaveUI/VBoxContainer" instance=ExtResource("5_v3mkp")]
+layout_mode = 2
+slot_id = 1
+
+[node name="SaveSlotItem2" parent="CanvasLayer/SaveUI/VBoxContainer" instance=ExtResource("5_v3mkp")]
+layout_mode = 2
+slot_id = 2
+
+[node name="SaveSlotItem3" parent="CanvasLayer/SaveUI/VBoxContainer" instance=ExtResource("5_v3mkp")]
+layout_mode = 2
+slot_id = 3
 
 [node name="BackgroundMap" type="Node2D" parent="."]
 

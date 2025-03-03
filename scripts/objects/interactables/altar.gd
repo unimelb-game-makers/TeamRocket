@@ -28,7 +28,7 @@ func _on_submit_button_pressed() -> void:
 func _on_inventory_select_list_item_selected(item: Item, amount: int) -> void:
 	if items[0] == null:
 		items[0] = item
-		Inventory_Global.remove_item(item, 1)
+		InventoryGlobal.remove_item(item, 1)
 		inventory_select_list.update_inventory_list()
 		update_display()
 

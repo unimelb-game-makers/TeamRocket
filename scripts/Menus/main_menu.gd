@@ -1,4 +1,5 @@
 extends Control
+class_name MainMenu
 
 var target_position
 @onready var camera_2d: Camera2D = $BackgroundMap/Camera2D
@@ -7,10 +8,20 @@ var target_position
 
 @onready var main_menu_buttons: Control = $CanvasLayer/MainMenuButtons
 @onready var settings: Control = $CanvasLayer/Settings
+@onready var save_ui = $CanvasLayer/SaveUI
 
+func _ready() -> void:
+	reset_camera()
+	save_ui.visible = false
 
 func _on_play_button_pressed() -> void:
+	save_ui.visible = true
+	main_menu_buttons.hide()
+
+func start_game():
 	get_tree().change_scene_to_file("res://scenes/environments/City.tscn")
+	SaveManager.load_game(Globals.chosen_slot_id)
+	Globals.start_record_playtime()
 	
 func _on_settings_pressed() -> void:
 	main_menu_buttons.hide()
@@ -26,8 +37,6 @@ func _on_credits_pressed() -> void:
 func _on_exit_pressed() -> void:
 	get_tree().quit()
 
-func _ready() -> void:
-	reset_camera()
 
 func reset_camera():
 	camera_2d.reset_smoothing()

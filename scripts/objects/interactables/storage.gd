@@ -32,7 +32,7 @@ func take_item(slot):
 	items[slot] = null
 	update_display()
 	if (item):
-		Inventory_Global.add_item(item, 1)
+		InventoryGlobal.add_item(item, 1)
 
 func update_display():
 	var slots = item_containers.get_children()

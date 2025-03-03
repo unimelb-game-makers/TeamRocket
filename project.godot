@@ -17,9 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Inventory_Global="*res://scripts/inventory/inventory.gd"
 Globals="*res://scripts/Globals/globals.gd"
+InventoryGlobal="*res://scripts/inventory/inventory_global.gd"
 Settings="*res://scripts/Globals/settings.gd"
+SaveManager="*res://scripts/Globals/save_manager.gd"
 
 [display]
 

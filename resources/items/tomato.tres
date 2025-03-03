@@ -7,7 +7,8 @@
 script = ExtResource("1_frc5k")
 food_value = 0
 buffs = Array[String]([])
-rating = 0
+food_stats = {}
+item_id = 40
 texture = ExtResource("2_n2jer")
 item_name = "Tomato"
 description = "A plump source of refreshing acidic flavours. Perfect for any meal really.\\n“Tomatoes, man, top 5 all time greatest vegetables - Slim Bobby, Radio Metro”"

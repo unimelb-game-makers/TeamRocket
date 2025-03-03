@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_05i3g")
+item_id = 41
 texture = ExtResource("2_8fpd1")
 item_name = "Chopped Tomato"
 description = "A plump source of refreshing acidic flavours. Perfect for any meal really.\\n“Tomatoes, man, top 5 all time greatest vegetables - Slim Bobby, Radio Metro”"
