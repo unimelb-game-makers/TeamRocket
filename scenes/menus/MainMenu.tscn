@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Menus/main_menu.gd" id="1_fjdek"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="2_ik0mn"]
-[ext_resource type="PackedScene" uid="uid://j00qr7dcyhv4" path="res://scenes/menus/Settings.tscn" id="2_r7byj"]
+[ext_resource type="PackedScene" uid="uid://j00qr7dcyhv4" path="res://scenes/menus/SettingMenu.tscn" id="2_r7byj"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_atwnr"]
 [ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="3_cx0kh"]
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="5_gkg36"]
@@ -184,7 +184,7 @@ theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
 
-[node name="Settings" parent="CanvasLayer" instance=ExtResource("2_r7byj")]
+[node name="SettingMenu" parent="CanvasLayer" instance=ExtResource("2_r7byj")]
 visible = false
 
 [node name="ControlLabels" type="VBoxContainer" parent="CanvasLayer"]
@@ -368,5 +368,5 @@ libraries = {
 [connection signal="pressed" from="CanvasLayer/MainMenuButtons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenuButtons/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenuButtons/Exit" to="." method="_on_exit_pressed"]
-[connection signal="back" from="CanvasLayer/Settings" to="." method="_on_settings_back"]
+[connection signal="back" from="CanvasLayer/SettingMenu" to="." method="_on_settings_back"]
 [connection signal="timeout" from="CameraTimer" to="." method="_on_camera_timer_timeout"]

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="3_vo66s"]
 [ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="4_jri27"]
 
-[node name="Settings" type="Control"]
+[node name="SettingMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -7,7 +7,7 @@ var target_position
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var main_menu_buttons: Control = $CanvasLayer/MainMenuButtons
-@onready var settings: Control = $CanvasLayer/Settings
+@onready var setting_menu: Control = $CanvasLayer/SettingMenu
 @onready var save_ui = $CanvasLayer/SaveUI
 
 func _ready() -> void:
@@ -25,10 +25,10 @@ func start_game():
 	
 func _on_settings_pressed() -> void:
 	main_menu_buttons.hide()
-	settings.show()
+	setting_menu.show()
 	
 func _on_settings_back() -> void:
-	settings.hide()
+	setting_menu.hide()
 	main_menu_buttons.show()
 
 func _on_credits_pressed() -> void:
