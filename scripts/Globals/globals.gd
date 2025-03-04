@@ -19,6 +19,12 @@ var player_damage_increase = 0.0
 
 var item_database: Array[Item]
 
+# Setting parameters here
+var master_volume: float = 1
+var effects_volume: float = 1
+var music_volume: float = 1
+var ui_volume: float = 1
+
 
 func _ready() -> void:
 	load_item_database()

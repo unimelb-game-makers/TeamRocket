@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://j00qr7dcyhv4"]
+[gd_scene load_steps=5 format=3 uid="uid://j00qr7dcyhv4"]
 
 [ext_resource type="PackedScene" uid="uid://hoiacky4452m" path="res://scenes/menus/VolumeContainer.tscn" id="1_ponht"]
-[ext_resource type="Script" path="res://scripts/Menus/settings.gd" id="1_q578m"]
-[ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_iod7p"]
+[ext_resource type="Script" path="res://scripts/Menus/setting_menu.gd" id="1_q578m"]
+[ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="3_vo66s"]
+[ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="4_jri27"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -13,40 +14,181 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q578m")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0, 0, 0, 0.54902)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BG"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = 112.0
+offset_right = 320.0
+offset_bottom = 156.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="GameTabButton" parent="BG/HBoxContainer" instance=ExtResource("4_jri27")]
 layout_mode = 2
+text = "Game"
 
-[node name="MasterVolumeContainer" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_ponht")]
+[node name="DisplayTabButton" parent="BG/HBoxContainer" instance=ExtResource("4_jri27")]
+layout_mode = 2
+text = "Display"
+
+[node name="AudioTabButton" parent="BG/HBoxContainer" instance=ExtResource("4_jri27")]
+layout_mode = 2
+text = "Audio"
+icon_alignment = 2
+
+[node name="TabContainer" type="TabContainer" parent="BG"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -192.0
+offset_right = 320.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 2
+tabs_visible = false
+
+[node name="Game" type="Control" parent="BG/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Label" type="Label" parent="BG/TabContainer/Game"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.0
+offset_top = 8.0
+offset_right = 42.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Game"
+
+[node name="Display" type="Control" parent="BG/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Label" type="Label" parent="BG/TabContainer/Display"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.0
+offset_top = 8.0
+offset_right = 42.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Display"
+
+[node name="Audio" type="Control" parent="BG/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Label" type="Label" parent="BG/TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.0
+offset_top = 8.0
+offset_right = 42.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Audio"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 88.0
+offset_right = -64.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MasterVolumeContainer" parent="BG/TabContainer/Audio/VBoxContainer" instance=ExtResource("1_ponht")]
 layout_mode = 2
 setting_name = "Master Volume"
 
-[node name="EffectsVolumeContainer" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_ponht")]
+[node name="EffectsVolumeContainer" parent="BG/TabContainer/Audio/VBoxContainer" instance=ExtResource("1_ponht")]
 layout_mode = 2
 setting = 1
 setting_name = "Effects Volume"
 
-[node name="MusicVolumeContainer" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_ponht")]
+[node name="MusicVolumeContainer" parent="BG/TabContainer/Audio/VBoxContainer" instance=ExtResource("1_ponht")]
 layout_mode = 2
 setting = 2
 setting_name = "Music Volume"
 
-[node name="UIVolumeContainer" parent="CenterContainer/VBoxContainer" instance=ExtResource("1_ponht")]
+[node name="UIVolumeContainer" parent="BG/TabContainer/Audio/VBoxContainer" instance=ExtResource("1_ponht")]
 layout_mode = 2
 setting = 3
 setting_name = "UI Volume"
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("3_iod7p")
-theme_override_font_sizes/font_size = 30
+[node name="NinePatchRect" type="NinePatchRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -192.0
+offset_right = 320.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vo66s")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="BackButton" parent="BG" instance=ExtResource("4_jri27")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -160.0
+offset_right = 76.0
+offset_bottom = -116.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Back"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="BG/HBoxContainer/GameTabButton" to="." method="play_hover_sfx"]
+[connection signal="pressed" from="BG/HBoxContainer/GameTabButton" to="." method="_on_game_tab_button_pressed"]
+[connection signal="mouse_entered" from="BG/HBoxContainer/DisplayTabButton" to="." method="play_hover_sfx"]
+[connection signal="pressed" from="BG/HBoxContainer/DisplayTabButton" to="." method="_on_display_tab_button_pressed"]
+[connection signal="mouse_entered" from="BG/HBoxContainer/AudioTabButton" to="." method="play_hover_sfx"]
+[connection signal="pressed" from="BG/HBoxContainer/AudioTabButton" to="." method="_on_audio_tab_button_pressed"]
+[connection signal="mouse_entered" from="BG/BackButton" to="." method="play_hover_sfx"]
+[connection signal="pressed" from="BG/BackButton" to="." method="_on_back_button_pressed"]
