@@ -16,7 +16,7 @@ func change_slider_value(value):
 	match setting:
 		SETTING_NAME.MASTER:
 			AudioServer.set_bus_volume_db(0, linear_to_db(value))
-			Globals.master_audio = value
+			Globals.master_volume = value
 		SETTING_NAME.EFFECTS:
 			AudioServer.set_bus_volume_db(2, linear_to_db(value))
 			Globals.effects_volume = value
@@ -25,7 +25,7 @@ func change_slider_value(value):
 			Globals.music_volume = value
 		SETTING_NAME.UI:
 			AudioServer.set_bus_volume_db(3, linear_to_db(value))
-			Globals.ui_audio = value
+			Globals.ui_volume = value
 			
 func get_slider_value():
 	match setting:
