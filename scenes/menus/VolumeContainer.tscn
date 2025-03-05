@@ -9,6 +9,7 @@ script = ExtResource("1_7e3c8")
 [node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "Audio"
 
 [node name="Spacing" type="Control" parent="."]
@@ -25,6 +26,7 @@ value = 1.0
 [node name="Amount" type="Label" parent="."]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 18
 text = "100%"
 horizontal_alignment = 2
 

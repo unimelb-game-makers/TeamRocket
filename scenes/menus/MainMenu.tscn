@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://eg1evlw6ow0i"]
+[gd_scene load_steps=25 format=3 uid="uid://eg1evlw6ow0i"]
 
 [ext_resource type="Script" path="res://scripts/Menus/main_menu.gd" id="1_fjdek"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="2_ik0mn"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="3_cx0kh"]
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="5_gkg36"]
 [ext_resource type="PackedScene" uid="uid://dif5ua57y8udh" path="res://scenes/ui/SaveSlotItem.tscn" id="5_v3mkp"]
+[ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="6_2govm"]
 [ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="6_hmsnk"]
 [ext_resource type="PackedScene" uid="uid://p6jrdiqo23p1" path="res://scenes/objects/Obstacles/WreckedCar3.tscn" id="7_s88nw"]
 [ext_resource type="PackedScene" uid="uid://vk8s3qx7g5vu" path="res://scenes/objects/Obstacles/Debris1.tscn" id="8_03kpm"]
@@ -130,20 +131,20 @@ offset_bottom = 40.0
 [node name="PlayButton" type="Button" parent="CanvasLayer/MainMenuButtons"]
 layout_mode = 2
 offset_left = 384.82
-offset_top = 329.089
+offset_top = 388.0
 offset_right = 845.82
-offset_bottom = 397.089
+offset_bottom = 456.0
 rotation = -0.0349066
 theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 50
-text = "Play"
+text = "Start"
 
 [node name="Settings" type="Button" parent="CanvasLayer/MainMenuButtons"]
 layout_mode = 2
 offset_left = 384.82
-offset_top = 407.089
+offset_top = 485.0
 offset_right = 855.82
-offset_bottom = 454.089
+offset_bottom = 532.0
 rotation = 0.0174533
 theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 32
@@ -152,26 +153,14 @@ text = "Settings"
 [node name="Credits" type="Button" parent="CanvasLayer/MainMenuButtons"]
 layout_mode = 2
 offset_left = 384.82
-offset_top = 488.089
+offset_top = 561.0
 offset_right = 855.82
-offset_bottom = 535.089
+offset_bottom = 608.0
 rotation = -0.0523599
 theme = ExtResource("3_atwnr")
 theme_override_font_sizes/font_size = 32
 disabled = true
 text = "Credits"
-
-[node name="Load Game" type="Button" parent="CanvasLayer/MainMenuButtons"]
-layout_mode = 2
-offset_left = 385.82
-offset_top = 536.089
-offset_right = 856.82
-offset_bottom = 583.089
-rotation = 0.0174533
-theme = ExtResource("3_atwnr")
-theme_override_font_sizes/font_size = 32
-disabled = true
-text = "Load Game (Not available yet)"
 
 [node name="Exit" type="Button" parent="CanvasLayer/MainMenuButtons"]
 layout_mode = 2
@@ -257,17 +246,19 @@ anchor_bottom = 0.5
 offset_left = -383.0
 offset_top = -105.0
 offset_right = 383.0
-offset_bottom = 323.0
+offset_bottom = 257.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SaveUI"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.0
+offset_right = 275.0
+offset_bottom = 278.0
 grow_horizontal = 2
-grow_vertical = 2
 alignment = 1
 
 [node name="SaveSlotItem" parent="CanvasLayer/SaveUI/VBoxContainer" instance=ExtResource("5_v3mkp")]
@@ -281,6 +272,21 @@ slot_id = 2
 [node name="SaveSlotItem3" parent="CanvasLayer/SaveUI/VBoxContainer" instance=ExtResource("5_v3mkp")]
 layout_mode = 2
 slot_id = 3
+
+[node name="SaveUIBackButton" parent="CanvasLayer/SaveUI" instance=ExtResource("6_2govm")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -44.0
+offset_right = 76.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
 
 [node name="BackgroundMap" type="Node2D" parent="."]
 
@@ -369,4 +375,6 @@ libraries = {
 [connection signal="pressed" from="CanvasLayer/MainMenuButtons/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenuButtons/Exit" to="." method="_on_exit_pressed"]
 [connection signal="back" from="CanvasLayer/SettingMenu" to="." method="_on_settings_back"]
+[connection signal="mouse_entered" from="CanvasLayer/SaveUI/SaveUIBackButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="CanvasLayer/SaveUI/SaveUIBackButton" to="." method="_on_save_ui_back_button_pressed"]
 [connection signal="timeout" from="CameraTimer" to="." method="_on_camera_timer_timeout"]

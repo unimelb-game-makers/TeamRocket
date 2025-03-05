@@ -4,7 +4,11 @@ class_name SettingMenu
 @export var keybind_button_prefab: PackedScene
 
 @onready var tab_container: TabContainer = $BG/TabContainer
-@onready var keybind_container: Control = $BG/TabContainer/Game/ScrollContainer/VBoxContainer/KeybindSection/VBoxContainer/KeybindContainer
+@onready var keybind_container: Control = $BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer/KeybindSection/VBoxContainer/KeybindContainer
+@onready var fps_limit_option_button: OptionButton = $BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/FPS/FPSOptionButton
+@onready var vsync_option_button: OptionButton = $BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/Vsync/VsyncOptionButton
+@onready var window_mode_option_button: OptionButton = $BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/WindowMode/WindowOptionButton
+@onready var resolution_option_button: OptionButton = $BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/Resolution/ResolutionOptionButton
 
 signal back
 
@@ -22,17 +26,17 @@ var keybindable_action_list = {
 	"channel": "Channel return",
 	"interact": "Interact",
 	"inventory": "Inventory",
-	"debug": "[DEBUG] Debug menu",
 	"pause": "Pause",
+	"debug": "[DEBUG] Debug UI",
 }
 var is_remapping = false
 var action_to_remap = null
 var remapping_button: KeybindButton = null
 
 func _ready() -> void:
-	# refresh_setting_value()
+	refresh_setting_value()
 	create_keybind_buttons()
-	# SaveManager.setting_config_loaded.connect(refresh_setting_value)
+	SaveManager.setting_config_loaded.connect(refresh_setting_value)
 
 func _input(event):
 	if is_remapping:
@@ -64,44 +68,22 @@ func create_keybind_buttons():
 		button_inst.input_button.pressed.connect(_on_input_button_pressed.bind(button_inst, action))
 		button_inst.input_button.mouse_entered.connect(play_button_hover_sfx)
 
-# func refresh_setting_value():
-# 	mouse_sen_slider.value = GameManager.mouse_sensitivity
-# 	mouse_sen_value.text = "{0}".format([GameManager.mouse_sensitivity])
+func refresh_setting_value():
+	Engine.max_fps = Globals.FPS_LIMIT_ARRAY[Globals.fps_limit_index]
+	fps_limit_option_button.selected = Globals.fps_limit_index
 
-# 	fov_slider.value = GameManager.camera_fov
-# 	fov_value.text = "{0}".format([GameManager.camera_fov])
+	DisplayServer.window_set_vsync_mode(Globals.vsync_option_index)
+	vsync_option_button.selected = Globals.vsync_option_index
 
-# 	camera_tilt_toggle.set_pressed_no_signal(GameManager.camera_tilt)
+	DisplayServer.window_set_size(Globals.RESOLUTION_ARRAY[Globals.resolution_index])
+	resolution_option_button.selected = Globals.resolution_index
 
-# 	Engine.max_fps = GameManager.FPS_LIMIT_ARRAY[GameManager.fps_limit_index]
-# 	fps_limit_option_button.selected = GameManager.fps_limit_index
+	set_window_mode(Globals.window_mode_index)
+	window_mode_option_button.selected = Globals.window_mode_index
 
-# 	DisplayServer.window_set_vsync_mode(GameManager.vsync_option_index)
-# 	vsync_option_button.selected = GameManager.vsync_option_index
+	get_viewport().set_scaling_3d_scale(Globals.scaling_3d / 100.0)
 
-# 	DisplayServer.window_set_size(GameManager.RESOLUTION_ARRAY[GameManager.resolution_index])
-# 	resolution_option_button.selected = GameManager.resolution_index
-
-# 	set_window_mode(GameManager.window_mode_index)
-# 	window_mode_option_button.selected = GameManager.window_mode_index
-
-# 	get_viewport().set_scaling_3d_scale(GameManager.scaling_3d / 100.0)
-# 	scaling_3d_slider.value = GameManager.scaling_3d
-# 	scaling_3d_value.text = "{0}%".format([GameManager.scaling_3d])
-
-# 	# TODO - update these to use the more recent SoundManager version (or downgrade SoundManager)
-# 	#SoundManager.set_master_volume(GameManager.master_audio / 100.0)
-# 	#SoundManager.set_music_volume(GameManager.bgm_audio / 100.0)
-# 	#SoundManager.set_sound_volume(GameManager.sfx_audio / 100.0)
-# 	#SoundManager.set_ui_sound_volume(GameManager.ui_audio / 100.0)
-# 	master_slider.value = GameManager.master_audio
-# 	master_value.text = "{0}".format([GameManager.master_audio])
-# 	bgm_slider.value = GameManager.bgm_audio
-# 	bgm_value.text = "{0}".format([GameManager.bgm_audio])
-# 	sfx_slider.value = GameManager.sfx_audio
-# 	sfx_value.text = "{0}".format([GameManager.sfx_audio])
-# 	ui_slider.value = GameManager.ui_audio
-# 	ui_value.text = "{0}".format([GameManager.ui_audio])
+	# TODO: Refresh the 4 audio sliders here too
 	
 func _on_input_button_pressed(button: KeybindButton, action):
 	if not is_remapping:
@@ -112,6 +94,54 @@ func _on_input_button_pressed(button: KeybindButton, action):
 
 func _on_reset_keybind_button_pressed():
 	create_keybind_buttons()
+
+func set_window_mode(index: int) -> void:
+	match index:
+		0: # Fullscreen
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+			resolution_option_button.disabled = true
+			var resolution_text = str(get_window().get_size().x) + "x" + str(get_window().get_size().y)
+			resolution_option_button.set_text(resolution_text)
+		1: # Windowed
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+			DisplayServer.window_set_size(Globals.RESOLUTION_ARRAY[Globals.resolution_index])
+			centre_window()
+			resolution_option_button.disabled = false
+			resolution_option_button.selected = Globals.resolution_index
+		2: # Borderless windowed
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+			DisplayServer.window_set_size(Globals.RESOLUTION_ARRAY[Globals.resolution_index])
+			centre_window()
+			resolution_option_button.disabled = false
+			resolution_option_button.selected = Globals.resolution_index
+
+func centre_window():
+	var centre_screen = DisplayServer.screen_get_position() + DisplayServer.screen_get_size() / 2
+	var window_size = get_window().get_size_with_decorations()
+	get_window().set_position(centre_screen - window_size / 2)
+
+func _on_window_option_button_item_selected(index: int) -> void:
+	set_window_mode(index)
+	Globals.window_mode_index = index
+
+func _on_fps_option_button_item_selected(index: int) -> void:
+	SoundManager.play_button_click_sfx()
+	Engine.max_fps = Globals.FPS_LIMIT_ARRAY[index]
+	Globals.fps_limit_index = index
+
+func _on_vsync_option_button_item_selected(index: int) -> void:
+	SoundManager.play_button_click_sfx()
+	DisplayServer.window_set_vsync_mode(index)
+	Globals.vsync_option_index = index
+
+func _on_resolution_option_button_item_selected(index: int) -> void:
+	SoundManager.play_button_click_sfx()
+	DisplayServer.window_set_size(Globals.RESOLUTION_ARRAY[index])
+	Globals.resolution_index = index
+	centre_window()
 
 func _on_back_button_pressed() -> void:
 	back.emit()

@@ -47,3 +47,11 @@ func reset_camera():
 	
 func _on_camera_timer_timeout() -> void:
 	animation_player.play("fade_out_and_in")
+
+func play_button_hover_sfx():
+	SoundManager.play_button_hover_sfx()
+
+
+func _on_save_ui_back_button_pressed() -> void:
+	main_menu_buttons.show()
+	save_ui.visible = false
