@@ -1,0 +1,8 @@
+extends Area2D
+class_name DoorArea
+
+# North (0), East (1), South (2), West (3)
+@export_range(0, 3, 1) var direction = 0
+
+# Which room this door leads into (set by script)
+var target_room
