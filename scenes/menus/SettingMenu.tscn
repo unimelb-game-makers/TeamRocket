@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://j00qr7dcyhv4"]
+[gd_scene load_steps=7 format=3 uid="uid://j00qr7dcyhv4"]
 
 [ext_resource type="PackedScene" uid="uid://hoiacky4452m" path="res://scenes/menus/VolumeContainer.tscn" id="1_ponht"]
 [ext_resource type="Script" path="res://scripts/Menus/setting_menu.gd" id="1_q578m"]
+[ext_resource type="PackedScene" uid="uid://cnuglobw5ctj7" path="res://scenes/ui/KeybindButton.tscn" id="2_x2dvv"]
 [ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="3_vo66s"]
 [ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="4_jri27"]
+[ext_resource type="Texture2D" uid="uid://jgscawd6skc" path="res://assets/textures/kenney_borders/default/Divider Fade/divider-fade-001.png" id="4_u0i5p"]
 
 [node name="SettingMenu" type="Control"]
 layout_mode = 3
@@ -13,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q578m")
+keybind_button_prefab = ExtResource("2_x2dvv")
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
@@ -63,11 +66,10 @@ offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 tabs_visible = false
 
 [node name="Game" type="Control" parent="BG/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -76,13 +78,83 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -42.0
+offset_left = -42.5
 offset_top = 8.0
-offset_right = 42.0
+offset_right = 42.5
 offset_bottom = 50.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
-text = "Game"
+text = "Game settings"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BG/TabContainer/Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/TabContainer/Game/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlaceholderToggle" type="CheckButton" parent="BG/TabContainer/Game/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Placeholder option 1"
+
+[node name="PlaceholderToggle2" type="CheckButton" parent="BG/TabContainer/Game/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Placeholder option 2"
+
+[node name="PlaceholderToggle3" type="CheckButton" parent="BG/TabContainer/Game/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Placeholder option 3"
+
+[node name="Divider" type="HBoxContainer" parent="BG/TabContainer/Game/ScrollContainer/VBoxContainer"]
+modulate = Color(0.621094, 0.621094, 0.621094, 1)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BG/TabContainer/Game/ScrollContainer/VBoxContainer/Divider"]
+layout_mode = 2
+texture = ExtResource("4_u0i5p")
+
+[node name="Label" type="Label" parent="BG/TabContainer/Game/ScrollContainer/VBoxContainer/Divider"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Keybindings"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="BG/TabContainer/Game/ScrollContainer/VBoxContainer/Divider"]
+layout_mode = 2
+texture = ExtResource("4_u0i5p")
+flip_h = true
+
+[node name="KeybindSection" type="MarginContainer" parent="BG/TabContainer/Game/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/TabContainer/Game/ScrollContainer/VBoxContainer/KeybindSection"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="KeybindContainer" type="VBoxContainer" parent="BG/TabContainer/Game/ScrollContainer/VBoxContainer/KeybindSection/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResetKeybindButton" parent="BG/TabContainer/Game/ScrollContainer/VBoxContainer/KeybindSection/VBoxContainer" instance=ExtResource("4_jri27")]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Reset to default"
 
 [node name="Display" type="Control" parent="BG/TabContainer"]
 visible = false
@@ -103,6 +175,7 @@ theme_override_font_sizes/font_size = 30
 text = "Display"
 
 [node name="Audio" type="Control" parent="BG/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -176,19 +249,21 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -76.0
-offset_top = -160.0
-offset_right = 76.0
-offset_bottom = -116.0
+offset_left = -80.0
+offset_top = -152.0
+offset_right = 72.0
+offset_bottom = -108.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Back"
 
-[connection signal="mouse_entered" from="BG/HBoxContainer/GameTabButton" to="." method="play_hover_sfx"]
+[connection signal="mouse_entered" from="BG/HBoxContainer/GameTabButton" to="." method="play_button_hover_sfx"]
 [connection signal="pressed" from="BG/HBoxContainer/GameTabButton" to="." method="_on_game_tab_button_pressed"]
-[connection signal="mouse_entered" from="BG/HBoxContainer/DisplayTabButton" to="." method="play_hover_sfx"]
+[connection signal="mouse_entered" from="BG/HBoxContainer/DisplayTabButton" to="." method="play_button_hover_sfx"]
 [connection signal="pressed" from="BG/HBoxContainer/DisplayTabButton" to="." method="_on_display_tab_button_pressed"]
-[connection signal="mouse_entered" from="BG/HBoxContainer/AudioTabButton" to="." method="play_hover_sfx"]
+[connection signal="mouse_entered" from="BG/HBoxContainer/AudioTabButton" to="." method="play_button_hover_sfx"]
 [connection signal="pressed" from="BG/HBoxContainer/AudioTabButton" to="." method="_on_audio_tab_button_pressed"]
-[connection signal="mouse_entered" from="BG/BackButton" to="." method="play_hover_sfx"]
+[connection signal="mouse_entered" from="BG/TabContainer/Game/ScrollContainer/VBoxContainer/KeybindSection/VBoxContainer/ResetKeybindButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="BG/TabContainer/Game/ScrollContainer/VBoxContainer/KeybindSection/VBoxContainer/ResetKeybindButton" to="." method="_on_reset_keybind_button_pressed"]
+[connection signal="mouse_entered" from="BG/BackButton" to="." method="play_button_hover_sfx"]
 [connection signal="pressed" from="BG/BackButton" to="." method="_on_back_button_pressed"]
