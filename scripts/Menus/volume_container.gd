@@ -29,14 +29,31 @@ func change_slider_value(value):
 
 func get_slider_value():
 	match setting:
-			SETTING_NAME.MASTER:
-				return Globals.master_volume
-			SETTING_NAME.EFFECTS:
-				return Globals.effects_volume
-			SETTING_NAME.MUSIC:
-				return Globals.music_volume
-			SETTING_NAME.UI:
-				return Globals.ui_volume
+		SETTING_NAME.MASTER:
+			return Globals.master_volume
+		SETTING_NAME.EFFECTS:
+			return Globals.effects_volume
+		SETTING_NAME.MUSIC:
+			return Globals.music_volume
+		SETTING_NAME.UI:
+			return Globals.ui_volume
+
+func refresh_setting_value():
+	slider.value = get_slider_value()
+	match setting:
+		SETTING_NAME.MASTER:
+			amount.text = str((Globals.master_volume / 1.0) * 100) + "%"
+			AudioServer.set_bus_volume_db(0, linear_to_db(Globals.master_volume))
+		SETTING_NAME.EFFECTS:
+			amount.text = str((Globals.effects_volume / 1.0) * 100) + "%"
+			AudioServer.set_bus_volume_db(0, linear_to_db(Globals.effects_volume))
+		SETTING_NAME.MUSIC:
+			amount.text = str((Globals.music_volume / 1.0) * 100) + "%"
+			AudioServer.set_bus_volume_db(0, linear_to_db(Globals.effects_volume))
+		SETTING_NAME.UI:
+			amount.text = str((Globals.ui_volume / 1.0) * 100) + "%"
+			AudioServer.set_bus_volume_db(0, linear_to_db(Globals.ui_volume))
+
 
 func _on_slider_value_changed(value: float) -> void:
 	amount.text = str((slider.value / 1.0) * 100) + "%"

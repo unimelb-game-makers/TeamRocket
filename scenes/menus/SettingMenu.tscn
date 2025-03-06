@@ -66,10 +66,11 @@ offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 tabs_visible = false
 
 [node name="Game" type="Control" parent="BG/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -307,7 +308,6 @@ popup/item_5/text = "1024x768"
 popup/item_5/id = 5
 
 [node name="Audio" type="Control" parent="BG/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

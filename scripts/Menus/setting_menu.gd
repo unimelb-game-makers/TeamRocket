@@ -9,6 +9,7 @@ class_name SettingMenu
 @onready var vsync_option_button: OptionButton = $BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/Vsync/VsyncOptionButton
 @onready var window_mode_option_button: OptionButton = $BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/WindowMode/WindowOptionButton
 @onready var resolution_option_button: OptionButton = $BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/Resolution/ResolutionOptionButton
+@onready var volume_slider_container = $BG/TabContainer/Audio/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer
 
 signal back
 
@@ -81,9 +82,9 @@ func refresh_setting_value():
 	set_window_mode(Globals.window_mode_index)
 	window_mode_option_button.selected = Globals.window_mode_index
 
-	get_viewport().set_scaling_3d_scale(Globals.scaling_3d / 100.0)
-
-	# TODO: Refresh the 4 audio sliders here too
+	# Refresh display value for audio volume sliders
+	for child in volume_slider_container.get_children():
+		child.refresh_setting_value()
 	
 func _on_input_button_pressed(button: KeybindButton, action):
 	if not is_remapping:
@@ -144,6 +145,7 @@ func _on_resolution_option_button_item_selected(index: int) -> void:
 	centre_window()
 
 func _on_back_button_pressed() -> void:
+	SaveManager.save_setting_config()
 	back.emit()
 
 func _on_game_tab_button_pressed() -> void:

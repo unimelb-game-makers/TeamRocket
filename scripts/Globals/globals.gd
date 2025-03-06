@@ -33,11 +33,11 @@ var fps_limit_index: int = 2 # Refer to EnumAutoload.FPS_LIMIT_ARRAY
 var resolution_index: int = 1 # Refer to EnumAutoload.RESOLUTION_ARRAY. Not used in FULL_SCREEN
 var vsync_option_index: int = 1 # From 0 to 2 for DISABLED / ENABLED / ADAPTIVE
 var window_mode_index: int = 1 # From 0 to 2 for FULLSCREEN / WINDOWED / BORDERLESS WINDOWED
-var scaling_3d: float = 100.0
 
 
 func _ready() -> void:
 	load_item_database()
+	SaveManager.load_setting_config()
 
 func load_item_database():
 	var directory_path = "res://resources/items/"

@@ -7,6 +7,9 @@ signal started_saving
 signal finished_saving
 signal setting_config_loaded
 
+func _ready() -> void:
+	load_setting_config()
+
 func convert_item_resource_to_id(resource_dict: Dictionary) -> Dictionary:
 	var result: Dictionary = {}
 	for key in resource_dict:
@@ -94,46 +97,36 @@ func get_savefile_name(slot_id: int) -> String:
 	return "user://savegame_slot{0}.save".format([slot_id])
 
 
-## These are code for saving game setting. Should implement them
-## after improve the setting menu to have more options.
+func save_setting_config():
+	var config = ConfigFile.new()
 
-# func save_setting_config():
-# 	var config = ConfigFile.new()
+	# TODO: Save keybind
+	config.set_value("Display", "fps_limit_index", Globals.fps_limit_index)
+	config.set_value("Display", "resolution_index", Globals.resolution_index)
+	config.set_value("Display", "window_mode_index", Globals.window_mode_index)
+	config.set_value("Audio", "master_volume", Globals.master_volume)
+	config.set_value("Audio", "music_volume", Globals.music_volume)
+	config.set_value("Audio", "effects_volume", Globals.effects_volume)
+	config.set_value("Audio", "ui_volume", Globals.ui_volume)
 
-# 	config.set_value("Control", "mouse_sensitivity", GameManager.mouse_sensitivity)
-# 	config.set_value("Graphic", "camera_fov", GameManager.camera_fov)
-# 	config.set_value("Graphic", "camera_tilt", GameManager.camera_tilt)
-# 	config.set_value("Graphic", "fps_limit_index", GameManager.fps_limit_index)
-# 	config.set_value("Graphic", "resolution_index", GameManager.resolution_index)
-# 	config.set_value("Graphic", "window_mode_index", GameManager.window_mode_index)
-# 	config.set_value("Graphic", "scaling_3d", GameManager.scaling_3d)
-# 	config.set_value("Audio", "master_audio", GameManager.master_audio)
-# 	config.set_value("Audio", "bgm_audio", GameManager.bgm_audio)
-# 	config.set_value("Audio", "sfx_audio", GameManager.sfx_audio)
-# 	config.set_value("Audio", "ui_audio", GameManager.ui_audio)
-
-# 	config.save("user://setting.cfg")
+	config.save("user://setting.cfg")
 
 
-# func load_setting_config():
-# 	var config = ConfigFile.new()
+func load_setting_config():
+	var config = ConfigFile.new()
 
-# 	var err = config.load("user://setting.cfg")
+	var err = config.load("user://setting.cfg")
 
-# 	# If the file didn't load, ignore it.
-# 	if err != OK:
-# 		return
+	# If the file didn't load, ignore it.
+	if err != OK:
+		return
 
-# 	GameManager.mouse_sensitivity = config.get_value("Control", "mouse_sensitivity", 50.0)
-# 	GameManager.camera_fov = config.get_value("Graphic", "camera_fov", 90)
-# 	GameManager.camera_tilt = config.get_value("Graphic", "camera_tilt", true)
-# 	GameManager.fps_limit_index = config.get_value("Graphic", "fps_limit_index", 2)
-# 	GameManager.resolution_index = config.get_value("Graphic", "resolution_index", 1)
-# 	GameManager.window_mode_index = config.get_value("Graphic", "window_mode_index", 1)
-# 	GameManager.scaling_3d = config.get_value("Graphic", "scaling_3d", 100.0)
-# 	GameManager.master_audio = config.get_value("Audio", "master_audio", 80)
-# 	GameManager.bgm_audio = config.get_value("Audio", "bgm_audio", 100)
-# 	GameManager.sfx_audio = config.get_value("Audio", "sfx_audio", 100)
-# 	GameManager.ui_audio = config.get_value("Audio", "ui_audio", 100)
+	Globals.fps_limit_index = config.get_value("Display", "fps_limit_index", 2)
+	Globals.resolution_index = config.get_value("Display", "resolution_index", 1)
+	Globals.window_mode_index = config.get_value("Display", "window_mode_index", 1)
+	Globals.master_volume = config.get_value("Audio", "master_volume", 80)
+	Globals.music_volume = config.get_value("Audio", "music_volume", 100)
+	Globals.effects_volume = config.get_value("Audio", "effects_volume", 100)
+	Globals.ui_volume = config.get_value("Audio", "ui_volume", 100)
 
-# 	setting_config_loaded.emit()
+	setting_config_loaded.emit()
