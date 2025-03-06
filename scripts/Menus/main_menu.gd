@@ -1,20 +1,27 @@
 extends Control
 class_name MainMenu
 
-var target_position
 @onready var camera_2d: Camera2D = $BackgroundMap/Camera2D
-@onready var fade_to_black: ColorRect = $BackgroundMap/FadeToBlack
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-@onready var main_menu_buttons: Control = $CanvasLayer/MainMenuButtons
+@onready var main_menu_buttons: HBoxContainer = $CanvasLayer/MainMenuButtons
 @onready var setting_menu: Control = $CanvasLayer/SettingMenu
 @onready var save_ui = $CanvasLayer/SaveUI
+@onready var fade_cover: ColorRect = $CanvasLayer/FadeCover
+
+var target_position
 
 func _ready() -> void:
+	fade_cover.visible = true
+	await get_tree().create_timer(0.5).timeout
+	var tween = create_tween()
+	tween.tween_property(fade_cover, "modulate", Color(0, 0, 0, 0), 1.0)
 	reset_camera()
 	save_ui.visible = false
 
-func _on_play_button_pressed() -> void:
+
+func _on_start_pressed() -> void:
+	SoundManager.play_button_click_sfx()
 	save_ui.visible = true
 	main_menu_buttons.hide()
 
@@ -24,17 +31,21 @@ func start_game():
 	Globals.start_record_playtime()
 	
 func _on_settings_pressed() -> void:
+	SoundManager.play_button_click_sfx()
 	main_menu_buttons.hide()
 	setting_menu.show()
 	
 func _on_settings_back() -> void:
+	SoundManager.play_button_click_sfx()
 	setting_menu.hide()
 	main_menu_buttons.show()
 
 func _on_credits_pressed() -> void:
+	SoundManager.play_button_click_sfx()
 	get_tree().change_scene_to_file("res://scenes/menus/Credits.tscn")
 
 func _on_exit_pressed() -> void:
+	SoundManager.play_button_click_sfx()
 	get_tree().quit()
 
 
@@ -53,5 +64,6 @@ func play_button_hover_sfx():
 
 
 func _on_save_ui_back_button_pressed() -> void:
+	SoundManager.play_button_click_sfx()
 	main_menu_buttons.show()
 	save_ui.visible = false

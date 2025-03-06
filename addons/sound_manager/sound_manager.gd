@@ -85,8 +85,12 @@ func stop_sound(resource: AudioStream) -> void:
 	return sound_effects.stop(resource)
 
 
-func play_ui_sound(resource: AudioStream, override_bus: String = "") -> AudioStreamPlayer:
-	return ui_sound_effects.play(resource, override_bus)
+func play_ui_sound(resource: AudioStream, override_bus: String = "", randomized_pitch = false) -> AudioStreamPlayer:
+	if randomized_pitch:
+		var rand_pitch = randf_range(0.8, 1.2)
+		return play_ui_sound_with_pitch(resource, rand_pitch, override_bus)
+	else:
+		return ui_sound_effects.play(resource, override_bus)
 
 
 func play_ui_sound_with_pitch(resource: AudioStream, pitch: float = 1.0, override_bus: String = "") -> AudioStreamPlayer:
@@ -227,11 +231,11 @@ func _show_shared_bus_warning() -> void:
 
 
 func play_button_click_sfx():
-	play_ui_sound(button_click_sfx, "UI")
+	play_ui_sound(button_click_sfx, "UI", true)
 
 
 func play_button_hover_sfx():
-	play_ui_sound(button_hover_sfx, "UI")
+	play_ui_sound(button_hover_sfx, "UI", true)
 
 
 #endregion

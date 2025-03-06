@@ -71,5 +71,4 @@ func format_time(msec: int) -> String:
 	return "%02d:%02d:%02d" % [hours, minutes, secs]
 
 func play_button_hover_sfx():
-	return
-	# SoundManager.play_button_hover_sfx()
+	SoundManager.play_button_hover_sfx()
