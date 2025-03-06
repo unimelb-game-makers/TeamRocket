@@ -10,6 +10,7 @@ func _enter_tree():
 	food_panel_instance = FoodPanel.instantiate()
 	EditorInterface.get_editor_main_screen().add_child(food_panel_instance)
 	_make_visible(false)
+	food_panel_instance.file_selector.connect(make_file_selector)
 	
 func _exit_tree():
 	if food_panel_instance:
@@ -28,7 +29,7 @@ func _get_plugin_name():
 func _get_plugin_icon():
 	return EditorInterface.get_editor_theme().get_icon("Node", "EditorIcons")
 
-func make_file_selector():
+func make_file_selector(manager):
 	if (file_selector):
 		file_selector.queue_free()
 	var file_selector = EditorFileDialog.new()
@@ -38,3 +39,5 @@ func make_file_selector():
 	file_selector.title = "Select a texture file"
 	file_selector.file_mode = EditorFileDialog.FILE_MODE_OPEN_FILE
 	file_selector.show()
+	await file_selector.file_selected
+	manager.select_file(file_selector.current_path)

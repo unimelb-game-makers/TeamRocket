@@ -1,6 +1,10 @@
 @tool
 extends Control
 
+signal file_selector(manager)
+
+@onready var food_list: VBoxContainer = $ScrollContainer/FoodList
+
 @onready var food_name_input: LineEdit = $FoodEditorUI/FoodNameInput
 @onready var file_name_input: LineEdit = $FoodEditorUI/FileNameInput
 @onready var weight_input: LineEdit = $FoodEditorUI/WeightInput
@@ -28,7 +32,7 @@ func update_food_editor(item: Item, file: String) -> void:
 	editing_item = item.duplicate()
 
 func _on_texture_button_pressed() -> void:
-	print("Want to change texture")
+	file_selector.emit(self)
 
 func _on_save_button_pressed() -> void:
 	print("Saving Resource")
@@ -37,7 +41,13 @@ func _on_save_button_pressed() -> void:
 	editing_item.texture = texture_button.texture_normal
 	editing_item.description = description_input.text
 	ResourceSaver.save(editing_item, food_res_folder + file_name_input.text)
+	editing_item.take_over_path(food_res_folder + file_name_input.text)
+	
+	food_list.load_from_files()
 
 func _on_delete_button_pressed() -> void:
 	print("Are you sure you want to do that?")
 	pass
+
+func select_file(file) -> void:
+	texture_button.texture_normal = load(file)

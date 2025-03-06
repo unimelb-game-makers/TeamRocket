@@ -15,6 +15,8 @@ func _process(delta: float) -> void:
 	pass
 
 func load_from_files() -> void:
+	for child in get_children():
+		child.queue_free()
 	var food_resources = DirAccess.get_files_at(food_res_folder)
 	for file in food_resources:
 		var item = load(food_res_folder + "/" + file)
