@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://eg1evlw6ow0i"]
+[gd_scene load_steps=33 format=3 uid="uid://eg1evlw6ow0i"]
 
 [ext_resource type="Script" path="res://scripts/Menus/main_menu.gd" id="1_fjdek"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="2_ik0mn"]
@@ -60,6 +60,60 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_8f33s"),
 "fade_out_and_in": SubResource("Animation_gf0iw")
+}
+
+[sub_resource type="Animation" id="Animation_1aph7"]
+resource_name = "title_move_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(219.5, 270), Vector2(219.5, 110)]
+}
+
+[sub_resource type="Animation" id="Animation_on21e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(219.5, 270)]
+}
+
+[sub_resource type="Animation" id="Animation_enxxl"]
+resource_name = "title_move_down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(219.5, 110), Vector2(219.5, 270)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yclxk"]
+_data = {
+"RESET": SubResource("Animation_on21e"),
+"title_move_down": SubResource("Animation_enxxl"),
+"title_move_up": SubResource("Animation_1aph7")
 }
 
 [node name="MainMenu" type="Control"]
@@ -338,6 +392,11 @@ autostart = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wmust")
+}
+
+[node name="TitleAnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yclxk")
 }
 
 [connection signal="mouse_entered" from="CanvasLayer/MainMenuButtons/Start" to="." method="play_button_hover_sfx"]

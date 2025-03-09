@@ -3,6 +3,7 @@ class_name MainMenu
 
 @onready var camera_2d: Camera2D = $BackgroundMap/Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var title_anim_player: AnimationPlayer = $TitleAnimPlayer
 
 @onready var main_menu_buttons: HBoxContainer = $CanvasLayer/MainMenuButtons
 @onready var setting_menu: Control = $CanvasLayer/SettingMenu
@@ -21,6 +22,7 @@ func _ready() -> void:
 
 
 func _on_start_pressed() -> void:
+	title_anim_player.play("title_move_up")
 	SoundManager.play_button_click_sfx()
 	save_ui.visible = true
 	main_menu_buttons.hide()
@@ -64,6 +66,7 @@ func play_button_hover_sfx():
 
 
 func _on_save_ui_back_button_pressed() -> void:
+	title_anim_player.play("title_move_down")
 	SoundManager.play_button_click_sfx()
 	main_menu_buttons.show()
 	save_ui.visible = false
