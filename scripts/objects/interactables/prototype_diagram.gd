@@ -1,7 +1,9 @@
-extends Sprite2D
+extends Area2D
+
+@onready var recipe_ui = $PrototypeDiagram/UI
 
 func interact():
-	$UI.visible = not $UI.visible
+	recipe_ui.visible = not recipe_ui.visible
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	$UI.hide()
+func _on_body_exited(body: Node2D) -> void:
+	recipe_ui.hide()
