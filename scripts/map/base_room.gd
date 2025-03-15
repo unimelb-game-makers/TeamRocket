@@ -1,4 +1,5 @@
 extends Node2D
+class_name BaseRoom
 
 # A direction can have no doors
 # Each direction can have 1 or more doors leading to the same room
@@ -25,7 +26,7 @@ const DOOR = "B"  # There is a door in this direction.
 ## Chance of this room appearing in the map. 1 = least likely, 5 = most likely.
 @export_range(1,5) var room_weighting: int = 1
 
-var doors: Array
+@export var doors: Array[Area2D] = [] # Door scenes, cant get by get_tree
 
 func _ready() -> void:
 	
@@ -34,4 +35,10 @@ func _ready() -> void:
 		assert(len(i) <= 1, "Socket must have 1 character")
 	
 	# Get all door areas and connect them to scene transitioner
-	doors = get_tree().get_nodes_in_group("DoorArea")
+	
+
+
+# Is given socket array
+func add_doors(neighbor_array: Array[String], neighbor_scenes: Array[PackedScene]):
+	for i in range(len(doors)):
+		doors[i].target_room = neighbor_scenes[i]
