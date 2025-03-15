@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwmc16eui1kh1"]
+
+[ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="1_mqvtx"]
+[ext_resource type="Texture2D" uid="uid://mql53aoddg1y" path="res://assets/textures/kenney_borders/default/Border/panel-border-001.png" id="2_4q1p4"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(140, 40)
+offset_right = 152.0
+offset_bottom = 44.0
+theme = ExtResource("1_mqvtx")
+theme_override_font_sizes/font_size = 30
+text = "Button"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4q1p4")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20

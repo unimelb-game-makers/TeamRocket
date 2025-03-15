@@ -5,6 +5,7 @@ extends HBoxContainer
 
 @onready var load_button_label: RichTextLabel = $MarginContainer/MarginContainer/LoadButtonLabel
 @onready var delete_button: Button = $DeleteButton
+@onready var load_button_border: NinePatchRect = $MarginContainer/LoadButton/NinePatchRect
 
 var save_data = null
 var confirm_delete = false
@@ -19,6 +20,7 @@ func _ready() -> void:
 			\nCannot load save file".format([slot_id])
 		delete_button.disabled = true
 		delete_button.visible = false
+		load_button_border.modulate = Color.WHITE
 		return
 
 	save_data = SaveManager.load_data_only(slot_id)
@@ -29,11 +31,13 @@ func _ready() -> void:
 			\nLevel: {1} \
 			\nPlaytime: {2}".format([slot_id, level, format_time(playtime)])
 		delete_button.disabled = false
+		load_button_border.modulate = Color.GREEN
 	else:
 		load_button_label.text = "[b][color=white]Slot {0}[/color][/b] \
 			\nNew save file".format([slot_id])
 		delete_button.disabled = true
 		delete_button.visible = false
+		load_button_border.modulate = Color.WHITE
 
 
 func _on_load_button_pressed() -> void:
@@ -57,7 +61,7 @@ func _on_delete_button_pressed() -> void:
 		confirm_delete = false
 		load_button_label.text = "[b][color=white]Slot {0}[/color][/b] \
 			\nNew save file".format([slot_id])
-
+		load_button_border.modulate = Color.WHITE
 
 func format_time(msec: int) -> String:
 	var seconds: int = round(msec / 1000.0)
@@ -67,5 +71,4 @@ func format_time(msec: int) -> String:
 	return "%02d:%02d:%02d" % [hours, minutes, secs]
 
 func play_button_hover_sfx():
-	return
-	# SoundManager.play_button_hover_sfx()
+	SoundManager.play_button_hover_sfx()

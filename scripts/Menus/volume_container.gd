@@ -10,30 +10,51 @@ enum SETTING_NAME {MASTER, EFFECTS, MUSIC, UI}
 
 func _ready() -> void:
 	label.text = setting_name
-	slider.value = get_slider_value(setting)
+	slider.value = get_slider_value()
 
-func change_slider_value(setting, value):
+func change_slider_value(value):
 	match setting:
 		SETTING_NAME.MASTER:
-			Settings.master_volume = value
+			AudioServer.set_bus_volume_db(0, linear_to_db(value))
+			Globals.master_volume = value
 		SETTING_NAME.EFFECTS:
-			Settings.effects_volume = value
+			AudioServer.set_bus_volume_db(2, linear_to_db(value))
+			Globals.effects_volume = value
 		SETTING_NAME.MUSIC:
-			Settings.music_volume = value
+			AudioServer.set_bus_volume_db(1, linear_to_db(value))
+			Globals.music_volume = value
 		SETTING_NAME.UI:
-			Settings.ui_volume = value
-			
-func get_slider_value(setting):
+			AudioServer.set_bus_volume_db(3, linear_to_db(value))
+			Globals.ui_volume = value
+
+func get_slider_value():
 	match setting:
-			SETTING_NAME.MASTER:
-				return Settings.master_volume
-			SETTING_NAME.EFFECTS:
-				return Settings.effects_volume
-			SETTING_NAME.MUSIC:
-				return Settings.music_volume
-			SETTING_NAME.UI:
-				return Settings.ui_volume
+		SETTING_NAME.MASTER:
+			return Globals.master_volume
+		SETTING_NAME.EFFECTS:
+			return Globals.effects_volume
+		SETTING_NAME.MUSIC:
+			return Globals.music_volume
+		SETTING_NAME.UI:
+			return Globals.ui_volume
+
+func refresh_setting_value():
+	slider.value = get_slider_value()
+	match setting:
+		SETTING_NAME.MASTER:
+			amount.text = str((Globals.master_volume / 1.0) * 100) + "%"
+			AudioServer.set_bus_volume_db(0, linear_to_db(Globals.master_volume))
+		SETTING_NAME.EFFECTS:
+			amount.text = str((Globals.effects_volume / 1.0) * 100) + "%"
+			AudioServer.set_bus_volume_db(0, linear_to_db(Globals.effects_volume))
+		SETTING_NAME.MUSIC:
+			amount.text = str((Globals.music_volume / 1.0) * 100) + "%"
+			AudioServer.set_bus_volume_db(0, linear_to_db(Globals.effects_volume))
+		SETTING_NAME.UI:
+			amount.text = str((Globals.ui_volume / 1.0) * 100) + "%"
+			AudioServer.set_bus_volume_db(0, linear_to_db(Globals.ui_volume))
+
 
 func _on_slider_value_changed(value: float) -> void:
 	amount.text = str((slider.value / 1.0) * 100) + "%"
-	change_slider_value(setting, slider.value)
+	change_slider_value(slider.value)

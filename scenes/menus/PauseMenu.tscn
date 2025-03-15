@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ck0jasabkl7co"]
 
 [ext_resource type="Script" path="res://scripts/Menus/pause_menu.gd" id="1_jkfna"]
-[ext_resource type="PackedScene" uid="uid://hoiacky4452m" path="res://scenes/menus/VolumeContainer.tscn" id="2_4ug2j"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="2_ixun4"]
+[ext_resource type="PackedScene" uid="uid://j00qr7dcyhv4" path="res://scenes/menus/SettingMenu.tscn" id="3_o8fp3"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -14,18 +14,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jkfna")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="MainPauseMenu" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainPauseMenu" type="Control" parent="CenterContainer"]
-layout_mode = 2
-
-[node name="ResumeButton" type="Button" parent="CenterContainer/MainPauseMenu"]
+[node name="ResumeButton" type="Button" parent="MainPauseMenu"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 offset_left = -200.0
@@ -37,7 +36,7 @@ theme = ExtResource("2_ixun4")
 theme_override_font_sizes/font_size = 50
 text = "Resume"
 
-[node name="SettingsButton" type="Button" parent="CenterContainer/MainPauseMenu"]
+[node name="SettingsButton" type="Button" parent="MainPauseMenu"]
 layout_mode = 2
 offset_left = -172.0
 offset_top = -39.0
@@ -49,7 +48,7 @@ theme_override_font_sizes/font_size = 40
 text = "Settings
 "
 
-[node name="MainMenu" type="Button" parent="CenterContainer/MainPauseMenu"]
+[node name="MainMenu" type="Button" parent="MainPauseMenu"]
 layout_mode = 2
 offset_left = -200.0
 offset_top = 61.0
@@ -60,36 +59,11 @@ theme = ExtResource("2_ixun4")
 theme_override_font_sizes/font_size = 30
 text = "Main Menu"
 
-[node name="SoundSettingsContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="SettingMenu" parent="." instance=ExtResource("3_o8fp3")]
 visible = false
-layout_mode = 2
+layout_mode = 1
 
-[node name="MasterVolumeContainer" parent="CenterContainer/SoundSettingsContainer" instance=ExtResource("2_4ug2j")]
-layout_mode = 2
-setting_name = "Master Volume"
-
-[node name="EffectsVolume" parent="CenterContainer/SoundSettingsContainer" instance=ExtResource("2_4ug2j")]
-layout_mode = 2
-setting = 1
-setting_name = "Effects Volume"
-
-[node name="MusicVolume" parent="CenterContainer/SoundSettingsContainer" instance=ExtResource("2_4ug2j")]
-layout_mode = 2
-setting = 2
-setting_name = "Music Volume"
-
-[node name="EffectsVolume3" parent="CenterContainer/SoundSettingsContainer" instance=ExtResource("2_4ug2j")]
-layout_mode = 2
-setting = 3
-setting_name = "UI Volume"
-
-[node name="Back" type="Button" parent="CenterContainer/SoundSettingsContainer"]
-layout_mode = 2
-theme = ExtResource("2_ixun4")
-theme_override_font_sizes/font_size = 40
-text = "Back"
-
-[connection signal="pressed" from="CenterContainer/MainPauseMenu/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="CenterContainer/MainPauseMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="CenterContainer/MainPauseMenu/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="CenterContainer/SoundSettingsContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MainPauseMenu/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MainPauseMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainPauseMenu/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="back" from="SettingMenu" to="." method="_on_setting_menu_back"]

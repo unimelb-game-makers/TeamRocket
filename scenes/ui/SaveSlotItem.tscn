@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dif5ua57y8udh"]
+[gd_scene load_steps=3 format=3 uid="uid://dif5ua57y8udh"]
 
 [ext_resource type="Script" path="res://scripts/ui/save_slot_item.gd" id="1_wo6cm"]
+[ext_resource type="Texture2D" uid="uid://mql53aoddg1y" path="res://assets/textures/kenney_borders/default/Border/panel-border-001.png" id="2_roc52"]
 
 [node name="SaveSlotItem" type="HBoxContainer"]
-offset_right = 702.0
-offset_bottom = 124.0
-theme_override_constants/separation = 20
+offset_right = 550.0
+offset_bottom = 90.0
 script = ExtResource("1_wo6cm")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -16,13 +16,13 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/LoadButton"]
-self_modulate = Color(0.901961, 0.776471, 0, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_roc52")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
@@ -32,16 +32,16 @@ patch_margin_bottom = 20
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
+theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_bottom = 5
 
 [node name="LoadButtonLabel" type="RichTextLabel" parent="MarginContainer/MarginContainer"]
-custom_minimum_size = Vector2(400, 100)
+custom_minimum_size = Vector2(400, 80)
 layout_mode = 2
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 22
-theme_override_font_sizes/bold_font_size = 30
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 20
 bbcode_enabled = true
 text = "[b][color=green]Slot 1[/color][/b]
 Level: 1
@@ -50,9 +50,9 @@ fit_content = true
 
 [node name="DeleteButton" type="Button" parent="."]
 modulate = Color(1, 0.150666, 0.0309665, 1)
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 20
 text = " Delete "
 
 [node name="NinePatchRect" type="NinePatchRect" parent="DeleteButton"]
@@ -63,6 +63,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_roc52")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20

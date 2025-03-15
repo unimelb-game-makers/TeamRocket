@@ -19,9 +19,25 @@ var player_damage_increase = 0.0
 
 var item_database: Array[Item]
 
+# Setting parameters here
+const FPS_LIMIT_ARRAY = [30, 60, 120, 144, 240, 0]
+const RESOLUTION_ARRAY = [
+	Vector2i(2560, 1440), Vector2i(1920, 1080), Vector2i(1440, 900),
+	Vector2i(1366, 768), Vector2i(1280, 720), Vector2i(1024, 768)
+]
+var master_volume: float = 1
+var effects_volume: float = 1
+var music_volume: float = 1
+var ui_volume: float = 1
+var fps_limit_index: int = 2 # Refer to EnumAutoload.FPS_LIMIT_ARRAY
+var resolution_index: int = 1 # Refer to EnumAutoload.RESOLUTION_ARRAY. Not used in FULL_SCREEN
+var vsync_option_index: int = 1 # From 0 to 2 for DISABLED / ENABLED / ADAPTIVE
+var window_mode_index: int = 1 # From 0 to 2 for FULLSCREEN / WINDOWED / BORDERLESS WINDOWED
+
 
 func _ready() -> void:
 	load_item_database()
+	SaveManager.load_setting_config()
 
 func load_item_database():
 	var directory_path = "res://resources/items/"
