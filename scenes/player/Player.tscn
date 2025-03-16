@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://bp53g1jmqlap"]
+[gd_scene load_steps=97 format=3 uid="uid://bp53g1jmqlap"]
 
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_lvdue"]
@@ -58,11 +58,23 @@
 [ext_resource type="Texture2D" uid="uid://mmwsi16uaa0c" path="res://assets/Player/PlayerAnimations/Walking/Walk Up Animation/up03.png" id="34_5vfpo"]
 [ext_resource type="Texture2D" uid="uid://2mgfrxuc6jr3" path="res://assets/Player/PlayerAnimations/Walking/Walk Up Animation/up04.png" id="35_twwor"]
 [ext_resource type="Texture2D" uid="uid://o0dvipm5p7rd" path="res://assets/Player/PlayerAnimations/Walking/Walk Up Animation/up05.png" id="36_gwplf"]
+[ext_resource type="Texture2D" uid="uid://bbx72yywevrnr" path="res://assets/Player/PlayerAnimations/Running/Run Left/run left 00.png" id="38_3nte0"]
+[ext_resource type="Texture2D" uid="uid://cdn7vl6errgf4" path="res://assets/Player/PlayerAnimations/Running/Run Left/run left 01.png" id="39_ls30s"]
+[ext_resource type="Texture2D" uid="uid://c0wlpfql2jqmr" path="res://assets/Player/PlayerAnimations/Running/Run Left/run left 02.png" id="40_mgtew"]
+[ext_resource type="Texture2D" uid="uid://xfbmvpx6l3wh" path="res://assets/Player/PlayerAnimations/Running/Run Left/run left 03.png" id="41_qgckx"]
+[ext_resource type="Texture2D" uid="uid://b6sroxcg0v8o2" path="res://assets/Player/PlayerAnimations/Running/Run Left/run left 04.png" id="42_n5q66"]
+[ext_resource type="Texture2D" uid="uid://da5mwvbovgdxo" path="res://assets/Player/PlayerAnimations/Running/Run Left/run left 05.png" id="43_tcird"]
 [ext_resource type="Texture2D" uid="uid://h33aiig6311g" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up 00.png" id="52_eejnx"]
+[ext_resource type="Texture2D" uid="uid://dy4c7matunw6r" path="res://assets/Player/PlayerAnimations/Running/Run Right/run right 00.png" id="52_nlgyo"]
 [ext_resource type="Texture2D" uid="uid://k8lpjbqhxjo2" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up 01.png" id="53_5hlu0"]
+[ext_resource type="Texture2D" uid="uid://dws81xn538bnw" path="res://assets/Player/PlayerAnimations/Running/Run Right/run right 01.png" id="53_688dj"]
+[ext_resource type="Texture2D" uid="uid://g0aq3uge2rhb" path="res://assets/Player/PlayerAnimations/Running/Run Right/run right 02.png" id="54_1q1r8"]
 [ext_resource type="Texture2D" uid="uid://b41edwjfr5alo" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up 02.png" id="54_wwj3l"]
+[ext_resource type="Texture2D" uid="uid://dtirmwy327rie" path="res://assets/Player/PlayerAnimations/Running/Run Right/run right 03.png" id="55_57ad5"]
 [ext_resource type="Texture2D" uid="uid://dvjih0yn0gg1q" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up 03.png" id="55_nvqmg"]
 [ext_resource type="Texture2D" uid="uid://oc556460tx0j" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up 04.png" id="56_cfa7w"]
+[ext_resource type="Texture2D" uid="uid://camtjefn858es" path="res://assets/Player/PlayerAnimations/Running/Run Right/run right 04.png" id="56_lsuo8"]
+[ext_resource type="Texture2D" uid="uid://dn6j8o8ultmdo" path="res://assets/Player/PlayerAnimations/Running/Run Right/run right 05.png" id="57_5joyh"]
 [ext_resource type="Texture2D" uid="uid://blwu4e1nhpxo0" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up 05.png" id="57_t7nkm"]
 [ext_resource type="Texture2D" uid="uid://b81o76wsmtyaj" path="res://assets/Player/PlayerAnimations/Running/Run Up/run up 00.png" id="58_311yl"]
 [ext_resource type="Texture2D" uid="uid://c4i7mxhpm1kmb" path="res://assets/Player/PlayerAnimations/Running/Run Up/run up 01.png" id="59_y1p2v"]
@@ -195,6 +207,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("38_3nte0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ls30s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_mgtew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_qgckx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_n5q66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_tcird")
+}],
+"loop": true,
+"name": &"move_left_run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("23_ewgrd")
 }, {
 "duration": 1.0,
@@ -221,6 +256,29 @@ animations = [{
 "loop": true,
 "name": &"move_right",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("52_nlgyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_688dj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_1q1r8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_57ad5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_lsuo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_5joyh")
+}],
+"loop": true,
+"name": &"move_right_run",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -417,7 +475,8 @@ bus = &"Effects"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_web4h")
-animation = &"shoot_down"
+animation = &"move_down_run"
+frame_progress = 0.757631
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, 15.5)
@@ -591,6 +650,7 @@ color = Color(0.905882, 0.713726, 0.176471, 1)
 
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]
 [connection signal="timeout" from="Rifle/ReloadTimer" to="Rifle" method="_on_reload_timer_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="state_entered" from="StateChart/Movement/Roll" to="." method="_on_roll_state_entered"]
 [connection signal="state_exited" from="StateChart/Movement/Roll" to="." method="_on_roll_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/Movement/Roll" to="." method="_on_roll_state_physics_processing"]

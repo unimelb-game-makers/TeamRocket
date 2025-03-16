@@ -35,6 +35,7 @@ var can_roll : bool = true
 
 
 var fired = false
+var animation_locked = false
 
 # ----- Node References -----
 @onready var interact_radius: Area2D = $InteractRadius
@@ -192,64 +193,26 @@ func _on_aiming_state_exited() -> void:
 func _on_channel_timer_timeout() -> void:
 	channel_complete.emit()
 
-# ALL OF THESE ARE TO HANDLE ANIMATIONS: REDO AFTER PROTOTYPE IS DONE
-
-func _on_aiming_state_physics_processing(delta: float) -> void:
-	var animation_speed = curr_speed / (STAND_SPEED)
-	if (direction.length() > 0.1):
-		if (abs(direction.x) > abs(direction.y)):
-			animated_sprite_2d.scale = Vector2(0.14, 0.14)
-			# Left/Right movement
-			if (direction.x > 0):
-				animated_sprite_2d.play("move_right", animation_speed)
-			else:
-				animated_sprite_2d.play("move_left", animation_speed)
-		else:
-			animated_sprite_2d.scale = Vector2(0.12, 0.12)
-			if (direction.y > 0):
-				animated_sprite_2d.play("move_down_aim", animation_speed)
-			else:
-				animated_sprite_2d.play('move_up_aim', animation_speed)
-	else:
-		var mouse_pos = get_global_mouse_position()
-		var mouse_direction = (mouse_pos - global_position).normalized()
-		if (mouse_direction.length() > 0.1):
-			if (abs(mouse_direction.x) > abs(mouse_direction.y)):
-				animated_sprite_2d.scale = Vector2(0.14, 0.14)
-				# Left/Right movement
-				if (mouse_direction.x > 0):
-					animated_sprite_2d.play("move_right", animation_speed)
-				else:
-					animated_sprite_2d.play("move_left", animation_speed)
-			else:
-				animated_sprite_2d.scale = Vector2(0.12, 0.12)
-				if (mouse_direction.y > 0):
-					animated_sprite_2d.play("stand_down_aim", animation_speed)
-				else:
-					animated_sprite_2d.play('stand_up_aim', animation_speed)
+# --- State Machine Processing Logic for Animations ---
 
 func _on_unarmed_state_physics_processing(delta: float) -> void:
-	# Handle Movement Animations (Temp Solution)
 	# If x movement > 0 and y movement < x then left/right movement
 	# Else if y movement > x then up/down movement
 	var animation_speed = curr_speed / (STAND_SPEED)
 	if (direction.length() > 0.1):
-		if (abs(direction.x) > abs(direction.y)):
-			animated_sprite_2d.scale = Vector2(0.14, 0.14)
-			# Left/Right movement
-			if (direction.x > 0):
-				animated_sprite_2d.play("move_right", animation_speed)
-			else:
-				animated_sprite_2d.play("move_left", animation_speed)
-		else:
-			animated_sprite_2d.scale = Vector2(0.12, 0.12)
-			if (direction.y > 0):
-				animated_sprite_2d.play("move_down", animation_speed)
-			else:
-				animated_sprite_2d.play('move_up', animation_speed)
+		handle_direction_anim("move", direction, "", animation_speed)
 	else:
-		animated_sprite_2d.scale = Vector2(0.12, 0.12)
-		animated_sprite_2d.play("idle")
+		handle_animation("idle")
+
+func _on_aiming_state_physics_processing(delta: float) -> void:
+	if (direction.length() > 0.1):
+		var animation_speed = curr_speed / (STAND_SPEED)
+		handle_direction_anim("move", direction, "aim", animation_speed)
+	else:
+		var mouse_pos = get_global_mouse_position()
+		var mouse_direction = (mouse_pos - global_position).normalized()
+		if (mouse_direction.length() > 0.1):
+			handle_direction_anim("stand", mouse_direction, "aim")
 
 func _on_run_state_physics_processing(delta: float) -> void:
 	# Handle Movement Animations (Temp Solution)
@@ -257,35 +220,55 @@ func _on_run_state_physics_processing(delta: float) -> void:
 	# Else if y movement > x then up/down movement
 	var animation_speed = curr_speed / (STAND_SPEED)
 	if (direction.length() > 0.1):
-		if (abs(direction.x) > abs(direction.y)):
-			animated_sprite_2d.scale = Vector2(0.14, 0.14)
-			# Left/Right movement
-			if (direction.x > 0):
-				animated_sprite_2d.play("move_right", animation_speed)
-			else:
-				animated_sprite_2d.play("move_left", animation_speed)
-		else:
-			animated_sprite_2d.scale = Vector2(0.12, 0.12)
-			if (direction.y > 0):
-				animated_sprite_2d.play("move_down_run", animation_speed)
-			else:
-				animated_sprite_2d.play('move_up_run', animation_speed)
+		handle_direction_anim("move", direction, "run", animation_speed)
 
 func _on_rifle_fired() -> void:
 	fired = true
 	var mouse_pos = get_global_mouse_position()
 	var mouse_direction = (mouse_pos - global_position).normalized()
-	if (mouse_direction.length() > 0.1):
-		if (abs(mouse_direction.x) > abs(mouse_direction.y)):
-			animated_sprite_2d.scale = Vector2(0.14, 0.14)
-			# Left/Right movement
-			if (mouse_direction.x > 0):
-				animated_sprite_2d.play("move_right")
-			else:
-				animated_sprite_2d.play("move_left")
+	handle_direction_anim("shoot", mouse_direction)
+
+
+# --- Handling Animations ---
+
+func handle_direction_anim(action: String, direction: Vector2, secondary_action: String = "", speed: float = 1.0):
+	if (abs(direction.x) > abs(direction.y)):
+		if (direction.x > 0):
+			handle_animation(action, "right", secondary_action, speed)
 		else:
-			animated_sprite_2d.scale = Vector2(0.12, 0.12)
-			if (mouse_direction.y > 0):
-				animated_sprite_2d.play("shoot_down")
-			else:
-				animated_sprite_2d.play('shoot_up')
+			handle_animation(action, "left", secondary_action, speed)
+	else:
+		if (direction.y > 0):
+			handle_animation(action, "down", secondary_action, speed)
+		else:
+			handle_animation(action, "up", secondary_action, speed)
+
+func handle_animation(action: String, direction: String = "", secondary_action: String = "", anim_speed: float = 1.0):
+	# Handles animations
+	# Input the action, direction and secondary action and the speed of the animation if needed
+	# Will automatically scale the player (cuz some of the animations are missized)
+	
+	if animation_locked:
+		return 
+	
+	var base_scale: float = 0.12
+	var side_scale: float = 1.16
+	# Have to scale because specifically the left and right movement for walking is smaller than the other animations
+	var sprite_scale = base_scale
+	if ((direction == "left" or direction == "right") and action == "move" and secondary_action != "run"):
+		sprite_scale = base_scale * side_scale
+	
+	var anim_array = [action]
+	if direction != "": anim_array.append(direction)
+	if secondary_action != "": anim_array.append(secondary_action)
+	
+	if (action == "shoot"):
+		animation_locked = true
+	
+	var joined_anim = "_".join(anim_array)
+	animated_sprite_2d.scale = Vector2(sprite_scale, sprite_scale)
+	animated_sprite_2d.play(joined_anim)
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if (animated_sprite_2d.animation.begins_with("shoot")):
+		animation_locked = false
