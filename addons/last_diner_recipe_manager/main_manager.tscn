@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://5w6yv33vt4tg"]
+[gd_scene load_steps=4 format=3 uid="uid://5w6yv33vt4tg"]
 
 [ext_resource type="Script" path="res://addons/last_diner_recipe_manager/main_manager.gd" id="1_g7k2n"]
 [ext_resource type="PackedScene" uid="uid://ttv8jiqo50yc" path="res://addons/last_diner_recipe_manager/food_manager/food_manager.tscn" id="2_7dgpn"]
+[ext_resource type="PackedScene" uid="uid://4q3nq15yiwwf" path="res://addons/last_diner_recipe_manager/recipe_manager/recipe_manager.tscn" id="3_uce21"]
 
 [node name="MainManager" type="Control"]
 layout_mode = 3
@@ -21,9 +22,10 @@ offset_left = -1.0
 offset_top = 30.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 0
+current_tab = 1
 
 [node name="Food" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -31,19 +33,10 @@ metadata/_tab_index = 0
 layout_mode = 1
 
 [node name="Recipes" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="Button" type="Button" parent="TabContainer/Recipes"]
-layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 166.0
-offset_top = 127.0
-offset_right = -776.0
-offset_bottom = -427.0
-text = "Test Button 1"
+[node name="RecipeManager" parent="TabContainer/Recipes" instance=ExtResource("3_uce21")]
 
 [node name="Workstations" type="TabBar" parent="TabContainer"]
 visible = false

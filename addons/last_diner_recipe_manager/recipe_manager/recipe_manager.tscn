@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://4q3nq15yiwwf"]
+
+[ext_resource type="Script" path="res://addons/last_diner_recipe_manager/recipe_manager/food_list.gd" id="1_sdigl"]
+[ext_resource type="PackedScene" uid="uid://dm2ismq2x41wo" path="res://addons/last_diner_recipe_manager/food_manager/FoodInstance.tscn" id="2_5vp74"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cf6o"]
+bg_color = Color(0.158472, 0.158472, 0.158472, 1)
+
+[node name="RecipeManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1279.0
+offset_bottom = 525.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(300, 500)
+offset_left = 75.0
+offset_top = 60.0
+offset_right = 404.0
+offset_bottom = 560.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1cf6o")
+
+[node name="FoodList" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+script = ExtResource("1_sdigl")
+food_res_folder = "res://resources/recipes/"
+food_instance_scene = ExtResource("2_5vp74")
