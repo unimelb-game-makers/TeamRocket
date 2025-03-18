@@ -28,13 +28,23 @@ const DOOR = "B"  # There is a door in this direction.
 
 @export var doors: Array[Area2D] = [] # Door scenes, cant get by get_tree
 @export var spawn: Node2D
+@onready var player = preload("res://scenes/player/Player.tscn")
 
 func _ready() -> void:
 	
 	# Verify each socket only has 1 character
 	for i in sockets:
 		assert(len(i) <= 1, "Socket must have 1 character")
-
+	
+	# Spawn player and camera
+	var s = player.instantiate()
+	add_child(s)
+	s.global_position = spawn.global_position
+	
+	var newcam = Camera2D.new()
+	#newcam.make_current()
+	s.add_child(newcam)
+	newcam.global_position = s.global_position
 
 # Is given socket array
 func add_doors(neighbor_array: Array[String], neighbor_scenes: Array[PackedScene]):
