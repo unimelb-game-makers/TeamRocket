@@ -13,15 +13,15 @@ offset_right = 900.0
 offset_bottom = 900.0
 
 [node name="DoorArea" parent="." index="1" instance=ExtResource("2_hawl3")]
-position = Vector2(462, 841)
-direction = 3
-
-[node name="DoorArea2" parent="." index="2" instance=ExtResource("2_hawl3")]
 position = Vector2(453, 41)
 
-[node name="DoorArea3" parent="." index="3" instance=ExtResource("2_hawl3")]
+[node name="DoorArea2" parent="." index="2" instance=ExtResource("2_hawl3")]
 position = Vector2(852, 468)
 rotation = 1.5708
+
+[node name="DoorArea3" parent="." index="3" instance=ExtResource("2_hawl3")]
+position = Vector2(462, 841)
+direction = 3
 
 [node name="DoorArea4" parent="." index="4" instance=ExtResource("2_hawl3")]
 position = Vector2(44, 451)
@@ -29,3 +29,8 @@ rotation = 1.5708
 
 [node name="Spawn" type="Node2D" parent="." index="5"]
 position = Vector2(450, 450)
+
+[connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea3" to="DoorArea3" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea4" to="DoorArea4" method="_on_area_entered"]
