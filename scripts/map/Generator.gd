@@ -4,6 +4,7 @@ var grid = []      # 2D Array for generation
 var structure = [] # 2D Array holding the room scenes
 const DIM_X = 9
 const DIM_Y = 7
+var starting_room = Vector2(4,3)
 
 var curr_rooms = 0
 var num_rooms = 20
@@ -44,11 +45,14 @@ func _ready() -> void:
 		for j in range(DIM_X):
 			if grid[j][i]:
 				print(get_neighbors_array(grid, Vector2(j,i)))
+	
+	# Initialize starting room and put player in it
+	initialize_room(starting_room)
+	
 
 func start_gen():
-	var starting_room = Vector2(3,3)
-	grid[starting_room.x][starting_room.y] = 1
 	
+	grid[starting_room.x][starting_room.y] = 1
 	generation_queue.append(starting_room)
 	
 	while not generation_queue.is_empty() and curr_rooms < num_rooms:
@@ -114,31 +118,66 @@ func get_neighbors_array(grid, current_pos: Vector2) -> Array:
 			arr.append("A")
 	return arr
 
-func place_rooms():
-	for i in range(DIM_X):
-		for j in range(DIM_Y):
-			if grid[i][j] == 1:
-				var num_neighbors = get_num_neighbors(grid, Vector2(i,j))
-				var neighbors_array = get_neighbors_array(grid, Vector2(i,j))
-				
-				var selected_room: BaseRoom = null
-				
-				if num_neighbors == 1:
-					selected_room = deadend.instantiate()
-				
-				if num_neighbors == 2:
-					if neighbors_array == ["A", "B", "A", "B"] or neighbors_array == ["B", "A", "B", "A"]:
-						selected_room = straight.instantiate()
-					else:
-						selected_room = turn.instantiate()
-				
-				if num_neighbors == 3:
-					selected_room = threeway.instantiate()
-				
-				if num_neighbors == 4:
-					selected_room == full.instantiate()
-				
-				#if selected_room:
-					#structure[i][j] = selected_room
-					#selected_room.add_doors(neighbors_array, get_neighbors(Vector2(i,j)))
-					#get_tree().root.add_child(selected_room)
+func initialize_room(coords: Vector2):
+	var room = grid[coords.x][coords.y]
+	var num_neighbors = get_num_neighbors(grid, coords)
+	var neighbors_array = get_neighbors_array(grid, coords)
+	
+	var selected_room
+	
+	match num_neighbors:
+		1:
+			selected_room = deadend.instantiate()
+		2:
+			if neighbors_array == ["A", "B", "A", "B"] or neighbors_array == ["B", "A", "B", "A"]:
+				selected_room = straight.instantiate()
+			else:
+				selected_room = turn.instantiate()
+		3:
+			selected_room = threeway.instantiate()
+		4:
+			selected_room = full.instantiate()
+	
+	print(selected_room)
+	
+	# Rotate room to match selected_room.sockets with neighbors_array
+	var sockets: Array[String] = selected_room.sockets
+	#var num_rotations = 0
+	while sockets != neighbors_array:
+		var temp = sockets.pop_front()
+		sockets.append(temp)
+		selected_room.rotate(PI/2)
+	
+	
+	
+	add_child(selected_room)
+
+
+#func place_rooms():
+	#for i in range(DIM_X):
+		#for j in range(DIM_Y):
+			#if grid[i][j] == 1:
+				#var num_neighbors = get_num_neighbors(grid, Vector2(i,j))
+				#var neighbors_array = get_neighbors_array(grid, Vector2(i,j))
+				#
+				#var selected_room: BaseRoom = null
+				#
+				#if num_neighbors == 1:
+					#selected_room = deadend.instantiate()
+				#
+				#if num_neighbors == 2:
+					#if neighbors_array == ["A", "B", "A", "B"] or neighbors_array == ["B", "A", "B", "A"]:
+						#selected_room = straight.instantiate()
+					#else:
+						#selected_room = turn.instantiate()
+				#
+				#if num_neighbors == 3:
+					#selected_room = threeway.instantiate()
+				#
+				#if num_neighbors == 4:
+					#selected_room = full.instantiate()
+				#
+				##if selected_room:
+					##structure[i][j] = selected_room
+					##selected_room.add_doors(neighbors_array, get_neighbors(Vector2(i,j)))
+					##get_tree().root.add_child(selected_room)
