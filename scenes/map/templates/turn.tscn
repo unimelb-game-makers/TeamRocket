@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_mpxr1"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_qyw5l"]
 
-[node name="Turn" node_paths=PackedStringArray("doors") instance=ExtResource("1_mpxr1")]
+[node name="Turn" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_mpxr1")]
 sockets = Array[String](["B", "B", "A", "A"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2")]
+spawn = NodePath("Spawn")
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 offset_right = 800.0
