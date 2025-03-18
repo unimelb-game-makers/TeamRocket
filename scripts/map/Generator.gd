@@ -6,11 +6,11 @@ const DIM_X = 9
 const DIM_Y = 7
 
 var curr_rooms = 0
-var num_rooms = 30
+var num_rooms = 20
 
 var generation_queue = []
 
-var max_neighbors = 4
+var max_neighbors = 1
 
 const straight: PackedScene = preload("res://scenes/map/templates/straight_room_1.tscn")
 const deadend: PackedScene = preload("res://scenes/map/templates/dead_end.tscn")
@@ -27,8 +27,6 @@ func _ready() -> void:
 			structure[i].append(null)
 	
 	start_gen()
-	if curr_rooms < num_rooms:
-		get_tree().reload_current_scene()
 	
 	print(curr_rooms)
 	var count = 0
@@ -42,28 +40,35 @@ func _ready() -> void:
 				row += "□ "
 		print(row)
 	
-	#place_rooms()
-	#get_tree().change_scene_to_packed(structure[3][3])
-	#structure[3][3].add_child(load("res://scenes/player/Player.tscn"))
+	for i in range(DIM_Y):
+		for j in range(DIM_X):
+			if grid[j][i]:
+				print(get_neighbors_array(grid, Vector2(j,i)))
 
 func start_gen():
 	var starting_room = Vector2(3,3)
-	grid[3][3] = 1
+	grid[starting_room.x][starting_room.y] = 1
 	
 	generation_queue.append(starting_room)
 	
 	while not generation_queue.is_empty() and curr_rooms < num_rooms:
-		var curr = generation_queue.pop_front()
+		var curr
+		if randi_range(0, 3) == 0:
+			curr = generation_queue.pop_front()
+		else:
+			curr = generation_queue.pop_back()
 		for neighbor in get_neighbors(curr):
 			# If room already occupied, exit
 			if grid[neighbor.x][neighbor.y] == 1:
 				continue
 			# If more than max_neighbors, exit
 			if get_num_neighbors(grid, neighbor) > max_neighbors:
-				continue
+				if randi_range(0, 1):
+					continue
 			# Random
 			if randi_range(0, 1):
-				continue
+				if num_rooms < num_rooms - 5:
+					continue
 			if randi_range(0, 1):
 				generation_queue.append(starting_room)
 			
