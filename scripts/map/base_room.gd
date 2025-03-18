@@ -27,15 +27,13 @@ const DOOR = "B"  # There is a door in this direction.
 @export_range(1,5) var room_weighting: int = 1
 
 @export var doors: Array[Area2D] = [] # Door scenes, cant get by get_tree
+@export var spawn: Node2D
 
 func _ready() -> void:
 	
 	# Verify each socket only has 1 character
 	for i in sockets:
 		assert(len(i) <= 1, "Socket must have 1 character")
-	
-	# Get all door areas and connect them to scene transitioner
-	
 
 
 # Is given socket array
