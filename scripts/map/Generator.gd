@@ -77,7 +77,7 @@ func start_gen():
 			curr_rooms += 1
 			generation_queue.append(neighbor)
 
-const directions = [Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0), Vector2(0, -1)]
+const directions = [Vector2(0, -1), Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0)]
 
 func check_bounds(pos: Vector2):
 	if pos.x >= 0 and pos.x < DIM_X and pos.y >= 0 and pos.y < DIM_Y:
