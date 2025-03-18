@@ -5,7 +5,7 @@
 
 [node name="Threeway" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_jvckg")]
 sockets = Array[String](["B", "B", "A", "B"])
-doors = [NodePath("DoorArea"), NodePath("DoorArea3"), NodePath("DoorArea2")]
+doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3")]
 spawn = NodePath("Spawn")
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
@@ -13,17 +13,21 @@ offset_right = 800.0
 offset_bottom = 800.0
 
 [node name="DoorArea" parent="." index="1" instance=ExtResource("2_i84du")]
+position = Vector2(388, 51)
+
+[node name="DoorArea2" parent="." index="2" instance=ExtResource("2_i84du")]
 position = Vector2(752, 405)
 rotation = 1.5708
 direction = 3
 
-[node name="DoorArea3" parent="." index="2" instance=ExtResource("2_i84du")]
+[node name="DoorArea3" parent="." index="3" instance=ExtResource("2_i84du")]
 position = Vector2(57, 401)
 rotation = 1.5708
 direction = 3
 
-[node name="DoorArea2" parent="." index="3" instance=ExtResource("2_i84du")]
-position = Vector2(388, 51)
-
 [node name="Spawn" type="Node2D" parent="." index="4"]
 position = Vector2(400, 400)
+
+[connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea3" to="DoorArea3" method="_on_area_entered"]

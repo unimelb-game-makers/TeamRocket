@@ -13,11 +13,14 @@ offset_right = 500.0
 offset_bottom = 500.0
 
 [node name="DoorArea" parent="." index="1" instance=ExtResource("2_oo45u")]
+position = Vector2(244, 47)
+
+[node name="DoorArea2" parent="." index="2" instance=ExtResource("2_oo45u")]
 position = Vector2(256, 456)
 direction = 3
 
-[node name="DoorArea2" parent="." index="2" instance=ExtResource("2_oo45u")]
-position = Vector2(244, 47)
-
 [node name="Spawn" type="Node2D" parent="." index="3"]
 position = Vector2(250, 250)
+
+[connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
