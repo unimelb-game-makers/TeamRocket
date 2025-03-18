@@ -262,10 +262,13 @@ func handle_animation(action: String, direction: String = "", secondary_action: 
 	if direction != "": anim_array.append(direction)
 	if secondary_action != "": anim_array.append(secondary_action)
 	
+	var joined_anim = "_".join(anim_array)
+	if not joined_anim in animated_sprite_2d.sprite_frames.get_animation_names():
+		return
+	
 	if (action == "shoot"):
 		animation_locked = true
 	
-	var joined_anim = "_".join(anim_array)
 	animated_sprite_2d.scale = Vector2(sprite_scale, sprite_scale)
 	animated_sprite_2d.play(joined_anim)
 
