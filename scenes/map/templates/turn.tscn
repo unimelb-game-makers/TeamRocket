@@ -8,16 +8,16 @@ sockets = Array[String](["B", "B", "A", "A"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2")]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
-offset_right = 867.0
-offset_bottom = 642.0
+offset_right = 800.0
+offset_bottom = 800.0
 
 [node name="DoorArea" parent="." index="1" instance=ExtResource("2_qyw5l")]
-position = Vector2(823, 337)
+position = Vector2(742, 403)
 rotation = 1.5708
 direction = 3
 
 [node name="DoorArea2" parent="." index="2" instance=ExtResource("2_qyw5l")]
-position = Vector2(425, 41)
+position = Vector2(403, 57)
 
 [node name="Spawn" type="Node2D" parent="." index="3"]
-position = Vector2(419, 316)
+position = Vector2(400, 400)
