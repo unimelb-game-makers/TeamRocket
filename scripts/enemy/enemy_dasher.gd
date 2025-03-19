@@ -93,7 +93,7 @@ func _on_active_state_entered() -> void:
 
 func _on_dash_attack_hurtbox_body_entered(body: Node2D) -> void:
 	if body is Player:
-		body.health -= 30
+		body.damage(30)
 
 func damage():
 	super()
