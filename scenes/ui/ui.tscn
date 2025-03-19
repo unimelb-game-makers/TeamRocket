@@ -32,10 +32,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pred7")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HUD" type="Control" parent="CanvasLayer"]
-layout_mode = 3
+[node name="HUD" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -44,7 +42,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("6_hhsni")
 
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD"]
+[node name="HealthBar" type="ProgressBar" parent="HUD"]
 modulate = Color(1, 0.196078, 0.203922, 1)
 layout_mode = 0
 offset_left = 70.8495
@@ -57,7 +55,7 @@ max_value = 50.0
 value = 50.0
 show_percentage = false
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/HUD"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD"]
 modulate = Color(0.230315, 0.230315, 0.230315, 1)
 layout_mode = 0
 offset_left = 1.84949
@@ -72,7 +70,7 @@ texture_under = ExtResource("3_35kky")
 texture_progress = ExtResource("3_35kky")
 tint_under = Color(1, 1, 1, 0)
 
-[node name="GunInfo" type="Control" parent="CanvasLayer/HUD"]
+[node name="GunInfo" type="Control" parent="HUD"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -84,7 +82,7 @@ offset_top = -140.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD/GunInfo"]
+[node name="TextureRect" type="TextureRect" parent="HUD/GunInfo"]
 modulate = Color(1, 1, 1, 0.509804)
 layout_mode = 0
 offset_left = 1.0
@@ -94,7 +92,7 @@ offset_bottom = 95.0
 rotation = 0.0523599
 texture = SubResource("GradientTexture1D_exaem")
 
-[node name="GunTexture" type="TextureRect" parent="CanvasLayer/HUD/GunInfo"]
+[node name="GunTexture" type="TextureRect" parent="HUD/GunInfo"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = -44.0
@@ -102,7 +100,7 @@ offset_right = 207.0
 offset_bottom = 145.0
 texture = ExtResource("6_tctv1")
 
-[node name="AmmoCount" type="Label" parent="CanvasLayer/HUD/GunInfo"]
+[node name="AmmoCount" type="Label" parent="HUD/GunInfo"]
 layout_mode = 0
 offset_left = 162.0
 offset_top = 16.0
@@ -113,7 +111,7 @@ label_settings = SubResource("LabelSettings_1yyuo")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Label" parent="CanvasLayer/HUD"]
+[node name="Timer" type="Label" parent="HUD"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -130,7 +128,7 @@ label_settings = SubResource("LabelSettings_jjt75")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimerProgressBar" type="TextureProgressBar" parent="CanvasLayer/HUD"]
+[node name="TimerProgressBar" type="TextureProgressBar" parent="HUD"]
 modulate = Color(0.127922, 0.255695, 0.255254, 1)
 layout_mode = 0
 offset_left = 23.0
@@ -145,10 +143,11 @@ texture_under = ExtResource("3_35kky")
 texture_progress = ExtResource("3_35kky")
 tint_under = Color(0.306923, 0.306923, 0.306923, 1)
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_1b1tq")]
+[node name="PauseMenu" parent="." instance=ExtResource("8_1b1tq")]
 visible = false
+layout_mode = 1
 
-[node name="Inventory" parent="CanvasLayer" instance=ExtResource("6_xyb2j")]
+[node name="Inventory" parent="." instance=ExtResource("6_xyb2j")]
 visible = false
 offset_left = 640.0
 offset_top = 360.0

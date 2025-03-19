@@ -26,6 +26,8 @@ offset_bottom = 4000.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="UI" parent="GameHandler/CanvasLayer" instance=ExtResource("2_a8oao")]
+
 [node name="Lighting" type="Node" parent="."]
 
 [node name="Dark" type="CanvasModulate" parent="Lighting"]
@@ -65,9 +67,7 @@ script = ExtResource("4_omi12")
 
 [node name="SpawnAreas" type="Node" parent="EnemyHandler"]
 
-[node name="UI" parent="." instance=ExtResource("2_a8oao")]
-
 [connection signal="timeout" from="GameHandler/GameTimer" to="GameHandler" method="_on_game_timer_timeout"]
-[connection signal="activity_interact" from="Player" to="UI" method="_on_player_activity_interact"]
+[connection signal="activity_interact" from="Player" to="GameHandler/CanvasLayer/UI" method="_on_player_activity_interact"]
 [connection signal="channel_complete" from="Player" to="GameHandler" method="_on_player_channel_complete"]
 [connection signal="death" from="Player" to="GameHandler" method="_on_player_death"]

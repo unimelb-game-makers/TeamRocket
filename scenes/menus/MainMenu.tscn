@@ -62,22 +62,6 @@ _data = {
 "fade_out_and_in": SubResource("Animation_gf0iw")
 }
 
-[sub_resource type="Animation" id="Animation_1aph7"]
-resource_name = "title_move_up"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Title:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(219.5, 270), Vector2(219.5, 110)]
-}
-
 [sub_resource type="Animation" id="Animation_on21e"]
 length = 0.001
 tracks/0/type = "value"
@@ -107,6 +91,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [Vector2(219.5, 110), Vector2(219.5, 270)]
+}
+
+[sub_resource type="Animation" id="Animation_1aph7"]
+resource_name = "title_move_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(219.5, 270), Vector2(219.5, 110)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yclxk"]

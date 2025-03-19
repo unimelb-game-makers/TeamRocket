@@ -1,6 +1,6 @@
 extends Control
 
-@onready var inventory: Control = $CanvasLayer/Inventory
+@onready var inventory: Control = $Inventory
 
 var inventory_container: Control
 
