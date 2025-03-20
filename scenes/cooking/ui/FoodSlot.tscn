@@ -9,6 +9,7 @@ offset_right = 45.0
 offset_bottom = 49.0
 texture_normal = ExtResource("1_gh5eo")
 texture_pressed = ExtResource("2_kwbnh")
+stretch_mode = 5
 script = ExtResource("3_10ak5")
 
 [node name="FoodTexture" type="Sprite2D" parent="."]

@@ -11,12 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://blocbouydvwko" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_brown_pressed.png" id="9_iqa6s"]
 [ext_resource type="Texture2D" uid="uid://fplx23lf5mw1" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/arrowSilver_left.png" id="10_p55fp"]
 
-[node name="FoodButton" type="Control"]
-custom_minimum_size = Vector2(300, 50)
+[node name="ItemInventoryButton" type="Control"]
+custom_minimum_size = Vector2(290, 50)
 layout_mode = 3
 anchor_right = 0.194
 anchor_bottom = 0.069
-offset_right = 47.68
+offset_right = 41.68
 offset_bottom = 0.32
 script = ExtResource("1_l1p43")
 

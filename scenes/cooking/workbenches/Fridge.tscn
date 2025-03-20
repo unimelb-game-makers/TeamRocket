@@ -37,6 +37,6 @@ texture = ExtResource("3_qjnbx")
 visible = false
 activity_res = ExtResource("3_jdnj1")
 
-[node name="Activity" parent="CanvasLayer/CookingScene" index="4" instance=ExtResource("4_skeix")]
+[node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("4_skeix")]
 visible = false
 layout_mode = 1

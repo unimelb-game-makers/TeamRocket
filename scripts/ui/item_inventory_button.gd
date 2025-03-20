@@ -14,6 +14,8 @@ func _ready() -> void:
 	set_displays()
  	
 func set_displays() -> void:
+	if item == null:
+		return
 	item_label.text = item.item_name + " x" + str(amount)
 	weight_label.text = str(amount * item.weight) + "kg"
 	item_sprite.texture = item.texture

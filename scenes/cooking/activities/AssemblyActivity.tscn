@@ -20,6 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_kpauk")
 
 [node name="FeedbackLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 288.0
 offset_top = 505.0
 offset_right = 994.0
@@ -29,6 +30,7 @@ label_settings = SubResource("LabelSettings_0k2hl")
 horizontal_alignment = 1
 
 [node name="IngredientImageDisplay" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 487.0
 offset_top = 199.0
 offset_right = 787.0

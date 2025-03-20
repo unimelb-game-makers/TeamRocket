@@ -1,4 +1,5 @@
-extends NinePatchRect
+extends Control
+
 @onready var item_name: Label = $ItemName
 @onready var item_desc: Label = $ItemDesc
 @onready var item_image: TextureRect = $ItemImage

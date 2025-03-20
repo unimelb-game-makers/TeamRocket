@@ -1,4 +1,5 @@
 extends CookingActivity
+
 @onready var ingredient_image_display: TextureRect = $IngredientImageDisplay
 @onready var feedback_label: Label = $FeedbackLabel
 @onready var cooking_scene: CookingScene = $".."
@@ -30,7 +31,7 @@ func finish() -> void:
 	
 func set_ingredient_image(ingredient: Item) -> void:
 	if ingredient and ingredient_image_display:
-		ingredient_image_display.texture = ingredient.texture  # Set the texture of the ingredient
-		ingredient_image_display.visible = true  # Ensure the image is visible
+		ingredient_image_display.texture = ingredient.texture # Set the texture of the ingredient
+		ingredient_image_display.visible = true # Ensure the image is visible
 	else:
-		ingredient_image_display.visible = false  # Hide the display if no ingredient is provided
+		ingredient_image_display.visible = false # Hide the display if no ingredient is provided

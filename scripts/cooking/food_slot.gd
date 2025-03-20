@@ -5,7 +5,7 @@ extends TextureButton
 
 var index
 
-signal remove_food(index)
+signal food_removed(index)
 
 func set_ingredient(item: Item):
 	if (item):
@@ -13,5 +13,8 @@ func set_ingredient(item: Item):
 	else:
 		food_texture.texture = null
 
+func remove_food():
+	food_removed.emit(index)
+
 func _on_pressed() -> void:
-	remove_food.emit(index)
+	food_removed.emit(index)

@@ -1,23 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://tq5lx00lkfo2"]
+[gd_scene load_steps=3 format=3 uid="uid://tq5lx00lkfo2"]
 
 [ext_resource type="Script" path="res://scripts/ui/inventory_select_list.gd" id="1_cqgrg"]
-[ext_resource type="Script" path="res://scripts/ui/item_container.gd" id="2_kwblm"]
-[ext_resource type="PackedScene" uid="uid://cik7cck2oky1w" path="res://scenes/ui/FoodButton.tscn" id="3_pmgis"]
+[ext_resource type="PackedScene" uid="uid://cik7cck2oky1w" path="res://scenes/ui/ItemInventoryButton.tscn" id="3_pmgis"]
 
-[node name="InventorySelectList" type="CenterContainer"]
-offset_right = 612.0
+[node name="InventorySelectList" type="ScrollContainer"]
+custom_minimum_size = Vector2(610, 300)
+offset_right = 616.0
 offset_bottom = 300.0
-script = ExtResource("1_cqgrg")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-custom_minimum_size = Vector2(600, 300)
-layout_mode = 2
 horizontal_scroll_mode = 0
+script = ExtResource("1_cqgrg")
+item_inventory_button_scene = ExtResource("3_pmgis")
 
-[node name="ItemContainer" type="GridContainer" parent="ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
+theme_override_constants/h_separation = 20
 columns = 2
-script = ExtResource("2_kwblm")
-item_container_scene = ExtResource("3_pmgis")
 
-[connection signal="selected_item" from="ScrollContainer/ItemContainer" to="." method="select_item"]
+[node name="ItemInventoryButton" parent="GridContainer" instance=ExtResource("3_pmgis")]
+layout_mode = 2
+
+[node name="ItemInventoryButton2" parent="GridContainer" instance=ExtResource("3_pmgis")]
+layout_mode = 2
+
+[node name="ItemInventoryButton3" parent="GridContainer" instance=ExtResource("3_pmgis")]
+layout_mode = 2
+
+[node name="ItemInventoryButton4" parent="GridContainer" instance=ExtResource("3_pmgis")]
+layout_mode = 2
+
+[node name="ItemInventoryButton5" parent="GridContainer" instance=ExtResource("3_pmgis")]
+layout_mode = 2
