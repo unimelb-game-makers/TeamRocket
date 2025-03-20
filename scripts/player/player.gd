@@ -7,6 +7,7 @@ signal channel_complete
 
 var can_move: bool = true
 
+# ----- Player Stats -----
 @export var player_stats: PlayerStatsResource
 
 # ----- MOVEMENT VARS -----
@@ -38,8 +39,6 @@ var animation_locked = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var channel_timer: Timer = $ChannelTimer
 @onready var channeling_particles: CPUParticles2D = $Particles/ChannelingParticles
-
-# ----- Player Stats -----
 
 # ---- Signals ----
 # For camera control
@@ -224,7 +223,6 @@ func _on_rifle_fired() -> void:
 
 
 # --- Handling Animations ---
-
 func handle_direction_anim(action: String, direction: Vector2, secondary_action: String = "", speed: float = 1.0):
 	if (abs(direction.x) > abs(direction.y)):
 		if (direction.x > 0):

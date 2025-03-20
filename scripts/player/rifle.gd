@@ -16,8 +16,6 @@ var inaccuracy: float = 0.0:
 		inaccuracy = clamp(limit, 0, MAX_INACCURACY)
 var inaccuracy_change_rate: float = INACCURACY_CHANGE_RATE_BASE
 
-@export var damage = 5
-
 @export var MAX_BULLETS = 5
 @export var FIRE_RATE = 1.0
 @export var RELOAD_SPEED = 0.6
@@ -51,7 +49,6 @@ func _ready() -> void:
 	aiming_curve.visible = false
 
 func _process(_delta):
-	
 	if (gun_enabled):
 		look_at(get_global_mouse_position())
 	
@@ -63,7 +60,6 @@ func _process(_delta):
 		update_aiming_ui()
 		aiming_line_1.rotation_degrees = -inaccuracy
 		aiming_line_2.rotation_degrees = inaccuracy
-		
 
 func reload():
 	if (reload_timer.is_stopped() and bullets < MAX_BULLETS):
