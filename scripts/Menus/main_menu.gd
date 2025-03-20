@@ -10,6 +10,8 @@ class_name MainMenu
 @onready var save_ui = $CanvasLayer/SaveUI
 @onready var fade_cover: ColorRect = $CanvasLayer/FadeCover
 
+@export var player_stats: PlayerStatsResource
+
 var target_position
 
 func _ready() -> void:
@@ -19,7 +21,7 @@ func _ready() -> void:
 	tween.tween_property(fade_cover, "modulate", Color(0, 0, 0, 0), 1.0)
 	reset_camera()
 	save_ui.visible = false
-
+	Globals.player_stats = player_stats
 
 func _on_start_pressed() -> void:
 	title_anim_player.play("title_move_up")

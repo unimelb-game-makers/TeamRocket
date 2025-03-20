@@ -43,12 +43,11 @@ func save_game(slot_id):
 	Globals.update_total_playtime()
 	is_saving = true
 	started_saving.emit()
+	
+	var player_stats = Globals.player_stats.export_stats()
 	var save_dict = {
 		"inventory_dict": convert_item_resource_to_id(InventoryGlobal.inventory_dict),
-		"player_level": Globals.player_level,
-		"player_hp_increase": Globals.player_hp_increase,
-		"player_speed_increase": Globals.player_speed_increase,
-		"player_damage_increase": Globals.player_damage_increase,
+		"player_stats": player_stats,
 		"total_playtime": Globals.total_playtime,
 	}
 	var save_file = FileAccess.open(get_savefile_name(slot_id), FileAccess.WRITE)
@@ -86,10 +85,7 @@ func load_game(slot_id):
 		return
 
 	InventoryGlobal.inventory_dict = convert_id_to_item_resource(save_data["inventory_dict"])
-	Globals.player_level = save_data["player_level"]
-	Globals.player_hp_increase = save_data["player_hp_increase"]
-	Globals.player_speed_increase = save_data["player_speed_increase"]
-	Globals.player_damage_increase = save_data["player_damage_increase"]
+	Globals.player_stats.load_stats(save_data["player_stats"])
 	Globals.total_playtime = save_data["total_playtime"]
 
 

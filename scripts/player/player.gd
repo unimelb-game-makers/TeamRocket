@@ -7,17 +7,13 @@ signal channel_complete
 
 var can_move: bool = true
 
+# ----- Player Stats -----
+@export var player_stats: PlayerStatsResource
+
 # ----- MOVEMENT VARS -----
 # For smoother movement
-const CROUCH_SPEED : int = 100
-const CROUCH_ACCEL : int = 10
-const STAND_SPEED : int = 200
-const STAND_ACCEL : int = 40
-const RUN_SPEED : int = 400
-const RUN_ACCEL : int = 50
-
-var curr_speed : float = STAND_SPEED
-var curr_accel : float = STAND_ACCEL
+var curr_speed : float
+var curr_accel : float
 
 var direction : Vector2
 var is_moving : bool
@@ -33,7 +29,6 @@ const ROLL_COOLDOWN : float = 0
 var roll_cd_timer : float = 0
 var can_roll : bool = true
 
-
 var fired = false
 var animation_locked = false
 
@@ -45,15 +40,6 @@ var animation_locked = false
 @onready var channel_timer: Timer = $ChannelTimer
 @onready var channeling_particles: CPUParticles2D = $Particles/ChannelingParticles
 
-# ----- Player Stats -----
-@export var max_health = 50
-var health = max_health:
-	set(value):
-		health = value
-		if health <= 0:
-			die()
-		Globals.player_ui.update_health(health, max_health)
-
 # ---- Signals ----
 # For camera control
 signal aim_mode_enter
@@ -61,7 +47,9 @@ signal aim_mode_exit
 
 func _ready() -> void:
 	Globals.player = self
-	max_health *= 1 + Globals.player_hp_increase
+	curr_speed = player_stats.speed
+	curr_accel = player_stats.accel
+	player_stats.health = player_stats.max_health
 
 func _process(_delta: float) -> void:
 	# Code for item pickup
@@ -70,7 +58,7 @@ func _process(_delta: float) -> void:
 			var area = interact_radius.get_overlapping_areas()[0]
 			area.interact()
 
-	if (is_moving and curr_speed > CROUCH_SPEED):
+	if (is_moving and curr_speed > player_stats.crouch_speed):
 		rifle.inaccuracy += 0.05
 	else:
 		rifle.inaccuracy -= 0.025
@@ -82,12 +70,15 @@ func _process(_delta: float) -> void:
 
 	if (not channel_timer.is_stopped()):
 		channeling_particles.emitting = true
+		
+	if Input.is_action_just_pressed("reload"):
+		rifle.reload()
 
-func _physics_process(delta: float) -> void:
-	pass
-
-func _input(event: InputEvent) -> void:
-	pass
+func damage(value: int):
+	player_stats.health -= value
+	Globals.player_ui.update_health(player_stats.health, player_stats.max_health)
+	if (player_stats.health < 0):
+		die()
 
 func die() -> void:
 	can_move = false
@@ -138,7 +129,6 @@ func _on_basic_state_input(event: InputEvent) -> void:
 	if event.is_action_pressed("crouch"):
 		statechart.send_event("ctrl_press") # Crouch <-> Standing
 
-
 ### Rolling ###
 
 # roll_timer affects speed over the course of the roll
@@ -166,19 +156,19 @@ func _on_roll_state_physics_processing(delta: float) -> void:
 # Quadratic curve starting at ROLL_SPEED and ending at CROUCH_SPEED
 func roll_speed(elapsed_time : float) -> float:
 	var t : float = elapsed_time / ROLL_DURATION
-	return ROLL_SPEED - (ROLL_SPEED - CROUCH_SPEED) * t * t
+	return ROLL_SPEED - (ROLL_SPEED - player_stats.crouch_speed) * t * t
 
 func _on_standing_state_entered() -> void:
-	curr_speed = STAND_SPEED
-	curr_accel = STAND_ACCEL
+	curr_speed = player_stats.speed
+	curr_accel = player_stats.accel
 
 func _on_run_state_entered() -> void:
-	curr_speed = RUN_SPEED
-	curr_accel = RUN_ACCEL
+	curr_speed = player_stats.run_speed
+	curr_accel = player_stats.run_accel
 
 func _on_crouched_state_entered() -> void:
-	curr_speed = CROUCH_SPEED
-	curr_accel = CROUCH_ACCEL
+	curr_speed = player_stats.crouch_speed
+	curr_accel = player_stats.crouch_accel
 
 func _on_aiming_state_entered() -> void:
 	rifle.enter_aiming_mode()
@@ -198,7 +188,7 @@ func _on_channel_timer_timeout() -> void:
 func _on_unarmed_state_physics_processing(delta: float) -> void:
 	# If x movement > 0 and y movement < x then left/right movement
 	# Else if y movement > x then up/down movement
-	var animation_speed = curr_speed / (STAND_SPEED)
+	var animation_speed = curr_speed / (player_stats.speed)
 	if (direction.length() > 0.1):
 		handle_direction_anim("move", direction, "", animation_speed)
 	else:
@@ -206,19 +196,22 @@ func _on_unarmed_state_physics_processing(delta: float) -> void:
 
 func _on_aiming_state_physics_processing(delta: float) -> void:
 	if (direction.length() > 0.1):
-		var animation_speed = curr_speed / (STAND_SPEED)
+		var animation_speed = curr_speed / (player_stats.speed)
 		handle_direction_anim("move", direction, "aim", animation_speed)
 	else:
 		var mouse_pos = get_global_mouse_position()
 		var mouse_direction = (mouse_pos - global_position).normalized()
 		if (mouse_direction.length() > 0.1):
 			handle_direction_anim("stand", mouse_direction, "aim")
+			
+	if Input.is_action_just_pressed("fire"):
+		rifle.fire(player_stats.damage)
 
 func _on_run_state_physics_processing(delta: float) -> void:
 	# Handle Movement Animations (Temp Solution)
 	# If x movement > 0 and y movement < x then left/right movement
 	# Else if y movement > x then up/down movement
-	var animation_speed = curr_speed / (STAND_SPEED)
+	var animation_speed = curr_speed / (player_stats.speed)
 	if (direction.length() > 0.1):
 		handle_direction_anim("move", direction, "run", animation_speed)
 
@@ -230,7 +223,6 @@ func _on_rifle_fired() -> void:
 
 
 # --- Handling Animations ---
-
 func handle_direction_anim(action: String, direction: Vector2, secondary_action: String = "", speed: float = 1.0):
 	if (abs(direction.x) > abs(direction.y)):
 		if (direction.x > 0):
