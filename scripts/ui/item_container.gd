@@ -1,6 +1,7 @@
-extends VBoxContainer
+extends GridContainer
 
 @export var item_container_scene: PackedScene
+
 signal selected_item(item, amount)
 
 func update_inventory_list():

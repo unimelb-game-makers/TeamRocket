@@ -1,12 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://dj4u0n4uqbwvg"]
+[gd_scene load_steps=8 format=3 uid="uid://dj4u0n4uqbwvg"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_n668q"]
+[ext_resource type="Shader" path="res://scripts/shader/2d_outline.gdshader" id="2_2s1lh"]
 [ext_resource type="Texture2D" uid="uid://of06ncu5vdqd" path="res://assets/interiors/kitchen/cutting board.png" id="3_b1lqa"]
 [ext_resource type="Resource" uid="uid://befjbqm64vutk" path="res://resources/activities/chopping.tres" id="3_gf6uy"]
 [ext_resource type="PackedScene" uid="uid://yskpqwwvcpce" path="res://scenes/cooking/activities/ChoppingActivity.tscn" id="4_f5jll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8srgv"]
 size = Vector2(129, 68)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mcc3"]
+resource_local_to_scene = true
+shader = ExtResource("2_2s1lh")
+shader_parameter/thickness = 5.0
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = null
+shader_parameter/outline_color = Color(1, 0.906591, 0, 1)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = null
+shader_parameter/max_or_add = false
 
 [node name="ChoppingBoard" instance=ExtResource("1_n668q")]
 y_sort_enabled = true
@@ -17,6 +31,7 @@ shape = SubResource("RectangleShape2D_8srgv")
 
 [node name="Sprite2D" parent="." index="1"]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_7mcc3")
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_b1lqa")
 

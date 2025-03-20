@@ -1,16 +1,13 @@
-extends ColorRect
+extends NinePatchRect
 @onready var item_name: Label = $ItemName
 @onready var item_desc: Label = $ItemDesc
 @onready var item_image: TextureRect = $ItemImage
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	item_name.text = ""
+	item_desc.text = ""
+	item_image.texture = null
 
 func update_description_info(item: Item):
 	item_name.text = item.item_name

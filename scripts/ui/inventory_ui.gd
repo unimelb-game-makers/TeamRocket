@@ -6,9 +6,9 @@ signal item_selected(item, amount)
 @onready var hp_label: Label = $CharacterStats/Stats/HpLabel
 @onready var dmg_label: Label = $CharacterStats/Stats/DmgLabel
 @onready var speed_label: Label = $CharacterStats/Stats/SpdLabel
-@onready var weight_label: Label = $ItemListBackground/WeightLabel
-@onready var inventory_container: CenterContainer = $ItemListBackground/InventoryContainer
-@onready var item_descriptor: ColorRect = $ItemDescriptionBackground
+@onready var weight_label: Label = $VBoxContainer/ItemListBackground/WeightLabel
+@onready var inventory_container: CenterContainer = $VBoxContainer/ItemListBackground/InventoryContainer
+@onready var item_descriptor: Control = $VBoxContainer/ItemDescriptionBackground
 
 var is_open = false
 func update_weight_label():

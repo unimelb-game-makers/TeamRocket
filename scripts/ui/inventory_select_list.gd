@@ -1,6 +1,6 @@
 extends CenterContainer
 
-@onready var inventory_container: VBoxContainer = %InventoryContainer
+@onready var inventory_container: GridContainer = $ScrollContainer/ItemContainer
 signal item_selected(item: Item, amount: int)
 
 # Called when the node enters the scene tree for the first time.

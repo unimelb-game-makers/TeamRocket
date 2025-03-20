@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=26 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
 [ext_resource type="PackedScene" uid="uid://bp3xwcc5hld8c" path="res://scenes/cooking/workbenches/RecipeBook.tscn" id="10_0g7fq"]
 [ext_resource type="PackedScene" uid="uid://dj4u0n4uqbwvg" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="13_y6d8o"]
+[ext_resource type="PackedScene" uid="uid://djxk0awyl2jvv" path="res://scenes/cooking/workbenches/Fridge.tscn" id="14_12asn"]
 [ext_resource type="PackedScene" uid="uid://bqjhwwixj8hir" path="res://scenes/cooking/workbenches/Pot.tscn" id="14_l7h17"]
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
 [ext_resource type="PackedScene" uid="uid://bhlarqiey25gc" path="res://scenes/cooking/workbenches/AssemblyPlate.tscn" id="20_twwyk"]
@@ -182,6 +183,9 @@ position = Vector2(521, 503)
 
 [node name="Pot" parent="InteractableHandler/InteractableHolder" index="4" instance=ExtResource("14_l7h17")]
 position = Vector2(712, 244)
+
+[node name="Fridge" parent="InteractableHandler/InteractableHolder" index="5" instance=ExtResource("14_12asn")]
+position = Vector2(1030, 195)
 
 [node name="Player" parent="." index="6"]
 position = Vector2(269, 549)
