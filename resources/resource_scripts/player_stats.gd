@@ -19,10 +19,17 @@ var health:
 		speed = value
 		run_speed = speed * SPRINT_MULTIPLIER
 		crouch_speed = speed * CROUCH_MULTIPLIER
+		
+		accel = speed / 5
+		run_accel = run_speed / 5
+		crouch_accel = crouch_speed / 5
 
 var run_speed: float = speed * SPRINT_MULTIPLIER
 var crouch_speed: float = speed * CROUCH_MULTIPLIER
-@export var acceleration: float
+
+var accel: float = speed / 5
+var run_accel: float = run_speed / 5
+var crouch_accel: float = crouch_speed / 5
 
 # Load stats from save file
 func load_stats(stats: Dictionary):

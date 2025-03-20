@@ -11,12 +11,8 @@ var can_move: bool = true
 
 # ----- MOVEMENT VARS -----
 # For smoother movement
-const CROUCH_ACCEL : int = 10
-const STAND_ACCEL : int = 40
-const RUN_ACCEL : int = 50
-
 var curr_speed : float
-var curr_accel : float = STAND_ACCEL
+var curr_accel : float
 
 var direction : Vector2
 var is_moving : bool
@@ -53,6 +49,7 @@ signal aim_mode_exit
 func _ready() -> void:
 	Globals.player = self
 	curr_speed = player_stats.speed
+	curr_accel = player_stats.accel
 	player_stats.health = player_stats.max_health
 
 func _process(_delta: float) -> void:
@@ -162,15 +159,15 @@ func roll_speed(elapsed_time : float) -> float:
 
 func _on_standing_state_entered() -> void:
 	curr_speed = player_stats.speed
-	curr_accel = STAND_ACCEL
+	curr_accel = player_stats.accel
 
 func _on_run_state_entered() -> void:
 	curr_speed = player_stats.run_speed
-	curr_accel = RUN_ACCEL
+	curr_accel = player_stats.run_accel
 
 func _on_crouched_state_entered() -> void:
 	curr_speed = player_stats.crouch_speed
-	curr_accel = CROUCH_ACCEL
+	curr_accel = player_stats.crouch_accel
 
 func _on_aiming_state_entered() -> void:
 	rifle.enter_aiming_mode()
