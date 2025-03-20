@@ -71,6 +71,9 @@ func _process(_delta: float) -> void:
 
 	if (not channel_timer.is_stopped()):
 		channeling_particles.emitting = true
+		
+	if Input.is_action_just_pressed("reload"):
+		rifle.reload()
 
 func damage(value: int):
 	player_stats.health -= value
@@ -126,7 +129,6 @@ func _on_basic_state_input(event: InputEvent) -> void:
 		statechart.send_event("space_press")
 	if event.is_action_pressed("crouch"):
 		statechart.send_event("ctrl_press") # Crouch <-> Standing
-
 
 ### Rolling ###
 
@@ -202,6 +204,9 @@ func _on_aiming_state_physics_processing(delta: float) -> void:
 		var mouse_direction = (mouse_pos - global_position).normalized()
 		if (mouse_direction.length() > 0.1):
 			handle_direction_anim("stand", mouse_direction, "aim")
+			
+	if Input.is_action_just_pressed("fire"):
+		rifle.fire(player_stats.damage)
 
 func _on_run_state_physics_processing(delta: float) -> void:
 	# Handle Movement Animations (Temp Solution)

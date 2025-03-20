@@ -64,33 +64,34 @@ func _process(_delta):
 		aiming_line_1.rotation_degrees = -inaccuracy
 		aiming_line_2.rotation_degrees = inaccuracy
 		
-		if Input.is_action_just_pressed("fire"):
-			if (fire_timer.is_stopped() and reload_timer.is_stopped()):
+
+func reload():
+	if (reload_timer.is_stopped() and bullets < MAX_BULLETS):
+		reload_effect.play()
+		reload_timer.start()
+
+func fire(damage) -> void:
+	if (fire_timer.is_stopped() and reload_timer.is_stopped()):
 				# Raycast to target
-				raycast.rotation_degrees = randf_range(-inaccuracy, inaccuracy)
-				var target = raycast.get_collider()
-				if (target):
-					if (target is Enemy):
-						target.health -= Globals.player_stats.damage
-						
-				var hit_location = raycast.get_collision_point()
-				var impact = impact_scene.instantiate()
-				add_child(impact)
-				impact.global_position = hit_location
+		raycast.rotation_degrees = randf_range(-inaccuracy, inaccuracy)
+		var target = raycast.get_collider()
+		if (target):
+			if (target is Enemy):
+				target.health -= damage
 				
-				fire_effect.play(0.3)
-				fired.emit()
-				
-				bullets -= 1
-				fire_timer.start()
-				
-				# Add inaccuracy
-				inaccuracy = MAX_INACCURACY
-				
-	if Input.is_action_just_pressed("reload"):
-		if (reload_timer.is_stopped()):
-			reload_effect.play()
-			reload_timer.start()
+		var hit_location = raycast.get_collision_point()
+		var impact = impact_scene.instantiate()
+		add_child(impact)
+		impact.global_position = hit_location
+		
+		fire_effect.play(0.3)
+		fired.emit()
+		
+		bullets -= 1
+		fire_timer.start()
+		
+		# Add inaccuracy
+		inaccuracy = MAX_INACCURACY
 
 func _on_reload_timer_timeout() -> void:
 	bullets = MAX_BULLETS
