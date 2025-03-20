@@ -71,7 +71,7 @@ func _process(_delta):
 				var target = raycast.get_collider()
 				if (target):
 					if (target is Enemy):
-						target.health -= damage * (1 + Globals.player_damage_increase)
+						target.health -= Globals.player_stats.damage
 						
 				var hit_location = raycast.get_collision_point()
 				var impact = impact_scene.instantiate()

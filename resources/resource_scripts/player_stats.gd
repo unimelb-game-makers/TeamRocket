@@ -25,11 +25,11 @@ var crouch_speed: float = speed * CROUCH_MULTIPLIER
 @export var acceleration: float
 
 # Load stats from save file
-func load_stats(stats: JSON):
+func load_stats(stats: Dictionary):
 	level = stats["level"]
 	max_health = stats["max_health"]
 	health = stats["health"]
-	speed = stats["movement_speed"]
+	speed = stats["speed"]
 	damage = stats["damage"]
 	level = stats["level"]
 	
@@ -45,7 +45,4 @@ func export_stats():
 
 # Reset stats to base stats
 func reset_stats():
-	pass
-	
-func get_player_damage():
 	pass

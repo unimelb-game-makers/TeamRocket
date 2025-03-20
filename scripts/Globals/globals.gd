@@ -1,6 +1,7 @@
 extends Node
 
 var player: Player
+var player_stats: PlayerStatsResource
 var item_handler
 var map
 
@@ -13,9 +14,6 @@ var start_record_timestamp = 0
 var total_playtime = 0
 
 var player_level = 1
-var player_hp_increase = 0.0
-var player_speed_increase = 0.0
-var player_damage_increase = 0.0
 
 var item_database: Array[Item]
 
@@ -57,9 +55,6 @@ func load_item_database():
 
 func reset_save_data():
 	player_level = 1
-	player_hp_increase = 0.0
-	player_speed_increase = 0.0
-	player_damage_increase = 0.0
 	start_record_timestamp = 0
 	total_playtime = 0
 	InventoryGlobal.reset_save_data()

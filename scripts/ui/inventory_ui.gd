@@ -24,9 +24,10 @@ func _on_inventory_container_item_selected(item: Item, amount: int) -> void:
 	item_descriptor.update_description_info(item)
 
 func update_character_stats():
-	hp_label.text = "HP: " + str(50 * (1 + Globals.player_hp_increase))
-	dmg_label.text = "DMG: " + str(5 * (1 + Globals.player_damage_increase))
-	speed_label.text = "SPD: " + str(1 + Globals.player_speed_increase)
+	pass
+	hp_label.text = "HP: " + str(Globals.player_stats.health)
+	dmg_label.text = "DMG: " + str(Globals.player_stats.damage)
+	speed_label.text = "SPD: " + str(Globals.player_stats.speed)
 
 func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("inventory")):
