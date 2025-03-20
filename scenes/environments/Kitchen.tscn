@@ -172,6 +172,7 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(88, 454)
 
 [node name="PrototypeDiagram" parent="InteractableHandler/InteractableHolder" index="1" instance=ExtResource("10_0g7fq")]
+position = Vector2(-21, 0)
 
 [node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("20_twwyk")]
 z_index = 1

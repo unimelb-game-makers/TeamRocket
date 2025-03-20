@@ -1,4 +1,5 @@
 extends Control
+class_name IngredientHandler
 
 var selected_ingredients: Array[Item]
 var max_slots = 1
