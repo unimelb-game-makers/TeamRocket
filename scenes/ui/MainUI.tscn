@@ -1,27 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxuu77kvbmixu"]
+[gd_scene load_steps=11 format=3 uid="uid://bxuu77kvbmixu"]
 
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_4xgkk"]
 [ext_resource type="Script" path="res://scripts/ui/player_ui.gd" id="2_yyelw"]
 [ext_resource type="Texture2D" uid="uid://cs4ean4jys6o7" path="res://assets/textures/ui/radial_progress.png" id="3_8nnro"]
-[ext_resource type="Texture2D" uid="uid://dgctlmfq5mj0j" path="res://assets/textures/rifle_placeholder.png" id="4_dbu7m"]
+[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="4_1vp2p"]
+[ext_resource type="Texture2D" uid="uid://buij7cq2iihvp" path="res://assets/textures/kenney_borders/default/Border/panel-border-013.png" id="4_07ked"]
+[ext_resource type="Texture2D" uid="uid://dsqcru2h58r83" path="res://assets/Player/sprite/weapon_rifle.png" id="4_kvrx6"]
 [ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="5_c176x"]
+[ext_resource type="Texture2D" uid="uid://b5oyt8wn2cl4n" path="res://assets/textures/kenney_borders/default/Border/panel-border-028.png" id="5_qbwp1"]
 [ext_resource type="PackedScene" uid="uid://ck0jasabkl7co" path="res://scenes/menus/PauseMenu.tscn" id="6_t0vuv"]
 [ext_resource type="PackedScene" uid="uid://cpwdv7vvm7kdc" path="res://scenes/ui/InventoryUI.tscn" id="7_pb8bc"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kg8dr"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Gradient" id="Gradient_woge3"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_exaem"]
-gradient = SubResource("Gradient_woge3")
-
-[sub_resource type="LabelSettings" id="LabelSettings_1yyuo"]
-font_size = 32
-
-[sub_resource type="LabelSettings" id="LabelSettings_jjt75"]
-font_size = 32
 
 [node name="MainUI" type="Control" groups=["ui"]]
 layout_mode = 3
@@ -42,106 +30,151 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_yyelw")
 
-[node name="HealthBar" type="ProgressBar" parent="HUD"]
-modulate = Color(1, 0.196078, 0.203922, 1)
-layout_mode = 0
-offset_left = 70.8495
-offset_top = 66.0
-offset_right = 316.849
-offset_bottom = 122.0
-rotation = 0.0872665
-theme_override_styles/background = SubResource("StyleBoxFlat_kg8dr")
-max_value = 50.0
-value = 50.0
-show_percentage = false
-
 [node name="TextureProgressBar" type="TextureProgressBar" parent="HUD"]
+visible = false
 modulate = Color(0.230315, 0.230315, 0.230315, 1)
-layout_mode = 0
-offset_left = 1.84949
-offset_top = -14.0
-offset_right = 1025.85
-offset_bottom = 1010.0
-rotation = 0.0872665
-scale = Vector2(0.2, 0.2)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_right = 168.0
+offset_bottom = 168.0
 max_value = 50.0
-value = 35.0
+value = 12.0
+fill_mode = 6
+nine_patch_stretch = true
 texture_under = ExtResource("3_8nnro")
 texture_progress = ExtResource("3_8nnro")
 tint_under = Color(1, 1, 1, 0)
 
-[node name="GunInfo" type="Control" parent="HUD"]
+[node name="HealthBar" type="TextureProgressBar" parent="HUD"]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 392.0
+offset_bottom = 44.0
+max_value = 50.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 10
+stretch_margin_top = 10
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+texture_under = ExtResource("4_1vp2p")
+texture_progress = ExtResource("4_1vp2p")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.292969, 0.0190454, 0, 1)
+
+[node name="HealthBarBorder" type="NinePatchRect" parent="HUD"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+layout_mode = 1
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 400.0
+offset_bottom = 44.0
+texture = ExtResource("5_qbwp1")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="TimerProgressBar" type="TextureProgressBar" parent="HUD"]
+self_modulate = Color(0.129412, 0.254902, 0.254902, 1)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = 24.0
+offset_top = 56.0
+offset_right = 124.0
+offset_bottom = 156.0
+max_value = 1020.0
+value = 1020.0
+fill_mode = 5
+nine_patch_stretch = true
+texture_under = ExtResource("3_8nnro")
+texture_progress = ExtResource("3_8nnro")
+tint_under = Color(0.306923, 0.306923, 0.306923, 1)
+
+[node name="Timer" type="Label" parent="HUD/TimerProgressBar"]
+self_modulate = Color(0.507692, 1, 1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.5
+offset_top = -19.5
+offset_right = 28.5
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_c176x")
+theme_override_font_sizes/font_size = 29
+text = "07:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GunInfo" type="ColorRect" parent="HUD"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -312.0
-offset_top = -140.0
+offset_left = -280.0
+offset_top = -64.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
-
-[node name="TextureRect" type="TextureRect" parent="HUD/GunInfo"]
-modulate = Color(1, 1, 1, 0.509804)
-layout_mode = 0
-offset_left = 1.0
-offset_top = -32.0
-offset_right = 280.0
-offset_bottom = 95.0
-rotation = 0.0523599
-texture = SubResource("GradientTexture1D_exaem")
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 
 [node name="GunTexture" type="TextureRect" parent="HUD/GunInfo"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = -44.0
-offset_right = 207.0
-offset_bottom = 145.0
-texture = ExtResource("4_dbu7m")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -20.0
+offset_right = 120.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_kvrx6")
+expand_mode = 3
 
 [node name="AmmoCount" type="Label" parent="HUD/GunInfo"]
-layout_mode = 0
-offset_left = 162.0
-offset_top = 16.0
-offset_right = 316.0
-offset_bottom = 103.0
-text = "5/5"
-label_settings = SubResource("LabelSettings_1yyuo")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Timer" type="Label" parent="HUD"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -1239.0
-offset_top = 225.0
-offset_right = -1155.0
-offset_bottom = 278.0
-grow_horizontal = 0
-scale = Vector2(0.8, 0.8)
-theme_override_fonts/font = ExtResource("5_c176x")
-text = "07:00"
-label_settings = SubResource("LabelSettings_jjt75")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -40.0
+offset_right = 58.0
+offset_bottom = 5.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 20
+text = "5/5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimerProgressBar" type="TextureProgressBar" parent="HUD"]
-modulate = Color(0.127922, 0.255695, 0.255254, 1)
-layout_mode = 0
-offset_left = 23.0
-offset_top = 193.0
-offset_right = 1047.0
-offset_bottom = 1217.0
-scale = Vector2(0.1, 0.1)
-max_value = 1020.0
-value = 1020.0
-fill_mode = 4
-texture_under = ExtResource("3_8nnro")
-texture_progress = ExtResource("3_8nnro")
-tint_under = Color(0.306923, 0.306923, 0.306923, 1)
+[node name="ColorRect" type="NinePatchRect" parent="HUD/GunInfo"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_07ked")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_t0vuv")]
 visible = false

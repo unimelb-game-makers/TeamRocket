@@ -208,7 +208,7 @@ offset_left = 136.0
 offset_top = 12.0
 offset_right = 568.0
 offset_bottom = 48.0
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 20
 text = "Tomato"
 
 [node name="ItemDesc" type="Label" parent="VBoxContainer/ItemDescriptionBackground"]
@@ -222,6 +222,7 @@ offset_right = -28.0
 offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 14
 text = "Tomato description lora ipsum"
 autowrap_mode = 2
 

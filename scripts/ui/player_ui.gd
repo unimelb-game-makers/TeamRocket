@@ -1,10 +1,10 @@
 extends Control
 class_name PlayerUI
 
-@onready var health_bar: ProgressBar = $HealthBar
+@onready var health_bar: TextureProgressBar = $HealthBar
 @onready var gun_texture: TextureRect = $GunInfo/GunTexture
 @onready var ammo_count: Label = $GunInfo/AmmoCount
-@onready var timer: Label = $Timer
+@onready var timer: Label = $TimerProgressBar/Timer
 @onready var timer_progress_bar: TextureProgressBar = $TimerProgressBar
 
 # Called when the node enters the scene tree for the first time.
