@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwmc16eui1kh1"]
+[gd_scene load_steps=4 format=3 uid="uid://bwmc16eui1kh1"]
 
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="1_mqvtx"]
 [ext_resource type="Texture2D" uid="uid://mql53aoddg1y" path="res://assets/textures/kenney_borders/default/Border/panel-border-001.png" id="2_4q1p4"]
+[ext_resource type="Script" path="res://scenes/ui/button_hover_effect.gd" id="2_idu18"]
 
 [node name="Button" type="Button"]
 custom_minimum_size = Vector2(140, 40)
@@ -10,8 +11,10 @@ offset_bottom = 44.0
 theme = ExtResource("1_mqvtx")
 theme_override_font_sizes/font_size = 30
 text = "Button"
+script = ExtResource("2_idu18")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -2,7 +2,7 @@ extends Control
 
 @onready var item_label: Label = $NameButton/ItemLabel
 @onready var weight_label: Label = $NameButton/WeightLabel
-@onready var item_sprite: Sprite2D = $ItemButton/ItemSprite
+@onready var item_sprite: TextureRect = $ItemButton/ItemSprite
 
 var item: Item
 var amount: int
@@ -21,7 +21,12 @@ func set_displays() -> void:
 	item_sprite.texture = item.texture
 
 func _on_drop_button_pressed() -> void:
+	SoundManager.play_button_click_sfx()
 	item_dropped.emit(item, 1)
 
 func _on_name_button_pressed() -> void:
+	SoundManager.play_button_click_sfx()
 	item_selected.emit(item, amount)
+
+func play_button_hover_sfx():
+	SoundManager.play_button_hover_sfx()

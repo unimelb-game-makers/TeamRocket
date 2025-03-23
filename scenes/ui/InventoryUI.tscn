@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="1_yv1id"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_drynj"]
-[ext_resource type="Texture2D" uid="uid://bd1fy87csv1ug" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/panel_brown.png" id="4_dneol"]
 [ext_resource type="Shader" path="res://scripts/shader/sprite_doodle.gdshader" id="4_esraw"]
 [ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="4_rg2h7"]
 [ext_resource type="Script" path="res://scripts/ui/item_description_box.gd" id="5_2pfdl"]
@@ -12,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cfcjjxfbtvw5x" path="res://assets/Player/sprite/alex_eye_only_portrait.png" id="6_q7x8x"]
 [ext_resource type="Script" path="res://scenes/ui/portrait_eye_follow_mouse.gd" id="7_3ewop"]
 [ext_resource type="Texture2D" uid="uid://cevkjrlj4y5qd" path="res://assets/food/tomato raw.png" id="7_hffay"]
+[ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="9_et0cm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kcf3a"]
 shader = ExtResource("4_esraw")
@@ -29,27 +29,23 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_yv1id")
 
-[node name="CharacterStats" type="NinePatchRect" parent="."]
+[node name="CharacterStats" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
 offset_left = 136.0
 offset_top = 264.0
 offset_right = 420.0
 offset_bottom = 632.0
-texture = ExtResource("4_dneol")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 
 [node name="PortaitBackground" type="TextureRect" parent="CharacterStats"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -81.0
+offset_left = -78.0
 offset_top = 32.0
-offset_right = 81.0
+offset_right = 84.0
 offset_bottom = 194.0
 grow_horizontal = 2
 texture = ExtResource("5_lhps5")
@@ -80,7 +76,7 @@ texture = ExtResource("6_q7x8x")
 expand_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CharacterStats/PortaitBackground"]
-self_modulate = Color(0.308594, 0.19722, 0, 1)
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,26 +93,43 @@ patch_margin_bottom = 20
 layout_mode = 0
 offset_left = 56.0
 offset_top = 232.0
-offset_right = 224.0
-offset_bottom = 348.0
+offset_right = 232.0
+offset_bottom = 330.0
 
 [node name="HpLabel" type="Label" parent="CharacterStats/Stats"]
 layout_mode = 2
 theme = ExtResource("3_drynj")
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
+theme_override_font_sizes/font_size = 24
 text = "HP: "
 
 [node name="DmgLabel" type="Label" parent="CharacterStats/Stats"]
 layout_mode = 2
 theme = ExtResource("3_drynj")
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
+theme_override_font_sizes/font_size = 24
 text = "Dmg: "
 
 [node name="SpdLabel" type="Label" parent="CharacterStats/Stats"]
 layout_mode = 2
 theme = ExtResource("3_drynj")
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
+theme_override_font_sizes/font_size = 24
 text = "Spd: "
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CharacterStats"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_et0cm")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -133,15 +146,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="ItemListBackground" type="NinePatchRect" parent="VBoxContainer"]
-self_modulate = Color(0.511719, 0.511719, 0.511719, 1)
+[node name="ItemListBackground" type="ColorRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(700, 400)
 layout_mode = 2
-texture = ExtResource("4_dneol")
-patch_margin_left = 10
-patch_margin_top = 10
-patch_margin_right = 10
-patch_margin_bottom = 10
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 
 [node name="InventorySelectList" parent="VBoxContainer/ItemListBackground" instance=ExtResource("4_rg2h7")]
 layout_mode = 1
@@ -150,10 +158,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -302.0
-offset_top = -152.0
-offset_right = 308.0
-offset_bottom = 148.0
+offset_left = -310.0
+offset_top = -176.0
+offset_right = 306.0
+offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -173,15 +181,25 @@ theme = ExtResource("3_drynj")
 text = "Weight: xxxxkg"
 vertical_alignment = 1
 
-[node name="ItemDescriptionBackground" type="NinePatchRect" parent="VBoxContainer"]
-self_modulate = Color(0.509804, 0.509804, 0.509804, 1)
-custom_minimum_size = Vector2(200, 150)
-layout_mode = 2
-texture = ExtResource("4_dneol")
+[node name="ItemListBackground" type="NinePatchRect" parent="VBoxContainer/ItemListBackground"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_et0cm")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
+
+[node name="ItemDescriptionBackground" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 script = ExtResource("5_2pfdl")
 
 [node name="ItemName" type="Label" parent="VBoxContainer/ItemDescriptionBackground"]
@@ -220,5 +238,20 @@ offset_bottom = 60.0
 grow_vertical = 2
 texture = ExtResource("7_hffay")
 expand_mode = 1
+
+[node name="ItemDescriptionBackground" type="NinePatchRect" parent="VBoxContainer/ItemDescriptionBackground"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_et0cm")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
 [connection signal="item_select" from="VBoxContainer/ItemListBackground/InventorySelectList" to="." method="_on_inventory_select_list_item_select"]

@@ -374,6 +374,7 @@ setting = 3
 setting_name = "UI Volume"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="BG"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -13,7 +13,6 @@ item_inventory_button_scene = ExtResource("3_pmgis")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2
-theme_override_constants/h_separation = 20
 columns = 2
 
 [node name="ItemInventoryButton" parent="GridContainer" instance=ExtResource("3_pmgis")]
