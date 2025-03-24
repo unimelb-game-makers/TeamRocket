@@ -1,0 +1,183 @@
+[gd_scene load_steps=13 format=3 uid="uid://ugbre4vhm1sh"]
+
+[ext_resource type="Script" path="res://scripts/ui/recipe_book.gd" id="1_83ik8"]
+[ext_resource type="Script" path="res://resources/resource_scripts/recipe.gd" id="2_67i8p"]
+[ext_resource type="Resource" uid="uid://cjpgf0lpg0byq" path="res://resources/recipes/bolognaise_sauce_rec.tres" id="3_m3idy"]
+[ext_resource type="Resource" uid="uid://bfwue41nr3epe" path="res://resources/recipes/carrot_chopped_rec.tres" id="4_4oqxg"]
+[ext_resource type="Resource" uid="uid://c4h3ng5hvjhl3" path="res://resources/recipes/mince_cooked_rec.tres" id="5_savhs"]
+[ext_resource type="Resource" uid="uid://03e6q22xpcdp" path="res://resources/recipes/onion_chopped_rec.tres" id="6_a1jhl"]
+[ext_resource type="Resource" uid="uid://g4a47xmw2c3d" path="res://resources/recipes/spaghetti_bolognaise_rec.tres" id="7_yp1oa"]
+[ext_resource type="Resource" uid="uid://dq1w8y8sr0c1f" path="res://resources/recipes/spaghetti_cooked_rec.tres" id="8_uv4ll"]
+[ext_resource type="Resource" uid="uid://cc53kuuugxarg" path="res://resources/recipes/tomato_chopped_rec.tres" id="9_xwfqi"]
+[ext_resource type="PackedScene" uid="uid://bdq2cjlut7vho" path="res://scenes/ui/RecipeBook/RecipeButton.tscn" id="10_ktsu7"]
+[ext_resource type="Script" path="res://scripts/ui/RecipeBook/showcase_panel.gd" id="11_txpg6"]
+[ext_resource type="PackedScene" uid="uid://b8pgb2vvy62wa" path="res://scenes/ui/RecipeBook/IngredientButton.tscn" id="12_2j7nn"]
+
+[node name="RecipeBook" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_83ik8")
+recipes = Array[ExtResource("2_67i8p")]([ExtResource("3_m3idy"), ExtResource("4_4oqxg"), ExtResource("5_savhs"), ExtResource("6_a1jhl"), ExtResource("7_yp1oa"), ExtResource("8_uv4ll"), ExtResource("9_xwfqi")])
+recipe_button_scene = ExtResource("10_ktsu7")
+
+[node name="BookBackdrop" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 43.0
+offset_top = 24.0
+offset_right = -51.0
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RecipeListPanel" type="Panel" parent="BookBackdrop"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 20.0
+offset_right = 545.0
+offset_bottom = -34.0
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BookBackdrop/RecipeListPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.989
+anchor_bottom = 0.994
+offset_left = 10.0
+offset_top = 11.0
+offset_right = -0.169983
+offset_bottom = -0.280029
+
+[node name="RecipeGridContainer" type="GridContainer" parent="BookBackdrop/RecipeListPanel/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 25
+columns = 5
+
+[node name="RecipeShowcasePanel" type="Panel" parent="BookBackdrop"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -606.0
+offset_top = 20.0
+offset_right = -26.0
+offset_bottom = -27.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("11_txpg6")
+ingredient_button_scene = ExtResource("12_2j7nn")
+
+[node name="RecipeTitle" type="Label" parent="BookBackdrop/RecipeShowcasePanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 55.0
+grow_horizontal = 2
+text = "Food Title Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FoodFrame" type="Panel" parent="BookBackdrop/RecipeShowcasePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.0
+offset_top = -219.0
+offset_right = 78.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FoodFrameTexture" type="TextureRect" parent="BookBackdrop/RecipeShowcasePanel/FoodFrame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CookingStationFrame" type="Panel" parent="BookBackdrop/RecipeShowcasePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 103.0
+offset_top = -219.0
+offset_right = 266.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CookingStationTexture" type="TextureRect" parent="BookBackdrop/RecipeShowcasePanel/CookingStationFrame"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -62.0
+offset_right = 77.5
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DifficultyFrame" type="Panel" parent="BookBackdrop/RecipeShowcasePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 105.0
+offset_top = -77.0
+offset_right = 268.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="IngredientsPanel" type="Panel" parent="BookBackdrop/RecipeShowcasePanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -252.0
+offset_top = -274.0
+offset_right = 267.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="IngredientsGridContainer" type="GridContainer" parent="BookBackdrop/RecipeShowcasePanel/IngredientsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 25
+columns = 9

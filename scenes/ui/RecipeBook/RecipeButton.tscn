@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdq2cjlut7vho"]
+
+[ext_resource type="Texture2D" uid="uid://fh2nehpger30" path="res://assets/food/carrot peeled.png" id="1_wtv5b"]
+[ext_resource type="Script" path="res://scripts/ui/RecipeBook/recipe_button.gd" id="2_1bysy"]
+
+[node name="RecipeButton" type="Button"]
+custom_minimum_size = Vector2(75, 75)
+offset_right = 319.0
+offset_bottom = 319.0
+icon = ExtResource("1_wtv5b")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_1bysy")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
