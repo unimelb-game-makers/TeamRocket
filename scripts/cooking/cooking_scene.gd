@@ -5,7 +5,11 @@ class_name CookingScene extends Control
 @onready var inventory_select_list: Container = $Background/InventoryArea/InventorySelectList
 @onready var activity: Control = $Activity
 @onready var selected_food_list: Container = $Background/ChosenFoodArea/SelectedFoodList
+@onready var activity_animated_sprite: TextureRect = $Background/ChosenFoodArea/ActivityAnimatedSprite
+@onready var activity_label: Label = $Background/ChosenFoodArea/ActivityLabel
 
+@export var activity_name: String
+@export var activity_animated_texture: AnimatedTexture
 @export var activity_res: Activity
 @export var activity_scene: PackedScene
 
@@ -17,6 +21,9 @@ signal complete(output)
 func _ready() -> void:
 	activity.complete.connect(finish)
 	reset()
+	activity_label.text = activity_name
+	if activity_animated_texture:
+		activity_animated_sprite.texture = activity_animated_texture
 
 func reset():
 	ingredient_handler.max_slots = activity_res.max_ingredients

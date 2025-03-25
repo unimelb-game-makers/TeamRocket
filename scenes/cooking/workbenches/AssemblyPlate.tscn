@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bhlarqiey25gc"]
+[gd_scene load_steps=9 format=3 uid="uid://bhlarqiey25gc"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_st23u"]
 [ext_resource type="Shader" path="res://scripts/shader/2d_outline.gdshader" id="2_38lgk"]
@@ -22,6 +22,9 @@ shader_parameter/square_border = false
 shader_parameter/offset = null
 shader_parameter/max_or_add = false
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_frx3y"]
+frame_0/texture = ExtResource("2_nv7a3")
+
 [node name="AssemblyPlate" instance=ExtResource("1_st23u")]
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -35,6 +38,8 @@ texture = ExtResource("2_nv7a3")
 
 [node name="CookingScene" parent="CanvasLayer" index="0"]
 visible = false
+activity_name = "Assembly plate"
+activity_animated_texture = SubResource("AnimatedTexture_frx3y")
 activity_res = ExtResource("4_ej8l1")
 
 [node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("3_v3edm")]

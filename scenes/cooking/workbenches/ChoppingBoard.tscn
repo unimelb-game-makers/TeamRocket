@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj4u0n4uqbwvg"]
+[gd_scene load_steps=9 format=3 uid="uid://dj4u0n4uqbwvg"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_n668q"]
 [ext_resource type="Shader" path="res://scripts/shader/2d_outline.gdshader" id="2_2s1lh"]
@@ -22,6 +22,9 @@ shader_parameter/square_border = false
 shader_parameter/offset = null
 shader_parameter/max_or_add = false
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_dis1y"]
+frame_0/texture = ExtResource("3_b1lqa")
+
 [node name="ChoppingBoard" instance=ExtResource("1_n668q")]
 y_sort_enabled = true
 
@@ -37,6 +40,8 @@ texture = ExtResource("3_b1lqa")
 
 [node name="CookingScene" parent="CanvasLayer" index="0"]
 visible = false
+activity_name = "Chopping board"
+activity_animated_texture = SubResource("AnimatedTexture_dis1y")
 activity_res = ExtResource("3_gf6uy")
 
 [node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("4_f5jll")]
