@@ -10,7 +10,8 @@ var is_open = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	RecipeManager.recipe_ui = self
+	recipes = RecipeManager.unlocked_recipes
 	load_recipes()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,6 +20,8 @@ func _process(delta: float) -> void:
 		toggle_book(not visible)
 
 func load_recipes() -> void:
+	for child in recipe_grid_container.get_children():
+		child.queue_free()
 	for recipe in recipes:
 		var recipe_button = recipe_button_scene.instantiate()
 		recipe_button.recipe = recipe

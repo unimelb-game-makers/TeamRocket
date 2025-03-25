@@ -1,14 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://ugbre4vhm1sh"]
+[gd_scene load_steps=5 format=3 uid="uid://ugbre4vhm1sh"]
 
 [ext_resource type="Script" path="res://scripts/ui/recipe_book.gd" id="1_83ik8"]
-[ext_resource type="Script" path="res://resources/resource_scripts/recipe.gd" id="2_67i8p"]
-[ext_resource type="Resource" uid="uid://cjpgf0lpg0byq" path="res://resources/recipes/bolognaise_sauce_rec.tres" id="3_m3idy"]
-[ext_resource type="Resource" uid="uid://bfwue41nr3epe" path="res://resources/recipes/carrot_chopped_rec.tres" id="4_4oqxg"]
-[ext_resource type="Resource" uid="uid://c4h3ng5hvjhl3" path="res://resources/recipes/mince_cooked_rec.tres" id="5_savhs"]
-[ext_resource type="Resource" uid="uid://03e6q22xpcdp" path="res://resources/recipes/onion_chopped_rec.tres" id="6_a1jhl"]
-[ext_resource type="Resource" uid="uid://g4a47xmw2c3d" path="res://resources/recipes/spaghetti_bolognaise_rec.tres" id="7_yp1oa"]
-[ext_resource type="Resource" uid="uid://dq1w8y8sr0c1f" path="res://resources/recipes/spaghetti_cooked_rec.tres" id="8_uv4ll"]
-[ext_resource type="Resource" uid="uid://cc53kuuugxarg" path="res://resources/recipes/tomato_chopped_rec.tres" id="9_xwfqi"]
 [ext_resource type="PackedScene" uid="uid://bdq2cjlut7vho" path="res://scenes/ui/RecipeBook/RecipeButton.tscn" id="10_ktsu7"]
 [ext_resource type="Script" path="res://scripts/ui/RecipeBook/showcase_panel.gd" id="11_txpg6"]
 [ext_resource type="PackedScene" uid="uid://b8pgb2vvy62wa" path="res://scenes/ui/RecipeBook/IngredientButton.tscn" id="12_2j7nn"]
@@ -21,7 +13,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_83ik8")
-recipes = Array[ExtResource("2_67i8p")]([ExtResource("3_m3idy"), ExtResource("4_4oqxg"), ExtResource("5_savhs"), ExtResource("6_a1jhl"), ExtResource("7_yp1oa"), ExtResource("8_uv4ll"), ExtResource("9_xwfqi")])
 recipe_button_scene = ExtResource("10_ktsu7")
 
 [node name="BookBackdrop" type="Panel" parent="."]

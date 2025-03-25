@@ -21,6 +21,7 @@ Globals="*res://scripts/Globals/globals.gd"
 SaveManager="*res://scripts/Globals/save_manager.gd"
 InventoryGlobal="*res://scripts/inventory/inventory_global.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
+RecipeManager="*res://scripts/Globals/recipe_manager.gd"
 
 [display]
 

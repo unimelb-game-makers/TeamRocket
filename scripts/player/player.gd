@@ -33,7 +33,6 @@ const ROLL_COOLDOWN : float = 0
 var roll_cd_timer : float = 0
 var can_roll : bool = true
 
-
 var fired = false
 var animation_locked = false
 

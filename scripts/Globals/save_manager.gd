@@ -50,6 +50,7 @@ func save_game(slot_id):
 		"player_speed_increase": Globals.player_speed_increase,
 		"player_damage_increase": Globals.player_damage_increase,
 		"total_playtime": Globals.total_playtime,
+		"unlocked_recipes": RecipeManager.save_recipes()
 	}
 	var save_file = FileAccess.open(get_savefile_name(slot_id), FileAccess.WRITE)
 	var json_string = JSON.stringify(save_dict)
@@ -91,11 +92,11 @@ func load_game(slot_id):
 	Globals.player_speed_increase = save_data["player_speed_increase"]
 	Globals.player_damage_increase = save_data["player_damage_increase"]
 	Globals.total_playtime = save_data["total_playtime"]
-
+	
+	RecipeManager.load_recipes(save_data["unlocked_recipes"])
 
 func get_savefile_name(slot_id: int) -> String:
 	return "user://savegame_slot{0}.save".format([slot_id])
-
 
 func save_setting_config():
 	var config = ConfigFile.new()
@@ -110,7 +111,6 @@ func save_setting_config():
 	config.set_value("Audio", "ui_volume", Globals.ui_volume)
 
 	config.save("user://setting.cfg")
-
 
 func load_setting_config():
 	var config = ConfigFile.new()

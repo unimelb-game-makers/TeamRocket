@@ -6,6 +6,7 @@ signal submit(item)
 @onready var canvas_layer: CanvasLayer = $UI/CanvasLayer
 
 @export var acceptable_foods: Array[Item]
+@export var recipe: Recipe
 
 func submit_item(item):
 	submit.emit(item)
@@ -16,6 +17,8 @@ func interact():
 	super()
 	canvas_layer.visible = not canvas_layer.visible
 	inventory_select_list.update_inventory_list()
+	print("Interacting")
+	RecipeManager.unlock_recipe(recipe)
 
 func take_item(slot):
 	super(slot)
