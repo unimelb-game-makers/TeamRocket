@@ -6,14 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://d242sxkaq3idj" path="res://assets/food/tomato cut.png" id="4_k03ck"]
 [ext_resource type="Script" path="res://scenes/ui/button_hover_effect.gd" id="4_q1vbu"]
 
-[node name="ItemInventoryButton" type="HBoxContainer"]
+[node name="ItemInventoryButton" type="MarginContainer"]
 custom_minimum_size = Vector2(64, 64)
 anchors_preset = -1
 anchor_right = 0.194
 anchor_bottom = 0.069
 offset_right = -184.32
 offset_bottom = 14.32
-alignment = 1
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 script = ExtResource("1_l1p43")
 
 [node name="ItemButton" type="TextureButton" parent="."]

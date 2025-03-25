@@ -1,7 +1,8 @@
-extends TextureButton
+extends Control
 
-@onready var food_label: Label = $FoodLabel
-@onready var food_texture: Sprite2D = $FoodTexture
+@onready var button: BaseButton = $TextureButton
+@onready var food_label: Label = $TextureButton/FoodLabel
+@onready var food_texture: TextureRect = $TextureButton/FoodTexture
 
 var index
 
@@ -17,4 +18,9 @@ func remove_food():
 	food_removed.emit(index)
 
 func _on_pressed() -> void:
+	SoundManager.play_button_click_sfx()
 	food_removed.emit(index)
+
+
+func play_button_hover_sfx():
+	SoundManager.play_button_hover_sfx()

@@ -56,7 +56,11 @@ func _on_inventory_select_list_item_select(item: Item, amount: int) -> void:
 
 
 func _on_drop_button_pressed() -> void:
+	SoundManager.play_button_click_sfx()
 	if current_selected_item:
 		var amount_left = InventoryGlobal.drop_item(current_selected_item, 1)
 		if amount_left == 0:
 			drop_button.disabled = true
+
+func play_button_hover_sfx():
+	SoundManager.play_button_hover_sfx()

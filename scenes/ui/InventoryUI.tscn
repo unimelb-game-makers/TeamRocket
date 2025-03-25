@@ -295,4 +295,6 @@ patch_margin_right = 10
 patch_margin_bottom = 10
 
 [connection signal="item_select" from="VBoxContainer/ItemListBackground/InventorySelectList" to="." method="_on_inventory_select_list_item_select"]
+[connection signal="mouse_entered" from="VBoxContainer/ItemListBackground/ContextButtonList/UseButton" to="." method="play_button_hover_sfx"]
+[connection signal="mouse_entered" from="VBoxContainer/ItemListBackground/ContextButtonList/DropButton" to="." method="play_button_hover_sfx"]
 [connection signal="pressed" from="VBoxContainer/ItemListBackground/ContextButtonList/DropButton" to="." method="_on_drop_button_pressed"]
