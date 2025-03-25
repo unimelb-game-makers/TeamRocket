@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=39 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="AudioStream" uid="uid://csjr1bs7pcsax" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg" id="2_1ecv6"]
@@ -30,6 +30,8 @@
 [ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/enemy_chicken.tscn" id="22_ykjv2"]
 [ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="23_p6fkx"]
 [ext_resource type="Script" path="res://scripts/player/camera_control.gd" id="24_s3lfa"]
+[ext_resource type="PackedScene" uid="uid://dibgxubjdytnb" path="res://scenes/objects/Interactables/RecipePage.tscn" id="31_hy718"]
+[ext_resource type="Resource" uid="uid://bfwue41nr3epe" path="res://resources/recipes/carrot_chopped_rec.tres" id="32_eadub"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_y1gkg"]
 clip_count = 2
@@ -252,6 +254,10 @@ radius = 1000.0
 position = Vector2(683, 375)
 allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
 radius = 1000.0
+
+[node name="RecipePage" parent="." index="9" instance=ExtResource("31_hy718")]
+position = Vector2(1481, 1636)
+recipe = ExtResource("32_eadub")
 
 [connection signal="aim_mode_enter" from="Player" to="Player/Camera2D" method="enter_aim_mode"]
 [connection signal="aim_mode_exit" from="Player" to="Player/Camera2D" method="exit_aim_mode"]

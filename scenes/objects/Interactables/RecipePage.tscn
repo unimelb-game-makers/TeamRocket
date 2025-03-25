@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dibgxubjdytnb"]
+
+[ext_resource type="Script" path="res://scripts/objects/interactables/recipe_page.gd" id="1_vjq8j"]
+[ext_resource type="Texture2D" uid="uid://kn0k2fmakmpr" path="res://assets/prototype/diagram.jpg" id="2_msfco"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v3jqa"]
+radius = 32.0
+
+[node name="RecipePage" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_vjq8j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v3jqa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0335571, 0.0335571)
+texture = ExtResource("2_msfco")
