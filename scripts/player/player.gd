@@ -9,29 +9,29 @@ var can_move: bool = true
 
 # ----- MOVEMENT VARS -----
 # For smoother movement
-const CROUCH_SPEED : int = 100
-const CROUCH_ACCEL : int = 10
-const STAND_SPEED : int = 200
-const STAND_ACCEL : int = 40
-const RUN_SPEED : int = 400
-const RUN_ACCEL : int = 50
+const CROUCH_SPEED: int = 100
+const CROUCH_ACCEL: int = 10
+const STAND_SPEED: int = 200
+const STAND_ACCEL: int = 40
+const RUN_SPEED: int = 400
+const RUN_ACCEL: int = 50
 
-var curr_speed : float = STAND_SPEED
-var curr_accel : float = STAND_ACCEL
+var curr_speed: float = STAND_SPEED
+var curr_accel: float = STAND_ACCEL
 
-var direction : Vector2
-var is_moving : bool
+var direction: Vector2
+var is_moving: bool
 
 # roll_timer affects speed over the course of the roll
-const ROLL_SPEED : int = 800
-const ROLL_DURATION : float = 0.5
-var roll_timer : float = 0
+const ROLL_SPEED: int = 800
+const ROLL_DURATION: float = 0.5
+var roll_timer: float = 0
 
 # Roll cooldown
 # TODO: Integrate cooldown into statechart
-const ROLL_COOLDOWN : float = 0
-var roll_cd_timer : float = 0
-var can_roll : bool = true
+const ROLL_COOLDOWN: float = 0
+var roll_cd_timer: float = 0
+var can_roll: bool = true
 
 
 var fired = false
@@ -44,6 +44,7 @@ var animation_locked = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var channel_timer: Timer = $ChannelTimer
 @onready var channeling_particles: CPUParticles2D = $Particles/ChannelingParticles
+@onready var feet_position_marker: Marker2D = $FeetPositionMarker
 
 # ----- Player Stats -----
 @export var max_health = 50
@@ -77,7 +78,7 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("channel"):
 		channel_timer.start(0)
-	elif Input.is_action_just_released("channel") or velocity != Vector2(0,0):
+	elif Input.is_action_just_released("channel") or velocity != Vector2(0, 0):
 		channel_timer.stop()
 
 	if (not channel_timer.is_stopped()):
@@ -164,8 +165,8 @@ func _on_roll_state_physics_processing(delta: float) -> void:
 		move_and_slide()
 
 # Quadratic curve starting at ROLL_SPEED and ending at CROUCH_SPEED
-func roll_speed(elapsed_time : float) -> float:
-	var t : float = elapsed_time / ROLL_DURATION
+func roll_speed(elapsed_time: float) -> float:
+	var t: float = elapsed_time / ROLL_DURATION
 	return ROLL_SPEED - (ROLL_SPEED - CROUCH_SPEED) * t * t
 
 func _on_standing_state_entered() -> void:
@@ -247,9 +248,8 @@ func handle_animation(action: String, direction: String = "", secondary_action: 
 	# Handles animations
 	# Input the action, direction and secondary action and the speed of the animation if needed
 	# Will automatically scale the player (cuz some of the animations are missized)
-	
 	if animation_locked:
-		return 
+		return
 	
 	var base_scale: float = 0.12
 	var side_scale: float = 1.16

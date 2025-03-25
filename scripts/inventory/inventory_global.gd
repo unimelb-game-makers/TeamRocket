@@ -1,7 +1,7 @@
 extends Node
 
 var inventory_dict: Dictionary = {}
-var floor_item_scene: PackedScene = preload("res://scenes/item/item_floor.tscn")
+var floor_item_scene: PackedScene = preload("res://scenes/item/ItemOnFloor.tscn")
 
 func get_inventory() -> Dictionary:
 	return inventory_dict
@@ -30,10 +30,9 @@ func has_item(item: Item, amount: int) -> bool:
 	return false
 
 func update_ui() -> void:
-	var ui = get_tree().get_first_node_in_group("ui")
-	var inventory_ui = ui.inventory_container
-	inventory_ui.update_inventory_list()
-	ui.inventory.update_weight_label()
+	var inventory_ui = Globals.inventory_ui
+	inventory_ui.inventory_select_list.update_inventory_list()
+	inventory_ui.update_weight_label()
 	#ui.inventory_label.text = "Inventory: " + str(get_total_weight()) + "kg"
 
 func get_total_weight() -> float:
@@ -41,15 +40,24 @@ func get_total_weight() -> float:
 	for item in inventory_dict:
 		total += item.weight * inventory_dict[item]
 	return total
-	
-func drop_item(item: Item, amount: int) -> void:
+
+## Drop items to the ground and return the amount of that item left. Return -1 if operation failed.
+func drop_item(item: Item, amount: int) -> int:
 	if (has_item(item, amount)):
 		remove_item(item, amount)
 		var dropped_item = floor_item_scene.instantiate()
 		dropped_item.item = item
 		dropped_item.amount = amount
-		dropped_item.global_position = Globals.player.global_position
+		# Randomize spawn position to avoid dropped item overlapp a bit
+		var rand_x = randf_range(-100, 100)
+		var rand_y = randf_range(-100, 100)
 		Globals.item_handler.add_child(dropped_item)
+		dropped_item.global_position = Globals.player.feet_position_marker.global_position + Vector2(rand_x, rand_y)
+		if (inventory_dict.has(item)):
+			return inventory_dict[item]
+		else:
+			return 0
+	return -1
 
 func reset_save_data():
 	inventory_dict = {}

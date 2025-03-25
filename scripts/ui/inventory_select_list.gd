@@ -1,5 +1,7 @@
+@tool
 extends Control
 
+@export var n_slot_column = 5
 @export var item_inventory_button_scene: PackedScene
 
 @onready var grid_container: GridContainer = $GridContainer
@@ -7,7 +9,9 @@ extends Control
 signal item_select(item, amount)
 
 func _ready() -> void:
-	update_inventory_list()
+	grid_container.columns = n_slot_column
+	if not Engine.is_editor_hint():
+		update_inventory_list()
 
 func update_inventory_list():
 	# KILL ALL CHILDREN
@@ -20,7 +24,6 @@ func update_inventory_list():
 		item_button.item = item
 		item_button.amount = InventoryGlobal.get_inventory()[item]
 		item_button.item_selected.connect(select_item)
-		item_button.item_dropped.connect(drop_item)
 		grid_container.add_child(item_button)
 
 func select_item(item, amount):

@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://yw75vu274ne0"]
+
+[ext_resource type="Script" path="res://scripts/item/item_floor.gd" id="1_ddbpc"]
+[ext_resource type="Shader" path="res://scripts/shader/2d_outline.gdshader" id="2_cwm8o"]
+[ext_resource type="Texture2D" uid="uid://po2e2hxrnnr4" path="res://assets/food/carrot raw.png" id="3_xrdhw"]
+[ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="4_46h8u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g54rv"]
+radius = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huoa4"]
+resource_local_to_scene = true
+shader = ExtResource("2_cwm8o")
+shader_parameter/thickness = 4.0
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = null
+shader_parameter/outline_color = Color(0, 1, 0, 1)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = null
+shader_parameter/max_or_add = false
+
+[sub_resource type="Animation" id="Animation_j5gh4"]
+resource_name = "float"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -6), Vector2(0, 0), Vector2(0, 6), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_77bqf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nxmkd"]
+_data = {
+"RESET": SubResource("Animation_77bqf"),
+"float": SubResource("Animation_j5gh4")
+}
+
+[node name="ItemHitbox" type="Area2D"]
+collision_layer = 8
+script = ExtResource("1_ddbpc")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.486275)
+position = Vector2(0, 32)
+scale = Vector2(0.75, 0.125)
+texture = ExtResource("4_46h8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g54rv")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_huoa4")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_xrdhw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nxmkd")
+}
+autoplay = "float"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

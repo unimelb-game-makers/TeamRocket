@@ -8,7 +8,7 @@
 [ext_resource type="Shader" path="res://scripts/shader/2d_outline.gdshader" id="5_0fmag"]
 [ext_resource type="Texture2D" uid="uid://dfs8ar6bwmgc1" path="res://assets/interiors/kitchen/altar.png" id="5_75tl3"]
 [ext_resource type="Texture2D" uid="uid://dc2fhcnhwqdg2" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown_pressed.png" id="5_d4yib"]
-[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="6_2ofly"]
+[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/InventorySelectList.tscn" id="6_2ofly"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xptoa"]
 size = Vector2(128, 112)

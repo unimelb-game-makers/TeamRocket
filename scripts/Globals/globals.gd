@@ -4,6 +4,7 @@ var player: Player
 var item_handler
 var map
 
+var main_ui: MainUI
 var inventory_ui: InventoryUI
 var player_ui: PlayerUI
 var enemy_handler

@@ -11,6 +11,8 @@ func _process(_delta: float) -> void:
 	pivot_offset = size / 2
 
 func _on_mouse_entered():
+	if disabled:
+		return
 	var tween = self.create_tween()
 	tween.tween_property(self, "scale", Vector2(scale_factor, scale_factor), 0.2)
 
