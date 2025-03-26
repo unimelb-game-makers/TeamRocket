@@ -2,7 +2,7 @@ extends Storage
 
 signal submit(item)
 
-@onready var inventory_select_list: Container = $CanvasLayer/UI/InventorySelectList
+@onready var inventory_container: Container = $CanvasLayer/UI/InventoryContainer
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 
 @export var acceptable_foods: Array[Item]
@@ -24,22 +24,15 @@ func submit_item(item):
 func interact():
 	canvas_layer.visible = not canvas_layer.visible
 	item_containers.visible = not item_containers.visible
-	inventory_select_list.update_inventory_list()
+	inventory_container.update_inventory_list()
 
 func take_item(slot):
 	super (slot)
-	inventory_select_list.update_inventory_list()
+	inventory_container.update_inventory_list()
 
 func _on_submit_button_pressed() -> void:
 	if (items[0] in acceptable_foods):
 		submit_item(items[0])
-
-func _on_inventory_select_list_item_selected(item: Item, _amount: int) -> void:
-	if items[0] == null:
-		items[0] = item
-		InventoryGlobal.remove_item(item, 1)
-		inventory_select_list.update_inventory_list()
-		update_display()
 
 
 func _on_body_entered(_body: Node2D) -> void:
@@ -55,3 +48,11 @@ func _on_body_exited(_body: Node2D) -> void:
 func _on_reset_button_pressed() -> void:
 	for slot in item_containers.get_children():
 		slot.remove_food()
+
+
+func _on_inventory_container_item_select(item: Item, _amount: int) -> void:
+	if items[0] == null:
+		items[0] = item
+		InventoryGlobal.remove_item(item, 1)
+		inventory_container.update_inventory_list()
+		update_display()

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="1_yv1id"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_drynj"]
 [ext_resource type="Shader" path="res://scripts/shader/sprite_doodle.gdshader" id="4_esraw"]
-[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/InventorySelectList.tscn" id="4_rg2h7"]
+[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/InventoryContainer.tscn" id="4_rg2h7"]
 [ext_resource type="Script" path="res://scripts/ui/item_description_box.gd" id="5_2pfdl"]
 [ext_resource type="Texture2D" uid="uid://8onwddc0bdip" path="res://assets/textures/kenney_borders/default/Border/panel-border-007.png" id="5_fl6er"]
 [ext_resource type="Texture2D" uid="uid://cw5pbx874gjij" path="res://assets/Player/sprite/portrait_backgrond.png" id="5_lhps5"]
@@ -168,7 +168,7 @@ text = "Inventory"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InventorySelectList" parent="VBoxContainer/ItemListBackground" instance=ExtResource("4_rg2h7")]
+[node name="InventoryContainer" parent="VBoxContainer/ItemListBackground" instance=ExtResource("4_rg2h7")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -294,7 +294,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[connection signal="item_select" from="VBoxContainer/ItemListBackground/InventorySelectList" to="." method="_on_inventory_select_list_item_select"]
+[connection signal="item_select" from="VBoxContainer/ItemListBackground/InventoryContainer" to="." method="_on_inventory_container_item_select"]
 [connection signal="mouse_entered" from="VBoxContainer/ItemListBackground/ContextButtonList/UseButton" to="." method="play_button_hover_sfx"]
 [connection signal="mouse_entered" from="VBoxContainer/ItemListBackground/ContextButtonList/DropButton" to="." method="play_button_hover_sfx"]
 [connection signal="pressed" from="VBoxContainer/ItemListBackground/ContextButtonList/DropButton" to="." method="_on_drop_button_pressed"]

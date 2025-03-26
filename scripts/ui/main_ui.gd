@@ -6,4 +6,4 @@ class_name MainUI
 var inventory_container: Control
 
 func _ready() -> void:
-	inventory_container = inventory_ui.inventory_select_list
+	inventory_container = inventory_ui.inventory_container

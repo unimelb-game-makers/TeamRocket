@@ -7,7 +7,7 @@ signal item_selected(item, amount)
 @onready var dmg_label: Label = $CharacterStats/Stats/DmgLabel
 @onready var speed_label: Label = $CharacterStats/Stats/SpdLabel
 @onready var weight_label: Label = $VBoxContainer/ItemListBackground/WeightLabel
-@onready var inventory_select_list: Container = $VBoxContainer/ItemListBackground/InventorySelectList
+@onready var inventory_container: Container = $VBoxContainer/ItemListBackground/InventoryContainer
 @onready var item_descriptor: ItemDescriptionBox = $VBoxContainer/ItemDescriptionBackground
 @onready var drop_button: Button = $VBoxContainer/ItemListBackground/ContextButtonList/DropButton
 
@@ -48,7 +48,7 @@ func reset_data():
 	current_selected_item = null
 
 
-func _on_inventory_select_list_item_select(item: Item, amount: int) -> void:
+func _on_inventory_container_item_select(item: Item, amount: int) -> void:
 	current_selected_item = item
 	item_selected.emit(item, amount)
 	item_descriptor.update_description_info(item)

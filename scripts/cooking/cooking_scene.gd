@@ -2,7 +2,7 @@ class_name CookingScene extends Control
 
 @onready var ingredient_handler: IngredientHandler = %IngredientHandler
 @onready var start_button: TextureButton = $Background/ChosenFoodArea/StartButton
-@onready var inventory_select_list: Container = $Background/InventoryArea/InventorySelectList
+@onready var inventory_container: Container = $Background/InventoryArea/InventoryContainer
 @onready var activity: Control = $Activity
 @onready var selected_food_list: Container = $Background/ChosenFoodArea/SelectedFoodList
 @onready var activity_animated_sprite: TextureRect = $Background/ChosenFoodArea/ActivityAnimatedSprite
@@ -28,12 +28,12 @@ func _ready() -> void:
 func reset():
 	ingredient_handler.max_slots = activity_res.max_ingredients
 	ingredient_handler.update_slots()
-	inventory_select_list.update_inventory_list()
+	inventory_container.update_inventory_list()
 	activity.reset_game()
 
 	start_button.visible = true
 	ingredient_handler.visible = true
-	inventory_select_list.visible = true
+	inventory_container.visible = true
 	selected_food_list.visible = true
 	activity.visible = false
 
@@ -55,9 +55,13 @@ func _on_start_button_pressed() -> void:
 		ingredient_handler.visible = false
 		activity.visible = true
 		selected_food_list.visible = false
-		inventory_select_list.visible = false
+		inventory_container.visible = false
 		activity_is_in_progress = true
 		activity.start()
 
 func _on_ingredient_handler_update_list() -> void:
-	inventory_select_list.update_inventory_list()
+	inventory_container.update_inventory_list()
+
+
+func _on_inventory_container_item_select(item: Variant, amount: Variant) -> void:
+	add_item(item, amount)

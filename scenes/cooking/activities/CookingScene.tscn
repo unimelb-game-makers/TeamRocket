@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dcfegerycc50x"]
 
 [ext_resource type="Script" path="res://scripts/cooking/cooking_scene.gd" id="1_et2wc"]
-[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/InventorySelectList.tscn" id="2_kjxus"]
+[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/InventoryContainer.tscn" id="2_kjxus"]
 [ext_resource type="Script" path="res://scripts/cooking/ingredient_handler.gd" id="3_2kcow"]
 [ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="4_utnq0"]
 [ext_resource type="Texture2D" uid="uid://dgcn3fv1c6r3e" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="5_v3vyk"]
@@ -58,7 +58,7 @@ offset_right = 504.0
 offset_bottom = 172.0
 grow_vertical = 2
 
-[node name="InventorySelectList" parent="Background/InventoryArea" instance=ExtResource("2_kjxus")]
+[node name="InventoryContainer" parent="Background/InventoryArea" instance=ExtResource("2_kjxus")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -253,6 +253,6 @@ patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
-[connection signal="item_select" from="Background/InventoryArea/InventorySelectList" to="." method="add_item"]
+[connection signal="item_select" from="Background/InventoryArea/InventoryContainer" to="." method="_on_inventory_container_item_select"]
 [connection signal="update_list" from="Background/ChosenFoodArea/SelectedFoodList/IngredientHandler" to="." method="_on_ingredient_handler_update_list"]
 [connection signal="pressed" from="Background/ChosenFoodArea/StartButton" to="." method="_on_start_button_pressed"]
