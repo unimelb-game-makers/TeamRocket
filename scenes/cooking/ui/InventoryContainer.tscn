@@ -10,7 +10,7 @@ offset_bottom = 300.0
 horizontal_scroll_mode = 0
 script = ExtResource("1_gu176")
 item_inventory_button_scene = ExtResource("2_mfeve")
-inventory_origin = 1
+inventory_type = 1
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 2

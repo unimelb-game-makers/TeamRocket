@@ -69,6 +69,7 @@ offset_right = 305.0
 offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
+inventory_type = null
 
 [node name="ResetButton" type="TextureButton" parent="CanvasLayer/UI"]
 layout_mode = 1

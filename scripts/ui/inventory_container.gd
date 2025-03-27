@@ -3,7 +3,7 @@ extends Control
 
 @export var n_slot_column = 5
 @export var item_inventory_button_scene: PackedScene
-@export var inventory_origin: InventoryGlobal.InventoryType
+@export var inventory_type: InventoryGlobal.InventoryType
 
 @onready var grid_container: GridContainer = $GridContainer
 
@@ -20,13 +20,7 @@ func update_inventory_list():
 		child.queue_free()
 
 	# Render Inventory Items
-	var inventory_dict = null
-	match inventory_origin:
-		InventoryGlobal.InventoryType.PLAYER:
-			inventory_dict = InventoryGlobal.get_inventory()
-		InventoryGlobal.InventoryType.FRIDGE:
-			inventory_dict = InventoryGlobal.get_inventory()
-
+	var inventory_dict = InventoryGlobal.get_inventory(inventory_type)
 	for item in inventory_dict:
 		var item_button = item_inventory_button_scene.instantiate()
 		item_button.item = item

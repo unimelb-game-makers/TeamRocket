@@ -4,16 +4,13 @@ extends CookingActivity
 @onready var feedback_label = $FeedbackLabel # Shows feedback messages.
 @onready var sfx_boil_loop: AudioStreamPlayer2D = $SFX_BoilLoop
 @onready var sfx_boil_init: AudioStreamPlayer2D = $SFX_BoilInit
-
-@onready var selected_food_list: CenterContainer = $"../SelectedFoodList"
-@onready var inventory_container: CenterContainer = $"../InventoryContainer"
-@onready var start_button: TextureButton = $"../StartButton"
-
 @onready var drag_boundary: Area2D = $DragBoundary # New boundary area.
 @onready var boundary_radius: float = ($DragBoundary/CollisionShape2D).shape.radius # Get boundary radius.
 @onready var stew_base: Sprite2D = $StewBase # Sprite2D to rotate (StewBase).
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar # The progress bar
 @onready var timer_label: Label = $TimerLabel # The timer label
+
+var cooking_scene: CookingScene
 
 var required_speed = 1.5 # Minimum velocity required.
 var stirring_speed = 0.0 # Current speed of stirring.
@@ -27,6 +24,7 @@ var is_dragging = false # Tracks whether the user is dragging the circle.
 
 
 func _ready() -> void:
+	cooking_scene = get_parent()
 	sfx_boil_init.play()
 	initial_inner_circle_position = inner_circle.position
 	reset_game()
@@ -48,9 +46,9 @@ func start() -> void:
 	reset_game()
 	is_playing = true
 	sfx_boil_loop.play()
-	selected_food_list.visible = false
-	inventory_container.visible = false
-	start_button.visible = false
+	cooking_scene.selected_food_list.visible = false
+	cooking_scene.inventory_container.visible = false
+	cooking_scene.start_button.visible = false
 
 func _process(delta: float) -> void:
 	if not is_playing:

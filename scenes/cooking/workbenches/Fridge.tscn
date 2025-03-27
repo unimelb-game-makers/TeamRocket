@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bai0mllc38ec1" path="res://assets/textures/kenney_borders/default/Border/panel-border-003.png" id="8_ccpos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqfx0"]
-size = Vector2(224, 336)
+size = Vector2(224, 248)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k3j0g"]
 resource_local_to_scene = true
@@ -29,7 +29,7 @@ collision_layer = 32
 script = ExtResource("1_5lxtu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, -36)
 shape = SubResource("RectangleShape2D_kqfx0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -156,7 +156,7 @@ offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 n_slot_column = 6
-inventory_origin = 2
+inventory_type = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/FridgeUI/Background/FridgeArea"]
 modulate = Color(0.596078, 0.458824, 0.329412, 1)
@@ -188,5 +188,5 @@ patch_margin_bottom = 20
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="item_select" from="CanvasLayer/FridgeUI/Background/InventoryArea/InventoryContainer" to="CanvasLayer/FridgeUI" method="add_item"]
-[connection signal="item_select" from="CanvasLayer/FridgeUI/Background/FridgeArea/FridgeContainer" to="CanvasLayer/FridgeUI" method="add_item"]
+[connection signal="item_select" from="CanvasLayer/FridgeUI/Background/InventoryArea/InventoryContainer" to="." method="_on_inventory_container_item_select"]
+[connection signal="item_select" from="CanvasLayer/FridgeUI/Background/FridgeArea/FridgeContainer" to="." method="_on_fridge_container_item_select"]

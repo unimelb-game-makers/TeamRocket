@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://4s64a0adjxlr"]
 
-[ext_resource type="Script" path="res://scripts/cooking/PotActivity.gd" id="2_gp5o6"]
+[ext_resource type="Script" path="res://scripts/cooking/pot_activity.gd" id="1_ishcw"]
 [ext_resource type="Texture2D" uid="uid://tq63nq80td5t" path="res://assets/workstations/stew_game/stew_top1.png" id="5_vbh60"]
 [ext_resource type="AudioStream" uid="uid://cqeq1rwqjwdif" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/boil loop.wav" id="6_8i5cn"]
 [ext_resource type="Texture2D" uid="uid://cdtofnyg3fpkq" path="res://assets/workstations/stew_game/stew_top2.png" id="6_xa1cm"]
@@ -33,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_gp5o6")
+script = ExtResource("1_ishcw")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(645.995, 347.938)
