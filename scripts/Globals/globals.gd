@@ -69,6 +69,6 @@ func start_record_playtime():
 	start_record_timestamp = Time.get_ticks_msec()
 
 func update_total_playtime():
-	var current_time = Time.get_ticks_msec()
-	var played_time = current_time - start_record_timestamp
+	var played_time = Time.get_ticks_msec() - start_record_timestamp
 	total_playtime += played_time
+	start_record_timestamp = Time.get_ticks_msec() # Reset start timestamp
