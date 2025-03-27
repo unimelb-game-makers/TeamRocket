@@ -29,9 +29,10 @@ func update_weight_label():
 	weight_label.text = "Weight: " + str(InventoryGlobal.get_total_weight()) + "kg"
 
 func update_character_stats():
-	hp_label.text = "HP: " + str(50 * (1 + Globals.player_hp_increase))
-	dmg_label.text = "DMG: " + str(5 * (1 + Globals.player_damage_increase))
-	speed_label.text = "SPD: " + str(1 + Globals.player_speed_increase)
+	pass
+	hp_label.text = "HP: " + str(Globals.player_stats.health)
+	dmg_label.text = "DMG: " + str(Globals.player_stats.damage)
+	speed_label.text = "SPD: " + str(Globals.player_stats.speed)
 
 
 func toggle_inventory(status: bool) -> void:
