@@ -24,7 +24,6 @@ func _ready() -> void:
 		return
 
 	save_data = SaveManager.load_data_only(slot_id)
-	print(save_data)
 	if not save_data.is_empty():
 		var player_stats = save_data["player_stats"]
 		var level = player_stats["level"]

@@ -46,7 +46,7 @@ func _ready() -> void:
 	Globals.player = self
 	curr_speed = Globals.player_stats.speed
 	curr_accel = Globals.player_stats.accel
-	Globals.player_stats.health = Globals.player_stats.max_health
+
 
 func _process(_delta: float) -> void:
 	# Code for item pickup
