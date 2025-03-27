@@ -101,7 +101,6 @@ func load_game(slot_id):
 
 	var save_data = load_data_only(slot_id)
 	if save_data.is_empty():
-		# GameManager.load_new_save_data()
 		return
 
 	InventoryGlobal.inventory_dict = convert_inventory_data_when_load(save_data["inventory_dict"])

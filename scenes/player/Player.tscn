@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://bp53g1jmqlap"]
+[gd_scene load_steps=99 format=3 uid="uid://bp53g1jmqlap"]
 
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_lvdue"]

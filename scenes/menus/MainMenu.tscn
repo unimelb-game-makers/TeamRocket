@@ -1,15 +1,14 @@
-[gd_scene load_steps=34 format=3 uid="uid://eg1evlw6ow0i"]
+[gd_scene load_steps=33 format=3 uid="uid://eg1evlw6ow0i"]
 
 [ext_resource type="Script" path="res://scripts/menus/main_menu.gd" id="1_fjdek"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="2_ik0mn"]
-[ext_resource type="PackedScene" path="res://scenes/menus/SettingMenu.tscn" id="2_r7byj"]
-[ext_resource type="Resource" uid="uid://bgplmsv507g1w" path="res://resources/player/player_stats.tres" id="2_xtchd"]
+[ext_resource type="PackedScene" uid="uid://j00qr7dcyhv4" path="res://scenes/menus/SettingMenu.tscn" id="2_r7byj"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_atwnr"]
 [ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="3_cx0kh"]
 [ext_resource type="Shader" path="res://scripts/shader/vignette.gdshader" id="3_nrdw3"]
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="5_gkg36"]
 [ext_resource type="PackedScene" uid="uid://dif5ua57y8udh" path="res://scenes/ui/SaveSlotItem.tscn" id="5_v3mkp"]
-[ext_resource type="PackedScene" path="res://scenes/ui/TemplateButton.tscn" id="6_2govm"]
+[ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="6_2govm"]
 [ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="6_hmsnk"]
 [ext_resource type="PackedScene" uid="uid://p6jrdiqo23p1" path="res://scenes/objects/Obstacles/WreckedCar3.tscn" id="7_s88nw"]
 [ext_resource type="PackedScene" uid="uid://vk8s3qx7g5vu" path="res://scenes/objects/Obstacles/Debris1.tscn" id="8_03kpm"]
@@ -125,7 +124,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fjdek")
-player_stats = ExtResource("2_xtchd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

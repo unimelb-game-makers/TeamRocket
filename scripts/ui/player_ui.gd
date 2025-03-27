@@ -10,6 +10,7 @@ class_name PlayerUI
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Globals.player_ui = self
+	update_health(Globals.player_stats.health, Globals.player_stats.max_health)
 
 func update_health(health, max_health):
 	health_bar.value = health

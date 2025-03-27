@@ -1,5 +1,7 @@
 extends Node
 
+@export var default_player_stats: PlayerStatsResource
+
 var player: Player
 var player_stats: PlayerStatsResource
 var item_handler
@@ -37,6 +39,7 @@ var window_mode_index: int = 1 # From 0 to 2 for FULLSCREEN / WINDOWED / BORDERL
 func _ready() -> void:
 	load_item_database()
 	SaveManager.load_setting_config()
+	player_stats = default_player_stats
 
 func load_item_database():
 	var directory_path = "res://resources/items/"

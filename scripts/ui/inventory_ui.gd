@@ -16,9 +16,7 @@ var current_selected_item: Item = null
 
 func _ready() -> void:
 	Globals.inventory_ui = self
-	update_character_stats()
-	update_weight_label()
-	drop_button.disabled = true
+	reset_data()
 
 
 func _process(_delta: float) -> void:
@@ -29,10 +27,9 @@ func update_weight_label():
 	weight_label.text = "Weight: " + str(InventoryGlobal.get_total_weight()) + "kg"
 
 func update_character_stats():
-	pass
-	hp_label.text = "HP: " + str(Globals.player_stats.health)
-	dmg_label.text = "DMG: " + str(Globals.player_stats.damage)
-	speed_label.text = "SPD: " + str(Globals.player_stats.speed)
+	hp_label.text = "HP: {0} / {1}".format([Globals.player_stats.health, Globals.player_stats.max_health])
+	dmg_label.text = "DMG: {0}".format([Globals.player_stats.damage])
+	speed_label.text = "SPD: {0}".format([Globals.player_stats.speed])
 
 
 func toggle_inventory(status: bool) -> void:
@@ -47,6 +44,8 @@ func reset_data():
 	drop_button.disabled = true
 	item_descriptor.reset_display()
 	current_selected_item = null
+	update_character_stats()
+	update_weight_label()
 
 
 func _on_inventory_container_item_select(item: Item, amount: int) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxuu77kvbmixu"]
+[gd_scene load_steps=11 format=3 uid="uid://hgrksmummwv0"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_ui.gd" id="1_4xgkk"]
 [ext_resource type="Script" path="res://scripts/ui/player_ui.gd" id="2_yyelw"]
@@ -9,7 +9,7 @@
 [ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="5_c176x"]
 [ext_resource type="Texture2D" uid="uid://b5oyt8wn2cl4n" path="res://assets/textures/kenney_borders/default/Border/panel-border-028.png" id="5_qbwp1"]
 [ext_resource type="PackedScene" uid="uid://ck0jasabkl7co" path="res://scenes/menus/PauseMenu.tscn" id="6_t0vuv"]
-[ext_resource type="PackedScene" uid="uid://cpwdv7vvm7kdc" path="res://scenes/ui/InventoryUI.tscn" id="7_pb8bc"]
+[ext_resource type="PackedScene" path="res://scenes/ui/InventoryUI.tscn" id="7_pb8bc"]
 
 [node name="MainUI" type="Control" groups=["ui"]]
 layout_mode = 3
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4xgkk")
 
-[node name="HUD" type="Control" parent="."]
+[node name="PlayerUI" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,7 +30,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("2_yyelw")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerUI"]
 visible = false
 modulate = Color(0.230315, 0.230315, 0.230315, 1)
 custom_minimum_size = Vector2(100, 100)
@@ -45,7 +45,7 @@ texture_under = ExtResource("3_8nnro")
 texture_progress = ExtResource("3_8nnro")
 tint_under = Color(1, 1, 1, 0)
 
-[node name="HealthBar" type="TextureProgressBar" parent="HUD"]
+[node name="HealthBar" type="TextureProgressBar" parent="PlayerUI"]
 layout_mode = 1
 offset_left = 32.0
 offset_top = 24.0
@@ -63,7 +63,7 @@ texture_progress = ExtResource("4_1vp2p")
 tint_under = Color(0, 0, 0, 1)
 tint_progress = Color(0.292969, 0.0190454, 0, 1)
 
-[node name="HealthBarBorder" type="NinePatchRect" parent="HUD"]
+[node name="HealthBarBorder" type="NinePatchRect" parent="PlayerUI"]
 self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
 layout_mode = 1
 offset_left = 24.0
@@ -76,7 +76,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="TimerProgressBar" type="TextureProgressBar" parent="HUD"]
+[node name="TimerProgressBar" type="TextureProgressBar" parent="PlayerUI"]
 self_modulate = Color(0.129412, 0.254902, 0.254902, 1)
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
@@ -92,7 +92,7 @@ texture_under = ExtResource("3_8nnro")
 texture_progress = ExtResource("3_8nnro")
 tint_under = Color(0.306923, 0.306923, 0.306923, 1)
 
-[node name="Timer" type="Label" parent="HUD/TimerProgressBar"]
+[node name="Timer" type="Label" parent="PlayerUI/TimerProgressBar"]
 self_modulate = Color(0.507692, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -112,7 +112,7 @@ text = "07:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GunInfo" type="ColorRect" parent="HUD"]
+[node name="GunInfo" type="ColorRect" parent="PlayerUI"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -127,7 +127,7 @@ grow_horizontal = 0
 grow_vertical = 0
 color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 
-[node name="GunTexture" type="TextureRect" parent="HUD/GunInfo"]
+[node name="GunTexture" type="TextureRect" parent="PlayerUI/GunInfo"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -143,7 +143,7 @@ grow_vertical = 2
 texture = ExtResource("4_kvrx6")
 expand_mode = 3
 
-[node name="AmmoCount" type="Label" parent="HUD/GunInfo"]
+[node name="AmmoCount" type="Label" parent="PlayerUI/GunInfo"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -162,7 +162,7 @@ text = "5/5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="NinePatchRect" parent="HUD/GunInfo"]
+[node name="ColorRect" type="NinePatchRect" parent="PlayerUI/GunInfo"]
 self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
 layout_mode = 1
 anchors_preset = 15
