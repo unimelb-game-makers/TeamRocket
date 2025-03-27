@@ -41,6 +41,7 @@ func load_character_info():
 	pass
 
 func _on_player_death() -> void:
+	InventoryGlobal.clear_inventory(InventoryGlobal.InventoryType.PLAYER)
 	switch_to_kitchen()
 
 # Temp Signal so player can return to home easier
