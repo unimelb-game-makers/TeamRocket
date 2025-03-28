@@ -1,5 +1,5 @@
-extends Control
 class_name SettingMenu
+extends Control
 
 @export var keybind_button_prefab: PackedScene
 
