@@ -8,6 +8,9 @@ class_name CookingScene extends Control
 @onready var activity_animated_sprite: TextureRect = $Background/ChosenFoodArea/ActivityAnimatedSprite
 @onready var activity_label: Label = $Background/ChosenFoodArea/ActivityLabel
 
+@onready var inventory_area: Control = $Background/InventoryArea
+@onready var chosen_food_area: Control = $Background/ChosenFoodArea
+
 @export var activity_name: String
 @export var activity_animated_texture: AnimatedTexture
 @export var activity_res: Activity
@@ -36,6 +39,9 @@ func reset():
 	inventory_container.visible = true
 	selected_food_list.visible = true
 	activity.visible = false
+	
+	inventory_area.visible = true
+	chosen_food_area.visible = true
 
 
 func add_item(item: Item, _amount: int):
@@ -56,6 +62,10 @@ func _on_start_button_pressed() -> void:
 		activity.visible = true
 		selected_food_list.visible = false
 		inventory_container.visible = false
+		
+		inventory_area.visible = false
+		chosen_food_area.visible = false
+		
 		activity_is_in_progress = true
 		activity.start()
 
