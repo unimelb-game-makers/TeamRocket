@@ -1,5 +1,5 @@
-extends Control
 class_name MainMenu
+extends Control
 
 @onready var camera_2d: Camera2D = $BackgroundMap/Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
