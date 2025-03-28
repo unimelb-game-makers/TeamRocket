@@ -17,7 +17,7 @@ func submit_food(item: Item):
 	var buff_i = randi_range(0, 3)
 	match buff_i:
 		1:
-			Globals.player.player_stats.health += 5
+			Globals.player.player_stats.max_health += 5
 		2:
 			Globals.player.player_stats.speed += 5
 		3:

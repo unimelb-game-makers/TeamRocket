@@ -6,6 +6,7 @@ extends Area2D
 @export var amount: int = 1
 
 func _ready() -> void:
+	sprite.material.set_shader_parameter("thickness", 0)
 	set_item()
 
 func delete_item() -> void:
@@ -17,3 +18,10 @@ func set_item() -> void:
 func interact() -> void:
 	InventoryGlobal.add_item(item, amount)
 	delete_item()
+
+
+func _on_body_exited(_body: Node2D) -> void:
+	sprite.material.set_shader_parameter("thickness", 0)
+
+func _on_body_entered(_body: Node2D) -> void:
+	sprite.material.set_shader_parameter("thickness", 5)

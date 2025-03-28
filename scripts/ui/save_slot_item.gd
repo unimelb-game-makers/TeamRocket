@@ -25,7 +25,8 @@ func _ready() -> void:
 
 	save_data = SaveManager.load_data_only(slot_id)
 	if not save_data.is_empty():
-		var level = save_data.get("player_level", 0)
+		var player_stats = save_data["player_stats"]
+		var level = player_stats["level"]
 		var playtime = save_data.get("total_playtime", 0)
 		load_button_label.text = "[b][color=green]Slot {0}[/color][/b] \
 			\nLevel: {1} \
@@ -48,7 +49,7 @@ func _on_load_button_pressed() -> void:
 	main_menu.start_game()
 
 func _on_delete_button_pressed() -> void:
-	# SoundManager.play_button_click_sfx()
+	SoundManager.play_button_click_sfx()
 	if not confirm_delete:
 		confirm_delete = true
 		delete_button.text = "Confirm?"

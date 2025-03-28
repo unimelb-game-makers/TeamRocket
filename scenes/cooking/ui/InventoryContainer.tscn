@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://tq5lx00lkfo2"]
+
+[ext_resource type="Script" path="res://scripts/ui/inventory_container.gd" id="1_gu176"]
+[ext_resource type="PackedScene" uid="uid://cik7cck2oky1w" path="res://scenes/ui/ItemInventoryButton.tscn" id="2_mfeve"]
+
+[node name="InventoryContainer" type="ScrollContainer"]
+custom_minimum_size = Vector2(300, 300)
+offset_right = 328.0
+offset_bottom = 300.0
+horizontal_scroll_mode = 0
+script = ExtResource("1_gu176")
+item_inventory_button_scene = ExtResource("2_mfeve")
+inventory_type = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 5
+
+[node name="ItemInventoryButton" parent="GridContainer" instance=ExtResource("2_mfeve")]
+layout_mode = 2
+
+[node name="ItemInventoryButton2" parent="GridContainer" instance=ExtResource("2_mfeve")]
+layout_mode = 2
+
+[node name="ItemInventoryButton3" parent="GridContainer" instance=ExtResource("2_mfeve")]
+layout_mode = 2
+
+[node name="ItemInventoryButton4" parent="GridContainer" instance=ExtResource("2_mfeve")]
+layout_mode = 2
+
+[node name="ItemInventoryButton5" parent="GridContainer" instance=ExtResource("2_mfeve")]
+layout_mode = 2
+
+[node name="ItemInventoryButton6" parent="GridContainer" instance=ExtResource("2_mfeve")]
+layout_mode = 2
+
+[node name="ItemInventoryButton7" parent="GridContainer" instance=ExtResource("2_mfeve")]
+layout_mode = 2
+
+[node name="ItemInventoryButton8" parent="GridContainer" instance=ExtResource("2_mfeve")]
+layout_mode = 2
+
+[node name="ItemInventoryButton9" parent="GridContainer" instance=ExtResource("2_mfeve")]
+layout_mode = 2
+
+[node name="ItemInventoryButton10" parent="GridContainer" instance=ExtResource("2_mfeve")]
+layout_mode = 2

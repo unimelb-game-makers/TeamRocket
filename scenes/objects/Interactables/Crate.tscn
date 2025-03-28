@@ -1,20 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8ni7apwy8dyx"]
+[gd_scene load_steps=9 format=3 uid="uid://c8ni7apwy8dyx"]
 
 [ext_resource type="Texture2D" uid="uid://fw7m087mo0ka" path="res://assets/Park/Objects/crate.png" id="1_0l3g5"]
 [ext_resource type="Script" path="res://scripts/objects/interactables/storage.gd" id="1_td6ss"]
 [ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="2_rw46d"]
+[ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="3_uyd3e"]
+[ext_resource type="Shader" path="res://scripts/shader/2d_outline.gdshader" id="4_ajerb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o8un"]
 size = Vector2(193, 145)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ordb"]
+resource_local_to_scene = true
+shader = ExtResource("4_ajerb")
+shader_parameter/thickness = 5.0
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = null
+shader_parameter/outline_color = Color(0, 1, 0, 1)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = null
+shader_parameter/max_or_add = false
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqr6h"]
 size = Vector2(159, 30)
 
-[node name="Area2D" type="Area2D"]
+[node name="Area2D" type="Area2D" node_paths=PackedStringArray("storage_ui")]
 collision_layer = 8
 script = ExtResource("1_td6ss")
 slots_num = 9
 items = Array[ExtResource("2_rw46d")]([null, null, null, null, null, null, null, null, null])
+item_slot_scene = ExtResource("3_uyd3e")
+storage_ui = NodePath("UI")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, -0.5)
@@ -22,6 +39,7 @@ shape = SubResource("RectangleShape2D_5o8un")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_0ordb")
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_0l3g5")
 
@@ -31,6 +49,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="ItemContainers" type="GridContainer" parent="UI"]
 unique_name_in_owner = true
@@ -50,4 +69,5 @@ collision_mask = 0
 position = Vector2(-0.5, -8)
 shape = SubResource("RectangleShape2D_hqr6h")
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

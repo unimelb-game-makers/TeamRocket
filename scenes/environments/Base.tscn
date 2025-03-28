@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="1_2xv6m"]
 [ext_resource type="Script" path="res://scripts/Game/game_handler.gd" id="1_eaqps"]
 [ext_resource type="Script" path="res://scripts/item/item_handler.gd" id="1_p3mrr"]
-[ext_resource type="PackedScene" uid="uid://bxuu77kvbmixu" path="res://scenes/ui/ui.tscn" id="2_a8oao"]
+[ext_resource type="PackedScene" uid="uid://hgrksmummwv0" path="res://scenes/ui/MainUI.tscn" id="2_a8oao"]
 [ext_resource type="Script" path="res://scripts/Game/interactable_handler.gd" id="2_nlyqa"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="3_ld3e5"]
 [ext_resource type="Script" path="res://scripts/enemy/Areas/enemy_handler.gd" id="4_omi12"]
@@ -25,6 +25,9 @@ offset_right = 5000.0
 offset_bottom = 4000.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="UI" parent="GameHandler/CanvasLayer" instance=ExtResource("2_a8oao")]
+mouse_filter = 2
 
 [node name="Lighting" type="Node" parent="."]
 
@@ -65,9 +68,7 @@ script = ExtResource("4_omi12")
 
 [node name="SpawnAreas" type="Node" parent="EnemyHandler"]
 
-[node name="UI" parent="." instance=ExtResource("2_a8oao")]
-
 [connection signal="timeout" from="GameHandler/GameTimer" to="GameHandler" method="_on_game_timer_timeout"]
-[connection signal="activity_interact" from="Player" to="UI" method="_on_player_activity_interact"]
+[connection signal="activity_interact" from="Player" to="GameHandler/CanvasLayer/UI" method="_on_player_activity_interact"]
 [connection signal="channel_complete" from="Player" to="GameHandler" method="_on_player_channel_complete"]
 [connection signal="death" from="Player" to="GameHandler" method="_on_player_death"]

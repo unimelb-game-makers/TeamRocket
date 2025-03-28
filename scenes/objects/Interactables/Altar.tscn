@@ -1,53 +1,118 @@
-[gd_scene load_steps=9 format=3 uid="uid://unbm0ush87sw"]
+[gd_scene load_steps=12 format=3 uid="uid://unbm0ush87sw"]
 
 [ext_resource type="Script" path="res://scripts/objects/interactables/altar.gd" id="1_rfv52"]
 [ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="2_upo2r"]
 [ext_resource type="Resource" uid="uid://d4fvdxgm3d6pq" path="res://resources/items/spaghetti_bolognaise.tres" id="3_ikw8l"]
 [ext_resource type="Texture2D" uid="uid://ck6wk3lfpwesd" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="4_eda5l"]
+[ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="4_ji3s6"]
+[ext_resource type="Shader" path="res://scripts/shader/2d_outline.gdshader" id="5_0fmag"]
 [ext_resource type="Texture2D" uid="uid://dfs8ar6bwmgc1" path="res://assets/interiors/kitchen/altar.png" id="5_75tl3"]
 [ext_resource type="Texture2D" uid="uid://dc2fhcnhwqdg2" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown_pressed.png" id="5_d4yib"]
-[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="6_2ofly"]
+[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/InventoryContainer.tscn" id="6_2ofly"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xptoa"]
-size = Vector2(99, 148)
+size = Vector2(128, 112)
 
-[node name="Area2D" type="Area2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o24tu"]
+resource_local_to_scene = true
+shader = ExtResource("5_0fmag")
+shader_parameter/thickness = 5.0
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = null
+shader_parameter/outline_color = Color(1, 1, 0, 1)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = null
+shader_parameter/max_or_add = false
+
+[node name="Area2D" type="Area2D" node_paths=PackedStringArray("storage_ui")]
 collision_layer = 8
 script = ExtResource("1_rfv52")
 acceptable_foods = Array[ExtResource("2_upo2r")]([ExtResource("3_ikw8l")])
 slots_num = 1
 items = Array[ExtResource("2_upo2r")]([null])
+item_slot_scene = ExtResource("4_ji3s6")
+storage_ui = NodePath("CanvasLayer/UI")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -7)
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_xptoa")
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_o24tu")
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_75tl3")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="ItemContainers" type="GridContainer" parent="UI/CanvasLayer"]
-unique_name_in_owner = true
-offset_left = 565.0
-offset_top = 274.0
-offset_right = 626.0
-offset_bottom = 335.0
-scale = Vector2(2, 2)
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="SubmitButton" type="TextureButton" parent="UI/CanvasLayer"]
-offset_left = 528.0
-offset_top = 479.0
-offset_right = 718.0
-offset_bottom = 529.0
+[node name="InventoryContainer" parent="CanvasLayer/UI" instance=ExtResource("6_2ofly")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -305.0
+offset_top = -214.0
+offset_right = 305.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResetButton" type="TextureButton" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -216.0
+offset_top = -192.0
+offset_right = -26.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 0
 texture_normal = ExtResource("4_eda5l")
 texture_pressed = ExtResource("5_d4yib")
 
-[node name="Label" type="Label" parent="UI/CanvasLayer/SubmitButton"]
+[node name="Label" type="Label" parent="CanvasLayer/UI/ResetButton"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -3.0
+offset_right = 190.0
+offset_bottom = 47.0
+text = "Reset"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubmitButton" type="TextureButton" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -192.0
+offset_right = 214.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("4_eda5l")
+texture_pressed = ExtResource("5_d4yib")
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/SubmitButton"]
 layout_mode = 0
 offset_left = -1.0
 offset_top = -3.0
@@ -57,16 +122,18 @@ text = "Submit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InventorySelectList" parent="UI/CanvasLayer" instance=ExtResource("6_2ofly")]
-offset_left = 109.0
-offset_top = 117.0
-offset_right = 464.0
-offset_bottom = 545.0
+[node name="ItemContainers" type="GridContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -32.0
+offset_top = -152.0
+offset_right = 103.0
+offset_bottom = -2.00002
+scale = Vector2(1.5, 1.5)
+columns = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("5_75tl3")
-
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="pressed" from="UI/CanvasLayer/SubmitButton" to="." method="_on_submit_button_pressed"]
-[connection signal="item_selected" from="UI/CanvasLayer/InventorySelectList" to="." method="_on_inventory_select_list_item_selected"]
+[connection signal="item_select" from="CanvasLayer/UI/InventoryContainer" to="." method="_on_inventory_container_item_select"]
+[connection signal="pressed" from="CanvasLayer/UI/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/SubmitButton" to="." method="_on_submit_button_pressed"]

@@ -13,11 +13,11 @@ config_version=5
 config/name="Team-Rocket Game"
 run/main_scene="res://scenes/menus/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/Player/sprite/alex_portrait.png"
 
 [autoload]
 
-Globals="*res://scripts/Globals/globals.gd"
+Globals="*res://scripts/Globals/Globals.tscn"
 SaveManager="*res://scripts/Globals/save_manager.gd"
 InventoryGlobal="*res://scripts/inventory/inventory_global.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
@@ -40,6 +40,10 @@ navigation="For Navigation Layer"
 Item=""
 Workbench=""
 Camera=""
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 

@@ -1,0 +1,300 @@
+[gd_scene load_steps=15 format=3 uid="uid://cpwdv7vvm7kdc"]
+
+[ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="1_yv1id"]
+[ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_drynj"]
+[ext_resource type="Shader" path="res://scripts/shader/sprite_doodle.gdshader" id="4_esraw"]
+[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/InventoryContainer.tscn" id="4_rg2h7"]
+[ext_resource type="Script" path="res://scripts/ui/item_description_box.gd" id="5_2pfdl"]
+[ext_resource type="Texture2D" uid="uid://8onwddc0bdip" path="res://assets/textures/kenney_borders/default/Border/panel-border-007.png" id="5_fl6er"]
+[ext_resource type="Texture2D" uid="uid://cw5pbx874gjij" path="res://assets/Player/sprite/portrait_backgrond.png" id="5_lhps5"]
+[ext_resource type="Texture2D" uid="uid://g2hvel1efrhg" path="res://assets/Player/sprite/alex_eyeless_portrait.png" id="5_nx3sc"]
+[ext_resource type="Texture2D" uid="uid://cfcjjxfbtvw5x" path="res://assets/Player/sprite/alex_eye_only_portrait.png" id="6_q7x8x"]
+[ext_resource type="Script" path="res://scenes/ui/portrait_eye_follow_mouse.gd" id="7_3ewop"]
+[ext_resource type="Texture2D" uid="uid://cevkjrlj4y5qd" path="res://assets/food/tomato raw.png" id="7_hffay"]
+[ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="9_et0cm"]
+[ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="11_dycha"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kcf3a"]
+shader = ExtResource("4_esraw")
+shader_parameter/wobble_amount = 1.0
+shader_parameter/speed = 1.0
+shader_parameter/frame_rate = 3.0
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_yv1id")
+
+[node name="CharacterStats" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+offset_left = 136.0
+offset_top = 264.0
+offset_right = 420.0
+offset_bottom = 632.0
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+
+[node name="PortaitBackground" type="TextureRect" parent="CharacterStats"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_top = 32.0
+offset_right = 84.0
+offset_bottom = 194.0
+grow_horizontal = 2
+texture = ExtResource("5_lhps5")
+expand_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="CharacterStats/PortaitBackground" node_paths=PackedStringArray("eye_only_texture")]
+material = SubResource("ShaderMaterial_kcf3a")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_nx3sc")
+expand_mode = 2
+script = ExtResource("7_3ewop")
+eye_only_texture = NodePath("../EyeOnly")
+
+[node name="EyeOnly" type="TextureRect" parent="CharacterStats/PortaitBackground"]
+material = SubResource("ShaderMaterial_kcf3a")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_q7x8x")
+expand_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CharacterStats/PortaitBackground"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_fl6er")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Stats" type="VBoxContainer" parent="CharacterStats"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 232.0
+offset_right = 232.0
+offset_bottom = 330.0
+
+[node name="HpLabel" type="Label" parent="CharacterStats/Stats"]
+layout_mode = 2
+theme = ExtResource("3_drynj")
+theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
+theme_override_font_sizes/font_size = 24
+text = "HP: "
+
+[node name="DmgLabel" type="Label" parent="CharacterStats/Stats"]
+layout_mode = 2
+theme = ExtResource("3_drynj")
+theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
+theme_override_font_sizes/font_size = 24
+text = "Dmg: "
+
+[node name="SpdLabel" type="Label" parent="CharacterStats/Stats"]
+layout_mode = 2
+theme = ExtResource("3_drynj")
+theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
+theme_override_font_sizes/font_size = 24
+text = "Spd: "
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CharacterStats"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_et0cm")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -296.0
+offset_right = 508.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="ItemListBackground" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+
+[node name="Label" type="Label" parent="VBoxContainer/ItemListBackground"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.0
+offset_top = 16.0
+offset_right = 84.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
+theme_override_font_sizes/font_size = 28
+text = "Inventory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventoryContainer" parent="VBoxContainer/ItemListBackground" instance=ExtResource("4_rg2h7")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 56.0
+offset_top = -136.0
+offset_right = 456.0
+offset_bottom = 164.0
+grow_vertical = 2
+n_slot_column = 6
+
+[node name="ContextButtonList" type="VBoxContainer" parent="VBoxContainer/ItemListBackground"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -120.0
+offset_right = -56.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="UseButton" parent="VBoxContainer/ItemListBackground/ContextButtonList" instance=ExtResource("11_dycha")]
+layout_mode = 2
+disabled = true
+text = "Use"
+
+[node name="DropButton" parent="VBoxContainer/ItemListBackground/ContextButtonList" instance=ExtResource("11_dycha")]
+layout_mode = 2
+text = "Drop"
+
+[node name="WeightLabel" type="Label" parent="VBoxContainer/ItemListBackground"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -41.5
+offset_top = -42.0
+offset_right = 41.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_drynj")
+text = "Weight: xxxxkg"
+vertical_alignment = 1
+
+[node name="ItemListBackground" type="NinePatchRect" parent="VBoxContainer/ItemListBackground"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+custom_minimum_size = Vector2(700, 400)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_et0cm")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="ItemDescriptionBackground" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+script = ExtResource("5_2pfdl")
+
+[node name="ItemName" type="Label" parent="VBoxContainer/ItemDescriptionBackground"]
+layout_mode = 1
+offset_left = 144.0
+offset_top = 12.0
+offset_right = 680.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 20
+text = "Tomato"
+
+[node name="ItemDesc" type="Label" parent="VBoxContainer/ItemDescriptionBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 144.0
+offset_top = 52.0
+offset_right = -20.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "Tomato description lora ipsum"
+autowrap_mode = 2
+
+[node name="ItemImage" type="TextureRect" parent="VBoxContainer/ItemDescriptionBackground"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -63.0
+offset_right = 136.0
+offset_bottom = 57.0
+grow_vertical = 2
+texture = ExtResource("7_hffay")
+expand_mode = 1
+
+[node name="ItemDescriptionBackground" type="NinePatchRect" parent="VBoxContainer/ItemDescriptionBackground"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_et0cm")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[connection signal="item_select" from="VBoxContainer/ItemListBackground/InventoryContainer" to="." method="_on_inventory_container_item_select"]
+[connection signal="mouse_entered" from="VBoxContainer/ItemListBackground/ContextButtonList/UseButton" to="." method="play_button_hover_sfx"]
+[connection signal="mouse_entered" from="VBoxContainer/ItemListBackground/ContextButtonList/DropButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="VBoxContainer/ItemListBackground/ContextButtonList/DropButton" to="." method="_on_drop_button_pressed"]

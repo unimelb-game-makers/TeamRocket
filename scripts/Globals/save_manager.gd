@@ -25,6 +25,26 @@ func convert_id_to_item_resource(id_dict: Dictionary) -> Dictionary:
 				result[db_item] = id_dict[item_id]
 	return result
 
+func convert_inventory_data_when_save(inventory_dict: Dictionary):
+	var new_dict = {
+		0: null,
+		1: {},
+		2: {}
+	}
+	new_dict[1] = convert_item_resource_to_id(inventory_dict[1])
+	new_dict[2] = convert_item_resource_to_id(inventory_dict[2])
+	return new_dict
+
+func convert_inventory_data_when_load(saved_dict: Dictionary):
+	var new_dict = {
+		0: null,
+		1: {},
+		2: {}
+	}
+	new_dict[1] = convert_id_to_item_resource(saved_dict["1"])
+	new_dict[2] = convert_id_to_item_resource(saved_dict["2"])
+	return new_dict
+
 func delete_save_file(slot_id: int):
 	var save_path = get_savefile_name(slot_id)
 	var dir = DirAccess.open("user://")
@@ -46,7 +66,7 @@ func save_game(slot_id):
 	
 	var player_stats = Globals.player_stats.export_stats()
 	var save_dict = {
-		"inventory_dict": convert_item_resource_to_id(InventoryGlobal.inventory_dict),
+		"inventory_dict": convert_inventory_data_when_save(InventoryGlobal.inventory_dict),
 		"player_stats": player_stats,
 		"total_playtime": Globals.total_playtime,
 	}
@@ -81,10 +101,9 @@ func load_game(slot_id):
 
 	var save_data = load_data_only(slot_id)
 	if save_data.is_empty():
-		# GameManager.load_new_save_data()
 		return
 
-	InventoryGlobal.inventory_dict = convert_id_to_item_resource(save_data["inventory_dict"])
+	InventoryGlobal.inventory_dict = convert_inventory_data_when_load(save_data["inventory_dict"])
 	Globals.player_stats.load_stats(save_data["player_stats"])
 	Globals.total_playtime = save_data["total_playtime"]
 

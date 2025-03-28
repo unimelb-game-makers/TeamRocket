@@ -1,4 +1,5 @@
 extends Control
+class_name IngredientHandler
 
 var selected_ingredients: Array[Item]
 var max_slots = 1
@@ -45,4 +46,4 @@ func update_slots() -> void:
 		add_child(slot)
 		if (i < len(selected_ingredients)):
 			slot.set_ingredient(selected_ingredients[i])
-			slot.remove_food.connect(remove_item)
+			slot.food_removed.connect(remove_item)

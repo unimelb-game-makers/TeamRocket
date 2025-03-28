@@ -41,8 +41,12 @@ func load_character_info():
 	pass
 
 func _on_player_death() -> void:
+	# Restore health and clear inventory
+	Globals.player_stats.health = Globals.player_stats.max_health
+	InventoryGlobal.clear_inventory(InventoryGlobal.InventoryType.PLAYER)
 	switch_to_kitchen()
 
 # Temp Signal so player can return to home easier
 func _on_player_channel_complete() -> void:
+	Globals.player_stats.health = Globals.player_stats.max_health
 	switch_to_kitchen()

@@ -1,10 +1,13 @@
 extends Node
 
+@export var default_player_stats: PlayerStatsResource
+
 var player: Player
 var player_stats: PlayerStatsResource
 var item_handler
 var map
 
+var main_ui: MainUI
 var inventory_ui: InventoryUI
 var player_ui: PlayerUI
 var enemy_handler
@@ -36,6 +39,7 @@ var window_mode_index: int = 1 # From 0 to 2 for FULLSCREEN / WINDOWED / BORDERL
 func _ready() -> void:
 	load_item_database()
 	SaveManager.load_setting_config()
+	player_stats = default_player_stats
 
 func load_item_database():
 	var directory_path = "res://resources/items/"
@@ -63,6 +67,6 @@ func start_record_playtime():
 	start_record_timestamp = Time.get_ticks_msec()
 
 func update_total_playtime():
-	var current_time = Time.get_ticks_msec()
-	var played_time = current_time - start_record_timestamp
+	var played_time = Time.get_ticks_msec() - start_record_timestamp
 	total_playtime += played_time
+	start_record_timestamp = Time.get_ticks_msec() # Reset start timestamp
