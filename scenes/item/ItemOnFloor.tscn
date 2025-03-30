@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://yw75vu274ne0"]
 
-[ext_resource type="Script" path="res://scripts/item/item_floor.gd" id="1_ddbpc"]
-[ext_resource type="Shader" path="res://scripts/shader/2d_outline.gdshader" id="2_cwm8o"]
+[ext_resource type="Script" uid="uid://yu1xts234fhm" path="res://scripts/item/item_floor.gd" id="1_ddbpc"]
+[ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_cwm8o"]
 [ext_resource type="Texture2D" uid="uid://po2e2hxrnnr4" path="res://assets/food/carrot raw.png" id="3_xrdhw"]
 [ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="4_46h8u"]
 
@@ -13,13 +13,28 @@ resource_local_to_scene = true
 shader = ExtResource("2_cwm8o")
 shader_parameter/thickness = 4.0
 shader_parameter/ring_count = 16
-shader_parameter/ring_offset = null
+shader_parameter/ring_offset = 0.0
 shader_parameter/outline_color = Color(0, 1, 0, 1)
 shader_parameter/border_clipping_fix = true
 shader_parameter/aspect_ratio = 1.0
 shader_parameter/square_border = false
-shader_parameter/offset = null
+shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
+
+[sub_resource type="Animation" id="Animation_77bqf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_j5gh4"]
 resource_name = "float"
@@ -38,25 +53,10 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -6), Vector2(0, 0), Vector2(0, 6), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_77bqf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nxmkd"]
 _data = {
-"RESET": SubResource("Animation_77bqf"),
-"float": SubResource("Animation_j5gh4")
+&"RESET": SubResource("Animation_77bqf"),
+&"float": SubResource("Animation_j5gh4")
 }
 
 [node name="ItemHitbox" type="Area2D"]

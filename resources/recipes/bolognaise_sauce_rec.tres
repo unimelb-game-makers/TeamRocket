@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Recipe" load_steps=8 format=3 uid="uid://cjpgf0lpg0byq"]
 
-[ext_resource type="Resource" uid="uid://cwice6h0ybtkl" path="res://resources/items/bolognaise_sauce.tres" id="1_8a0bi"]
-[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="1_yw5xl"]
-[ext_resource type="Script" path="res://resources/resource_scripts/recipe.gd" id="2_jscpl"]
+[ext_resource type="Script" uid="uid://bml3qmy8fai22" path="res://resources/resource_scripts/ingredient.gd" id="1_co08m"]
+[ext_resource type="Script" uid="uid://c7smwqkuyr3jl" path="res://resources/resource_scripts/item.gd" id="1_yw5xl"]
+[ext_resource type="Script" uid="uid://bjcxvkudgbsxv" path="res://resources/resource_scripts/recipe.gd" id="2_jscpl"]
 [ext_resource type="Resource" uid="uid://crgwevfrmuvpk" path="res://resources/items/tomato_chopped.tres" id="3_ic0im"]
 [ext_resource type="Resource" uid="uid://bicl6a3rvlqmi" path="res://resources/items/onion_chopped.tres" id="4_85nah"]
 [ext_resource type="Resource" uid="uid://mywli41k181b" path="res://resources/items/carrot_chopped.tres" id="5_ptpgq"]
@@ -11,4 +11,5 @@
 [resource]
 script = ExtResource("2_jscpl")
 required_items = Array[ExtResource("1_yw5xl")]([ExtResource("3_ic0im"), ExtResource("4_85nah"), ExtResource("5_ptpgq"), ExtResource("6_0f0yn")])
-output_item = ExtResource("1_8a0bi")
+base_recipe_items = Array[ExtResource("1_co08m")]([])
+swappable_ingredient_types = Array[int]([])

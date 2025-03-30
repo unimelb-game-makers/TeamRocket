@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/Old/CookingBase.tscn" id="1_yibeg"]
 [ext_resource type="Resource" uid="uid://1y2xwfs43rg8" path="res://resources/activities/assembly.tres" id="2_5xf6s"]
 [ext_resource type="Texture2D" uid="uid://chmpi1n4p1apn" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_li561"]
-[ext_resource type="Script" path="res://scripts/cooking/assembly_activity.gd" id="4_qactl"]
+[ext_resource type="Script" uid="uid://d3g8curcdikcq" path="res://scripts/cooking/assembly_activity.gd" id="4_qactl"]
 [ext_resource type="FontFile" uid="uid://iqracr2sqomh" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="5_rmlgf"]
 [ext_resource type="Texture2D" uid="uid://baecuvxkgnpcq" path="res://assets/food/salt.png" id="13_uqb4o"]
 

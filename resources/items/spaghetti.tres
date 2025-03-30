@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dbw3pp6i2fhp4"]
 
-[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="1_2mh28"]
+[ext_resource type="Script" uid="uid://c7smwqkuyr3jl" path="res://resources/resource_scripts/item.gd" id="1_2mh28"]
 [ext_resource type="Texture2D" uid="uid://bf7w6xu6wgjed" path="res://assets/food/spaghetti cooked.png" id="2_l774h"]
 
 [resource]

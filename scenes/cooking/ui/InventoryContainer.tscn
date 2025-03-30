@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://tq5lx00lkfo2"]
 
-[ext_resource type="Script" path="res://scripts/ui/inventory_container.gd" id="1_gu176"]
+[ext_resource type="Script" uid="uid://baje55warqqtd" path="res://scripts/ui/inventory_container.gd" id="1_gu176"]
 [ext_resource type="PackedScene" uid="uid://cik7cck2oky1w" path="res://scenes/ui/ItemInventoryButton.tscn" id="2_mfeve"]
 
 [node name="InventoryContainer" type="ScrollContainer"]

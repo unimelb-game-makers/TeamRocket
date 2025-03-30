@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://c8ni7apwy8dyx"]
 
 [ext_resource type="Texture2D" uid="uid://fw7m087mo0ka" path="res://assets/Park/Objects/crate.png" id="1_0l3g5"]
-[ext_resource type="Script" path="res://scripts/objects/interactables/storage.gd" id="1_td6ss"]
-[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="2_rw46d"]
+[ext_resource type="Script" uid="uid://20jjgwta05xw" path="res://scripts/objects/interactables/storage.gd" id="1_td6ss"]
+[ext_resource type="Script" uid="uid://c7smwqkuyr3jl" path="res://resources/resource_scripts/item.gd" id="2_rw46d"]
 [ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="3_uyd3e"]
-[ext_resource type="Shader" path="res://scripts/shader/2d_outline.gdshader" id="4_ajerb"]
+[ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="4_ajerb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o8un"]
 size = Vector2(193, 145)
@@ -14,12 +14,12 @@ resource_local_to_scene = true
 shader = ExtResource("4_ajerb")
 shader_parameter/thickness = 5.0
 shader_parameter/ring_count = 16
-shader_parameter/ring_offset = null
+shader_parameter/ring_offset = 0.0
 shader_parameter/outline_color = Color(0, 1, 0, 1)
 shader_parameter/border_clipping_fix = true
 shader_parameter/aspect_ratio = 1.0
 shader_parameter/square_border = false
-shader_parameter/offset = null
+shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqr6h"]

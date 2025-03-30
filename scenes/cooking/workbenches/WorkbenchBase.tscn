@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0wrkas2vs7rm"]
 
-[ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_vsmah"]
-[ext_resource type="Shader" path="res://scripts/shader/2d_outline.gdshader" id="2_5v0fl"]
+[ext_resource type="Script" uid="uid://bqbl7kycljl0t" path="res://scripts/cooking/activity_station.gd" id="1_vsmah"]
+[ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_5v0fl"]
 [ext_resource type="PackedScene" uid="uid://dcfegerycc50x" path="res://scenes/cooking/activities/CookingScene.tscn" id="2_7qqeh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_as2om"]
@@ -9,12 +9,12 @@ resource_local_to_scene = true
 shader = ExtResource("2_5v0fl")
 shader_parameter/thickness = 5.0
 shader_parameter/ring_count = 16
-shader_parameter/ring_offset = null
+shader_parameter/ring_offset = 0.0
 shader_parameter/outline_color = Color(1, 0.906591, 0, 1)
 shader_parameter/border_clipping_fix = true
 shader_parameter/aspect_ratio = 1.0
 shader_parameter/square_border = false
-shader_parameter/offset = null
+shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
 
 [node name="Workbench" type="Area2D"]
