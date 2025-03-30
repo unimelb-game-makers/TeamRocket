@@ -2,7 +2,10 @@ class_name Recipe
 extends Resource
 
 @export var required_items: Array[Item]
-@export var output_item: Item
+
+@export var base_recipe_items: Array[Ingredient]
+@export var base_output_item: Item
+@export var swappable_ingredient_types: Array[Ingredient.IngredientType]
 
 # Check if an ingredient is in the recipe
 func is_in_recipe(item: Item) -> bool:

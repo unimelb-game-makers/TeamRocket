@@ -1,5 +1,10 @@
+class_name Ingredient
 extends Item
 
-enum Flavour {SALTY, SWEET, SOUR, BITTER, UMAMI}
+enum IngredientType {
+	None, Vegetable, Meat, Fish, Other
+}
 
-@export var food_stats: Dictionary # Salty, Sweet, Sour, Bitter, Umami
+@export var ingredient_type: IngredientType
+@export var player_status_effects: Array
+@export var gun_status_effects: Array
