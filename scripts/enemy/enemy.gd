@@ -47,7 +47,6 @@ func drop_item():
 func randomize_dropped_item():
 	var random = randf_range(0, 1)
 	print(random)
-	var total = 0
 	# Calculate total weights distribution
 	var total_weights = []
 	for i in range(dropped_item_chances.size()):
@@ -61,3 +60,7 @@ func randomize_dropped_item():
 			return dropped_items[i]
 	
 	return null
+
+
+func alerted():
+	return

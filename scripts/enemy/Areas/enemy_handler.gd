@@ -31,5 +31,6 @@ func check_enemy_detect_player_by_sound(player_pos: Vector2, sound_loudness: flo
 	for enemy in enemy_list:
 		var distance_to_player = player_pos.distance_to(enemy.global_position)
 		if distance_to_player < sound_loudness + enemy.hearing_sensitivity:
-			# Implement enemy Alerted state here
-			print("Enemy {0} alerted by player noise from {1} units!".format([enemy.name, distance_to_player]))
+			# TODO: Implement all enemy Alerted state here
+			enemy.alerted()
+			# print("Enemy {0} alerted by player noise from {1} units!".format([enemy.name, distance_to_player]))
