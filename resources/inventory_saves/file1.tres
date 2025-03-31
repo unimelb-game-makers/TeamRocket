@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="InventorySave" load_steps=10 format=3]
+
+[ext_resource type="Resource" path="res://resources/items/ingredients/carrot.tres" id="1_52mph"]
+[ext_resource type="Script" path="res://resources/resource_scripts/inventory_save.gd" id="1_f6olh"]
+[ext_resource type="Resource" path="res://resources/items/ingredients/tomato.tres" id="2_v7hmk"]
+[ext_resource type="Resource" path="res://resources/items/ingredients/spaghetti_raw.tres" id="3_vk2os"]
+[ext_resource type="Resource" path="res://resources/items/ingredients/onion.tres" id="4_okkn4"]
+[ext_resource type="Resource" path="res://resources/items/ingredients/chicken_raw.tres" id="5_v7hmk"]
+[ext_resource type="Script" path="res://resources/resource_scripts/food.gd" id="5_vk2os"]
+[ext_resource type="Texture2D" path="res://assets/food/spaghetti bolognese.png" id="6_okkn4"]
+
+[sub_resource type="Resource" id="Resource_82xl4"]
+script = ExtResource("5_vk2os")
+food_value = 2
+player_status_effects = [[], [], []]
+gun_status_effects = [[], [], []]
+item_id = 2000
+texture = ExtResource("6_okkn4")
+item_name = "Spaghetti Bolognaise with Chopped Chicken, Onion, Carrot, "
+description = "Springy and chewy noodles drenched in a thick and lucious savory meat sauce. Reminds you of a much simpler time.\\n“Rain or shine, gramma’s ghetti’ just tastes so fine! - Tommo, Bunker Kindergarten”"
+weight = 0.3
+rarity = 1
+
+[resource]
+script = ExtResource("1_f6olh")
+player_inventory = {}
+fridge_inventory = {
+ExtResource("3_vk2os"): 4,
+ExtResource("4_okkn4"): 3,
+ExtResource("2_v7hmk"): 6,
+ExtResource("1_52mph"): 7,
+SubResource("Resource_82xl4"): 1,
+ExtResource("5_v7hmk"): 2
+}
+metadata/_custom_type_script = "uid://do2y4ql1e5wdy"

@@ -18,7 +18,6 @@ func generate_item(input_items: Array[Ingredient]):
 				input_items_copy.erase(item)
 				break
 	
-	print(input_items_copy)
 	# Check swappable ingredients match
 	var to_be_filled_ingredients = swappable_ingredient_types.duplicate()
 	for ingredient in input_items_copy:
@@ -28,7 +27,6 @@ func generate_item(input_items: Array[Ingredient]):
 	for ingredient_type in to_be_filled_ingredients:
 		if to_be_filled_ingredients[ingredient_type] > 0:
 			return
-			
 
 	# Generate food using swappable ingredients
 	if (base_output_item is Food):

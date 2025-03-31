@@ -26,7 +26,6 @@ func _process(delta: float) -> void:
 	pass
 
 func finish() -> void:
-	print("Cooking Finished!")
 	complete.emit()
 	
 func set_ingredient_image(ingredient: Item) -> void:

@@ -5,3 +5,7 @@ extends Item
 
 @export var player_status_effects: Array
 @export var gun_status_effects: Array
+
+func export_save() -> Dictionary:
+	pass
+	return {}

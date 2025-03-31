@@ -10,3 +10,6 @@ enum IngredientType {
 @export var gun_status_effects: Array
 
 # [{"id": "damage_up", "duration": 2, "amplifier": 1}]
+
+func export_save() -> Dictionary:
+	return {}
