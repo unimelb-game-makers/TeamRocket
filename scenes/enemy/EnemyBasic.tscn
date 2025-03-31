@@ -132,6 +132,12 @@ to = NodePath("../../Active/Chase")
 event = &"on_detection_radius_entered"
 delay_in_seconds = "0.0"
 
+[node name="To Search State" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Active/Search")
+event = &"alerted"
+delay_in_seconds = "0.0"
+
 [node name="Active" type="Node" parent="StateChart/EnemyBehaviour"]
 script = ExtResource("4_2dodv")
 initial_state = NodePath("Chase")

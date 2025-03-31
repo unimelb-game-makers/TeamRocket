@@ -19,6 +19,7 @@ var current_dashes = 0
 var num_dashes = 3
 
 var in_attack_state: bool = false
+var search_location: Vector2
 
 func _process(_delta: float) -> void:
 	if (velocity.x > 0.0):

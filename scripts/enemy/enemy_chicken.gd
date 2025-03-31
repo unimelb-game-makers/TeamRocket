@@ -68,6 +68,7 @@ func damage() -> void:
 	enter_running_state()
 
 
-func alerted():
+func alerted(sound_position: Vector2):
+	super (sound_position)
 	if state != ChickenState.RUNNING:
 		enter_running_state()

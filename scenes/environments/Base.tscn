@@ -35,6 +35,8 @@ script = ExtResource("1_p3mrr")
 [node name="EnemyHandler" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("4_omi12")
+min_spawns_per_area = null
+max_spawns_per_area = null
 
 [node name="SpawnAreas" type="Node" parent="EnemyHandler"]
 

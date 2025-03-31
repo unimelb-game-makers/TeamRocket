@@ -62,5 +62,5 @@ func randomize_dropped_item():
 	return null
 
 
-func alerted():
+func alerted(sound_position: Vector2):
 	return
