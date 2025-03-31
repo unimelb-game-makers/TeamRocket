@@ -27,6 +27,5 @@ func _on_body_exited(_body: Node2D) -> void:
 	cooking_scene.hide()
 	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
 
-
 func _on_body_entered(_body: Node2D) -> void:
 	sprite.material.set_shader_parameter("outline_color", Color.GREEN)

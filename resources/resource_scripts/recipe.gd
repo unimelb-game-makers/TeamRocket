@@ -6,20 +6,23 @@ extends Resource
 @export var swappable_ingredient_types: Dictionary[Ingredient.IngredientType, int]
 
 func generate_item(input_items: Array[Ingredient]):
+	var input_items_copy = input_items.duplicate()
 	# Check if base recipe matches
 	if not match_base_recipe(input_items):
 		return
 		
+	print("Base Recipe Matched")
+		
 	# Remove base recipe items from input
 	for base_item in base_recipe_items:
-		for item in input_items:
+		for item in input_items_copy:
 			if base_item == item:
-				input_items.erase(item)
+				input_items_copy.erase(item)
 				break
 	
 	# Check swappable ingredients match
 	var to_be_filled_ingredients = swappable_ingredient_types.duplicate()
-	for ingredient in input_items:
+	for ingredient in input_items_copy:
 		if ingredient.ingredient_type in to_be_filled_ingredients.keys():
 			to_be_filled_ingredients[ingredient.ingredient_type] -= 1
 	
@@ -30,7 +33,7 @@ func generate_item(input_items: Array[Ingredient]):
 	var output_food: Food = base_output_food.duplicate()
 	var base_name = output_food.item_name + " with "
 	# Generate food using swappable ingredients
-	for ingredient in input_items:
+	for ingredient in input_items_copy:
 		# Add status effects
 		# Name Generation Scheme?
 		# Base Food + with + Ingredient 1 + , +  Ingredient 2 + and + Ingredient 3
@@ -46,7 +49,7 @@ func match_base_recipe(input_items) -> bool:
 	for base_item in base_recipe_items:
 		var item_found = false
 		for item in input_items:
-			if base_item == item:
+			if base_item.item_name == item.item_name:
 				item_found = true
 		if not item_found:
 			return false

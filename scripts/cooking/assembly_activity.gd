@@ -15,8 +15,8 @@ func _ready() -> void:
 	
 
 func start() -> void:
-	feedback_label.text = ("You made " + str(cooking_scene.recipe.output_item.item_name))
-	set_ingredient_image(cooking_scene.recipe.output_item)
+	feedback_label.text = ("You made ")
+	#set_ingredient_image(cooking_scene.recipe.output_item)
 	playing = true
 	await get_tree().create_timer(3).timeout
 	finish()

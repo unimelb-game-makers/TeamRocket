@@ -44,17 +44,20 @@ func reset():
 	chosen_food_area.visible = true
 
 
-func add_item(item: Item, _amount: int):
+func add_item(item: Ingredient, _amount: int):
 	ingredient_handler.add_item(item)
 
 func finish():
 	activity_is_in_progress = false
-	complete.emit(recipe.output_item)
-	InventoryGlobal.add_item(recipe.output_item, 1)
+	
+	var output_item = recipe.generate_item(ingredient_handler.selected_ingredients)
+	complete.emit(output_item)
+	InventoryGlobal.add_item(output_item, 1)
 	ingredient_handler.clear_slots()
 	reset()
 
 func _on_start_button_pressed() -> void:
+	print("Starting Cooking Process")
 	recipe = activity_res.match_recipe(ingredient_handler.selected_ingredients)
 	if (recipe):
 		start_button.visible = false
@@ -72,6 +75,5 @@ func _on_start_button_pressed() -> void:
 func _on_ingredient_handler_update_list() -> void:
 	inventory_container.update_inventory_list()
 
-
-func _on_inventory_container_item_select(item: Variant, amount: Variant) -> void:
+func _on_inventory_container_item_select(item: Ingredient, amount: Variant) -> void:
 	add_item(item, amount)

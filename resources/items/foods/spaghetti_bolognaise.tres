@@ -1,16 +1,15 @@
 [gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://d4fvdxgm3d6pq"]
 
-[ext_resource type="Script" uid="uid://bfc0qkpd7u4wx" path="res://resources/resource_scripts/food.gd" id="1_4ihah"]
-[ext_resource type="Texture2D" uid="uid://bltjurbemos4c" path="res://assets/food/spaghetti bolognese.png" id="2_6gwif"]
+[ext_resource type="Script" uid="uid://bfc0qkpd7u4wx" path="res://resources/resource_scripts/food.gd" id="1_8l2k2"]
+[ext_resource type="Texture2D" uid="uid://bltjurbemos4c" path="res://assets/food/spaghetti bolognese.png" id="2_0cyw4"]
 
 [resource]
-script = ExtResource("1_4ihah")
+script = ExtResource("1_8l2k2")
 food_value = 2
-buffs = Array[String]([])
 player_status_effects = []
 gun_status_effects = []
 item_id = 2000
-texture = ExtResource("2_6gwif")
+texture = ExtResource("2_0cyw4")
 item_name = "Spaghetti Bolognaise"
 description = "Springy and chewy noodles drenched in a thick and lucious savory meat sauce. Reminds you of a much simpler time.\\n“Rain or shine, gramma’s ghetti’ just tastes so fine! - Tommo, Bunker Kindergarten”"
 weight = 0.3

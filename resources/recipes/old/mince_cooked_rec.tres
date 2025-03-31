@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=3 format=3 uid="uid://c4h3ng5hvjhl3"]
+
+[ext_resource type="Script" uid="uid://bml3qmy8fai22" path="res://resources/resource_scripts/ingredient.gd" id="1_j1ned"]
+[ext_resource type="Script" uid="uid://bjcxvkudgbsxv" path="res://resources/resource_scripts/recipe.gd" id="2_tfe5o"]
+
+[resource]
+script = ExtResource("2_tfe5o")
+base_recipe_items = Array[ExtResource("1_j1ned")]([])
+swappable_ingredient_types = Dictionary[int, int]({})
