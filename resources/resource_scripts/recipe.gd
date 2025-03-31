@@ -14,10 +14,11 @@ func generate_item(input_items: Array[Ingredient]):
 	# Remove base recipe items from input
 	for base_item in base_recipe_items:
 		for item in input_items_copy:
-			if base_item == item:
+			if base_item.item_name == item.item_name:
 				input_items_copy.erase(item)
 				break
 	
+	print(input_items_copy)
 	# Check swappable ingredients match
 	var to_be_filled_ingredients = swappable_ingredient_types.duplicate()
 	for ingredient in input_items_copy:
@@ -28,10 +29,10 @@ func generate_item(input_items: Array[Ingredient]):
 		if to_be_filled_ingredients[ingredient_type] > 0:
 			return
 			
-	var output_food: Item = base_output_item.duplicate()
 
 	# Generate food using swappable ingredients
 	if (base_output_item is Food):
+		var output_food: Item = base_output_item.duplicate()
 		var base_name = output_food.item_name
 		if (input_items_copy.size() > 0):
 			base_name += " with "
@@ -44,7 +45,9 @@ func generate_item(input_items: Array[Ingredient]):
 			base_name += ingredient.item_name + ", "
 		
 		output_food.item_name = base_name
-	return output_food
+		return output_food
+	else:
+		return base_output_item
 	
 func match_base_recipe(input_items) -> bool:
 	# Note to others: Do not have duplicate ingredients in base recipe
