@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cq1iguugfglwg" path="res://assets/creatures/animal_headless_chicken/chicken1.png" id="2_djc8e"]
 [ext_resource type="Script" uid="uid://c7smwqkuyr3jl" path="res://resources/resource_scripts/item.gd" id="2_ngw0k"]
 [ext_resource type="Texture2D" uid="uid://bjt1wxo78e541" path="res://assets/creatures/animal_headless_chicken/chicken2.png" id="3_dtvso"]
-[ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="3_vxd5f"]
+[ext_resource type="Resource" uid="uid://dcxrb1qpv0r68" path="res://resources/items/ingredients/chicken_raw.tres" id="3_gpwxd"]
 [ext_resource type="Texture2D" uid="uid://bmv2eumk5dj8d" path="res://assets/creatures/animal_headless_chicken/chicken3.png" id="4_0ugvd"]
 [ext_resource type="Texture2D" uid="uid://fxdbni0g5067" path="res://assets/creatures/animal_headless_chicken/chicken4.png" id="5_tsj1i"]
 [ext_resource type="Texture2D" uid="uid://dbsp4ofn4wrqa" path="res://assets/creatures/animal_headless_chicken/chicken5.png" id="6_voquw"]
@@ -62,8 +62,8 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_qyhrq")
 health = 10
-dropped_items = Array[ExtResource("2_ngw0k")]([ExtResource("3_vxd5f")])
-dropped_item_chances = Array[float]([0.5])
+dropped_items = Array[ExtResource("2_ngw0k")]([ExtResource("3_gpwxd")])
+dropped_item_chances = Array[float]([1.0])
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -33)

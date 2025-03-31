@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://pugt83vtkcjc"]
+
+[ext_resource type="Script" uid="uid://bml3qmy8fai22" path="res://resources/resource_scripts/ingredient.gd" id="1_bmlnb"]
+[ext_resource type="Resource" uid="uid://cna1wyaiym3ya" path="res://resources/items/ingredients/chicken_chopped.tres" id="1_wj5ei"]
+[ext_resource type="Script" uid="uid://bjcxvkudgbsxv" path="res://resources/resource_scripts/recipe.gd" id="2_v1mjc"]
+[ext_resource type="Resource" uid="uid://dcxrb1qpv0r68" path="res://resources/items/ingredients/chicken_raw.tres" id="3_kn6io"]
+
+[resource]
+script = ExtResource("2_v1mjc")
+base_recipe_items = Array[ExtResource("1_bmlnb")]([ExtResource("3_kn6io")])
+base_output_item = ExtResource("1_wj5ei")
+swappable_ingredient_types = Dictionary[int, int]({})
+metadata/_custom_type_script = "uid://bjcxvkudgbsxv"

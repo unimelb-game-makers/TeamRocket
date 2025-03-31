@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
 [ext_resource type="Resource" uid="uid://dch46k42jt4n2" path="res://resources/items/ingredients/spaghetti.tres" id="16_xblkq"]
 [ext_resource type="Resource" uid="uid://dby41garc30qy" path="res://resources/items/ingredients/tomato_chopped.tres" id="17_onhng"]
-[ext_resource type="Resource" uid="uid://chk06160gehew" path="res://resources/items/ingredients/mince_cooked.tres" id="18_onhng"]
+[ext_resource type="Resource" uid="uid://cna1wyaiym3ya" path="res://resources/items/ingredients/chicken_chopped.tres" id="18_onhng"]
 [ext_resource type="Resource" uid="uid://dtc060qcym6oa" path="res://resources/items/ingredients/onion_chopped.tres" id="19_onhng"]
 [ext_resource type="Resource" uid="uid://cvgnc1lpg86u5" path="res://resources/items/ingredients/carrot_chopped.tres" id="20_onhng"]
 [ext_resource type="PackedScene" uid="uid://bhlarqiey25gc" path="res://scenes/cooking/workbenches/AssemblyPlate.tscn" id="20_twwyk"]
