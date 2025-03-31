@@ -62,6 +62,12 @@ func delete_save_file(slot_id: int):
 	var save_path = get_savefile_name(slot_id)
 	var dir = DirAccess.open("user://")
 	
+	# Clear inventory resource
+	var path = "res://resources/inventory_saves/file" + str(slot_id) +  ".tres"
+	var save_file: InventorySave = load(path)
+	save_file.reset_inventories()
+	ResourceSaver.save(save_file, path)
+	
 	if dir and dir.file_exists(save_path):
 		var result = dir.remove(save_path)
 		if result == OK:
@@ -79,7 +85,7 @@ func save_game(slot_id):
 	var player_stats = Globals.player_stats.export_stats()
 	save_inventory(InventoryGlobal.inventory_dict, slot_id)
 	var save_dict = {
-		"inventory_dict": convert_inventory_data_when_save(InventoryGlobal.inventory_dict),
+		#"inventory_dict": convert_inventory_data_when_save(InventoryGlobal.inventory_dict),
 		"player_stats": player_stats,
 		"total_playtime": Globals.total_playtime,
 	}
