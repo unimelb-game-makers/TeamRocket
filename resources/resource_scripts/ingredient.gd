@@ -2,7 +2,7 @@ class_name Ingredient
 extends Item
 
 enum IngredientType {
-	None, Vegetable, Meat, Fish, Other
+	None, Raw, Vegetable, Meat, Fish, Base, Other
 }
 
 @export var ingredient_type: IngredientType

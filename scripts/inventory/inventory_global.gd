@@ -62,7 +62,7 @@ func drop_item(item: Item, amount: int, type: InventoryType = InventoryType.PLAY
 		var rand_x = randf_range(-100, 100)
 		var rand_y = randf_range(-100, 100)
 		Globals.item_handler.add_child(dropped_item)
-		dropped_item.global_position = Globals.player.feet_position_marker.global_position + Vector2(rand_x, rand_y)
+		dropped_item.global_position = Globals.player.global_position + Vector2(rand_x, rand_y)
 		if (inventory_dict.has(item)):
 			return inventory_dict[item]
 		else:

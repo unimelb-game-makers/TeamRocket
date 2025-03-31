@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://dq1w8y8sr0c1f"]
+
+[ext_resource type="Resource" uid="uid://dch46k42jt4n2" path="res://resources/items/ingredients/spaghetti.tres" id="1_l4ful"]
+[ext_resource type="Script" uid="uid://bml3qmy8fai22" path="res://resources/resource_scripts/ingredient.gd" id="2_sq7rm"]
+[ext_resource type="Resource" uid="uid://5xdf7xnpphar" path="res://resources/items/ingredients/spaghetti_raw.tres" id="3_4qmw4"]
+[ext_resource type="Script" uid="uid://bjcxvkudgbsxv" path="res://resources/resource_scripts/recipe.gd" id="4_auu53"]
+
+[resource]
+script = ExtResource("4_auu53")
+base_recipe_items = Array[ExtResource("2_sq7rm")]([ExtResource("3_4qmw4")])
+base_output_item = ExtResource("1_l4ful")
+swappable_ingredient_types = Dictionary[int, int]({})

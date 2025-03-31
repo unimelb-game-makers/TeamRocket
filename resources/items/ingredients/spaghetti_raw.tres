@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://5xdf7xnpphar"]
+
+[ext_resource type="Script" uid="uid://bml3qmy8fai22" path="res://resources/resource_scripts/ingredient.gd" id="1_bijpl"]
+[ext_resource type="Texture2D" uid="uid://bw11fr51fq4sj" path="res://assets/food/spaghetti raw.png" id="2_1hr5w"]
+
+[resource]
+script = ExtResource("1_bijpl")
+ingredient_type = 1
+player_status_effects = []
+gun_status_effects = []
+item_id = 0
+texture = ExtResource("2_1hr5w")
+item_name = "Raw Spaghetti"
+description = "Made from a blend of the finest semolina and durum flour. It tastes bland.\\n“Spaghetti’s spaghetti, whaddya mean it tastes ‘off’ - Pete, Pete’s Pizzas”"
+weight = 0.3
+rarity = 0
+metadata/_custom_type_script = "uid://bml3qmy8fai22"

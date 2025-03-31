@@ -12,7 +12,6 @@ func switch_to_city():
 	await tween.finished
 	get_tree().change_scene_to_file("res://scenes/environments/City.tscn")
 
-
 func submit_food(item: Item):
 	var buff_i = randi_range(0, 3)
 	match buff_i:

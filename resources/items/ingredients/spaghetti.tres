@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_0xru1")
-ingredient_type = 4
+ingredient_type = 5
 player_status_effects = []
 gun_status_effects = []
 item_id = 0

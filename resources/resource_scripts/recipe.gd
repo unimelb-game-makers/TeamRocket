@@ -2,7 +2,7 @@ class_name Recipe
 extends Resource
 
 @export var base_recipe_items: Array[Ingredient]
-@export var base_output_food: Food
+@export var base_output_item: Item
 @export var swappable_ingredient_types: Dictionary[Ingredient.IngredientType, int]
 
 func generate_item(input_items: Array[Ingredient]):
@@ -10,8 +10,6 @@ func generate_item(input_items: Array[Ingredient]):
 	# Check if base recipe matches
 	if not match_base_recipe(input_items):
 		return
-		
-	print("Base Recipe Matched")
 		
 	# Remove base recipe items from input
 	for base_item in base_recipe_items:
@@ -30,18 +28,22 @@ func generate_item(input_items: Array[Ingredient]):
 		if to_be_filled_ingredients[ingredient_type] > 0:
 			return
 			
-	var output_food: Food = base_output_food.duplicate()
-	var base_name = output_food.item_name + " with "
+	var output_food: Item = base_output_item.duplicate()
+
 	# Generate food using swappable ingredients
-	for ingredient in input_items_copy:
-		# Add status effects
-		# Name Generation Scheme?
-		# Base Food + with + Ingredient 1 + , +  Ingredient 2 + and + Ingredient 3
-		output_food.player_status_effects.append(ingredient.player_status_effects)
-		output_food.gun_status_effects.append(ingredient.gun_status_effects)
-		base_name += ingredient.item_name + ", "
+	if (base_output_item is Food):
+		var base_name = output_food.item_name
+		if (input_items_copy.size() > 0):
+			base_name += " with "
+		for ingredient in input_items_copy:
+			# Add status effects
+			# Name Generation Scheme?
+			# Base Food + with + Ingredient 1 + , +  Ingredient 2 + and + Ingredient 3
+			output_food.player_status_effects.append(ingredient.player_status_effects)
+			output_food.gun_status_effects.append(ingredient.gun_status_effects)
+			base_name += ingredient.item_name + ", "
 		
-	output_food.item_name = base_name
+		output_food.item_name = base_name
 	return output_food
 	
 func match_base_recipe(input_items) -> bool:

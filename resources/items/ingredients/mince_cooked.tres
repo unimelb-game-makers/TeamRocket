@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://chk06160gehew"]
+
+[ext_resource type="Script" uid="uid://bml3qmy8fai22" path="res://resources/resource_scripts/ingredient.gd" id="1_oox17"]
+[ext_resource type="Texture2D" uid="uid://sedfcv8ln5i8" path="res://assets/food/mince cooked.png" id="2_oox17"]
+
+[resource]
+script = ExtResource("1_oox17")
+ingredient_type = 3
+player_status_effects = []
+gun_status_effects = []
+item_id = 0
+texture = ExtResource("2_oox17")
+item_name = "Ground Beef"
+description = "It looks like any other minced meat despite its questionable origin. Smells ok-ish.\\n“You can put almost anything in the mince and they won't notice the difference - Suzan, No-Waste Butcher Shop”"
+weight = 0.5
+rarity = 0
+metadata/_custom_type_script = "uid://bml3qmy8fai22"
