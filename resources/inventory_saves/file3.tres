@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="InventorySave" load_steps=2 format=3 uid="uid://rykl77pjx6ej"]
-
-[ext_resource type="Script" uid="uid://do2y4ql1e5wdy" path="res://resources/resource_scripts/inventory_save.gd" id="1_dqm3t"]
-
-[resource]
-script = ExtResource("1_dqm3t")
-metadata/_custom_type_script = "uid://do2y4ql1e5wdy"
