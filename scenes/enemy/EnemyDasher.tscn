@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bysb5hk8pdva0"]
 
-[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/enemy_basic.tscn" id="1_cno7g"]
+[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/EnemyBasic.tscn" id="1_cno7g"]
 [ext_resource type="Script" path="res://scripts/enemy/enemy_dasher.gd" id="2_1leqm"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="2_e75rs"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="3_klj4n"]

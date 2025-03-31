@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_lvdue"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_7c1ag"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/parallel_state.gd" id="2_44kvc"]
-[ext_resource type="Resource" uid="uid://bgplmsv507g1w" path="res://resources/player/player_stats.tres" id="2_l780k"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_u8x7w"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_px21u"]
 [ext_resource type="PackedScene" uid="uid://bpwuxxnbvf5aq" path="res://scenes/player/gun_impact.tscn" id="4_wuv7n"]
@@ -92,6 +91,7 @@
 [ext_resource type="Texture2D" uid="uid://d24fwmg68bfm7" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down idle.png" id="70_yipqk"]
 [ext_resource type="Texture2D" uid="uid://compg52v578w8" path="res://assets/Player/PlayerAnimations/Aiming/Aim Up + Idle/aim up idle.png" id="71_i2uqt"]
 [ext_resource type="Texture2D" uid="uid://ctqn7ohdkuvgc" path="res://assets/textures/blank_circle_200x200.png" id="91_rlnnq"]
+[ext_resource type="AudioStream" uid="uid://pbelltth7qay" path="res://assets/sfx/team rocket sfx/player/footstep_concrete.mp3" id="92_yuju3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_web4h"]
 animations = [{
@@ -420,7 +420,6 @@ fill_from = Vector2(0.5, 0.5)
 y_sort_enabled = true
 collision_mask = 6
 script = ExtResource("1_lvdue")
-player_stats = ExtResource("2_l780k")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 0.407843)
@@ -661,6 +660,14 @@ color = Color(0.905882, 0.713726, 0.176471, 1)
 [node name="FeetPositionMarker" type="Marker2D" parent="."]
 position = Vector2(0, 96)
 
+[node name="FootstepSoundEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("92_yuju3")
+volume_db = -6.0
+bus = &"Effects"
+
+[node name="FootstepTimer" type="Timer" parent="FootstepSoundEffect"]
+wait_time = 0.5
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]
 [connection signal="timeout" from="Rifle/ReloadTimer" to="Rifle" method="_on_reload_timer_timeout"]
@@ -677,4 +684,7 @@ position = Vector2(0, 96)
 [connection signal="state_physics_processing" from="StateChart/Movement/Basic/Stance/Aim/Aiming" to="." method="_on_aiming_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Crouched" to="." method="_on_crouched_state_entered"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Standing" to="." method="_on_standing_state_entered"]
+[connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Motion/Walk" to="." method="_on_walk_state_entered"]
+[connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Motion/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="timeout" from="ChannelTimer" to="." method="_on_channel_timer_timeout"]
+[connection signal="timeout" from="FootstepSoundEffect/FootstepTimer" to="." method="_on_footstep_timer_timeout"]

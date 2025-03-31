@@ -29,6 +29,15 @@ color = Color(0, 0, 0, 1)
 [node name="UI" parent="GameHandler/CanvasLayer" instance=ExtResource("2_a8oao")]
 mouse_filter = 2
 
+[node name="ItemHandler" type="Node" parent="." groups=["ItemHandler"]]
+script = ExtResource("1_p3mrr")
+
+[node name="EnemyHandler" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("4_omi12")
+
+[node name="SpawnAreas" type="Node" parent="EnemyHandler"]
+
 [node name="Lighting" type="Node" parent="."]
 
 [node name="Dark" type="CanvasModulate" parent="Lighting"]
@@ -52,9 +61,6 @@ chest_scene = ExtResource("3_ld3e5")
 [node name="InteractableHolder" type="Node2D" parent="InteractableHandler"]
 y_sort_enabled = true
 
-[node name="ItemHandler" type="Node" parent="." groups=["ItemHandler"]]
-script = ExtResource("1_p3mrr")
-
 [node name="Player" parent="." instance=ExtResource("1_2xv6m")]
 position = Vector2(533, 480)
 
@@ -62,13 +68,6 @@ position = Vector2(533, 480)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
-[node name="EnemyHandler" type="Node2D" parent="."]
-y_sort_enabled = true
-script = ExtResource("4_omi12")
-
-[node name="SpawnAreas" type="Node" parent="EnemyHandler"]
-
 [connection signal="timeout" from="GameHandler/GameTimer" to="GameHandler" method="_on_game_timer_timeout"]
-[connection signal="activity_interact" from="Player" to="GameHandler/CanvasLayer/UI" method="_on_player_activity_interact"]
 [connection signal="channel_complete" from="Player" to="GameHandler" method="_on_player_channel_complete"]
 [connection signal="death" from="Player" to="GameHandler" method="_on_player_death"]

@@ -1,9 +1,6 @@
 class_name Enemy
 extends CharacterBody2D
 
-var item_floor_scene: PackedScene = preload("res://scenes/item/ItemOnFloor.tscn")
-
-var attack_damage: int
 @export var health: int:
 	set(value):
 		if health > value:
@@ -14,6 +11,12 @@ var attack_damage: int
 
 @export var dropped_items: Array[Item]
 @export var dropped_item_chances: Array[float]
+## If this valye + player's sound loudness larger than distance to player, enemy can hear. 
+## Should keep it low for most enemies.
+@export var hearing_sensitivity: float = 10
+
+var item_floor_scene: PackedScene = preload("res://scenes/item/ItemOnFloor.tscn")
+var attack_damage: int
 
 func damage() -> void:
 	# Override in subclass
@@ -29,6 +32,7 @@ func die() -> void:
 	tween.tween_property(self, "modulate", Color(1, 1, 1, 0), 0.5)
 	await tween.finished
 	drop_item()
+	Globals.enemy_handler.remove_enemy_from_list(self)
 	queue_free()
 	
 func drop_item():

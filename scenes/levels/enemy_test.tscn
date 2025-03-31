@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/terrain/ground.gd" id="2_0y65t"]
 [ext_resource type="Script" path="res://scripts/terrain/Obstacles.gd" id="3_bjpom"]
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="4_4pq4x"]
-[ext_resource type="PackedScene" uid="uid://cqhi6f4pwyyf2" path="res://scenes/enemy/enemy_prototype.tscn" id="5_e0gvj"]
+[ext_resource type="PackedScene" uid="uid://cqhi6f4pwyyf2" path="res://scenes/enemy/EnemyPrototype.tscn" id="5_e0gvj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o4lb4"]
 vertices = PackedVector2Array(703, 319, 703, 65, 1219.91, 63, 1222.17, 577, 319, 63, 449, 65, 319, 577, 449, 319)

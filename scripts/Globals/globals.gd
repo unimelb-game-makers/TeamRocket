@@ -4,19 +4,18 @@ extends Node
 
 var player: Player
 var player_stats: PlayerStatsResource
+
 var item_handler
 var map
+var enemy_handler: EnemyHandler
 
 var main_ui: MainUI
 var inventory_ui: InventoryUI
 var player_ui: PlayerUI
-var enemy_handler
 
 var chosen_slot_id = -1 # For saving
 var start_record_timestamp = 0
 var total_playtime = 0
-
-var player_level = 1
 
 var item_database: Array[Item]
 
@@ -58,7 +57,6 @@ func load_item_database():
 	item_database = tres_files
 
 func reset_save_data():
-	player_level = 1
 	start_record_timestamp = 0
 	total_playtime = 0
 	InventoryGlobal.reset_save_data()

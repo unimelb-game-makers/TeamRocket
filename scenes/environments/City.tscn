@@ -20,14 +20,14 @@
 [ext_resource type="PackedScene" uid="uid://cd6fc47tx6cyd" path="res://scenes/objects/Lake.tscn" id="18_l3vkc"]
 [ext_resource type="PackedScene" uid="uid://boou7kaxracje" path="res://scenes/objects/Buildings/Building.tscn" id="19_r84yg"]
 [ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="19_ryaas"]
-[ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/enemy_dasher.tscn" id="19_sv1o8"]
+[ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/EnemyDasher.tscn" id="19_sv1o8"]
 [ext_resource type="Resource" uid="uid://c7undn0xyxewt" path="res://resources/items/Carrot.tres" id="20_0qh7k"]
 [ext_resource type="PackedScene" uid="uid://b0q3wyjdxrql8" path="res://scenes/objects/Buildings/Building2.tscn" id="20_wckc8"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="21_5cojw"]
 [ext_resource type="Resource" uid="uid://b1x4ow0n4q31r" path="res://resources/items/onion.tres" id="21_a7p7e"]
 [ext_resource type="PackedScene" uid="uid://cxqyl5m3yie2u" path="res://scenes/objects/Buildings/Building3.tscn" id="21_qrjp7"]
 [ext_resource type="Resource" uid="uid://pu3eafcj7feu" path="res://resources/items/spaghetti_raw.tres" id="22_rpnyl"]
-[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/enemy_chicken.tscn" id="22_ykjv2"]
+[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="22_ykjv2"]
 [ext_resource type="Resource" uid="uid://c2s6lwbyk5fkd" path="res://resources/items/tomato.tres" id="23_p6fkx"]
 [ext_resource type="Script" path="res://scripts/player/camera_control.gd" id="24_s3lfa"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="27_56w3m"]
@@ -83,11 +83,45 @@ stream = SubResource("AudioStreamInteractive_y1gkg")
 autoplay = true
 bus = &"Music"
 
+[node name="EnemyHandler" parent="." index="2" groups=["EnemyHandler"]]
+min_spawns_per_area = 0
+max_spawns_per_area = 3
+
+[node name="LandEnemySpawnAreas" parent="EnemyHandler/SpawnAreas" index="0" instance=ExtResource("21_5cojw")]
+position = Vector2(3274, 2731)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
+[node name="LandEnemySpawnAreas2" parent="EnemyHandler/SpawnAreas" index="1" instance=ExtResource("21_5cojw")]
+position = Vector2(602, 3363)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
+[node name="LandEnemySpawnAreas3" parent="EnemyHandler/SpawnAreas" index="2" instance=ExtResource("21_5cojw")]
+position = Vector2(2514, 435)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
+[node name="LandEnemySpawnAreas4" parent="EnemyHandler/SpawnAreas" index="3" instance=ExtResource("21_5cojw")]
+position = Vector2(4599, 469)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
+[node name="LandEnemySpawnAreas5" parent="EnemyHandler/SpawnAreas" index="4" instance=ExtResource("21_5cojw")]
+position = Vector2(4506, 2562)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
+[node name="LandEnemySpawnAreas6" parent="EnemyHandler/SpawnAreas" index="5" instance=ExtResource("21_5cojw")]
+position = Vector2(683, 375)
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+radius = 1000.0
+
 [node name="Dark" parent="Lighting" index="0"]
 visible = true
 color = Color(0.462291, 0.462291, 0.462291, 1)
 
-[node name="NavigationRegion2D" parent="." index="2"]
+[node name="NavigationRegion2D" parent="." index="4"]
 navigation_polygon = SubResource("NavigationPolygon_5hw28")
 
 [node name="TextureRect" type="TextureRect" parent="NavigationRegion2D/Map" index="0"]
@@ -180,7 +214,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Walls/Down" index="0"]
 shape = SubResource("WorldBoundaryShape2D_sbhhl")
 
-[node name="InteractableHandler" parent="." index="3"]
+[node name="InteractableHandler" parent="." index="5"]
 loot_table = Array[ExtResource("19_ryaas")]([ExtResource("20_0qh7k"), ExtResource("21_a7p7e"), ExtResource("22_rpnyl"), ExtResource("23_p6fkx"), null, null, null, null, null, null, null])
 
 [node name="SpawnPoint1" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="0"]
@@ -210,52 +244,18 @@ position = Vector2(182, 3938)
 [node name="Area2D" parent="InteractableHandler/InteractableHolder" index="0" instance=ExtResource("27_56w3m")]
 position = Vector2(1320, 1400)
 
-[node name="Player" parent="." index="5"]
+[node name="Node2D" type="Node2D" parent="." index="6"]
+
+[node name="Player" parent="." index="7"]
 position = Vector2(1727, 1598)
 
-[node name="Camera2D" parent="Player" index="12" groups=["Camera"]]
+[node name="Camera2D" parent="Player" index="13" groups=["Camera"]]
 limit_left = 0
 limit_top = -300
 limit_right = 5000
 limit_bottom = 4000
 limit_smoothed = true
 script = ExtResource("24_s3lfa")
-
-[node name="Node2D" type="Node2D" parent="." index="6"]
-
-[node name="EnemyHandler" parent="." index="7" groups=["EnemyHandler"]]
-min_spawns_per_area = 0
-max_spawns_per_area = 3
-
-[node name="LandEnemySpawnAreas" parent="EnemyHandler/SpawnAreas" index="0" instance=ExtResource("21_5cojw")]
-position = Vector2(3274, 2731)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
-radius = 1000.0
-
-[node name="LandEnemySpawnAreas2" parent="EnemyHandler/SpawnAreas" index="1" instance=ExtResource("21_5cojw")]
-position = Vector2(602, 3363)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
-radius = 1000.0
-
-[node name="LandEnemySpawnAreas3" parent="EnemyHandler/SpawnAreas" index="2" instance=ExtResource("21_5cojw")]
-position = Vector2(2514, 435)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
-radius = 1000.0
-
-[node name="LandEnemySpawnAreas4" parent="EnemyHandler/SpawnAreas" index="3" instance=ExtResource("21_5cojw")]
-position = Vector2(4599, 469)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
-radius = 1000.0
-
-[node name="LandEnemySpawnAreas5" parent="EnemyHandler/SpawnAreas" index="4" instance=ExtResource("21_5cojw")]
-position = Vector2(4506, 2562)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
-radius = 1000.0
-
-[node name="LandEnemySpawnAreas6" parent="EnemyHandler/SpawnAreas" index="5" instance=ExtResource("21_5cojw")]
-position = Vector2(683, 375)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
-radius = 1000.0
 
 [connection signal="aim_mode_enter" from="Player" to="Player/Camera2D" method="enter_aim_mode"]
 [connection signal="aim_mode_exit" from="Player" to="Player/Camera2D" method="exit_aim_mode"]
