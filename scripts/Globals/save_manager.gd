@@ -47,7 +47,7 @@ func convert_inventory_data_when_load(saved_dict: Dictionary):
 
 func save_inventory(inventory_dict: Dictionary, slot_id: int):
 	var path = "res://resources/inventory_saves/file" + str(slot_id) +  ".tres"
-	var save_file: InventorySave
+	var save_file: InventorySave = InventorySave.new()
 	save_file.player_inventory = inventory_dict[InventoryGlobal.InventoryType.PLAYER]
 	save_file.fridge_inventory = inventory_dict[InventoryGlobal.InventoryType.FRIDGE]
 	ResourceSaver.save(save_file, path)
