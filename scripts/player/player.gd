@@ -4,6 +4,57 @@ extends CharacterBody2D
 @export var walk_loudness: float = 100
 @export var sprint_loudness: float = 250
 @export var gun_loudness: float = 2000
+signal activity_interact(activity)
+signal death
+signal channel_complete
+
+var can_move: bool = true
+
+# ----- MOVEMENT VARS -----
+# For smoother movement
+const CROUCH_SPEED : int = 100
+const CROUCH_ACCEL : int = 10
+const STAND_SPEED : int = 500
+const STAND_ACCEL : int = 40
+const RUN_SPEED : int = 800
+const RUN_ACCEL : int = 50
+
+var curr_speed : float = STAND_SPEED
+var curr_accel : float = STAND_ACCEL
+
+var direction : Vector2
+var is_moving : bool
+
+# roll_timer affects speed over the course of the roll
+const ROLL_SPEED : int = 800
+const ROLL_DURATION : float = 0.5
+var roll_timer : float = 0
+
+# Roll cooldown
+# TODO: Integrate cooldown into statechart
+const ROLL_COOLDOWN : float = 0
+var roll_cd_timer : float = 0
+var can_roll : bool = true
+
+
+var fired = false
+
+# ----- Node References -----
+@onready var interact_radius: Area2D = $InteractRadius
+@onready var rifle: Node2D = $Rifle
+@onready var statechart: StateChart = $StateChart
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var channel_timer: Timer = $ChannelTimer
+@onready var channeling_particles: CPUParticles2D = $Particles/ChannelingParticles
+
+# ----- Player Stats -----
+@export var max_health = 50
+var health = max_health:
+	set(value):
+		health = value
+		if health <= 0:
+			die()
+		Globals.player_ui.update_health(health, max_health)
 
 # ---- Signals ----
 # For camera control
@@ -91,7 +142,7 @@ func _process(_delta: float) -> void:
 
 	if (not channel_timer.is_stopped()):
 		channeling_particles.emitting = true
-		
+
 	if Input.is_action_just_pressed("reload"):
 		rifle.reload()
 
@@ -261,7 +312,7 @@ func _on_aiming_state_physics_processing(_delta: float) -> void:
 		var mouse_direction = (mouse_pos - global_position).normalized()
 		if (mouse_direction.length() > 0.1):
 			handle_direction_anim("stand", mouse_direction, "aim")
-			
+
 	if Input.is_action_just_pressed("fire"):
 		rifle.fire(Globals.player_stats.damage)
 		sound_created.emit(global_position, gun_loudness)
@@ -300,27 +351,27 @@ func handle_animation(action: String, _direction: String = "", secondary_action:
 	# Will automatically scale the player (cuz some of the animations are missized)
 	if animation_locked:
 		return
-	
+
 	var base_scale: float = 0.12
 	var side_scale: float = 1.16
 	# Have to scale because specifically the left and right movement for walking is smaller than the other animations
 	var sprite_scale = base_scale
 	if ((_direction == "left" or _direction == "right") and action == "move" and secondary_action != "run"):
 		sprite_scale = base_scale * side_scale
-	
+
 	var anim_array = [action]
 	if _direction != "":
 		anim_array.append(_direction)
 	if secondary_action != "":
 		anim_array.append(secondary_action)
-	
+
 	var joined_anim = "_".join(anim_array)
 	if not joined_anim in anim_sprite.sprite_frames.get_animation_names():
 		return
-	
+
 	if (action == "shoot"):
 		animation_locked = true
-	
+
 	anim_sprite.scale = Vector2(sprite_scale, sprite_scale)
 	anim_sprite.play(joined_anim)
 

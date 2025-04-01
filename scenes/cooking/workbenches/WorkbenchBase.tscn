@@ -1,5 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0wrkas2vs7rm"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://bqbl7kycljl0t" path="res://scripts/cooking/activity_station.gd" id="1_vsmah"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_5v0fl"]
 [ext_resource type="PackedScene" uid="uid://dcfegerycc50x" path="res://scenes/cooking/activities/CookingScene.tscn" id="2_7qqeh"]
@@ -16,6 +17,10 @@ shader_parameter/aspect_ratio = 1.0
 shader_parameter/square_border = false
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
+=======
+[ext_resource type="Script" uid="uid://5ommj6lisao7" path="res://scripts/cooking/activity_station.gd" id="1_vsmah"]
+[ext_resource type="PackedScene" uid="uid://dcfegerycc50x" path="res://scenes/cooking/activities/cooking_scene.tscn" id="2_7qqeh"]
+>>>>>>> 4bb515c (godot 4.4 scene uids)
 
 [node name="Workbench" type="Area2D"]
 collision_layer = 32

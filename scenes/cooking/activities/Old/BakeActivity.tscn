@@ -2,7 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/Old/CookingBase.tscn" id="1_ayed6"]
 [ext_resource type="Resource" uid="uid://bx7y1s5155421" path="res://resources/activities/baking.tres" id="2_ke3hq"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://corijshwrv5gx" path="res://scripts/cooking/BakeActivity.gd" id="3_qssr3"]
+=======
+[ext_resource type="Script" uid="uid://b3wgw2k60bqh8" path="res://scripts/cooking/BakeActivity.gd" id="3_qssr3"]
+>>>>>>> 4bb515c (godot 4.4 scene uids)
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="4_glhh3"]
 
 [node name="CookingScene" instance=ExtResource("1_ayed6")]
