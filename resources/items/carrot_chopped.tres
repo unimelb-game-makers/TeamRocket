@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://mywli41k181b"]
+
+[ext_resource type="Script" uid="uid://du7ux2gaf1g4b" path="res://resources/resource_scripts/food.gd" id="1_evbwb"]
+[ext_resource type="Texture2D" uid="uid://ykp7dqbdgdtc" path="res://assets/food/carrot sliced.png" id="2_jwgfx"]
+
+[resource]
+script = ExtResource("1_evbwb")
+food_value = 0
+buffs = Array[String]([])
+food_stats = {}
+item_id = 11
+texture = ExtResource("2_jwgfx")
+item_name = "Chopped Carrot"
+description = "Snappy, crunchy, and with a hint of sweetness. Nothing beats the good ol’ carrot.\\n“You know they’re good for your eyes and the interdimensional radiation right, kids? - Jack, the shady alley”"
+weight = 0.1
+rarity = 0

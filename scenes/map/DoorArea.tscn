@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://he20mbvfu5em"]
 
-[ext_resource type="Script" path="res://scripts/map/door_transporter.gd" id="1_1d1y4"]
+[ext_resource type="Script" uid="uid://da7vpww2qlc17" path="res://scripts/map/door_transporter.gd" id="1_1d1y4"]
 [ext_resource type="Texture2D" uid="uid://cnbdo0ynk48qd" path="res://assets/map/DoorArea.png" id="1_pyier"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v038f"]

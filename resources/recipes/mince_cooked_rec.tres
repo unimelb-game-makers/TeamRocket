@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=5 format=3 uid="uid://c4h3ng5hvjhl3"]
+
+[ext_resource type="Resource" uid="uid://bqvxryq244ry3" path="res://resources/items/mince_cooked.tres" id="1_fwn6v"]
+[ext_resource type="Script" uid="uid://bswsoddpidu4d" path="res://resources/resource_scripts/item.gd" id="1_tmice"]
+[ext_resource type="Script" uid="uid://w4fgu5fosjn5" path="res://resources/resource_scripts/recipe.gd" id="2_tfe5o"]
+[ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="3_34vuw"]
+
+[resource]
+script = ExtResource("2_tfe5o")
+required_items = Array[ExtResource("1_tmice")]([ExtResource("3_34vuw")])
+output_item = ExtResource("1_fwn6v")
