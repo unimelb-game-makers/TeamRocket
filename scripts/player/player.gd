@@ -22,8 +22,9 @@ var curr_speed: float
 var curr_accel: float
 
 var direction: Vector2
-var is_moving: bool = false
-var is_sprinting: bool = false
+var is_moving = false
+var is_sprinting = false
+var is_crouching = false
 
 # roll_timer affects speed over the course of the roll
 const ROLL_SPEED: int = 800
@@ -177,6 +178,7 @@ func _on_walk_state_entered() -> void:
 	curr_accel = Globals.player_stats.accel
 
 func _on_standing_state_entered() -> void:
+	is_crouching = false
 	curr_speed = Globals.player_stats.run_speed
 	curr_accel = Globals.player_stats.run_accel
 
@@ -188,6 +190,7 @@ func _on_run_state_entered() -> void:
 	curr_accel = Globals.player_stats.run_accel
 
 func _on_crouched_state_entered() -> void:
+	is_crouching = true
 	footstep_timer.stop()
 	curr_speed = Globals.player_stats.crouch_speed
 	curr_accel = Globals.player_stats.crouch_accel
@@ -211,10 +214,17 @@ func _on_unarmed_state_physics_processing(_delta: float) -> void:
 	# If x movement > 0 and y movement < x then left/right movement
 	# Else if y movement > x then up/down movement
 	var animation_speed = curr_speed / (Globals.player_stats.speed)
-	if (direction.length() > 0.1):
-		handle_direction_anim("move", direction, "", animation_speed)
+
+	if is_crouching:
+		if (direction.length() > 0.1):
+			handle_direction_anim("crouch", direction, "", animation_speed)
+		else:
+			handle_animation("crouch_idle")
 	else:
-		handle_animation("idle")
+		if (direction.length() > 0.1):
+			handle_direction_anim("move", direction, "", animation_speed)
+		else:
+			handle_animation("idle")
 
 func _on_aiming_state_physics_processing(_delta: float) -> void:
 	if (direction.length() > 0.1):
@@ -273,8 +283,10 @@ func handle_animation(action: String, _direction: String = "", secondary_action:
 		sprite_scale = base_scale * side_scale
 	
 	var anim_array = [action]
-	if _direction != "": anim_array.append(_direction)
-	if secondary_action != "": anim_array.append(secondary_action)
+	if _direction != "":
+		anim_array.append(_direction)
+	if secondary_action != "":
+		anim_array.append(secondary_action)
 	
 	var joined_anim = "_".join(anim_array)
 	if not joined_anim in animated_sprite_2d.sprite_frames.get_animation_names():
