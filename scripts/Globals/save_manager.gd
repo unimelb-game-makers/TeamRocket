@@ -65,7 +65,8 @@ func delete_save_file(slot_id: int):
 	# Clear inventory resource
 	var path = "res://resources/inventory_saves/file" + str(slot_id) +  ".tres"
 	var save_file: InventorySave = load(path)
-	save_file.reset_inventories()
+	if (save_file):
+		save_file.reset_inventories()
 	ResourceSaver.save(save_file, path)
 	
 	if dir and dir.file_exists(save_path):
