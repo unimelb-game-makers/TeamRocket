@@ -42,7 +42,8 @@ func reset_game() -> void:
 	is_playing = false
 	is_dragging = false
 
-func start() -> void:
+func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
+	super(input_ingredients, output_item)
 	reset_game()
 	is_playing = true
 	sfx_boil_loop.play()

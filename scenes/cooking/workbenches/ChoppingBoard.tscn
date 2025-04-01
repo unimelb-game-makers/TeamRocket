@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dj4u0n4uqbwvg"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_n668q"]
-[ext_resource type="Shader" path="res://scripts/shader/2d_outline.gdshader" id="2_2s1lh"]
+[ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_2s1lh"]
 [ext_resource type="Texture2D" uid="uid://of06ncu5vdqd" path="res://assets/interiors/kitchen/cutting board.png" id="3_b1lqa"]
 [ext_resource type="Resource" uid="uid://befjbqm64vutk" path="res://resources/activities/chopping.tres" id="3_gf6uy"]
 [ext_resource type="PackedScene" uid="uid://yskpqwwvcpce" path="res://scenes/cooking/activities/ChoppingActivity.tscn" id="4_f5jll"]
@@ -14,12 +14,12 @@ resource_local_to_scene = true
 shader = ExtResource("2_2s1lh")
 shader_parameter/thickness = 5.0
 shader_parameter/ring_count = 16
-shader_parameter/ring_offset = null
+shader_parameter/ring_offset = 0.0
 shader_parameter/outline_color = Color(1, 0.906591, 0, 1)
 shader_parameter/border_clipping_fix = true
 shader_parameter/aspect_ratio = 1.0
 shader_parameter/square_border = false
-shader_parameter/offset = null
+shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_dis1y"]

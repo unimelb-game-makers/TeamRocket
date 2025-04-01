@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Activity" load_steps=4 format=3 uid="uid://bx7y1s5155421"]
 
-[ext_resource type="Script" path="res://resources/resource_scripts/recipe.gd" id="1_1slm2"]
-[ext_resource type="Resource" uid="uid://bfwue41nr3epe" path="res://resources/recipes/carrot_chopped_rec.tres" id="2_ma273"]
-[ext_resource type="Script" path="res://resources/resource_scripts/activity.gd" id="2_snhs1"]
+[ext_resource type="Script" uid="uid://bjcxvkudgbsxv" path="res://resources/resource_scripts/recipe.gd" id="1_1slm2"]
+[ext_resource type="Resource" uid="uid://bfwue41nr3epe" path="res://resources/recipes/ingredients/carrot_chopped_rec.tres" id="2_ma273"]
+[ext_resource type="Script" uid="uid://mtq66257u3vg" path="res://resources/resource_scripts/activity.gd" id="2_snhs1"]
 
 [resource]
 script = ExtResource("2_snhs1")

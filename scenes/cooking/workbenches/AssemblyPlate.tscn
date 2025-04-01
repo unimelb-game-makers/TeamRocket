@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bhlarqiey25gc"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_st23u"]
-[ext_resource type="Shader" path="res://scripts/shader/2d_outline.gdshader" id="2_38lgk"]
+[ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_38lgk"]
 [ext_resource type="Texture2D" uid="uid://3qh2j5dy8t8i" path="res://assets/workstations/assembly_plate/assembly_plate.png" id="2_nv7a3"]
 [ext_resource type="PackedScene" uid="uid://bm1lm8py3bd01" path="res://scenes/cooking/activities/AssemblyActivity.tscn" id="3_v3edm"]
 [ext_resource type="Resource" uid="uid://1y2xwfs43rg8" path="res://resources/activities/assembly.tres" id="4_ej8l1"]
@@ -14,12 +14,12 @@ resource_local_to_scene = true
 shader = ExtResource("2_38lgk")
 shader_parameter/thickness = 5.0
 shader_parameter/ring_count = 16
-shader_parameter/ring_offset = null
+shader_parameter/ring_offset = 0.0
 shader_parameter/outline_color = Color(1, 0.906591, 0, 1)
 shader_parameter/border_clipping_fix = true
 shader_parameter/aspect_ratio = 1.0
 shader_parameter/square_border = false
-shader_parameter/offset = null
+shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_frx3y"]

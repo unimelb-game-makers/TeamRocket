@@ -14,9 +14,10 @@ func _ready() -> void:
 	pass
 	
 
-func start() -> void:
-	feedback_label.text = ("You made " + str(cooking_scene.recipe.output_item.item_name))
-	set_ingredient_image(cooking_scene.recipe.output_item)
+func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
+	super(input_ingredients, output_item)
+	feedback_label.text = ("You made " + output_item.item_name)
+	set_ingredient_image(output_item)
 	playing = true
 	await get_tree().create_timer(3).timeout
 	finish()
@@ -26,7 +27,6 @@ func _process(delta: float) -> void:
 	pass
 
 func finish() -> void:
-	print("Cooking Finished!")
 	complete.emit()
 	
 func set_ingredient_image(ingredient: Item) -> void:

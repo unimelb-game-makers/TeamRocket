@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bacf4n55kn6yy"]
 
-[ext_resource type="Script" path="res://scripts/menus/credits.gd" id="1_4g6ph"]
+[ext_resource type="Script" uid="uid://bv0fl7y4nurka" path="res://scripts/menus/credits.gd" id="1_4g6ph"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="2_s4hms"]
 
 [node name="Credits" type="Control"]

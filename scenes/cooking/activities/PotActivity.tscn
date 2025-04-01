@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://4s64a0adjxlr"]
 
-[ext_resource type="Script" path="res://scripts/cooking/pot_activity.gd" id="1_ishcw"]
+[ext_resource type="Script" uid="uid://busp0mos1wg7w" path="res://scripts/cooking/pot_activity.gd" id="1_ishcw"]
 [ext_resource type="Texture2D" uid="uid://tq63nq80td5t" path="res://assets/workstations/stew_game/stew_top1.png" id="5_vbh60"]
 [ext_resource type="AudioStream" uid="uid://cqeq1rwqjwdif" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/boil loop.wav" id="6_8i5cn"]
 [ext_resource type="Texture2D" uid="uid://cdtofnyg3fpkq" path="res://assets/workstations/stew_game/stew_top2.png" id="6_xa1cm"]

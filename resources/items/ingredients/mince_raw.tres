@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://b7x08nxo35iis"]
+
+[ext_resource type="Script" uid="uid://bml3qmy8fai22" path="res://resources/resource_scripts/ingredient.gd" id="1_defr5"]
+[ext_resource type="Texture2D" uid="uid://dc6mt81avbf6a" path="res://assets/food/mince raw.png" id="2_xdn5l"]
+
+[resource]
+script = ExtResource("1_defr5")
+ingredient_type = 1
+player_status_effects = []
+gun_status_effects = []
+item_id = 20
+texture = ExtResource("2_xdn5l")
+item_name = "Raw Ground Beef"
+description = "It looks like any other minced meat despite its questionable origin. Smells ok-ish.\\n“You can put almost anything in the mince and they won't notice the difference - Suzan, No-Waste Butcher Shop”"
+weight = 0.5
+rarity = 0
+metadata/_custom_type_script = "uid://bml3qmy8fai22"
