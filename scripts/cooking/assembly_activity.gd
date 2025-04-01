@@ -16,8 +16,8 @@ func _ready() -> void:
 
 func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
 	super(input_ingredients, output_item)
-	feedback_label.text = ("You made ")
-	#set_ingredient_image(cooking_scene.recipe.output_item)
+	feedback_label.text = ("You made " + output_item.item_name)
+	set_ingredient_image(output_item)
 	playing = true
 	await get_tree().create_timer(3).timeout
 	finish()

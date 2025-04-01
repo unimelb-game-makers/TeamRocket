@@ -56,7 +56,6 @@ func finish():
 	reset()
 
 func _on_start_button_pressed() -> void:
-	print("Starting Cooking Process")
 	recipe = activity_res.match_recipe(ingredient_handler.selected_ingredients)
 	if (recipe):
 		start_button.visible = false
@@ -69,7 +68,7 @@ func _on_start_button_pressed() -> void:
 		chosen_food_area.visible = false
 		
 		activity_is_in_progress = true
-		activity.start()
+		activity.start(ingredient_handler.selected_ingredients, recipe.generate_item(ingredient_handler.selected_ingredients))
 
 func _on_ingredient_handler_update_list() -> void:
 	inventory_container.update_inventory_list()

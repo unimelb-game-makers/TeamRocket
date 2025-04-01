@@ -28,6 +28,8 @@ offset_bottom = 558.0
 text = "KEEP STIRRING"
 label_settings = SubResource("LabelSettings_0k2hl")
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="IngredientImageDisplay" type="TextureRect" parent="."]
 layout_mode = 0
