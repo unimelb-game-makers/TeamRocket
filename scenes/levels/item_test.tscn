@@ -1,19 +1,14 @@
-[gd_scene load_steps=17 format=4 uid="uid://b33jqqmsjmmin"]
+[gd_scene load_steps=12 format=4 uid="uid://b33jqqmsjmmin"]
 
 [ext_resource type="TileSet" uid="uid://c018cpgpmun08" path="res://assets/prototype_tileset.tres" id="1_5tmv4"]
 [ext_resource type="Script" path="res://scripts/terrain/ground.gd" id="2_1jag6"]
 [ext_resource type="Script" path="res://scripts/terrain/Obstacles.gd" id="3_saguv"]
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="4_ln28l"]
-[ext_resource type="PackedScene" uid="uid://yw75vu274ne0" path="res://scenes/item/item_floor.tscn" id="5_owmts"]
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="6_5wyeq"]
-[ext_resource type="Resource" uid="uid://tn4r8aw4pxxl" path="res://resources/items/Bread.tres" id="6_jewdo"]
 [ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="7_h2p8g"]
-[ext_resource type="Resource" uid="uid://bdrp5ddjko1ov" path="res://resources/items/Water_Bottle.tres" id="7_j536l"]
-[ext_resource type="Resource" uid="uid://c8fxovoqdspin" path="res://resources/items/Burger.tres" id="8_tou6f"]
-[ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="11_dr1ic"]
+[ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/Old/ChoppingBoard.tscn" id="11_dr1ic"]
 [ext_resource type="Script" path="res://scripts/cooking/cooking_handler.gd" id="11_k4ddl"]
 [ext_resource type="Script" path="res://scripts/ui/item_containers.gd" id="11_nm0r3"]
-[ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="13_vyoqw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o4lb4"]
 vertices = PackedVector2Array(703, 319, 703, 65, 1219.91, 63, 1222.17, 577, 319, 63, 449, 65, 319, 577, 449, 319)
@@ -62,18 +57,6 @@ position = Vector2(533, 480)
 
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Sandwich" parent="Items" instance=ExtResource("5_owmts")]
-position = Vector2(1007, 556)
-item = ExtResource("6_jewdo")
-
-[node name="Water Bottle" parent="Items" instance=ExtResource("5_owmts")]
-position = Vector2(450, 184)
-item = ExtResource("7_j536l")
-
-[node name="Item" parent="Items" instance=ExtResource("5_owmts")]
-position = Vector2(725, 193)
-item = ExtResource("8_tou6f")
-
 [node name="UI" type="Control" parent="." groups=["ui"]]
 layout_mode = 3
 anchors_preset = 15
@@ -118,6 +101,5 @@ script = ExtResource("11_k4ddl")
 
 [node name="ChoppingBoard" parent="." instance=ExtResource("11_dr1ic")]
 position = Vector2(708, 346)
-script = ExtResource("13_vyoqw")
 
 [connection signal="activity_interact" from="Player" to="UI" method="_on_player_activity_interact"]

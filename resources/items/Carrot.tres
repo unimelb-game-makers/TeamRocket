@@ -7,7 +7,8 @@
 script = ExtResource("1_hha8b")
 food_value = 0
 buffs = Array[String]([])
-rating = 0
+food_stats = {}
+item_id = 10
 texture = ExtResource("2_ib68o")
 item_name = "Carrot"
 description = "Snappy, crunchy, and with a hint of sweetness. Nothing beats the good ol’ carrot.\\n“You know they’re good for your eyes and the interdimensional radiation right, kids? - Jack, the shady alley”"

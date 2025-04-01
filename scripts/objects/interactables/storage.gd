@@ -1,5 +1,5 @@
 class_name Storage
-extends Node
+extends Area2D
 
 @export var slots_num: int
 @export var items: Array[Item]
@@ -32,7 +32,7 @@ func take_item(slot):
 	items[slot] = null
 	update_display()
 	if (item):
-		Inventory_Global.add_item(item, 1)
+		InventoryGlobal.add_item(item, 1)
 
 func update_display():
 	var slots = item_containers.get_children()
@@ -41,3 +41,7 @@ func update_display():
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	$UI.hide()
+
+
+func _on_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

@@ -1,6 +1,4 @@
-extends Control
-
-signal complete(success: bool)
+extends CookingActivity
 
 @onready var inner_circle = $InnerCircle  # Draggable circle.
 @onready var feedback_label = $FeedbackLabel  # Shows feedback messages.
@@ -94,7 +92,6 @@ func _process(delta: float) -> void:
 		finish()
 
 func finish() -> void:
-	print("Cooking Finished!")
 	complete.emit()
 
 func _input(event: InputEvent) -> void:

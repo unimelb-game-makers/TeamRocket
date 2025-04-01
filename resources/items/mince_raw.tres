@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_pykg7")
+item_id = 20
 texture = ExtResource("2_bfy25")
 item_name = "Raw Ground Beef"
 description = "It looks like any other minced meat despite its questionable origin. Smells ok-ish.\\n“You can put almost anything in the mince and they won't notice the difference - Suzan, No-Waste Butcher Shop”"

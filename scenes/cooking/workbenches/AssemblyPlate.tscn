@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhlarqiey25gc"]
+
+[ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_st23u"]
+[ext_resource type="Texture2D" uid="uid://3qh2j5dy8t8i" path="res://assets/workstations/assembly_plate/assembly_plate.png" id="2_nv7a3"]
+[ext_resource type="PackedScene" uid="uid://bm1lm8py3bd01" path="res://scenes/cooking/activities/AssemblyActivity.tscn" id="3_v3edm"]
+[ext_resource type="Resource" uid="uid://1y2xwfs43rg8" path="res://resources/activities/assembly.tres" id="4_ej8l1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1xkw"]
+size = Vector2(83, 62)
+
+[node name="AssemblyPlate" instance=ExtResource("1_st23u")]
+activity = ExtResource("3_v3edm")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_g1xkw")
+
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_nv7a3")
+
+[node name="CookingScene" parent="CanvasLayer" index="0"]
+visible = false
+activity_res = ExtResource("4_ej8l1")
+
+[node name="Activity" parent="CanvasLayer/CookingScene" index="4" instance=ExtResource("3_v3edm")]
+visible = false
+layout_mode = 1

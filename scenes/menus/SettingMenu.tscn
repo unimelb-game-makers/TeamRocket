@@ -1,0 +1,423 @@
+[gd_scene load_steps=7 format=3 uid="uid://j00qr7dcyhv4"]
+
+[ext_resource type="PackedScene" uid="uid://hoiacky4452m" path="res://scenes/menus/VolumeContainer.tscn" id="1_ponht"]
+[ext_resource type="Script" path="res://scripts/Menus/setting_menu.gd" id="1_q578m"]
+[ext_resource type="PackedScene" uid="uid://cnuglobw5ctj7" path="res://scenes/ui/KeybindButton.tscn" id="2_x2dvv"]
+[ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="3_vo66s"]
+[ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="4_jri27"]
+[ext_resource type="Texture2D" uid="uid://jgscawd6skc" path="res://assets/textures/kenney_borders/default/Divider Fade/divider-fade-001.png" id="4_u0i5p"]
+
+[node name="SettingMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q578m")
+keybind_button_prefab = ExtResource("2_x2dvv")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.54902)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BG"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.0
+offset_top = 112.0
+offset_right = 320.0
+offset_bottom = 156.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="GameTabButton" parent="BG/HBoxContainer" instance=ExtResource("4_jri27")]
+layout_mode = 2
+text = "Game"
+
+[node name="DisplayTabButton" parent="BG/HBoxContainer" instance=ExtResource("4_jri27")]
+layout_mode = 2
+text = "Display"
+
+[node name="AudioTabButton" parent="BG/HBoxContainer" instance=ExtResource("4_jri27")]
+layout_mode = 2
+text = "Audio"
+icon_alignment = 2
+
+[node name="TabContainer" type="TabContainer" parent="BG"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -192.0
+offset_right = 320.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 2
+tabs_visible = false
+
+[node name="Game" type="Control" parent="BG/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Label" type="Label" parent="BG/TabContainer/Game"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.5
+offset_top = 8.0
+offset_right = 42.5
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Game settings"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BG/TabContainer/Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = -24.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/TabContainer/Game/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlaceholderToggle" type="CheckButton" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Placeholder option 1"
+
+[node name="PlaceholderToggle2" type="CheckButton" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Placeholder option 2"
+
+[node name="PlaceholderToggle3" type="CheckButton" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Placeholder option 3"
+
+[node name="Divider" type="HBoxContainer" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer"]
+modulate = Color(0.621094, 0.621094, 0.621094, 1)
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer/Divider"]
+layout_mode = 2
+texture = ExtResource("4_u0i5p")
+
+[node name="Label" type="Label" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer/Divider"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Keybindings"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer/Divider"]
+layout_mode = 2
+texture = ExtResource("4_u0i5p")
+flip_h = true
+
+[node name="KeybindSection" type="MarginContainer" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer/KeybindSection"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="KeybindContainer" type="VBoxContainer" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer/KeybindSection/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResetKeybindButton" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer/KeybindSection/VBoxContainer" instance=ExtResource("4_jri27")]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "Reset to default"
+
+[node name="Display" type="Control" parent="BG/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Label" type="Label" parent="BG/TabContainer/Display"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.0
+offset_top = 8.0
+offset_right = 42.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Display"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BG/TabContainer/Display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = -24.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/TabContainer/Display/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FPS" type="HBoxContainer" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/FPS"]
+layout_mode = 2
+text = "FPS Limit"
+
+[node name="Control" type="Control" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/FPS"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FPSOptionButton" type="OptionButton" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/FPS"]
+layout_mode = 2
+selected = 1
+item_count = 6
+popup/item_0/text = "30"
+popup/item_1/text = "60"
+popup/item_1/id = 1
+popup/item_2/text = "120"
+popup/item_2/id = 2
+popup/item_3/text = "144"
+popup/item_3/id = 3
+popup/item_4/text = "240"
+popup/item_4/id = 4
+popup/item_5/text = "No limit"
+popup/item_5/id = 5
+
+[node name="Vsync" type="HBoxContainer" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/Vsync"]
+layout_mode = 2
+text = "Vsync"
+
+[node name="Control" type="Control" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/Vsync"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VsyncOptionButton" type="OptionButton" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/Vsync"]
+layout_mode = 2
+selected = 1
+item_count = 3
+popup/item_0/text = "Disabled"
+popup/item_1/text = "Enabled"
+popup/item_1/id = 1
+popup/item_2/text = "Adaptive"
+popup/item_2/id = 2
+
+[node name="WindowMode" type="HBoxContainer" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/WindowMode"]
+layout_mode = 2
+text = "Window mode"
+
+[node name="Control" type="Control" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/WindowMode"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WindowOptionButton" type="OptionButton" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/WindowMode"]
+layout_mode = 2
+selected = 1
+item_count = 3
+popup/item_0/text = "Fullscreen"
+popup/item_1/text = "Windowed"
+popup/item_1/id = 1
+popup/item_2/text = "Borderless Windowed"
+popup/item_2/id = 2
+
+[node name="Resolution" type="HBoxContainer" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/Resolution"]
+layout_mode = 2
+text = "Resolution"
+
+[node name="Control" type="Control" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/Resolution"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/Resolution"]
+layout_mode = 2
+selected = 4
+item_count = 6
+popup/item_0/text = "2560x1440"
+popup/item_1/text = "1920x1080"
+popup/item_1/id = 1
+popup/item_2/text = "1440x900"
+popup/item_2/id = 2
+popup/item_3/text = "1366x768"
+popup/item_3/id = 3
+popup/item_4/text = "1280x720"
+popup/item_4/id = 4
+popup/item_5/text = "1024x768"
+popup/item_5/id = 5
+
+[node name="Audio" type="Control" parent="BG/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="Label" type="Label" parent="BG/TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -42.0
+offset_top = 8.0
+offset_right = 42.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "Audio"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BG/TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = -24.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/TabContainer/Audio/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/TabContainer/Audio/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/TabContainer/Audio/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MasterVolumeContainer" parent="BG/TabContainer/Audio/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1_ponht")]
+layout_mode = 2
+setting_name = "Master Volume"
+
+[node name="EffectsVolumeContainer" parent="BG/TabContainer/Audio/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1_ponht")]
+layout_mode = 2
+setting = 1
+setting_name = "Effects Volume"
+
+[node name="MusicVolumeContainer" parent="BG/TabContainer/Audio/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1_ponht")]
+layout_mode = 2
+setting = 2
+setting_name = "Music Volume"
+
+[node name="UIVolumeContainer" parent="BG/TabContainer/Audio/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1_ponht")]
+layout_mode = 2
+setting = 3
+setting_name = "UI Volume"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="BG"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -192.0
+offset_right = 320.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vo66s")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="BackButton" parent="BG" instance=ExtResource("4_jri27")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -152.0
+offset_right = 72.0
+offset_bottom = -108.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[connection signal="mouse_entered" from="BG/HBoxContainer/GameTabButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="BG/HBoxContainer/GameTabButton" to="." method="_on_game_tab_button_pressed"]
+[connection signal="mouse_entered" from="BG/HBoxContainer/DisplayTabButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="BG/HBoxContainer/DisplayTabButton" to="." method="_on_display_tab_button_pressed"]
+[connection signal="mouse_entered" from="BG/HBoxContainer/AudioTabButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="BG/HBoxContainer/AudioTabButton" to="." method="_on_audio_tab_button_pressed"]
+[connection signal="mouse_entered" from="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer/KeybindSection/VBoxContainer/ResetKeybindButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer/KeybindSection/VBoxContainer/ResetKeybindButton" to="." method="_on_reset_keybind_button_pressed"]
+[connection signal="item_selected" from="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/FPS/FPSOptionButton" to="." method="_on_fps_option_button_item_selected"]
+[connection signal="item_selected" from="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/Vsync/VsyncOptionButton" to="." method="_on_vsync_option_button_item_selected"]
+[connection signal="item_selected" from="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/WindowMode/WindowOptionButton" to="." method="_on_window_option_button_item_selected"]
+[connection signal="item_selected" from="BG/TabContainer/Display/ScrollContainer/MarginContainer/VBoxContainer/Resolution/ResolutionOptionButton" to="." method="_on_resolution_option_button_item_selected"]
+[connection signal="mouse_entered" from="BG/BackButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="BG/BackButton" to="." method="_on_back_button_pressed"]

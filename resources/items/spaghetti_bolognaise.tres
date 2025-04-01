@@ -7,7 +7,8 @@
 script = ExtResource("1_4ihah")
 food_value = 2
 buffs = Array[String]([])
-rating = 0
+food_stats = {}
+item_id = 2000
 texture = ExtResource("2_6gwif")
 item_name = "Spaghetti Bolognaise"
 description = "Springy and chewy noodles drenched in a thick and lucious savory meat sauce. Reminds you of a much simpler time.\\n“Rain or shine, gramma’s ghetti’ just tastes so fine! - Tommo, Bunker Kindergarten”"

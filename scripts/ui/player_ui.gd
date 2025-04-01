@@ -1,4 +1,5 @@
 extends Control
+class_name PlayerUI
 
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var gun_texture: TextureRect = $GunInfo/GunTexture

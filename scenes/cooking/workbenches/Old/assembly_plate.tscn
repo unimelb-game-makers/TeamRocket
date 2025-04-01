@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://csf03f13m5wmx"]
+
+[ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_hi27k"]
+[ext_resource type="PackedScene" uid="uid://6q86j45i48m5" path="res://scenes/cooking/activities/Old/AssemblyActivity.tscn" id="2_8noro"]
+[ext_resource type="Texture2D" uid="uid://3qh2j5dy8t8i" path="res://assets/workstations/assembly_plate/assembly_plate.png" id="3_ymkr0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0b2j4"]
+size = Vector2(131, 98)
+
+[node name="AssemblyPlate" type="Node2D"]
+script = ExtResource("1_hi27k")
+activity = ExtResource("2_8noro")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_ymkr0")
+
+[node name="InteractArea" type="Area2D" parent="." groups=["Workbench"]]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(-3.5, 10)
+shape = SubResource("RectangleShape2D_0b2j4")

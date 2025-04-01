@@ -19,7 +19,7 @@ func _ready() -> void:
 		game_timer.wait_time = 1.0 / TIME_STEP
 		game_timer.start()
 	var tween = create_tween()
-	tween.tween_property(fade_to_black, "modulate", Color(0,0,0,0), 1.0)
+	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 0), 1.0)
 	
 func _process(delta: float) -> void:
 	pass
@@ -31,8 +31,9 @@ func _on_game_timer_timeout() -> void:
 		switch_to_kitchen()
 		
 func switch_to_kitchen():
+	SaveManager.save_game(Globals.chosen_slot_id)
 	var tween = create_tween()
-	tween.tween_property(fade_to_black, "modulate", Color(0,0,0,2.0), 2.0)
+	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 2.0), 2.0)
 	await tween.finished
 	get_tree().change_scene_to_file("res://scenes/environments/Kitchen.tscn")
 

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0wrkas2vs7rm"]
+
+[ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_vsmah"]
+[ext_resource type="PackedScene" uid="uid://dcfegerycc50x" path="res://scenes/cooking/activities/cooking_scene.tscn" id="2_7qqeh"]
+
+[node name="Workbench" type="Area2D"]
+collision_layer = 32
+script = ExtResource("1_vsmah")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CookingScene" parent="CanvasLayer" instance=ExtResource("2_7qqeh")]
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

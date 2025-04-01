@@ -17,9 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Inventory_Global="*res://scripts/inventory/inventory.gd"
 Globals="*res://scripts/Globals/globals.gd"
-Settings="*res://scripts/Globals/settings.gd"
+SaveManager="*res://scripts/Globals/save_manager.gd"
+InventoryGlobal="*res://scripts/inventory/inventory_global.gd"
+SoundManager="*res://addons/sound_manager/sound_manager.gd"
 
 [display]
 
@@ -130,8 +131,10 @@ channel={
 2d_physics/layer_3="Terrain"
 2d_physics/layer_4="Items"
 2d_physics/layer_5="Projectiles"
+2d_physics/layer_6="Interactables"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)

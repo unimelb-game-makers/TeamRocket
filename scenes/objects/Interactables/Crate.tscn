@@ -10,22 +10,20 @@ size = Vector2(193, 145)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqr6h"]
 size = Vector2(159, 30)
 
-[node name="Crate" type="Node2D"]
+[node name="Area2D" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_td6ss")
 slots_num = 9
 items = Array[ExtResource("2_rw46d")]([null, null, null, null, null, null, null, null, null])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_5o8un")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_0l3g5")
-
-[node name="Area2D" type="Area2D" parent="." groups=["Interactables"]]
-collision_layer = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1.5, -0.5)
-shape = SubResource("RectangleShape2D_5o8un")
 
 [node name="UI" type="Control" parent="."]
 visible = false
@@ -52,4 +50,4 @@ collision_mask = 0
 position = Vector2(-0.5, -8)
 shape = SubResource("RectangleShape2D_hqr6h")
 
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

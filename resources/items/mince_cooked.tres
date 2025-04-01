@@ -7,7 +7,8 @@
 script = ExtResource("1_sh5jf")
 food_value = 0
 buffs = Array[String]([])
-rating = 0
+food_stats = {}
+item_id = 21
 texture = ExtResource("2_h1qgx")
 item_name = "Cooked Ground Beef"
 description = "It looks like any other minced meat despite its questionable origin. Smells ok-ish.\\n“You can put almost anything in the mince and they won't notice the difference - Suzan, No-Waste Butcher Shop”"
