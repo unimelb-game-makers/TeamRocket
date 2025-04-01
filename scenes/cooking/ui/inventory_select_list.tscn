@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://tq5lx00lkfo2"]
 
-[ext_resource type="Script" path="res://scripts/ui/inventory_select_list.gd" id="1_cqgrg"]
-[ext_resource type="Script" path="res://scripts/ui/item_containers.gd" id="2_kwblm"]
+[ext_resource type="Script" uid="uid://dmvnse8efvm5t" path="res://scripts/ui/inventory_select_list.gd" id="1_cqgrg"]
+[ext_resource type="Script" uid="uid://c3mqvedthxlmq" path="res://scripts/ui/item_containers.gd" id="2_kwblm"]
 [ext_resource type="PackedScene" uid="uid://cik7cck2oky1w" path="res://scenes/ui/item_inventory_button.tscn" id="3_pmgis"]
 
 [node name="InventorySelectList" type="CenterContainer"]

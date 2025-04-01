@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bekoh4wmvaliu"]
 
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="1_ix7ql"]
-[ext_resource type="Script" path="res://scripts/cooking/BakeActivity.gd" id="1_rkf7a"]
+[ext_resource type="Script" uid="uid://b3wgw2k60bqh8" path="res://scripts/cooking/BakeActivity.gd" id="1_rkf7a"]
 
 [node name="Activity" type="Control"]
 layout_mode = 3

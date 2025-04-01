@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bm1lm8py3bd01"]
 
-[ext_resource type="Script" path="res://scripts/cooking/assembly_activity.gd" id="1_kpauk"]
+[ext_resource type="Script" uid="uid://mn8xhejjpnft" path="res://scripts/cooking/assembly_activity.gd" id="1_kpauk"]
 [ext_resource type="FontFile" uid="uid://iqracr2sqomh" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="2_hfk1h"]
 [ext_resource type="Texture2D" uid="uid://baecuvxkgnpcq" path="res://assets/food/salt.png" id="3_udm5u"]
 

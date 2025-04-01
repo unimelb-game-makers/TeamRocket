@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cik7cck2oky1w"]
 
 [ext_resource type="Texture2D" uid="uid://dgcn3fv1c6r3e" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="1_l2cwe"]
-[ext_resource type="Script" path="res://scripts/ui/item_inventory_button.gd" id="1_vipfs"]
+[ext_resource type="Script" uid="uid://ddn22cds1pfny" path="res://scripts/ui/item_inventory_button.gd" id="1_vipfs"]
 [ext_resource type="Texture2D" uid="uid://b8cckow3na0pq" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_brown.png" id="2_jhcfy"]
 [ext_resource type="Texture2D" uid="uid://b1nr4nwk72xrh" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown_pressed.png" id="2_okhfe"]
 [ext_resource type="Texture2D" uid="uid://dmbquitnmj5ib" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_brown_pressed.png" id="3_0k82b"]

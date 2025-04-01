@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cpwdv7vvm7kdc"]
 
-[ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="1_a3tyl"]
+[ext_resource type="Script" uid="uid://b7lfb20mxiejg" path="res://scripts/ui/inventory_ui.gd" id="1_a3tyl"]
 [ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="1_k45lh"]
-[ext_resource type="Script" path="res://scripts/ui/item_description_box.gd" id="2_l5ycy"]
+[ext_resource type="Script" uid="uid://crquvtfwm23rx" path="res://scripts/ui/item_description_box.gd" id="2_l5ycy"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="2_rcx7t"]
 [ext_resource type="Texture2D" uid="uid://bqaed0kw83mxe" path="res://assets/Player/PlayerAnimations/Idle/down idle.png" id="5_ljvxe"]
 

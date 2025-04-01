@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://b23qiygihwv2h"]
 
-[ext_resource type="Script" path="res://scripts/cooking/cooking_scene.gd" id="1_2bn3c"]
+[ext_resource type="Script" uid="uid://dxqweml826fm" path="res://scripts/cooking/cooking_scene.gd" id="1_2bn3c"]
 [ext_resource type="Resource" uid="uid://befjbqm64vutk" path="res://resources/activities/chopping.tres" id="2_svt57"]
-[ext_resource type="Script" path="res://scripts/cooking/ingredient_handler.gd" id="2_tf1d0"]
+[ext_resource type="Script" uid="uid://bt25lv5ufof4o" path="res://scripts/cooking/ingredient_handler.gd" id="2_tf1d0"]
 [ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/food_slot.tscn" id="3_ndn03"]
 [ext_resource type="Texture2D" uid="uid://dgcn3fv1c6r3e" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="5_a7f7f"]
 [ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="5_ocogg"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bggmbfoo43i86"]
 
 [ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/Old/CookingBase.tscn" id="1_bg34l"]
-[ext_resource type="Script" path="res://scripts/cooking/PotActivity.gd" id="2_gp5o6"]
+[ext_resource type="Script" uid="uid://bemq60cq7vv" path="res://scripts/cooking/PotActivity.gd" id="2_gp5o6"]
 [ext_resource type="Resource" uid="uid://d0er8kaqjpcsl" path="res://resources/activities/stewing.tres" id="2_ykihi"]
 [ext_resource type="Texture2D" uid="uid://chmpi1n4p1apn" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="3_wvxeh"]
 [ext_resource type="Texture2D" uid="uid://tq63nq80td5t" path="res://assets/workstations/stew_game/stew_top1.png" id="5_vbh60"]

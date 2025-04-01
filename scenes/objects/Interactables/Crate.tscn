@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c8ni7apwy8dyx"]
 
 [ext_resource type="Texture2D" uid="uid://fw7m087mo0ka" path="res://assets/Park/Objects/crate.png" id="1_0l3g5"]
-[ext_resource type="Script" path="res://scripts/objects/interactables/storage.gd" id="1_td6ss"]
-[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="2_rw46d"]
+[ext_resource type="Script" uid="uid://m6xgpmtmrx2n" path="res://scripts/objects/interactables/storage.gd" id="1_td6ss"]
+[ext_resource type="Script" uid="uid://bswsoddpidu4d" path="res://resources/resource_scripts/item.gd" id="2_rw46d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5o8un"]
 size = Vector2(193, 145)

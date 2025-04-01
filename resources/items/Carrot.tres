@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://c7undn0xyxewt"]
 
-[ext_resource type="Script" path="res://resources/resource_scripts/food.gd" id="1_hha8b"]
+[ext_resource type="Script" uid="uid://du7ux2gaf1g4b" path="res://resources/resource_scripts/food.gd" id="1_hha8b"]
 [ext_resource type="Texture2D" uid="uid://po2e2hxrnnr4" path="res://assets/food/carrot raw.png" id="2_ib68o"]
 
 [resource]

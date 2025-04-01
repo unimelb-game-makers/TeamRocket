@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://c5fbsmwagky6i"]
 
-[ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_gbujv"]
+[ext_resource type="Script" uid="uid://5ommj6lisao7" path="res://scripts/cooking/activity_station.gd" id="1_gbujv"]
 [ext_resource type="PackedScene" uid="uid://bggmbfoo43i86" path="res://scenes/cooking/activities/Old/PotActivity.tscn" id="2_5al3h"]
 [ext_resource type="Texture2D" uid="uid://dhgbxnc7av4lx" path="res://assets/workstations/pot/stew0.png" id="3_an7p1"]
 [ext_resource type="Texture2D" uid="uid://dk2ydx2kkv4c2" path="res://assets/workstations/pot/stew1.png" id="3_tbvyd"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://d4fvdxgm3d6pq"]
 
-[ext_resource type="Script" path="res://resources/resource_scripts/food.gd" id="1_4ihah"]
+[ext_resource type="Script" uid="uid://du7ux2gaf1g4b" path="res://resources/resource_scripts/food.gd" id="1_4ihah"]
 [ext_resource type="Texture2D" uid="uid://bltjurbemos4c" path="res://assets/food/spaghetti bolognese.png" id="2_6gwif"]
 
 [resource]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0wrkas2vs7rm"]
 
-[ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_vsmah"]
+[ext_resource type="Script" uid="uid://5ommj6lisao7" path="res://scripts/cooking/activity_station.gd" id="1_vsmah"]
 [ext_resource type="PackedScene" uid="uid://dcfegerycc50x" path="res://scenes/cooking/activities/cooking_scene.tscn" id="2_7qqeh"]
 
 [node name="Workbench" type="Area2D"]

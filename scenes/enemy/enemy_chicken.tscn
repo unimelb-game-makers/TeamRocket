@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://bwrb05nb0u0rs"]
 
-[ext_resource type="Script" path="res://scripts/enemy/enemy_chicken.gd" id="1_qyhrq"]
+[ext_resource type="Script" uid="uid://cky7tcs3pqivh" path="res://scripts/enemy/enemy_chicken.gd" id="1_qyhrq"]
 [ext_resource type="Texture2D" uid="uid://cq1iguugfglwg" path="res://assets/creatures/animal_headless_chicken/chicken1.png" id="2_djc8e"]
-[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="2_ngw0k"]
+[ext_resource type="Script" uid="uid://bswsoddpidu4d" path="res://resources/resource_scripts/item.gd" id="2_ngw0k"]
 [ext_resource type="Texture2D" uid="uid://bjt1wxo78e541" path="res://assets/creatures/animal_headless_chicken/chicken2.png" id="3_dtvso"]
 [ext_resource type="Resource" uid="uid://cdrbar832duc6" path="res://resources/items/mince_raw.tres" id="3_vxd5f"]
 [ext_resource type="Texture2D" uid="uid://bmv2eumk5dj8d" path="res://assets/creatures/animal_headless_chicken/chicken3.png" id="4_0ugvd"]

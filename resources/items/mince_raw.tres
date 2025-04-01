@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cdrbar832duc6"]
 
-[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="1_pykg7"]
+[ext_resource type="Script" uid="uid://bswsoddpidu4d" path="res://resources/resource_scripts/item.gd" id="1_pykg7"]
 [ext_resource type="Texture2D" uid="uid://dc6mt81avbf6a" path="res://assets/food/mince raw.png" id="2_bfy25"]
 
 [resource]
