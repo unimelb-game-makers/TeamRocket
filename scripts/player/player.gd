@@ -11,9 +11,9 @@ var can_move: bool = true
 # For smoother movement
 const CROUCH_SPEED : int = 100
 const CROUCH_ACCEL : int = 10
-const STAND_SPEED : int = 200
+const STAND_SPEED : int = 500
 const STAND_ACCEL : int = 40
-const RUN_SPEED : int = 400
+const RUN_SPEED : int = 800
 const RUN_ACCEL : int = 50
 
 var curr_speed : float = STAND_SPEED
@@ -90,6 +90,8 @@ func _process(_delta: float) -> void:
 	
 	if (not channel_timer.is_stopped()):
 		channeling_particles.emitting = true
+	
+	global_rotation = 0
 
 func _physics_process(delta: float) -> void:
 	pass

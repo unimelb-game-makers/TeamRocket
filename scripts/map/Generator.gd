@@ -1,7 +1,6 @@
 extends Node
 
 var grid = []      # 2D Array for generation
-var structure = [] # 2D Array holding the room scenes
 const DIM_X = 9
 const DIM_Y = 7
 
@@ -25,10 +24,8 @@ const full: PackedScene = preload("res://scenes/map/templates/fullroom.tscn")
 func _ready() -> void:
 	for i in DIM_X:
 		grid.append([])
-		structure.append([])
 		for j in DIM_Y:
 			grid[i].append(0)
-			structure[i].append(null)
 	
 	start_gen()
 	
@@ -70,8 +67,9 @@ func start_gen():
 				continue
 			# If more than max_neighbors, exit
 			if get_num_neighbors(grid, neighbor) > max_neighbors:
-				if randi_range(0, 1):
-					continue
+				#if randi_range(0, 1):
+					#continue
+				continue
 			# Random
 			if randi_range(0, 1):
 				if num_rooms < num_rooms - 5:
@@ -145,11 +143,19 @@ func initialize_room(coords: Vector2):
 	
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
+	var doors = selected_room.doors
+	var total_rotations = 0
 	while sockets != neighbors_array:
 		var temp = sockets.pop_front()
 		sockets.append(temp)
-		selected_room.rotate(PI/2)
+		selected_room.rotate(-PI/2)
+		
+		total_rotations += -PI/2
+		
+		#var temp2 = doors.pop_front()
+		#doors.append(temp2)
 	selected_room.sockets = sockets
+	#selected_room.doors = doors
 	
 	# Get directions to where the neighbors are
 	var d = []
