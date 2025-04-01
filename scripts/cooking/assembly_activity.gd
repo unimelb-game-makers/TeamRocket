@@ -14,7 +14,8 @@ func _ready() -> void:
 	pass
 	
 
-func start() -> void:
+func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
+	super(input_ingredients, output_item)
 	feedback_label.text = ("You made ")
 	#set_ingredient_image(cooking_scene.recipe.output_item)
 	playing = true

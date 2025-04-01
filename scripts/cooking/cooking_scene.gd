@@ -43,7 +43,6 @@ func reset():
 	inventory_area.visible = true
 	chosen_food_area.visible = true
 
-
 func add_item(item: Ingredient, _amount: int):
 	ingredient_handler.add_item(item)
 

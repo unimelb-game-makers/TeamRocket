@@ -25,7 +25,8 @@ var moving_right = true
 func _ready() -> void:
 	reset_game()
 
-func start() -> void:
+func start(input_ingredients: Array[Ingredient], output_item) -> void:
+	super(input_ingredients, output_item)
 	playing = true
 	result_label.text = ""  # Clear result label on start
 	set_ingredient_image(cooking_scene_2.ingredient_handler.selected_ingredients[0])
