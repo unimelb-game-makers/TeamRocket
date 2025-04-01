@@ -51,7 +51,7 @@ var animation_locked = false
 @onready var channeling_particles: CPUParticles2D = $Particles/ChannelingParticles
 @onready var footstep_timer: Timer = $FootstepSoundEffect/FootstepTimer
 @onready var footstep_audio: AudioStreamPlayer2D = $FootstepSoundEffect
-
+@onready var enemy_noise_rader: Sprite2D = $EnemyNoiseRadar
 
 func _ready() -> void:
 	Globals.player = self
@@ -178,6 +178,7 @@ func _on_walk_state_entered() -> void:
 	curr_accel = Globals.player_stats.accel
 
 func _on_standing_state_entered() -> void:
+	enemy_noise_rader.visible = false
 	is_crouching = false
 	curr_speed = Globals.player_stats.run_speed
 	curr_accel = Globals.player_stats.run_accel
@@ -190,6 +191,7 @@ func _on_run_state_entered() -> void:
 	curr_accel = Globals.player_stats.run_accel
 
 func _on_crouched_state_entered() -> void:
+	enemy_noise_rader.visible = true
 	is_crouching = true
 	footstep_timer.stop()
 	curr_speed = Globals.player_stats.crouch_speed
