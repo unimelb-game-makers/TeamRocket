@@ -1,11 +1,10 @@
 [gd_scene load_steps=8 format=4 uid="uid://d0cl6866o0sif"]
 
 [ext_resource type="TileSet" uid="uid://c018cpgpmun08" path="res://assets/prototype_tileset.tres" id="1_81cn5"]
-[ext_resource type="Script" path="res://scripts/terrain/ground.gd" id="2_8vjk7"]
-[ext_resource type="Script" path="res://scripts/terrain/Obstacles.gd" id="3_plhiw"]
+[ext_resource type="Script" uid="uid://bddp0n0vjric4" path="res://scripts/terrain/ground.gd" id="2_8vjk7"]
+[ext_resource type="Script" uid="uid://birf3dca0i0xe" path="res://scripts/terrain/Obstacles.gd" id="3_plhiw"]
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="4_meq4f"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="6_jqvsv"]
-[ext_resource type="PackedScene" uid="uid://wxmwtggc58kw" path="res://scenes/enemy/enemy_dasher.tscn" id="6_pfm7v"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_uen1e"]
 vertices = PackedVector2Array(167.922, 1191.92, 1752.08, 1240.08, -472.078, 1240.08, -295.922, 1191.92, 1752.08, -216.078, 1575.92, 935.922, 1575.92, -39.9219, -472.078, -216.078, 344.078, -39.9219, 1240.08, 935.922, -295.922, 600.078, 344.078, 295.922, 167.922, 600.078, 1240.08, 295.922)
@@ -13,6 +12,9 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 source_geometry_mode = 1
 source_geometry_group_name = &"navigation"
 agent_radius = 39.92
+
+[sub_resource type="Resource" id="Resource_rhvnj"]
+metadata/__load_path__ = "res://scenes/enemy/enemy_dasher.tscn"
 
 [node name="EnemyStateTest" type="Node2D"]
 
@@ -52,7 +54,7 @@ offset_bottom = -235.0
 scale = Vector2(1.765, 1.765)
 initial_node_to_watch = NodePath("../../Dasher")
 
-[node name="Dasher" parent="." node_paths=PackedStringArray("navigation_region") instance=ExtResource("6_pfm7v")]
+[node name="Dasher" parent="." node_paths=PackedStringArray("navigation_region")]
 position = Vector2(1034, 438)
 scale = Vector2(0.5, 0.5)
 navigation_region = NodePath("")
