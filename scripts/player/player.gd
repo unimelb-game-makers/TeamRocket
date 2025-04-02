@@ -1,9 +1,18 @@
 class_name Player
 extends CharacterBody2D
 
-signal activity_interact(activity)
+@export var walk_loudness: float = 100
+@export var sprint_loudness: float = 250
+@export var gun_loudness: float = 2000
+
+# ---- Signals ----
+# For camera control
+signal aim_mode_enter
+signal aim_mode_exit
+
 signal death
 signal channel_complete
+signal sound_created(location, loudness)
 
 var can_move: bool = true
 
@@ -13,7 +22,9 @@ var curr_speed: float
 var curr_accel: float
 
 var direction: Vector2
-var is_moving: bool
+var is_moving = false
+var is_sprinting = false
+var is_crouching = false
 
 # roll_timer affects speed over the course of the roll
 const ROLL_SPEED: int = 800
@@ -26,6 +37,8 @@ const ROLL_COOLDOWN: float = 0
 var roll_cd_timer: float = 0
 var can_roll: bool = true
 
+const WALK_FOOTSTEP_SFX_FREQUENCY = 0.75
+const SPRINT_FOOTSTEP_SFX_FREQUENCY = 0.5
 var fired = false
 var animation_locked = false
 
@@ -36,11 +49,9 @@ var animation_locked = false
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var channel_timer: Timer = $ChannelTimer
 @onready var channeling_particles: CPUParticles2D = $Particles/ChannelingParticles
-
-# ---- Signals ----
-# For camera control
-signal aim_mode_enter
-signal aim_mode_exit
+@onready var footstep_timer: Timer = $FootstepSoundEffect/FootstepTimer
+@onready var footstep_audio: AudioStreamPlayer2D = $FootstepSoundEffect
+@onready var enemy_noise_rader: Sprite2D = $EnemyNoiseRadar
 
 func _ready() -> void:
 	Globals.player = self
@@ -132,9 +143,9 @@ func _on_basic_state_input(event: InputEvent) -> void:
 # roll_timer affects speed over the course of the roll
 
 func _on_roll_state_entered() -> void:
+	footstep_timer.stop()
 	if direction == Vector2.ZERO:
 		statechart.send_event("roll_finished")
-
 	roll_timer = 0
 
 func _on_roll_state_exited() -> void:
@@ -156,15 +167,36 @@ func roll_speed(elapsed_time: float) -> float:
 	var t: float = elapsed_time / ROLL_DURATION
 	return ROLL_SPEED - (ROLL_SPEED - Globals.player_stats.crouch_speed) * t * t
 
+func _on_idle_state_entered() -> void:
+	footstep_timer.stop()
+
+func _on_walk_state_entered() -> void:
+	is_sprinting = false
+	footstep_audio.play()
+	footstep_timer.start(WALK_FOOTSTEP_SFX_FREQUENCY)
+	curr_speed = Globals.player_stats.speed
+	curr_accel = Globals.player_stats.accel
+
 func _on_standing_state_entered() -> void:
+	enemy_noise_rader.visible = false
+	is_crouching = false
+	is_sprinting = false
+	footstep_audio.play()
+	footstep_timer.start(WALK_FOOTSTEP_SFX_FREQUENCY)
 	curr_speed = Globals.player_stats.speed
 	curr_accel = Globals.player_stats.accel
 
 func _on_run_state_entered() -> void:
+	is_sprinting = true
+	footstep_audio.play()
+	footstep_timer.start(SPRINT_FOOTSTEP_SFX_FREQUENCY)
 	curr_speed = Globals.player_stats.run_speed
 	curr_accel = Globals.player_stats.run_accel
 
 func _on_crouched_state_entered() -> void:
+	enemy_noise_rader.visible = true
+	is_crouching = true
+	footstep_timer.stop()
 	curr_speed = Globals.player_stats.crouch_speed
 	curr_accel = Globals.player_stats.crouch_accel
 
@@ -183,16 +215,23 @@ func _on_channel_timer_timeout() -> void:
 
 # --- State Machine Processing Logic for Animations ---
 
-func _on_unarmed_state_physics_processing(delta: float) -> void:
+func _on_unarmed_state_physics_processing(_delta: float) -> void:
 	# If x movement > 0 and y movement < x then left/right movement
 	# Else if y movement > x then up/down movement
 	var animation_speed = curr_speed / (Globals.player_stats.speed)
-	if (direction.length() > 0.1):
-		handle_direction_anim("move", direction, "", animation_speed)
-	else:
-		handle_animation("idle")
 
-func _on_aiming_state_physics_processing(delta: float) -> void:
+	if is_crouching:
+		if (direction.length() > 0.1):
+			handle_direction_anim("crouch", direction, "", animation_speed)
+		else:
+			handle_animation("crouch_idle")
+	else:
+		if (direction.length() > 0.1):
+			handle_direction_anim("move", direction, "", animation_speed)
+		else:
+			handle_animation("idle")
+
+func _on_aiming_state_physics_processing(_delta: float) -> void:
 	if (direction.length() > 0.1):
 		var animation_speed = curr_speed / (Globals.player_stats.speed)
 		handle_direction_anim("move", direction, "aim", animation_speed)
@@ -204,8 +243,9 @@ func _on_aiming_state_physics_processing(delta: float) -> void:
 			
 	if Input.is_action_just_pressed("fire"):
 		rifle.fire(Globals.player_stats.damage)
+		sound_created.emit(global_position, gun_loudness)
 
-func _on_run_state_physics_processing(delta: float) -> void:
+func _on_run_state_physics_processing(_delta: float) -> void:
 	# Handle Movement Animations (Temp Solution)
 	# If x movement > 0 and y movement < x then left/right movement
 	# Else if y movement > x then up/down movement
@@ -221,19 +261,19 @@ func _on_rifle_fired() -> void:
 
 
 # --- Handling Animations ---
-func handle_direction_anim(action: String, direction: Vector2, secondary_action: String = "", speed: float = 1.0):
-	if (abs(direction.x) > abs(direction.y)):
-		if (direction.x > 0):
+func handle_direction_anim(action: String, _direction: Vector2, secondary_action: String = "", speed: float = 1.0):
+	if (abs(_direction.x) > abs(_direction.y)):
+		if (_direction.x > 0):
 			handle_animation(action, "right", secondary_action, speed)
 		else:
 			handle_animation(action, "left", secondary_action, speed)
 	else:
-		if (direction.y > 0):
+		if (_direction.y > 0):
 			handle_animation(action, "down", secondary_action, speed)
 		else:
 			handle_animation(action, "up", secondary_action, speed)
 
-func handle_animation(action: String, direction: String = "", secondary_action: String = "", anim_speed: float = 1.0):
+func handle_animation(action: String, _direction: String = "", secondary_action: String = "", _anim_speed: float = 1.0):
 	# Handles animations
 	# Input the action, direction and secondary action and the speed of the animation if needed
 	# Will automatically scale the player (cuz some of the animations are missized)
@@ -244,12 +284,14 @@ func handle_animation(action: String, direction: String = "", secondary_action: 
 	var side_scale: float = 1.16
 	# Have to scale because specifically the left and right movement for walking is smaller than the other animations
 	var sprite_scale = base_scale
-	if ((direction == "left" or direction == "right") and action == "move" and secondary_action != "run"):
+	if ((_direction == "left" or _direction == "right") and action == "move" and secondary_action != "run"):
 		sprite_scale = base_scale * side_scale
 	
 	var anim_array = [action]
-	if direction != "": anim_array.append(direction)
-	if secondary_action != "": anim_array.append(secondary_action)
+	if _direction != "":
+		anim_array.append(_direction)
+	if secondary_action != "":
+		anim_array.append(secondary_action)
 	
 	var joined_anim = "_".join(anim_array)
 	if not joined_anim in animated_sprite_2d.sprite_frames.get_animation_names():
@@ -264,3 +306,11 @@ func handle_animation(action: String, direction: String = "", secondary_action: 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if (animated_sprite_2d.animation.begins_with("shoot")):
 		animation_locked = false
+
+
+func _on_footstep_timer_timeout() -> void:
+	footstep_audio.play()
+	if is_sprinting:
+		sound_created.emit(global_position, sprint_loudness)
+	else:
+		sound_created.emit(global_position, walk_loudness)

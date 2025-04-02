@@ -1,8 +1,8 @@
 class_name PlayerStatsResource
 extends Resource
 
-var SPRINT_MULTIPLIER = 2.0
-var CROUCH_MULTIPLIER = 0.5
+const SPRINT_MULTIPLIER = 2.0
+const CROUCH_MULTIPLIER = 0.5
 
 @export var level: int
 @export var max_health: int
@@ -28,6 +28,9 @@ var crouch_speed: float = speed * CROUCH_MULTIPLIER
 var accel: float = speed / 5
 var run_accel: float = run_speed / 5
 var crouch_accel: float = crouch_speed / 5
+
+# Enemies within this range can be detected by player when they crouch
+var hearing_sensitivity = 4000
 
 # Load stats from save file
 func load_stats(stats: Dictionary):
