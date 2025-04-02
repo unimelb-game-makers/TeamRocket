@@ -1,7 +1,7 @@
 extends Control
 class_name IngredientHandler
 
-var selected_ingredients: Array[Item]
+var selected_ingredients: Array[Ingredient]
 var max_slots = 1
 @export var food_slot_scene: PackedScene
 
@@ -19,7 +19,7 @@ func create_slots() -> void:
 		var slot = food_slot_scene.instantiate()
 		add_child(slot)
 
-func add_item(item: Item) -> void:
+func add_item(item: Ingredient) -> void:
 	if (len(selected_ingredients) < max_slots):
 		selected_ingredients.append(item)
 		InventoryGlobal.remove_item(item, 1)

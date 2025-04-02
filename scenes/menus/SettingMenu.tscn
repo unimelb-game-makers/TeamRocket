@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://j00qr7dcyhv4"]
 
 [ext_resource type="PackedScene" uid="uid://hoiacky4452m" path="res://scenes/menus/VolumeContainer.tscn" id="1_ponht"]
-[ext_resource type="Script" path="res://scripts/menus/setting_menu.gd" id="1_q578m"]
+[ext_resource type="Script" uid="uid://ji01xbctic27" path="res://scripts/menus/setting_menu.gd" id="1_q578m"]
 [ext_resource type="PackedScene" uid="uid://cnuglobw5ctj7" path="res://scenes/ui/KeybindButton.tscn" id="2_x2dvv"]
 [ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="3_vo66s"]
 [ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="4_jri27"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cvgnc1lpg86u5"]
+
+[ext_resource type="Script" uid="uid://bml3qmy8fai22" path="res://resources/resource_scripts/ingredient.gd" id="1_4yras"]
+[ext_resource type="Texture2D" uid="uid://ykp7dqbdgdtc" path="res://assets/food/carrot sliced.png" id="2_d1usb"]
+
+[resource]
+script = ExtResource("1_4yras")
+ingredient_type = 2
+player_status_effects = []
+gun_status_effects = []
+item_id = 11
+texture = ExtResource("2_d1usb")
+item_name = "Carrot"
+description = "Snappy, crunchy, and with a hint of sweetness. Nothing beats the good ol’ carrot.\\n“You know they’re good for your eyes and the interdimensional radiation right, kids? - Jack, the shady alley”"
+weight = 0.0
+rarity = 0
+metadata/_custom_type_script = "uid://bml3qmy8fai22"

@@ -34,7 +34,6 @@ var resolution_index: int = 1 # Refer to EnumAutoload.RESOLUTION_ARRAY. Not used
 var vsync_option_index: int = 1 # From 0 to 2 for DISABLED / ENABLED / ADAPTIVE
 var window_mode_index: int = 1 # From 0 to 2 for FULLSCREEN / WINDOWED / BORDERLESS WINDOWED
 
-
 func _ready() -> void:
 	load_item_database()
 	SaveManager.load_setting_config()

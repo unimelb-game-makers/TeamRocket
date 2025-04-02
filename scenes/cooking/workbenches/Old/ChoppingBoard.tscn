@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://wv12mpqwbndl"]
 
-[ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_obet7"]
+[ext_resource type="Script" uid="uid://bqbl7kycljl0t" path="res://scripts/cooking/activity_station.gd" id="1_obet7"]
 [ext_resource type="PackedScene" uid="uid://de7jdm6b6jkob" path="res://scenes/cooking/activities/Old/ChoppingActivity.tscn" id="2_qmss5"]
 [ext_resource type="Texture2D" uid="uid://of06ncu5vdqd" path="res://assets/interiors/kitchen/cutting board.png" id="3_b1lqa"]
 

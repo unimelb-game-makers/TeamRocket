@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://djew3fi25qlvr"]
 
-[ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_i5nlr"]
+[ext_resource type="Script" uid="uid://bqbl7kycljl0t" path="res://scripts/cooking/activity_station.gd" id="1_i5nlr"]
 [ext_resource type="PackedScene" uid="uid://bgrsak6sy4dcb" path="res://scenes/cooking/activities/Old/FryActivity.tscn" id="2_5fxuv"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6d15y"]

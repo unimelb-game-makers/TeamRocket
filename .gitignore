@@ -20,3 +20,8 @@ mono_crash.*.json
 /build_win/
 /build_mac/
 /build_linux/
+
+resources/inventory_saves/file1.tres
+resources/inventory_saves/file2.tres
+resources/inventory_saves/file3.tres
+

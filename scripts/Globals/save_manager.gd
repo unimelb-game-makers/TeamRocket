@@ -45,9 +45,29 @@ func convert_inventory_data_when_load(saved_dict: Dictionary):
 	new_dict[2] = convert_id_to_item_resource(saved_dict["2"])
 	return new_dict
 
+func save_inventory(inventory_dict: Dictionary, slot_id: int):
+	var path = "res://resources/inventory_saves/file" + str(slot_id) +  ".tres"
+	var save_file: InventorySave = InventorySave.new()
+	save_file.player_inventory = inventory_dict[InventoryGlobal.InventoryType.PLAYER]
+	save_file.fridge_inventory = inventory_dict[InventoryGlobal.InventoryType.FRIDGE]
+	ResourceSaver.save(save_file, path)
+	
+func load_inventory(slot_id: int):
+	var path = "res://resources/inventory_saves/file" + str(slot_id) +  ".tres"
+	var save_file: InventorySave = load(path)
+	InventoryGlobal.inventory_dict[InventoryGlobal.InventoryType.PLAYER] = save_file.player_inventory
+	InventoryGlobal.inventory_dict[InventoryGlobal.InventoryType.FRIDGE] = save_file.fridge_inventory
+	
 func delete_save_file(slot_id: int):
 	var save_path = get_savefile_name(slot_id)
 	var dir = DirAccess.open("user://")
+	
+	# Clear inventory resource
+	var path = "res://resources/inventory_saves/file" + str(slot_id) +  ".tres"
+	var save_file: InventorySave = load(path)
+	if (save_file):
+		save_file.reset_inventories()
+	ResourceSaver.save(save_file, path)
 	
 	if dir and dir.file_exists(save_path):
 		var result = dir.remove(save_path)
@@ -58,15 +78,15 @@ func delete_save_file(slot_id: int):
 	else:
 		print("Save file does not exist.")
 
-
 func save_game(slot_id):
 	Globals.update_total_playtime()
 	is_saving = true
 	started_saving.emit()
 	
 	var player_stats = Globals.player_stats.export_stats()
+	save_inventory(InventoryGlobal.inventory_dict, slot_id)
 	var save_dict = {
-		"inventory_dict": convert_inventory_data_when_save(InventoryGlobal.inventory_dict),
+		#"inventory_dict": convert_inventory_data_when_save(InventoryGlobal.inventory_dict),
 		"player_stats": player_stats,
 		"total_playtime": Globals.total_playtime,
 	}
@@ -95,7 +115,6 @@ func load_data_only(slot_id: int) -> Dictionary:
 
 	return save_data
 
-
 func load_game(slot_id):
 	save_data_is_loaded = true
 
@@ -103,10 +122,10 @@ func load_game(slot_id):
 	if save_data.is_empty():
 		return
 
-	InventoryGlobal.inventory_dict = convert_inventory_data_when_load(save_data["inventory_dict"])
+	#InventoryGlobal.inventory_dict = convert_inventory_data_when_load(save_data["inventory_dict"])
+	load_inventory(slot_id)
 	Globals.player_stats.load_stats(save_data["player_stats"])
 	Globals.total_playtime = save_data["total_playtime"]
-
 
 func get_savefile_name(slot_id: int) -> String:
 	return "user://savegame_slot{0}.save".format([slot_id])

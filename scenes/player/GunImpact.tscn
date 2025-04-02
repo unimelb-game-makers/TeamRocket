@@ -58,8 +58,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wiw42"]
 _data = {
-"RESET": SubResource("Animation_guu1s"),
-"play": SubResource("Animation_hl13g")
+&"RESET": SubResource("Animation_guu1s"),
+&"play": SubResource("Animation_hl13g")
 }
 
 [node name="GunImpact" type="CPUParticles2D"]

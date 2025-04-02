@@ -35,10 +35,10 @@ var playing: bool = false
 var baking: bool = false
 
 
-func start() -> void:
+func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
+	super(input_ingredients, output_item)
 	playing = true
 	current_time_pass = 0
-
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("roll"):
