@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bu6r7xofr0t8e"]
 
-[ext_resource type="Shader" path="res://scripts/shader/directional_sound_hud.gdshader" id="1_oye6p"]
+[ext_resource type="Shader" uid="uid://bepjrssoapr53" path="res://scripts/shader/directional_sound_hud.gdshader" id="1_oye6p"]
 [ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="2_dov35"]
-[ext_resource type="Script" path="res://scripts/player/enemy_noise_radar.gd" id="3_efj4u"]
+[ext_resource type="Script" uid="uid://dea37iyq710d5" path="res://scripts/player/enemy_noise_radar.gd" id="3_efj4u"]
 [ext_resource type="PackedScene" uid="uid://bqvyhpds5gmf3" path="res://scenes/player/RadarItemIcon.tscn" id="4_llix5"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rl688"]
@@ -13,7 +13,7 @@ seamless = true
 noise = SubResource("FastNoiseLite_rl688")
 
 [sub_resource type="Curve" id="Curve_hsnhf"]
-min_value = 0.05
+_limits = [0.05, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 0.05), 0.0, 0.0, 0, 0, Vector2(1, 0.05), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -25,12 +25,12 @@ resource_local_to_scene = true
 shader = ExtResource("1_oye6p")
 shader_parameter/inner_diameter = 0.35
 shader_parameter/outer_diameter = 0.36
+shader_parameter/noise = SubResource("NoiseTexture2D_vf56p")
+shader_parameter/sounds = SubResource("CurveTexture_c7dr8")
 shader_parameter/noise_strength = 0.2
 shader_parameter/noise_speed = 0.1
 shader_parameter/foreground = Vector4(1, 1, 1, 1)
 shader_parameter/background = Vector4(0, 0, 0, 0)
-shader_parameter/noise = SubResource("NoiseTexture2D_vf56p")
-shader_parameter/sounds = SubResource("CurveTexture_c7dr8")
 
 [node name="EnemyNoiseRadar" type="Sprite2D"]
 self_modulate = Color(1, 1, 1, 0.313726)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cnuglobw5ctj7"]
 
-[ext_resource type="Script" uid="uid://crkl76q8vqio0" path="res://scenes/ui/keybind_button.gd" id="1_4qnba"]
+[ext_resource type="Script" uid="uid://c7jba1hbxyfd3" path="res://scenes/ui/keybind_button.gd" id="1_4qnba"]
 
 [node name="KeybindButton" type="HBoxContainer"]
 offset_right = 448.0
