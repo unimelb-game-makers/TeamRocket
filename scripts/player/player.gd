@@ -180,8 +180,11 @@ func _on_walk_state_entered() -> void:
 func _on_standing_state_entered() -> void:
 	enemy_noise_rader.visible = false
 	is_crouching = false
-	curr_speed = Globals.player_stats.run_speed
-	curr_accel = Globals.player_stats.run_accel
+	is_sprinting = false
+	footstep_audio.play()
+	footstep_timer.start(WALK_FOOTSTEP_SFX_FREQUENCY)
+	curr_speed = Globals.player_stats.speed
+	curr_accel = Globals.player_stats.accel
 
 func _on_run_state_entered() -> void:
 	is_sprinting = true

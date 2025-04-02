@@ -69,4 +69,5 @@ func direction_to_circle(dir: Vector2) -> Vector2:
 
 
 func _on_radar_update_timer_timeout() -> void:
-	update_radar()
+	if Globals.player.is_crouching:
+		update_radar()
