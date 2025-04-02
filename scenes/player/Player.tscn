@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_u8x7w"]
 [ext_resource type="Texture2D" uid="uid://d0rb5i270qmys" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Left/crouch_left.png" id="4_lhhg1"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_px21u"]
-[ext_resource type="PackedScene" uid="uid://bpwuxxnbvf5aq" path="res://scenes/player/gun_impact.tscn" id="4_wuv7n"]
+[ext_resource type="PackedScene" uid="uid://bpwuxxnbvf5aq" path="res://scenes/player/GunImpact.tscn" id="4_wuv7n"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="5_6l3qh"]
 [ext_resource type="Script" path="res://scripts/ui/aiming_ui.gd" id="5_bb4ct"]
 [ext_resource type="Texture2D" uid="uid://pjnhfqaeminu" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Right/crouch_right.png" id="5_norvr"]
@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://d3fhg66m1c0rh" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down01.png" id="8_x6n1m"]
 [ext_resource type="Texture2D" uid="uid://bj3fwesi5fljg" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down02.png" id="9_8ufqp"]
 [ext_resource type="Script" path="res://scripts/player/rifle.gd" id="9_usf71"]
-[ext_resource type="PackedScene" uid="uid://c3jnad7h7ggpt" path="res://scenes/player/bullet.tscn" id="10_c4h7y"]
+[ext_resource type="PackedScene" uid="uid://c3jnad7h7ggpt" path="res://scenes/player/Bullet.tscn" id="10_c4h7y"]
 [ext_resource type="Texture2D" uid="uid://ba6sk0si4xgoh" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down03.png" id="10_chcoi"]
 [ext_resource type="Texture2D" uid="uid://74aq7mvhmeeu" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down04.png" id="11_f5d4e"]
 [ext_resource type="Texture2D" uid="uid://chhwknv6cp2vo" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down05.png" id="12_2eg2o"]
@@ -97,7 +97,7 @@
 [ext_resource type="Texture2D" uid="uid://ctqn7ohdkuvgc" path="res://assets/textures/blank_circle_200x200.png" id="91_rlnnq"]
 [ext_resource type="AudioStream" uid="uid://pbelltth7qay" path="res://assets/sfx/team rocket sfx/player/footstep_concrete.mp3" id="92_yuju3"]
 [ext_resource type="Shader" path="res://scripts/shader/directional_sound_hud.gdshader" id="97_0djkk"]
-[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="97_najdn"]
+[ext_resource type="PackedScene" uid="uid://bu6r7xofr0t8e" path="res://scenes/player/EnemyNoiseRadar.tscn" id="97_lxwhf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_web4h"]
 animations = [{
@@ -470,16 +470,18 @@ seamless = true
 noise = SubResource("FastNoiseLite_rl688")
 
 [sub_resource type="Curve" id="Curve_hsnhf"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.143508, 0), 0.0, 0.0, 0, 0, Vector2(0.164009, 0.960877), 0.0, 0.0, 0, 0, Vector2(0.220957, 0), 0.0, 0.0, 0, 0, Vector2(0.403189, 0.00515902), 0.0, 0.0, 0, 0, Vector2(0.425968, 0.66466), 0.0, 0.0, 0, 0, Vector2(0.617312, 0.00515902), 0.0, 0.0, 0, 0, Vector2(0.726651, 0.385211), 0.0, 0.0, 0, 0, Vector2(0.84738, 0.815563), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 10
+min_value = 0.05
+_data = [Vector2(0, 0.05), 0.0, 0.0, 0, 0, Vector2(1, 0.05), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_c7dr8"]
 curve = SubResource("Curve_hsnhf")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k25c2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sadjk"]
+resource_local_to_scene = true
 shader = ExtResource("97_0djkk")
-shader_parameter/inner_diameter = 0.3
-shader_parameter/outer_diameter = 0.31
+shader_parameter/inner_diameter = 0.35
+shader_parameter/outer_diameter = 0.36
 shader_parameter/noise_strength = 0.2
 shader_parameter/noise_speed = 0.1
 shader_parameter/foreground = Vector4(1, 1, 1, 1)
@@ -738,11 +740,8 @@ bus = &"Effects"
 [node name="FootstepTimer" type="Timer" parent="FootstepSoundEffect"]
 wait_time = 0.5
 
-[node name="EnemyNoiseRadar" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.313726)
-material = SubResource("ShaderMaterial_k25c2")
-scale = Vector2(6, 6)
-texture = ExtResource("97_najdn")
+[node name="EnemyNoiseRadar" parent="." instance=ExtResource("97_lxwhf")]
+material = SubResource("ShaderMaterial_sadjk")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]

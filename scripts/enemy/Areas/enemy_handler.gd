@@ -8,6 +8,8 @@ class_name EnemyHandler
 
 var enemy_list: Array[Enemy] = []
 
+signal enemy_list_updated
+
 func _ready() -> void:
 	Globals.enemy_handler = self
 	for area in spawn_areas.get_children():
@@ -24,6 +26,7 @@ func add_enemy_to_list(enemy: Enemy) -> void:
 	enemy_list.append(enemy)
 
 func remove_enemy_from_list(enemy: Enemy) -> void:
+	enemy_list_updated.emit()
 	if enemy in enemy_list:
 		enemy_list.erase(enemy)
 
