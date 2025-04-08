@@ -79,7 +79,7 @@ texture = ExtResource("3_xrdhw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_nxmkd")
+&"": SubResource("AnimationLibrary_nxmkd")
 }
 autoplay = "float"
 

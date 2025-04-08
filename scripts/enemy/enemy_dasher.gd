@@ -19,8 +19,9 @@ var current_dashes = 0
 var num_dashes = 3
 
 var in_attack_state: bool = false
+var search_location: Vector2
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if (velocity.x > 0.0):
 		animated_sprite_2d.flip_h = true
 	else:
@@ -31,7 +32,7 @@ func _on_wind_up_state_entered() -> void:
 	pursuit_effect.play()
 	velocity = Vector2.ZERO
 	
-func _on_wind_up_state_physics_processing(delta: float) -> void:
+func _on_wind_up_state_physics_processing(_delta: float) -> void:
 	move_and_slide()
 
 # Get direction to player
@@ -59,14 +60,13 @@ func _on_dash_attack_state_exited() -> void:
 		statechart.send_event("on_attack_finish")
 
 
-func roll_speed(elapsed_time : float) -> float:
-	var t : float = elapsed_time / dash_attack_duration
+func roll_speed(elapsed_time: float) -> float:
+	var t: float = elapsed_time / dash_attack_duration
 	return dash_attack_speed - (dash_attack_speed - PASSIVE_SPEED) * t * t
 
 # Overrides function in enemy_basic. Checks if this enemy is in the Attack state.
 func _on_chase_radius_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player") and not in_attack_state:
-		
 		# When chasing, take note of last known position. 
 		# This enemy will travel to this position to search,
 		# only after path has no more points.
@@ -84,11 +84,11 @@ func _on_attack_state_exited() -> void:
 	in_attack_state = false
 
 func _on_passive_state_entered() -> void:
-	super()
+	super ()
 	idle_effect.play()
 
 func _on_active_state_entered() -> void:
-	super()
+	super ()
 	hunt_effect.play()
 
 func _on_dash_attack_hurtbox_body_entered(body: Node2D) -> void:
@@ -96,7 +96,7 @@ func _on_dash_attack_hurtbox_body_entered(body: Node2D) -> void:
 		body.damage(30)
 
 func damage():
-	super()
+	super ()
 	hurt_effect.play()
 	target_creature = Globals.player
 	statechart.send_event("on_detection_radius_entered")

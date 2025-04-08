@@ -2,11 +2,11 @@ extends Enemy
 
 @export var SPEEDS = [0, 45, 200]
 
-var movement_speed : float # Current default state is Passive
+var movement_speed: float # Current default state is Passive
 
 var movement_target_position: Vector2
 var target_creature: CharacterBody2D
-var direction = Vector2(0,0)
+var direction = Vector2(0, 0)
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_change_timer: Timer = $StateChangeTimer
@@ -24,7 +24,7 @@ var path = []
 enum ChickenState {NEUTRAL, WALKING, RUNNING}
 var state = ChickenState.NEUTRAL
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if (state == ChickenState.NEUTRAL):
 		pass
 	if (state == ChickenState.WALKING or ChickenState.RUNNING):
@@ -63,6 +63,12 @@ func change_state(new_state: ChickenState) -> void:
 			run_effect.play()
 
 func damage() -> void:
-	super()
+	super ()
 	hurt_effect.play()
 	enter_running_state()
+
+
+func alerted(sound_position: Vector2):
+	super (sound_position)
+	if state != ChickenState.RUNNING:
+		enter_running_state()

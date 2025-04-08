@@ -7,31 +7,25 @@ extends Area2D
 
 # Make sure this is not 0
 @export var allowed_enemies: Array[PackedScene] = []
-
-# Expose CollisionShape radius to scene root in editor
-@onready var collisionshape: CollisionShape2D = $CollisionShape2D
 @export var radius: float:
 	set(x):
 		radius = x
 		if collisionshape:
 			collisionshape.radius = x
 
+# Expose CollisionShape radius to scene root in editor
+@onready var collisionshape: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
-	#assert(len(allowed_enemies) > 0)
 	assert(allowed_enemies.size() > 0)
-	#print(allowed_enemies.size())
-	#print(radius)
-	
 	collisionshape.set("radius", radius)
 
-# Make sure 
 func spawn_single():
 	var e = allowed_enemies.pick_random().instantiate()
 	e.global_position = global_position + collisionshape.shape.radius * get_random_point()
-	
 	# Add child to root node
-	get_tree().get_first_node_in_group("EnemyHandler").add_child(e)
+	Globals.enemy_handler.add_child(e)
+	Globals.enemy_handler.add_enemy_to_list(e)
 
 
 func spawn_batch(amount: int):
@@ -42,4 +36,4 @@ func get_random_point():
 	var r = collisionshape.shape.radius
 	var x = sin(randf_range(-r, r))
 	var y = cos(randf_range(-r, r))
-	return Vector2(x , y)
+	return Vector2(x, y)
