@@ -1,6 +1,9 @@
 class_name MainMenu
 extends Control
 
+@export var start_game_scene: PackedScene
+@export var credit_scene: PackedScene
+
 @onready var camera_2d: Camera2D = $BackgroundMap/Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var title_anim_player: AnimationPlayer = $TitleAnimPlayer
@@ -26,7 +29,7 @@ func _on_start_pressed() -> void:
 	main_menu_buttons.hide()
 
 func start_game():
-	get_tree().change_scene_to_file("res://scenes/environments/City.tscn")
+	get_tree().change_scene_to_packed(start_game_scene)
 	SaveManager.load_game(Globals.chosen_slot_id)
 	Globals.start_record_playtime()
 	
@@ -42,7 +45,7 @@ func _on_settings_back() -> void:
 
 func _on_credits_pressed() -> void:
 	SoundManager.play_button_click_sfx()
-	get_tree().change_scene_to_file("res://scenes/menus/Credits.tscn")
+	get_tree().change_scene_to_packed(credit_scene)
 
 func _on_exit_pressed() -> void:
 	SoundManager.play_button_click_sfx()

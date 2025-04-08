@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://hgrksmummwv0"]
 
-[ext_resource type="Script" uid="uid://dvysrr2hlddun" path="res://scripts/ui/main_ui.gd" id="1_4xgkk"]
-[ext_resource type="Script" uid="uid://dt4b4k51ghki3" path="res://scripts/ui/player_ui.gd" id="2_yyelw"]
+[ext_resource type="Script" uid="uid://caseuyrdmakps" path="res://scripts/ui/main_ui.gd" id="1_4xgkk"]
+[ext_resource type="Script" uid="uid://cwnv5i1gfxf3o" path="res://scripts/ui/player_ui.gd" id="2_yyelw"]
 [ext_resource type="Texture2D" uid="uid://cs4ean4jys6o7" path="res://assets/textures/ui/radial_progress.png" id="3_8nnro"]
 [ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="4_1vp2p"]
 [ext_resource type="Texture2D" uid="uid://buij7cq2iihvp" path="res://assets/textures/kenney_borders/default/Border/panel-border-013.png" id="4_07ked"]

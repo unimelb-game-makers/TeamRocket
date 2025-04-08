@@ -1,7 +1,7 @@
 [gd_scene load_steps=110 format=3 uid="uid://bp53g1jmqlap"]
 
 [ext_resource type="Script" uid="uid://dahmqbphxewm7" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
-[ext_resource type="Script" uid="uid://co0fl1crxdvsu" path="res://scripts/player/player.gd" id="1_lvdue"]
+[ext_resource type="Script" uid="uid://cucpys6u7vdh4" path="res://scripts/player/player.gd" id="1_lvdue"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_7c1ag"]
 [ext_resource type="Script" uid="uid://dcjhq64uacsfa" path="res://addons/godot_state_charts/parallel_state.gd" id="2_44kvc"]
 [ext_resource type="Texture2D" uid="uid://h34qj4i3xbrn" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Down/crouch_down.png" id="3_4tl0c"]
@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c2td7omrl6sqn" path="res://assets/textures/basic_light.webp" id="8_emt8s"]
 [ext_resource type="Texture2D" uid="uid://d3fhg66m1c0rh" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down01.png" id="8_x6n1m"]
 [ext_resource type="Texture2D" uid="uid://bj3fwesi5fljg" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down02.png" id="9_8ufqp"]
-[ext_resource type="Script" uid="uid://bwkk62ogvvmsl" path="res://scripts/player/rifle.gd" id="9_usf71"]
+[ext_resource type="Script" uid="uid://dvt66tny6d4k8" path="res://scripts/player/rifle.gd" id="9_usf71"]
 [ext_resource type="PackedScene" uid="uid://c3jnad7h7ggpt" path="res://scenes/player/bullet.tscn" id="10_c4h7y"]
 [ext_resource type="Texture2D" uid="uid://ba6sk0si4xgoh" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down03.png" id="10_chcoi"]
 [ext_resource type="Texture2D" uid="uid://74aq7mvhmeeu" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down04.png" id="11_f5d4e"]

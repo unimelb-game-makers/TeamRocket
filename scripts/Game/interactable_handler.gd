@@ -12,9 +12,9 @@ func _ready() -> void:
 		if spawn_loot:
 			spawn_interactable(spawn_point.global_position)
 
-func spawn_interactable(position: Vector2):
+func spawn_interactable(spawn_pos: Vector2):
 	var interactable = chest_scene.instantiate()
-	interactable.position = position
+	interactable.position = spawn_pos
 	interactable_holder.add_child(interactable)
 	interactable.items = generate_loot(interactable.slots_num)
 	interactable.update_display()
@@ -22,7 +22,7 @@ func spawn_interactable(position: Vector2):
 func generate_loot(slots) -> Array[Item]:
 	var loot_array: Array[Item] = []
 	for i in range(slots):
-		var loot = randi_range(0, len(loot_table)-1)
+		var loot = randi_range(0, len(loot_table) - 1)
 		loot_array.append(loot_table[loot])
 		
 	return loot_array

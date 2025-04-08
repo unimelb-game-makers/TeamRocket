@@ -83,7 +83,7 @@ func set_movement_target(movement_target: Vector2):
 	#if (target_creature):
 		#update_navigation_path(position, target_creature.global_position)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	### Moved to chase_state_physics_processing
 	pass
 
@@ -161,7 +161,6 @@ func _on_search_last_seen_position_state_physics_processing(delta: float) -> voi
 	
 	# When no more points in path, walk to last known position
 	else:
-		var direction = position.direction_to(last_known_position)
 		position = position.lerp(last_known_position, movement_speed * delta / position.distance_to(last_known_position))
 		move_and_slide()
 		
@@ -207,7 +206,7 @@ func _on_pause_state_exited() -> void:
 func _on_return_state_entered() -> void:
 	navigation_agent.target_position = original_position
 
-func _on_return_state_physics_processing(delta: float) -> void:
+func _on_return_state_physics_processing(_delta: float) -> void:
 	var direction = navigation_agent.get_next_path_position() - global_position
 	velocity = direction.normalized() * PASSIVE_SPEED
 	move_and_slide()

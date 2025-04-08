@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cl3nktlqu747p" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_brown.png" id="1_gh5eo"]
 [ext_resource type="Texture2D" uid="uid://blocbouydvwko" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_brown_pressed.png" id="2_kwbnh"]
 [ext_resource type="Script" uid="uid://d2uady1mcqusq" path="res://scripts/cooking/food_slot.gd" id="3_10ak5"]
-[ext_resource type="Script" uid="uid://car26nd76ssab" path="res://scenes/ui/button_hover_effect.gd" id="4_teouj"]
+[ext_resource type="Script" uid="uid://bec0i5lj72tyd" path="res://scenes/ui/button_hover_effect.gd" id="4_teouj"]
 
 [node name="FoodSlot" type="MarginContainer"]
 offset_right = 40.0
