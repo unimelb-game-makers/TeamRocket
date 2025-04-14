@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=4 uid="uid://b33jqqmsjmmin"]
 
 [ext_resource type="TileSet" uid="uid://c018cpgpmun08" path="res://assets/prototype_tileset.tres" id="1_5tmv4"]
-[ext_resource type="Script" uid="uid://ijeowe4agm6i" path="res://scripts/terrain/ground.gd" id="2_1jag6"]
-[ext_resource type="Script" uid="uid://b7t8nwcclnook" path="res://scripts/terrain/Obstacles.gd" id="3_saguv"]
+[ext_resource type="Script" uid="uid://bddp0n0vjric4" path="res://scripts/terrain/ground.gd" id="2_1jag6"]
+[ext_resource type="Script" uid="uid://birf3dca0i0xe" path="res://scripts/terrain/Obstacles.gd" id="3_saguv"]
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="4_ln28l"]
-[ext_resource type="Script" uid="uid://caseuyrdmakps" path="res://scripts/ui/main_ui.gd" id="6_5wyeq"]
-[ext_resource type="Script" uid="uid://ns46i1pet5jg" path="res://scripts/ui/inventory_ui.gd" id="7_h2p8g"]
+[ext_resource type="Script" uid="uid://dvysrr2hlddun" path="res://scripts/ui/main_ui.gd" id="6_5wyeq"]
+[ext_resource type="Script" uid="uid://uyerpdkmkjaa" path="res://scripts/ui/inventory_ui.gd" id="7_h2p8g"]
 [ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/Old/ChoppingBoard.tscn" id="11_dr1ic"]
-[ext_resource type="Script" uid="uid://cysxr45seyte8" path="res://scripts/cooking/cooking_handler.gd" id="11_k4ddl"]
+[ext_resource type="Script" uid="uid://l5p3k3h6pvpl" path="res://scripts/cooking/cooking_handler.gd" id="11_k4ddl"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o4lb4"]
 vertices = PackedVector2Array(703, 319, 703, 65, 1219.91, 63, 1222.17, 577, 319, 63, 449, 65, 319, 577, 449, 319)

@@ -1,10 +1,10 @@
 class_name BasicEnemy
 extends Enemy
 
-const PASSIVE_SPEED : int = 85
-const ACTIVE_SPEED : int = 180
+const PASSIVE_SPEED: int = 85
+const ACTIVE_SPEED: int = 180
 
-var movement_speed : float # Current default state is Passive
+var movement_speed: float # Current default state is Passive
 
 var movement_target_position: Vector2
 var target_creature: CharacterBody2D
@@ -20,8 +20,8 @@ var path = []
 var last_known_position: Vector2 # Last known position of player
 
 # Search Area variables
-var num_searches = 0                  # Total number of "Search Areas" 
-var time_searching: float = 0         # Amount of time searching in one direction in Search Area
+var num_searches = 0 # Total number of "Search Areas"
+var time_searching: float = 0 # Amount of time searching in one direction in Search Area
 var search_min_duration: float = 0.3
 var search_max_duration: float = 0.8
 var search_direction: Vector2
@@ -51,6 +51,11 @@ func _ready():
 	## Now that the navigation map is no longer empty, set the movement target.
 	#set_movement_target(movement_target_position)
 
+func alerted(sound_position: Vector2):
+	super (sound_position)
+	last_known_position = sound_position
+	statechart.send_event("alerted") # Triggers To Search State
+
 func setup_navserver():
 	# Create new navigation server map
 	map = NavigationServer2D.map_create()
@@ -78,7 +83,7 @@ func set_movement_target(movement_target: Vector2):
 	#if (target_creature):
 		#update_navigation_path(position, target_creature.global_position)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	### Moved to chase_state_physics_processing
 	pass
 
@@ -117,7 +122,6 @@ func _on_chase_radius_area_entered(area: Area2D) -> void:
 
 func _on_chase_radius_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player"):
-		
 		# When chasing, take note of last known position. 
 		# This enemy will travel to this position to search,
 		# only after path has no more points.
@@ -149,7 +153,6 @@ func _on_chase_state_physics_processing(delta: float) -> void:
 ## Search Last Seen Position
 
 func _on_search_last_seen_position_state_physics_processing(delta: float) -> void:
-	
 	# Finish walking along path first
 	if path.size():
 		var walk_distance = movement_speed * delta
@@ -158,10 +161,7 @@ func _on_search_last_seen_position_state_physics_processing(delta: float) -> voi
 	
 	# When no more points in path, walk to last known position
 	else:
-		var direction = position.direction_to(last_known_position)
-		
 		position = position.lerp(last_known_position, movement_speed * delta / position.distance_to(last_known_position))
-		
 		move_and_slide()
 		
 		if position.distance_to(last_known_position) < 10: # less tolerance = jittering
@@ -206,7 +206,7 @@ func _on_pause_state_exited() -> void:
 func _on_return_state_entered() -> void:
 	navigation_agent.target_position = original_position
 
-func _on_return_state_physics_processing(delta: float) -> void:
+func _on_return_state_physics_processing(_delta: float) -> void:
 	var direction = navigation_agent.get_next_path_position() - global_position
 	velocity = direction.normalized() * PASSIVE_SPEED
 	move_and_slide()
@@ -217,4 +217,4 @@ func _on_return_state_physics_processing(delta: float) -> void:
 func _on_return_state_exited() -> void:
 	#navigation_agent.target_position = null
 	velocity = Vector2.ZERO # If removed conflicts with chase speed when player re-enters chase radius, still taking a look
-	pass 
+	pass

@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=4 uid="uid://brp2nubpjkefh"]
 
 [ext_resource type="TileSet" uid="uid://c018cpgpmun08" path="res://assets/prototype_tileset.tres" id="1_yocs1"]
-[ext_resource type="Script" uid="uid://ijeowe4agm6i" path="res://scripts/terrain/ground.gd" id="2_0y65t"]
-[ext_resource type="Script" uid="uid://b7t8nwcclnook" path="res://scripts/terrain/Obstacles.gd" id="3_bjpom"]
+[ext_resource type="Script" uid="uid://bddp0n0vjric4" path="res://scripts/terrain/ground.gd" id="2_0y65t"]
+[ext_resource type="Script" uid="uid://birf3dca0i0xe" path="res://scripts/terrain/Obstacles.gd" id="3_bjpom"]
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="4_4pq4x"]
-[ext_resource type="PackedScene" uid="uid://cqhi6f4pwyyf2" path="res://scenes/enemy/enemy_prototype.tscn" id="5_e0gvj"]
+[ext_resource type="PackedScene" uid="uid://cqhi6f4pwyyf2" path="res://scenes/enemy/EnemyPrototype.tscn" id="5_e0gvj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o4lb4"]
 vertices = PackedVector2Array(703, 319, 703, 65, 1219.91, 63, 1222.17, 577, 319, 63, 449, 65, 319, 577, 449, 319)
