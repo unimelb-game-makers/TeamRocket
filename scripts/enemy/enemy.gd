@@ -14,6 +14,7 @@ extends CharacterBody2D
 ## If this valye + player's sound loudness larger than distance to player, enemy can hear. 
 ## Should keep it low for most enemies.
 @export var hearing_sensitivity: float = 10
+@export var sounds: Dictionary[String, Array]
 
 var item_floor_scene: PackedScene = preload("res://scenes/item/ItemOnFloor.tscn")
 var attack_damage: int
@@ -61,6 +62,15 @@ func randomize_dropped_item():
 	
 	return null
 
-
+func play_sound(sound_name: String):
+	var sound_library: Array = sounds[sound_name]
+	var sound_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+	var random = randi_range(0, len(sound_library)-1)
+	add_child(sound_player)
+	sound_player.stream = sound_library[random]
+	sound_player.play(0.0)
+	await get_tree().create_timer(sound_library[random].get_length()).timeout
+	sound_player.queue_free()
+	
 func alerted(_sound_position: Vector2):
 	return

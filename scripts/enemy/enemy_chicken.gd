@@ -55,16 +55,16 @@ func change_state(new_state: ChickenState) -> void:
 	match state:
 		ChickenState.NEUTRAL:
 			animated_sprite_2d.play("neutral")
-			idle_effect.play()
+			play_sound("idle")
 		ChickenState.WALKING:
 			animated_sprite_2d.play("walk")
 		ChickenState.RUNNING:
 			animated_sprite_2d.play("walk", 3.0)
-			run_effect.play()
+			play_sound("run")
 
 func damage() -> void:
 	super ()
-	hurt_effect.play()
+	play_sound("hurt")
 	enter_running_state()
 
 
