@@ -49,11 +49,6 @@ func _ready() -> void:
 	s.add_child(newcam)
 	newcam.global_position = s.global_position
 
-# Is given socket array
-#func add_doors(neighbor_array: Array[String], neighbor_scenes: Array[PackedScene]):
-	#for i in range(len(doors)):
-		#doors[i].target_room = neighbor_scenes[i]
-
 func connect_doors(directions: Array):
 	for i in range(len(doors)):
 		doors[i].door_direction = directions[i]
