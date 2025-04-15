@@ -578,6 +578,14 @@ texture_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, -12)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.156, 0.156)
+sprite_frames = SubResource("SpriteFrames_web4h")
+animation = &"move_down_run"
+frame_progress = 0.757631
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, 15.5)
 shape = SubResource("RectangleShape2D_d0p80")
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("2_7c1ag")]

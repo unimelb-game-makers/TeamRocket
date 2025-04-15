@@ -142,7 +142,10 @@ func _process(_delta: float) -> void:
 
 	if (not channel_timer.is_stopped()):
 		channeling_particles.emitting = true
-
+		
+	if Input.is_action_just_pressed("reload"):
+		rifle.reload()
+		
 	global_rotation = 0
 
 func damage(value: int):

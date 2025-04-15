@@ -6,11 +6,14 @@ class_name DoorArea
 
 signal go_to_room(dir)
 
-## Which room this door leads into (set by script)
-#var target_room: PackedScene
-
 var door_direction: Vector2
+# True if player enters the room through this door. Blocks _on_area_entered.
+var is_entered: bool = false 
 
 func _on_area_entered(area: Area2D) -> void:
-	go_to_room.emit(door_direction)
-	#get_tree().change_scene_to_packed(target_room)
+	if not is_entered:
+		go_to_room.emit(door_direction)
+
+# If player spawns on this door, is_entered will be true.
+func _on_area_exited(area: Area2D) -> void:
+	is_entered = false
