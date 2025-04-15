@@ -13,7 +13,7 @@ var num_rooms = 20
 
 var generation_queue = []
 
-var max_neighbors = 1
+var max_neighbors = 2
 
 const straight: PackedScene = preload("res://scenes/map/templates/straight_room_1.tscn")
 const deadend: PackedScene = preload("res://scenes/map/templates/dead_end.tscn")

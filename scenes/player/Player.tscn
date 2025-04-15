@@ -475,7 +475,7 @@ bus = &"Effects"
 bus = &"Effects"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.12, 0.12)
+scale = Vector2(0.156, 0.156)
 sprite_frames = SubResource("SpriteFrames_web4h")
 animation = &"move_down_run"
 frame_progress = 0.757631
@@ -640,8 +640,8 @@ one_shot = true
 [node name="ChannelingParticles" type="CPUParticles2D" parent="Particles"]
 scale = Vector2(2, 2)
 emitting = false
-one_shot = true
 texture = SubResource("GradientTexture2D_r8vkw")
+one_shot = true
 emission_shape = 1
 emission_sphere_radius = 50.0
 direction = Vector2(0, 0)
