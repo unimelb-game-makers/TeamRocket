@@ -38,6 +38,10 @@ jobs:
           # This should exit pretty much immediately.
           godot --import --headless
           ls -R .godot
+          sha256sum assets/Park/Objects/lake.png
+          sudo apt update
+          sudo apt install imagemagick -y
+          identify assets/Park/Objects/lake.png
 
       - name: Build
         run: godot -v --export-release --headless "Web"
