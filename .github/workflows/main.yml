@@ -32,12 +32,12 @@ jobs:
 
       - name: Import assets
         run: |
-          godot --headless --editor --quit-after 2
-          godot --import --headless
+          # godot --headless --editor --quit-after 2
+          # godot --import --headless
           # Run a second time to make sure that the warnings have cleared.
           # This should exit pretty much immediately.
-          godot --import --headless
-          ls -R .godot
+          # godot --import --headless
+          # ls -R .godot
           sha256sum assets/Park/Objects/lake.png
           sudo apt update
           sudo apt install imagemagick -y
