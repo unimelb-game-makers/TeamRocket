@@ -4,7 +4,7 @@ name: "Godot CD Preview on PR"
 
 env:
   GODOT_VERSION: 4.4
-  PROJECT_NAME: 'ci_example'
+  PROJECT_NAME: 'team-rocket'
 
 on:
   workflow_dispatch:
