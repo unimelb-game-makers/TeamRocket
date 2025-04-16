@@ -61,6 +61,7 @@ _data = {
 
 [node name="ItemHitbox" type="Area2D"]
 collision_layer = 8
+collision_mask = 65
 script = ExtResource("1_ddbpc")
 
 [node name="Shadow" type="Sprite2D" parent="."]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0wrkas2vs7rm"]
 
 [ext_resource type="Script" uid="uid://bqbl7kycljl0t" path="res://scripts/cooking/activity_station.gd" id="1_vsmah"]
-[ext_resource type="Shader" uid="uid://bve4of8dnw64h" path="res://scripts/shader/2d_outline.gdshader" id="2_5v0fl"]
+[ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_5v0fl"]
 [ext_resource type="PackedScene" uid="uid://dcfegerycc50x" path="res://scenes/cooking/activities/CookingScene.tscn" id="2_7qqeh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_as2om"]
@@ -19,6 +19,7 @@ shader_parameter/max_or_add = false
 
 [node name="Workbench" type="Area2D"]
 collision_layer = 32
+collision_mask = 64
 script = ExtResource("1_vsmah")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -30,5 +31,5 @@ material = SubResource("ShaderMaterial_as2om")
 
 [node name="CookingScene" parent="CanvasLayer" instance=ExtResource("2_7qqeh")]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
