@@ -1,0 +1,20 @@
+[gd_scene load_steps=8 format=3 uid="uid://lm6twxptj0k2"]
+
+[ext_resource type="Script" uid="uid://ccbd2ia32x45e" path="res://DishCreationFramework2/test_DCF.gd" id="1_4rr3t"]
+[ext_resource type="Script" uid="uid://cqepny7opx0k1" path="res://DishCreationFramework2/dcf_dish_crafter.gd" id="2_n4xsp"]
+[ext_resource type="Script" uid="uid://dla42e7o7hsdn" path="res://DishCreationFramework2/dcf_dishtype.gd" id="3_60jbu"]
+[ext_resource type="Resource" uid="uid://cojmm1wu40t2e" path="res://DishCreationFramework2/TEST_RESOURCES/pizza.tres" id="4_q48bo"]
+[ext_resource type="Script" uid="uid://dxkml6m6rjj2u" path="res://DishCreationFramework2/dcf_ingredient_crafter.gd" id="5_1t10a"]
+[ext_resource type="Script" uid="uid://q0qef7ixhikp" path="res://DishCreationFramework2/dcf_ingredient_recipe.gd" id="6_ls4p3"]
+[ext_resource type="Resource" uid="uid://dgwhqvqdxtj88" path="res://DishCreationFramework2/TEST_RESOURCES/unbridled_skewer_recipe.tres" id="7_idcb1"]
+
+[node name="DcfTestScene" type="Node"]
+script = ExtResource("1_4rr3t")
+
+[node name="DishCrafter" type="Node" parent="."]
+script = ExtResource("2_n4xsp")
+all_dish_types = Array[ExtResource("3_60jbu")]([ExtResource("4_q48bo")])
+
+[node name="IngredientCrafter" type="Node" parent="."]
+script = ExtResource("5_1t10a")
+all_ingredient_recipes = Array[ExtResource("6_ls4p3")]([ExtResource("7_idcb1")])

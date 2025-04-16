@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DCF_Dish" load_steps=2 format=3 uid="uid://jtyxuefrf3ps"]
+
+[ext_resource type="Script" uid="uid://bj0fkp8w5qlmc" path="res://DishCreationFramework2/dcf_dish.gd" id="1_sxrtj"]
+
+[resource]
+script = ExtResource("1_sxrtj")
+dish_effects = Array[String](["CHEEEESE SPEEEDD"])
+ingredients = Array[int]([10, 10])
+item_name = "Cheesy Pizza"
+description = ""
+weight = 0.0
+quality = 0
+metadata/_custom_type_script = "uid://bj0fkp8w5qlmc"

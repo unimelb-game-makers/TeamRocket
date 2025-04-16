@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DCF_Ingredient" load_steps=2 format=3 uid="uid://b6fvym626mxex"]
+
+[ext_resource type="Script" uid="uid://dso5p5up1se3" path="res://DishCreationFramework2/dcf_ingredient.gd" id="1_dtxy6"]
+
+[resource]
+script = ExtResource("1_dtxy6")
+ingredient_type = 10
+effects = Array[String](["Unbridled Skewering"])
+name_modifiers = Array[String]([])
+item_name = "ULTIMATE SKEWER"
+description = ""
+weight = 0.0
+quality = 0
+metadata/_custom_type_script = "uid://dso5p5up1se3"

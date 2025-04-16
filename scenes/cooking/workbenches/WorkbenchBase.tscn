@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0wrkas2vs7rm"]
 
 [ext_resource type="Script" uid="uid://bqbl7kycljl0t" path="res://scripts/cooking/activity_station.gd" id="1_vsmah"]
-[ext_resource type="Shader" uid="uid://bve4of8dnw64h" path="res://scripts/shader/2d_outline.gdshader" id="2_5v0fl"]
+[ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_5v0fl"]
 [ext_resource type="PackedScene" uid="uid://dcfegerycc50x" path="res://scenes/cooking/activities/CookingScene.tscn" id="2_7qqeh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_as2om"]

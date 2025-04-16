@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DCF_Dish" load_steps=2 format=3 uid="uid://ditug8nhx0tt4"]
+
+[ext_resource type="Script" uid="uid://bj0fkp8w5qlmc" path="res://DishCreationFramework2/dcf_dish.gd" id="1_0n036"]
+
+[resource]
+script = ExtResource("1_0n036")
+dish_effects = Array[String]([])
+ingredients = Array[int]([])
+item_name = "Toppingless Pizza"
+description = ""
+weight = 0.0
+quality = 0
+metadata/_custom_type_script = "uid://bj0fkp8w5qlmc"

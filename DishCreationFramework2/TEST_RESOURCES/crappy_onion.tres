@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DCF_Ingredient" load_steps=2 format=3 uid="uid://8chd6uc2najs"]
+
+[ext_resource type="Script" uid="uid://dso5p5up1se3" path="res://DishCreationFramework2/dcf_ingredient.gd" id="1_nc0ep"]
+
+[resource]
+script = ExtResource("1_nc0ep")
+ingredient_type = 102
+effects = Array[String]([])
+name_modifiers = Array[String]([])
+item_name = "ONIION"
+description = ""
+weight = 0.0
+quality = 0
+metadata/_custom_type_script = "uid://dso5p5up1se3"
