@@ -80,10 +80,9 @@ TIMER = false
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler" index="1"]
 process_mode = 3
 stream = SubResource("AudioStreamInteractive_5wnhy")
-autoplay = true
 bus = &"Music"
 
-[node name="NavigationRegion2D" parent="." index="3"]
+[node name="NavigationRegion2D" parent="." index="5"]
 navigation_polygon = SubResource("NavigationPolygon_5vy8l")
 
 [node name="KitchenFloor" type="Sprite2D" parent="NavigationRegion2D/Map" index="0"]
@@ -188,7 +187,7 @@ position = Vector2(712, 244)
 [node name="Fridge" parent="InteractableHandler/InteractableHolder" index="5" instance=ExtResource("14_12asn")]
 position = Vector2(1030, 195)
 
-[node name="Player" parent="." index="6"]
+[node name="Player" parent="." index="7"]
 position = Vector2(269, 549)
 
 [connection signal="body_entered" from="NavigationRegion2D/Map/ExitArea" to="KitchenHandler" method="_on_exit_area_body_entered"]
