@@ -3,7 +3,7 @@
 name: "Godot CD Preview on PR"
 
 env:
-  GODOT_VERSION: 4.4
+  GODOT_VERSION: 4.4.1
   PROJECT_NAME: 'team-rocket'
 
 on:
