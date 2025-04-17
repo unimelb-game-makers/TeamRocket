@@ -21,10 +21,10 @@ func interact():
 func _on_cooking_scene_complete(_output: Variant) -> void:
 	cooking_scene.hide()
 
-func _on_body_exited(_body: Node2D) -> void:
+func _on_area_exited(_area: Area2D) -> void:
 	reset_cooking()
 	cooking_scene.hide()
 	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
 
-func _on_body_entered(_body: Node2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	sprite.material.set_shader_parameter("outline_color", Color.GREEN)

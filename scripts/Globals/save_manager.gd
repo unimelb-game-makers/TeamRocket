@@ -51,24 +51,24 @@ func save_inventory(inventory_dict: Dictionary, slot_id: int):
 	save_file.player_inventory = inventory_dict[InventoryGlobal.InventoryType.PLAYER]
 	save_file.fridge_inventory = inventory_dict[InventoryGlobal.InventoryType.FRIDGE]
 	ResourceSaver.save(save_file, path)
-	
+
 func load_inventory(slot_id: int):
 	var path = "res://resources/inventory_saves/file" + str(slot_id) +  ".tres"
 	var save_file: InventorySave = load(path)
 	InventoryGlobal.inventory_dict[InventoryGlobal.InventoryType.PLAYER] = save_file.player_inventory
 	InventoryGlobal.inventory_dict[InventoryGlobal.InventoryType.FRIDGE] = save_file.fridge_inventory
-	
+
 func delete_save_file(slot_id: int):
 	var save_path = get_savefile_name(slot_id)
 	var dir = DirAccess.open("user://")
-	
+
 	# Clear inventory resource
 	var path = "res://resources/inventory_saves/file" + str(slot_id) +  ".tres"
 	var save_file: InventorySave = load(path)
 	if (save_file):
 		save_file.reset_inventories()
 	ResourceSaver.save(save_file, path)
-	
+
 	if dir and dir.file_exists(save_path):
 		var result = dir.remove(save_path)
 		if result == OK:
@@ -82,7 +82,7 @@ func save_game(slot_id):
 	Globals.update_total_playtime()
 	is_saving = true
 	started_saving.emit()
-	
+
 	var player_stats = Globals.player_stats.export_stats()
 	save_inventory(InventoryGlobal.inventory_dict, slot_id)
 	var save_dict = {

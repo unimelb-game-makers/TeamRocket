@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="3_uyd3e"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="4_ajerb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5o8un"]
-size = Vector2(193, 145)
+[sub_resource type="CircleShape2D" id="CircleShape2D_a64qg"]
+radius = 153.506
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ordb"]
 resource_local_to_scene = true
@@ -23,7 +23,7 @@ shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqr6h"]
-size = Vector2(159, 30)
+size = Vector2(176, 63)
 
 [node name="Area2D" type="Area2D" node_paths=PackedStringArray("storage_ui")]
 collision_layer = 8
@@ -34,14 +34,23 @@ item_slot_scene = ExtResource("3_uyd3e")
 storage_ui = NodePath("UI")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, -0.5)
-shape = SubResource("RectangleShape2D_5o8un")
+position = Vector2(-1.5, -62.625)
+shape = SubResource("CircleShape2D_a64qg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_0ordb")
+position = Vector2(0, -62.125)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("1_0l3g5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -16)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_hqr6h")
 
 [node name="UI" type="Control" parent="."]
 visible = false
@@ -60,14 +69,6 @@ offset_right = 235.0
 offset_bottom = -50.0
 scale = Vector2(1.5, 1.5)
 columns = 3
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-0.5, -8)
-shape = SubResource("RectangleShape2D_hqr6h")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

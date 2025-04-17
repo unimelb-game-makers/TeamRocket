@@ -4,22 +4,24 @@
 [ext_resource type="Texture2D" uid="uid://2wvbjv7h5yx2" path="res://assets/Park/Objects/streetlight right.png" id="2_51301"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kya2r"]
-size = Vector2(58, 279)
+size = Vector2(58, 47)
 
 [node name="Streetlight" type="Node2D"]
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(96, -2)
+position = Vector2(175, -276.5)
 color = Color(0.928184, 0.675873, 0.397279, 1)
 texture = ExtResource("1_88pte")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(79, -274.5)
 texture = ExtResource("2_51301")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(79, -274.5)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-79, 159.5)
+position = Vector2(-79, 275.5)
 shape = SubResource("RectangleShape2D_kya2r")

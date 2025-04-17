@@ -34,17 +34,6 @@ func _on_submit_button_pressed() -> void:
 	if (items[0] in acceptable_foods):
 		submit_item(items[0])
 
-
-func _on_body_entered(_body: Node2D) -> void:
-	sprite.material.set_shader_parameter("outline_color", Color.GREEN)
-
-
-func _on_body_exited(_body: Node2D) -> void:
-	canvas_layer.hide()
-	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
-	item_containers.hide()
-
-
 func _on_reset_button_pressed() -> void:
 	for slot in item_containers.get_children():
 		slot.remove_food()
@@ -56,3 +45,13 @@ func _on_inventory_container_item_select(item: Item, _amount: int) -> void:
 		InventoryGlobal.remove_item(item, 1)
 		inventory_container.update_inventory_list()
 		update_display()
+
+
+func _on_area_entered(_area: Area2D) -> void:
+	sprite.material.set_shader_parameter("outline_color", Color.GREEN)
+
+
+func _on_area_exited(_area: Area2D) -> void:
+	canvas_layer.hide()
+	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
+	item_containers.hide()
