@@ -5,10 +5,11 @@
 [resource]
 script = ExtResource("1_nc0ep")
 ingredient_type = 102
-effects = Array[String]([])
+effects = Array[int]([0])
 name_modifiers = Array[String]([])
+item_id = 0
 item_name = "ONIION"
 description = ""
 weight = 0.0
-quality = 0
+rarity = 0
 metadata/_custom_type_script = "uid://dso5p5up1se3"

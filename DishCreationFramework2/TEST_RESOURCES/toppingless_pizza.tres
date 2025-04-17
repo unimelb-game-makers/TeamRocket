@@ -4,10 +4,11 @@
 
 [resource]
 script = ExtResource("1_0n036")
-dish_effects = Array[String]([])
+dish_effects = Array[int]([])
 ingredients = Array[int]([])
+item_id = 3002
 item_name = "Toppingless Pizza"
 description = ""
 weight = 0.0
-quality = 0
+rarity = 0
 metadata/_custom_type_script = "uid://bj0fkp8w5qlmc"

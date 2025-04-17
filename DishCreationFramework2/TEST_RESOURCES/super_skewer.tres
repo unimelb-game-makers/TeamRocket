@@ -5,10 +5,11 @@
 [resource]
 script = ExtResource("1_dtxy6")
 ingredient_type = 10
-effects = Array[String](["Unbridled Skewering"])
+effects = Array[int]([])
 name_modifiers = Array[String]([])
+item_id = 0
 item_name = "ULTIMATE SKEWER"
 description = ""
 weight = 0.0
-quality = 0
+rarity = 0
 metadata/_custom_type_script = "uid://dso5p5up1se3"

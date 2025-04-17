@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("2_bq4q3")
-dishtype_effects = Array[String](["Add Attack", "Add Defense"])
+dishtype_effects = Array[int]([])
 base_ingredients = Array[int]([102, 201, 10])
 dishes = Array[ExtResource("1_omdeu")]([ExtResource("2_ojcgu"), ExtResource("3_suh4t")])
 metadata/_custom_type_script = "uid://dla42e7o7hsdn"

@@ -20,7 +20,7 @@ enum IngredientType {
 # Making something to process effects of the final dish is probably cleaner
 # We just keep adding effects of ingredients until dish
 # Generic ingredient we evidently leave their effects empty
-@export var effects: Array[String]
+@export var effects: Array[DCF_Item.Effects]
 
 # NOT IMPLEMENTED, could be a list of things to prefix unkown dishes (dishes we did not custom make names for)
 @export var name_modifiers: Array[String]

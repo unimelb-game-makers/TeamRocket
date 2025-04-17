@@ -4,10 +4,11 @@
 
 [resource]
 script = ExtResource("1_sxrtj")
-dish_effects = Array[String](["CHEEEESE SPEEEDD"])
+dish_effects = Array[int]([3, 0])
 ingredients = Array[int]([10, 10])
+item_id = 3001
 item_name = "Cheesy Pizza"
 description = ""
 weight = 0.0
-quality = 0
+rarity = 0
 metadata/_custom_type_script = "uid://bj0fkp8w5qlmc"

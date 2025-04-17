@@ -5,10 +5,11 @@
 [resource]
 script = ExtResource("1_tfs4c")
 ingredient_type = 201
-effects = Array[String](["This is a special prok buff infused into the super skewer"])
+effects = Array[int]([0])
 name_modifiers = Array[String]([])
+item_id = 0
 item_name = "SPecial Porker"
 description = ""
 weight = 0.0
-quality = 0
+rarity = 0
 metadata/_custom_type_script = "uid://dso5p5up1se3"
