@@ -23,7 +23,7 @@ func _ready() -> void:
 		game_timer.start()
 	var tween = create_tween()
 	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 0), 1.0)
-	if music_player and not(OS.has_feature("web")):
+	if music_player:
 		music_player.play()
 	else:
 		push_error("No MusicPlayer node found under GameHandler!")
