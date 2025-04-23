@@ -8,6 +8,8 @@ extends Node
 @onready var game_timer: Timer = $GameTimer
 @onready var canvas: CanvasLayer = $CanvasLayer
 @onready var fade_to_black: ColorRect = $CanvasLayer/FadeToBlack
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
+
 
 var time
 var paused = false
@@ -21,6 +23,10 @@ func _ready() -> void:
 		game_timer.start()
 	var tween = create_tween()
 	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 0), 1.0)
+	if music_player and not(OS.has_feature("web")):
+		music_player.play()
+	else:
+		push_error("No MusicPlayer node found under GameHandler!")
 
 
 func _on_game_timer_timeout() -> void:
