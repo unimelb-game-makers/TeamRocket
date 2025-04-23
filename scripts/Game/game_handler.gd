@@ -24,6 +24,7 @@ func _ready() -> void:
 	var tween = create_tween()
 	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 0), 1.0)
 	if music_player:
+		await game_timer.timeout
 		music_player.play()
 	else:
 		push_error("No MusicPlayer node found under GameHandler!")
