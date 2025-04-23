@@ -44,6 +44,7 @@ func switch_to_kitchen():
 	var tween = create_tween()
 	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 2.0), 2.0)
 	await tween.finished
+	$MusicPlayer.playing = false
 	get_tree().change_scene_to_file("res://scenes/environments/Kitchen.tscn")
 
 func load_character_info():
