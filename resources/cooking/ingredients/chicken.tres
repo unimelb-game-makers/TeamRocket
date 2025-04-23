@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://dngkboivj2d5n"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_1p1qf"]
+[ext_resource type="Texture2D" uid="uid://dh26g60f1l75x" path="res://assets/food/chicken_raw.png" id="2_rxw2h"]
+
+[resource]
+script = ExtResource("1_1p1qf")
+ingredient_type = 203
+ingredient_category = 3
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_rxw2h")
+texture_id = ExtResource("2_rxw2h")
+item_name = "Chicken"
+description = "Chicken"
+weight = 0.2
+rarity = 0
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

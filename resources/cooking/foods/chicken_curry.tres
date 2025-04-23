@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Dish" load_steps=3 format=3 uid="uid://cxdb8u0ju6bk5"]
+
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="1_7wh13"]
+[ext_resource type="Texture2D" uid="uid://bltjurbemos4c" path="res://assets/food/spaghetti bolognese.png" id="2_v3scy"]
+
+[resource]
+script = ExtResource("1_7wh13")
+effects = Array[int]([])
+ingredients = Array[int]([203, 101, 100])
+texture = ExtResource("2_v3scy")
+texture_id = ExtResource("2_v3scy")
+item_name = "Chicken Curry"
+description = "Chicken Curry!"
+weight = 0.3
+rarity = 0
+metadata/_custom_type_script = "uid://dqqa8ydotiigx"

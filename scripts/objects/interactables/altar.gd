@@ -5,7 +5,7 @@ signal submit(item)
 @onready var inventory_container: Container = $CanvasLayer/UI/InventoryContainer
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 
-@export var acceptable_foods: Array[Item]
+@export var acceptable_foods: Array[Dish]
 
 func _ready() -> void:
 	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)

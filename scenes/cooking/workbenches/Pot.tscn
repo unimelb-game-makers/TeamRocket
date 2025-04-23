@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqjhwwixj8hir"]
+[gd_scene load_steps=14 format=3 uid="uid://bqjhwwixj8hir"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_j278a"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_0onca"]
 [ext_resource type="PackedScene" uid="uid://4s64a0adjxlr" path="res://scenes/cooking/activities/PotActivity.tscn" id="2_5al3h"]
 [ext_resource type="Texture2D" uid="uid://dhgbxnc7av4lx" path="res://assets/workstations/pot/stew0.png" id="3_an7p1"]
-[ext_resource type="Resource" uid="uid://d0er8kaqjpcsl" path="res://resources/activities/stewing.tres" id="3_b6teh"]
 [ext_resource type="Texture2D" uid="uid://exr5tyv2uhg6" path="res://assets/workstations/pot/stew2.png" id="4_ebbo6"]
 [ext_resource type="Texture2D" uid="uid://jl1pl0lu41g4" path="res://assets/workstations/pot/stew3.png" id="5_8yv25"]
 [ext_resource type="Texture2D" uid="uid://0atadiimh8mf" path="res://assets/workstations/pot/stew4.png" id="6_v3flu"]
+[ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="7_3xfbf"]
+[ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="8_44ufp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2mod"]
 size = Vector2(73, 59)
@@ -34,6 +35,12 @@ frame_1/duration = 0.25
 frame_2/texture = ExtResource("6_v3flu")
 frame_2/duration = 0.25
 
+[sub_resource type="Resource" id="Resource_fy06h"]
+script = ExtResource("8_44ufp")
+recipes = Array[ExtResource("7_3xfbf")]([])
+max_ingredients = 5
+metadata/_custom_type_script = "uid://c0shkqininnkd"
+
 [node name="Pot" instance=ExtResource("1_j278a")]
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -49,7 +56,7 @@ texture = ExtResource("3_an7p1")
 visible = false
 activity_name = "Pot"
 activity_animated_texture = SubResource("AnimatedTexture_8w5dh")
-activity_res = ExtResource("3_b6teh")
+crafting_station = SubResource("Resource_fy06h")
 
 [node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("2_5al3h")]
 visible = false
