@@ -136,6 +136,7 @@ channel={
 2d_physics/layer_4="Items"
 2d_physics/layer_5="Projectiles"
 2d_physics/layer_6="Interactables"
+2d_physics/layer_7="PlayerInteraction"
 
 [rendering]
 

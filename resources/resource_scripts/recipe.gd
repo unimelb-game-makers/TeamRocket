@@ -1,4 +1,3 @@
-class_name Recipe
 extends Resource
 
 @export var base_recipe_items: Array[Ingredient]

@@ -1,4 +1,3 @@
-class_name Item
 extends Resource
 
 enum Rarity {COMMON, UNCOMMON, RARE, LEGENDARY}

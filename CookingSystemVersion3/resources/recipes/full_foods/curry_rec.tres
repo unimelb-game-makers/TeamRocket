@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DishRecipe" load_steps=5 format=3 uid="uid://d3b4eailp7hg2"]
+
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://CookingSystemVersion3/resource_scripts/dish.gd" id="1_01v64"]
+[ext_resource type="Resource" uid="uid://cxdb8u0ju6bk5" path="res://CookingSystemVersion3/resources/foods/chicken_curry.tres" id="2_wbbo0"]
+[ext_resource type="Resource" uid="uid://cq1taw61ifcp7" path="res://CookingSystemVersion3/resources/foods/beef_curry.tres" id="3_7pg1c"]
+[ext_resource type="Script" uid="uid://dbchi3jhl5d0x" path="res://CookingSystemVersion3/resource_scripts/recipe_scripts/dish_recipe.gd" id="4_jp63b"]
+
+[resource]
+script = ExtResource("4_jp63b")
+swappable_ingredients = Array[int]([3, 2])
+dishes = Array[ExtResource("1_01v64")]([ExtResource("2_wbbo0"), ExtResource("3_7pg1c")])
+effects = Array[int]([])
+base_ingredients = Array[int]([2])
+metadata/_custom_type_script = "uid://dbchi3jhl5d0x"

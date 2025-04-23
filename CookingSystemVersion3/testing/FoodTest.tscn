@@ -1,0 +1,20 @@
+[gd_scene load_steps=11 format=3 uid="uid://kc8vjsi41pgq"]
+
+[ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://CookingSystemVersion3/resource_scripts/crafting_station.gd" id="1_6suid"]
+[ext_resource type="Script" uid="uid://c4tumcuinvtlg" path="res://CookingSystemVersion3/testing/food_test.gd" id="1_qqssx"]
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://CookingSystemVersion3/resource_scripts/ingredient.gd" id="2_bsno2"]
+[ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://CookingSystemVersion3/resource_scripts/recipe_scripts/recipe.gd" id="2_idren"]
+[ext_resource type="Resource" uid="uid://v5nqfcc5gsvk" path="res://CookingSystemVersion3/resources/ingredients/beef_mince.tres" id="3_h04fq"]
+[ext_resource type="Resource" uid="uid://d3b4eailp7hg2" path="res://CookingSystemVersion3/resources/recipes/full_foods/curry_rec.tres" id="3_qqssx"]
+[ext_resource type="Resource" uid="uid://cwuer4u67t6om" path="res://CookingSystemVersion3/resources/ingredients/spice_powder.tres" id="5_ewb2p"]
+[ext_resource type="Resource" uid="uid://birn1wyb2g5bv" path="res://CookingSystemVersion3/resources/ingredients/onion.tres" id="5_fda3y"]
+[ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://CookingSystemVersion3/resources/ingredients/carrot.tres" id="6_fda3y"]
+[ext_resource type="Resource" uid="uid://bcmx8od3o8gv3" path="res://CookingSystemVersion3/resources/recipes/ingredients/spice_powder_recipe.tres" id="7_i13xk"]
+
+[node name="FoodTest" type="Node"]
+script = ExtResource("1_qqssx")
+workbench = Array[ExtResource("2_bsno2")]([ExtResource("3_h04fq"), ExtResource("5_ewb2p"), ExtResource("5_fda3y"), ExtResource("6_fda3y")])
+
+[node name="CraftingStation" type="Node" parent="."]
+script = ExtResource("1_6suid")
+recipes = Array[ExtResource("2_idren")]([ExtResource("3_qqssx"), ExtResource("7_i13xk")])

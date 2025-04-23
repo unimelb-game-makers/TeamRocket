@@ -1,4 +1,3 @@
-class_name Ingredient
 extends Item
 
 enum IngredientType {
