@@ -47,9 +47,6 @@ jobs:
           # Run a second time to make sure that the warnings have cleared.
           # This should exit pretty much immediately.
           godot --import --headless
-          # ls -R .godot
-          # check if png is corrupted
-          sha256sum assets/Park/Objects/lake.png
 
       - name: Build
         run: godot -v --export-release --headless "Web"

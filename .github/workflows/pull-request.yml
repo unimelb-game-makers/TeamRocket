@@ -34,6 +34,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
+      # Git considers it unsafe since are using LFS under a docker image, so mark it as safe as workaround
+      - name: Mark repo as safe
+        run: git config --global --add safe.directory /__w/TeamRocket/TeamRocket
+
+      - name: Install Git LFS
+        run: |
+          apt update && apt install git-lfs -y
+          git lfs install
+          git lfs pull
 
       - name: Move export templates into position
         run: |
@@ -48,7 +58,6 @@ jobs:
           # Run a second time to make sure that the warnings have cleared.
           # This should exit pretty much immediately.
           godot --import --headless
-          ls .godot
 
       - name: Build
         run: godot -v --export-release --headless "Web"
