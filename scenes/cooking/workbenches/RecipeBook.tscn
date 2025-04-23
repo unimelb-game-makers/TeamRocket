@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://bp3xwcc5hld8c"]
 
 [ext_resource type="Texture2D" uid="uid://kn0k2fmakmpr" path="res://assets/prototype/diagram.jpg" id="1_bva7t"]
-[ext_resource type="Shader" uid="uid://bve4of8dnw64h" path="res://scripts/shader/2d_outline.gdshader" id="2_cnj5q"]
-[ext_resource type="Script" uid="uid://djatkowcyv8pr" path="res://scripts/objects/interactables/prototype_diagram.gd" id="2_piy3k"]
+[ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_cnj5q"]
+[ext_resource type="Script" uid="uid://555oxysqxy7h" path="res://scripts/objects/interactables/prototype_diagram.gd" id="2_piy3k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlym8"]
-size = Vector2(138, 94)
+size = Vector2(120, 79)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hkfie"]
 resource_local_to_scene = true
@@ -21,16 +21,17 @@ shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
 
 [node name="Area2D" type="Area2D" groups=["Interactables"]]
-collision_layer = 8
+collision_layer = 32
+collision_mask = 64
 script = ExtResource("2_piy3k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(528, 230)
+position = Vector2(4, 0.5)
 shape = SubResource("RectangleShape2D_vlym8")
 
 [node name="PrototypeDiagram" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_hkfie")
-position = Vector2(530.125, 223.5)
+position = Vector2(-1.12506, 1.5)
 scale = Vector2(0.0445048, 0.057047)
 texture = ExtResource("1_bva7t")
 
@@ -42,5 +43,5 @@ position = Vector2(645, 341)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_bva7t")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
