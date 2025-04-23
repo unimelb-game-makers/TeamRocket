@@ -45,19 +45,30 @@ func convert_inventory_data_when_load(saved_dict: Dictionary):
 	new_dict[2] = convert_id_to_item_resource(saved_dict["2"])
 	return new_dict
 
-#func save_inventory(inventory_dict: Dictionary, slot_id: int):
-	#var path = "res://resources/inventory_saves/file" + str(slot_id) +  ".tres"
-	#var save_file: InventorySave = InventorySave.new()
-	#save_file.player_inventory = inventory_dict[InventoryGlobal.InventoryType.PLAYER]
-	#save_file.fridge_inventory = inventory_dict[InventoryGlobal.InventoryType.FRIDGE]
-	#ResourceSaver.save(save_file, path)
-	#
-#func load_inventory(slot_id: int):
-	#var path = "res://resources/inventory_saves/file" + str(slot_id) +  ".tres"
-	#var save_file: InventorySave = load(path)
-	#InventoryGlobal.inventory_dict[InventoryGlobal.InventoryType.PLAYER] = save_file.player_inventory
-	#InventoryGlobal.inventory_dict[InventoryGlobal.InventoryType.FRIDGE] = save_file.fridge_inventory
-	#
+func save_inventory(inventory_dict: Dictionary):
+	var output_dict = {}
+	for inv in inventory_dict:
+		if (inventory_dict.get(inv) != null):
+			var output_inv: Array = []
+			for item: Item in inventory_dict[inv].keys():
+				for i in range(inventory_dict[inv][item]):
+					output_inv.append(item.save())
+			output_dict[inv] = output_inv
+	return output_dict
+
+func load_inventory(inventory_dict: Dictionary):
+	var parsed_dict = {}
+	for inv in InventoryGlobal.inventory_dict:
+		var inv_str = str(inv)
+		var inv_dict = {}
+		if (inventory_dict.get(inv_str) != null):
+			var output_inv: Array = inventory_dict[inv_str]
+			for item in output_inv:
+				var loaded_item: Item = Item.load_item(item)
+				inv_dict[loaded_item] = inv_dict.get(loaded_item, 0) + 1
+		parsed_dict[inv] = inv_dict
+	return parsed_dict
+	
 func delete_save_file(slot_id: int):
 	var save_path = get_savefile_name(slot_id)
 	var dir = DirAccess.open("user://")
@@ -84,11 +95,12 @@ func save_game(slot_id):
 	started_saving.emit()
 	
 	var player_stats = Globals.player_stats.export_stats()
-	#save_inventory(InventoryGlobal.inventory_dict, slot_id)
+	var inventory_dict = save_inventory(InventoryGlobal.inventory_dict)
 	var save_dict = {
 		#"inventory_dict": convert_inventory_data_when_save(InventoryGlobal.inventory_dict),
 		"player_stats": player_stats,
 		"total_playtime": Globals.total_playtime,
+		"inventory": inventory_dict
 	}
 	var save_file = FileAccess.open(get_savefile_name(slot_id), FileAccess.WRITE)
 	var json_string = JSON.stringify(save_dict)
@@ -123,7 +135,7 @@ func load_game(slot_id):
 		return
 
 	#InventoryGlobal.inventory_dict = convert_inventory_data_when_load(save_data["inventory_dict"])
-	#load_inventory(slot_id)
+	InventoryGlobal.inventory_dict = load_inventory(save_data["inventory"])
 	Globals.player_stats.load_stats(save_data["player_stats"])
 	Globals.total_playtime = save_data["total_playtime"]
 

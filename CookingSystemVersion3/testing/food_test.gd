@@ -4,4 +4,6 @@ extends Node
 @export var crafting_station: CraftingStation
 
 func _ready() -> void:
-	print(crafting_station.craft_output(workbench).save())
+	var output = crafting_station.craft_output(workbench)
+	print(output.save())
+	print(Item.load(output.save()).save())

@@ -19,7 +19,7 @@ enum Effects {
 }
 
 @export var texture: Texture2D
-@export var texture_id: Texture2D # The name of the texture in file system, used for locating it in file
+@export var texture_id: String # The name of the texture in file system, used for locating it in file
 @export var item_name: String # Name in-game
 # Do we need an item id if we just save the whole thing?
 @export var description: String
@@ -38,8 +38,12 @@ func save() -> Dictionary:
 	item_dict["item_type"] = ItemType.ITEM
 	return item_dict
 	
-static func load(dict: Dictionary) -> Item:
-	match dict["item_type"]:
+func equals(other_item: Item):
+	if (other_item.item_name == item_name):
+		return true
+	
+static func load_item(dict: Dictionary) -> Item:
+	match int(dict["item_type"]):
 		ItemType.ITEM: 
 			return parse_dict(dict)
 		ItemType.INGREDIENT:
@@ -48,6 +52,11 @@ static func load(dict: Dictionary) -> Item:
 			return Dish.parse_dict(dict)
 	return
 		
-static func parse_dict(dict: Dictionary):
-	
-	return
+static func parse_dict(item_dict: Dictionary) -> Item:
+	var item = Item.new()
+	item.item_name = item_dict["item_name"]
+	item.texture_id = item_dict["texture_id"]
+	item.description = item_dict["description"]
+	item.weight = item_dict["weight"]
+	item.rarity = item_dict["rarity"]
+	return item

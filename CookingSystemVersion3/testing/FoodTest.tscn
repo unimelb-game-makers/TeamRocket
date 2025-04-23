@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://c4tumcuinvtlg" path="res://CookingSystemVersion3/testing/food_test.gd" id="1_qqssx"]
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="2_bsno2"]
 [ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="2_idren"]
-[ext_resource type="Resource" uid="uid://v5nqfcc5gsvk" path="res://resources/cooking/ingredients/beef_mince.tres" id="3_h04fq"]
 [ext_resource type="Resource" uid="uid://d3b4eailp7hg2" path="res://resources/cooking/recipes/full_foods/curry_rec.tres" id="3_qqssx"]
 [ext_resource type="Resource" uid="uid://cwuer4u67t6om" path="res://resources/cooking/ingredients/spice_powder.tres" id="5_ewb2p"]
-[ext_resource type="Resource" uid="uid://birn1wyb2g5bv" path="res://resources/cooking/ingredients/onion.tres" id="5_fda3y"]
+[ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="5_fda3y"]
+[ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="6_ewb2p"]
 [ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="6_fda3y"]
 [ext_resource type="Resource" uid="uid://bcmx8od3o8gv3" path="res://resources/cooking/recipes/ingredients/spice_powder_recipe.tres" id="7_i13xk"]
 
@@ -19,5 +19,5 @@ metadata/_custom_type_script = "uid://c0shkqininnkd"
 
 [node name="FoodTest" type="Node"]
 script = ExtResource("1_qqssx")
-workbench = Array[ExtResource("2_bsno2")]([ExtResource("3_h04fq"), ExtResource("5_ewb2p"), ExtResource("5_fda3y"), ExtResource("6_fda3y")])
+workbench = Array[ExtResource("2_bsno2")]([ExtResource("6_fda3y"), ExtResource("5_ewb2p"), ExtResource("5_fda3y"), ExtResource("6_ewb2p")])
 crafting_station = SubResource("Resource_fda3y")
