@@ -3,14 +3,15 @@ extends BasicEnemy
 @export var SPEEDS = [0, 45, 200]
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var state_change_timer: Timer = $StateChangeTimer
-@onready var detection_area: Area2D = $DetectionArea
+@onready var detection_area: Area2D = $DetectionRadius
 
 @onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
 @onready var idle_effect: AudioStreamPlayer2D = $SoundEffects/IdleEffect
 @onready var run_effect: AudioStreamPlayer2D = $SoundEffects/RunEffect
+@onready var stop_run_timer: Timer = $StopRunTimer
 
 var direction = Vector2(0, 0)
+var runaway_duration = 5.0
 
 # func _physics_process(_delta: float) -> void:
 # 	if (state == ChickenState.NEUTRAL):
@@ -29,12 +30,12 @@ var direction = Vector2(0, 0)
 # 		change_state(ChickenState.RUNNING)
 # 	else:
 # 		change_state(ChickenState[ChickenState.keys()[state_changing]])
-		
+
 # func enter_running_state() -> void:
 # 	change_state(ChickenState.RUNNING)
 # 	state_change_timer.wait_time = 6.0
 # 	state_change_timer.start(0)
-	
+
 # func change_state(new_state: ChickenState) -> void:
 # 	state = new_state
 # 	movement_speed = SPEEDS[new_state]
@@ -50,11 +51,62 @@ var direction = Vector2(0, 0)
 # 			animated_sprite_2d.play("walk", 3.0)
 # 			run_effect.play()
 
+
+func _on_runaway_state_physics_processing(_delta: float) -> void:
+	if target_creature != null:
+		direction = target_creature.global_position.direction_to(global_position)
+	velocity = direction * movement_speed
+	if (velocity.x > 0.0):
+		animated_sprite_2d.flip_h = true
+	else:
+		animated_sprite_2d.flip_h = false
+	move_and_slide()
+
+func _on_runaway_state_entered() -> void:
+	animated_sprite_2d.play("walk", 3.0)
+	stop_run_timer.start(runaway_duration)
+
+
+func _on_detection_radius_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Player"):
+		target_creature = area.get_parent();
+		direction = target_creature.global_position.direction_to(global_position)
+		stop_run_timer.start(runaway_duration)
+		statechart.send_event("to_runaway")
+
+
+func _on_detection_radius_area_exited(_area: Area2D) -> void:
+	return
+
+# Override basic enemy behaviour
+func _on_chase_radius_area_entered(_area: Area2D) -> void:
+	return
+
+# Override basic enemy behaviour
+func _on_chase_radius_area_exited(_area: Area2D) -> void:
+	return
+
 func damage() -> void:
 	super ()
 	hurt_effect.play()
-	# enter_running_state()
+	if target_creature != null:
+		direction = target_creature.global_position.direction_to(global_position)
+	else:
+		direction = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized()
+	stop_run_timer.start(runaway_duration)
+	statechart.send_event("to_runaway")
 
 
 func alerted(sound_position: Vector2):
-	super (sound_position)
+	direction = sound_position.direction_to(global_position)
+	stop_run_timer.start(runaway_duration)
+	statechart.send_event("to_runaway")
+
+
+func _on_stop_run_timer_timeout() -> void:
+	# If player still nearby, continue run
+	if detection_area.has_overlapping_bodies():
+		stop_run_timer.start(runaway_duration)
+	else:
+		statechart.send_event("to_return")
+		animated_sprite_2d.play("walk")

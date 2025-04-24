@@ -13,7 +13,8 @@ signal enemy_list_updated
 func _ready() -> void:
 	Globals.enemy_handler = self
 	for area in spawn_areas.get_children():
-		var spawn_mob = randf() < 0.5
+		# var spawn_mob = randf() < 0.5
+		var spawn_mob = true
 		if spawn_mob:
 			var spawns = randi_range(min_spawns_per_area, max_spawns_per_area)
 			area.spawn_batch(spawns)

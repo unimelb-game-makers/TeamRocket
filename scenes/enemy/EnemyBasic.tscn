@@ -80,14 +80,12 @@ shape = SubResource("CircleShape2D_i0ffd")
 debug_enabled = true
 
 [node name="DetectionRadius" type="Area2D" parent="."]
-modulate = Color(0.862, 0, 0.094, 0.2)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
 shape = SubResource("CircleShape2D_qi61h")
 
 [node name="ChaseRadius" type="Area2D" parent="."]
-modulate = Color(0.876, 0.327, 0, 0.486)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseRadius"]
@@ -120,22 +118,22 @@ delay_in_seconds = "0.0"
 [node name="Wander" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
 script = ExtResource("5_wma0b")
 
-[node name="To Idle State" type="Node" parent="StateChart/EnemyBehaviour/Passive/Wander"]
+[node name="To Idle" type="Node" parent="StateChart/EnemyBehaviour/Passive/Wander"]
 script = ExtResource("6_7s1cm")
 to = NodePath("../../Idle")
 event = &"idle"
 delay_in_seconds = "0.0"
 
-[node name="To Chase State" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
+[node name="To Chase" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
 script = ExtResource("6_7s1cm")
 to = NodePath("../../Active/Chase")
 event = &"on_detection_radius_entered"
 delay_in_seconds = "0.0"
 
-[node name="To Search State" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
+[node name="To Search" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
 script = ExtResource("6_7s1cm")
 to = NodePath("../../Active/Search")
-event = &"alerted"
+event = &"to_search"
 delay_in_seconds = "0.0"
 
 [node name="Active" type="Node" parent="StateChart/EnemyBehaviour"]
@@ -196,7 +194,7 @@ delay_in_seconds = ""
 [node name="Return" type="Node" parent="StateChart/EnemyBehaviour/Active"]
 script = ExtResource("5_wma0b")
 
-[node name="To Passive State" type="Node" parent="StateChart/EnemyBehaviour/Active/Return"]
+[node name="To Passive" type="Node" parent="StateChart/EnemyBehaviour/Active/Return"]
 script = ExtResource("6_7s1cm")
 to = NodePath("../../../Passive")
 event = &"reach_initial_position"

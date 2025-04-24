@@ -55,7 +55,7 @@ func _ready():
 func alerted(sound_position: Vector2):
 	super (sound_position)
 	last_known_position = sound_position
-	statechart.send_event("alerted") # Triggers To Search State
+	statechart.send_event("to_search") # Triggers To Search State
 
 func setup_navserver():
 	# Create new navigation server map
@@ -80,12 +80,7 @@ func update_navigation_path(start_pos, end_pos):
 func set_movement_target(movement_target: Vector2):
 	navigation_agent.target_position = movement_target
 
-#func _process(delta):
-	#if (target_creature):
-		#update_navigation_path(position, target_creature.global_position)
-
 func _physics_process(_delta):
-	### Moved to chase_state_physics_processing
 	pass
 
 func move_along_path(distance):
@@ -110,7 +105,6 @@ func _on_recalculate_path_timeout() -> void:
 func _on_detection_radius_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		target_creature = area.get_parent();
-
 		statechart.send_event("on_detection_radius_entered") # Triggers To Chase State
 
 func _on_chase_radius_area_entered(area: Area2D) -> void:
@@ -137,7 +131,7 @@ func _on_chase_radius_area_exited(area: Area2D) -> void:
 func _on_passive_state_entered() -> void:
 	movement_speed = PASSIVE_SPEED
 
-### Active States (Chasing or Searching)
+### Active States (Chasing, Searching or Running away)
 
 func _on_active_state_entered() -> void:
 	movement_speed = ACTIVE_SPEED

@@ -83,12 +83,12 @@ autoplay = true
 bus = &"Music"
 
 [node name="EnemyHandler" parent="." index="2" groups=["EnemyHandler"]]
-min_spawns_per_area = 0
-max_spawns_per_area = 3
+min_spawns_per_area = 1
+max_spawns_per_area = 2
 
 [node name="LandEnemySpawnAreas" parent="EnemyHandler/SpawnAreas" index="0" instance=ExtResource("21_5cojw")]
 position = Vector2(3274, 2731)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), null])
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("6_qgik8")])
 radius = 1000.0
 
 [node name="LandEnemySpawnAreas2" parent="EnemyHandler/SpawnAreas" index="1" instance=ExtResource("21_5cojw")]
@@ -98,22 +98,7 @@ radius = 1000.0
 
 [node name="LandEnemySpawnAreas3" parent="EnemyHandler/SpawnAreas" index="2" instance=ExtResource("21_5cojw")]
 position = Vector2(2514, 435)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("6_qgik8")])
-radius = 1000.0
-
-[node name="LandEnemySpawnAreas4" parent="EnemyHandler/SpawnAreas" index="3" instance=ExtResource("21_5cojw")]
-position = Vector2(4599, 469)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("6_qgik8")])
-radius = 1000.0
-
-[node name="LandEnemySpawnAreas5" parent="EnemyHandler/SpawnAreas" index="4" instance=ExtResource("21_5cojw")]
-position = Vector2(4506, 2562)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("6_qgik8")])
-radius = 1000.0
-
-[node name="LandEnemySpawnAreas6" parent="EnemyHandler/SpawnAreas" index="5" instance=ExtResource("21_5cojw")]
-position = Vector2(683, 375)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("6_qgik8")])
+allowed_enemies = Array[PackedScene]([ExtResource("6_qgik8")])
 radius = 1000.0
 
 [node name="Dark" parent="Lighting" index="0"]
