@@ -14,6 +14,19 @@ var time
 var paused = false
 
 
+# Load and play bgm, intro goes to loop theme
+# Replacement for the buggy AudioInteractiveStream
+func load_and_play_main_bgm(intro_pathname:String, loop_pathname: String):
+	var music_player_node = $MusicPlayer
+	var _on_audio_finished = func():
+		$MusicPlayer.stream = load(loop_pathname)
+		$MusicPlayer.play()
+	if music_player_node:
+		music_player_node.stream = load(intro_pathname)
+		music_player_node.play()
+		music_player_node.connect("finished", _on_audio_finished)
+
+
 func _ready() -> void:
 	canvas.show()
 	if TIMER:
@@ -22,6 +35,12 @@ func _ready() -> void:
 		game_timer.start()
 	var tween = create_tween()
 	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 0), 1.0)
+	var intro_pathname = "res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_intro.ogg"
+	var loop_pathname = "res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_loop.ogg"
+	if $"..".name == "City":
+		intro_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg"
+		loop_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg"
+	load_and_play_main_bgm(intro_pathname, loop_pathname)
 
 
 func _on_game_timer_timeout() -> void:
@@ -31,20 +50,12 @@ func _on_game_timer_timeout() -> void:
 		switch_to_kitchen()
 
 
-func _process(_delta: float) -> void:
-	if $MusicPlayer:
-		if not $MusicPlayer.playing:
-			$MusicPlayer.play()
-	else:
-		push_error("No MusicPlayer node found under GameHandler!")
-
-
 func switch_to_kitchen():
 	SaveManager.save_game(Globals.chosen_slot_id)
 	var tween = create_tween()
 	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 2.0), 2.0)
 	await tween.finished
-	$MusicPlayer.playing = false
+	$MusicPlayer.stop()
 	get_tree().change_scene_to_file("res://scenes/environments/Kitchen.tscn")
 
 func load_character_info():

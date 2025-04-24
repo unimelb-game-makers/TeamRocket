@@ -1,8 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=34 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
-[ext_resource type="AudioStream" uid="uid://csjr1bs7pcsax" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg" id="2_1ecv6"]
-[ext_resource type="AudioStream" uid="uid://diyeciedxupvy" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg" id="3_8hg87"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="3_pa65j"]
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="4_2cddj"]
 [ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="5_oq3tf"]
@@ -31,31 +29,6 @@
 [ext_resource type="Resource" uid="uid://dmukk24cvqle6" path="res://resources/items/ingredients/tomato.tres" id="25_66u1c"]
 [ext_resource type="Resource" uid="uid://5xdf7xnpphar" path="res://resources/items/ingredients/spaghetti_raw.tres" id="26_hb3rh"]
 
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_y1gkg"]
-clip_count = 2
-clip_0/name = &"Central District Intro"
-clip_0/stream = ExtResource("2_1ecv6")
-clip_0/auto_advance = 1
-clip_0/next_clip = 1
-clip_1/name = &"Central District Loop"
-clip_1/stream = ExtResource("3_8hg87")
-clip_1/auto_advance = 1
-clip_1/next_clip = 1
-_transitions = {
-Vector2i(0, 1): {
-"fade_beats": 1.0,
-"fade_mode": 4,
-"from_time": 3,
-"to_time": 1
-},
-Vector2i(1, 1): {
-"fade_beats": 1.0,
-"fade_mode": 4,
-"from_time": 3,
-"to_time": 1
-}
-}
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5hw28"]
 vertices = PackedVector2Array(1766.5, 2611, 4670.1, 3297.09, 4324.31, 3285.91, 294.5, 2842.44, 1409.5, 2611, 1077, 1651, 2994.84, 1803.85, 1766.5, 2440, 1409.5, 2440, 422.352, 2326.68, 330.227, 2216.91, 447, 1651, 3135.48, 1705.38, 4028, 1366, 4263, 1366, 5039.98, -38.0078, 5033.01, 4038.96, 5022.19, 4019.01, 5012.9, 3518.49, 4263, 1233, 3732, 484, 3732, 354, 4028, 1233, 4086.22, 3432.81, 3879.14, 3598.87, 3640.42, 3750.6, 2768.52, 1480.62, 1077, 1556, 2165.93, 1403.25, -32.0078, 4019.03, 3564.77, 4016.98, -38.9766, -44.9766, 3312, 354, 3312, 484, 2909.16, 1382.15, 2663.14, 1270.02, 2627.84, 1138.32, 294.5, 2597.56, 290.773, 2437.09, 131.5, 2597.56, 131.5, 2842.44, 198.648, 2327.32, 447, 1556, 2130.64, 1271.55)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9, 10, 11), PackedInt32Array(12, 13, 14, 6), PackedInt32Array(15, 16, 17, 18), PackedInt32Array(14, 19, 15, 18, 1), PackedInt32Array(20, 21, 15, 19, 22), PackedInt32Array(3, 2, 23), PackedInt32Array(3, 23, 24, 25), PackedInt32Array(26, 6, 5, 27, 28), PackedInt32Array(17, 16, 29, 30), PackedInt32Array(14, 1, 0, 7, 6), PackedInt32Array(31, 15, 21, 32), PackedInt32Array(33, 20, 22, 13, 34, 35, 36), PackedInt32Array(8, 4, 3, 37, 9), PackedInt32Array(38, 9, 37, 39), PackedInt32Array(3, 25, 30, 29, 40), PackedInt32Array(40, 29, 31, 39), PackedInt32Array(41, 38, 39), PackedInt32Array(41, 39, 31), PackedInt32Array(10, 41, 31, 42, 11), PackedInt32Array(31, 32, 33, 36, 43), PackedInt32Array(13, 12, 34), PackedInt32Array(35, 34, 26, 28), PackedInt32Array(31, 43, 28, 27, 42)])
@@ -78,7 +51,6 @@ distance = -4000.0
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler" index="1"]
 process_mode = 3
-stream = SubResource("AudioStreamInteractive_y1gkg")
 bus = &"Music"
 
 [node name="EnemyHandler" parent="." index="2" groups=["EnemyHandler"]]
