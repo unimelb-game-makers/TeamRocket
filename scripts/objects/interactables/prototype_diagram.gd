@@ -9,10 +9,9 @@ func _ready():
 func interact():
 	recipe_ui.visible = not recipe_ui.visible
 
-func _on_body_exited(_body: Node2D) -> void:
+func _on_area_exited(_area: Area2D) -> void:
 	recipe_ui.hide()
 	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
 
-
-func _on_body_entered(_body: Node2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	sprite.material.set_shader_parameter("outline_color", Color.GREEN)
