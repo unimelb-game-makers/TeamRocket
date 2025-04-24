@@ -1,5 +1,6 @@
 class_name Enemy
 extends CharacterBody2D
+# BasicEnemy, SpecialEnemy and BossEnemy will extend this class
 
 @export var health: int:
 	set(value):

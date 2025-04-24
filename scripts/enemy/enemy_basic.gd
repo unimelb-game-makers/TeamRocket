@@ -1,5 +1,6 @@
 class_name BasicEnemy
 extends Enemy
+# BasicEnemy is non-boss enemy with uhh basic behaviours.
 
 const PASSIVE_SPEED: int = 85
 const ACTIVE_SPEED: int = 180
@@ -40,7 +41,7 @@ func _ready():
 
 	# Make sure to not await during _ready.
 	call_deferred("setup_navserver")
-	
+
 	movement_speed = PASSIVE_SPEED
 	original_position = Vector2(position)
 
@@ -60,25 +61,25 @@ func setup_navserver():
 	# Create new navigation server map
 	map = NavigationServer2D.map_create()
 	NavigationServer2D.map_set_active(map, true)
-	
+
 	# Create a new navigation region and add it to the map
 	var region = NavigationServer2D.region_create()
 	NavigationServer2D.region_set_transform(region, Transform2D())
 	NavigationServer2D.region_set_map(region, map)
-	
+
 	# Set navigation mesh for the Navigation Region from main scene
 	var navigation_poly = NavigationMesh.new()
 	navigation_poly = navigation_region.navigation_polygon
 	NavigationServer2D.map_set_cell_size(map, 1)
 	NavigationServer2D.region_set_navigation_polygon(region, navigation_poly)
-	
+
 func update_navigation_path(start_pos, end_pos):
 	path = NavigationServer2D.map_get_path(map, start_pos, end_pos, true)
 	path.remove_at(0)
-	
+
 func set_movement_target(movement_target: Vector2):
 	navigation_agent.target_position = movement_target
-	
+
 #func _process(delta):
 	#if (target_creature):
 		#update_navigation_path(position, target_creature.global_position)
@@ -109,24 +110,24 @@ func _on_recalculate_path_timeout() -> void:
 func _on_detection_radius_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		target_creature = area.get_parent();
-		
+
 		statechart.send_event("on_detection_radius_entered") # Triggers To Chase State
 
 func _on_chase_radius_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		target_creature = area.get_parent();
-		
+
 		# When this enemy is searching for the player,
 		# if they are still in the chase radius, then continue chasing.
 		statechart.send_event("found_target") # Triggers To Chase
 
 func _on_chase_radius_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player"):
-		# When chasing, take note of last known position. 
+		# When chasing, take note of last known position.
 		# This enemy will travel to this position to search,
 		# only after path has no more points.
 		last_known_position = target_creature.position
-		
+
 		target_creature = null
 		statechart.send_event("target_exit_chase_radius") # Triggers To Search
 
@@ -158,12 +159,12 @@ func _on_search_last_seen_position_state_physics_processing(delta: float) -> voi
 		var walk_distance = movement_speed * delta
 		move_along_path(walk_distance)
 		move_and_slide()
-	
+
 	# When no more points in path, walk to last known position
 	else:
 		position = position.lerp(last_known_position, movement_speed * delta / position.distance_to(last_known_position))
 		move_and_slide()
-		
+
 		if position.distance_to(last_known_position) < 10: # less tolerance = jittering
 			statechart.send_event("reach_last_seen_position")
 
@@ -178,17 +179,17 @@ func _on_search_area_state_entered() -> void:
 
 func _on_search_area_state_physics_processing(delta: float) -> void:
 	time_searching -= delta
-	
+
 	velocity = search_direction * PASSIVE_SPEED
 	move_and_slide()
-	
+
 	if time_searching < 0:
 		velocity = Vector2.ZERO
 		statechart.send_event("search_area_pause") # Triggers To Pause
 
 func _on_search_area_state_exited() -> void:
 	num_searches += 1
-	
+
 
 ## Pause
 
@@ -210,10 +211,10 @@ func _on_return_state_physics_processing(_delta: float) -> void:
 	var direction = navigation_agent.get_next_path_position() - global_position
 	velocity = direction.normalized() * PASSIVE_SPEED
 	move_and_slide()
-	
+
 	if position.distance_to(original_position) < 10:
 			statechart.send_event("reach_initial_position")
-	
+
 func _on_return_state_exited() -> void:
 	#navigation_agent.target_position = null
 	velocity = Vector2.ZERO # If removed conflicts with chase speed when player re-enters chase radius, still taking a look

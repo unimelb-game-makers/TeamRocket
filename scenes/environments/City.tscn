@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="4_2cddj"]
 [ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="5_oq3tf"]
 [ext_resource type="PackedScene" uid="uid://p6jrdiqo23p1" path="res://scenes/objects/Obstacles/WreckedCar3.tscn" id="6_fuahw"]
+[ext_resource type="PackedScene" uid="uid://vhnilqdkefsv" path="res://scenes/enemy/EnemyChicken.tscn" id="6_qgik8"]
 [ext_resource type="PackedScene" uid="uid://vk8s3qx7g5vu" path="res://scenes/objects/Obstacles/Debris1.tscn" id="7_ttjpc"]
 [ext_resource type="PackedScene" uid="uid://di1iud0i6uaou" path="res://scenes/objects/Obstacles/Debris2.tscn" id="8_xlu3i"]
 [ext_resource type="PackedScene" uid="uid://id6e3hwthctu" path="res://scenes/objects/Obstacles/Debris3.tscn" id="9_q3pse"]
@@ -24,7 +25,6 @@
 [ext_resource type="PackedScene" uid="uid://b0q3wyjdxrql8" path="res://scenes/objects/Buildings/Building2.tscn" id="20_wckc8"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="21_5cojw"]
 [ext_resource type="PackedScene" uid="uid://cxqyl5m3yie2u" path="res://scenes/objects/Buildings/Building3.tscn" id="21_qrjp7"]
-[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="22_ykjv2"]
 [ext_resource type="Resource" uid="uid://by7vmtqhltm7q" path="res://resources/items/ingredients/carrot.tres" id="23_qgik8"]
 [ext_resource type="Resource" uid="uid://cxonskrtngeeq" path="res://resources/items/ingredients/onion.tres" id="24_0h88t"]
 [ext_resource type="Script" uid="uid://dyueaksi23ne8" path="res://scripts/player/camera_control.gd" id="24_s3lfa"]
@@ -88,32 +88,32 @@ max_spawns_per_area = 3
 
 [node name="LandEnemySpawnAreas" parent="EnemyHandler/SpawnAreas" index="0" instance=ExtResource("21_5cojw")]
 position = Vector2(3274, 2731)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), null])
 radius = 1000.0
 
 [node name="LandEnemySpawnAreas2" parent="EnemyHandler/SpawnAreas" index="1" instance=ExtResource("21_5cojw")]
 position = Vector2(602, 3363)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("6_qgik8")])
 radius = 1000.0
 
 [node name="LandEnemySpawnAreas3" parent="EnemyHandler/SpawnAreas" index="2" instance=ExtResource("21_5cojw")]
 position = Vector2(2514, 435)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("6_qgik8")])
 radius = 1000.0
 
 [node name="LandEnemySpawnAreas4" parent="EnemyHandler/SpawnAreas" index="3" instance=ExtResource("21_5cojw")]
 position = Vector2(4599, 469)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("6_qgik8")])
 radius = 1000.0
 
 [node name="LandEnemySpawnAreas5" parent="EnemyHandler/SpawnAreas" index="4" instance=ExtResource("21_5cojw")]
 position = Vector2(4506, 2562)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("6_qgik8")])
 radius = 1000.0
 
 [node name="LandEnemySpawnAreas6" parent="EnemyHandler/SpawnAreas" index="5" instance=ExtResource("21_5cojw")]
 position = Vector2(683, 375)
-allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("22_ykjv2")])
+allowed_enemies = Array[PackedScene]([ExtResource("19_sv1o8"), ExtResource("6_qgik8")])
 radius = 1000.0
 
 [node name="Dark" parent="Lighting" index="0"]
