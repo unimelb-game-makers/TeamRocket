@@ -1,23 +1,20 @@
-class_name BasicEnemy
 extends Enemy
+class_name BasicEnemy
+
 # BasicEnemy is non-boss enemy with uhh basic behaviours.
 
-const PASSIVE_SPEED: int = 85
-const ACTIVE_SPEED: int = 180
-
-var movement_speed: float # Current default state is Passive
-
-var movement_target_position: Vector2
-var target_creature: CharacterBody2D
+@export var passive_speed = 85
+@export var active_speed = 180
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
-@export var navigation_region: NavigationRegion2D
-
-var map
-var path = []
-
 @onready var statechart: StateChart = $StateChart
 
+var navigation_region: NavigationRegion2D
+var movement_speed: float
+var movement_target_position: Vector2
+var target_creature: CharacterBody2D
+var map
+var path = []
 var last_known_position: Vector2 # Last known position of player
 
 # Search Area variables
@@ -28,7 +25,6 @@ var search_max_duration: float = 0.8
 var search_direction: Vector2
 
 # Pause duration set in state chart
-
 var original_position: Vector2
 
 func _ready():
@@ -42,15 +38,8 @@ func _ready():
 	# Make sure to not await during _ready.
 	call_deferred("setup_navserver")
 
-	movement_speed = PASSIVE_SPEED
+	movement_speed = passive_speed
 	original_position = Vector2(position)
-
-#func actor_setup():
-	## Wait for the first physics frame so the NavigationServer can sync.
-	#await get_tree().physics_frame
-#
-	## Now that the navigation map is no longer empty, set the movement target.
-	#set_movement_target(movement_target_position)
 
 func alerted(sound_position: Vector2):
 	super (sound_position)
@@ -129,12 +118,12 @@ func _on_chase_radius_area_exited(area: Area2D) -> void:
 ### Passive States (Idle or Wandering)
 
 func _on_passive_state_entered() -> void:
-	movement_speed = PASSIVE_SPEED
+	movement_speed = passive_speed
 
 ### Active States (Chasing, Searching or Running away)
 
 func _on_active_state_entered() -> void:
-	movement_speed = ACTIVE_SPEED
+	movement_speed = active_speed
 
 ## Chase
 
@@ -174,7 +163,7 @@ func _on_search_area_state_entered() -> void:
 func _on_search_area_state_physics_processing(delta: float) -> void:
 	time_searching -= delta
 
-	velocity = search_direction * PASSIVE_SPEED
+	velocity = search_direction * passive_speed
 	move_and_slide()
 
 	if time_searching < 0:
@@ -203,7 +192,7 @@ func _on_return_state_entered() -> void:
 
 func _on_return_state_physics_processing(_delta: float) -> void:
 	var direction = navigation_agent.get_next_path_position() - global_position
-	velocity = direction.normalized() * PASSIVE_SPEED
+	velocity = direction.normalized() * passive_speed
 	move_and_slide()
 
 	if position.distance_to(original_position) < 10:

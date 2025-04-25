@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://vhnilqdkefsv"]
 
-[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/EnemyBasic.tscn" id="1_wkk65"]
+[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_wkk65"]
 [ext_resource type="Texture2D" uid="uid://cq1iguugfglwg" path="res://assets/creatures/animal_headless_chicken/chicken1.png" id="2_djc8e"]
 [ext_resource type="Script" uid="uid://c7smwqkuyr3jl" path="res://resources/resource_scripts/item.gd" id="2_ngw0k"]
 [ext_resource type="Script" uid="uid://ckwc004ejx501" path="res://scripts/enemy/enemy_chicken.gd" id="2_t33i1"]
@@ -75,8 +75,8 @@ radius = 216.148
 [node name="EnemyChicken" instance=ExtResource("1_wkk65")]
 motion_mode = 1
 script = ExtResource("2_t33i1")
-SPEEDS = [0, 45, 200]
-health = 80
+passive_speed = 50
+active_speed = 150
 dropped_items = Array[ExtResource("2_ngw0k")]([SubResource("Resource_uhg0u")])
 dropped_item_chances = Array[float]([1.0])
 

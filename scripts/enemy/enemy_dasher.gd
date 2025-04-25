@@ -62,9 +62,9 @@ func _on_dash_attack_state_exited() -> void:
 
 func roll_speed(elapsed_time: float) -> float:
 	var t: float = elapsed_time / dash_attack_duration
-	return dash_attack_speed - (dash_attack_speed - PASSIVE_SPEED) * t * t
+	return dash_attack_speed - (dash_attack_speed - passive_speed) * t * t
 
-# Overrides function in enemy_basic. Checks if this enemy is in the Attack state.
+# Overrides function in BasicEnemy. Checks if this enemy is in the Attack state.
 func _on_chase_radius_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player") and not in_attack_state:
 		# When chasing, take note of last known position. 

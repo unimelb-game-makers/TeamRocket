@@ -1,6 +1,8 @@
 class_name Enemy
 extends CharacterBody2D
-# BasicEnemy, SpecialEnemy and BossEnemy will extend this class
+# Enemy class will be extended by
+# BasicEnemy - Your usual enemies with some attack moves
+# BossEnemy - Extra special
 
 @export var health: int:
 	set(value):
@@ -12,8 +14,8 @@ extends CharacterBody2D
 
 @export var dropped_items: Array[Item]
 @export var dropped_item_chances: Array[float]
-## If this valye + player's sound loudness larger than distance to player, enemy can hear. 
-## Should keep it low for most enemies.
+## If this value + player's sound loudness larger than distance to player, enemy can heard player. 
+## Should keep it low for most enemies, and increased it for special enemies (ex: a cat-like / bat-like enemy)
 @export var hearing_sensitivity: float = 10
 
 var item_floor_scene: PackedScene = preload("res://scenes/item/ItemOnFloor.tscn")
