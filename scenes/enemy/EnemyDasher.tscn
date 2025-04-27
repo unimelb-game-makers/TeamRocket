@@ -100,7 +100,6 @@ texture = ExtResource("5_hxbls")
 [node name="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(-2, -245)
 sprite_frames = SubResource("SpriteFrames_hu0vx")
-animation = &"attack"
 frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="3"]

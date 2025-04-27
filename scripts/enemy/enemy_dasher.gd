@@ -22,9 +22,9 @@ var in_attack_state: bool = false
 var search_location: Vector2
 
 func _process(_delta: float) -> void:
-	if (velocity.x > 0.1):
+	if not anim_sprite.flip_h and velocity.x > 0.1:
 		anim_sprite.flip_h = true
-	else:
+	elif anim_sprite.flip_h and velocity.x < -0.1:
 		anim_sprite.flip_h = false
 
 # Stop moving, and prepare to dash. Delay to Dash Attack set in Inspector
