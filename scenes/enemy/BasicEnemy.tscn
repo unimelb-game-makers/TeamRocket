@@ -181,7 +181,7 @@ delay_in_seconds = "0.0"
 script = ExtResource("6_7s1cm")
 to = NodePath("../../Return")
 event = &"target_not_found"
-delay_in_seconds = ""
+delay_in_seconds = "0.0"
 
 [node name="Return" type="Node" parent="StateChart/EnemyBehaviour/Active"]
 script = ExtResource("5_wma0b")

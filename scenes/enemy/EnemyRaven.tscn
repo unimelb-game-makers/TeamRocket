@@ -47,7 +47,7 @@ radius = 512.25
 radius = 1336.02
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_37sxb"]
-radius = 57.0
+radius = 64.0
 
 [node name="EnemyRaven" instance=ExtResource("1_4nirv")]
 collision_mask = 4
@@ -72,6 +72,7 @@ frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CircleShape2D_qf2io")
+disabled = true
 
 [node name="CollisionShape2D" parent="DetectionRadius" index="0"]
 shape = SubResource("CircleShape2D_dqi3k")
@@ -79,10 +80,11 @@ shape = SubResource("CircleShape2D_dqi3k")
 [node name="CollisionShape2D" parent="ChaseRadius" index="0"]
 shape = SubResource("CircleShape2D_f64n6")
 
-[node name="To Attack State" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
+[node name="To Attack" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
 script = ExtResource("5_f64n6")
 to = NodePath("../../../Attack")
-delay_in_seconds = "0.25"
+event = &"to_attack"
+delay_in_seconds = "0.0"
 
 [node name="To Chase" parent="StateChart/EnemyBehaviour/Active/Search" index="3"]
 event = &"to_chase"
@@ -98,7 +100,7 @@ script = ExtResource("7_xjmte")
 script = ExtResource("5_f64n6")
 to = NodePath("../../Fly Attack")
 event = &"to_fly_attack"
-delay_in_seconds = ""
+delay_in_seconds = "0.0"
 
 [node name="To Chase" type="Node" parent="StateChart/EnemyBehaviour/Attack/Circling" index="1"]
 script = ExtResource("5_f64n6")
@@ -112,16 +114,16 @@ script = ExtResource("7_xjmte")
 [node name="To Recover" type="Node" parent="StateChart/EnemyBehaviour/Attack/Fly Attack" index="0"]
 script = ExtResource("5_f64n6")
 to = NodePath("../../Recover")
+event = &"to_recover"
 delay_in_seconds = "0.0"
 
 [node name="Recover" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="2"]
 script = ExtResource("7_xjmte")
 
-[node name="To Active State" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="3"]
+[node name="To Circling" type="Node" parent="StateChart/EnemyBehaviour/Attack/Recover" index="0"]
 script = ExtResource("5_f64n6")
-to = NodePath("../../Active")
-event = &"on_attack_finish"
-delay_in_seconds = "0.0"
+to = NodePath("../../Circling")
+delay_in_seconds = "1.0"
 
 [node name="SoundEffects" type="Node2D" parent="." index="8"]
 position = Vector2(0, -140)
@@ -154,6 +156,10 @@ monitoring = false
 shape = SubResource("CircleShape2D_37sxb")
 debug_color = Color(0.7, 0.0314829, 0.0105904, 0.42)
 
+[node name="CirclingAttackTimer" type="Timer" parent="." index="10"]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Circling" to="." method="_on_circling_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Circling" to="." method="_on_circling_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Fly Attack" to="." method="_on_fly_attack_state_entered"]
@@ -161,3 +167,4 @@ debug_color = Color(0.7, 0.0314829, 0.0105904, 0.42)
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Fly Attack" to="." method="_on_fly_attack_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Recover" to="." method="_on_recover_state_entered"]
 [connection signal="body_entered" from="FlyAttackHurtbox" to="." method="_on_fly_attack_hurtbox_body_entered"]
+[connection signal="timeout" from="CirclingAttackTimer" to="." method="_on_circling_attack_timer_timeout"]

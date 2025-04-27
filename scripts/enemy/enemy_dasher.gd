@@ -10,14 +10,11 @@ extends BasicEnemy
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var dash_attack_vector: Vector2 # Position of player when winding up
-var dash_attack_speed: float = 1000
-
+var dash_attack_range: float = 1000
 var dash_attack_timer: float = 0
 var dash_attack_duration: float = 1
-
 var current_dashes = 0
 var num_dashes = 3
-
 var in_attack_state: bool = false
 var search_location: Vector2
 
@@ -65,7 +62,7 @@ func _on_dash_attack_state_exited() -> void:
 # Calculate how fast enemy dash attack over time, slow down as it finished
 func roll_speed(elapsed_time: float) -> float:
 	var t: float = elapsed_time / dash_attack_duration
-	return dash_attack_speed - (dash_attack_speed - passive_speed) * t * t
+	return dash_attack_range - (dash_attack_range - passive_speed) * t * t
 
 # Overrides function in BasicEnemy. Checks if this enemy is in the Attack state.
 func _on_chase_radius_area_exited(area: Area2D) -> void:
