@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://jymq8qvrgg6f"]
+[gd_scene load_steps=18 format=3 uid="uid://jymq8qvrgg6f"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_4nirv"]
 [ext_resource type="Script" uid="uid://cn6xm76hrw8ix" path="res://scenes/enemy/enemy_raven.gd" id="2_5o2u2"]
+[ext_resource type="Texture2D" uid="uid://q8udj8wg64rc" path="res://assets/creatures/enemy_raven/raven_attack.png" id="4_qf2io"]
 [ext_resource type="Texture2D" uid="uid://q4dxoav25bfe" path="res://assets/creatures/enemy_raven/raven1.png" id="5_5o2u2"]
 [ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="5_dqi3k"]
 [ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="5_f64n6"]
@@ -16,6 +17,14 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qf2io"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qf2io")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_5o2u2")
@@ -38,7 +47,8 @@ radius = 57.0
 motion_mode = 1
 script = ExtResource("2_5o2u2")
 circling_distance = 100.0
-health = 0
+cirling_speed = 2.0
+circling_time = 3.0
 
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
 modulate = Color(0, 0, 0, 0.529412)
@@ -46,28 +56,31 @@ position = Vector2(-7.62939e-06, 179)
 scale = Vector2(0.882812, 0.265625)
 texture = ExtResource("5_dqi3k")
 
-[node name="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(-2, -37)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_qf2io")
 frame_progress = 0.0
 
-[node name="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CircleShape2D_qf2io")
 
 [node name="To Attack State" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
 script = ExtResource("5_f64n6")
 to = NodePath("../../../Attack")
-delay_in_seconds = "6.0"
+delay_in_seconds = "1.0"
+
+[node name="To Chase" parent="StateChart/EnemyBehaviour/Active/Search" index="3"]
+event = &"to_chase"
 
 [node name="Attack" type="Node" parent="StateChart/EnemyBehaviour" index="2"]
 script = ExtResource("6_m381y")
-initial_state = NodePath("Wind Up")
+initial_state = NodePath("Circling")
 
-[node name="Wind Up" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="0"]
+[node name="Circling" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="0"]
 script = ExtResource("7_xjmte")
 
-[node name="To Fly Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack/Wind Up" index="0"]
+[node name="To Fly Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack/Circling" index="0"]
 script = ExtResource("5_f64n6")
 to = NodePath("../../Fly Attack")
 delay_in_seconds = ".25"
@@ -75,19 +88,21 @@ delay_in_seconds = ".25"
 [node name="Fly Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="1"]
 script = ExtResource("7_xjmte")
 
-[node name="To Wind Up" type="Node" parent="StateChart/EnemyBehaviour/Attack/Fly Attack" index="0"]
+[node name="To Recover" type="Node" parent="StateChart/EnemyBehaviour/Attack/Fly Attack" index="0"]
 script = ExtResource("5_f64n6")
-to = NodePath("../../Wind Up")
-event = &"on_dash_attack_finish"
+to = NodePath("../../Recover")
 delay_in_seconds = "0.0"
 
-[node name="To Active State" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="2"]
+[node name="Recover" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="2"]
+script = ExtResource("7_xjmte")
+
+[node name="To Active State" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="3"]
 script = ExtResource("5_f64n6")
 to = NodePath("../../Active")
 event = &"on_attack_finish"
 delay_in_seconds = "0.0"
 
-[node name="SoundEffects" type="Node2D" parent="." index="9"]
+[node name="SoundEffects" type="Node2D" parent="." index="8"]
 position = Vector2(0, -140)
 
 [node name="IdleEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="0"]
@@ -110,7 +125,7 @@ bus = &"Effects"
 stream = ExtResource("12_k0ucr")
 bus = &"Effects"
 
-[node name="FlyAttackHurtbox" type="Area2D" parent="." index="10"]
+[node name="FlyAttackHurtbox" type="Area2D" parent="." index="9"]
 collision_layer = 2
 monitoring = false
 
@@ -120,9 +135,10 @@ debug_color = Color(0.7, 0.0314829, 0.0105904, 0.42)
 
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]
-[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Wind Up" to="." method="_on_wind_up_state_entered"]
-[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Wind Up" to="." method="_on_wind_up_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Circling" to="." method="_on_circling_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Circling" to="." method="_on_circling_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Fly Attack" to="." method="_on_fly_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack/Fly Attack" to="." method="_on_fly_attack_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Fly Attack" to="." method="_on_fly_attack_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Recover" to="." method="_on_recover_state_entered"]
 [connection signal="body_entered" from="FlyAttackHurtbox" to="." method="_on_fly_attack_hurtbox_body_entered"]

@@ -4,14 +4,7 @@ extends CharacterBody2D
 # BasicEnemy - Your usual enemies with some attack moves
 # BossEnemy - Extra special
 
-@export var health: int:
-	set(value):
-		if health > value:
-			damage()
-		health = value
-		if health <= 0:
-			die()
-
+@export var health: int
 ## If enemy has multiple attacks, their dmg will be based on this value, such as 150% or 30%.
 @export var base_damage: int = 10
 @export var dropped_items: Array[Item]
@@ -23,12 +16,15 @@ extends CharacterBody2D
 var item_floor_scene: PackedScene = preload("res://scenes/item/ItemOnFloor.tscn")
 var attack_damage: int
 
-func damage() -> void:
+func damage(value: int) -> void:
 	# Override in subclass
 	# Play any damaged effects/animations
+	health -= value
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color(0.8, 0.5, 0.5), 0.2)
 	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.2)
+	if health <= 0:
+		die()
 
 func die() -> void:
 	# Override in subclass

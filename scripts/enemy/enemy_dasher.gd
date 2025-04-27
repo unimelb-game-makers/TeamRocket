@@ -62,6 +62,7 @@ func _on_dash_attack_state_exited() -> void:
 		statechart.send_event("on_attack_finish")
 
 
+# Calculate how fast enemy dash attack over time, slow down as it finished
 func roll_speed(elapsed_time: float) -> float:
 	var t: float = elapsed_time / dash_attack_duration
 	return dash_attack_speed - (dash_attack_speed - passive_speed) * t * t
@@ -98,8 +99,8 @@ func _on_dash_attack_hurtbox_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.damage(base_damage)
 
-func damage():
-	super ()
+func damage(value: int):
+	super (value)
 	hurt_effect.play()
 	target_creature = Globals.player
-	statechart.send_event("on_detection_radius_entered")
+	statechart.send_event("to_chase")

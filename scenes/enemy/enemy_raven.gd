@@ -1,6 +1,9 @@
 extends BasicEnemy
 
 @export var circling_distance: float = 100
+## In radians per second
+@export var cirling_speed: float = 2.0
+@export var circling_time: float = 3
 
 @onready var idle_effect: AudioStreamPlayer2D = $SoundEffects/IdleEffect
 @onready var attack_effect: AudioStreamPlayer2D = $SoundEffects/AttackEffect
@@ -9,7 +12,7 @@ extends BasicEnemy
 @onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
 
 @onready var fly_attack_hurtbox: Area2D = $FlyAttackHurtbox
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var dash_attack_vector: Vector2 # Position of player when winding up
 var dash_attack_speed: float = 1000
@@ -23,13 +26,32 @@ var num_dashes = 3
 var in_attack_state: bool = false
 var search_location: Vector2
 
-func _process(_delta: float) -> void:
-	if (velocity.x > 0.0):
-		animated_sprite_2d.flip_h = true
-	else:
-		animated_sprite_2d.flip_h = false
+var circling_angle = 0
 
-# Stop moving, and prepare to dash. Delay to Dash Attack set in Inspector
+func _process(_delta: float) -> void:
+	if not anim_sprite.flip_h and velocity.x > 0.1:
+		anim_sprite.flip_h = true
+	elif anim_sprite.flip_h and velocity.x < -0.1:
+		anim_sprite.flip_h = false
+
+
+# Circling player for certain amount of time, before swoop in for a fly attack
+func _on_circling_state_entered() -> void:
+	print("Enter circling state")
+
+
+func _on_circling_state_physics_processing(delta: float) -> void:
+	if target_creature == null:
+		return
+	circling_angle += movement_speed * delta
+	var offset = Vector2(cos(circling_angle), sin(circling_angle)) * circling_distance
+	var target_position = target_creature.global_position + offset
+
+	var direction = (target_position - global_position).normalized()
+	velocity = direction * movement_speed # Adjust movement speed toward the orbit point
+	move_and_slide()
+
+
 func _on_wind_up_state_entered() -> void:
 	pursuit_effect.play()
 	velocity = Vector2.ZERO
@@ -69,11 +91,7 @@ func roll_speed(elapsed_time: float) -> float:
 # Overrides function in BasicEnemy. Checks if this enemy is in the Attack state.
 func _on_chase_radius_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player") and not in_attack_state:
-		# When chasing, take note of last known position.
-		# This enemy will travel to this position to search,
-		# only after path has no more points.
 		last_known_position = target_creature.position
-
 		target_creature = null
 		statechart.send_event("target_exit_chase_radius") # Triggers To Search
 
@@ -84,6 +102,12 @@ func _on_attack_state_exited() -> void:
 	current_dashes = 0
 	dash_attack_timer = 0
 	in_attack_state = false
+
+
+# Pause after fly attack, before return to Chase state
+func _on_recover_state_entered() -> void:
+	pass # Replace with function body.
+
 
 func _on_passive_state_entered() -> void:
 	super ()
@@ -97,8 +121,8 @@ func _on_fly_attack_hurtbox_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.damage(base_damage)
 
-func damage():
-	super ()
+func damage(value: int):
+	super (value)
 	hurt_effect.play()
 	target_creature = Globals.player
-	statechart.send_event("on_detection_radius_entered")
+	statechart.send_event("to_chase")

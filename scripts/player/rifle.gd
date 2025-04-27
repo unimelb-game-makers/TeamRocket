@@ -58,7 +58,7 @@ func _process(_delta):
 		aiming_curve.scale.x = remap(inaccuracy, MAX_INACCURACY, 0.0, 1.0, 2.0)
 		
 		update_aiming_ui()
-		aiming_line_1.rotation_degrees = -inaccuracy
+		aiming_line_1.rotation_degrees = - inaccuracy
 		aiming_line_2.rotation_degrees = inaccuracy
 
 func reload():
@@ -73,7 +73,7 @@ func fire(damage) -> void:
 		var target = raycast.get_collider()
 		if (target):
 			if (target is Enemy):
-				target.health -= damage
+				target.damage(damage)
 				
 		var hit_location = raycast.get_collision_point()
 		var impact = impact_scene.instantiate()

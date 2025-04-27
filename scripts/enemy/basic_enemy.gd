@@ -94,7 +94,7 @@ func _on_recalculate_path_timeout() -> void:
 func _on_detection_radius_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		target_creature = area.get_parent();
-		statechart.send_event("on_detection_radius_entered") # Triggers To Chase State
+		statechart.send_event("to_chase") # Triggers To Chase State
 
 func _on_chase_radius_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):

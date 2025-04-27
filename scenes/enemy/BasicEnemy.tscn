@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dl4d2r5o22lcf"]
+[gd_scene load_steps=17 format=3 uid="uid://dl4d2r5o22lcf"]
 
 [ext_resource type="Script" uid="uid://bk6qxeoptikjq" path="res://scripts/enemy/basic_enemy.gd" id="1_mi47r"]
-[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="2_0rjcf"]
 [ext_resource type="Script" uid="uid://dahmqbphxewm7" path="res://addons/godot_state_charts/state_chart.gd" id="3_q7ouv"]
 [ext_resource type="Texture2D" uid="uid://b6wifdpvel7yy" path="res://assets/creatures/enemy_longneck/longneck1.png" id="3_vk4fr"]
 [ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="4_2dodv"]
@@ -57,11 +56,6 @@ collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_mi47r")
 health = 20
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(1, 0.0862455, 0.095945, 1)
-texture = ExtResource("2_0rjcf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -105)
@@ -125,7 +119,7 @@ delay_in_seconds = "0.0"
 [node name="To Chase" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
 script = ExtResource("6_7s1cm")
 to = NodePath("../../Active/Chase")
-event = &"on_detection_radius_entered"
+event = &"to_chase"
 delay_in_seconds = "0.0"
 
 [node name="To Search" type="Node" parent="StateChart/EnemyBehaviour/Passive"]

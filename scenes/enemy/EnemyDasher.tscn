@@ -86,6 +86,7 @@ size = Vector2(372, 128)
 [node name="EnemyDasher" instance=ExtResource("1_cno7g")]
 motion_mode = 1
 script = ExtResource("2_1leqm")
+active_speed = 160
 health = 80
 base_damage = 20
 dropped_items = Array[ExtResource("3_v7e55")]([SubResource("Resource_uhg0u")])
@@ -97,19 +98,19 @@ position = Vector2(23, -8)
 scale = Vector2(3.98438, 0.53125)
 texture = ExtResource("5_hxbls")
 
-[node name="AnimatedSprite2D" parent="." index="2"]
+[node name="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(-2, -245)
 sprite_frames = SubResource("SpriteFrames_hu0vx")
 frame_progress = 0.0
 
-[node name="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(35.5, -35)
 shape = SubResource("RectangleShape2D_ags0e")
 
-[node name="DetectionRadius" parent="." index="5"]
+[node name="DetectionRadius" parent="." index="4"]
 position = Vector2(0, -140)
 
-[node name="ChaseRadius" parent="." index="6"]
+[node name="ChaseRadius" parent="." index="5"]
 position = Vector2(0, -140)
 
 [node name="To Attack State" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
@@ -144,7 +145,7 @@ to = NodePath("../../Active")
 event = &"on_attack_finish"
 delay_in_seconds = "0.0"
 
-[node name="SoundEffects" type="Node2D" parent="." index="9"]
+[node name="SoundEffects" type="Node2D" parent="." index="8"]
 position = Vector2(0, -140)
 
 [node name="IdleEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="0"]
@@ -167,7 +168,7 @@ bus = &"Effects"
 stream = ExtResource("10_qqa25")
 bus = &"Effects"
 
-[node name="DashAttackHurtbox" type="Area2D" parent="." index="10"]
+[node name="DashAttackHurtbox" type="Area2D" parent="." index="9"]
 position = Vector2(0, -140)
 collision_layer = 2
 monitoring = false
