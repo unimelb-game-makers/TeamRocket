@@ -113,6 +113,9 @@ to = NodePath("../../Active/Runaway")
 event = &"to_runaway"
 delay_in_seconds = "0.0"
 
+[node name="To Search" parent="StateChart/EnemyBehaviour/Active/Chase" index="0"]
+event = &"target_exit_chase_radius"
+
 [node name="To Attack State" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
 script = ExtResource("5_8pker")
 to = NodePath("../../../Attack")

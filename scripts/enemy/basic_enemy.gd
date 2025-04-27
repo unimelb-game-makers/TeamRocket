@@ -112,7 +112,7 @@ func _on_chase_radius_area_exited(area: Area2D) -> void:
 		last_known_position = target_creature.position
 
 		target_creature = null
-		statechart.send_event("target_exit_chase_radius") # Triggers To Search
+		statechart.send_event("to_search") # Triggers To Search
 
 
 ### Passive States (Idle or Wandering)

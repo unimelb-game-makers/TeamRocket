@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://jymq8qvrgg6f"]
+[gd_scene load_steps=20 format=3 uid="uid://jymq8qvrgg6f"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_4nirv"]
 [ext_resource type="Script" uid="uid://cn6xm76hrw8ix" path="res://scenes/enemy/enemy_raven.gd" id="2_5o2u2"]
@@ -38,17 +38,25 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qf2io"]
-radius = 5.49747
+radius = 1.90029
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqi3k"]
+radius = 512.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f64n6"]
+radius = 1336.02
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_37sxb"]
 radius = 57.0
 
 [node name="EnemyRaven" instance=ExtResource("1_4nirv")]
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("2_5o2u2")
-circling_distance = 100.0
-cirling_speed = 2.0
+circling_radius = 1000.0
+cirling_speed = 1.0
 circling_time = 3.0
+active_speed = 250
 
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
 modulate = Color(0, 0, 0, 0.529412)
@@ -65,10 +73,16 @@ frame_progress = 0.0
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CircleShape2D_qf2io")
 
+[node name="CollisionShape2D" parent="DetectionRadius" index="0"]
+shape = SubResource("CircleShape2D_dqi3k")
+
+[node name="CollisionShape2D" parent="ChaseRadius" index="0"]
+shape = SubResource("CircleShape2D_f64n6")
+
 [node name="To Attack State" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
 script = ExtResource("5_f64n6")
 to = NodePath("../../../Attack")
-delay_in_seconds = "1.0"
+delay_in_seconds = "0.25"
 
 [node name="To Chase" parent="StateChart/EnemyBehaviour/Active/Search" index="3"]
 event = &"to_chase"
@@ -83,7 +97,14 @@ script = ExtResource("7_xjmte")
 [node name="To Fly Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack/Circling" index="0"]
 script = ExtResource("5_f64n6")
 to = NodePath("../../Fly Attack")
-delay_in_seconds = ".25"
+event = &"to_fly_attack"
+delay_in_seconds = ""
+
+[node name="To Chase" type="Node" parent="StateChart/EnemyBehaviour/Attack/Circling" index="1"]
+script = ExtResource("5_f64n6")
+to = NodePath("../../../Active/Chase")
+event = &"to_chase"
+delay_in_seconds = "0.0"
 
 [node name="Fly Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="1"]
 script = ExtResource("7_xjmte")
@@ -133,8 +154,6 @@ monitoring = false
 shape = SubResource("CircleShape2D_37sxb")
 debug_color = Color(0.7, 0.0314829, 0.0105904, 0.42)
 
-[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
-[connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Circling" to="." method="_on_circling_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Circling" to="." method="_on_circling_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Fly Attack" to="." method="_on_fly_attack_state_entered"]
