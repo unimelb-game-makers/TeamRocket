@@ -48,18 +48,30 @@ func _on_circling_state_physics_processing(delta: float) -> void:
 	if target_creature == null:
 		statechart.send_event("to_search")
 		return
-
 	var distance = global_position.distance_to(target_creature.global_position)
 	if distance > circling_radius * CIRCLING_RADIUS_COEFFICIENT_TO_CHASE:
 		statechart.send_event("to_chase")
 		return
-	
 	circling_angle += cirling_speed * delta
 	var offset = Vector2(cos(circling_angle), sin(circling_angle)) * circling_radius
 	var target_position = target_creature.global_position + offset
 	var direction = (target_position - global_position).normalized()
 	velocity = direction * movement_speed * 3.0
 	move_and_slide()
+
+func _on_circling_attack_timer_timeout() -> void:
+	statechart.send_event("to_fly_attack")
+
+
+func _on_chase_state_physics_processing(delta: float) -> void:
+	if target_creature == null:
+		statechart.send_event("to_search")
+		return
+	var distance = global_position.distance_to(target_creature.global_position)
+	if distance < circling_radius * CIRCLING_RADIUS_COEFFICIENT_TO_ATTACK:
+		statechart.send_event("to_attack")
+		return
+	super (delta)
 
 
 func _on_wind_up_state_entered() -> void:
@@ -95,12 +107,9 @@ func roll_speed(elapsed_time: float) -> float:
 	var t: float = elapsed_time / fly_attack_duration
 	return fly_attack_range - (fly_attack_range - passive_speed) * t * t
 
-# Overrides function in BasicEnemy. Checks if this enemy is in the flying attack state.
 func _on_chase_radius_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player") and not is_flying_attack:
-		last_known_position = target_creature.position
-		target_creature = null
-		statechart.send_event("to_search") # Triggers To Search
+		super (area)
 
 
 # Pause after fly attack, before return to Chase state
@@ -125,20 +134,3 @@ func damage(value: int):
 	hurt_effect.play()
 	target_creature = Globals.player
 	statechart.send_event("to_chase")
-
-
-func _on_circling_attack_timer_timeout() -> void:
-	statechart.send_event("to_fly_attack")
-
-
-func _on_chase_state_physics_processing(delta: float) -> void:
-	if target_creature == null:
-		statechart.send_event("to_search")
-		return
-
-	var distance = global_position.distance_to(target_creature.global_position)
-	if distance < circling_radius * CIRCLING_RADIUS_COEFFICIENT_TO_ATTACK:
-		statechart.send_event("to_attack")
-		return
-
-	super (delta)

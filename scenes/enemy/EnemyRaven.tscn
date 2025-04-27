@@ -86,8 +86,8 @@ to = NodePath("../../../Attack")
 event = &"to_attack"
 delay_in_seconds = "0.0"
 
-[node name="To Chase" parent="StateChart/EnemyBehaviour/Active/Search" index="3"]
-event = &"to_chase"
+[node name="To Return" parent="StateChart/EnemyBehaviour/Active/Search" index="4"]
+event = &"target_not_found"
 
 [node name="Attack" type="Node" parent="StateChart/EnemyBehaviour" index="2"]
 script = ExtResource("6_m381y")

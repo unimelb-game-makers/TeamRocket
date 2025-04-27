@@ -138,7 +138,7 @@ script = ExtResource("5_wma0b")
 [node name="To Search" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase"]
 script = ExtResource("6_7s1cm")
 to = NodePath("../../Search")
-event = &"to_search"
+event = &"to_search_from_chase"
 delay_in_seconds = "0.0"
 
 [node name="Search" type="Node" parent="StateChart/EnemyBehaviour/Active"]
@@ -171,16 +171,22 @@ script = ExtResource("6_7s1cm")
 to = NodePath("../../SearchArea")
 delay_in_seconds = "1"
 
+[node name="To Chase From Search" type="Node" parent="StateChart/EnemyBehaviour/Active/Search"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Chase")
+event = &"to_chase_from_search"
+delay_in_seconds = "0.0"
+
 [node name="To Chase" type="Node" parent="StateChart/EnemyBehaviour/Active/Search"]
 script = ExtResource("6_7s1cm")
 to = NodePath("../../Chase")
-event = &"found_target"
+event = &"to_chase"
 delay_in_seconds = "0.0"
 
 [node name="To Return" type="Node" parent="StateChart/EnemyBehaviour/Active/Search"]
 script = ExtResource("6_7s1cm")
 to = NodePath("../../Return")
-event = &"target_not_found"
+event = &"to_return"
 delay_in_seconds = "0.0"
 
 [node name="Return" type="Node" parent="StateChart/EnemyBehaviour/Active"]
@@ -195,7 +201,7 @@ delay_in_seconds = "0.0"
 [node name="To Chase" type="Node" parent="StateChart/EnemyBehaviour/Active/Return"]
 script = ExtResource("6_7s1cm")
 to = NodePath("../../Chase")
-event = &"found_target"
+event = &"to_chase"
 delay_in_seconds = "0.0"
 
 [connection signal="area_entered" from="DetectionRadius" to="." method="_on_detection_radius_area_entered"]

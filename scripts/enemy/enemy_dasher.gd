@@ -1,11 +1,12 @@
 extends BasicEnemy
 
+@export var range_before_dash_attack = 500
+
 @onready var idle_effect: AudioStreamPlayer2D = $SoundEffects/IdleEffect
 @onready var attack_effect: AudioStreamPlayer2D = $SoundEffects/AttackEffect
 @onready var pursuit_effect: AudioStreamPlayer2D = $SoundEffects/PursuitEffect
 @onready var hunt_effect: AudioStreamPlayer2D = $SoundEffects/HuntEffect
 @onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
-
 @onready var dash_attack_hurtbox: Area2D = $DashAttackHurtbox
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -23,6 +24,17 @@ func _process(_delta: float) -> void:
 		anim_sprite.flip_h = true
 	elif anim_sprite.flip_h and velocity.x < -0.1:
 		anim_sprite.flip_h = false
+
+
+func _on_chase_state_physics_processing(delta: float) -> void:
+	if target_creature == null:
+		statechart.send_event("to_search")
+		return
+	var distance = global_position.distance_to(target_creature.global_position)
+	if distance < range_before_dash_attack:
+		statechart.send_event("to_attack")
+		return
+	super (delta)
 
 # Stop moving, and prepare to dash. Delay to Dash Attack set in Inspector
 func _on_wind_up_state_entered() -> void:
@@ -64,16 +76,9 @@ func roll_speed(elapsed_time: float) -> float:
 	var t: float = elapsed_time / dash_attack_duration
 	return dash_attack_range - (dash_attack_range - passive_speed) * t * t
 
-# Overrides function in BasicEnemy. Checks if this enemy is in the Attack state.
 func _on_chase_radius_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player") and not in_attack_state:
-		# When chasing, take note of last known position.
-		# This enemy will travel to this position to search,
-		# only after path has no more points.
-		last_known_position = target_creature.position
-
-		target_creature = null
-		statechart.send_event("to_search") # Triggers To Search
+		super (area)
 
 func _on_attack_state_entered() -> void:
 	in_attack_state = true

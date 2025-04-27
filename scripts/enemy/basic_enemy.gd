@@ -102,7 +102,7 @@ func _on_chase_radius_area_entered(area: Area2D) -> void:
 
 		# When this enemy is searching for the player,
 		# if they are still in the chase radius, then continue chasing.
-		statechart.send_event("found_target") # Triggers To Chase
+		statechart.send_event("to_chase_from_search") # Triggers To Chase
 
 func _on_chase_radius_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player"):
@@ -112,7 +112,7 @@ func _on_chase_radius_area_exited(area: Area2D) -> void:
 		last_known_position = target_creature.position
 
 		target_creature = null
-		statechart.send_event("to_search") # Triggers To Search
+		statechart.send_event("to_search_from_chase") # Triggers To Search
 
 
 ### Passive States (Idle or Wandering)
@@ -182,7 +182,7 @@ func _on_pause_state_entered() -> void:
 
 func _on_pause_state_exited() -> void:
 	if num_searches == 3:
-		statechart.send_event("target_not_found") # Triggers To Return
+		statechart.send_event("to_return") # Triggers To Return
 		num_searches = 0
 
 
