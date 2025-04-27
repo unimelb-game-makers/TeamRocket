@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bysb5hk8pdva0"]
+[gd_scene load_steps=27 format=3 uid="uid://bysb5hk8pdva0"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_cno7g"]
 [ext_resource type="Script" uid="uid://blek2xolb070t" path="res://scripts/enemy/enemy_dasher.gd" id="2_1leqm"]
@@ -7,11 +7,21 @@
 [ext_resource type="Script" uid="uid://c7smwqkuyr3jl" path="res://resources/resource_scripts/item.gd" id="3_v7e55"]
 [ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="4_dhk6e"]
 [ext_resource type="Texture2D" uid="uid://dc6mt81avbf6a" path="res://assets/food/mince raw.png" id="4_ytwmp"]
+[ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="5_hxbls"]
+[ext_resource type="Texture2D" uid="uid://b0yjyft6548gl" path="res://assets/creatures/enemy_longneck/longneck_attack.png" id="6_fkyv3"]
 [ext_resource type="AudioStream" uid="uid://dbdh8lin0ln5n" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/idle/naked deer idle1.wav" id="6_glnb7"]
+[ext_resource type="Texture2D" uid="uid://b6wifdpvel7yy" path="res://assets/creatures/enemy_longneck/longneck1.png" id="6_qcvpl"]
 [ext_resource type="AudioStream" uid="uid://b7dsn3hcvd0g3" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer attack1.wav" id="7_1cnyq"]
+[ext_resource type="Texture2D" uid="uid://y7sr1mw8c2ie" path="res://assets/creatures/enemy_longneck/longneck2.png" id="7_fkyv3"]
 [ext_resource type="AudioStream" uid="uid://dwci7x2kvnq3e" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer playerspotted1.wav" id="8_lig7d"]
+[ext_resource type="Texture2D" uid="uid://ctbgoaovtkkyv" path="res://assets/creatures/enemy_longneck/longneck3.png" id="8_sliql"]
+[ext_resource type="Texture2D" uid="uid://bt3me43c3msnp" path="res://assets/creatures/enemy_longneck/longneck4.png" id="9_o87wb"]
 [ext_resource type="AudioStream" uid="uid://diehj1recln7s" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/hunt/naked deer hunt1.wav" id="9_ufi2l"]
 [ext_resource type="AudioStream" uid="uid://d0egklm5e28pb" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer attack3.wav" id="10_qqa25"]
+[ext_resource type="Texture2D" uid="uid://cqh231pj018o5" path="res://assets/creatures/enemy_longneck/longneck5.png" id="10_ul61e"]
+[ext_resource type="Texture2D" uid="uid://boixyyp84v32v" path="res://assets/creatures/enemy_longneck/longneck6.png" id="11_b5fjj"]
+[ext_resource type="Texture2D" uid="uid://bftt6dkjddhcb" path="res://assets/creatures/enemy_longneck/longneck7.png" id="12_1ro2s"]
+[ext_resource type="Texture2D" uid="uid://dvh6bemwvtmuy" path="res://assets/creatures/enemy_longneck/longneck_prepare_dash.png" id="13_1eojp"]
 
 [sub_resource type="Resource" id="Resource_uhg0u"]
 script = ExtResource("3_v7e55")
@@ -22,24 +32,76 @@ description = "It looks like any other minced meat despite its questionable orig
 weight = 0.5
 rarity = 0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_hu0vx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_fkyv3")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qcvpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fkyv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sliql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o87wb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ul61e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_b5fjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1ro2s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_1eojp")
+}],
+"loop": true,
+"name": &"prepare_dash",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ags0e"]
 size = Vector2(34.8333, 11.6667)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_37sxb"]
-radius = 200.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxbls"]
+size = Vector2(372, 128)
 
 [node name="EnemyDasher" instance=ExtResource("1_cno7g")]
 motion_mode = 1
 script = ExtResource("2_1leqm")
 health = 80
+base_damage = 20
 dropped_items = Array[ExtResource("3_v7e55")]([SubResource("Resource_uhg0u")])
 dropped_item_chances = Array[float]([1.0])
 
-[node name="StateController" parent="." index="0"]
-position = Vector2(0, -140)
+[node name="Shadow" type="Sprite2D" parent="." index="0"]
+modulate = Color(0, 0, 0, 0.529412)
+position = Vector2(23, -8)
+scale = Vector2(3.98438, 0.53125)
+texture = ExtResource("5_hxbls")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(-2, -245)
+sprite_frames = SubResource("SpriteFrames_hu0vx")
+animation = &"attack"
+frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="3"]
 position = Vector2(35.5, -35)
@@ -66,7 +128,7 @@ script = ExtResource("3_klj4n")
 [node name="To Dash Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack/Wind Up" index="0"]
 script = ExtResource("4_dhk6e")
 to = NodePath("../../Dash Attack")
-delay_in_seconds = ".25"
+delay_in_seconds = ".5"
 
 [node name="Dash Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="1"]
 script = ExtResource("3_klj4n")
@@ -112,7 +174,9 @@ collision_layer = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackHurtbox" index="0"]
-shape = SubResource("CircleShape2D_37sxb")
+position = Vector2(-12, 108)
+shape = SubResource("RectangleShape2D_hxbls")
+debug_color = Color(0.7, 0.00527499, 0.0209431, 0.42)
 
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]

@@ -2,7 +2,6 @@ extends BasicEnemy
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var detection_area: Area2D = $DetectionRadius
-
 @onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
 @onready var idle_effect: AudioStreamPlayer2D = $SoundEffects/IdleEffect
 @onready var run_effect: AudioStreamPlayer2D = $SoundEffects/RunEffect

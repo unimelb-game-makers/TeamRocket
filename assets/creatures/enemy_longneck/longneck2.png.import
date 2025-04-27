@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://y7sr1mw8c2ie"
-path="res://.godot/imported/Untitled_Artwork-2.png-944eb377cf960e4bb3191e9df71f5cde.ctex"
+path="res://.godot/imported/longneck2.png-cd5829b8edd163f3cf2c1a4f02aa928e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/creatures/enemy_longneck/Untitled_Artwork-2.png"
-dest_files=["res://.godot/imported/Untitled_Artwork-2.png-944eb377cf960e4bb3191e9df71f5cde.ctex"]
+source_file="res://assets/creatures/enemy_longneck/longneck2.png"
+dest_files=["res://.godot/imported/longneck2.png-cd5829b8edd163f3cf2c1a4f02aa928e.ctex"]
 
 [params]
 

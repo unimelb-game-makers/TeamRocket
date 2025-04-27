@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://vhnilqdkefsv"]
+[gd_scene load_steps=24 format=3 uid="uid://vhnilqdkefsv"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_wkk65"]
 [ext_resource type="Texture2D" uid="uid://cq1iguugfglwg" path="res://assets/creatures/animal_headless_chicken/chicken1.png" id="2_djc8e"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://xs5130vgb5q0" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 1.wav" id="15_rj6jn"]
 [ext_resource type="AudioStream" uid="uid://beddvptril7ql" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken hurt 1.wav" id="16_ewli2"]
 [ext_resource type="AudioStream" uid="uid://c2v4gn4gq86qi" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken run away 1.wav" id="17_t33i1"]
+[ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="18_ewli2"]
 
 [sub_resource type="Resource" id="Resource_uhg0u"]
 script = ExtResource("2_ngw0k")
@@ -79,6 +80,12 @@ passive_speed = 50
 active_speed = 150
 dropped_items = Array[ExtResource("2_ngw0k")]([SubResource("Resource_uhg0u")])
 dropped_item_chances = Array[float]([1.0])
+
+[node name="Shadow" type="Sprite2D" parent="." index="0"]
+modulate = Color(0, 0, 0, 0.529412)
+position = Vector2(-7.62939e-06, 24)
+scale = Vector2(0.882812, 0.265625)
+texture = ExtResource("18_ewli2")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 position = Vector2(-2, -33)

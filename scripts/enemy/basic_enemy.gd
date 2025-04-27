@@ -69,21 +69,21 @@ func update_navigation_path(start_pos, end_pos):
 func set_movement_target(movement_target: Vector2):
 	navigation_agent.target_position = movement_target
 
-func _physics_process(_delta):
-	pass
 
-func move_along_path(distance):
-	var last_point = self.position
-	while path.size():
-		var distance_between_points = last_point.distance_to(path[0])
-		if distance <= distance_between_points:
-			self.position = last_point.lerp(path[0], distance / distance_between_points)
-			return
-		distance -= distance_between_points
-		last_point = path[0]
+func move_along_path(delta):
+	if path.is_empty():
+		velocity = Vector2.ZERO
+		return
+	
+	var direction = (path[0] - global_position).normalized()
+	velocity = direction * movement_speed
+	
+	var move_amount = velocity * delta
+	if move_amount.length() >= global_position.distance_to(path[0]):
+		global_position = path[0]
 		path.remove_at(0)
-	self.position = last_point
-	#set_process(false)
+	else:
+		move_and_slide()
 
 func _on_recalculate_path_timeout() -> void:
 	if (target_creature):
@@ -117,6 +117,9 @@ func _on_chase_radius_area_exited(area: Area2D) -> void:
 
 ### Passive States (Idle or Wandering)
 
+func _on_idle_state_entered() -> void:
+	statechart.send_event("wander")
+
 func _on_passive_state_entered() -> void:
 	movement_speed = passive_speed
 
@@ -129,8 +132,7 @@ func _on_active_state_entered() -> void:
 
 func _on_chase_state_physics_processing(delta: float) -> void:
 	# Travels along points in path.
-	var walk_distance = movement_speed * delta
-	move_along_path(walk_distance)
+	move_along_path(delta)
 	move_and_slide()
 
 
@@ -139,8 +141,7 @@ func _on_chase_state_physics_processing(delta: float) -> void:
 func _on_search_last_seen_position_state_physics_processing(delta: float) -> void:
 	# Finish walking along path first
 	if path.size():
-		var walk_distance = movement_speed * delta
-		move_along_path(walk_distance)
+		move_along_path(delta)
 		move_and_slide()
 
 	# When no more points in path, walk to last known position

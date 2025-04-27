@@ -12,6 +12,8 @@ extends CharacterBody2D
 		if health <= 0:
 			die()
 
+## If enemy has multiple attacks, their dmg will be based on this value, such as 150% or 30%.
+@export var base_damage: int = 10
 @export var dropped_items: Array[Item]
 @export var dropped_item_chances: Array[float]
 ## If this value + player's sound loudness larger than distance to player, enemy can heard player. 

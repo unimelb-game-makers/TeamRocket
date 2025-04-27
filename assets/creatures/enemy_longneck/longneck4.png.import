@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boixyyp84v32v"
-path="res://.godot/imported/Untitled_Artwork-6.png-11b2db5658a238af1750e528146c5abe.ctex"
+uid="uid://bt3me43c3msnp"
+path="res://.godot/imported/longneck4.png-d721fe36a87934657c4bc687a8e1b28d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/creatures/enemy_longneck/Untitled_Artwork-6.png"
-dest_files=["res://.godot/imported/Untitled_Artwork-6.png-11b2db5658a238af1750e528146c5abe.ctex"]
+source_file="res://assets/creatures/enemy_longneck/longneck4.png"
+dest_files=["res://.godot/imported/longneck4.png-d721fe36a87934657c4bc687a8e1b28d.ctex"]
 
 [params]
 
