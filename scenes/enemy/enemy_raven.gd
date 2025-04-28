@@ -1,5 +1,8 @@
 extends BasicEnemy
 
+#TODO: Use a HitBox only for raven and disable its collision shape so
+# it can still be damaged while not pushing player by collision.
+# Should do the same thing to all enemies.
 
 ## Due to velocity and physics, actual radius would be around 65% of this value
 @export var circling_radius: float = 1000
@@ -132,5 +135,3 @@ func _on_fly_attack_hurtbox_body_entered(body: Node2D) -> void:
 func damage(value: int):
 	super (value)
 	hurt_effect.play()
-	target_creature = Globals.player
-	statechart.send_event("to_chase")

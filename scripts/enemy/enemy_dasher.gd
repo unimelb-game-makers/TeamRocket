@@ -104,5 +104,3 @@ func _on_dash_attack_hurtbox_body_entered(body: Node2D) -> void:
 func damage(value: int):
 	super (value)
 	hurt_effect.play()
-	target_creature = Globals.player
-	statechart.send_event("to_chase")

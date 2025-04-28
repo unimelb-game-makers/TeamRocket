@@ -70,6 +70,12 @@ func set_movement_target(movement_target: Vector2):
 	navigation_agent.target_position = movement_target
 
 
+func damage(value: int):
+	super (value)
+	target_creature = Globals.player
+	statechart.send_event("to_chase")
+
+
 func move_along_path(delta):
 	if path.is_empty():
 		velocity = Vector2.ZERO

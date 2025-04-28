@@ -38,7 +38,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qf2io"]
-radius = 1.90029
+radius = 5.33333
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqi3k"]
 radius = 512.25
@@ -50,7 +50,7 @@ radius = 1336.02
 radius = 64.0
 
 [node name="EnemyRaven" instance=ExtResource("1_4nirv")]
-collision_mask = 4
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("2_5o2u2")
 circling_radius = 1000.0
@@ -72,7 +72,6 @@ frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CircleShape2D_qf2io")
-disabled = true
 
 [node name="CollisionShape2D" parent="DetectionRadius" index="0"]
 shape = SubResource("CircleShape2D_dqi3k")
@@ -86,7 +85,7 @@ to = NodePath("../../../Attack")
 event = &"to_attack"
 delay_in_seconds = "0.0"
 
-[node name="To Return" parent="StateChart/EnemyBehaviour/Active/Search" index="4"]
+[node name="To Return" parent="StateChart/EnemyBehaviour/Active/Search" index="5"]
 event = &"target_not_found"
 
 [node name="Attack" type="Node" parent="StateChart/EnemyBehaviour" index="2"]

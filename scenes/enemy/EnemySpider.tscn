@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bo6ywxnw6k5js"]
+
+[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_un5pt"]
+[ext_resource type="Script" uid="uid://c54a6f3wdfoy1" path="res://scenes/enemy/enemy_spider.gd" id="2_35b6m"]
+[ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="2_mobu3"]
+[ext_resource type="Texture2D" uid="uid://ceqjysptr3mgs" path="res://assets/creatures/enemy_spider/spider1.png" id="2_vnbgt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mobu3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vnbgt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnbgt"]
+size = Vector2(21.3333, 4)
+
+[node name="EnemySpider" instance=ExtResource("1_un5pt")]
+script = ExtResource("2_35b6m")
+dodge_chance_when_defend = 0.5
+active_speed = 110
+
+[node name="Shadow" type="Sprite2D" parent="." index="0"]
+modulate = Color(0, 0, 0, 0.529412)
+position = Vector2(0, 48)
+scale = Vector2(2.82227, 0.555483)
+texture = ExtResource("2_mobu3")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(0, -104)
+sprite_frames = SubResource("SpriteFrames_mobu3")
+frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(1.90735e-06, 36)
+shape = SubResource("RectangleShape2D_vnbgt")

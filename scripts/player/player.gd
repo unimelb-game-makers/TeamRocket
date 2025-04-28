@@ -14,6 +14,12 @@ signal death
 signal channel_complete
 signal sound_created(location, loudness)
 
+const ROLL_SPEED: int = 800
+const ROLL_DURATION: float = 0.5
+const ROLL_COOLDOWN: float = 0
+const WALK_FOOTSTEP_SFX_FREQUENCY = 0.75
+const SPRINT_FOOTSTEP_SFX_FREQUENCY = 0.5
+
 var can_move: bool = true
 
 # ----- MOVEMENT VARS -----
@@ -25,20 +31,16 @@ var direction: Vector2
 var is_moving = false
 var is_sprinting = false
 var is_crouching = false
+var is_aiming = false
 
 # roll_timer affects speed over the course of the roll
-const ROLL_SPEED: int = 800
-const ROLL_DURATION: float = 0.5
 var roll_timer: float = 0
 
 # Roll cooldown
 # TODO: Integrate cooldown into statechart
-const ROLL_COOLDOWN: float = 0
 var roll_cd_timer: float = 0
 var can_roll: bool = true
 
-const WALK_FOOTSTEP_SFX_FREQUENCY = 0.75
-const SPRINT_FOOTSTEP_SFX_FREQUENCY = 0.5
 var fired = false
 var animation_locked = false
 
@@ -204,11 +206,13 @@ func _on_aiming_state_entered() -> void:
 	rifle.enter_aiming_mode()
 	aim_mode_enter.emit()
 	curr_speed = curr_speed / 2
+	is_aiming = true
 
 func _on_aiming_state_exited() -> void:
 	rifle.exit_aiming_mode()
 	aim_mode_exit.emit()
 	curr_speed = curr_speed * 2
+	is_aiming = false
 
 func _on_channel_timer_timeout() -> void:
 	channel_complete.emit()
