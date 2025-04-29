@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc6mt81avbf6a"
-path="res://.godot/imported/mince raw.png-cf4e939da8bcb3e390b025078db3ce79.ctex"
+uid="uid://cevkjrlj4y5qd"
+path="res://.godot/imported/tomato_raw.png-c61739fc645402e716456ed03ff1822c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/mince raw.png"
-dest_files=["res://.godot/imported/mince raw.png-cf4e939da8bcb3e390b025078db3ce79.ctex"]
+source_file="res://assets/food/tomato_raw.png"
+dest_files=["res://.godot/imported/tomato_raw.png-c61739fc645402e716456ed03ff1822c.ctex"]
 
 [params]
 

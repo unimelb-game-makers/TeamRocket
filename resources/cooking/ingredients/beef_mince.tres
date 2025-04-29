@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://v5nqfcc5gsvk"]
 
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_7bgvk"]
-[ext_resource type="Texture2D" uid="uid://sedfcv8ln5i8" path="res://assets/food/mince cooked.png" id="2_12pnu"]
+[ext_resource type="Texture2D" uid="uid://sedfcv8ln5i8" path="res://assets/food/mince_cooked.png" id="2_12pnu"]
 
 [resource]
 script = ExtResource("1_7bgvk")
@@ -10,7 +10,7 @@ ingredient_category = 3
 effects = Array[int]([])
 name_modifiers = Array[String]([])
 texture = ExtResource("2_12pnu")
-texture_id = ExtResource("2_12pnu")
+item_id = "beef_mince"
 item_name = "Beef"
 description = "Beef"
 weight = 0.5

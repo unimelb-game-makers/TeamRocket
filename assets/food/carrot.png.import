@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw11fr51fq4sj"
-path="res://.godot/imported/spaghetti raw.png-e57c287e10fbf60022d5c8fc46ae1062.ctex"
+uid="uid://po2e2hxrnnr4"
+path="res://.godot/imported/carrot.png-e283adc2264b0f1c13a63be7a0eacde8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/spaghetti raw.png"
-dest_files=["res://.godot/imported/spaghetti raw.png-e57c287e10fbf60022d5c8fc46ae1062.ctex"]
+source_file="res://assets/food/carrot.png"
+dest_files=["res://.godot/imported/carrot.png-e283adc2264b0f1c13a63be7a0eacde8.ctex"]
 
 [params]
 

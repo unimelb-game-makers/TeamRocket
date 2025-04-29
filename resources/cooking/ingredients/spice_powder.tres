@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Ingredient2" load_steps=3 format=3 uid="uid://cwuer4u67t6om"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cwuer4u67t6om"]
 
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_odjdd"]
-[ext_resource type="Texture2D" uid="uid://sedfcv8ln5i8" path="res://assets/food/mince cooked.png" id="2_7737j"]
+[ext_resource type="Texture2D" uid="uid://sedfcv8ln5i8" path="res://assets/food/mince_cooked.png" id="2_7737j"]
 
 [resource]
 script = ExtResource("1_odjdd")
@@ -10,7 +10,7 @@ ingredient_category = 6
 effects = Array[int]([])
 name_modifiers = Array[String]([])
 texture = ExtResource("2_7737j")
-texture_id = ExtResource("2_7737j")
+item_id = "spice_powder"
 item_name = "Spice Powder"
 description = "Used for Making Curry"
 weight = 0.2

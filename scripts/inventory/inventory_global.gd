@@ -25,25 +25,29 @@ func update_ui() -> void:
 	inventory_ui.update_weight_label()
 	
 func add_item(item: Item, amount: int, type: InventoryType = InventoryType.PLAYER) -> void:
-	if (inventory_dict[type].has(item)):
-		inventory_dict[type][item] += amount
-	else:
-		inventory_dict[type][item] = amount
+	for i in inventory_dict[type].keys():
+		if (item.equals(i)):
+			inventory_dict[type][i] += amount
+			update_ui()
+			return
+	inventory_dict[type][item] = amount
 	update_ui()
 
 func has_item(item: Item, amount: int, type: InventoryType = InventoryType.PLAYER) -> bool:
-	if (inventory_dict[type].has(item)):
-		if (inventory_dict[type][item] >= amount):
-			return true
+	for i in inventory_dict[type].keys():
+		if (item.equals(i)):
+			if (inventory_dict[type][i] >= amount):
+				return true
 	return false
 
 func remove_item(item: Item, amount: int, type: InventoryType = InventoryType.PLAYER) -> void:
-	if (has_item(item, amount, type)):
-		inventory_dict[type][item] -= amount
-		if (inventory_dict[type][item] == 0):
-			inventory_dict[type].erase(item)
+	for i in inventory_dict[type].keys():
+		if (item.equals(i)):
+			if (inventory_dict[type][i] >= amount):
+				inventory_dict[type][i] -= amount
+				if (inventory_dict[type][item] == 0):
+					inventory_dict[type].erase(i)
 	update_ui()
-
 
 func get_total_weight(type: InventoryType = InventoryType.PLAYER) -> float:
 	var total: float = 0

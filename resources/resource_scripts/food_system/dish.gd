@@ -16,11 +16,11 @@ func save() -> Dictionary:
 static func parse_dict(item_dict: Dictionary) -> Item:
 	var dish: Dish = Dish.new()
 	dish.item_name = item_dict["item_name"]
-	dish.texture_id = item_dict["texture_id"]
+	dish.item_id = item_dict["item_id"]
+	dish.texture = load(item_dict["texture_path"])
 	dish.description = item_dict["description"]
 	dish.weight = item_dict["weight"]
 	dish.rarity = item_dict["rarity"]
-	#
 	dish.effects = item_dict["effects"]
 	dish.ingredients = item_dict["ingredients"]
 	return dish

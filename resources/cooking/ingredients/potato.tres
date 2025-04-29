@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://1s1f33gnef5m"]
 
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_k4pvl"]
-[ext_resource type="Texture2D" uid="uid://cevkjrlj4y5qd" path="res://assets/food/tomato raw.png" id="2_jy683"]
+[ext_resource type="Texture2D" uid="uid://cevkjrlj4y5qd" path="res://assets/food/tomato_raw.png" id="2_jy683"]
 
 [resource]
 script = ExtResource("1_k4pvl")
@@ -10,7 +10,7 @@ ingredient_category = 0
 effects = Array[int]([])
 name_modifiers = Array[String]([])
 texture = ExtResource("2_jy683")
-texture_id = ExtResource("2_jy683")
+item_id = "tomato_raw"
 item_name = "Potato"
 description = "TOTATO"
 weight = 0.0

@@ -46,12 +46,11 @@ func save() -> Dictionary:
 static func parse_dict(item_dict: Dictionary) -> Item:
 	var ingredient: Ingredient = Ingredient.new()
 	ingredient.item_name = item_dict["item_name"]
-	print(ingredient.item_name)
-	ingredient.texture_id = item_dict["texture_id"]
+	ingredient.item_id = item_dict["item_id"]
+	ingredient.texture = load(item_dict["texture_path"])
 	ingredient.description = item_dict["description"]
 	ingredient.weight = item_dict["weight"]
 	ingredient.rarity = item_dict["rarity"]
-	#
 	#ingredient.effects = item_dict["effects"]
 	ingredient.ingredient_type = item_dict["ingredient_type"]
 	ingredient.ingredient_category = item_dict["ingredient_category"]

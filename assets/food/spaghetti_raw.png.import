@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d242sxkaq3idj"
-path="res://.godot/imported/tomato cut.png-b51f89c827c8b6221b3672e91bcf966b.ctex"
+uid="uid://bw11fr51fq4sj"
+path="res://.godot/imported/spaghetti_raw.png-fab1c8d7c63da5f3c2f42b4a95ecca77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/tomato cut.png"
-dest_files=["res://.godot/imported/tomato cut.png-b51f89c827c8b6221b3672e91bcf966b.ctex"]
+source_file="res://assets/food/spaghetti_raw.png"
+dest_files=["res://.godot/imported/spaghetti_raw.png-fab1c8d7c63da5f3c2f42b4a95ecca77.ctex"]
 
 [params]
 

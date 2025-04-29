@@ -9,41 +9,41 @@ signal setting_config_loaded
 
 func _ready() -> void:
 	load_setting_config()
+	
+#func convert_item_resource_to_id(resource_dict: Dictionary) -> Dictionary:
+	#var result: Dictionary = {}
+	#for key in resource_dict:
+		#var item_id = key.item_id
+		#result[item_id] = resource_dict[key]
+	#return result
+#
+#func convert_id_to_item_resource(id_dict: Dictionary) -> Dictionary:
+	#var result: Dictionary = {}
+	#for item_id in id_dict:
+		#for db_item in Globals.item_database:
+			#if db_item.item_id == int(item_id):
+				#result[db_item] = id_dict[item_id]
+	#return result
 
-func convert_item_resource_to_id(resource_dict: Dictionary) -> Dictionary:
-	var result: Dictionary = {}
-	for key in resource_dict:
-		var item_id = key.item_id
-		result[item_id] = resource_dict[key]
-	return result
-
-func convert_id_to_item_resource(id_dict: Dictionary) -> Dictionary:
-	var result: Dictionary = {}
-	for item_id in id_dict:
-		for db_item in Globals.item_database:
-			if db_item.item_id == int(item_id):
-				result[db_item] = id_dict[item_id]
-	return result
-
-func convert_inventory_data_when_save(inventory_dict: Dictionary):
-	var new_dict = {
-		0: null,
-		1: {},
-		2: {}
-	}
-	new_dict[1] = convert_item_resource_to_id(inventory_dict[1])
-	new_dict[2] = convert_item_resource_to_id(inventory_dict[2])
-	return new_dict
-
-func convert_inventory_data_when_load(saved_dict: Dictionary):
-	var new_dict = {
-		0: null,
-		1: {},
-		2: {}
-	}
-	new_dict[1] = convert_id_to_item_resource(saved_dict["1"])
-	new_dict[2] = convert_id_to_item_resource(saved_dict["2"])
-	return new_dict
+#func convert_inventory_data_when_save(inventory_dict: Dictionary):
+	#var new_dict = {
+		#0: null,
+		#1: {},
+		#2: {}
+	#}
+	#new_dict[1] = convert_item_resource_to_id(inventory_dict[1])
+	#new_dict[2] = convert_item_resource_to_id(inventory_dict[2])
+	#return new_dict
+#
+#func convert_inventory_data_when_load(saved_dict: Dictionary):
+	#var new_dict = {
+		#0: null,
+		#1: {},
+		#2: {}
+	#}
+	#new_dict[1] = convert_id_to_item_resource(saved_dict["1"])
+	#new_dict[2] = convert_id_to_item_resource(saved_dict["2"])
+	#return new_dict
 
 func save_inventory(inventory_dict: Dictionary):
 	var output_dict = {}
@@ -51,21 +51,27 @@ func save_inventory(inventory_dict: Dictionary):
 		if (inventory_dict.get(inv) != null):
 			var output_inv: Array = []
 			for item: Item in inventory_dict[inv].keys():
-				for i in range(inventory_dict[inv][item]):
-					output_inv.append(item.save())
+				var output_item = {}
+				output_item["item"] = item.save()
+				output_item["amount"] = inventory_dict[inv][item]
+				output_inv.append(output_item)
 			output_dict[inv] = output_inv
 	return output_dict
 
 func load_inventory(inventory_dict: Dictionary):
 	var parsed_dict = {}
+	# Check every inventory option (None, Player, Fridge)
 	for inv in InventoryGlobal.inventory_dict:
 		var inv_str = str(inv)
 		var inv_dict = {}
+		# If it is not null (none)
 		if (inventory_dict.get(inv_str) != null):
+			# Get the inventory from dict and load every item
 			var output_inv: Array = inventory_dict[inv_str]
 			for item in output_inv:
-				var loaded_item: Item = Item.load_item(item)
-				inv_dict[loaded_item] = inv_dict.get(loaded_item, 0) + 1
+				var loaded_item: Item = Item.load_item(item["item"])
+				inv_dict[loaded_item] = inv_dict.get(loaded_item, 0) + item["amount"]
+				#InventoryGlobal.add_item(loaded_item, item["amount"], inv)
 		parsed_dict[inv] = inv_dict
 	return parsed_dict
 	
