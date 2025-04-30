@@ -4,7 +4,7 @@ extends Item
 # Final output class of item which player can eat or serve
 
 @export var effects: Array[Item.Effects]
-@export var ingredients: Array[Ingredient.IngredientType]
+@export var ingredients: Array[Ingredient]
 
 func save() -> Dictionary:
 	var item_dict = super()
@@ -26,6 +26,12 @@ static func parse_dict(item_dict: Dictionary) -> Item:
 	dish.description = item_dict["description"]
 	dish.weight = item_dict["weight"]
 	dish.rarity = item_dict["rarity"]
-	#dish.effects = item_dict["effects"]
-	#dish.ingredients = item_dict["ingredients"]
+	dish.effects = []
+	for effect in item_dict["effects"]:
+		dish.effects.append(effect as Item.Effects)
+	print(dish.effects)
+	dish.ingredients = []
+	for ingredient in item_dict["ingredients"]:
+		dish.effects.append(ingredient)
+	print(dish.ingredients)
 	return dish

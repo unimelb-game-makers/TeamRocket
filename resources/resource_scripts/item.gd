@@ -50,11 +50,4 @@ static func load_item(dict: Dictionary) -> Item:
 
 static func parse_dict(item_dict: Dictionary) -> Item:
 	var item: Item = load(item_dict["item_id"])
-	#item.item_name = item_dict["item_name"]
-	#item.item_id = item_dict["item_id"]
-	#item.texture = load(item_dict["texture_path"])
-	#item.description = item_dict["description"]
-	#item.weight = item_dict["weight"]
-	#item.rarity = item_dict["rarity"]
-	
 	return item
