@@ -18,8 +18,8 @@ config/icon="res://assets/Player/sprite/alex_portrait.png"
 [autoload]
 
 Globals="*res://scripts/Globals/Globals.tscn"
-InventoryGlobal="*res://scripts/inventory/inventory_global.gd"
 SaveManager="*res://scripts/Globals/save_manager.gd"
+InventoryGlobal="*res://scripts/inventory/inventory_global.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
 
 [display]
