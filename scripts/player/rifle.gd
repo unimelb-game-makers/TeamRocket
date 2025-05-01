@@ -68,11 +68,11 @@ func reload():
 
 func fire(damage) -> void:
 	if (fire_timer.is_stopped() and reload_timer.is_stopped()):
-				# Raycast to target
+		# Raycast to target
 		raycast.rotation_degrees = randf_range(-inaccuracy, inaccuracy)
 		var target = raycast.get_collider()
 		if (target):
-			if (target is Enemy):
+			if (target is EnemyHitbox):
 				target.damage(damage)
 				
 		var hit_location = raycast.get_collision_point()

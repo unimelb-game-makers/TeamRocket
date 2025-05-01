@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bysb5hk8pdva0"]
+[gd_scene load_steps=30 format=3 uid="uid://bysb5hk8pdva0"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_cno7g"]
 [ext_resource type="Script" uid="uid://blek2xolb070t" path="res://scripts/enemy/enemy_dasher.gd" id="2_1leqm"]
@@ -87,7 +87,10 @@ radius = 450.01
 radius = 991.424
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hxbls"]
-size = Vector2(372, 128)
+size = Vector2(332, 128)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o87wb"]
+radius = 179.6
 
 [node name="EnemyDasher" instance=ExtResource("1_cno7g")]
 motion_mode = 1
@@ -188,9 +191,15 @@ collision_layer = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackHurtbox" index="0"]
-position = Vector2(-12, 108)
+position = Vector2(8, 108)
 shape = SubResource("RectangleShape2D_hxbls")
-debug_color = Color(0.7, 0.00527499, 0.0209431, 0.42)
+debug_color = Color(0.701961, 0.00392157, 0.0196078, 0.25098)
+
+[node name="Hitbox" parent="." index="10"]
+position = Vector2(0, -144)
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_o87wb")
 
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]

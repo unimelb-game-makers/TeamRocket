@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://jymq8qvrgg6f"]
+[gd_scene load_steps=21 format=3 uid="uid://jymq8qvrgg6f"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_4nirv"]
 [ext_resource type="Script" uid="uid://cn6xm76hrw8ix" path="res://scenes/enemy/enemy_raven.gd" id="2_5o2u2"]
@@ -49,6 +49,9 @@ radius = 1336.02
 [sub_resource type="CircleShape2D" id="CircleShape2D_37sxb"]
 radius = 64.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_m381y"]
+radius = 56.0
+
 [node name="EnemyRaven" instance=ExtResource("1_4nirv")]
 collision_mask = 0
 motion_mode = 1
@@ -72,6 +75,7 @@ frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="2"]
 shape = SubResource("CircleShape2D_qf2io")
+disabled = true
 
 [node name="CollisionShape2D" parent="DetectionRadius" index="0"]
 shape = SubResource("CircleShape2D_dqi3k")
@@ -158,6 +162,9 @@ debug_color = Color(0.7, 0.0314829, 0.0105904, 0.42)
 [node name="CirclingAttackTimer" type="Timer" parent="." index="10"]
 wait_time = 5.0
 one_shot = true
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_m381y")
 
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Circling" to="." method="_on_circling_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Circling" to="." method="_on_circling_state_physics_processing"]

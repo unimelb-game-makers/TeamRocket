@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://vhnilqdkefsv"]
+[gd_scene load_steps=25 format=3 uid="uid://vhnilqdkefsv"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_wkk65"]
 [ext_resource type="Texture2D" uid="uid://cq1iguugfglwg" path="res://assets/creatures/animal_headless_chicken/chicken1.png" id="2_djc8e"]
@@ -65,13 +65,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_t33i1"]
-radius = 25.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewli2"]
+size = Vector2(48, 24)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7l25"]
 radius = 216.148
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_piqbv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewli2"]
+radius = 27.6632
 
 [node name="EnemyChicken" instance=ExtResource("1_wkk65")]
 motion_mode = 1
@@ -95,8 +98,9 @@ animation = &"walk"
 frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 16)
 scale = Vector2(1, 1)
-shape = SubResource("CircleShape2D_t33i1")
+shape = SubResource("RectangleShape2D_ewli2")
 
 [node name="CollisionShape2D" parent="DetectionRadius" index="0"]
 shape = SubResource("CircleShape2D_l7l25")
@@ -179,6 +183,10 @@ bus = &"Effects"
 
 [node name="StopRunTimer" type="Timer" parent="." index="9"]
 one_shot = true
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("CircleShape2D_ewli2")
 
 [connection signal="area_exited" from="DetectionRadius" to="." method="_on_detection_radius_area_exited"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Runaway" to="." method="_on_runaway_state_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo6ywxnw6k5js"]
+[gd_scene load_steps=8 format=3 uid="uid://bo6ywxnw6k5js"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_un5pt"]
 [ext_resource type="Script" uid="uid://c54a6f3wdfoy1" path="res://scenes/enemy/enemy_spider.gd" id="2_35b6m"]
@@ -19,6 +19,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnbgt"]
 size = Vector2(21.3333, 4)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_35b6m"]
+size = Vector2(224, 88)
+
 [node name="EnemySpider" instance=ExtResource("1_un5pt")]
 script = ExtResource("2_35b6m")
 dodge_chance_when_defend = 0.5
@@ -38,3 +41,7 @@ frame_progress = 0.0
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(1.90735e-06, 36)
 shape = SubResource("RectangleShape2D_vnbgt")
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_35b6m")

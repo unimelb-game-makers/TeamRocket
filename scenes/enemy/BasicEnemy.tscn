@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dl4d2r5o22lcf"]
+[gd_scene load_steps=19 format=3 uid="uid://dl4d2r5o22lcf"]
 
 [ext_resource type="Script" uid="uid://bk6qxeoptikjq" path="res://scripts/enemy/basic_enemy.gd" id="1_mi47r"]
 [ext_resource type="Script" uid="uid://dahmqbphxewm7" path="res://addons/godot_state_charts/state_chart.gd" id="3_q7ouv"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cqh231pj018o5" path="res://assets/creatures/enemy_longneck/longneck5.png" id="7_5y6yc"]
 [ext_resource type="Texture2D" uid="uid://boixyyp84v32v" path="res://assets/creatures/enemy_longneck/longneck6.png" id="8_qdxwj"]
 [ext_resource type="Texture2D" uid="uid://bftt6dkjddhcb" path="res://assets/creatures/enemy_longneck/longneck7.png" id="9_aivvf"]
+[ext_resource type="Script" uid="uid://dkjrqbk2ts5qd" path="res://scenes/enemy/enemy_hitbox.gd" id="13_lcgj0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mgjl5"]
 animations = [{
@@ -51,6 +52,9 @@ radius = 400.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_o434b"]
 radius = 1000.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tc3i"]
+radius = 59.7097
+
 [node name="BasicEnemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
@@ -67,6 +71,7 @@ frame_progress = 0.797158
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(6, 6)
 shape = SubResource("CircleShape2D_i0ffd")
+debug_color = Color(0.00784314, 0.701961, 0, 0.341176)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
@@ -76,12 +81,14 @@ collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionRadius"]
 shape = SubResource("CircleShape2D_qi61h")
+debug_color = Color(0, 0.6, 0.701961, 0.219608)
 
 [node name="ChaseRadius" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseRadius"]
 shape = SubResource("CircleShape2D_o434b")
+debug_color = Color(0, 0.6, 0.701961, 0.219608)
 
 [node name="RecalculatePath" type="Timer" parent="."]
 wait_time = 0.16
@@ -203,6 +210,15 @@ script = ExtResource("6_7s1cm")
 to = NodePath("../../Chase")
 event = &"to_chase"
 delay_in_seconds = "0.0"
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("13_lcgj0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_0tc3i")
+debug_color = Color(0.7, 0.647647, 0, 0.42)
 
 [connection signal="area_entered" from="DetectionRadius" to="." method="_on_detection_radius_area_entered"]
 [connection signal="area_entered" from="ChaseRadius" to="." method="_on_chase_radius_area_entered"]
