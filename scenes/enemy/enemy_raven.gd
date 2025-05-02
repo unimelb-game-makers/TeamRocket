@@ -16,7 +16,7 @@ extends BasicEnemy
 @onready var hunt_effect: AudioStreamPlayer2D = $SoundEffects/HuntEffect
 @onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
 
-@onready var fly_attack_hurtbox: Area2D = $FlyAttackHurtbox
+@onready var fly_attack_area: Area2D = $FlyAttackArea
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var circling_attack_timer: Timer = $CirclingAttackTimer
 
@@ -90,7 +90,7 @@ func _on_fly_attack_state_entered() -> void:
 	attack_effect.play()
 	fly_attack_timer = 0
 	fly_attack_vector = global_position.direction_to(target_creature.global_position)
-	fly_attack_hurtbox.monitoring = true
+	fly_attack_area.monitoring = true
 
 # Dash to player. Dash speed determined by fly_attack_duration.
 func _on_fly_attack_state_physics_processing(delta: float) -> void:
@@ -98,17 +98,13 @@ func _on_fly_attack_state_physics_processing(delta: float) -> void:
 	if fly_attack_timer >= fly_attack_duration:
 		statechart.send_event("to_recover")
 	else:
-		velocity = fly_attack_vector * roll_speed(fly_attack_timer)
+		velocity = fly_attack_vector * roll_speed(fly_attack_timer, fly_attack_duration, fly_attack_range, passive_speed)
 		move_and_slide()
 
 func _on_fly_attack_state_exited() -> void:
 	is_flying_attack = false
-	fly_attack_hurtbox.monitoring = false
+	fly_attack_area.monitoring = false
 
-
-func roll_speed(elapsed_time: float) -> float:
-	var t: float = elapsed_time / fly_attack_duration
-	return fly_attack_range - (fly_attack_range - passive_speed) * t * t
 
 func _on_chase_radius_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player") and not is_flying_attack:
@@ -128,7 +124,7 @@ func _on_active_state_entered() -> void:
 	super ()
 	hunt_effect.play()
 
-func _on_fly_attack_hurtbox_body_entered(body: Node2D) -> void:
+func _on_fly_attack_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.damage(base_damage)
 

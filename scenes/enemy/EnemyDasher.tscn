@@ -95,12 +95,14 @@ radius = 179.6
 [node name="EnemyDasher" instance=ExtResource("1_cno7g")]
 motion_mode = 1
 script = ExtResource("2_1leqm")
-range_before_dash_attack = 500
+range_before_dash_attack = null
+passive_speed = null
 active_speed = 160
 health = 80
 base_damage = 20
 dropped_items = Array[ExtResource("3_v7e55")]([SubResource("Resource_uhg0u")])
 dropped_item_chances = Array[float]([1.0])
+hearing_sensitivity = null
 
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
 modulate = Color(0, 0, 0, 0.529412)

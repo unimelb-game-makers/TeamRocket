@@ -179,6 +179,7 @@ patch_margin_bottom = 20
 [node name="PauseMenu" parent="." instance=ExtResource("6_t0vuv")]
 visible = false
 layout_mode = 1
+mouse_filter = 1
 
 [node name="Inventory" parent="." instance=ExtResource("7_pb8bc")]
 visible = false

@@ -1,7 +1,8 @@
-[gd_scene load_steps=110 format=3 uid="uid://bp53g1jmqlap"]
+[gd_scene load_steps=111 format=3 uid="uid://bp53g1jmqlap"]
 
 [ext_resource type="Script" uid="uid://dahmqbphxewm7" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" uid="uid://cucpys6u7vdh4" path="res://scripts/player/player.gd" id="1_lvdue"]
+[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="2_0pnis"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_7c1ag"]
 [ext_resource type="Script" uid="uid://dcjhq64uacsfa" path="res://addons/godot_state_charts/parallel_state.gd" id="2_44kvc"]
 [ext_resource type="Texture2D" uid="uid://h34qj4i3xbrn" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Down/crouch_down.png" id="3_4tl0c"]
@@ -493,10 +494,16 @@ shader_parameter/background = Vector4(0, 0, 0, 0)
 collision_mask = 6
 script = ExtResource("1_lvdue")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0.367188, 0.367188, 0.367188, 1)
+position = Vector2(8, -88)
+scale = Vector2(7, 7)
+texture = ExtResource("2_0pnis")
+
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 0.407843)
-z_index = -1
-position = Vector2(-1.90735e-06, 8)
+position = Vector2(2.27374e-13, 16)
 scale = Vector2(0.56, 0.16)
 texture = ExtResource("91_rlnnq")
 
@@ -504,7 +511,7 @@ texture = ExtResource("91_rlnnq")
 position = Vector2(0, -96)
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_web4h")
-animation = &"crouch_idle"
+animation = &"idle"
 
 [node name="Rifle" type="Node2D" parent="."]
 position = Vector2(0, -96)
@@ -560,6 +567,14 @@ bus = &"Effects"
 
 [node name="EquipEffect" type="AudioStreamPlayer2D" parent="Rifle/SoundEffects"]
 bus = &"Effects"
+
+[node name="MuzzleFlash" type="PointLight2D" parent="Rifle"]
+position = Vector2(88, 0)
+color = Color(1, 0.744948, 0, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("8_emt8s")
+texture_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4, -12)
@@ -751,6 +766,10 @@ wait_time = 0.5
 material = SubResource("ShaderMaterial_sadjk")
 position = Vector2(0, -96)
 
+[node name="DebuffTimer" type="Node2D" parent="."]
+
+[node name="SlowDebuffTimer" type="Timer" parent="DebuffTimer"]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]
 [connection signal="timeout" from="Rifle/ReloadTimer" to="Rifle" method="_on_reload_timer_timeout"]
@@ -771,3 +790,4 @@ position = Vector2(0, -96)
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Motion/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="timeout" from="ChannelTimer" to="." method="_on_channel_timer_timeout"]
 [connection signal="timeout" from="FootstepSoundEffect/FootstepTimer" to="." method="_on_footstep_timer_timeout"]
+[connection signal="timeout" from="DebuffTimer/SlowDebuffTimer" to="." method="_on_slow_debuff_timer_timeout"]

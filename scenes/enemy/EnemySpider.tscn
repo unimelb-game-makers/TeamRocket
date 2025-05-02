@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo6ywxnw6k5js"]
+[gd_scene load_steps=15 format=3 uid="uid://bo6ywxnw6k5js"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_un5pt"]
 [ext_resource type="Script" uid="uid://c54a6f3wdfoy1" path="res://scenes/enemy/enemy_spider.gd" id="2_35b6m"]
 [ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="2_mobu3"]
 [ext_resource type="Texture2D" uid="uid://ceqjysptr3mgs" path="res://assets/creatures/enemy_spider/spider1.png" id="2_vnbgt"]
+[ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="5_trdn0"]
+[ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="6_omm2d"]
+[ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="7_omm2d"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="8_uxdrg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mobu3"]
 animations = [{
@@ -19,29 +23,144 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnbgt"]
 size = Vector2(21.3333, 4)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_omm2d"]
+radius = 400.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uxdrg"]
+radius = 1000.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_35b6m"]
 size = Vector2(224, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omm2d"]
+size = Vector2(272, 120)
 
 [node name="EnemySpider" instance=ExtResource("1_un5pt")]
 script = ExtResource("2_35b6m")
 dodge_chance_when_defend = 0.5
+range_before_attack = 500
 active_speed = 110
+health = 70
+base_damage = 15
 
-[node name="Shadow" type="Sprite2D" parent="." index="0"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
+layer = 20
+
+[node name="StateChartDebugger" parent="CanvasLayer" index="0" instance=ExtResource("8_uxdrg")]
+z_index = 1000
+offset_left = 48.0
+offset_top = 24.0
+offset_right = -672.0
+offset_bottom = -264.0
+scale = Vector2(0.5, 0.5)
+initial_node_to_watch = NodePath("../../StateChart")
+ignore_state_changes = true
+ignore_transitions = true
+
+[node name="Shadow" type="Sprite2D" parent="." index="1"]
 modulate = Color(0, 0, 0, 0.529412)
 position = Vector2(0, 48)
 scale = Vector2(2.82227, 0.555483)
 texture = ExtResource("2_mobu3")
 
-[node name="AnimatedSprite2D" parent="." index="1"]
-position = Vector2(0, -104)
+[node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_mobu3")
 frame_progress = 0.0
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="3"]
 position = Vector2(1.90735e-06, 36)
 shape = SubResource("RectangleShape2D_vnbgt")
+
+[node name="CollisionShape2D" parent="DetectionRadius" index="0"]
+shape = SubResource("CircleShape2D_omm2d")
+
+[node name="CollisionShape2D" parent="ChaseRadius" index="0"]
+shape = SubResource("CircleShape2D_uxdrg")
+
+[node name="to Attack" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
+script = ExtResource("7_omm2d")
+to = NodePath("../../../Attack")
+event = &"to_attack"
+delay_in_seconds = "0.0"
+
+[node name="Attack" type="Node" parent="StateChart/EnemyBehaviour" index="2"]
+script = ExtResource("5_trdn0")
+initial_state = NodePath("Wind Up")
+
+[node name="Wind Up" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="0"]
+script = ExtResource("6_omm2d")
+
+[node name="to Pounce Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack/Wind Up" index="0"]
+script = ExtResource("7_omm2d")
+to = NodePath("../../Pounce Attack")
+event = &"to_pounce_attack"
+delay_in_seconds = "1.0"
+
+[node name="to Triangle Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack/Wind Up" index="1"]
+script = ExtResource("7_omm2d")
+to = NodePath("../../Triangle Attack")
+event = &"to_triangle_attack"
+delay_in_seconds = "1.0"
+
+[node name="to Circle Bind Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack/Wind Up" index="2"]
+script = ExtResource("7_omm2d")
+to = NodePath("../../Circle Bind Attack")
+event = &"to_circle_bind_attack"
+delay_in_seconds = "0.5"
+
+[node name="Pounce Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="1"]
+script = ExtResource("6_omm2d")
+
+[node name="to Wind Up" type="Node" parent="StateChart/EnemyBehaviour/Attack/Pounce Attack" index="0"]
+script = ExtResource("7_omm2d")
+to = NodePath("../../Wind Up")
+event = &"to_wind_up"
+delay_in_seconds = "0.25"
+
+[node name="Triangle Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="2"]
+script = ExtResource("6_omm2d")
+
+[node name="to Wind Up" type="Node" parent="StateChart/EnemyBehaviour/Attack/Triangle Attack" index="0"]
+script = ExtResource("7_omm2d")
+to = NodePath("../../Wind Up")
+event = &"to_wind_up"
+delay_in_seconds = "0.0"
+
+[node name="Circle Bind Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="3"]
+script = ExtResource("6_omm2d")
+
+[node name="to Wind Up" type="Node" parent="StateChart/EnemyBehaviour/Attack/Circle Bind Attack" index="0"]
+script = ExtResource("7_omm2d")
+to = NodePath("../../Wind Up")
+event = &"to_wind_up"
+delay_in_seconds = "0.0"
+
+[node name="to Chase" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="4"]
+script = ExtResource("7_omm2d")
+to = NodePath("../../Active/Chase")
+event = &"to_chase"
+delay_in_seconds = "0.0"
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(0, 20)
 shape = SubResource("RectangleShape2D_35b6m")
+
+[node name="DashAttackArea" type="Area2D" parent="." index="10"]
+position = Vector2(0, -140)
+collision_layer = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackArea" index="0"]
+position = Vector2(0, 160)
+shape = SubResource("RectangleShape2D_omm2d")
+debug_color = Color(0.701961, 0.00392157, 0.0196078, 0.25098)
+
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Wind Up" to="." method="_on_wind_up_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack/Wind Up" to="." method="_on_wind_up_state_exited"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Pounce Attack" to="." method="_on_pounce_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack/Pounce Attack" to="." method="_on_pounce_attack_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Pounce Attack" to="." method="_on_pounce_attack_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Triangle Attack" to="." method="_on_triangle_attack_state_entered"]

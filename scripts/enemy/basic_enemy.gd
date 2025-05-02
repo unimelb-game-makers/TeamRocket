@@ -80,10 +80,10 @@ func move_along_path(delta):
 	if path.is_empty():
 		velocity = Vector2.ZERO
 		return
-	
+
 	var direction = (path[0] - global_position).normalized()
 	velocity = direction * movement_speed
-	
+
 	var move_amount = velocity * delta
 	if move_amount.length() >= global_position.distance_to(path[0]):
 		global_position = path[0]
@@ -209,3 +209,8 @@ func _on_return_state_exited() -> void:
 	#navigation_agent.target_position = null
 	velocity = Vector2.ZERO # If removed conflicts with chase speed when player re-enters chase radius, still taking a look
 	pass
+
+
+func roll_speed(elapsed_time: float, atk_duration: float, atk_range: float, atk_speed: float) -> float:
+	var t: float = elapsed_time / atk_duration
+	return atk_range - (atk_range - atk_speed) * t * t

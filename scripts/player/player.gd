@@ -26,6 +26,7 @@ var can_move: bool = true
 # For smoother movement
 var curr_speed: float
 var curr_accel: float
+var speed_modifier = 1.0
 
 var direction: Vector2
 var is_moving = false
@@ -44,6 +45,11 @@ var can_roll: bool = true
 var fired = false
 var animation_locked = false
 
+# Debuff
+# TODO: Should have a separate system to track debuffs
+var is_slowed
+var is_unable_to_dash
+
 # ----- Node References -----
 @onready var interact_radius: Area2D = $InteractRadius
 @onready var rifle: Node2D = $Rifle
@@ -54,6 +60,8 @@ var animation_locked = false
 @onready var footstep_timer: Timer = $FootstepSoundEffect/FootstepTimer
 @onready var footstep_audio: AudioStreamPlayer2D = $FootstepSoundEffect
 @onready var enemy_noise_rader: Sprite2D = $EnemyNoiseRadar
+
+@onready var slow_debuff_timer: Timer = $DebuffTimer/SlowDebuffTimer
 
 func _ready() -> void:
 	Globals.player = self
@@ -102,6 +110,7 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
 	velocity.x = move_toward(velocity.x, curr_speed * direction.x, curr_accel)
 	velocity.y = move_toward(velocity.y, curr_speed * direction.y, curr_accel)
+	velocity = velocity * speed_modifier
 	move_and_slide()
 
 	### State Chart ###
@@ -318,3 +327,20 @@ func _on_footstep_timer_timeout() -> void:
 		sound_created.emit(global_position, sprint_loudness)
 	else:
 		sound_created.emit(global_position, walk_loudness)
+
+
+## Debuff
+func apply_slow_debuff():
+	var slow_debuff_time = 3
+	if not is_slowed:
+		is_slowed = true
+		speed_modifier -= 0.5
+		slow_debuff_timer.start(slow_debuff_time)
+
+func remove_slow_debuff():
+	if is_slowed:
+		speed_modifier += 0.5
+		is_slowed = false
+
+func _on_slow_debuff_timer_timeout() -> void:
+	remove_slow_debuff()

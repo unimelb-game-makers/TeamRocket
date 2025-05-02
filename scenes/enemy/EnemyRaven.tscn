@@ -151,11 +151,11 @@ bus = &"Effects"
 stream = ExtResource("12_k0ucr")
 bus = &"Effects"
 
-[node name="FlyAttackHurtbox" type="Area2D" parent="." index="9"]
+[node name="FlyAttackArea" type="Area2D" parent="." index="9"]
 collision_layer = 2
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FlyAttackHurtbox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlyAttackArea" index="0"]
 shape = SubResource("CircleShape2D_37sxb")
 debug_color = Color(0.7, 0.0314829, 0.0105904, 0.42)
 
@@ -172,5 +172,5 @@ shape = SubResource("CircleShape2D_m381y")
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack/Fly Attack" to="." method="_on_fly_attack_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Fly Attack" to="." method="_on_fly_attack_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Recover" to="." method="_on_recover_state_entered"]
-[connection signal="body_entered" from="FlyAttackHurtbox" to="." method="_on_fly_attack_hurtbox_body_entered"]
+[connection signal="body_entered" from="FlyAttackArea" to="." method="_on_fly_attack_area_body_entered"]
 [connection signal="timeout" from="CirclingAttackTimer" to="." method="_on_circling_attack_timer_timeout"]
