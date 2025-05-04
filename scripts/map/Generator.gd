@@ -15,11 +15,15 @@ var generation_queue = []
 
 var max_neighbors = 2
 
-const straight: PackedScene = preload("res://scenes/map/templates/straight_room_1.tscn")
+const straight: PackedScene = preload("res://scenes/map/templates/straight.tscn")
 const deadend: PackedScene = preload("res://scenes/map/templates/dead_end.tscn")
 const bend: PackedScene = preload("res://scenes/map/templates/turn.tscn")
 const threeway: PackedScene = preload("res://scenes/map/templates/threeway.tscn")
 const full: PackedScene = preload("res://scenes/map/templates/fullroom.tscn")
+const fulls: Array[PackedScene] = [
+	preload("res://scenes/map/templates/fullroom.tscn"),
+	preload("res://scenes/map/templates/fullroom2.tscn")
+]
 
 func _ready() -> void:
 	for i in DIM_X:
@@ -137,7 +141,8 @@ func initialize_room(coords: Vector2):
 		3:
 			selected_room = threeway.instantiate()
 		4:
-			selected_room = full.instantiate()
+			#selected_room = full.instantiate()
+			selected_room = fulls.pick_random().instantiate()
 	
 	#print(selected_room)
 	
