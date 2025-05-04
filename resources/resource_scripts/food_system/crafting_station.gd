@@ -12,15 +12,16 @@ func craft_output(ingredients: Array[Ingredient]) -> Item:
 	# Process it depending on if it is an ingredient or dish output
 	if (output_recipe is IngredientRecipe):
 		# If ingredient, just return the output ingredient
-		print(output_recipe.output_ingredient.item_name)
 		return output_recipe.output_ingredient
 	elif (output_recipe is DishRecipe):
 		# If output is a dish, then match variants, add effects (based on ingredients) and output final result
 		var output_dish = match_variant(ingredients, output_recipe)
+		output_dish.ingredients.clear()
 		# Adding base and ingredient status effects
 		for effect in output_recipe.effects:
 			output_dish.effects.append(effect)
 		for ingredient in ingredients:
+			output_dish.ingredients.append(ingredient)
 			for effect in ingredient.effects:
 				output_dish.dish_effects.append(effect)
 		return output_dish
