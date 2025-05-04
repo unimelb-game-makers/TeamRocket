@@ -393,12 +393,12 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_wmust")
+&"": SubResource("AnimationLibrary_wmust")
 }
 
 [node name="TitleAnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_yclxk")
+&"": SubResource("AnimationLibrary_yclxk")
 }
 
 [connection signal="mouse_entered" from="CanvasLayer/MainMenuButtons/Start" to="." method="play_button_hover_sfx"]
