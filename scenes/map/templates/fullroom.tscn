@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccmpxxyhlwyaw"]
+[gd_scene load_steps=3 format=4 uid="uid://ccmpxxyhlwyaw"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_bbnrc"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_hawl3"]
@@ -7,28 +7,32 @@
 sockets = Array[String](["B", "B", "B", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
 spawn = NodePath("Spawn")
+metadata/_edit_horizontal_guides_ = [738.0]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
-offset_right = 900.0
-offset_bottom = 900.0
+offset_right = 2000.0
+offset_bottom = 2000.0
 
-[node name="DoorArea" parent="." index="1" instance=ExtResource("2_hawl3")]
-position = Vector2(453, 41)
+[node name="TileMapLayer" parent="." index="1"]
+tile_map_data = PackedByteArray("AACAAOEAAwAAAAAAAACAAKMAAwAAAAAAAABCAHsAAgAAAAAAAFAEAHsAAwAAAAAAAFCAAGUAAwAAAAAAAACAACcAAwAAAAAAAACAAOr/AwAAAAAAAAC+AHsAAgAAAAAAAGD8AHsAAwAAAAAAAGA=")
 
-[node name="DoorArea2" parent="." index="2" instance=ExtResource("2_hawl3")]
-position = Vector2(852, 468)
+[node name="DoorArea" parent="." index="2" instance=ExtResource("2_hawl3")]
+position = Vector2(1026, 51)
+
+[node name="DoorArea2" parent="." index="3" instance=ExtResource("2_hawl3")]
+position = Vector2(1921, 924)
 rotation = 1.5708
 
-[node name="DoorArea3" parent="." index="3" instance=ExtResource("2_hawl3")]
-position = Vector2(462, 841)
+[node name="DoorArea3" parent="." index="4" instance=ExtResource("2_hawl3")]
+position = Vector2(996, 1946)
 direction = 3
 
-[node name="DoorArea4" parent="." index="4" instance=ExtResource("2_hawl3")]
-position = Vector2(44, 451)
+[node name="DoorArea4" parent="." index="5" instance=ExtResource("2_hawl3")]
+position = Vector2(54, 913)
 rotation = 1.5708
 
-[node name="Spawn" type="Node2D" parent="." index="5"]
-position = Vector2(450, 450)
+[node name="Spawn" type="Node2D" parent="." index="6"]
+position = Vector2(1023, 999)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
