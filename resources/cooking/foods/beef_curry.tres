@@ -1,12 +1,15 @@
-[gd_resource type="Resource" script_class="Dish" load_steps=3 format=3 uid="uid://cq1taw61ifcp7"]
+[gd_resource type="Resource" script_class="Dish" load_steps=6 format=3 uid="uid://cq1taw61ifcp7"]
 
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_hbdv6"]
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="1_ve7vn"]
+[ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="2_052yg"]
 [ext_resource type="Texture2D" uid="uid://bltjurbemos4c" path="res://assets/food/spaghetti bolognese.png" id="2_eqrhj"]
+[ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="3_hr0rq"]
 
 [resource]
 script = ExtResource("1_ve7vn")
 effects = Array[int]([])
-ingredients = Array[int]([200, 102, 101])
+ingredients = Array[ExtResource("1_hbdv6")]([ExtResource("2_052yg"), ExtResource("3_hr0rq")])
 texture = ExtResource("2_eqrhj")
 item_id = "curry_beef"
 item_name = "Beef Curry"

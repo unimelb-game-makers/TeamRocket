@@ -11,7 +11,9 @@ func save() -> Dictionary:
 	item_dict["item_name"] = item_name
 	item_dict["item_type"] = ItemType.DISH
 	item_dict["effects"] = effects
-	item_dict["ingredients"] = ingredients
+	item_dict["ingredients"] = []
+	for ingredient in ingredients:
+		item_dict["ingredients"].append(ingredient.save())
 	item_dict["texture_path"] = texture.resource_path
 	item_dict["description"] = description
 	item_dict["weight"] = weight
@@ -29,9 +31,7 @@ static func parse_dict(item_dict: Dictionary) -> Item:
 	dish.effects = []
 	for effect in item_dict["effects"]:
 		dish.effects.append(effect as Item.Effects)
-	print(dish.effects)
 	dish.ingredients = []
 	for ingredient in item_dict["ingredients"]:
-		dish.effects.append(ingredient)
-	print(dish.ingredients)
+		dish.ingredients.append(Item.load_item(ingredient))
 	return dish
