@@ -10,16 +10,13 @@ spawn = NodePath("Spawn")
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 offset_right = 1000.0
-offset_bottom = 1500.0
+offset_bottom = 703.0
 
-[node name="TileMapLayer" parent="." index="1"]
-tile_map_data = PackedByteArray(0, 0, 61, 0, 156, 0, 3, 0, 0, 0, 0, 0, 0, 0, 61, 0, 124, 0, 3, 0, 0, 0, 0, 0, 0, 0, 61, 0, 62, 0, 2, 0, 0, 0, 0, 0, 0, 0)
-
-[node name="DoorArea" parent="." index="2" instance=ExtResource("2_e32iv")]
-position = Vector2(499, 1421)
+[node name="DoorArea" parent="." index="1" instance=ExtResource("2_e32iv")]
+position = Vector2(476, 639)
 direction = 3
 
-[node name="Spawn" type="Node2D" parent="." index="3"]
-position = Vector2(507, 1285)
+[node name="Spawn" type="Node2D" parent="." index="2"]
+position = Vector2(488, 408)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
