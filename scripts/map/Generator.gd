@@ -9,13 +9,14 @@ var current_room: Vector2
 var current_selected
 
 var curr_rooms = 0
-var num_rooms = 20
+var num_rooms = 10
 
 var generation_queue = []
 
 var max_neighbors = 2
 
-var just_teleported = false
+var just_teleported1 = false
+var just_teleported2 = false
 
 const straight: PackedScene = preload("res://scenes/map/templates/straight.tscn")
 const deadend: PackedScene = preload("res://scenes/map/templates/dead_end.tscn")
@@ -57,7 +58,7 @@ func _ready() -> void:
 				print(get_neighbors_array(grid, Vector2(j,i)))
 	
 	# Initialize starting room and put player in it
-	initialize_room(starting_room)
+	initialize_room(starting_room,)
 	
 
 func start_gen():
@@ -129,7 +130,7 @@ func get_neighbors_array(grid, current_pos: Vector2) -> Array:
 			arr.append("A")
 	return arr
 
-func initialize_room(coords: Vector2):
+func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	var room = grid[coords.x][coords.y]
 	var num_neighbors = get_num_neighbors(grid, coords)
 	var neighbors_array = get_neighbors_array(grid, coords)
@@ -159,6 +160,8 @@ func initialize_room(coords: Vector2):
 	while sockets != neighbors_array:
 		var temp = sockets.pop_front()
 		sockets.append(temp)
+		#var temp = sockets.pop_back()
+		#sockets.insert(0, temp)
 		selected_room.rotate(-PI/2)
 		
 		total_rotations += -PI/2
@@ -168,20 +171,25 @@ func initialize_room(coords: Vector2):
 	selected_room.sockets = sockets
 	#selected_room.doors = doors
 	
+	print("Sockets: " + str(sockets))
+	print("Neighbors array: " + str(neighbors_array))
+	
 	# Get directions to where the neighbors are
 	var d = []
-	for i in range(len(neighbors_array)):
-		if neighbors_array[i] == "B":
+	for i in range(len(sockets)):
+		if sockets[i] == "B":
 			d.append(directions[i])
+	#print("Assigning directions to doors: " + str(d))
 	selected_room.connect_doors(d)
 	
 	# Connect the door signal to the direction
 	for i in range(len(selected_room.doors)):
 		selected_room.doors[i].go_to_room.connect(Callable(self, "go_to_room"))
+		selected_room.doors[i].player_exit.connect(Callable(self, "player_exit"))
 	
 	current_room = Vector2(coords.x, coords.y)
 	current_selected = selected_room
-	print(coords)
+	print("Current position" + str(coords))
 	
 	#add_child(selected_room)
 	call_deferred("add_child", selected_room)
@@ -194,6 +202,15 @@ func initialize_room(coords: Vector2):
 	s.global_position = selected_room.spawn.global_position
 	currplayer = s
 	
+	
+	#Spawn player at incoming door
+	var incoming_direction = Vector2.ZERO - outgoing_direction
+	if incoming_direction != Vector2.ZERO:
+		assert(incoming_direction.is_normalized())
+		var door_index = directions.find(incoming_direction)
+		var chosen_index = len(selected_room.doors) - door_index - 1
+		currplayer.global_position = selected_room.doors[chosen_index].global_position
+	
 	var newcam = Camera2D.new()
 	#newcam.make_current()
 	#s.add_child(newcam)
@@ -202,9 +219,25 @@ func initialize_room(coords: Vector2):
 	#newcam.global_position = s.global_position
 	currcam = newcam
 
-
 func go_to_room(direction: Vector2):
+	if just_teleported1 == false and just_teleported2 == false:
+		just_teleported1 = true
+	else:
+		return
 	current_selected.queue_free()
 	currplayer.queue_free()
 	currcam.queue_free()
-	initialize_room(Vector2(current_room.x + direction.x, current_room.y + direction.y))
+	initialize_room(Vector2(current_room.x + direction.x, current_room.y + direction.y), direction)
+
+func player_exit():
+	print("HERE")
+	#if just_teleported1 == false:
+		#just_teleported1 = true
+	#if just_teleported2 == false:
+		#just_teleported1 = false
+	if just_teleported1 == true and just_teleported2 == false:
+		just_teleported2 = true
+		return
+	if just_teleported1 == true and just_teleported2 == true:
+		just_teleported1 = false
+		just_teleported2 = false
