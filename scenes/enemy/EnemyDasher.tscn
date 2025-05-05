@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bysb5hk8pdva0"]
+[gd_scene load_steps=13 format=3 uid="uid://bitj2gvntpv3j"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/EnemyBasic.tscn" id="1_cno7g"]
 [ext_resource type="Script" uid="uid://blek2xolb070t" path="res://scripts/enemy/enemy_dasher.gd" id="2_1leqm"]
@@ -13,6 +13,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ags0e"]
 size = Vector2(34.8333, 11.6667)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_37sxb"]
 radius = 200.0
 

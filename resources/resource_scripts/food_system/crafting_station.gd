@@ -56,7 +56,7 @@ func match_base_ingredient_types(ingredients: Array[Ingredient]) -> Recipe:
 
 func match_variant(ingredients: Array[Ingredient], recipe: DishRecipe) -> Dish:
 	# Grabbing all the ingredient types from ingredients input
-	var ingredients_ingredient_type: Array[DCF_Ingredient.IngredientType] = []
+	var ingredients_ingredient_type: Array[Ingredient.IngredientType] = []
 	for ingredient in ingredients:
 		ingredients_ingredient_type.append(ingredient.ingredient_type)
 	
