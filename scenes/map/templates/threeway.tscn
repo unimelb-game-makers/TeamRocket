@@ -9,23 +9,26 @@ doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3")]
 spawn = NodePath("Spawn")
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
-offset_right = 800.0
-offset_bottom = 800.0
+offset_right = 1496.0
+offset_bottom = 1228.0
 
-[node name="DoorArea" parent="." index="1" instance=ExtResource("2_i84du")]
-position = Vector2(388, 51)
+[node name="TileMap" parent="." index="1"]
+tile_map_data = PackedByteArray(0, 0, 2, 0, 7, 0, 1, 0, 0, 0, 0, 0, 0, 80, 7, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 48, 7, 0, 7, 0, 1, 0, 0, 0, 0, 0, 0, 80, 12, 0, 7, 0, 1, 0, 0, 0, 0, 0, 0, 80)
 
-[node name="DoorArea2" parent="." index="2" instance=ExtResource("2_i84du")]
-position = Vector2(752, 405)
+[node name="DoorArea" parent="." index="2" instance=ExtResource("2_i84du")]
+position = Vector2(736, 85)
+
+[node name="DoorArea2" parent="." index="3" instance=ExtResource("2_i84du")]
+position = Vector2(1434, 742)
 rotation = 1.5708
 direction = 3
 
-[node name="DoorArea3" parent="." index="3" instance=ExtResource("2_i84du")]
-position = Vector2(57, 401)
+[node name="DoorArea3" parent="." index="4" instance=ExtResource("2_i84du")]
+position = Vector2(46, 758)
 rotation = 1.5708
 direction = 3
 
-[node name="Spawn" type="Node2D" parent="." index="4"]
+[node name="Spawn" type="Node2D" parent="." index="5"]
 position = Vector2(400, 400)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
