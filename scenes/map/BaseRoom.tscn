@@ -1,35 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnqxqnaid3q3a"]
+[gd_scene load_steps=2 format=3 uid="uid://dnqxqnaid3q3a"]
 
 [ext_resource type="Script" uid="uid://chbh13wl1vyn6" path="res://scripts/map/base_room.gd" id="1_wsh2t"]
-[ext_resource type="Texture2D" uid="uid://d4irdo4hv8dw4" path="res://assets/map/corner.png" id="2_jl7pn"]
-[ext_resource type="Texture2D" uid="uid://mjicbpu4ld0w" path="res://assets/map/crossing.png" id="3_mwkrk"]
-[ext_resource type="Texture2D" uid="uid://dcxtdrybllc4n" path="res://assets/map/road.png" id="4_k12ss"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ocp26"]
-texture = ExtResource("2_jl7pn")
-0:0/size_in_atlas = Vector2i(62, 62)
-0:0/0 = 0
-80:100/0 = 0
-145:64/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b2fth"]
-texture = ExtResource("3_mwkrk")
-0:0/size_in_atlas = Vector2i(62, 62)
-0:0/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eqvmh"]
-texture = ExtResource("4_k12ss")
-0:0/size_in_atlas = Vector2i(62, 62)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_235lb"]
-sources/1 = SubResource("TileSetAtlasSource_ocp26")
-sources/2 = SubResource("TileSetAtlasSource_b2fth")
-sources/3 = SubResource("TileSetAtlasSource_eqvmh")
 
 [node name="BaseRoom" type="Node2D"]
 script = ExtResource("1_wsh2t")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-scale = Vector2(0.5, 0.5)
-tile_set = SubResource("TileSet_235lb")
