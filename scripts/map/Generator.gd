@@ -166,8 +166,8 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 		
 		total_rotations += -PI/2
 		
-		#var temp2 = doors.pop_front()
-		#doors.append(temp2)
+		var temp2 = doors.pop_front()
+		doors.append(temp2)
 	selected_room.sockets = sockets
 	#selected_room.doors = doors
 	
