@@ -74,7 +74,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("reload"):
 		rifle.reload()
 		
-	global_rotation = 0
+	#global_rotation = 0
 
 func damage(value: int):
 	player_stats.health -= value
