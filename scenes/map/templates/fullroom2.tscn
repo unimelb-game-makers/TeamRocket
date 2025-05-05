@@ -1,32 +1,29 @@
-[gd_scene load_steps=3 format=4 uid="uid://cv8b3m175lmmj"]
+[gd_scene load_steps=3 format=3 uid="uid://cv8b3m175lmmj"]
 
 [ext_resource type="PackedScene" uid="uid://ccmpxxyhlwyaw" path="res://scenes/map/templates/fullroom.tscn" id="1_sj8qq"]
 [ext_resource type="Texture2D" uid="uid://pepdk5p6o5lt" path="res://assets/map/Park_Medium_Example.jpg" id="2_rrtk3"]
 
 [node name="FullRoom" instance=ExtResource("1_sj8qq")]
 
-[node name="TileMapLayer" parent="." index="1"]
-tile_map_data = PackedByteArray("AAAeANcAAwAAAAAAAFBcANcAAwAAAAAAAFCaANcAAwAAAAAAAFDXANcAAQAAAAAAADDXAJkAAwAAAAAAAADXAFsAAwAAAAAAAADXAB4AAwAAAAAAAAA=")
+[node name="DoorArea" parent="." index="1"]
+position = Vector2(544, 89)
 
-[node name="DoorArea" parent="." index="2"]
-position = Vector2(1717, 59)
+[node name="DoorArea2" parent="." index="2"]
+position = Vector2(1084, 541)
 
-[node name="DoorArea2" parent="." index="3"]
-position = Vector2(1913, 1668)
+[node name="DoorArea3" parent="." index="3"]
+position = Vector2(563, 935)
 
-[node name="DoorArea3" parent="." index="4"]
-position = Vector2(1653, 1958)
+[node name="DoorArea4" parent="." index="4"]
+position = Vector2(39, 535)
 
-[node name="DoorArea4" parent="." index="5"]
-position = Vector2(43, 1718)
+[node name="Spawn" parent="." index="5"]
+position = Vector2(582, 544)
 
-[node name="Spawn" parent="." index="6"]
-position = Vector2(1645, 1687)
-
-[node name="TextureRect" type="TextureRect" parent="." index="7"]
-offset_left = -3.05176e-05
-offset_top = 4.99997
-offset_right = 2000.0
-offset_bottom = 2005.0
+[node name="TextureRect" type="TextureRect" parent="." index="6"]
+offset_left = -1512.0
+offset_top = -538.0
+offset_right = 488.0
+offset_bottom = 1462.0
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_rrtk3")
