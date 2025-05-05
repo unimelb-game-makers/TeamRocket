@@ -1,11 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bysb5hk8pdva0"]
+[gd_scene load_steps=12 format=3 uid="uid://bitj2gvntpv3j"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/EnemyBasic.tscn" id="1_cno7g"]
 [ext_resource type="Script" uid="uid://blek2xolb070t" path="res://scripts/enemy/enemy_dasher.gd" id="2_1leqm"]
 [ext_resource type="Script" uid="uid://cyw3vuu8wb4vn" path="res://addons/godot_state_charts/compound_state.gd" id="2_e75rs"]
 [ext_resource type="Script" uid="uid://di7rh2bj4kanb" path="res://addons/godot_state_charts/atomic_state.gd" id="3_klj4n"]
-[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="3_v7e55"]
-[ext_resource type="Resource" uid="uid://v5nqfcc5gsvk" path="res://resources/cooking/ingredients/beef_mince.tres" id="4_ags0e"]
 [ext_resource type="Script" uid="uid://dwgr8rprecbfo" path="res://addons/godot_state_charts/transition.gd" id="4_dhk6e"]
 [ext_resource type="AudioStream" uid="uid://dbdh8lin0ln5n" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/idle/naked deer idle1.wav" id="6_glnb7"]
 [ext_resource type="AudioStream" uid="uid://b7dsn3hcvd0g3" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer attack1.wav" id="7_1cnyq"]
@@ -20,7 +18,6 @@ radius = 200.0
 motion_mode = 1
 script = ExtResource("2_1leqm")
 health = 80
-dropped_items = Array[ExtResource("3_v7e55")]([ExtResource("4_ags0e")])
 dropped_item_chances = Array[float]([1.0])
 
 [node name="To Attack State" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
