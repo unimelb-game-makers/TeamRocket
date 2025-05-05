@@ -52,3 +52,8 @@ func _ready() -> void:
 func connect_doors(directions: Array):
 	for i in range(len(doors)):
 		doors[i].door_direction = directions[i]
+
+func get_door_by_direction(incoming: Vector2):
+	for i in doors:
+		if i.door_direction == incoming:
+			return i
