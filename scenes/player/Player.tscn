@@ -443,7 +443,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0p80"]
-size = Vector2(67, 177)
+size = Vector2(88, 56)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwbdg"]
 radius = 85.0
@@ -490,23 +490,24 @@ shader_parameter/foreground = Vector4(1, 1, 1, 1)
 shader_parameter/background = Vector4(0, 0, 0, 0)
 
 [node name="Player" type="CharacterBody2D"]
-y_sort_enabled = true
 collision_mask = 6
 script = ExtResource("1_lvdue")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 0.407843)
 z_index = -1
-position = Vector2(-1.90735e-06, 104)
+position = Vector2(-1.90735e-06, 8)
 scale = Vector2(0.56, 0.16)
 texture = ExtResource("91_rlnnq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -96)
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_web4h")
 animation = &"crouch_idle"
 
 [node name="Rifle" type="Node2D" parent="."]
+position = Vector2(0, -96)
 script = ExtResource("9_usf71")
 bullet_scene = ExtResource("10_c4h7y")
 impact_scene = ExtResource("4_wuv7n")
@@ -559,8 +560,8 @@ bus = &"Effects"
 [node name="EquipEffect" type="AudioStreamPlayer2D" parent="Rifle/SoundEffects"]
 bus = &"Effects"
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
-position = Vector2(3.5, 15.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -12)
 shape = SubResource("RectangleShape2D_d0p80")
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("2_7c1ag")]
@@ -693,18 +694,22 @@ to = NodePath("../../Run")
 event = &"shift_hold"
 delay_in_seconds = "0.0"
 
-[node name="InteractRadius" type="Area2D" parent="."]
+[node name="InteractRadius" type="Area2D" parent="." groups=["Player"]]
+position = Vector2(0, -96)
+collision_layer = 64
 collision_mask = 40
 
 [node name="InteractShape" type="CollisionShape2D" parent="InteractRadius"]
 shape = SubResource("CircleShape2D_rwbdg")
 
 [node name="DetectionRadius" type="Area2D" parent="." groups=["Player"]]
+position = Vector2(0, -96)
 
 [node name="DetectionShape" type="CollisionShape2D" parent="DetectionRadius"]
 shape = SubResource("CircleShape2D_0215d")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -96)
 energy = 0.5
 shadow_enabled = true
 texture = ExtResource("8_emt8s")
@@ -715,6 +720,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Particles" type="Node2D" parent="."]
+position = Vector2(0, -96)
 
 [node name="ChannelingParticles" type="CPUParticles2D" parent="Particles"]
 scale = Vector2(2, 2)
@@ -730,9 +736,9 @@ radial_accel_max = -800.0
 color = Color(0.905882, 0.713726, 0.176471, 1)
 
 [node name="FeetPositionMarker" type="Marker2D" parent="."]
-position = Vector2(0, 96)
 
 [node name="FootstepSoundEffect" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(0, -96)
 stream = ExtResource("92_yuju3")
 volume_db = -6.0
 bus = &"Effects"
@@ -742,6 +748,7 @@ wait_time = 0.5
 
 [node name="EnemyNoiseRadar" parent="." instance=ExtResource("97_lxwhf")]
 material = SubResource("ShaderMaterial_sadjk")
+position = Vector2(0, -96)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]

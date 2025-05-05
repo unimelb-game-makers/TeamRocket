@@ -19,6 +19,7 @@ shader_parameter/max_or_add = false
 
 [node name="Workbench" type="Area2D"]
 collision_layer = 32
+collision_mask = 64
 script = ExtResource("1_vsmah")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -30,5 +31,5 @@ material = SubResource("ShaderMaterial_as2om")
 
 [node name="CookingScene" parent="CanvasLayer" instance=ExtResource("2_7qqeh")]
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

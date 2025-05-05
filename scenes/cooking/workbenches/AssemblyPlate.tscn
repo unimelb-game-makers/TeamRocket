@@ -9,8 +9,8 @@
 [ext_resource type="Resource" uid="uid://d3b4eailp7hg2" path="res://resources/cooking/recipes/full_foods/curry_rec.tres" id="6_3hbae"]
 [ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="6_erx1b"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1xkw"]
-size = Vector2(83, 62)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ee4c5"]
+size = Vector2(96, 72)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_akivg"]
 resource_local_to_scene = true
@@ -37,8 +37,8 @@ metadata/_custom_type_script = "uid://c0shkqininnkd"
 [node name="AssemblyPlate" instance=ExtResource("1_st23u")]
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_g1xkw")
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_ee4c5")
 
 [node name="Sprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_akivg")

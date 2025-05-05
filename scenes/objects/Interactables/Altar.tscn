@@ -30,6 +30,7 @@ shader_parameter/max_or_add = false
 
 [node name="Area2D" type="Area2D" node_paths=PackedStringArray("storage_ui")]
 collision_layer = 8
+collision_mask = 64
 script = ExtResource("1_rfv52")
 acceptable_foods = Array[ExtResource("2_8yx1c")]([ExtResource("3_qjrfk"), ExtResource("4_ttx8o")])
 slots_num = 1
@@ -134,6 +135,8 @@ offset_bottom = -2.00002
 scale = Vector2(1.5, 1.5)
 columns = 3
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="item_select" from="CanvasLayer/UI/InventoryContainer" to="." method="_on_inventory_container_item_select"]

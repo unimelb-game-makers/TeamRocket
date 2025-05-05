@@ -7,10 +7,10 @@
 [ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="4_v7ry0"]
 [ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="5_5mhn5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8srgv"]
-size = Vector2(129, 68)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdbv1"]
+size = Vector2(160, 88)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mcc3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kdbv1"]
 resource_local_to_scene = true
 shader = ExtResource("2_2s1lh")
 shader_parameter/thickness = 5.0
@@ -36,12 +36,12 @@ metadata/_custom_type_script = "uid://c0shkqininnkd"
 y_sort_enabled = true
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(-1.5, 1)
-shape = SubResource("RectangleShape2D_8srgv")
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_kdbv1")
 
 [node name="Sprite2D" parent="." index="1"]
 y_sort_enabled = true
-material = SubResource("ShaderMaterial_7mcc3")
+material = SubResource("ShaderMaterial_kdbv1")
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_b1lqa")
 

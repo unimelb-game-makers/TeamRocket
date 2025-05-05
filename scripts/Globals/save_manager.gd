@@ -78,7 +78,7 @@ func load_inventory(inventory_dict: Dictionary):
 func delete_save_file(slot_id: int):
 	var save_path = get_savefile_name(slot_id)
 	var dir = DirAccess.open("user://")
-	
+
 	# Clear inventory resource
 	var path = "res://resources/inventory_saves/file" + str(slot_id) +  ".tres"
 	#var save_file: InventorySave = load(path)
@@ -99,7 +99,7 @@ func save_game(slot_id):
 	Globals.update_total_playtime()
 	is_saving = true
 	started_saving.emit()
-	
+
 	var player_stats = Globals.player_stats.export_stats()
 	var inventory_dict = save_inventory(InventoryGlobal.inventory_dict)
 	var save_dict = {

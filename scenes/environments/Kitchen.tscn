@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=27 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
@@ -43,10 +43,13 @@ Vector2i(1, 1): {
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5vy8l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oov5x"]
-size = Vector2(4006.99, 854.059)
+size = Vector2(1620, 890.725)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gr436"]
+size = Vector2(2373.33, 890.725)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xyev3"]
-size = Vector2(1910, 1256.67)
+size = Vector2(1910, 1680)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h4jyq"]
 size = Vector2(326.664, 2611.67)
@@ -55,10 +58,10 @@ size = Vector2(326.664, 2611.67)
 size = Vector2(1875.25, 211)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gk1kv"]
-size = Vector2(1840, 266.667)
+size = Vector2(1840, 533.334)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4v1f"]
-size = Vector2(556.667, 516.666)
+size = Vector2(556.667, 951.666)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvgon"]
 size = Vector2(332, 395)
@@ -99,31 +102,24 @@ texture = ExtResource("3_yjya3")
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/KitchenFloor/StaticBody2D" index="0"]
-position = Vector2(309.837, -863.696)
+position = Vector2(1503.33, -845.363)
 shape = SubResource("RectangleShape2D_oov5x")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="NavigationRegion2D/Map/KitchenFloor" index="2"]
-collision_layer = 4
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="NavigationRegion2D/Map/KitchenFloor/StaticBody2D" index="1"]
+position = Vector2(-493.333, -453.333)
+shape = SubResource("RectangleShape2D_gr436")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/KitchenFloor/StaticBody2D2" index="0"]
-position = Vector2(-2648.34, -678.333)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="NavigationRegion2D/Map/KitchenFloor/StaticBody2D" index="2"]
+position = Vector2(-2648.34, -466.667)
 shape = SubResource("RectangleShape2D_xyev3")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="NavigationRegion2D/Map/KitchenFloor" index="3"]
-position = Vector2(4640, 16.6667)
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/KitchenFloor/StaticBody2D3" index="0"]
-position = Vector2(-2160, -2.5)
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="NavigationRegion2D/Map/KitchenFloor/StaticBody2D" index="3"]
+position = Vector2(2480, 14.1666)
 shape = SubResource("RectangleShape2D_h4jyq")
 
-[node name="FrontWall" type="StaticBody2D" parent="NavigationRegion2D/Map/KitchenFloor" index="4"]
-position = Vector2(-2320, -1306.67)
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="NavigationRegion2D/Map/KitchenFloor/StaticBody2D" index="4"]
+position = Vector2(-484.585, 1663.33)
 scale = Vector2(3.33333, 3.33333)
-collision_layer = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/KitchenFloor/FrontWall" index="0"]
-position = Vector2(550.625, 891)
 shape = SubResource("RectangleShape2D_g2qpi")
 
 [node name="Bench" type="Sprite2D" parent="NavigationRegion2D/Map" index="1"]
@@ -137,7 +133,7 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/Bench/StaticBody2D" index="0"]
-position = Vector2(-6.66675, -136.667)
+position = Vector2(-13.3335, 126.667)
 shape = SubResource("RectangleShape2D_gk1kv")
 
 [node name="Fryer" type="Sprite2D" parent="NavigationRegion2D/Map" index="2"]
@@ -148,7 +144,7 @@ texture = ExtResource("6_47cob")
 [node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Map/Fryer" index="0"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/Fryer/StaticBody2D" index="0"]
-position = Vector2(78.335, 11.6669)
+position = Vector2(100, 142.5)
 shape = SubResource("RectangleShape2D_c4v1f")
 
 [node name="ExitArea" type="Area2D" parent="NavigationRegion2D/Map" index="3"]
@@ -172,11 +168,11 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(88, 454)
 
 [node name="PrototypeDiagram" parent="InteractableHandler/InteractableHolder" index="1" instance=ExtResource("10_0g7fq")]
-position = Vector2(-21, 0)
+position = Vector2(528, 224)
 
 [node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("20_twwyk")]
 z_index = 1
-position = Vector2(920, 492)
+position = Vector2(832, 492)
 
 [node name="ChoppingBoard" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("13_y6d8o")]
 z_index = 1
@@ -193,3 +189,9 @@ position = Vector2(269, 549)
 
 [connection signal="body_entered" from="NavigationRegion2D/Map/ExitArea" to="KitchenHandler" method="_on_exit_area_body_entered"]
 [connection signal="submit" from="InteractableHandler/InteractableHolder/Altar" to="KitchenHandler" method="submit_food"]
+[connection signal="body_entered" from="InteractableHandler/InteractableHolder/AssemblyPlate" to="InteractableHandler/InteractableHolder/AssemblyPlate" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractableHandler/InteractableHolder/AssemblyPlate" to="InteractableHandler/InteractableHolder/AssemblyPlate" method="_on_body_exited"]
+[connection signal="body_entered" from="InteractableHandler/InteractableHolder/ChoppingBoard" to="InteractableHandler/InteractableHolder/ChoppingBoard" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractableHandler/InteractableHolder/ChoppingBoard" to="InteractableHandler/InteractableHolder/ChoppingBoard" method="_on_body_exited"]
+[connection signal="body_entered" from="InteractableHandler/InteractableHolder/Pot" to="InteractableHandler/InteractableHolder/Pot" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractableHandler/InteractableHolder/Pot" to="InteractableHandler/InteractableHolder/Pot" method="_on_body_exited"]
