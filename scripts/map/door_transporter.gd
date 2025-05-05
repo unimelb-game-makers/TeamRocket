@@ -5,6 +5,7 @@ class_name DoorArea
 @export_range(0, 3, 1) var direction = 0
 
 signal go_to_room(dir)
+signal player_exit
 
 var door_direction: Vector2
 # True if player enters the room through this door. Blocks _on_area_entered.
@@ -16,5 +17,9 @@ func _on_area_exited(area: Area2D) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if not is_entered:
-		print("Direction: " + str(door_direction))
+		print("Entered door is in direction: " + str(door_direction))
+		print("------------------")
 		go_to_room.emit(door_direction)
+
+func _on_body_exited(body: Node2D) -> void:
+	player_exit.emit()
