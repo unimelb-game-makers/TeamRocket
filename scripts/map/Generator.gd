@@ -9,7 +9,7 @@ var current_room: Vector2
 var current_selected
 
 var curr_rooms = 0
-var num_rooms = 10
+var num_rooms = 20
 
 var generation_queue = []
 
@@ -208,8 +208,10 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	if incoming_direction != Vector2.ZERO:
 		assert(incoming_direction.is_normalized())
 		var door_index = directions.find(incoming_direction)
-		var chosen_index = len(selected_room.doors) - door_index - 1
-		currplayer.global_position = selected_room.doors[chosen_index].global_position
+		#var chosen_index = len(selected_room.doors) - door_index - 1
+		#currplayer.global_position = selected_room.doors[chosen_index].global_position
+		currplayer.global_position = selected_room.get_door_by_direction(incoming_direction).global_position
+		
 	
 	var newcam = Camera2D.new()
 	#newcam.make_current()
