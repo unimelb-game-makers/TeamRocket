@@ -417,6 +417,7 @@ fill_from = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 65
 collision_mask = 6
 script = ExtResource("1_lvdue")
 player_stats = ExtResource("2_l780k")
@@ -615,12 +616,15 @@ event = &"shift_hold"
 delay_in_seconds = "0.0"
 
 [node name="InteractRadius" type="Area2D" parent="."]
+visible = false
 collision_mask = 40
 
 [node name="InteractShape" type="CollisionShape2D" parent="InteractRadius"]
 shape = SubResource("CircleShape2D_rwbdg")
 
 [node name="DetectionRadius" type="Area2D" parent="." groups=["Player"]]
+visible = false
+collision_mask = 0
 
 [node name="DetectionShape" type="CollisionShape2D" parent="DetectionRadius"]
 shape = SubResource("CircleShape2D_0215d")
