@@ -28,9 +28,9 @@ const DOOR = "B"  # There is a door in this direction.
 
 @export var doors: Array[Area2D] = [] # Door scenes, cant get by get_tree
 @export var spawn: Node2D
-const PLAYER = preload("res://scenes/player/Player.tscn")
+#const PLAYER = preload("res://scenes/player/Player.tscn")
 
-var player: Player
+#var player: Player
 
 func _ready() -> void:
 	
@@ -38,16 +38,16 @@ func _ready() -> void:
 	for i in sockets:
 		assert(len(i) <= 1, "Socket must have 1 character")
 	
-	# Spawn player and camera
-	var s: Player = PLAYER.instantiate()
-	add_child(s)
-	s.global_position = spawn.global_position
-	player = s
-	
-	var newcam = Camera2D.new()
-	#newcam.make_current()
-	s.add_child(newcam)
-	newcam.global_position = s.global_position
+	## Spawn player and camera
+	#var s: Player = PLAYER.instantiate()
+	#add_child(s)
+	#s.global_position = spawn.global_position
+	#player = s
+	#
+	#var newcam = Camera2D.new()
+	##newcam.make_current()
+	#s.add_child(newcam)
+	#newcam.global_position = s.global_position
 
 func connect_doors(directions: Array):
 	for i in range(len(doors)):

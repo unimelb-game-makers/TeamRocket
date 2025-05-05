@@ -1,10 +1,10 @@
 extends Node
 
 var grid = []      # 2D Array for generation
-const DIM_X = 9
-const DIM_Y = 7
+const DIM_X = 5
+const DIM_Y = 5
 
-var starting_room = Vector2(4,3)
+var starting_room = Vector2(2,2)
 var current_room: Vector2
 var current_selected
 
@@ -15,6 +15,8 @@ var generation_queue = []
 
 var max_neighbors = 2
 
+var just_teleported = false
+
 const straight: PackedScene = preload("res://scenes/map/templates/straight.tscn")
 const deadend: PackedScene = preload("res://scenes/map/templates/dead_end.tscn")
 const bend: PackedScene = preload("res://scenes/map/templates/turn.tscn")
@@ -24,6 +26,10 @@ const fulls: Array[PackedScene] = [
 	preload("res://scenes/map/templates/fullroom.tscn"),
 	preload("res://scenes/map/templates/fullroom2.tscn")
 ]
+
+const PLAYER = preload("res://scenes/player/Player.tscn")
+var currplayer
+var currcam
 
 func _ready() -> void:
 	for i in DIM_X:
@@ -177,9 +183,28 @@ func initialize_room(coords: Vector2):
 	current_selected = selected_room
 	print(coords)
 	
-	add_child(selected_room)
+	#add_child(selected_room)
+	call_deferred("add_child", selected_room)
+	
+	# Spawn player here.
+	# Spawn player and camera
+	var s: Player = PLAYER.instantiate()
+	#add_child(s)
+	call_deferred("add_child", s)
+	s.global_position = selected_room.spawn.global_position
+	currplayer = s
+	
+	var newcam = Camera2D.new()
+	#newcam.make_current()
+	#s.add_child(newcam)
+	currplayer.call_deferred("add_child", newcam)
+	newcam.call_deferred("set_global_position", currplayer.global_position)
+	#newcam.global_position = s.global_position
+	currcam = newcam
 
 
 func go_to_room(direction: Vector2):
 	current_selected.queue_free()
+	currplayer.queue_free()
+	currcam.queue_free()
 	initialize_room(Vector2(current_room.x + direction.x, current_room.y + direction.y))
