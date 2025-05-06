@@ -42,7 +42,6 @@ dodge_chance_when_defend = 0.5
 range_before_attack = 500
 active_speed = 110
 health = 70
-base_damage = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
 layer = 20
@@ -95,7 +94,7 @@ script = ExtResource("6_omm2d")
 script = ExtResource("7_omm2d")
 to = NodePath("../../Pounce Attack")
 event = &"to_pounce_attack"
-delay_in_seconds = "1.0"
+delay_in_seconds = "0.75"
 
 [node name="to Triangle Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack/Wind Up" index="1"]
 script = ExtResource("7_omm2d")

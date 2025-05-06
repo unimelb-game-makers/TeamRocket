@@ -93,6 +93,8 @@ func _process(_delta: float) -> void:
 		rifle.reload()
 
 func damage(value: int):
+	if value > 0:
+		Globals.player_ui.play_damaged_effect(value)
 	Globals.player_stats.health = clamp(0, Globals.player_stats.health - value, Globals.player_stats.max_health)
 	Globals.player_ui.update_health(Globals.player_stats.health, Globals.player_stats.max_health)
 	Globals.inventory_ui.update_character_stats()

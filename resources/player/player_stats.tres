@@ -6,6 +6,6 @@
 script = ExtResource("1_mmiq5")
 level = 1
 max_health = 100
-health = 50
+health = 100
 damage = 10
 speed = 200.0

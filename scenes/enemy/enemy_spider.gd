@@ -170,7 +170,7 @@ func _on_triangle_attack_state_entered() -> void:
 	# 2nd and 3rd point behind player, form a triangle
 	if tri_attack_dash_counter == 1:
 		play_jump_effect() # Replace with another sprite to let player know it's the tri-atk
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0.25).timeout
 		triangle_atk_calculated = false
 
 		tri_atk_pos1 = self.global_position
