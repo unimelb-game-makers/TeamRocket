@@ -27,6 +27,9 @@ description = "It looks like any other minced meat despite its questionable orig
 weight = 0.5
 rarity = 0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ags0e"]
+size = Vector2(34.8333, 11.6667)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_37sxb"]
 radius = 200.0
 
@@ -42,6 +45,22 @@ sounds = Dictionary[String, Array]({
 "idle": [ExtResource("6_glnb7"), ExtResource("11_dn5sq"), ExtResource("12_biyxw")],
 "pursuit": [ExtResource("8_lig7d"), ExtResource("14_biyxw")]
 })
+
+[node name="StateController" parent="." index="0"]
+position = Vector2(0, -140)
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(-2, -245)
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(35.5, -35)
+shape = SubResource("RectangleShape2D_ags0e")
+
+[node name="DetectionRadius" parent="." index="5"]
+position = Vector2(0, -140)
+
+[node name="ChaseRadius" parent="." index="6"]
+position = Vector2(0, -140)
 
 [node name="To Attack State" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
 script = ExtResource("4_dhk6e")
@@ -76,6 +95,7 @@ event = &"on_attack_finish"
 delay_in_seconds = "0.0"
 
 [node name="SoundEffects" type="Node2D" parent="." index="9"]
+position = Vector2(0, -140)
 
 [node name="IdleEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="0"]
 stream = ExtResource("6_glnb7")
@@ -98,6 +118,7 @@ stream = ExtResource("10_qqa25")
 bus = &"Effects"
 
 [node name="DashAttackHurtbox" type="Area2D" parent="." index="10"]
+position = Vector2(0, -140)
 collision_layer = 2
 monitoring = false
 

@@ -4,22 +4,24 @@
 [ext_resource type="Texture2D" uid="uid://digqpopb1qno3" path="res://assets/light_cone.jpg" id="2_8bafw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mf4xa"]
-size = Vector2(41, 278)
+size = Vector2(41, 42.5)
 
 [node name="Streetlight" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -284)
 texture = ExtResource("1_vhwi8")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-4, 82)
+position = Vector2(-4, -202)
 color = Color(0.928184, 0.675873, 0.397279, 1)
 texture = ExtResource("2_8bafw")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -284)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-1.5, 151)
+position = Vector2(-3, 277.25)
 shape = SubResource("RectangleShape2D_mf4xa")
