@@ -95,14 +95,12 @@ radius = 179.6
 [node name="EnemyDasher" instance=ExtResource("1_cno7g")]
 motion_mode = 1
 script = ExtResource("2_1leqm")
-range_before_dash_attack = null
-passive_speed = null
+range_before_dash_attack = 500
 active_speed = 160
 health = 80
 base_damage = 20
 dropped_items = Array[ExtResource("3_v7e55")]([SubResource("Resource_uhg0u")])
 dropped_item_chances = Array[float]([1.0])
-hearing_sensitivity = null
 
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
 modulate = Color(0, 0, 0, 0.529412)
@@ -187,12 +185,12 @@ bus = &"Effects"
 stream = ExtResource("10_qqa25")
 bus = &"Effects"
 
-[node name="DashAttackHurtbox" type="Area2D" parent="." index="9"]
+[node name="DashAttackArea" type="Area2D" parent="." index="9"]
 position = Vector2(0, -140)
 collision_layer = 2
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackHurtbox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackArea" index="0"]
 position = Vector2(8, 108)
 shape = SubResource("RectangleShape2D_hxbls")
 debug_color = Color(0.701961, 0.00392157, 0.0196078, 0.25098)
@@ -210,4 +208,4 @@ shape = SubResource("CircleShape2D_o87wb")
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Dash Attack" to="." method="_on_dash_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack/Dash Attack" to="." method="_on_dash_attack_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Dash Attack" to="." method="_on_dash_attack_state_physics_processing"]
-[connection signal="body_entered" from="DashAttackHurtbox" to="." method="_on_dash_attack_hurtbox_body_entered"]
+[connection signal="body_entered" from="DashAttackArea" to="." method="_on_dash_attack_area_body_entered"]

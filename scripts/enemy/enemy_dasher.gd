@@ -7,7 +7,7 @@ extends BasicEnemy
 @onready var pursuit_effect: AudioStreamPlayer2D = $SoundEffects/PursuitEffect
 @onready var hunt_effect: AudioStreamPlayer2D = $SoundEffects/HuntEffect
 @onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
-@onready var dash_attack_hurtbox: Area2D = $DashAttackHurtbox
+@onready var dash_attack_area: Area2D = $DashAttackArea
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var dash_attack_vector: Vector2 # Position of player when winding up
@@ -52,7 +52,7 @@ func _on_dash_attack_state_entered() -> void:
 	dash_attack_timer = 0
 	current_dashes += 1
 	dash_attack_vector = global_position.direction_to(target_creature.global_position)
-	dash_attack_hurtbox.monitoring = true
+	dash_attack_area.monitoring = true
 
 # Dash to player. Dash speed determined by dash_attack_duration.
 func _on_dash_attack_state_physics_processing(delta: float) -> void:
@@ -60,22 +60,18 @@ func _on_dash_attack_state_physics_processing(delta: float) -> void:
 	if dash_attack_timer >= dash_attack_duration:
 		statechart.send_event("on_dash_attack_finish")
 	else:
-		velocity = dash_attack_vector * roll_speed(dash_attack_timer)
+		velocity = dash_attack_vector * roll_speed(dash_attack_timer, dash_attack_duration, dash_attack_range, passive_speed)
 		move_and_slide()
 
 # Exit Attack state after dashing 3 times.
 func _on_dash_attack_state_exited() -> void:
-	dash_attack_hurtbox.monitoring = false
+	dash_attack_area.monitoring = false
 	# Exit entire Attack state, go back to Active state
 	if current_dashes >= num_dashes:
 		statechart.send_event("on_attack_finish")
 
 
 # Calculate how fast enemy dash attack over time, slow down as it finished
-func roll_speed(elapsed_time: float) -> float:
-	var t: float = elapsed_time / dash_attack_duration
-	return dash_attack_range - (dash_attack_range - passive_speed) * t * t
-
 func _on_chase_radius_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player") and not in_attack_state:
 		super (area)
@@ -97,10 +93,11 @@ func _on_active_state_entered() -> void:
 	super ()
 	hunt_effect.play()
 
-func _on_dash_attack_hurtbox_body_entered(body: Node2D) -> void:
-	if body is Player:
-		body.damage(base_damage)
-
 func damage(value: int):
 	super (value)
 	hurt_effect.play()
+
+
+func _on_dash_attack_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.damage(base_damage)

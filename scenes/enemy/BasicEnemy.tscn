@@ -123,10 +123,10 @@ to = NodePath("../../Idle")
 event = &"idle"
 delay_in_seconds = "0.0"
 
-[node name="To Chase" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
+[node name="To Chase Player Detected" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
 script = ExtResource("6_7s1cm")
 to = NodePath("../../Active/Chase")
-event = &"to_chase"
+event = &"player_detected"
 delay_in_seconds = "0.0"
 
 [node name="To Search" type="Node" parent="StateChart/EnemyBehaviour/Passive"]
@@ -182,6 +182,12 @@ delay_in_seconds = "1"
 script = ExtResource("6_7s1cm")
 to = NodePath("../../Chase")
 event = &"to_chase_from_search"
+delay_in_seconds = "0.0"
+
+[node name="To Chase Player Detected" type="Node" parent="StateChart/EnemyBehaviour/Active/Search"]
+script = ExtResource("6_7s1cm")
+to = NodePath("../../Chase")
+event = &"player_detected"
 delay_in_seconds = "0.0"
 
 [node name="To Chase" type="Node" parent="StateChart/EnemyBehaviour/Active/Search"]
