@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cqh231pj018o5" path="res://assets/creatures/enemy_longneck/longneck5.png" id="7_5y6yc"]
 [ext_resource type="Texture2D" uid="uid://boixyyp84v32v" path="res://assets/creatures/enemy_longneck/longneck6.png" id="8_qdxwj"]
 [ext_resource type="Texture2D" uid="uid://bftt6dkjddhcb" path="res://assets/creatures/enemy_longneck/longneck7.png" id="9_aivvf"]
-[ext_resource type="Script" uid="uid://dkjrqbk2ts5qd" path="res://scenes/enemy/enemy_hitbox.gd" id="13_lcgj0"]
+[ext_resource type="Script" uid="uid://dkjrqbk2ts5qd" path="res://scripts/enemy/enemy_hitbox.gd" id="13_lcgj0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mgjl5"]
 animations = [{

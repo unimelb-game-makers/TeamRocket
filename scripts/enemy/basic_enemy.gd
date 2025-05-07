@@ -76,7 +76,7 @@ func damage(value: int):
 	target_creature = Globals.player
 	statechart.send_event("to_chase")
 
-
+# FIXME: Enemy's speed when using this function is not consistent
 func move_along_path(delta):
 	if path.is_empty():
 		velocity = Vector2.ZERO

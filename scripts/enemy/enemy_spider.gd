@@ -84,9 +84,7 @@ func player_is_aiming_at_enemy() -> bool:
 
 	var player_ray_origin = player.rifle.raycast.global_position
 	var dir_to_enemy = (global_position - player_ray_origin).normalized()
-
 	var angle_diff = fmod(abs(player.rifle.raycast.global_rotation - dir_to_enemy.angle()), (PI * 2))
-
 	return angle_diff <= deg_to_rad(AIM_THRESHOLD_IN_DEGREE / 2.0)
 
 
