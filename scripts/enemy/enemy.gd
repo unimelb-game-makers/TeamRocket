@@ -1,29 +1,34 @@
 class_name Enemy
 extends CharacterBody2D
+# Enemy class will be extended by
+# BasicEnemy - Your usual enemies with some attack moves
+# BossEnemy - Extra special
 
-@export var health: int:
-	set(value):
-		if health > value:
-			damage()
-		health = value
-		if health <= 0:
-			die()
-
+@export var max_health: int = 50
+## If enemy has multiple attacks, their dmg will be based on this value, such as 150% or 30%.
+@export var base_damage: int = 10
 @export var dropped_items: Array[Item]
 @export var dropped_item_chances: Array[float]
-## If this valye + player's sound loudness larger than distance to player, enemy can hear. 
-## Should keep it low for most enemies.
+## If this value + player's sound loudness larger than distance to player, enemy can heard player. 
+## Should keep it low for most enemies, and increased it for special enemies (ex: a cat-like / bat-like enemy)
 @export var hearing_sensitivity: float = 10
 
 var item_floor_scene: PackedScene = preload("res://scenes/item/ItemOnFloor.tscn")
 var attack_damage: int
+var health: int
 
-func damage() -> void:
+func _ready() -> void:
+	health = max_health
+
+func damage(value: int) -> void:
 	# Override in subclass
 	# Play any damaged effects/animations
+	health -= value
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color(0.8, 0.5, 0.5), 0.2)
 	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.2)
+	if health <= 0:
+		die()
 
 func die() -> void:
 	# Override in subclass
@@ -46,14 +51,12 @@ func drop_item():
 	
 func randomize_dropped_item():
 	var random = randf_range(0, 1)
-	print(random)
 	# Calculate total weights distribution
 	var total_weights = []
 	for i in range(dropped_item_chances.size()):
 		total_weights.append(0.0)
 		for weight in dropped_item_chances.slice(0, i + 1):
 			total_weights[i] += weight
-	print(total_weights)
 	# Determine which drop is chosen
 	for i in range(total_weights.size()):
 		if (total_weights[0] > random):

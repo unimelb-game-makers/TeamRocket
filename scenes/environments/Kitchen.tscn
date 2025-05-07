@@ -57,6 +57,10 @@ TIMER = false
 process_mode = 3
 bus = &"Music"
 
+[node name="EnemyHandler" parent="." index="3"]
+min_spawns_per_area = 1
+max_spawns_per_area = 1
+
 [node name="NavigationRegion2D" parent="." index="5"]
 navigation_polygon = SubResource("NavigationPolygon_5vy8l")
 

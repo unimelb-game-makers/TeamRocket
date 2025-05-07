@@ -53,7 +53,7 @@ func export_stats():
 # Reset stats to base stats
 func reset_stats():
 	level = 1
-	max_health = 50
-	health = 50
+	max_health = 100
+	health = 100
 	damage = 5
 	speed = 200

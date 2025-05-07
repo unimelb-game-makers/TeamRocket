@@ -14,33 +14,41 @@ signal death
 signal channel_complete
 signal sound_created(location, loudness)
 
+const ROLL_SPEED: int = 800
+const ROLL_DURATION: float = 0.5
+const ROLL_COOLDOWN: float = 0
+const WALK_FOOTSTEP_SFX_FREQUENCY = 0.75
+const SPRINT_FOOTSTEP_SFX_FREQUENCY = 0.5
+
 var can_move: bool = true
 
 # ----- MOVEMENT VARS -----
 # For smoother movement
 var curr_speed: float
 var curr_accel: float
+var speed_modifier = 1.0
 
 var direction: Vector2
 var is_moving = false
 var is_sprinting = false
 var is_crouching = false
+var is_aiming = false
 
 # roll_timer affects speed over the course of the roll
-const ROLL_SPEED: int = 800
-const ROLL_DURATION: float = 0.5
 var roll_timer: float = 0
 
 # Roll cooldown
 # TODO: Integrate cooldown into statechart
-const ROLL_COOLDOWN: float = 0
 var roll_cd_timer: float = 0
 var can_roll: bool = true
 
-const WALK_FOOTSTEP_SFX_FREQUENCY = 0.75
-const SPRINT_FOOTSTEP_SFX_FREQUENCY = 0.5
 var fired = false
 var animation_locked = false
+
+# Debuff
+# TODO: Should have a separate system to track debuffs
+var is_slowed
+var is_unable_to_dash
 
 # ----- Node References -----
 @onready var interact_radius: Area2D = $InteractRadius
@@ -52,6 +60,8 @@ var animation_locked = false
 @onready var footstep_timer: Timer = $FootstepSoundEffect/FootstepTimer
 @onready var footstep_audio: AudioStreamPlayer2D = $FootstepSoundEffect
 @onready var enemy_noise_rader: Sprite2D = $EnemyNoiseRadar
+
+@onready var slow_debuff_timer: Timer = $DebuffTimer/SlowDebuffTimer
 
 func _ready() -> void:
 	Globals.player = self
@@ -83,6 +93,8 @@ func _process(_delta: float) -> void:
 		rifle.reload()
 
 func damage(value: int):
+	if value > 0:
+		Globals.player_ui.play_damaged_effect(value)
 	Globals.player_stats.health = clamp(0, Globals.player_stats.health - value, Globals.player_stats.max_health)
 	Globals.player_ui.update_health(Globals.player_stats.health, Globals.player_stats.max_health)
 	Globals.inventory_ui.update_character_stats()
@@ -100,6 +112,7 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
 	velocity.x = move_toward(velocity.x, curr_speed * direction.x, curr_accel)
 	velocity.y = move_toward(velocity.y, curr_speed * direction.y, curr_accel)
+	velocity = velocity * speed_modifier
 	move_and_slide()
 
 	### State Chart ###
@@ -204,11 +217,13 @@ func _on_aiming_state_entered() -> void:
 	rifle.enter_aiming_mode()
 	aim_mode_enter.emit()
 	curr_speed = curr_speed / 2
+	is_aiming = true
 
 func _on_aiming_state_exited() -> void:
 	rifle.exit_aiming_mode()
 	aim_mode_exit.emit()
 	curr_speed = curr_speed * 2
+	is_aiming = false
 
 func _on_channel_timer_timeout() -> void:
 	channel_complete.emit()
@@ -314,3 +329,20 @@ func _on_footstep_timer_timeout() -> void:
 		sound_created.emit(global_position, sprint_loudness)
 	else:
 		sound_created.emit(global_position, walk_loudness)
+
+
+## Debuff
+func apply_slow_debuff():
+	var slow_debuff_time = 3
+	if not is_slowed:
+		is_slowed = true
+		speed_modifier -= 0.5
+		slow_debuff_timer.start(slow_debuff_time)
+
+func remove_slow_debuff():
+	if is_slowed:
+		speed_modifier += 0.5
+		is_slowed = false
+
+func _on_slow_debuff_timer_timeout() -> void:
+	remove_slow_debuff()

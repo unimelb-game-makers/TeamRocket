@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6wifdpvel7yy"
-path="res://.godot/imported/Untitled_Artwork-1.png-3a793248bf89010fc32fbc3d246b3dd2.ctex"
+uid="uid://d387e70lvejxe"
+path="res://.godot/imported/raven2.png-ab35c8a1e6fff53a990f19b0e58f54e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/creatures/enemy_longneck/Untitled_Artwork-1.png"
-dest_files=["res://.godot/imported/Untitled_Artwork-1.png-3a793248bf89010fc32fbc3d246b3dd2.ctex"]
+source_file="res://assets/creatures/enemy_raven/raven2.png"
+dest_files=["res://.godot/imported/raven2.png-ab35c8a1e6fff53a990f19b0e58f54e3.ctex"]
 
 [params]
 
