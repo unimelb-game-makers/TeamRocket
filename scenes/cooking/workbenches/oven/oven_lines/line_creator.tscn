@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4l1oqxtyytxl"]
+
+[ext_resource type="PackedScene" uid="uid://b7bgjj0x4lljg" path="res://scenes/cooking/workbenches/oven/oven_tracing_line.tscn" id="2_a40rj"]
+[ext_resource type="Script" uid="uid://bfm1afyd18ws" path="res://scenes/cooking/workbenches/oven/oven_lines/control_line.gd" id="2_hyigj"]
+
+[node name="Cover" type="Node"]
+
+[node name="OvenTracingLine" parent="." instance=ExtResource("2_a40rj")]
+position = Vector2(2, 131)
+line_points = PackedVector2Array(336, 98, 215, 152, 247, 231, 387, 235, 510, 286, 623, 332, 677, 419, 820, 330, 914, 193)
+
+[node name="ControlLine" type="Line2D" parent="."]
+position = Vector2(2, 131)
+points = PackedVector2Array(336, 98, 215, 152, 247, 231, 387, 235, 510, 286, 623, 332, 677, 419, 820, 330, 914, 193)
+width = 40.0
+default_color = Color(1, 1, 1, 0.435294)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("2_hyigj")
+line_name = "bobby"
