@@ -9,7 +9,7 @@ extends BasicEnemy
 @onready var stop_run_timer: Timer = $StopRunTimer
 
 const AIM_THRESHOLD_IN_DEGREE = 90
-const RUNAWAY_SPEED_MULT = 4.0
+const RUNAWAY_SPEED_MULT = 5.0
 const STALK_SPEED_MULT = 0.5
 
 var anim_sprite_original_pos: Vector2
@@ -24,7 +24,7 @@ var pounce_attack_timer: float = 0
 var pounce_attack_duration: float = 1
 var max_pounce_distance = 1000
 
-# If this is true, lone stalker wont run anymore
+# If this is true, lone stalker won't run when shot anymore
 var committed_to_attack = false
 
 func _ready() -> void:
@@ -46,7 +46,9 @@ func _on_chase_state_entered() -> void:
 
 func _on_chase_state_physics_processing(delta: float) -> void:
 	if target_creature != null and not is_attacking:
-		if not committed_to_attack:
+		if committed_to_attack:
+			movement_speed = active_speed
+		else:
 			if check_player_moving():
 				movement_speed = 0
 			else:
@@ -84,6 +86,8 @@ func check_player_moving() -> bool:
 func damage(value: int) -> void:
 	super (value)
 	# hurt_effect.play()
+	var tween = create_tween()
+	tween.tween_property(anim_sprite, "self_modulate:a", 1, 1)
 	if not committed_to_attack:
 		statechart.send_event("to_runaway")
 
@@ -120,6 +124,10 @@ func _on_pounce_attack_state_physics_processing(delta: float) -> void:
 
 func _on_pounce_attack_state_exited() -> void:
 	dash_atk_area.monitoring = false
+
+func _on_dash_attack_area_body_entered(body: Node2D) -> void:
+	if body is Player:
+		body.damage(base_damage)
 
 func _on_runaway_state_entered() -> void:
 	movement_speed = active_speed

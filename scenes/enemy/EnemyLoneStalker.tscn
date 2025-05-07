@@ -37,20 +37,21 @@ radius = 2993.0
 size = Vector2(112, 290)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otmmk"]
-size = Vector2(208, 72)
+size = Vector2(140, 162)
 
 [node name="EnemyLoneStalker" instance=ExtResource("1_dafq6")]
 collision_mask = 4
 script = ExtResource("2_dafq6")
 runaway_duration = 4.0
 transparency_when_stalk = 0.05
-passive_speed = 70
-active_speed = 100
+passive_speed = 80
+active_speed = 120
 max_health = 60
 base_damage = 30
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
 layer = 20
+visible = false
 
 [node name="StateChartDebugger" parent="CanvasLayer" index="0" instance=ExtResource("3_pr8e8")]
 z_index = 1000
@@ -131,7 +132,7 @@ script = ExtResource("7_tybiv")
 script = ExtResource("5_8wcqh")
 to = NodePath("../../Pounce Attack")
 event = &"to_pounce_attack"
-delay_in_seconds = "0.75"
+delay_in_seconds = "0.5"
 
 [node name="Pounce Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="1"]
 script = ExtResource("7_tybiv")
@@ -164,7 +165,7 @@ collision_layer = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackArea" index="0"]
-position = Vector2(0, 160)
+position = Vector2(-7, 70)
 shape = SubResource("RectangleShape2D_otmmk")
 debug_color = Color(0.701961, 0.00392157, 0.0196078, 0.25098)
 
