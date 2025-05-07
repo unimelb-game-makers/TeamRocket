@@ -81,6 +81,7 @@ motion_mode = 1
 script = ExtResource("2_t33i1")
 passive_speed = 50
 active_speed = 150
+max_health = 15
 dropped_items = Array[ExtResource("2_ngw0k")]([SubResource("Resource_uhg0u")])
 dropped_item_chances = Array[float]([1.0])
 
@@ -185,7 +186,6 @@ bus = &"Effects"
 one_shot = true
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(0, 0)
 shape = SubResource("CircleShape2D_ewli2")
 
 [connection signal="area_exited" from="DetectionRadius" to="." method="_on_detection_radius_area_exited"]

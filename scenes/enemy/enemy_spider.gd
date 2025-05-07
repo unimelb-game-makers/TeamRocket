@@ -2,7 +2,6 @@ extends BasicEnemy
 
 ## From 0 to 1
 @export var dodge_chance_when_defend = 0.5
-@export var range_before_attack = 500
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dash_atk_area: Area2D = $DashAttackArea
@@ -14,7 +13,7 @@ const TRI_ATTACK_NUM_DASH = 3
 
 var anim_sprite_original_pos: Vector2
 var is_attacking = false
-var is_winding_up_attack = false
+var range_before_attack = 500
 
 var triangle_atk_calculated = false
 var tri_atk_pos1: Vector2 = Vector2.ONE
@@ -31,6 +30,7 @@ var pounce_attack_vector: Vector2
 var pounce_attack_range: float = 1000
 var pounce_attack_timer: float = 0
 var pounce_attack_duration: float = 1
+var max_pounce_distance = 1000
 
 var tri_dash_attack_vector: Vector2
 var tri_dash_attack_range: float = 1000
@@ -105,7 +105,6 @@ func _on_attack_state_exited() -> void:
 
 
 func _on_wind_up_state_entered() -> void:
-	is_winding_up_attack = true
 	match combo_counter:
 		0:
 			statechart.send_event("to_pounce_attack")
@@ -115,9 +114,6 @@ func _on_wind_up_state_entered() -> void:
 			statechart.send_event("to_pounce_attack")
 
 
-func _on_wind_up_state_exited() -> void:
-	is_winding_up_attack = false
-
 func _on_pounce_attack_state_entered() -> void:
 	play_jump_effect()
 	dash_atk_area.monitoring = true
@@ -125,7 +121,7 @@ func _on_pounce_attack_state_entered() -> void:
 	# attack_effect.play()
 	pounce_attack_timer = 0
 	pounce_attack_vector = global_position.direction_to(target_creature.global_position)
-	pounce_attack_range = global_position.distance_to(target_creature.global_position) * 2
+	pounce_attack_range = clamp(global_position.distance_to(target_creature.global_position) * 2, 0, max_pounce_distance)
 
 func _on_pounce_attack_state_physics_processing(delta: float) -> void:
 	pounce_attack_timer += delta
@@ -145,8 +141,8 @@ func _on_attack_state_physics_processing(_delta: float) -> void:
 		statechart.send_event("to_search")
 		return
 	var distance = global_position.distance_to(target_creature.global_position)
-	if distance > range_before_attack * 1.5 and is_winding_up_attack:
-		statechart.send_event("to_chase")
+	if distance > range_before_attack * 1.2:
+		statechart.send_event("player_out_of_atk_range")
 		return
 
 

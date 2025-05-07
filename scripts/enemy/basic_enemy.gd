@@ -28,6 +28,7 @@ var search_direction: Vector2
 var original_position: Vector2
 
 func _ready():
+	super ()
 	navigation_region = get_tree().get_first_node_in_group("navigation")
 	# These values need to be adjusted for the actor's speed
 	# and the navigation layout.

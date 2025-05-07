@@ -4,7 +4,7 @@ extends CharacterBody2D
 # BasicEnemy - Your usual enemies with some attack moves
 # BossEnemy - Extra special
 
-@export var health: int
+@export var max_health: int = 50
 ## If enemy has multiple attacks, their dmg will be based on this value, such as 150% or 30%.
 @export var base_damage: int = 10
 @export var dropped_items: Array[Item]
@@ -15,6 +15,10 @@ extends CharacterBody2D
 
 var item_floor_scene: PackedScene = preload("res://scenes/item/ItemOnFloor.tscn")
 var attack_damage: int
+var health: int
+
+func _ready() -> void:
+	health = max_health
 
 func damage(value: int) -> void:
 	# Override in subclass
@@ -47,14 +51,12 @@ func drop_item():
 	
 func randomize_dropped_item():
 	var random = randf_range(0, 1)
-	print(random)
 	# Calculate total weights distribution
 	var total_weights = []
 	for i in range(dropped_item_chances.size()):
 		total_weights.append(0.0)
 		for weight in dropped_item_chances.slice(0, i + 1):
 			total_weights[i] += weight
-	print(total_weights)
 	# Determine which drop is chosen
 	for i in range(total_weights.size()):
 		if (total_weights[0] > random):

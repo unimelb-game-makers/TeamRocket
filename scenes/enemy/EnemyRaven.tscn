@@ -60,6 +60,8 @@ circling_radius = 1000.0
 cirling_speed = 1.0
 circling_time = 3.0
 active_speed = 250
+max_health = 30
+base_damage = 15
 
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
 modulate = Color(0, 0, 0, 0.529412)

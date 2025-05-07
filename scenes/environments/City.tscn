@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="3_pa65j"]
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="4_2cddj"]
 [ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="5_oq3tf"]
+[ext_resource type="PackedScene" uid="uid://djgvayx5wpdta" path="res://scenes/enemy/EnemyRatMonarch.tscn" id="6_7s0ty"]
 [ext_resource type="PackedScene" uid="uid://p6jrdiqo23p1" path="res://scenes/objects/Obstacles/WreckedCar3.tscn" id="6_fuahw"]
 [ext_resource type="PackedScene" uid="uid://vhnilqdkefsv" path="res://scenes/enemy/EnemyChicken.tscn" id="6_qgik8"]
-[ext_resource type="PackedScene" uid="uid://bo6ywxnw6k5js" path="res://scenes/enemy/EnemySpider.tscn" id="7_0h88t"]
 [ext_resource type="PackedScene" uid="uid://vk8s3qx7g5vu" path="res://scenes/objects/Obstacles/Debris1.tscn" id="7_ttjpc"]
 [ext_resource type="PackedScene" uid="uid://di1iud0i6uaou" path="res://scenes/objects/Obstacles/Debris2.tscn" id="8_xlu3i"]
 [ext_resource type="PackedScene" uid="uid://id6e3hwthctu" path="res://scenes/objects/Obstacles/Debris3.tscn" id="9_q3pse"]
@@ -93,7 +93,7 @@ radius = 1000.0
 
 [node name="LandEnemySpawnAreas4" parent="EnemyHandler/SpawnAreas" index="1" instance=ExtResource("21_5cojw")]
 position = Vector2(3402, 2944)
-allowed_enemies = Array[PackedScene]([ExtResource("7_0h88t")])
+allowed_enemies = Array[PackedScene]([ExtResource("6_7s0ty")])
 radius = 1000.0
 
 [node name="Dark" parent="Lighting" index="0"]
