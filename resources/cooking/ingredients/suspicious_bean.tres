@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bgerkoono7uhm"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_13w2s"]
+[ext_resource type="Texture2D" uid="uid://7asolvjlul8v" path="res://assets/food/suspicious_beans.png" id="2_872h5"]
+
+[resource]
+script = ExtResource("1_13w2s")
+ingredient_type = 104
+ingredient_category = 2
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_872h5")
+item_id = "sus_beans"
+item_name = "Suspicious Beans"
+description = "Suspicious looking beans"
+weight = 0.1
+rarity = 1
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

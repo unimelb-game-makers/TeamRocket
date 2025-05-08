@@ -4,6 +4,7 @@ extends Item
 # Ingredient class of item used to cook foods
 
 enum IngredientType {
+	RAW = 0,
 	# Not Edible
 	SKEWER = 1,
 	SPICE_POWDER = 2,
@@ -12,15 +13,20 @@ enum IngredientType {
 	CARROT = 101,
 	ONION = 102,
 	TOMATO = 103,
+	BEAN = 104,
 	# Meats
 	BEEF = 200,
 	PORK = 201,
 	FISH = 202,
 	CHICKEN = 203,
+	# CARBS
+	RICE = 300,
+	RAW_RICE = 301,
+	BREAD = 302,
 }
 
 enum IngredientCategory {
-	NONE, INEDIBLE, VEGETABLE, MEAT, FISH, BREAD, OTHER
+	NONE, INEDIBLE, VEGETABLE, MEAT, FISH, GRAINS, OTHER
 }
 
 @export var ingredient_type: IngredientType
