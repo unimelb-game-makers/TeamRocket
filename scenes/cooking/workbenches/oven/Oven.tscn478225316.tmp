@@ -19,9 +19,12 @@ texture = ExtResource("2_ja2sr")
 [node name="OvenTracingLine" parent="." instance=ExtResource("3_ja2sr")]
 
 [node name="CountDown" type="Timer" parent="."]
+one_shot = true
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 scale = Vector2(0.171875, 0.171875)
 texture = ExtResource("5_x7xau")
+
+[connection signal="timeout" from="CountDown" to="." method="_on_count_down_timeout"]

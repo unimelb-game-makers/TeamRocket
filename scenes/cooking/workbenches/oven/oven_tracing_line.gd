@@ -41,8 +41,10 @@ extends Node2D
 			passable_line_factor = new_factor
 			passable_line.width = good_line.width * passable_line_factor
 
-var is_playing: bool = true
+var is_playing: bool = false
 var accuracy_table: Array = [0, 0, 0, 0]
+var mouse: Area2D
+var accuracy: float = 0
 
 enum ACCURACY_SCORES {
 	PERFECT = 0,
@@ -51,7 +53,7 @@ enum ACCURACY_SCORES {
 	FAIL = 3
 }
 
-signal game_finish(accuracy: float) # End point reached, or leave line completely
+signal game_finish() # End point reached, or leave line completely
 
 func _ready() -> void:
 	# Setup the lines width and points
@@ -67,23 +69,35 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not Engine.is_editor_hint():
 		if is_playing:
-			var mouse_pos = get_global_mouse_position()
+			var mouse_pos = mouse.position
 			if is_mouse_on_line(perfect_line, mouse_pos):
 				accuracy_table[ACCURACY_SCORES.PERFECT] += 1
+				#print('perfect')
 				
-			if is_mouse_on_line(good_line, mouse_pos):
+			elif is_mouse_on_line(good_line, mouse_pos):
 				accuracy_table[ACCURACY_SCORES.GOOD] += 1
+				#print('good')
 				
-			if is_mouse_on_line(passable_line, mouse_pos):
+			elif is_mouse_on_line(passable_line, mouse_pos):
 				accuracy_table[ACCURACY_SCORES.PASSABLE] += 1
+				#print('passable')
 			else:
 				accuracy_table[ACCURACY_SCORES.FAIL] += 1
 				is_playing = false
+				#print('fail')
 				_end_minigame()
-			
+
+func start_game(selected_mouse: Area2D) -> void:
+	mouse = selected_mouse
+	is_playing = true
+
 func _end_minigame() -> void:
-	var accuracy = _process_accuracy_table()
-	emit_signal("game_finish", accuracy)
+	print(accuracy_table)
+	accuracy = _process_accuracy_table()
+	emit_signal("game_finish")
+
+func get_accuracy() -> float:
+	return accuracy
 
 func is_mouse_on_line(line: Line2D, mouse_pos: Vector2) -> bool:
 	var points = line.points
@@ -158,6 +172,7 @@ func initialize_data(oven_line: OvenLine) -> void:
 	
 	_update_start_and_end()
 
-func _on_end_mouse_entered() -> void:
-	is_playing = false
-	_end_minigame()
+func _on_end_area_entered(area: Area2D) -> void:
+	if area == mouse and is_playing:
+		is_playing = false
+		_end_minigame()

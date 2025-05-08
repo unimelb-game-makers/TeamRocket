@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4l1oqxtyytxl"]
 
-[ext_resource type="PackedScene" uid="uid://b7bgjj0x4lljg" path="res://scenes/cooking/workbenches/oven/oven_tracing_line.tscn" id="2_a40rj"]
+[ext_resource type="PackedScene" uid="uid://b7bgjj0x4lljg" path="res://scenes/cooking/workbenches/oven/OvenTracingLine.tscn" id="2_a40rj"]
 [ext_resource type="Script" uid="uid://bfm1afyd18ws" path="res://scenes/cooking/workbenches/oven/oven_lines/control_line.gd" id="2_hyigj"]
 
 [node name="Cover" type="Node"]

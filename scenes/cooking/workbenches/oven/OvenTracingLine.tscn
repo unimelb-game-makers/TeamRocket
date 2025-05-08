@@ -43,6 +43,7 @@ shape = SubResource("CircleShape2D_gubke")
 
 [node name="End" type="Area2D" parent="."]
 scale = Vector2(0.161207, 0.161207)
+collision_layer = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="End"]
 texture = ExtResource("2_gubke")
@@ -50,4 +51,6 @@ texture = ExtResource("2_gubke")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
 shape = SubResource("CircleShape2D_kmi1q")
 
+[connection signal="area_entered" from="End" to="." method="_on_end_area_entered"]
+[connection signal="body_entered" from="End" to="." method="_on_end_body_entered"]
 [connection signal="mouse_entered" from="End" to="." method="_on_end_mouse_entered"]
