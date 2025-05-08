@@ -66,6 +66,8 @@ func minigame_complete() -> void:
 ## To re-enable mouse control for the normal game
 ## Emit signal of completion
 func close_minigame(final_score: float) -> void:
+	# Undo game restrictions
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# TODO: Do what with the final score over here
 	# TODO: Emit finish signal? it doesnt pass any parameters btw.
 	pass
