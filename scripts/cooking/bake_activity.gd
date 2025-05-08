@@ -66,6 +66,8 @@ func minigame_complete() -> void:
 ## To re-enable mouse control for the normal game
 ## Emit signal of completion
 func close_minigame(final_score: float) -> void:
+	# TODO: Do what with the final score over here
+	# TODO: Emit finish signal? it doesnt pass any parameters btw.
 	pass
 
 func _evaluate_spent_time() -> float:
