@@ -21,8 +21,14 @@ enum IngredientType {
 	CHICKEN = 203,
 	# CARBS
 	RICE = 300,
-	RAW_RICE = 301,
 	BREAD = 302,
+	
+	# RAW FOODS
+	RAW_POTATO = 401,
+	RAW_CARROT = 402,
+	RAW_ONION = 403,
+	RAW_TOMATO = 404,
+	RAW_RICE = 405
 }
 
 enum IngredientCategory {

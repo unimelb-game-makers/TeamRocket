@@ -1,19 +1,18 @@
-[gd_resource type="Resource" script_class="Dish" load_steps=6 format=3 uid="uid://cgii3iioos5j2"]
+[gd_resource type="Resource" script_class="Dish" load_steps=5 format=3 uid="uid://cgii3iioos5j2"]
 
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_m5eeu"]
 [ext_resource type="Resource" uid="uid://bgerkoono7uhm" path="res://resources/cooking/ingredients/suspicious_bean.tres" id="2_pb6hu"]
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_y6gln"]
-[ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="3_ohidr"]
 [ext_resource type="Texture2D" uid="uid://c7ldh2mrybaux" path="res://assets/food/curry_suspicious.png" id="3_y6gln"]
 
 [resource]
 script = ExtResource("2_y6gln")
 effects = Array[int]([])
-ingredients = Array[ExtResource("1_m5eeu")]([ExtResource("2_pb6hu"), ExtResource("3_ohidr")])
+ingredients = Array[ExtResource("1_m5eeu")]([ExtResource("2_pb6hu")])
 texture = ExtResource("3_y6gln")
 item_id = "sus_curry"
 item_name = "Suspicious Curry"
 description = "Kinda Sussy"
-weight = 0.3
+weight = 0.4
 rarity = 1
 metadata/_custom_type_script = "uid://dqqa8ydotiigx"

@@ -1,14 +1,11 @@
-[gd_resource type="Resource" script_class="IngredientRecipe" load_steps=5 format=3 uid="uid://cm8t0wikoaret"]
+[gd_resource type="Resource" script_class="IngredientRecipe" load_steps=3 format=3 uid="uid://cm8t0wikoaret"]
 
-[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_4q2pk"]
 [ext_resource type="Script" uid="uid://bgf04urpx4mx5" path="res://resources/resource_scripts/food_system/recipe_scripts/ingredient_recipe.gd" id="1_n0py6"]
 [ext_resource type="Resource" uid="uid://bke58eqhi7ued" path="res://resources/cooking/ingredients/rice_cooked.tres" id="1_veql6"]
-[ext_resource type="Resource" uid="uid://djfvdkf82lpn7" path="res://resources/cooking/ingredients/rice.tres" id="2_a1lew"]
 
 [resource]
 script = ExtResource("1_n0py6")
 output_ingredient = ExtResource("1_veql6")
-input_ingredients = Array[ExtResource("1_4q2pk")]([ExtResource("2_a1lew")])
 effects = Array[int]([])
-base_ingredients = Array[int]([0])
+base_ingredients = Array[int]([405])
 metadata/_custom_type_script = "uid://bgf04urpx4mx5"

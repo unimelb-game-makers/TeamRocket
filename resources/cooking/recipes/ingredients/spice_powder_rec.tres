@@ -1,13 +1,11 @@
-[gd_resource type="Resource" script_class="IngredientRecipe" load_steps=4 format=3 uid="uid://bcmx8od3o8gv3"]
+[gd_resource type="Resource" script_class="IngredientRecipe" load_steps=3 format=3 uid="uid://bcmx8od3o8gv3"]
 
 [ext_resource type="Resource" uid="uid://cwuer4u67t6om" path="res://resources/cooking/ingredients/spice_powder.tres" id="1_0y65r"]
-[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_fhfrf"]
 [ext_resource type="Script" uid="uid://bgf04urpx4mx5" path="res://resources/resource_scripts/food_system/recipe_scripts/ingredient_recipe.gd" id="2_fhfrf"]
 
 [resource]
 script = ExtResource("2_fhfrf")
 output_ingredient = ExtResource("1_0y65r")
-input_ingredients = Array[ExtResource("1_fhfrf")]([])
 effects = Array[int]([])
 base_ingredients = Array[int]([101, 101])
 metadata/_custom_type_script = "uid://bgf04urpx4mx5"

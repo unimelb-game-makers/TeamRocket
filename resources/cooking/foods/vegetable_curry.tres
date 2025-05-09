@@ -14,6 +14,6 @@ texture = ExtResource("5_kmidx")
 item_id = "vegetable_curry"
 item_name = "Vegetable Curry"
 description = "Curry with potato and carrot"
-weight = 0.0
+weight = 0.4
 rarity = 0
 metadata/_custom_type_script = "uid://dqqa8ydotiigx"
