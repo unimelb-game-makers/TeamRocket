@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=33 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="3_pa65j"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cd6fc47tx6cyd" path="res://scenes/objects/Lake.tscn" id="18_l3vkc"]
 [ext_resource type="PackedScene" uid="uid://boou7kaxracje" path="res://scenes/objects/Buildings/Building.tscn" id="19_r84yg"]
 [ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="19_ryaas"]
-[ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/EnemyDasher.tscn" id="19_sv1o8"]
+[ext_resource type="PackedScene" uid="uid://bitj2gvntpv3j" path="res://scenes/enemy/EnemyDasher.tscn" id="19_sv1o8"]
 [ext_resource type="PackedScene" uid="uid://b0q3wyjdxrql8" path="res://scenes/objects/Buildings/Building2.tscn" id="20_wckc8"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="21_5cojw"]
 [ext_resource type="PackedScene" uid="uid://cxqyl5m3yie2u" path="res://scenes/objects/Buildings/Building3.tscn" id="21_qrjp7"]

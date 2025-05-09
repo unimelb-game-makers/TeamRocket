@@ -18,6 +18,7 @@ func save() -> Dictionary:
 	item_dict["description"] = description
 	item_dict["weight"] = weight
 	item_dict["rarity"] = rarity
+	item_dict["quality"] = quality
 	return item_dict
 
 static func parse_dict(item_dict: Dictionary) -> Item:
@@ -28,6 +29,7 @@ static func parse_dict(item_dict: Dictionary) -> Item:
 	dish.description = item_dict["description"]
 	dish.weight = item_dict["weight"]
 	dish.rarity = item_dict["rarity"]
+	dish.quality = item_dict["quality"]
 	dish.effects = []
 	for effect in item_dict["effects"]:
 		dish.effects.append(effect as Item.Effects)

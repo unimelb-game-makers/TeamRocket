@@ -25,8 +25,10 @@ enum Effects {
 @export var description: String
 @export var weight: float
 # On UI display, we can convert quality into Common, Uncommon, Rare, etc 
-#@export_range(1, 100, 1) var quality: int 
 @export var rarity: Rarity
+# Quality ranging from 0 to 100
+# If quality is 0, do not need to display or save
+@export_range(0, 100, 1) var quality: int 
 
 func save() -> Dictionary:
 	var item_dict = {}
