@@ -1,7 +1,9 @@
-name: "Godot CI/CD"
+# Secrets: ITCH_IO_API_KEY
+
+name: "Godot CI/CD on push to main"
 
 env:
-  GODOT_VERSION: 4.3
+  GODOT_VERSION: 4.4.1
   PROJECT_NAME: 'team-rocket'
 
 on:
@@ -16,10 +18,20 @@ jobs:
     permissions:
       contents: write
     container:
-      image: barichello/godot-ci:4.3
+      image: barichello/godot-ci:4.4.1
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
+      # Git considers it unsafe since are using LFS under a docker image, so mark it as safe as workaround
+      - name: Mark repo as safe
+        run: git config --global --add safe.directory /__w/TeamRocket/TeamRocket
+
+      - name: Install Git LFS
+        run: |
+          apt update && apt install git-lfs -y
+          git lfs install
+          git lfs pull
 
       - name: Move export templates into position
         run: |
@@ -27,6 +39,14 @@ jobs:
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
       - name: Create staging directory
         run: mkdir -v -p build/web
+
+      - name: Import assets
+        run: |
+          godot --headless --editor --quit-after 2
+          godot --import --headless
+          # Run a second time to make sure that the warnings have cleared.
+          # This should exit pretty much immediately.
+          godot --import --headless
 
       - name: Build
         run: godot -v --export-release --headless "Web"
@@ -42,10 +62,13 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
-          force_orphan: true
+          # force_orphan: true
+          # NOTE: keeping files like this could be dangerous. Consider deleting stuff to save space if needed, depending on needs
+          # e.g. Add an only-keep-last-10-version job
+          keep_files: true
           user_name: "github-ci[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
-          commit_message: "Update Github Pages"
+          commit_message: "Deploy main branch push to main directory"
 
       - name: Zip Web artifacts
         run: zip -r "${{ env.PROJECT_NAME }}_web.zip" build/web
@@ -56,7 +79,7 @@ jobs:
           name: ${{ env.PROJECT_NAME }}_web
           path: ${{ env.PROJECT_NAME }}_web.zip
 
-  release:
+  Release:
     needs: [Web]
     runs-on: ubuntu-latest
     permissions:
@@ -93,10 +116,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{env.GitVersion_MajorMinorPatch}}
-          release_name: ${{env.GitVersion_MajorMinorPatch}}
+          tag_name: ${{env.GitVersion_FullSemVer}}
+          release_name: ${{env.GitVersion_FullSemVer}}
           body: |
-            Release notes for ${{env.GitVersion_MajorMinorPatch}}
+            Release notes for ${{env.GitVersion_FullSemVer}}
           draft: false
           prerelease: true
 
@@ -111,22 +134,22 @@ jobs:
           asset_name: "${{ env.PROJECT_NAME }}_web.zip"
           asset_content_type: application/zip
 
-  itch-deploy:
-      needs: [Web]
-      runs-on: ubuntu-latest
-      steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+  Itch-deploy:
+    needs: [Web]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
 
-      - name: Download Web artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ env.PROJECT_NAME }}_web
+    - name: Download Web artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ env.PROJECT_NAME }}_web
 
-      - uses: manleydev/butler-publish-itchio-action@master
-        env:
-          BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_API_KEY }}
-          CHANNEL: HTML
-          ITCH_GAME: ${{ env.PROJECT_NAME }}
-          ITCH_USER: gmcunimelb
-          PACKAGE: ${{ env.PROJECT_NAME }}_web.zip
+    - uses: manleydev/butler-publish-itchio-action@master
+      env:
+        BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_API_KEY }}
+        CHANNEL: HTML
+        ITCH_GAME: godot-ci
+        ITCH_USER: gmcunimelb
+        PACKAGE: ${{ env.PROJECT_NAME }}_web.zip

@@ -18,15 +18,6 @@
 [ext_resource type="AudioStream" uid="uid://cy4mmvk1usv6t" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/idle/naked deer idle3.wav" id="12_biyxw"]
 [ext_resource type="AudioStream" uid="uid://2hu4kd2mvnlk" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer playerspotted2.wav" id="14_biyxw"]
 
-[sub_resource type="Resource" id="Resource_uhg0u"]
-script = ExtResource("3_v7e55")
-item_id = 20
-texture = ExtResource("4_ytwmp")
-item_name = "Raw Ground Beef"
-description = "It looks like any other minced meat despite its questionable origin. Smells ok-ish.\\n“You can put almost anything in the mince and they won't notice the difference - Suzan, No-Waste Butcher Shop”"
-weight = 0.5
-rarity = 0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ags0e"]
 size = Vector2(34.8333, 11.6667)
 
@@ -37,7 +28,6 @@ radius = 200.0
 motion_mode = 1
 script = ExtResource("2_1leqm")
 health = 80
-dropped_items = Array[ExtResource("3_v7e55")]([SubResource("Resource_uhg0u")])
 dropped_item_chances = Array[float]([1.0])
 sounds = Dictionary[String, Array]({
 "attack": [ExtResource("7_1cnyq"), ExtResource("6_hxbls"), ExtResource("10_qqa25")],
