@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dj4u0n4uqbwvg"]
+[gd_scene load_steps=11 format=3 uid="uid://dj4u0n4uqbwvg"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_n668q"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_2s1lh"]
 [ext_resource type="Texture2D" uid="uid://of06ncu5vdqd" path="res://assets/interiors/kitchen/cutting board.png" id="3_b1lqa"]
-[ext_resource type="Resource" uid="uid://befjbqm64vutk" path="res://resources/activities/chopping.tres" id="3_gf6uy"]
 [ext_resource type="PackedScene" uid="uid://yskpqwwvcpce" path="res://scenes/cooking/activities/ChoppingActivity.tscn" id="4_f5jll"]
+[ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="4_v7ry0"]
+[ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="5_5mhn5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdbv1"]
 size = Vector2(160, 88)
@@ -25,6 +26,12 @@ shader_parameter/max_or_add = false
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_dis1y"]
 frame_0/texture = ExtResource("3_b1lqa")
 
+[sub_resource type="Resource" id="Resource_h1c4s"]
+script = ExtResource("5_5mhn5")
+recipes = Array[ExtResource("4_v7ry0")]([])
+max_ingredients = 5
+metadata/_custom_type_script = "uid://c0shkqininnkd"
+
 [node name="ChoppingBoard" instance=ExtResource("1_n668q")]
 y_sort_enabled = true
 
@@ -42,7 +49,7 @@ texture = ExtResource("3_b1lqa")
 visible = false
 activity_name = "Chopping board"
 activity_animated_texture = SubResource("AnimatedTexture_dis1y")
-activity_res = ExtResource("3_gf6uy")
+crafting_station = SubResource("Resource_h1c4s")
 
 [node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("4_f5jll")]
 visible = false
