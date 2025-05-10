@@ -28,7 +28,7 @@ enum Effects {
 @export var rarity: Rarity
 # Quality ranging from 0 to 100
 # If quality is 0, do not need to display or save
-@export_range(0, 100, 1) var quality: int 
+@export_range(0, 100, 1) var quality: int
 
 func save() -> Dictionary:
 	var item_dict = {}
@@ -42,7 +42,7 @@ func equals(other_item: Item):
 	
 static func load_item(dict: Dictionary) -> Item:
 	match int(dict["item_type"]):
-		ItemType.ITEM: 
+		ItemType.ITEM:
 			return parse_dict(dict)
 		ItemType.INGREDIENT:
 			return parse_dict(dict)

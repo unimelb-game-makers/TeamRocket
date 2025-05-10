@@ -1,17 +1,23 @@
-[gd_scene load_steps=17 format=3 uid="uid://bwrb05nb0u0rs"]
+[gd_scene load_steps=23 format=3 uid="uid://bwrb05nb0u0rs"]
 
 [ext_resource type="Script" uid="uid://ckwc004ejx501" path="res://scripts/enemy/enemy_chicken.gd" id="1_qyhrq"]
 [ext_resource type="Texture2D" uid="uid://cq1iguugfglwg" path="res://assets/creatures/animal_headless_chicken/chicken1.png" id="2_djc8e"]
-[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_ngw0k"]
+[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_t33i1"]
 [ext_resource type="Texture2D" uid="uid://bjt1wxo78e541" path="res://assets/creatures/animal_headless_chicken/chicken2.png" id="3_dtvso"]
-[ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="3_m4dwj"]
+[ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="3_l7l25"]
 [ext_resource type="Texture2D" uid="uid://bmv2eumk5dj8d" path="res://assets/creatures/animal_headless_chicken/chicken3.png" id="4_0ugvd"]
+[ext_resource type="AudioStream" uid="uid://8378jjhuitio" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 2.wav" id="5_ffh4s"]
 [ext_resource type="Texture2D" uid="uid://fxdbni0g5067" path="res://assets/creatures/animal_headless_chicken/chicken4.png" id="5_tsj1i"]
+[ext_resource type="AudioStream" uid="uid://b6whrxuglmguk" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 3.wav" id="6_rj6jn"]
 [ext_resource type="Texture2D" uid="uid://dbsp4ofn4wrqa" path="res://assets/creatures/animal_headless_chicken/chicken5.png" id="6_voquw"]
 [ext_resource type="Texture2D" uid="uid://c1an4ursjb2fq" path="res://assets/creatures/animal_headless_chicken/chicken6.png" id="7_cebfr"]
+[ext_resource type="AudioStream" uid="uid://f2f3r0yq5w22" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 4.wav" id="7_ewli2"]
 [ext_resource type="Texture2D" uid="uid://c86ut846p2fsl" path="res://assets/creatures/animal_headless_chicken/chicken7.png" id="8_nq1op"]
+[ext_resource type="AudioStream" uid="uid://ic1n4jn6pl0j" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken run away 2.wav" id="9_t33i1"]
 [ext_resource type="AudioStream" uid="uid://beddvptril7ql" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken hurt 1.wav" id="11_8clun"]
+[ext_resource type="AudioStream" uid="uid://wq41n71vl7y3" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken hurt 2.wav" id="11_l7l25"]
 [ext_resource type="AudioStream" uid="uid://xs5130vgb5q0" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 1.wav" id="12_bwky7"]
+[ext_resource type="AudioStream" uid="uid://c5s2plhkq2kjw" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken hurt 3.wav" id="12_piqbv"]
 [ext_resource type="AudioStream" uid="uid://c2v4gn4gq86qi" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken run away 1.wav" id="13_byos2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xpy87"]
@@ -62,8 +68,13 @@ collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_qyhrq")
 health = 10
-dropped_items = Array[ExtResource("2_ngw0k")]([ExtResource("3_m4dwj")])
+dropped_items = Array[ExtResource("2_t33i1")]([ExtResource("3_l7l25")])
 dropped_item_chances = Array[float]([1.0])
+sounds = Dictionary[String, Array]({
+"hurt": [ExtResource("11_8clun"), ExtResource("11_l7l25"), ExtResource("12_piqbv")],
+"idle": [ExtResource("12_bwky7"), ExtResource("5_ffh4s"), ExtResource("6_rj6jn"), ExtResource("7_ewli2")],
+"run": [ExtResource("13_byos2"), ExtResource("9_t33i1")]
+})
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -33)

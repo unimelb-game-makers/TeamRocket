@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 
 # Stop moving, and prepare to dash. Delay to Dash Attack set in Inspector
 func _on_wind_up_state_entered() -> void:
-	pursuit_effect.play()
+	play_sound("pursuit")
 	velocity = Vector2.ZERO
 	
 func _on_wind_up_state_physics_processing(_delta: float) -> void:
@@ -37,7 +37,7 @@ func _on_wind_up_state_physics_processing(_delta: float) -> void:
 
 # Get direction to player
 func _on_dash_attack_state_entered() -> void:
-	attack_effect.play()
+	play_sound("attack")
 	dash_attack_timer = 0
 	current_dashes += 1
 	dash_attack_vector = global_position.direction_to(target_creature.global_position)
@@ -85,11 +85,11 @@ func _on_attack_state_exited() -> void:
 
 func _on_passive_state_entered() -> void:
 	super ()
-	idle_effect.play()
+	play_sound("idle")
 
 func _on_active_state_entered() -> void:
 	super ()
-	hunt_effect.play()
+	play_sound("hunt")
 
 func _on_dash_attack_hurtbox_body_entered(body: Node2D) -> void:
 	if body is Player:

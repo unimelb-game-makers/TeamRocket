@@ -1,15 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://bitj2gvntpv3j"]
+[gd_scene load_steps=20 format=3 uid="uid://bysb5hk8pdva0"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/EnemyBasic.tscn" id="1_cno7g"]
 [ext_resource type="Script" uid="uid://blek2xolb070t" path="res://scripts/enemy/enemy_dasher.gd" id="2_1leqm"]
 [ext_resource type="Script" uid="uid://cyw3vuu8wb4vn" path="res://addons/godot_state_charts/compound_state.gd" id="2_e75rs"]
 [ext_resource type="Script" uid="uid://di7rh2bj4kanb" path="res://addons/godot_state_charts/atomic_state.gd" id="3_klj4n"]
+[ext_resource type="Script" uid="uid://c7smwqkuyr3jl" path="res://resources/resource_scripts/item.gd" id="3_v7e55"]
 [ext_resource type="Script" uid="uid://dwgr8rprecbfo" path="res://addons/godot_state_charts/transition.gd" id="4_dhk6e"]
+[ext_resource type="Texture2D" uid="uid://dc6mt81avbf6a" path="res://assets/food/mince raw.png" id="4_ytwmp"]
 [ext_resource type="AudioStream" uid="uid://dbdh8lin0ln5n" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/idle/naked deer idle1.wav" id="6_glnb7"]
+[ext_resource type="AudioStream" uid="uid://wy85a0xt2ody" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer attack2.wav" id="6_hxbls"]
 [ext_resource type="AudioStream" uid="uid://b7dsn3hcvd0g3" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer attack1.wav" id="7_1cnyq"]
 [ext_resource type="AudioStream" uid="uid://dwci7x2kvnq3e" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer playerspotted1.wav" id="8_lig7d"]
+[ext_resource type="AudioStream" uid="uid://decvnh6klc5db" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/hunt/naked deer hunt2.wav" id="9_g3avr"]
 [ext_resource type="AudioStream" uid="uid://diehj1recln7s" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/hunt/naked deer hunt1.wav" id="9_ufi2l"]
 [ext_resource type="AudioStream" uid="uid://d0egklm5e28pb" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer attack3.wav" id="10_qqa25"]
+[ext_resource type="AudioStream" uid="uid://kjrp4b8bub1b" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/idle/naked deer idle2.wav" id="11_dn5sq"]
+[ext_resource type="AudioStream" uid="uid://cy4mmvk1usv6t" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/idle/naked deer idle3.wav" id="12_biyxw"]
+[ext_resource type="AudioStream" uid="uid://2hu4kd2mvnlk" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer playerspotted2.wav" id="14_biyxw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ags0e"]
 size = Vector2(34.8333, 11.6667)
@@ -22,6 +29,12 @@ motion_mode = 1
 script = ExtResource("2_1leqm")
 health = 80
 dropped_item_chances = Array[float]([1.0])
+sounds = Dictionary[String, Array]({
+"attack": [ExtResource("7_1cnyq"), ExtResource("6_hxbls"), ExtResource("10_qqa25")],
+"hunt": [ExtResource("9_ufi2l"), ExtResource("9_g3avr")],
+"idle": [ExtResource("6_glnb7"), ExtResource("11_dn5sq"), ExtResource("12_biyxw")],
+"pursuit": [ExtResource("8_lig7d"), ExtResource("14_biyxw")]
+})
 
 [node name="StateController" parent="." index="0"]
 position = Vector2(0, -140)
