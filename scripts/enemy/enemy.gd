@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var base_damage: int = 10
 @export var dropped_items: Array[Item]
 @export var dropped_item_chances: Array[float]
-## If this value + player's sound loudness larger than distance to player, enemy can heard player. 
+## If this value + player's sound loudness larger than distance to player, enemy can heard player.
 ## Should keep it low for most enemies, and increased it for special enemies (ex: a cat-like / bat-like enemy)
 @export var hearing_sensitivity: float = 10
 @export var sounds: Dictionary[String, Array]
@@ -40,7 +40,7 @@ func die() -> void:
 	drop_item()
 	Globals.enemy_handler.remove_enemy_from_list(self)
 	queue_free()
-	
+
 func drop_item():
 	var item = randomize_dropped_item()
 	if item:
@@ -49,7 +49,7 @@ func drop_item():
 		get_tree().get_first_node_in_group("ItemHandler").add_child(dropped_item)
 		dropped_item.set_item()
 		dropped_item.position = global_position
-	
+
 func randomize_dropped_item():
 	var random = randf_range(0, 1)
 	# Calculate total weights distribution
@@ -62,7 +62,7 @@ func randomize_dropped_item():
 	for i in range(total_weights.size()):
 		if (total_weights[0] > random):
 			return dropped_items[i]
-	
+
 	return null
 
 func play_sound(sound_name: String):
@@ -75,6 +75,6 @@ func play_sound(sound_name: String):
 	sound_player.play(0.0)
 	await get_tree().create_timer(sound_library[random].get_length()).timeout
 	sound_player.queue_free()
-	
+
 func alerted(_sound_position: Vector2):
 	return

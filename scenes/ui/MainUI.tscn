@@ -26,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_4xgkk")
 
 [node name="PlayerUI" type="Control" parent="."]
@@ -46,21 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="PlayerUI"]
-visible = false
-modulate = Color(0.230315, 0.230315, 0.230315, 1)
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-offset_right = 168.0
-offset_bottom = 168.0
-max_value = 50.0
-value = 12.0
-fill_mode = 6
-nine_patch_stretch = true
-texture_under = ExtResource("3_8nnro")
-texture_progress = ExtResource("3_8nnro")
-tint_under = Color(1, 1, 1, 0)
+mouse_filter = 2
 
 [node name="HealthBar" type="TextureProgressBar" parent="PlayerUI"]
 layout_mode = 1
@@ -68,6 +55,7 @@ offset_left = 32.0
 offset_top = 24.0
 offset_right = 392.0
 offset_bottom = 44.0
+mouse_filter = 2
 value = 25.0
 nine_patch_stretch = true
 stretch_margin_left = 10
@@ -100,6 +88,7 @@ offset_left = 24.0
 offset_top = 56.0
 offset_right = 124.0
 offset_bottom = 156.0
+mouse_filter = 2
 max_value = 1020.0
 value = 1020.0
 fill_mode = 5
@@ -141,6 +130,7 @@ offset_right = -8.0
 offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 2
 color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 
 [node name="GunTexture" type="TextureRect" parent="PlayerUI/GunInfo"]
@@ -156,6 +146,7 @@ offset_right = 120.0
 offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_kvrx6")
 expand_mode = 3
 
