@@ -1,22 +1,78 @@
-[gd_scene load_steps=3 format=3 uid="uid://bekoh4wmvaliu"]
+[gd_scene load_steps=7 format=3 uid="uid://c7ikkerlqq6g6"]
 
-[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="1_ix7ql"]
-[ext_resource type="Script" uid="uid://corijshwrv5gx" path="res://scripts/cooking/BakeActivity.gd" id="1_rkf7a"]
+[ext_resource type="Script" uid="uid://dqw377e8ohg76" path="res://scripts/cooking/bake_activity.gd" id="1_bekao"]
+[ext_resource type="Resource" uid="uid://dgk2lsddimyuc" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_ClippingEachOther.tres" id="2_bekao"]
+[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="3_62bgj"]
+[ext_resource type="PackedScene" uid="uid://b7bgjj0x4lljg" path="res://scenes/cooking/workbenches/oven/OvenTracingLine.tscn" id="4_mvfxb"]
+[ext_resource type="Texture2D" uid="uid://bjfcakcjjsl7s" path="res://assets/placeholder/star.png" id="5_cv35t"]
 
-[node name="Activity" type="Control"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_x7xau"]
+radius = 1.0
+
+[node name="Oven" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rkf7a")
+script = ExtResource("1_bekao")
+oven_tracing_line_data = ExtResource("2_bekao")
 
-[node name="Pot" type="Sprite2D" parent="."]
-position = Vector2(638, 349)
-texture = ExtResource("1_ix7ql")
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.14278, 0.301469, 0.168023, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_62bgj")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="OvenTracingLine" parent="." instance=ExtResource("4_mvfxb")]
+
+[node name="PlayerCursor" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerCursor"]
+modulate = Color(0.909804, 0.121569, 0.803922, 1)
+scale = Vector2(0.171875, 0.171875)
+texture = ExtResource("5_cv35t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCursor"]
+shape = SubResource("CircleShape2D_x7xau")
+
+[node name="CountDown" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -27.9167
+offset_right = 0.5
+offset_bottom = 27.9167
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 27.0
+grow_horizontal = 0
+value = 100.0
