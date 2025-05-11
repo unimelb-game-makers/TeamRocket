@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cwuer4u67t6om"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_odjdd"]
+[ext_resource type="Texture2D" uid="uid://b71iudgd1y7f4" path="res://assets/food/curry_powder.png" id="2_k17qb"]
+
+[resource]
+script = ExtResource("1_odjdd")
+ingredient_type = 2
+ingredient_category = 6
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_k17qb")
+item_id = "curry_powder"
+item_name = "Curry Powder"
+description = "Used for Making Curry"
+weight = 0.2
+rarity = 1
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

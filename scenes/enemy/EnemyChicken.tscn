@@ -14,9 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://c1an4ursjb2fq" path="res://assets/creatures/animal_headless_chicken/chicken6.png" id="7_cebfr"]
 [ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="7_rj6jn"]
 [ext_resource type="Texture2D" uid="uid://c86ut846p2fsl" path="res://assets/creatures/animal_headless_chicken/chicken7.png" id="8_nq1op"]
-[ext_resource type="AudioStream" uid="uid://xs5130vgb5q0" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 1.wav" id="15_rj6jn"]
-[ext_resource type="AudioStream" uid="uid://beddvptril7ql" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken hurt 1.wav" id="16_ewli2"]
-[ext_resource type="AudioStream" uid="uid://c2v4gn4gq86qi" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken run away 1.wav" id="17_t33i1"]
+[e[ext_resource type="AudioStream" uid="uid://ic1n4jn6pl0j" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken run away 2.wav" id="9_t33i1"]
+[ext_resource type="AudioStream" uid="uid://beddvptril7ql" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken hurt 1.wav" id="11_8clun"]
+[ext_resource type="AudioStream" uid="uid://wq41n71vl7y3" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken hurt 2.wav" id="11_l7l25"]
+[ext_resource type="AudioStream" uid="uid://xs5130vgb5q0" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 1.wav" id="12_bwky7"]
+[ext_resource type="AudioStream" uid="uid://c5s2plhkq2kjw" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken hurt 3.wav" id="12_piqbv"]
+[ext_resource type="AudioStream" uid="uid://c2v4gn4gq86qi" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken run away 1.wav" id="13_byos2"]
 [ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="18_ewli2"]
 
 [sub_resource type="Resource" id="Resource_uhg0u"]
@@ -84,6 +87,11 @@ active_speed = 150
 max_health = 15
 dropped_items = Array[ExtResource("2_ngw0k")]([SubResource("Resource_uhg0u")])
 dropped_item_chances = Array[float]([1.0])
+sounds = Dictionary[String, Array]({
+"hurt": [ExtResource("11_8clun"), ExtResource("11_l7l25"), ExtResource("12_piqbv")],
+"idle": [ExtResource("12_bwky7"), ExtResource("5_ffh4s"), ExtResource("6_rj6jn"), ExtResource("7_ewli2")],
+"run": [ExtResource("13_byos2"), ExtResource("9_t33i1")]
+})
 
 [node name="Shadow" type="Sprite2D" parent="." index="0"]
 modulate = Color(0, 0, 0, 0.529412)
@@ -171,15 +179,15 @@ delay_in_seconds = "0.0"
 [node name="SoundEffects" type="Node2D" parent="." index="8"]
 
 [node name="IdleEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="0"]
-stream = ExtResource("15_rj6jn")
+stream = ExtResource("12_bwky7")
 bus = &"Effects"
 
 [node name="HurtEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="1"]
-stream = ExtResource("16_ewli2")
+stream = ExtResource("11_8clun")
 bus = &"Effects"
 
 [node name="RunEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="2"]
-stream = ExtResource("17_t33i1")
+stream = ExtResource("13_byos2")
 bus = &"Effects"
 
 [node name="StopRunTimer" type="Timer" parent="." index="9"]

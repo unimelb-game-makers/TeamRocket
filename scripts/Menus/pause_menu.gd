@@ -3,8 +3,8 @@ extends Control
 @onready var main_container: Control = $MainPauseMenu
 @onready var setting_menu: SettingMenu = $SettingMenu
 
-func _process(_delta: float) -> void:
-	if (Input.is_action_just_pressed("pause")):
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
 		if (get_tree().paused):
 			get_tree().paused = false
 			hide()

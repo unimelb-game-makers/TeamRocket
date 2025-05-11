@@ -13,8 +13,8 @@ class_name CookingScene extends Control
 
 @export var activity_name: String
 @export var activity_animated_texture: AnimatedTexture
-@export var activity_res: Activity
-@export var activity_scene: PackedScene
+
+@export var crafting_station: CraftingStation
 
 var recipe: Recipe
 var activity_is_in_progress = false
@@ -29,7 +29,7 @@ func _ready() -> void:
 		activity_animated_sprite.texture = activity_animated_texture
 
 func reset():
-	ingredient_handler.max_slots = activity_res.max_ingredients
+	ingredient_handler.max_slots = crafting_station.max_ingredients
 	ingredient_handler.update_slots()
 	inventory_container.update_inventory_list()
 	activity.reset_game()
@@ -49,15 +49,15 @@ func add_item(item: Ingredient, _amount: int):
 func finish():
 	activity_is_in_progress = false
 	
-	var output_item = recipe.generate_item(ingredient_handler.selected_ingredients)
+	var output_item = crafting_station.craft_output(ingredient_handler.selected_ingredients)
 	complete.emit(output_item)
 	InventoryGlobal.add_item(output_item, 1)
 	ingredient_handler.clear_slots()
 	reset()
 
 func _on_start_button_pressed() -> void:
-	recipe = activity_res.match_recipe(ingredient_handler.selected_ingredients)
-	if (recipe):
+	var output_item = crafting_station.craft_output(ingredient_handler.selected_ingredients)
+	if (output_item):
 		start_button.visible = false
 		ingredient_handler.visible = false
 		activity.visible = true
@@ -68,7 +68,7 @@ func _on_start_button_pressed() -> void:
 		chosen_food_area.visible = false
 		
 		activity_is_in_progress = true
-		activity.start(ingredient_handler.selected_ingredients, recipe.generate_item(ingredient_handler.selected_ingredients))
+		activity.start(ingredient_handler.selected_ingredients, output_item)
 
 func _on_ingredient_handler_update_list() -> void:
 	inventory_container.update_inventory_list()

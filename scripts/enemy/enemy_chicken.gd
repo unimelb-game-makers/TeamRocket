@@ -47,7 +47,7 @@ func _on_chase_radius_area_exited(_area: Area2D) -> void:
 
 func damage(value) -> void:
 	super (value)
-	hurt_effect.play()
+	play_sound("hurt")
 	if target_creature != null:
 		direction = target_creature.global_position.direction_to(global_position)
 	else:
