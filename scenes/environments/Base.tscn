@@ -27,7 +27,6 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="UI" parent="GameHandler/CanvasLayer" instance=ExtResource("2_a8oao")]
-mouse_filter = 2
 
 [node name="ItemHandler" type="Node" parent="." groups=["ItemHandler"]]
 script = ExtResource("1_p3mrr")

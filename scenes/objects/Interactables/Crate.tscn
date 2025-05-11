@@ -53,6 +53,7 @@ collision_mask = 0
 shape = SubResource("RectangleShape2D_hqr6h")
 
 [node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

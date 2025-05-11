@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=24 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]

@@ -180,21 +180,7 @@ to = NodePath("../../Active")
 event = &"on_attack_finish"
 delay_in_seconds = "0.0"
 
-[node name="SoundEffects" type="Node2D" parent="." index="8"]
-
-[node name="IdleEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="0"]
-stream = ExtResource("12_bwky7")
-bus = &"Effects"
-
-[node name="HurtEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="1"]
-stream = ExtResource("11_8clun")
-bus = &"Effects"
-
-[node name="RunEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="2"]
-stream = ExtResource("13_byos2")
-bus = &"Effects"
-
-[node name="StopRunTimer" type="Timer" parent="." index="9"]
+[node name="StopRunTimer" type="Timer" parent="." index="8"]
 one_shot = true
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
