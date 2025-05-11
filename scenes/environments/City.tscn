@@ -246,7 +246,7 @@ position = Vector2(182, 3938)
 [node name="Player" parent="." index="6"]
 position = Vector2(1727, 1598)
 
-[node name="Camera2D" parent="Player" index="16" groups=["Camera"]]
+[node name="Camera2D" parent="Player" index="17" groups=["Camera"]]
 limit_left = 0
 limit_top = -300
 limit_right = 5000

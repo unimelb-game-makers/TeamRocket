@@ -770,6 +770,9 @@ position = Vector2(0, -96)
 
 [node name="SlowDebuffTimer" type="Timer" parent="DebuffTimer"]
 
+[node name="AfterHurtInvulnerableTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]
 [connection signal="timeout" from="Rifle/ReloadTimer" to="Rifle" method="_on_reload_timer_timeout"]
@@ -791,3 +794,4 @@ position = Vector2(0, -96)
 [connection signal="timeout" from="ChannelTimer" to="." method="_on_channel_timer_timeout"]
 [connection signal="timeout" from="FootstepSoundEffect/FootstepTimer" to="." method="_on_footstep_timer_timeout"]
 [connection signal="timeout" from="DebuffTimer/SlowDebuffTimer" to="." method="_on_slow_debuff_timer_timeout"]
+[connection signal="timeout" from="AfterHurtInvulnerableTimer" to="." method="_on_after_hurt_invulnerable_timer_timeout"]
