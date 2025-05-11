@@ -68,7 +68,7 @@ func randomize_dropped_item():
 func play_sound(sound_name: String):
 	var sound_library: Array = sounds[sound_name]
 	var sound_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
-	var random = randi_range(0, len(sound_library)-1)
+	var random = randi_range(0, len(sound_library) - 1)
 	sound_player.bus = "Effects"
 	add_child(sound_player)
 	sound_player.stream = sound_library[random]

@@ -1,41 +1,42 @@
-[gd_scene load_steps=30 format=3 uid="uid://bysb5hk8pdva0"]
+[gd_scene load_steps=35 format=3 uid="uid://bysb5hk8pdva0"]
 
 [ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_cno7g"]
 [ext_resource type="Script" uid="uid://blek2xolb070t" path="res://scripts/enemy/enemy_dasher.gd" id="2_1leqm"]
-[ext_resource type="Script" uid="uid://cyw3vuu8wb4vn" path="res://addons/godot_state_charts/compound_state.gd" id="2_e75rs"]
-[ext_resource type="Script" uid="uid://di7rh2bj4kanb" path="res://addons/godot_state_charts/atomic_state.gd" id="3_klj4n"]
-[ext_resource type="Script" uid="uid://c7smwqkuyr3jl" path="res://resources/resource_scripts/item.gd" id="3_v7e55"]
-[ext_resource type="Script" uid="uid://dwgr8rprecbfo" path="res://addons/godot_state_charts/transition.gd" id="4_dhk6e"]
-[ext_resource type="Texture2D" uid="uid://dc6mt81avbf6a" path="res://assets/food/mince raw.png" id="4_ytwmp"]
+[ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="2_e75rs"]
+[ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="3_klj4n"]
+[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="3_v7e55"]
+[ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="4_dhk6e"]
+[ext_resource type="Texture2D" uid="uid://dc6mt81avbf6a" path="res://assets/food/mince_raw.png" id="4_ytwmp"]
 [ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="5_hxbls"]
 [ext_resource type="Texture2D" uid="uid://b0yjyft6548gl" path="res://assets/creatures/enemy_longneck/longneck_attack.png" id="6_fkyv3"]
 [ext_resource type="AudioStream" uid="uid://dbdh8lin0ln5n" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/idle/naked deer idle1.wav" id="6_glnb7"]
-[ext_resource type="Texture2D" uid="uid://b6wifdpvel7yy" path="res://assets/creatures/enemy_longneck/longneck1.png" id="6_qcvpl"]
 [ext_resource type="AudioStream" uid="uid://wy85a0xt2ody" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer attack2.wav" id="6_hxbls"]
+[ext_resource type="Texture2D" uid="uid://b6wifdpvel7yy" path="res://assets/creatures/enemy_longneck/longneck1.png" id="6_qcvpl"]
 [ext_resource type="AudioStream" uid="uid://b7dsn3hcvd0g3" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer attack1.wav" id="7_1cnyq"]
 [ext_resource type="Texture2D" uid="uid://y7sr1mw8c2ie" path="res://assets/creatures/enemy_longneck/longneck2.png" id="7_fkyv3"]
 [ext_resource type="AudioStream" uid="uid://dwci7x2kvnq3e" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer playerspotted1.wav" id="8_lig7d"]
 [ext_resource type="Texture2D" uid="uid://ctbgoaovtkkyv" path="res://assets/creatures/enemy_longneck/longneck3.png" id="8_sliql"]
+[ext_resource type="AudioStream" uid="uid://decvnh6klc5db" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/hunt/naked deer hunt2.wav" id="9_g3avr"]
 [ext_resource type="Texture2D" uid="uid://bt3me43c3msnp" path="res://assets/creatures/enemy_longneck/longneck4.png" id="9_o87wb"]
 [ext_resource type="AudioStream" uid="uid://diehj1recln7s" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/hunt/naked deer hunt1.wav" id="9_ufi2l"]
 [ext_resource type="AudioStream" uid="uid://d0egklm5e28pb" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer attack3.wav" id="10_qqa25"]
 [ext_resource type="Texture2D" uid="uid://cqh231pj018o5" path="res://assets/creatures/enemy_longneck/longneck5.png" id="10_ul61e"]
 [ext_resource type="Texture2D" uid="uid://boixyyp84v32v" path="res://assets/creatures/enemy_longneck/longneck6.png" id="11_b5fjj"]
-[ext_resource type="Texture2D" uid="uid://bftt6dkjddhcb" path="res://assets/creatures/enemy_longneck/longneck7.png" id="12_1ro2s"]
-[ext_resource type="Texture2D" uid="uid://dvh6bemwvtmuy" path="res://assets/creatures/enemy_longneck/longneck_prepare_dash.png" id="13_1eojp"]
-[ext_resource type="AudioStream" uid="uid://decvnh6klc5db" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/hunt/naked deer hunt2.wav" id="9_g3avr"]
 [ext_resource type="AudioStream" uid="uid://kjrp4b8bub1b" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/idle/naked deer idle2.wav" id="11_dn5sq"]
+[ext_resource type="Texture2D" uid="uid://bftt6dkjddhcb" path="res://assets/creatures/enemy_longneck/longneck7.png" id="12_1ro2s"]
 [ext_resource type="AudioStream" uid="uid://cy4mmvk1usv6t" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/idle/naked deer idle3.wav" id="12_biyxw"]
+[ext_resource type="Texture2D" uid="uid://dvh6bemwvtmuy" path="res://assets/creatures/enemy_longneck/longneck_prepare_dash.png" id="13_1eojp"]
 [ext_resource type="AudioStream" uid="uid://2hu4kd2mvnlk" path="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer playerspotted2.wav" id="14_biyxw"]
 
 [sub_resource type="Resource" id="Resource_uhg0u"]
 script = ExtResource("3_v7e55")
-item_id = 20
 texture = ExtResource("4_ytwmp")
+item_id = ""
 item_name = "Raw Ground Beef"
 description = "It looks like any other minced meat despite its questionable origin. Smells ok-ish.\\n“You can put almost anything in the mince and they won't notice the difference - Suzan, No-Waste Butcher Shop”"
 weight = 0.5
 rarity = 0
+quality = 0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hu0vx"]
 animations = [{

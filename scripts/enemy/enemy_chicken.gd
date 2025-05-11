@@ -2,14 +2,15 @@ extends BasicEnemy
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var detection_area: Area2D = $DetectionRadius
-@onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
-@onready var idle_effect: AudioStreamPlayer2D = $SoundEffects/IdleEffect
-@onready var run_effect: AudioStreamPlayer2D = $SoundEffects/RunEffect
 @onready var stop_run_timer: Timer = $StopRunTimer
 
 var direction = Vector2(0, 0)
 var runaway_duration = 5.0
 
+
+func _on_idle_state_entered() -> void:
+	super ()
+	play_sound("idle")
 
 func _on_runaway_state_physics_processing(_delta: float) -> void:
 	if target_creature != null:

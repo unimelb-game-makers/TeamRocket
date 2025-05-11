@@ -2,11 +2,6 @@ extends BasicEnemy
 
 @export var range_before_dash_attack = 500
 
-@onready var idle_effect: AudioStreamPlayer2D = $SoundEffects/IdleEffect
-@onready var attack_effect: AudioStreamPlayer2D = $SoundEffects/AttackEffect
-@onready var pursuit_effect: AudioStreamPlayer2D = $SoundEffects/PursuitEffect
-@onready var hunt_effect: AudioStreamPlayer2D = $SoundEffects/HuntEffect
-@onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
 @onready var dash_attack_area: Area2D = $DashAttackArea
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -95,7 +90,7 @@ func _on_active_state_entered() -> void:
 
 func damage(value: int):
 	super (value)
-	hurt_effect.play()
+	play_sound("hurt")
 
 
 func _on_dash_attack_area_body_entered(body: Node2D) -> void:
