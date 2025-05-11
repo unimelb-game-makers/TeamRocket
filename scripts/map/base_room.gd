@@ -37,17 +37,6 @@ func _ready() -> void:
 	# Verify each socket only has 1 character
 	for i in sockets:
 		assert(len(i) <= 1, "Socket must have 1 character")
-	
-	## Spawn player and camera
-	#var s: Player = PLAYER.instantiate()
-	#add_child(s)
-	#s.global_position = spawn.global_position
-	#player = s
-	#
-	#var newcam = Camera2D.new()
-	##newcam.make_current()
-	#s.add_child(newcam)
-	#newcam.global_position = s.global_position
 
 func connect_doors(directions: Array):
 	for i in range(len(doors)):
