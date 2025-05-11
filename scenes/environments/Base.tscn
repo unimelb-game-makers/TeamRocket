@@ -14,8 +14,6 @@ y_sort_enabled = true
 [node name="GameHandler" type="Node" parent="."]
 script = ExtResource("1_eaqps")
 
-[node name="GameTimer" type="Timer" parent="GameHandler"]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="GameHandler"]
 visible = false
 
@@ -70,6 +68,5 @@ position = Vector2(533, 480)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
-[connection signal="timeout" from="GameHandler/GameTimer" to="GameHandler" method="_on_game_timer_timeout"]
 [connection signal="channel_complete" from="Player" to="GameHandler" method="_on_player_channel_complete"]
 [connection signal="death" from="Player" to="GameHandler" method="_on_player_death"]
