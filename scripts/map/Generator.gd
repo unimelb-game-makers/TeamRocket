@@ -160,8 +160,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	while sockets != neighbors_array:
 		var temp = sockets.pop_front()
 		sockets.append(temp)
-		#var temp = sockets.pop_back()
-		#sockets.insert(0, temp)
+
 		selected_room.rotate(-PI/2)
 		
 		total_rotations += -PI/2
@@ -169,7 +168,6 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 		var temp2 = doors.pop_front()
 		doors.append(temp2)
 	selected_room.sockets = sockets
-	#selected_room.doors = doors
 	
 	print("Sockets: " + str(sockets))
 	print("Neighbors array: " + str(neighbors_array))
@@ -191,10 +189,8 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	current_selected = selected_room
 	print("Current position" + str(coords))
 	
-	#add_child(selected_room)
 	call_deferred("add_child", selected_room)
 	
-	# Spawn player here.
 	# Spawn player and camera
 	var s: Player = PLAYER.instantiate()
 	#add_child(s)
@@ -202,23 +198,17 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	s.global_position = selected_room.spawn.global_position
 	currplayer = s
 	
-	
 	#Spawn player at incoming door
 	var incoming_direction = Vector2.ZERO - outgoing_direction
 	if incoming_direction != Vector2.ZERO:
 		assert(incoming_direction.is_normalized())
 		var door_index = directions.find(incoming_direction)
-		#var chosen_index = len(selected_room.doors) - door_index - 1
-		#currplayer.global_position = selected_room.doors[chosen_index].global_position
 		currplayer.global_position = selected_room.get_door_by_direction(incoming_direction).global_position
-		
 	
 	var newcam = Camera2D.new()
 	#newcam.make_current()
-	#s.add_child(newcam)
 	currplayer.call_deferred("add_child", newcam)
 	newcam.call_deferred("set_global_position", currplayer.global_position)
-	#newcam.global_position = s.global_position
 	currcam = newcam
 
 func go_to_room(direction: Vector2):
@@ -233,10 +223,6 @@ func go_to_room(direction: Vector2):
 
 func player_exit():
 	print("HERE")
-	#if just_teleported1 == false:
-		#just_teleported1 = true
-	#if just_teleported2 == false:
-		#just_teleported1 = false
 	if just_teleported1 == true and just_teleported2 == false:
 		just_teleported2 = true
 		return
