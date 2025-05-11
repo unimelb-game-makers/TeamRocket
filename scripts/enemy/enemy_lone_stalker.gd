@@ -11,6 +11,7 @@ extends BasicEnemy
 const AIM_THRESHOLD_IN_DEGREE = 90
 const RUNAWAY_SPEED_MULT = 5.0
 const STALK_SPEED_MULT = 0.5
+const FAST_ANIM_SPEED_SCALE = 3.0
 
 var anim_sprite_original_pos: Vector2
 var is_attacking = false
@@ -48,11 +49,14 @@ func _on_chase_state_physics_processing(delta: float) -> void:
 	if target_creature != null and not is_attacking:
 		if committed_to_attack:
 			movement_speed = active_speed
+			anim_sprite.speed_scale = FAST_ANIM_SPEED_SCALE
 		else:
 			if check_player_moving():
 				movement_speed = 0
+				anim_sprite.speed_scale = 0
 			else:
 				movement_speed = active_speed * STALK_SPEED_MULT
+				anim_sprite.speed_scale = 1
 	if target_creature == null:
 		statechart.send_event("to_search")
 		return
@@ -131,6 +135,7 @@ func _on_dash_attack_area_body_entered(body: Node2D) -> void:
 
 func _on_runaway_state_entered() -> void:
 	movement_speed = active_speed
+	anim_sprite.speed_scale = FAST_ANIM_SPEED_SCALE
 	stop_run_timer.start(runaway_duration)
 	if target_creature != null:
 		runaway_direction = target_creature.global_position.direction_to(global_position)
@@ -143,6 +148,9 @@ func _on_runaway_state_physics_processing(_delta: float) -> void:
 	velocity = runaway_direction * movement_speed * RUNAWAY_SPEED_MULT
 	move_and_slide()
 
+
+func _on_runaway_state_exited() -> void:
+	anim_sprite.speed_scale = 1
 
 func _on_stop_run_timer_timeout() -> void:
 	statechart.send_event("to_chase")

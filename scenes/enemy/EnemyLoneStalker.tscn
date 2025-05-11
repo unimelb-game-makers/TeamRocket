@@ -25,7 +25,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pr8e8"]
-size = Vector2(16, 11)
+size = Vector2(34.5, 8.16667)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dafq6"]
 radius = 1935.3
@@ -34,10 +34,10 @@ radius = 1935.3
 radius = 2993.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7cyrg"]
-size = Vector2(112, 290)
+size = Vector2(259, 158)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_otmmk"]
-size = Vector2(140, 162)
+size = Vector2(173, 92)
 
 [node name="EnemyLoneStalker" instance=ExtResource("1_dafq6")]
 collision_mask = 4
@@ -65,9 +65,9 @@ ignore_state_changes = true
 ignore_transitions = true
 
 [node name="Shadow" type="Sprite2D" parent="." index="1"]
-modulate = Color(0, 0, 0, 0.529412)
-position = Vector2(-2.5, 31)
-scale = Vector2(1.23438, 0.555483)
+modulate = Color(0, 0, 0, 0.415686)
+position = Vector2(-3, 12)
+scale = Vector2(3.46875, 0.555483)
 texture = ExtResource("3_otmmk")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
@@ -76,7 +76,7 @@ sprite_frames = SubResource("SpriteFrames_7cyrg")
 frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="3"]
-position = Vector2(-2, -4)
+position = Vector2(-5.5, -2.5)
 shape = SubResource("RectangleShape2D_pr8e8")
 
 [node name="CollisionShape2D" parent="DetectionRadius" index="0"]
@@ -156,7 +156,7 @@ event = &"to_chase"
 delay_in_seconds = "0.0"
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-position = Vector2(-5, -113)
+position = Vector2(-1.5, -47)
 shape = SubResource("RectangleShape2D_7cyrg")
 
 [node name="DashAttackArea" type="Area2D" parent="." index="10"]
@@ -165,7 +165,7 @@ collision_layer = 2
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackArea" index="0"]
-position = Vector2(-7, 70)
+position = Vector2(-23.5, 100)
 shape = SubResource("RectangleShape2D_otmmk")
 debug_color = Color(0.701961, 0.00392157, 0.0196078, 0.25098)
 
@@ -175,6 +175,7 @@ one_shot = true
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Chase" to="." method="_on_chase_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Active/Chase" to="." method="_on_chase_state_exited"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Runaway" to="." method="_on_runaway_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Active/Runaway" to="." method="_on_runaway_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Active/Runaway" to="." method="_on_runaway_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]
