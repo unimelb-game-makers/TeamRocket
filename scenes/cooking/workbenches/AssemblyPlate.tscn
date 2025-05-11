@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bhlarqiey25gc"]
+[gd_scene load_steps=13 format=3 uid="uid://bhlarqiey25gc"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_st23u"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_38lgk"]
 [ext_resource type="Texture2D" uid="uid://3qh2j5dy8t8i" path="res://assets/workstations/assembly_plate/assembly_plate.png" id="2_nv7a3"]
 [ext_resource type="PackedScene" uid="uid://bm1lm8py3bd01" path="res://scenes/cooking/activities/AssemblyActivity.tscn" id="3_v3edm"]
-[ext_resource type="Resource" uid="uid://1y2xwfs43rg8" path="res://resources/activities/assembly.tres" id="4_ej8l1"]
+[ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="4_30h3e"]
+[ext_resource type="Resource" uid="uid://bcmx8od3o8gv3" path="res://resources/cooking/recipes/ingredients/spice_powder_recipe.tres" id="5_3hbae"]
+[ext_resource type="Resource" uid="uid://d3b4eailp7hg2" path="res://resources/cooking/recipes/full_foods/curry_rec.tres" id="6_3hbae"]
+[ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="6_erx1b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ee4c5"]
 size = Vector2(96, 72)
@@ -25,6 +28,12 @@ shader_parameter/max_or_add = false
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_frx3y"]
 frame_0/texture = ExtResource("2_nv7a3")
 
+[sub_resource type="Resource" id="Resource_vhiap"]
+script = ExtResource("6_erx1b")
+recipes = Array[ExtResource("4_30h3e")]([ExtResource("5_3hbae"), ExtResource("6_3hbae")])
+max_ingredients = 5
+metadata/_custom_type_script = "uid://c0shkqininnkd"
+
 [node name="AssemblyPlate" instance=ExtResource("1_st23u")]
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -40,7 +49,7 @@ texture = ExtResource("2_nv7a3")
 visible = false
 activity_name = "Assembly plate"
 activity_animated_texture = SubResource("AnimatedTexture_frx3y")
-activity_res = ExtResource("4_ej8l1")
+crafting_station = SubResource("Resource_vhiap")
 
 [node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("3_v3edm")]
 visible = false

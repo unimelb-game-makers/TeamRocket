@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://djfvdkf82lpn7"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_3417i"]
+[ext_resource type="Texture2D" uid="uid://88373xm28qh0" path="res://assets/food/rice.png" id="2_nstvt"]
+
+[resource]
+script = ExtResource("1_3417i")
+ingredient_type = 0
+ingredient_category = 5
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_nstvt")
+item_id = "rice"
+item_name = "Rice"
+description = "raw rice grains"
+weight = 0.5
+rarity = 0
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

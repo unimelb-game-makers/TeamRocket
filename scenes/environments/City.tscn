@@ -1,6 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=36 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
+[ext_resource type="AudioStream" uid="uid://csjr1bs7pcsax" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg" id="2_1ecv6"]
+[ext_resource type="AudioStream" uid="uid://diyeciedxupvy" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg" id="3_8hg87"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="3_pa65j"]
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="4_2cddj"]
 [ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="5_oq3tf"]
@@ -17,17 +19,41 @@
 [ext_resource type="PackedScene" uid="uid://drxotm8osb7q0" path="res://scenes/objects/Lights/StreetlightRight.tscn" id="16_4lsvx"]
 [ext_resource type="PackedScene" uid="uid://cd6fc47tx6cyd" path="res://scenes/objects/Lake.tscn" id="18_l3vkc"]
 [ext_resource type="PackedScene" uid="uid://boou7kaxracje" path="res://scenes/objects/Buildings/Building.tscn" id="19_r84yg"]
-[ext_resource type="Script" uid="uid://c7smwqkuyr3jl" path="res://resources/resource_scripts/item.gd" id="19_ryaas"]
+[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="19_ryaas"]
 [ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/EnemyDasher.tscn" id="19_sv1o8"]
 [ext_resource type="PackedScene" uid="uid://b0q3wyjdxrql8" path="res://scenes/objects/Buildings/Building2.tscn" id="20_wckc8"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="21_5cojw"]
 [ext_resource type="PackedScene" uid="uid://cxqyl5m3yie2u" path="res://scenes/objects/Buildings/Building3.tscn" id="21_qrjp7"]
 [ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="22_ykjv2"]
-[ext_resource type="Resource" uid="uid://by7vmtqhltm7q" path="res://resources/items/ingredients/carrot.tres" id="23_qgik8"]
-[ext_resource type="Resource" uid="uid://cxonskrtngeeq" path="res://resources/items/ingredients/onion.tres" id="24_0h88t"]
-[ext_resource type="Script" uid="uid://bbo7hysmawq83" path="res://scripts/player/camera_control.gd" id="24_s3lfa"]
-[ext_resource type="Resource" uid="uid://dmukk24cvqle6" path="res://resources/items/ingredients/tomato.tres" id="25_66u1c"]
-[ext_resource type="Resource" uid="uid://5xdf7xnpphar" path="res://resources/items/ingredients/spaghetti_raw.tres" id="26_hb3rh"]
+[ext_resource type="Script" uid="uid://dyueaksi23ne8" path="res://scripts/player/camera_control.gd" id="24_s3lfa"]
+[ext_resource type="Resource" uid="uid://birn1wyb2g5bv" path="res://resources/cooking/ingredients/onion.tres" id="26_bdj2n"]
+[ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="27_7s0ty"]
+[ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="28_qgik8"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_y1gkg"]
+clip_count = 2
+clip_0/name = &"Central District Intro"
+clip_0/stream = ExtResource("2_1ecv6")
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"Central District Loop"
+clip_1/stream = ExtResource("3_8hg87")
+clip_1/auto_advance = 1
+clip_1/next_clip = 1
+_transitions = {
+Vector2i(0, 1): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 3,
+"to_time": 1
+},
+Vector2i(1, 1): {
+"fade_beats": 1.0,
+"fade_mode": 4,
+"from_time": 3,
+"to_time": 1
+}
+}
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5hw28"]
 vertices = PackedVector2Array(4670.1, 3297.09, 4324.31, 3285.91, 1275, 3177.5, 1275, 3110.5, 1775, 2620, 590.75, 2956, 915.25, 2768.75, 1403, 2620, 4171, 723.5, 4236, 723.5, 4263, 1233, 4028, 1233, 2720, 1203, 2296.5, 1009.5, 2296.5, 947, 3873, 1844.5, 3814, 1844.5, 3183.85, 1750.21, 3160.48, 1612.67, 4028, 1366, 4263, 1366, 4236, 658.5, 4171, 658.5, 3762, 520, 3762, 380, 4030, 137, 4446, 137, 5039.98, -38.0078, 5033.01, 4038.96, 5022.19, 4019.01, 5012.9, 3518.49, 700.75, 2768.75, 590.75, 2772, 4086.22, 3432.81, 3873, 1914.5, 3879.14, 3598.87, 3640.42, 3750.6, 3814, 1914.5, 1775, 2493, 2503, 1443, 2740.9, 1512.15, 2947.95, 1794.44, 1403, 2493, 1077, 1770, 1077, 1588, 2110, 1443, -32.0078, 4019.03, 3564.77, 4016.98, 2969.17, 1778.87, 2970.47, 1786.48, 915.25, 2623.25, 1197, 3177.5, 2916.07, 1383.67, 2720, 1354, 2261, 1203, 2235.5, 1009.5, -38.9766, -44.9766, 6, -44.9219, 6, 218, 3257, 231, 3257, -40.4531, 4030, -39.3906, 3280, 380, 4446, -38.8203, 422, 218, 422, -44.3438, 462, -44.2891, 462, 214, 1578, 214, 1578, -42.75, 1617, -42.7109, 1617, 231, 2261, 1269, 2110, 1269, 2503, 1354, 730, 2623.25, 730, 2566, 516.25, 2674, 700.75, 2674, 321.5, 2772, 321.5, 2706.5, 94.5, 2867.5, 243.25, 2867.5, 243.25, 2956, 1197, 3110.5, 3280, 520, 447, 1770, 516.25, 2566, 2235.5, 947, 94.5, 2706.5, 447, 1588, 3092.49, 1624.21)
@@ -51,6 +77,8 @@ distance = -4000.0
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler" index="1"]
 process_mode = 3
+stream = SubResource("AudioStreamInteractive_y1gkg")
+autoplay = true
 bus = &"Music"
 
 [node name="EnemyHandler" parent="." index="2" groups=["EnemyHandler"]]
@@ -185,7 +213,7 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_sbhhl")
 
 [node name="InteractableHandler" parent="." index="5"]
-loot_table = Array[ExtResource("19_ryaas")]([ExtResource("23_qgik8"), ExtResource("24_0h88t"), ExtResource("25_66u1c"), ExtResource("26_hb3rh"), null, null, null, null])
+loot_table = Array[ExtResource("19_ryaas")]([ExtResource("28_qgik8"), ExtResource("26_bdj2n"), ExtResource("27_7s0ty")])
 
 [node name="SpawnPoint1" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="0"]
 position = Vector2(2523, 1646)

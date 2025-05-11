@@ -42,7 +42,6 @@ func _ready() -> void:
 		loop_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg"
 	load_and_play_main_bgm(intro_pathname, loop_pathname)
 
-
 func _on_game_timer_timeout() -> void:
 	Globals.player_ui.update_time(time)
 	time += 1

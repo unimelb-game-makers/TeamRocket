@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bke58eqhi7ued"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_pieof"]
+[ext_resource type="Texture2D" uid="uid://c8yeqyufrm2ee" path="res://assets/food/rice_cooked.png" id="2_bnn6o"]
+
+[resource]
+script = ExtResource("1_pieof")
+ingredient_type = 300
+ingredient_category = 5
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_bnn6o")
+item_id = "rice_cooked"
+item_name = "Steamed Rice"
+description = "Fluffy"
+weight = 0.2
+rarity = 0
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

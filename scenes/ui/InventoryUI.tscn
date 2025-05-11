@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://g2hvel1efrhg" path="res://assets/Player/sprite/alex_eyeless_portrait.png" id="5_nx3sc"]
 [ext_resource type="Texture2D" uid="uid://cfcjjxfbtvw5x" path="res://assets/Player/sprite/alex_eye_only_portrait.png" id="6_q7x8x"]
 [ext_resource type="Script" uid="uid://djgoyymxhkgsw" path="res://scenes/ui/portrait_eye_follow_mouse.gd" id="7_3ewop"]
-[ext_resource type="Texture2D" uid="uid://cevkjrlj4y5qd" path="res://assets/food/tomato raw.png" id="7_hffay"]
+[ext_resource type="Texture2D" uid="uid://cevkjrlj4y5qd" path="res://assets/food/tomato_raw.png" id="7_hffay"]
 [ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="9_et0cm"]
 [ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="11_dycha"]
 
