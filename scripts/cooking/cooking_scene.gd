@@ -46,6 +46,7 @@ func reset():
 func add_item(item: Ingredient, _amount: int):
 	ingredient_handler.add_item(item)
 
+## This method is called when the CookingActivity is finished (emitting signal 'complete')
 func finish():
 	activity_is_in_progress = false
 	

@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7bgjj0x4lljg"]
+
+[ext_resource type="Script" uid="uid://bxerlkh8mpcih" path="res://scenes/cooking/workbenches/oven/oven_tracing_line.gd" id="1_whcy5"]
+[ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="2_gubke"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gubke"]
+radius = 31.0161
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kmi1q"]
+radius = 31.0161
+
+[node name="OvenTracingLine" type="Node2D"]
+script = ExtResource("1_whcy5")
+
+[node name="PassableLine" type="Line2D" parent="."]
+width = 40.0
+default_color = Color(0.937255, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="GoodLine" type="Line2D" parent="."]
+width = 20.0
+default_color = Color(0.94902, 0.768627, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="PerfectLine" type="Line2D" parent="."]
+default_color = Color(0.113725, 0.733333, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Start" type="Area2D" parent="."]
+scale = Vector2(0.161207, 0.161207)
+
+[node name="Sprite2D" type="Sprite2D" parent="Start"]
+texture = ExtResource("2_gubke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start"]
+shape = SubResource("CircleShape2D_gubke")
+
+[node name="End" type="Area2D" parent="."]
+scale = Vector2(0.161207, 0.161207)
+collision_layer = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="End"]
+texture = ExtResource("2_gubke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="End"]
+shape = SubResource("CircleShape2D_kmi1q")
+
+[connection signal="area_entered" from="End" to="." method="_on_end_area_entered"]
+[connection signal="body_entered" from="End" to="." method="_on_end_body_entered"]
+[connection signal="mouse_entered" from="End" to="." method="_on_end_mouse_entered"]
