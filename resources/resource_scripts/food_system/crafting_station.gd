@@ -3,7 +3,7 @@ extends Resource
 
 # Equivalent to DCFDishCrafter/Activity Station
 @export var recipes: Array[Recipe]
-@export var max_ingredients: int
+@export var max_ingredients = 1
 
 # Returns either an ingredient output or a food output dependent on recipe
 func craft_output(ingredients: Array[Ingredient]) -> Item:

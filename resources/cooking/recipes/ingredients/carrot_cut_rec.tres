@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="IngredientRecipe" load_steps=3 format=3 uid="uid://d3b5yu03lwb2b"]
 
-[ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="1_enwnn"]
+[ext_resource type="Resource" uid="uid://4rndf4mnu11g" path="res://resources/cooking/ingredients/carrot_cut.tres" id="1_enwnn"]
 [ext_resource type="Script" uid="uid://bgf04urpx4mx5" path="res://resources/resource_scripts/food_system/recipe_scripts/ingredient_recipe.gd" id="1_hovko"]
 
 [resource]
 script = ExtResource("1_hovko")
 output_ingredient = ExtResource("1_enwnn")
 effects = Array[int]([])
-base_ingredients = Array[int]([402])
+base_ingredients = Array[int]([101])
 metadata/_custom_type_script = "uid://bgf04urpx4mx5"

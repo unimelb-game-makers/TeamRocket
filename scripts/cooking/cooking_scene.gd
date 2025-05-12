@@ -39,7 +39,7 @@ func reset():
 	inventory_container.visible = true
 	selected_food_list.visible = true
 	activity.visible = false
-	
+
 	inventory_area.visible = true
 	chosen_food_area.visible = true
 
@@ -49,7 +49,7 @@ func add_item(item: Ingredient, _amount: int):
 ## This method is called when the CookingActivity is finished (emitting signal 'complete')
 func finish():
 	activity_is_in_progress = false
-	
+
 	var output_item = crafting_station.craft_output(ingredient_handler.selected_ingredients)
 	complete.emit(output_item)
 	InventoryGlobal.add_item(output_item, 1)
@@ -64,10 +64,10 @@ func _on_start_button_pressed() -> void:
 		activity.visible = true
 		selected_food_list.visible = false
 		inventory_container.visible = false
-		
+
 		inventory_area.visible = false
 		chosen_food_area.visible = false
-		
+
 		activity_is_in_progress = true
 		activity.start(ingredient_handler.selected_ingredients, output_item)
 
