@@ -1,8 +1,8 @@
 extends Node
 
 var grid = []      # 2D Array for generation
-const DIM_X = 5
-const DIM_Y = 5
+const DIM_X = 7
+const DIM_Y = 7
 
 var roomdata = []
 
@@ -56,11 +56,6 @@ func _ready() -> void:
 				row += "□ "
 		print(row)
 	
-	#for i in range(DIM_Y):
-		#for j in range(DIM_X):
-			#if grid[j][i]:
-				#print(get_neighbors_array(grid, Vector2(j,i)))
-	
 	# Initialize starting room and put player in it
 	initialize_room(starting_room,)
 	
@@ -89,7 +84,7 @@ func start_gen():
 			if randi_range(0, 1):
 				if num_rooms < num_rooms - 5:
 					continue
-			if randi_range(0, 1):
+			if randi_range(0, 4):
 				generation_queue.append(starting_room)
 			
 			# Create new room
@@ -169,25 +164,18 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	while sockets != neighbors_array:
 		var temp = sockets.pop_front()
 		sockets.append(temp)
-
-		selected_room.rotate(-PI/2)
-		
-		total_rotations += -PI/2
 		
 		var temp2 = doors.pop_front()
 		doors.append(temp2)
+
+		selected_room.rotate(-PI/2)
+		total_rotations += -PI/2
 	
 	selected_room.doors = doors
 	selected_room.sockets = sockets
 	
 	print("Aligned Sockets: " + str(sockets))
 	print("Neighbors array: " + str(neighbors_array))
-	
-	# Get directions to where the neighbors are
-	#var d = []
-	#for i in range(len(neighbors_array)):
-		#if sockets[i] == "B":
-			#d.append(directions[i])
 	
 	#print("Assigning directions to doors: " + str(d))
 	selected_room.connect_doors(directions)
@@ -207,7 +195,6 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	
 	# Spawn player and camera
 	var s: Player = PLAYER.instantiate()
-	#add_child(s)
 	call_deferred("add_child", s)
 	s.global_position = selected_room.spawn.global_position
 	currplayer = s
@@ -218,8 +205,6 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 		assert(incoming_direction.is_normalized())
 		var door_index = directions.find(incoming_direction)
 		currplayer.global_position = selected_room.get_door_by_direction(incoming_direction).global_position
-		#currplayer.global_position = selected_room.call_deferred("get_door_by_direction", incoming_direction).call_deferred("get_global_position")
-		#currplayer.call_deferred("set_global_position", selected_room.get_door_by_direction(incoming_direction).global_position) 
 	
 	var newcam = Camera2D.new()
 	#newcam.make_current()
