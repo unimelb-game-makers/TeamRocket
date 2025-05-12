@@ -4,6 +4,8 @@ var grid = []      # 2D Array for generation
 const DIM_X = 5
 const DIM_Y = 5
 
+var roomdata = []
+
 var starting_room = Vector2(2,2)
 var current_room: Vector2
 var current_selected
@@ -35,10 +37,12 @@ var currcam
 func _ready() -> void:
 	for i in DIM_X:
 		grid.append([])
+		roomdata.append([])
 		for j in DIM_Y:
 			grid[i].append(0)
+			roomdata[i].append(null)
 	
-	start_gen()
+	start_gen() # only grid explored here
 	
 	print(curr_rooms)
 	var count = 0
@@ -137,21 +141,25 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	
 	var selected_room
 	
-	match num_neighbors:
-		1:
-			selected_room = deadend.instantiate()
-		2:
-			if neighbors_array == ["A", "B", "A", "B"] or neighbors_array == ["B", "A", "B", "A"]:
-				selected_room = straight.instantiate()
-			else:
-				selected_room = bend.instantiate()
-		3:
-			selected_room = threeway.instantiate()
-		4:
-			#selected_room = full.instantiate()
-			selected_room = fulls.pick_random().instantiate()
+	if roomdata[coords.x][coords.y] == null:
+		var newroomdata = RoomData.new()
+		
+		match num_neighbors:
+			1:
+				newroomdata.roomscene = deadend
+			2:
+				if neighbors_array == ["A", "B", "A", "B"] or neighbors_array == ["B", "A", "B", "A"]:
+					newroomdata.roomscene = straight
+				else:
+					newroomdata.roomscene = bend
+			3:
+				newroomdata.roomscene = threeway
+			4:
+				newroomdata.roomscene = fulls.pick_random()
+		
+		roomdata[coords.x][coords.y] = newroomdata
 	
-	#print(selected_room)
+	selected_room = roomdata[coords.x][coords.y].roomscene.instantiate()
 	
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
