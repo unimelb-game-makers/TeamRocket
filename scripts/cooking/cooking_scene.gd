@@ -27,6 +27,8 @@ func _ready() -> void:
 	activity_label.text = activity_name
 	if activity_animated_texture:
 		activity_animated_sprite.texture = activity_animated_texture
+	if crafting_station.recipes.size() == 0:
+		push_warning("{0} missing recipes data.".format([activity_name]))
 
 func reset():
 	ingredient_handler.max_slots = crafting_station.max_ingredients
