@@ -5,7 +5,7 @@
 
 [node name="Bend" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_mpxr1")]
 sockets = Array[String](["B", "B", "A", "A"])
-doors = [NodePath("DoorArea"), NodePath("DoorArea2")]
+doors = [NodePath("DoorArea"), NodePath("DoorArea2"), null, null]
 spawn = NodePath("Spawn")
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
