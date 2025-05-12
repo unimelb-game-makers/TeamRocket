@@ -5,7 +5,7 @@
 
 [node name="DeadEnd" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_686vb")]
 sockets = Array[String](["A", "A", "B", "A"])
-doors = [NodePath("DoorArea")]
+doors = [null, null, NodePath("DoorArea"), null]
 spawn = NodePath("Spawn")
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
