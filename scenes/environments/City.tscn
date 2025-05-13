@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=38 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="AudioStream" uid="uid://csjr1bs7pcsax" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg" id="2_1ecv6"]
@@ -29,6 +29,8 @@
 [ext_resource type="Resource" uid="uid://birn1wyb2g5bv" path="res://resources/cooking/ingredients/onion.tres" id="26_bdj2n"]
 [ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="27_7s0ty"]
 [ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="28_qgik8"]
+[ext_resource type="Resource" uid="uid://djfvdkf82lpn7" path="res://resources/cooking/ingredients/rice.tres" id="29_7s0ty"]
+[ext_resource type="Resource" uid="uid://cwuer4u67t6om" path="res://resources/cooking/ingredients/spice_powder.tres" id="30_qgik8"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_y1gkg"]
 clip_count = 2
@@ -213,7 +215,7 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_sbhhl")
 
 [node name="InteractableHandler" parent="." index="5"]
-loot_table = Array[ExtResource("19_ryaas")]([ExtResource("28_qgik8"), ExtResource("26_bdj2n"), ExtResource("27_7s0ty")])
+loot_table = Array[ExtResource("19_ryaas")]([ExtResource("28_qgik8"), ExtResource("26_bdj2n"), ExtResource("27_7s0ty"), ExtResource("29_7s0ty"), ExtResource("30_qgik8")])
 
 [node name="SpawnPoint1" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="0"]
 position = Vector2(2523, 1646)

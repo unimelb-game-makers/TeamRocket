@@ -26,6 +26,7 @@ shader_parameter/max_or_add = false
 size = Vector2(176, 63)
 
 [node name="Area2D" type="Area2D" node_paths=PackedStringArray("storage_ui")]
+z_index = 100
 collision_layer = 8
 script = ExtResource("1_td6ss")
 slots_num = 9

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_3417i")
-ingredient_type = 0
+ingredient_type = 405
 ingredient_category = 5
 effects = Array[int]([])
 name_modifiers = Array[String]([])
@@ -15,4 +15,5 @@ item_name = "Rice"
 description = "raw rice grains"
 weight = 0.5
 rarity = 0
+quality = 0
 metadata/_custom_type_script = "uid://c27juqwadg5ol"

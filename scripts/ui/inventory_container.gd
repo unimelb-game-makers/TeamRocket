@@ -28,7 +28,7 @@ func update_inventory_list():
 		item_button.item_selected.connect(select_item)
 		grid_container.add_child(item_button)
 
-func select_item(item, amount):
+func select_item(item: Item, amount: int):
 	item_select.emit(item, amount)
 
 func drop_item(item, amount):

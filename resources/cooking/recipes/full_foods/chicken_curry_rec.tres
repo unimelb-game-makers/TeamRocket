@@ -9,6 +9,7 @@
 script = ExtResource("4_au6qt")
 swappable_ingredients = Array[int]([3])
 dishes = Array[ExtResource("1_tcl1o")]([ExtResource("2_striu"), ExtResource("3_tcl1o")])
+recipe_name = "Chicken curry"
 effects = Array[int]([])
 base_ingredients = Array[int]([2, 300])
 metadata/_custom_type_script = "uid://dbchi3jhl5d0x"

@@ -76,5 +76,7 @@ func _on_start_button_pressed() -> void:
 func _on_ingredient_handler_update_list() -> void:
 	inventory_container.update_inventory_list()
 
-func _on_inventory_container_item_select(item: Ingredient, amount: Variant) -> void:
-	add_item(item, amount)
+func _on_inventory_container_item_select(item: Item, amount: int) -> void:
+	if item is Ingredient:
+		add_item(item, amount)
+	# else, print some notification to player that they can't use this item for cooking

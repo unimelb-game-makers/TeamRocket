@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_hovko")
 output_ingredient = ExtResource("1_enwnn")
+recipe_name = "Cut carrot"
 effects = Array[int]([])
-base_ingredients = Array[int]([101])
+base_ingredients = Array[int]([402])
 metadata/_custom_type_script = "uid://bgf04urpx4mx5"
