@@ -22,6 +22,11 @@ const CROUCH_MULTIPLIER = 0.5
 		run_accel = run_speed / 5
 		crouch_accel = crouch_speed / 5
 
+# Status Effects listed by duration (Either in seconds or days, -1 if instant or permanent)
+# Status Effect Structure:
+# Dictionary with status_effect as key, value is an array structured [duration, stacks]
+@export var status_effects: Dictionary
+
 var run_speed: float = speed * SPRINT_MULTIPLIER
 var crouch_speed: float = speed * CROUCH_MULTIPLIER
 
@@ -57,3 +62,20 @@ func reset_stats():
 	health = 50
 	damage = 5
 	speed = 200
+
+func tick_status_effects(duration: StatusEffect.DurationCategory):
+	# Status effects should only tick if they are duration based (SECONDS, DAYS)
+	for status in status_effects.keys():
+		if (status.duration == duration):
+			status_effects[status] -= 1
+			status_effects[status].tick(self)
+			if (status_effects[status] <= 0):
+				status_effects[status].remove(self)
+				status_effects.erase(status)
+
+func apply_status(status: StatusEffect):
+	if (status not in status_effects.keys()):
+		status_effects[status] = [status.duration_int, 1]
+	elif (status.stackable):
+		status_effects[status][1] += 1
+		status_effects[status][0] = status.duration_int
