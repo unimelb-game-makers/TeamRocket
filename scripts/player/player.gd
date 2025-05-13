@@ -314,3 +314,7 @@ func _on_footstep_timer_timeout() -> void:
 		sound_created.emit(global_position, sprint_loudness)
 	else:
 		sound_created.emit(global_position, walk_loudness)
+
+func eat_food(dish: Dish) -> void:
+	print("Eating " + dish.item_name)
+	return

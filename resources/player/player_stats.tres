@@ -9,3 +9,4 @@ max_health = 50
 health = 50
 damage = 5
 speed = 200.0
+status_effects = {}

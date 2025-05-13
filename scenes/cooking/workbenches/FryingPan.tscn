@@ -1,12 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk6a5jgkvuwwt"]
+[gd_scene load_steps=7 format=3 uid="uid://dk6a5jgkvuwwt"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_kib3k"]
+[ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_rk4q0"]
 [ext_resource type="Texture2D" uid="uid://exr5tyv2uhg6" path="res://assets/workstations/pot/stew2.png" id="2_u141n"]
-[ext_resource type="Resource" uid="uid://dhf01em6mwxa8" path="res://resources/activities/frying.tres" id="3_adn2l"]
 [ext_resource type="PackedScene" uid="uid://dw0k3wxf1ktoo" path="res://scenes/cooking/activities/FryActivity.tscn" id="3_cs31w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvo21"]
 size = Vector2(82, 74)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xpl1x"]
+resource_local_to_scene = true
+shader = ExtResource("2_rk4q0")
+shader_parameter/thickness = 5.0
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = 0.0
+shader_parameter/outline_color = Color(1, 0.906591, 0, 1)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/max_or_add = false
 
 [node name="FryingPan" instance=ExtResource("1_kib3k")]
 
@@ -15,11 +28,9 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_xvo21")
 
 [node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_xpl1x")
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_u141n")
 
-[node name="CookingScene" parent="CanvasLayer" index="0"]
-activity_res = ExtResource("3_adn2l")
-
-[node name="Activity" parent="CanvasLayer/CookingScene" index="4" instance=ExtResource("3_cs31w")]
+[node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("3_cs31w")]
 layout_mode = 1

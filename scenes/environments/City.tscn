@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=35 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="3_pa65j"]
@@ -26,6 +26,8 @@
 [ext_resource type="Script" uid="uid://bbo7hysmawq83" path="res://scripts/player/camera_control.gd" id="24_s3lfa"]
 [ext_resource type="Resource" uid="uid://birn1wyb2g5bv" path="res://resources/cooking/ingredients/onion.tres" id="26_bdj2n"]
 [ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="27_7s0ty"]
+[ext_resource type="Resource" uid="uid://djfvdkf82lpn7" path="res://resources/cooking/ingredients/rice.tres" id="27_kqqf2"]
+[ext_resource type="Resource" uid="uid://cwuer4u67t6om" path="res://resources/cooking/ingredients/spice_powder.tres" id="28_bdj2n"]
 [ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="28_qgik8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5hw28"]
@@ -184,7 +186,7 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_sbhhl")
 
 [node name="InteractableHandler" parent="." index="5"]
-loot_table = Array[ExtResource("19_ryaas")]([ExtResource("26_bdj2n"), ExtResource("27_7s0ty"), ExtResource("28_qgik8")])
+loot_table = Array[ExtResource("19_ryaas")]([ExtResource("26_bdj2n"), ExtResource("27_7s0ty"), ExtResource("28_qgik8"), ExtResource("27_kqqf2"), ExtResource("28_bdj2n"), null, null, null])
 
 [node name="SpawnPoint1" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="0"]
 position = Vector2(2523, 1646)

@@ -7,15 +7,24 @@ enum ItemType {ITEM, INGREDIENT, DISH}
 
 enum Rarity {COMMON, UNCOMMON, RARE, LEGENDARY}
 
+# Effects should have
+# - Effect Level 
+# - Duration: X amount of seconds, Per Day, Permanent
 enum Effects {
-	HP1,
-	HP2,
-	HP3,
-	ATK1,
-	ATK2,
-	CHEESETOUCH,
-	COOLPORKINESS,
-	SKEWERINGDELIGHT
+	# Good Effects
+	LETHALITY,
+	HEALTH,
+	VISION,
+	SPEED,
+	DASH_COOLDOWN,
+	SILENCE,
+	
+	# Eldritch Effects
+	UNKNOWN1,
+	
+	# Bad Effects
+	SLOW,
+	POISON,
 }
 
 @export var texture: Texture2D

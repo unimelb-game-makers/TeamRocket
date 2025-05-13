@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_36qd6")
-ingredient_type = 101
+ingredient_type = 402
 ingredient_category = 2
 effects = Array[int]([])
 name_modifiers = Array[String]([])
@@ -15,4 +15,5 @@ item_name = "Carrot"
 description = "Carrot"
 weight = 0.1
 rarity = 0
+quality = 0
 metadata/_custom_type_script = "uid://c27juqwadg5ol"
