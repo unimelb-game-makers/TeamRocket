@@ -26,7 +26,7 @@ func _ready() -> void:
 	save_data = SaveManager.load_data_only(slot_id)
 	if not save_data.is_empty():
 		var player_stats = save_data["player_stats"]
-		var level = player_stats["level"]
+		var level = int(player_stats["level"])
 		var playtime = save_data.get("total_playtime", 0)
 		load_button_label.text = "[b][color=green]Slot {0}[/color][/b] \
 			\nLevel: {1} \

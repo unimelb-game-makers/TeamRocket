@@ -1,4 +1,5 @@
 extends Node
+class_name GameHandler
 
 @onready var canvas: CanvasLayer = $CanvasLayer
 @onready var fade_to_black: ColorRect = $CanvasLayer/FadeToBlack
@@ -6,6 +7,19 @@ extends Node
 
 
 var paused = false
+
+
+func _ready() -> void:
+	Globals.game_handler = self
+	canvas.show()
+	var tween = create_tween()
+	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 0), 1.0)
+	var intro_pathname = "res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_intro.ogg"
+	var loop_pathname = "res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_loop.ogg"
+	if $"..".name == "City":
+		intro_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg"
+		loop_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg"
+	load_and_play_main_bgm(intro_pathname, loop_pathname)
 
 
 # Load and play bgm, intro goes to loop theme
@@ -20,17 +34,6 @@ func load_and_play_main_bgm(intro_pathname: String, loop_pathname: String):
 		music_player_node.play()
 		music_player_node.connect("finished", _on_audio_finished)
 
-
-func _ready() -> void:
-	canvas.show()
-	var tween = create_tween()
-	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 0), 1.0)
-	var intro_pathname = "res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_intro.ogg"
-	var loop_pathname = "res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_loop.ogg"
-	if $"..".name == "City":
-		intro_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg"
-		loop_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg"
-	load_and_play_main_bgm(intro_pathname, loop_pathname)
 
 func switch_to_kitchen():
 	SaveManager.save_game(Globals.chosen_slot_id)

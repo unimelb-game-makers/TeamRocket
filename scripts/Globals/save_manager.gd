@@ -66,7 +66,8 @@ func save_game(slot_id):
 		"player_stats": player_stats,
 		"total_playtime": Globals.total_playtime,
 		"inventory": inventory_dict,
-		"current_day": Globals.current_day
+		"current_day": Globals.current_day,
+		"current_requested_dish_idx": Globals.current_requested_dish_idx
 	}
 	var save_file = FileAccess.open(get_savefile_name(slot_id), FileAccess.WRITE)
 	var json_string = JSON.stringify(save_dict)
@@ -104,6 +105,7 @@ func load_game(slot_id):
 	Globals.player_stats.load_stats(save_data["player_stats"])
 	Globals.total_playtime = save_data["total_playtime"]
 	Globals.current_day = save_data.get("current_day", 1)
+	Globals.current_requested_dish_idx = save_data.get("current_requested_dish_idx", 0)
 
 func get_savefile_name(slot_id: int) -> String:
 	return "user://savegame_slot{0}.save".format([slot_id])

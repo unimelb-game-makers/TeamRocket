@@ -9,6 +9,7 @@ var player_stats: PlayerStatsResource
 var item_handler
 var map
 var enemy_handler: EnemyHandler
+var game_handler: GameHandler
 
 var main_ui: MainUI
 var inventory_ui: InventoryUI
@@ -21,7 +22,7 @@ var total_playtime = 0
 # Devotion stuff
 var devotion = 30
 var current_requested_dish_idx = 0 # aka progress counter
-var current_day = 1
+var current_day: int = 1
 
 # var item_database: Array[Item]
 
