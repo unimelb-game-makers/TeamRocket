@@ -1,7 +1,6 @@
 extends Node
 
 @export var default_player_stats: PlayerStatsResource
-@export var requested_dish_list: Array[Dish]
 
 var player: Player
 var player_stats: PlayerStatsResource
@@ -18,12 +17,7 @@ var chosen_slot_id = -1 # For saving
 var start_record_timestamp = 0
 var total_playtime = 0
 
-# Devotion stuff
-var devotion = 30
-var current_requested_dish_idx = 0 # aka progress counter
-var current_day = 1
-
-# var item_database: Array[Item]
+var item_database: Array[Item]
 
 # Setting parameters here
 const FPS_LIMIT_ARRAY = [30, 60, 120, 144, 240, 0]
@@ -45,21 +39,23 @@ func _ready() -> void:
 	SaveManager.load_setting_config()
 	player_stats = default_player_stats
 
-# func load_item_database():
-# 	var directory_path = "res://resources/items/"
-# 	var tres_files: Array[Item] = []
-# 	var dir = DirAccess.open(directory_path)
+## FIXME: This will broken in the build version, as we can't
+## load by browsing directory anymore after built.
+func load_item_database():
+	var directory_path = "res://resources/items/"
+	var tres_files: Array[Item] = []
+	var dir = DirAccess.open(directory_path)
 
-# 	if dir:
-# 		var files = dir.get_files() # Get all files in the directory
-# 		for file in files:
-# 			if file.ends_with(".tres"):
-# 				var resource = ResourceLoader.load(directory_path + "/" + file)
-# 				if resource:
-# 					tres_files.append(resource as Item)
-# 	else:
-# 		print("Failed to open directory: ", directory_path)
-# 	item_database = tres_files
+	if dir:
+		var files = dir.get_files() # Get all files in the directory
+		for file in files:
+			if file.ends_with(".tres"):
+				var resource = ResourceLoader.load(directory_path + "/" + file)
+				if resource:
+					tres_files.append(resource as Item)
+	else:
+		print("Failed to open directory: ", directory_path)
+	item_database = tres_files
 
 func reset_save_data():
 	start_record_timestamp = 0

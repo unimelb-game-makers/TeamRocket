@@ -1,34 +1,49 @@
-[gd_scene load_steps=23 format=3 uid="uid://bwrb05nb0u0rs"]
+[gd_scene load_steps=31 format=3 uid="uid://vhnilqdkefsv"]
 
-[ext_resource type="Script" uid="uid://ckwc004ejx501" path="res://scripts/enemy/enemy_chicken.gd" id="1_qyhrq"]
+[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_wkk65"]
 [ext_resource type="Texture2D" uid="uid://cq1iguugfglwg" path="res://assets/creatures/animal_headless_chicken/chicken1.png" id="2_djc8e"]
-[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_t33i1"]
+[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_ngw0k"]
+[ext_resource type="Script" uid="uid://ckwc004ejx501" path="res://scripts/enemy/enemy_chicken.gd" id="2_t33i1"]
 [ext_resource type="Texture2D" uid="uid://bjt1wxo78e541" path="res://assets/creatures/animal_headless_chicken/chicken2.png" id="3_dtvso"]
-[ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="3_l7l25"]
 [ext_resource type="Texture2D" uid="uid://bmv2eumk5dj8d" path="res://assets/creatures/animal_headless_chicken/chicken3.png" id="4_0ugvd"]
-[ext_resource type="AudioStream" uid="uid://8378jjhuitio" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 2.wav" id="5_ffh4s"]
+[ext_resource type="Texture2D" uid="uid://dc6mt81avbf6a" path="res://assets/food/mince_raw.png" id="4_84qel"]
+[ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="5_8pker"]
 [ext_resource type="Texture2D" uid="uid://fxdbni0g5067" path="res://assets/creatures/animal_headless_chicken/chicken4.png" id="5_tsj1i"]
-[ext_resource type="AudioStream" uid="uid://b6whrxuglmguk" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 3.wav" id="6_rj6jn"]
+[ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="6_ffh4s"]
 [ext_resource type="Texture2D" uid="uid://dbsp4ofn4wrqa" path="res://assets/creatures/animal_headless_chicken/chicken5.png" id="6_voquw"]
 [ext_resource type="Texture2D" uid="uid://c1an4ursjb2fq" path="res://assets/creatures/animal_headless_chicken/chicken6.png" id="7_cebfr"]
-[ext_resource type="AudioStream" uid="uid://f2f3r0yq5w22" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 4.wav" id="7_ewli2"]
+[ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="7_rj6jn"]
 [ext_resource type="Texture2D" uid="uid://c86ut846p2fsl" path="res://assets/creatures/animal_headless_chicken/chicken7.png" id="8_nq1op"]
+[ext_resource type="AudioStream" uid="uid://8378jjhuitio" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 2.wav" id="9_3wn4u"]
 [ext_resource type="AudioStream" uid="uid://ic1n4jn6pl0j" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken run away 2.wav" id="9_t33i1"]
+[ext_resource type="AudioStream" uid="uid://b6whrxuglmguk" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 3.wav" id="10_ddt6w"]
+[ext_resource type="AudioStream" uid="uid://f2f3r0yq5w22" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 4.wav" id="11_4oyrq"]
 [ext_resource type="AudioStream" uid="uid://beddvptril7ql" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken hurt 1.wav" id="11_8clun"]
 [ext_resource type="AudioStream" uid="uid://wq41n71vl7y3" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken hurt 2.wav" id="11_l7l25"]
 [ext_resource type="AudioStream" uid="uid://xs5130vgb5q0" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 1.wav" id="12_bwky7"]
 [ext_resource type="AudioStream" uid="uid://c5s2plhkq2kjw" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken hurt 3.wav" id="12_piqbv"]
 [ext_resource type="AudioStream" uid="uid://c2v4gn4gq86qi" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken run away 1.wav" id="13_byos2"]
+[ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="18_ewli2"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xpy87"]
+[sub_resource type="Resource" id="Resource_uhg0u"]
+script = ExtResource("2_ngw0k")
+texture = ExtResource("4_84qel")
+item_id = ""
+item_name = "Raw Ground Beef"
+description = "It looks like any other minced meat despite its questionable origin. Smells ok-ish.\\n“You can put almost anything in the mince and they won't notice the difference - Suzan, No-Waste Butcher Shop”"
+weight = 0.5
+rarity = 0
+quality = 0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wkk65"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_djc8e")
 }],
 "loop": true,
-"name": &"neutral",
-"speed": 6.0
+"name": &"default",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -54,64 +69,131 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 6.0
+"speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_h0ywl"]
-radius = 25.318
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewli2"]
+size = Vector2(48, 24)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_l5pyw"]
-radius = 400.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7l25"]
+radius = 216.148
 
-[node name="EnemyChicken" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 7
-script = ExtResource("1_qyhrq")
-health = 10
-dropped_items = Array[ExtResource("2_t33i1")]([ExtResource("3_l7l25")])
+[sub_resource type="CircleShape2D" id="CircleShape2D_piqbv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewli2"]
+radius = 27.6632
+
+[node name="EnemyChicken" instance=ExtResource("1_wkk65")]
+motion_mode = 1
+script = ExtResource("2_t33i1")
+passive_speed = 50
+active_speed = 150
+max_health = 15
+dropped_items = Array[ExtResource("2_ngw0k")]([SubResource("Resource_uhg0u")])
 dropped_item_chances = Array[float]([1.0])
 sounds = Dictionary[String, Array]({
 "hurt": [ExtResource("11_8clun"), ExtResource("11_l7l25"), ExtResource("12_piqbv")],
-"idle": [ExtResource("12_bwky7"), ExtResource("5_ffh4s"), ExtResource("6_rj6jn"), ExtResource("7_ewli2")],
+"idle": [ExtResource("12_bwky7"), ExtResource("9_3wn4u"), ExtResource("10_ddt6w"), ExtResource("11_4oyrq")],
 "run": [ExtResource("13_byos2"), ExtResource("9_t33i1")]
 })
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="." index="0"]
+modulate = Color(0, 0, 0, 0.529412)
+position = Vector2(-7.62939e-06, 24)
+scale = Vector2(0.882812, 0.265625)
+texture = ExtResource("18_ewli2")
+
+[node name="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(-2, -33)
 scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_xpy87")
+sprite_frames = SubResource("SpriteFrames_wkk65")
 animation = &"walk"
-autoplay = "neutral"
-frame_progress = 0.466235
+frame_progress = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, -3)
-shape = SubResource("CircleShape2D_h0ywl")
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, 16)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_ewli2")
 
-[node name="StateChangeTimer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
+[node name="CollisionShape2D" parent="DetectionRadius" index="0"]
+shape = SubResource("CircleShape2D_l7l25")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="ChaseRadius" parent="." index="5"]
+visible = false
 
-[node name="DetectionArea" type="Area2D" parent="."]
-collision_layer = 0
+[node name="CollisionShape2D" parent="ChaseRadius" index="0"]
+shape = SubResource("CircleShape2D_piqbv")
 
-[node name="DetectionShape" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_l5pyw")
+[node name="To Runaway" type="Node" parent="StateChart/EnemyBehaviour/Passive" index="4"]
+script = ExtResource("5_8pker")
+to = NodePath("../../Active/Runaway")
+event = &"to_runaway"
+delay_in_seconds = "0.0"
 
-[node name="SoundEffects" type="Node2D" parent="."]
+[node name="To Search" parent="StateChart/EnemyBehaviour/Active/Chase" index="0"]
+event = &"target_exit_chase_radius"
 
-[node name="HurtEffect" type="AudioStreamPlayer2D" parent="SoundEffects"]
-stream = ExtResource("11_8clun")
-bus = &"Effects"
+[node name="To Attack State" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
+script = ExtResource("5_8pker")
+to = NodePath("../../../Attack")
+delay_in_seconds = "6.0"
 
-[node name="IdleEffect" type="AudioStreamPlayer2D" parent="SoundEffects"]
-stream = ExtResource("12_bwky7")
-bus = &"Effects"
+[node name="To Runaway" type="Node" parent="StateChart/EnemyBehaviour/Active/Return" index="2"]
+script = ExtResource("5_8pker")
+to = NodePath("../../Runaway")
+event = &"to_runaway"
+delay_in_seconds = "0.0"
 
-[node name="RunEffect" type="AudioStreamPlayer2D" parent="SoundEffects"]
-stream = ExtResource("13_byos2")
-bus = &"Effects"
+[node name="Runaway" type="Node" parent="StateChart/EnemyBehaviour/Active" index="3"]
+script = ExtResource("7_rj6jn")
 
-[connection signal="timeout" from="StateChangeTimer" to="." method="_on_state_change_timer_timeout"]
+[node name="To Return" type="Node" parent="StateChart/EnemyBehaviour/Active/Runaway" index="0"]
+script = ExtResource("5_8pker")
+to = NodePath("../../Return")
+event = &"to_return"
+delay_in_seconds = "0.0"
+
+[node name="Attack" type="Node" parent="StateChart/EnemyBehaviour" index="2"]
+script = ExtResource("6_ffh4s")
+initial_state = NodePath("Wind Up")
+
+[node name="Wind Up" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="0"]
+script = ExtResource("7_rj6jn")
+
+[node name="To Dash Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack/Wind Up" index="0"]
+script = ExtResource("5_8pker")
+to = NodePath("../../Dash Attack")
+delay_in_seconds = ".25"
+
+[node name="Dash Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="1"]
+script = ExtResource("7_rj6jn")
+
+[node name="To Wind Up" type="Node" parent="StateChart/EnemyBehaviour/Attack/Dash Attack" index="0"]
+script = ExtResource("5_8pker")
+to = NodePath("../../Wind Up")
+event = &"on_dash_attack_finish"
+delay_in_seconds = "0.0"
+
+[node name="To Active State" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="2"]
+script = ExtResource("5_8pker")
+to = NodePath("../../Active")
+event = &"on_attack_finish"
+delay_in_seconds = "0.0"
+
+[node name="StopRunTimer" type="Timer" parent="." index="8"]
+one_shot = true
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource("CircleShape2D_ewli2")
+
+[connection signal="area_exited" from="DetectionRadius" to="." method="_on_detection_radius_area_exited"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Runaway" to="." method="_on_runaway_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Active/Runaway" to="." method="_on_runaway_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Wind Up" to="." method="_on_wind_up_state_entered"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Wind Up" to="." method="_on_wind_up_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Dash Attack" to="." method="_on_dash_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack/Dash Attack" to="." method="_on_dash_attack_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Dash Attack" to="." method="_on_dash_attack_state_physics_processing"]
+[connection signal="timeout" from="StopRunTimer" to="." method="_on_stop_run_timer_timeout"]
