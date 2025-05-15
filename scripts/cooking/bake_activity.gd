@@ -1,5 +1,15 @@
 extends CookingActivity
 
+"""
+Baking activity
+0. Put player cursor on starting point
+1. Start count down
+2. When count down is zero, starting tracking player accuracy and ticking down the clock
+3. If player gets the cursor to the end (essentially tracing the line), game ends - calculate score
+4. If player leaves line fully, game ends - fails
+5. If count down reaches 0, and player not at end, game ends - fail
+"""
+
 @export var oven_tracing_line_data: OvenLine
 
 @onready var oven_tracing_line: OvenTracingLine = $OvenTracingLine

@@ -200,20 +200,23 @@ texture = SubResource("PlaceholderTexture2D_nq03i")
 
 [node name="ProgressDebug" type="Label" parent="."]
 visible = false
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_4sm8j")
+&"": SubResource("AnimationLibrary_4sm8j")
 }
 autoplay = "idle"
 
 [node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TipText" type="Label" parent="."]
+layout_mode = 0
 offset_left = 458.0
 offset_top = 202.0
 offset_right = 826.0
@@ -222,6 +225,7 @@ text = "Stay near the center!"
 label_settings = SubResource("LabelSettings_f0qk3")
 
 [node name="FryProgress" type="TextureProgressBar" parent="."]
+layout_mode = 0
 offset_left = 807.0
 offset_top = 409.0
 offset_right = 1151.0

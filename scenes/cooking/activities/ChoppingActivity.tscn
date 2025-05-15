@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://yskpqwwvcpce"]
 
-[ext_resource type="Script" uid="uid://o1myk4vyb1cl" path="res://scripts/cooking/ChoppingActivity.gd" id="2_ojnvx"]
+[ext_resource type="Script" uid="uid://o1myk4vyb1cl" path="res://scripts/cooking/chopping_activity.gd" id="2_ojnvx"]
 [ext_resource type="Texture2D" uid="uid://chmpi1n4p1apn" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_pk5pp"]
 [ext_resource type="Texture2D" uid="uid://c28jljdwevpa5" path="res://assets/textures/workstation_textures/ChoppingZone_Texture.png" id="3_bjcle"]
 [ext_resource type="Texture2D" uid="uid://cbg7dcha6kjh8" path="res://assets/workstations/chopping_game/cutting board only.png" id="4_yn4oy"]
@@ -41,7 +41,7 @@ stream_4/stream = ExtResource("9_4hnjx")
 stream_5/stream = ExtResource("10_17sga")
 stream_6/stream = ExtResource("11_cdwm0")
 
-[node name="Activity" type="Control"]
+[node name="ChoppingActivity" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
