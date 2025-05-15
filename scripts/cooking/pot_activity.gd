@@ -88,10 +88,10 @@ func _process(delta: float) -> void:
 		timer_label.text = "0.0" # Final time left
 		feedback_label.text = "Success!"
 		feedback_label.modulate = Color(0, 1, 0) # Green text for success.
-		finish()
+		complete_minigame()
 
-func finish() -> void:
-	complete.emit()
+func complete_minigame() -> void:
+	finish(100)
 
 func _input(event: InputEvent) -> void:
 	if not is_playing:

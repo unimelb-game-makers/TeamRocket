@@ -51,7 +51,3 @@ activity_to_run = ExtResource("3_v3edm")
 activity_name = "Assembly plate"
 activity_animated_texture = SubResource("AnimatedTexture_frx3y")
 crafting_station = SubResource("Resource_vhiap")
-
-[node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("3_v3edm")]
-visible = false
-layout_mode = 1

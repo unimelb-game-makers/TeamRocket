@@ -60,7 +60,3 @@ activity_to_run = ExtResource("2_5al3h")
 activity_name = "Pot"
 activity_animated_texture = SubResource("AnimatedTexture_8w5dh")
 crafting_station = SubResource("Resource_fy06h")
-
-[node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("2_5al3h")]
-visible = false
-layout_mode = 1

@@ -92,7 +92,7 @@ func start_game(selected_mouse: Area2D) -> void:
 	is_playing = true
 
 func _end_minigame() -> void:
-	print(accuracy_table)
+	#print("Accuracy Table: ", accuracy_table)
 	accuracy = _process_accuracy_table()
 	emit_signal("game_finish")
 

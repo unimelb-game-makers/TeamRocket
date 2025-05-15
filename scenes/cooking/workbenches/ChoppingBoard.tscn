@@ -53,7 +53,3 @@ activity_to_run = ExtResource("4_f5jll")
 activity_name = "Chopping board"
 activity_animated_texture = SubResource("AnimatedTexture_dis1y")
 crafting_station = SubResource("Resource_h1c4s")
-
-[node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("4_f5jll")]
-visible = false
-layout_mode = 1

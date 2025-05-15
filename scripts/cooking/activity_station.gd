@@ -37,3 +37,6 @@ func _on_area_exited(_area: Area2D) -> void:
 
 func _on_area_entered(_area: Area2D) -> void:
 	sprite.material.set_shader_parameter("outline_color", Color.GREEN)
+
+func _to_string() -> String:
+	return self.name

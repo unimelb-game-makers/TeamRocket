@@ -32,12 +32,8 @@ signal complete(output)
 func _ready() -> void:
 	if activity_to_run == null:
 		push_error("Cooking Scene does not have an activity to run!!!")
-		
-	activity = activity_to_run.instantiate() as CookingActivity
-	self.add_child(activity)
-	
-	activity.complete.connect(finish)
-	reset()
+
+	reset() # Also sets the activity visibility off
 	activity_label.text = activity_name
 	if activity_animated_texture:
 		activity_animated_sprite.texture = activity_animated_texture
@@ -46,13 +42,13 @@ func reset():
 	ingredient_handler.max_slots = crafting_station.max_ingredients
 	ingredient_handler.update_slots()
 	inventory_container.update_inventory_list()
-	activity.reset_game()
+	#activity.reset_game() - No point since activity is only created when start button is pressed.
 
 	start_button.visible = true
 	ingredient_handler.visible = true
 	inventory_container.visible = true
 	selected_food_list.visible = true
-	activity.visible = false
+	#activity.visible = false - NOT NEEDED ANYMORE
 	
 	inventory_area.visible = true
 	chosen_food_area.visible = true
@@ -60,25 +56,43 @@ func reset():
 func add_item(item: Ingredient, _amount: int):
 	ingredient_handler.add_item(item)
 
+## Creates an instance of the activity, called when start button pressed
+## @param input_ingredients: Used to determine minigame difficulty.
+## @param output_ingredient: Used to determine minigame difficulty.
+func call_and_run_activity(input_ingredients: Array[Ingredient], output_item: Item) -> void:
+	activity = activity_to_run.instantiate() as CookingActivity
+	activity.complete.connect(finish)
+	activity.input_ingredients = input_ingredients
+	activity.output_item = output_item
+	self.add_child(activity) # Starts the activity when it is added due to _ready()
+
 ## This method is called when the CookingActivity is finished (emitting signal 'complete')
-func finish():
+func finish(rating: float):
 	activity_is_in_progress = false
-	
+	# Delete the activity
+	if activity != null:
+		activity.queue_free()
+
+	# Defensive copy of the output item to modify and return?
 	var output_item = crafting_station.craft_output(ingredient_handler.selected_ingredients)
-	complete.emit(output_item)
+	# Modify based on minigame outcome
+	output_item.quality = rating
+	
+	print("\nOutput Item: ")
+	print(output_item)
+	complete.emit(output_item) # Emit to what?
 	InventoryGlobal.add_item(output_item, 1)
 	ingredient_handler.clear_slots()
 	reset()
 
 func _on_start_button_pressed() -> void:
-	# Should not be here
+	# Determine what output ingredient/dish if any
 	var output_item = crafting_station.craft_output(ingredient_handler.selected_ingredients)
-	#print("HI")
+
 	# Handles by button is abit weird
 	if (output_item):
 		start_button.visible = false
 		ingredient_handler.visible = false
-		activity.visible = true
 		selected_food_list.visible = false
 		inventory_container.visible = false
 		
@@ -86,7 +100,8 @@ func _on_start_button_pressed() -> void:
 		chosen_food_area.visible = false
 		
 		activity_is_in_progress = true
-		activity.start(ingredient_handler.selected_ingredients, output_item)
+		
+		call_and_run_activity(ingredient_handler.selected_ingredients, output_item)
 	else:
 		print("Output ingredient/dish failed to be generated!")
 

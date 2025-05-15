@@ -38,7 +38,7 @@ func match_base_ingredient_types(ingredients: Array[Ingredient]) -> Recipe:
 	for ingredient in ingredients:
 		var i = ingredient.ingredient_type
 		ingredients_type[i] = ingredients_type.get(i, 0) + 1 # the .get returns the value in dict or 0 if does not exist
-	print(ingredients)
+
 	# Finding exactly matching recipe based on ingredient types
 	for recipe in recipes:
 		# Making Tally of ingredients for base recipe

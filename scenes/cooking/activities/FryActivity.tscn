@@ -95,6 +95,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hkju0")
+PAN_SIZE = null
+target_progress = null
 
 [node name="FryingPan" type="Sprite2D" parent="."]
 z_index = 7

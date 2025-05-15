@@ -20,14 +20,14 @@ func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
 	set_ingredient_image(output_item)
 	playing = true
 	await get_tree().create_timer(3).timeout
-	finish()
+	complete_minigame()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func finish() -> void:
-	complete.emit()
+func complete_minigame() -> void:
+	finish(100)
 	
 func set_ingredient_image(ingredient: Item) -> void:
 	if ingredient and ingredient_image_display:

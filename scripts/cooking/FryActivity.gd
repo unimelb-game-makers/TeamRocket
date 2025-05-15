@@ -165,7 +165,7 @@ func drop_ingredient() -> void:
 	cooking = true
 
 
-func finish() -> void:
+func minigame_complete() -> void:
 	playing = false
 	print("Frying Finished!")
-	complete.emit()
+	finish(100)

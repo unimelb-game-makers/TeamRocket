@@ -55,7 +55,7 @@ func save() -> Dictionary:
 	#var ingredient: Ingredient = load(item_dict["item_id"])
 	#return ingredient
 func _to_string() -> String:
-	var name :String = item_name + ":" + get_enum_name(ingredient_type)
+	var name :String = super() + "(IngredientType: " + get_enum_name(ingredient_type) + ")"
 	return name
 	
 func get_enum_name(value: int) -> String:

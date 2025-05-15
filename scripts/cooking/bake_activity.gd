@@ -22,6 +22,11 @@ var remaining_time: float
 
 func _ready() -> void:
 	oven_tracing_line.game_finish.connect(minigame_complete)
+	
+	determine_oven_tracing_line()
+	#self.input_ingredients = input_ingredients
+	#self.output_item = output_item
+	
 	# Setup the board and player
 	oven_tracing_line.initialize_data(oven_tracing_line_data)
 	
@@ -39,6 +44,7 @@ func _ready() -> void:
 	start_game()
 
 func start_game() -> void:
+	
 	oven_tracing_line.start_game(player_cursor) # Start tracing line tracking
 	# TODO: Speed to completion
 	is_playing = true
@@ -80,7 +86,7 @@ func close_minigame(final_score: float) -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# TODO: Do what with the final score over here
 	# TODO: Emit finish signal? it doesnt pass any parameters btw.
-	pass
+	finish(final_score)
 
 func _evaluate_spent_time() -> float:
 	var time_remaining_percentage = remaining_time/time_bar.max_value * 100
@@ -105,3 +111,7 @@ func run_countdown():
 		await get_tree().create_timer(1.0).timeout
 
 	countdown_label.visible = false
+
+func determine_oven_tracing_line() -> void:
+	# TODO: Determine difficulty of oven tracing line
+	pass # Currently it just runs whatever was in the editor

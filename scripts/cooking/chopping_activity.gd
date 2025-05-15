@@ -109,7 +109,7 @@ func check_chop() -> void:
 
 	# Check for win condition
 	if chop_progress >= target:
-		finish()
+		minigame_complete()
 
 func modulate_ingredient() -> void:
 	ingredient_image_display.modulate = Color("red")
@@ -125,8 +125,8 @@ func reset_game() -> void:
 		score_bar.value = 0  # Reset the progress bar to 0
 	result_label.text = ""
 
-func finish() -> void:
+func minigame_complete() -> void:
 	playing = false
 	result_label.text = "You Win!"
 	result_label.modulate = Color(0, 1, 1)  # Cyan
-	complete.emit()
+	finish(100)
