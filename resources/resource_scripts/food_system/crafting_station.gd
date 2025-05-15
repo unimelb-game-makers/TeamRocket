@@ -10,6 +10,7 @@ func craft_output(ingredients: Array[Ingredient]) -> Item:
 	# First get matching recipe
 	var output_recipe: Recipe = match_base_ingredient_types(ingredients)
 	# Process it depending on if it is an ingredient or dish output
+
 	if (output_recipe is IngredientRecipe):
 		# If ingredient, just return the output ingredient
 		return output_recipe.output_ingredient
@@ -25,7 +26,9 @@ func craft_output(ingredients: Array[Ingredient]) -> Item:
 			for effect in ingredient.effects:
 				output_dish.dish_effects.append(effect)
 		return output_dish
-	return
+	else:
+		print("No such recipe exist") # TODO: Showing this visually to the player is needed
+		return
 		
 func match_base_ingredient_types(ingredients: Array[Ingredient]) -> Recipe:
 	# Grabbing all the ingredient types from ingredients input
@@ -35,7 +38,7 @@ func match_base_ingredient_types(ingredients: Array[Ingredient]) -> Recipe:
 	for ingredient in ingredients:
 		var i = ingredient.ingredient_type
 		ingredients_type[i] = ingredients_type.get(i, 0) + 1 # the .get returns the value in dict or 0 if does not exist
-	
+	print(ingredients)
 	# Finding exactly matching recipe based on ingredient types
 	for recipe in recipes:
 		# Making Tally of ingredients for base recipe

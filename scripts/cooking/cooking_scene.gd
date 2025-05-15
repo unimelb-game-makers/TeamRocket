@@ -1,9 +1,16 @@
 class_name CookingScene extends Control
+"""
+CookingScene is the class that functions to allow the user to
+pass in ingredients to make an ingredient or a dish depending on the associated
+minigame extending class CookingActivity.
+
+CookingActivity minigame is passed into CookingScene as an export
+"""
+@export var activity_to_run: PackedScene
 
 @onready var ingredient_handler: IngredientHandler = %IngredientHandler
 @onready var start_button: TextureButton = $Background/ChosenFoodArea/StartButton
 @onready var inventory_container: Container = $Background/InventoryArea/InventoryContainer
-@onready var activity: Control = $Activity
 @onready var selected_food_list: Container = $Background/ChosenFoodArea/SelectedFoodList
 @onready var activity_animated_sprite: TextureRect = $Background/ChosenFoodArea/ActivityAnimatedSprite
 @onready var activity_label: Label = $Background/ChosenFoodArea/ActivityLabel
@@ -16,12 +23,19 @@ class_name CookingScene extends Control
 
 @export var crafting_station: CraftingStation
 
+var activity: CookingActivity
 var recipe: Recipe
 var activity_is_in_progress = false
 
 signal complete(output)
 
 func _ready() -> void:
+	if activity_to_run == null:
+		push_error("Cooking Scene does not have an activity to run!!!")
+		
+	activity = activity_to_run.instantiate() as CookingActivity
+	self.add_child(activity)
+	
 	activity.complete.connect(finish)
 	reset()
 	activity_label.text = activity_name
@@ -57,7 +71,10 @@ func finish():
 	reset()
 
 func _on_start_button_pressed() -> void:
+	# Should not be here
 	var output_item = crafting_station.craft_output(ingredient_handler.selected_ingredients)
+	#print("HI")
+	# Handles by button is abit weird
 	if (output_item):
 		start_button.visible = false
 		ingredient_handler.visible = false
@@ -70,6 +87,8 @@ func _on_start_button_pressed() -> void:
 		
 		activity_is_in_progress = true
 		activity.start(ingredient_handler.selected_ingredients, output_item)
+	else:
+		print("Output ingredient/dish failed to be generated!")
 
 func _on_ingredient_handler_update_list() -> void:
 	inventory_container.update_inventory_list()

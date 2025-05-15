@@ -26,6 +26,7 @@ func _ready() -> void:
 	reset_game()
 
 func start(input_ingredients: Array[Ingredient], output_item) -> void:
+	print("Starrting game!")
 	super(input_ingredients, output_item)
 	playing = true
 	result_label.text = ""  # Clear result label on start

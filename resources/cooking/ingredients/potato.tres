@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_k4pvl")
-ingredient_type = 0
+ingredient_type = 401
 ingredient_category = 0
 effects = Array[int]([])
 name_modifiers = Array[String]([])
@@ -15,4 +15,5 @@ item_name = "Potato"
 description = "Whole potato"
 weight = 0.2
 rarity = 0
+quality = 0
 metadata/_custom_type_script = "uid://c27juqwadg5ol"
