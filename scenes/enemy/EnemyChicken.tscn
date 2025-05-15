@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://vhnilqdkefsv"]
 
-[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_wkk65"]
+[ext_resource type="PackedScene" uid="uid://b85syheym6imi" path="res://scenes/enemy/BasicEnemy.tscn" id="1_wkk65"]
 [ext_resource type="Texture2D" uid="uid://cq1iguugfglwg" path="res://assets/creatures/animal_headless_chicken/chicken1.png" id="2_djc8e"]
 [ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_ngw0k"]
 [ext_resource type="Script" uid="uid://ckwc004ejx501" path="res://scripts/enemy/enemy_chicken.gd" id="2_t33i1"]

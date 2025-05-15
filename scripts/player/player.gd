@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+# FIXME: ADS and shoot, then evade immediately after that will lock animation to ADS
+
 @export var walk_loudness: float = 100
 @export var sprint_loudness: float = 250
 @export var gun_loudness: float = 2000

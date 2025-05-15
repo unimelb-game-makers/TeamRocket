@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cymv5i72rdk4v"]
 
-[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_dafq6"]
-[ext_resource type="Script" uid="uid://oqtxpr8lt40i" path="res://scripts/enemy/enemy_lone_stalker.gd" id="2_dafq6"]
+[ext_resource type="PackedScene" uid="uid://b85syheym6imi" path="res://scenes/enemy/BasicEnemy.tscn" id="1_dafq6"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_lone_stalker.gd" id="2_dafq6"]
 [ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="3_otmmk"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="3_pr8e8"]
 [ext_resource type="Texture2D" uid="uid://dppd5y2yek1pc" path="res://assets/creatures/enemy_lone_stalker/lone_stalker_1.png" id="4_dafq6"]

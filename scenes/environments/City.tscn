@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=42 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="AudioStream" uid="uid://csjr1bs7pcsax" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg" id="2_1ecv6"]

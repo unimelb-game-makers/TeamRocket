@@ -511,7 +511,7 @@ texture = ExtResource("91_rlnnq")
 position = Vector2(0, -96)
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_web4h")
-animation = &"idle"
+animation = &"stand_down_aim"
 
 [node name="Rifle" type="Node2D" parent="."]
 position = Vector2(0, -96)
