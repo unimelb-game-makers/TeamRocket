@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Dish" load_steps=6 format=3 uid="uid://cq1taw61ifcp7"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_hbdv6"]
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="1_ve7vn"]
+[ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="3_hr0rq"]
+[ext_resource type="Resource" uid="uid://v5nqfcc5gsvk" path="res://resources/cooking/ingredients/beef_mince.tres" id="4_052yg"]
+[ext_resource type="Texture2D" uid="uid://bei2syspon1ly" path="res://assets/food/curry.png" id="5_hbdv6"]
+
+[resource]
+script = ExtResource("1_ve7vn")
+effects = Array[int]([0])
+ingredients = Array[ExtResource("1_hbdv6")]([ExtResource("4_052yg"), ExtResource("3_hr0rq")])
+texture = ExtResource("5_hbdv6")
+item_id = "curry_beef"
+item_name = "Beef Curry"
+description = "Beef Curry!!!"
+weight = 0.3
+rarity = 0
+metadata/_custom_type_script = "uid://dqqa8ydotiigx"

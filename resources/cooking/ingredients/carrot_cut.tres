@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://4rndf4mnu11g"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_vmnek"]
+[ext_resource type="Texture2D" uid="uid://ykp7dqbdgdtc" path="res://assets/food/carrot sliced.png" id="2_5jm7w"]
+
+[resource]
+script = ExtResource("1_vmnek")
+ingredient_type = 101
+ingredient_category = 2
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_5jm7w")
+item_id = "carrot_cut"
+item_name = "Sliced Carrots"
+description = "Sliced carrots"
+weight = 0.2
+rarity = 0
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

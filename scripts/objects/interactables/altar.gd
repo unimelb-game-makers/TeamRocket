@@ -5,7 +5,7 @@ signal submit(item)
 @onready var inventory_select_list: CenterContainer = $UI/CanvasLayer/InventorySelectList
 @onready var canvas_layer: CanvasLayer = $UI/CanvasLayer
 
-@export var acceptable_foods: Array[Item]
+@export var acceptable_foods: Array[Dish]
 
 func submit_item(item):
 	submit.emit(item)
@@ -25,16 +25,24 @@ func _on_submit_button_pressed() -> void:
 	if (items[0] in acceptable_foods):
 		submit_item(items[0])
 
-func _on_inventory_select_list_item_selected(item: Item, amount: int) -> void:
+func _on_reset_button_pressed() -> void:
+	for slot in item_containers.get_children():
+		slot.remove_food()
+
+
+func _on_inventory_container_item_select(item: Item, _amount: int) -> void:
 	if items[0] == null:
 		items[0] = item
 		InventoryGlobal.remove_item(item, 1)
 		inventory_select_list.update_inventory_list()
 		update_display()
 
-func _on_area_2d_body_exited(body: Node2D) -> void:
+
+func _on_area_entered(_area: Area2D) -> void:
+	sprite.material.set_shader_parameter("outline_color", Color.GREEN)
+
+
+func _on_area_exited(_area: Area2D) -> void:
 	canvas_layer.hide()
-
-
-func _on_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
+	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
+	item_containers.hide()

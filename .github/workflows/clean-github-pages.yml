@@ -1,0 +1,29 @@
+# Secrets: -
+
+name: "Clean the gh-pages branch to save storage space"
+
+on:
+  workflow_dispatch
+
+jobs:
+  Clean:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Clean branch files
+        run: |
+          git config --global user.name "github-ci[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git clone --depth=1 --branch=gh-pages https://github.com/${{ github.repository }} gh-pages
+          cd gh-pages
+
+          # Remove all subdirectories (excluding .git and root files)
+          for dir in */ ; do
+            rm -rf "$dir"
+            echo "Deleted $dir"
+          done
+
+          git add -A
+          git commit -m "Clean all previous versions" || echo "Nothing to commit"
+          git push

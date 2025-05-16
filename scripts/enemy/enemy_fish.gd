@@ -2,11 +2,11 @@ extends Enemy
 
 const SPEEDS = [0, 45, 200]
 
-var movement_speed : float # Current default state is Passive
+var movement_speed: float # Current default state is Passive
 
 var movement_target_position: Vector2
 var target_creature: CharacterBody2D
-var direction = Vector2(0,0)
+var direction = Vector2(0, 0)
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_change_timer: Timer = $StateChangeTimer
@@ -56,6 +56,6 @@ func change_state(new_state: ChickenState) -> void:
 		ChickenState.RUNNING:
 			animated_sprite_2d.play("walk", 3.0)
 
-func damage() -> void:
-	super()
+func damage(value: int) -> void:
+	super (value)
 	enter_running_state()

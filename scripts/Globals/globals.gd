@@ -2,18 +2,17 @@ extends Node
 
 var player: Player
 var player_stats: PlayerStatsResource
+
 var item_handler
 var map
+var enemy_handler: EnemyHandler
 
 var inventory_ui: InventoryUI
 var player_ui: PlayerUI
-var enemy_handler
 
 var chosen_slot_id = -1 # For saving
 var start_record_timestamp = 0
 var total_playtime = 0
-
-var player_level = 1
 
 var item_database: Array[Item]
 
@@ -34,9 +33,11 @@ var window_mode_index: int = 1 # From 0 to 2 for FULLSCREEN / WINDOWED / BORDERL
 
 
 func _ready() -> void:
-	load_item_database()
+	# load_item_database()
 	SaveManager.load_setting_config()
 
+## FIXME: This will broken in the build version, as we can't
+## load by browsing directory anymore after built.
 func load_item_database():
 	var directory_path = "res://resources/items/"
 	var tres_files: Array[Item] = []
@@ -54,7 +55,6 @@ func load_item_database():
 	item_database = tres_files
 
 func reset_save_data():
-	player_level = 1
 	start_record_timestamp = 0
 	total_playtime = 0
 	InventoryGlobal.reset_save_data()
