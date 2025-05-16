@@ -34,6 +34,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ishcw")
+input_ingredients = null
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(645.995, 347.938)

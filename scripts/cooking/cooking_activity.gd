@@ -6,9 +6,20 @@ signal complete(rating: float)
 @export var input_ingredients: Array[Ingredient]
 @export var output_item: Item
 
-func start(input_ingredients: Array[Ingredient], output_item: Item):
-	self.input_ingredients = input_ingredients
-	self.output_item = output_item
+var is_initialized: bool = false # Change to true once input and output items have been added
+
+func initialize_activity(inputs: Array[Ingredient], output: Item):
+	# Extra validation protection
+	if len(input_ingredients) < 1:
+		push_error("Initializing activity with no input ingredients!")
+		return
+	if output_item == null:
+		push_error("Initializing activity with no output ingredient")
+		return
+		
+	self.input_ingredients = inputs
+	self.output_item = output
+	is_initialized = true
 	
 func reset_game():
 	pass

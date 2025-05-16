@@ -21,32 +21,38 @@ var is_playing: bool = false
 var remaining_time: float
 
 func _ready() -> void:
-	oven_tracing_line.game_finish.connect(minigame_complete)
+	if !oven_tracing_line:
+		push_warning("No default settings is set for the oven tracing line") # Not necessary since other parts of the code protects it but is safe to have
 	
-	determine_oven_tracing_line()
-	#self.input_ingredients = input_ingredients
-	#self.output_item = output_item
-	
-	# Setup the board and player
-	oven_tracing_line.initialize_data(oven_tracing_line_data)
-	
-	time_bar.max_value = oven_tracing_line_data.time_allocated
-	time_bar.value = oven_tracing_line_data.time_allocated
-	remaining_time = oven_tracing_line_data.time_allocated
-	
-	player_cursor.position = oven_tracing_line.get_starting_point()
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	
-	# Countdown to orient the player before starting
-	countdown_label.visible = true
-	await run_countdown()
-	
-	start_game()
+	if get_tree().root == self or is_initialized: # Runs if it as current scene or was initialized by something else then added to tree
+		oven_tracing_line.game_finish.connect(minigame_complete)
+		
+		determine_oven_tracing_line()
+		#self.input_ingredients = input_ingredients
+		#self.output_item = output_item
+		
+		# Setup the board and player
+		oven_tracing_line.initialize_data(oven_tracing_line_data)
+		
+		time_bar.max_value = oven_tracing_line_data.time_allocated
+		time_bar.value = oven_tracing_line_data.time_allocated
+		remaining_time = oven_tracing_line_data.time_allocated
+		
+		player_cursor.position = oven_tracing_line.get_starting_point()
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
+		# Countdown to orient the player before starting
+		countdown_label.visible = true
+		await run_countdown()
+		
+		start_game()
+	else:
+		push_error("Minigame called not as parent and without initializing it with initialize() parent method")
 
 func start_game() -> void:
 	
 	oven_tracing_line.start_game(player_cursor) # Start tracing line tracking
-	# TODO: Speed to completion
+
 	is_playing = true
 	
 func _process(delta):

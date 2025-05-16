@@ -88,7 +88,7 @@ func _process(delta: float) -> void:
 			print("Fried successfully!")
 			fried += 1
 			if fried >= target:
-				finish()
+				minigame_complete()
 				return
 			progress.clear()
 			progress.append(0)

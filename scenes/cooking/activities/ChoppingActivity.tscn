@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://yskpqwwvcpce"]
+[gd_scene load_steps=20 format=3 uid="uid://yskpqwwvcpce"]
 
 [ext_resource type="Script" uid="uid://o1myk4vyb1cl" path="res://scripts/cooking/chopping_activity.gd" id="2_ojnvx"]
 [ext_resource type="Texture2D" uid="uid://chmpi1n4p1apn" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_pk5pp"]
+[ext_resource type="Resource" uid="uid://br4i6r5ewid8" path="res://scenes/cooking/workbenches/chopping_board/chopping_board_settings/default_chopping_board_settings.tres" id="2_s8500"]
 [ext_resource type="Texture2D" uid="uid://c28jljdwevpa5" path="res://assets/textures/workstation_textures/ChoppingZone_Texture.png" id="3_bjcle"]
 [ext_resource type="Texture2D" uid="uid://cbg7dcha6kjh8" path="res://assets/workstations/chopping_game/cutting board only.png" id="4_yn4oy"]
 [ext_resource type="AudioStream" uid="uid://b2acn5b5gib7i" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut1.wav" id="5_bhn3j"]
@@ -49,6 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_ojnvx")
+chopping_settings = ExtResource("2_s8500")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -109,7 +111,6 @@ offset_left = 566.0
 offset_top = 169.0
 offset_right = 720.0
 offset_bottom = 229.0
-text = "Perfect!"
 label_settings = SubResource("LabelSettings_f8eio")
 horizontal_alignment = 1
 
@@ -117,6 +118,7 @@ horizontal_alignment = 1
 stream = SubResource("AudioStreamRandomizer_xaacb")
 
 [node name="IngredientImageDisplay" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 550.0
 offset_top = 233.0
