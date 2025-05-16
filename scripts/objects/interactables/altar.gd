@@ -3,21 +3,36 @@ extends Storage
 signal submit(item: Item)
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
+@onready var main_ui: Control = $CanvasLayer/UI
 @onready var inventory_container: Container = $CanvasLayer/UI/InventoryMenu/InventoryArea/InventoryContainer
-@onready var wanted_food_label: RichTextLabel = $CanvasLayer/UI/SubmitArea/WantedFoodLabel
 @onready var item_name_label: Label = $CanvasLayer/UI/InventoryMenu/ItemDescriptionArea/ItemName
 @onready var item_description_label: Label = $CanvasLayer/UI/InventoryMenu/ItemDescriptionArea/ItemDescription
 @onready var item_image: TextureRect = $CanvasLayer/UI/InventoryMenu/ItemDescriptionArea/ItemImage
 @onready var item_shadow: TextureRect = $CanvasLayer/UI/SubmitArea/ItemShadow
 @onready var item_image_for_dissolve: TextureRect = $CanvasLayer/UI/SubmitArea/ItemImageForDissolve
 @onready var submit_button: Button = $CanvasLayer/UI/SubmitArea/SubmitButton
+@onready var wanted_food_label_timer: Timer = $WantedFoodLabelTimer
+@onready var wanted_food_label: RichTextLabel = $CanvasLayer/UI/SubmitArea/WantedFoodLabel
+@onready var result_label: RichTextLabel = $CanvasLayer/ResultLabel
 
 var offering_slot: FoodSlot
-var is_judging = false
+var judged = false
+var passed = false
+var entity_names = ["It", "They", "The entity", "The god"]
+var demand_words = ["want", "desire", "request", "demand"]
+var entity_unhappy_words = ["displeased", "unhappy", "unsatisfied", ]
+var entity_happy_words = ["pleased", "enjoyed", "satisfied"]
+
+var food_words = ["offering", "dish", "tribute", "food"]
+var food_bad_words = ["unsatisfactory", "incorrect", "unworthy"]
+var food_good_words = ["satisfactory", "correct", "worthy"]
+
+var burn_duration = 2.0
 
 func _ready() -> void:
 	super ()
 	canvas_layer.visible = false
+	result_label.visible = false
 	update_wanted_food_label()
 	sprite.material.set_shader_parameter("thickness", 5)
 
@@ -36,19 +51,25 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 
 func submit_item(item):
-	if is_judging:
+	if judged:
 		return
 	submit.emit(item)
 	items[0] = null
 
 	dissolve_food_image()
 	judge_food(item)
-
 	update_display()
 
+	await get_tree().create_timer(burn_duration + 0.5).timeout
+
+	main_ui.visible = false
+	show_post_judge_text()
+
+	await get_tree().create_timer(2.0).timeout
+
 	# Simulate go to next day
-	# Globals.current_day += 1
-	# Globals.game_handler.switch_to_kitchen()
+	Globals.current_day += 1
+	Globals.game_handler.switch_to_kitchen()
 
 
 func interact():
@@ -77,10 +98,10 @@ func update_display():
 
 
 func dissolve_food_image():
+	wanted_food_label.visible = false
 	item_containers.visible = false
 	submit_button.disabled = true
-	is_judging = true
-	var burn_duration = 1.0
+	judged = true
 	item_image_for_dissolve.visible = true
 	item_image_for_dissolve.texture = offering_slot.food_texture.texture
 	item_image_for_dissolve.size = offering_slot.food_texture.size
@@ -95,10 +116,8 @@ func dissolve_food_image():
 		burn_duration # Duration
 	);
 	await get_tree().create_timer(burn_duration).timeout
-	# item_image_for_dissolve.visible = false
+	item_image_for_dissolve.visible = false
 	item_containers.visible = true
-	submit_button.disabled = false
-	is_judging = false
 
 func judge_food(submitted_item: Item):
 	var wanted_dish = Globals.requested_dish_list[Globals.current_requested_dish_idx]
@@ -106,21 +125,45 @@ func judge_food(submitted_item: Item):
 		var submitted_dish = submitted_item as Dish
 		if submitted_dish.item_name == wanted_dish.item_name:
 			print("Correct dish!")
+			passed = true
 			if Globals.current_requested_dish_idx < Globals.requested_dish_list.size() - 1:
 				Globals.current_requested_dish_idx += 1
 			return
 	print("Failed")
-	return
+	wanted_food_label_timer.stop()
 
 func update_wanted_food_label(chaotic = false):
 	var wanted_dish = Globals.requested_dish_list[Globals.current_requested_dish_idx]
-	var entity_names = ["It", "They", "The entity", "The god"]
-	var demand_verb = ["want", "desire", "request", "demand"]
 	var final_content = "[font_size=30]He want {0}[/font_size]".format([wanted_dish.item_name])
 	if chaotic:
 		var rand_font_size = randi_range(20, 40)
-		final_content = "[font_size={0}]{1} {2} {3}[/font_size]".format([rand_font_size, entity_names.pick_random(), demand_verb.pick_random(), wanted_dish.item_name])
+		final_content = "[font_size={0}]{1} {2} {3}[/font_size]".format([
+			rand_font_size, entity_names.pick_random(), demand_words.pick_random(), wanted_dish.item_name])
 	wanted_food_label.text = "[shake][color=gray]{0}[/color][/shake]".format([final_content])
+
+func show_post_judge_text():
+	var response_type_arr = ["entity", "food"]
+	var rand_font_size = randi_range(40, 60)
+	var final_content = ""
+	if response_type_arr.pick_random() == "entity":
+		var status_text = entity_unhappy_words.pick_random()
+		if passed:
+			status_text = entity_happy_words.pick_random()
+		final_content = "[font_size={0}]{1} is {2}[/font_size]".format([
+			rand_font_size, entity_names.pick_random(), status_text])
+	else:
+		var status_text = food_bad_words.pick_random()
+		if passed:
+			status_text = food_good_words.pick_random()
+		final_content = "[font_size={0}]The {1} is {2}[/font_size]".format([
+			rand_font_size, food_words.pick_random(), status_text])
+
+	var text_color = "red"
+	if passed:
+		text_color = "green"
+	result_label.text = "[shake][color={0}][center]{1}[/center][/color][/shake]".format([text_color, final_content])
+	result_label.visible = true
+
 
 func update_item_description_area(item: Item):
 	item_name_label.text = item.item_name
@@ -135,6 +178,8 @@ func clear_item_description_area_data():
 
 func _on_submit_button_pressed() -> void:
 	submit_item(items[0])
+	SoundManager.play_button_click_sfx()
+
 
 func _on_reset_button_pressed() -> void:
 	for slot in item_containers.get_children():
@@ -142,7 +187,7 @@ func _on_reset_button_pressed() -> void:
 
 
 func _on_inventory_container_item_select(item: Item, _amount: int) -> void:
-	if is_judging:
+	if judged:
 		return
 
 	if items[0] == null:
@@ -167,3 +212,6 @@ func _on_inventory_container_item_hover(item: Item, _amount: int) -> void:
 func _on_wanted_food_label_timer_timeout() -> void:
 	# Make wanted food text more chaotic
 	update_wanted_food_label(true)
+
+func play_hover_sfx():
+	SoundManager.play_button_hover_sfx()

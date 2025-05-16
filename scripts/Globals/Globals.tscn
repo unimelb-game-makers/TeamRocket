@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://nodsuwresxmj"]
+[gd_scene load_steps=7 format=3 uid="uid://nodsuwresxmj"]
 
 [ext_resource type="Script" uid="uid://dua0bgrksnrl6" path="res://scripts/Globals/globals.gd" id="1_om560"]
 [ext_resource type="Resource" uid="uid://bgplmsv507g1w" path="res://resources/player/player_stats.tres" id="2_jb3i0"]
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="3_jcdkj"]
 [ext_resource type="Resource" uid="uid://dhnvd2ibvwqaq" path="res://resources/cooking/foods/vegetable_curry.tres" id="4_rd5xv"]
 [ext_resource type="Resource" uid="uid://cxdb8u0ju6bk5" path="res://resources/cooking/foods/chicken_curry.tres" id="5_p1yk3"]
+[ext_resource type="Resource" uid="uid://cgii3iioos5j2" path="res://resources/cooking/foods/suspicious_curry.tres" id="5_sdymq"]
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_om560")
 default_player_stats = ExtResource("2_jb3i0")
-requested_dish_list = Array[ExtResource("3_jcdkj")]([ExtResource("4_rd5xv"), ExtResource("5_p1yk3"), ExtResource("4_rd5xv"), ExtResource("5_p1yk3"), ExtResource("4_rd5xv")])
+requested_dish_list = Array[ExtResource("3_jcdkj")]([ExtResource("4_rd5xv"), ExtResource("5_sdymq"), ExtResource("4_rd5xv"), ExtResource("5_p1yk3"), ExtResource("4_rd5xv")])
