@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0yuy1wvgeuq6"]
+
+[ext_resource type="Script" uid="uid://dj12fw4isd5hn" path="res://scripts/ui/status_panel_slot.gd" id="1_ewy7o"]
+[ext_resource type="Texture2D" uid="uid://d2b7dljnqq5l0" path="res://assets/status_icons/poison-cloud.svg" id="1_qdpxi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewy7o"]
+bg_color = Color(0.20871, 0.20871, 0.20871, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.685762, 0.546757, 0.266349, 1)
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(30, 30)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ewy7o")
+
+[node name="Texture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qdpxi")
+expand_mode = 2
+
+[node name="DurationLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -7.0
+offset_right = 4.0
+offset_bottom = 4.16667
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 6
+
+[node name="StacksLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
+offset_top = -2.0
+offset_bottom = 12.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 2
+
+[node name="InfoLabel" type="Label" parent="."]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 23.0
+offset_top = 8.0
+offset_right = 79.0
+offset_bottom = 34.3333
+theme_override_styles/normal = SubResource("StyleBoxFlat_ewy7o")
+text = "Poison"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

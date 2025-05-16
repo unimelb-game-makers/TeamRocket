@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="MovespeedIncreaseStatus" load_steps=2 format=3 uid="uid://c3a3adhgjk5tl"]
+[gd_resource type="Resource" script_class="MovespeedIncreaseStatus" load_steps=3 format=3 uid="uid://c3a3adhgjk5tl"]
 
 [ext_resource type="Script" uid="uid://c6yfi13084pva" path="res://resources/resource_scripts/status_effects/movespeed_increase_status.gd" id="1_1fssi"]
+[ext_resource type="Texture2D" uid="uid://bektodi6rnj6m" path="res://assets/status_icons/wingfoot.svg" id="1_h7xjw"]
 
 [resource]
 script = ExtResource("1_1fssi")
@@ -9,4 +10,5 @@ name = "Speed Increase"
 duration = 2
 duration_int = 1
 stackable = false
+icon = ExtResource("1_h7xjw")
 metadata/_custom_type_script = "uid://c6yfi13084pva"

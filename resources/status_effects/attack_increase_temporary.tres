@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="AttackIncreaseStatus" load_steps=2 format=3 uid="uid://ckg582376bup7"]
+[gd_resource type="Resource" script_class="AttackIncreaseStatus" load_steps=3 format=3 uid="uid://ckg582376bup7"]
 
+[ext_resource type="Texture2D" uid="uid://bfbg1awb0nkfp" path="res://assets/status_icons/bullet-impacts.svg" id="1_i1hfx"]
 [ext_resource type="Script" uid="uid://c4w27uduxpnqb" path="res://resources/resource_scripts/status_effects/attack_increase_status.gd" id="1_xgw42"]
 
 [resource]
@@ -9,4 +10,5 @@ name = "Lethality"
 duration = 2
 duration_int = 1
 stackable = false
+icon = ExtResource("1_i1hfx")
 metadata/_custom_type_script = "uid://c4w27uduxpnqb"

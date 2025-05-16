@@ -77,10 +77,12 @@ func tick_status_effects(duration: StatusEffect.DurationCategory):
 				status.remove(self)
 				status_effects.erase(status)
 	Globals.inventory_ui.update_character_stats()
+	Globals.inventory_ui.update_status_panel()
 
 func apply_status(status: StatusEffect):
 	status.apply(self)
 	Globals.inventory_ui.update_character_stats()
+	Globals.inventory_ui.update_status_panel()
 	if (status.duration == StatusEffect.DurationCategory.INSTANT):
 		return
 	if (status not in status_effects.keys()):

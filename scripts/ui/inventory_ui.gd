@@ -3,6 +3,8 @@ class_name InventoryUI
 
 signal item_selected(item, amount)
 
+@export var status_slot: PackedScene
+
 @onready var hp_label: Label = $CharacterStats/Stats/HpLabel
 @onready var dmg_label: Label = $CharacterStats/Stats/DmgLabel
 @onready var speed_label: Label = $CharacterStats/Stats/SpdLabel
@@ -37,8 +39,13 @@ func update_character_stats():
 	speed_label.text = "SPD: {0}".format([Globals.player_stats.speed])
 
 func update_status_panel():
+	for child in status_grid_container.get_children():
+		child.queue_free()
 	for status in Globals.player_stats.status_effects:
-		print(status)
+		var info = Globals.player_stats.status_effects[status]
+		var status_inst = status_slot.instantiate()
+		status_grid_container.add_child(status_inst)
+		status_inst.set_status(status, info[0], info[1])
 
 func toggle_inventory(status: bool) -> void:
 	visible = status
