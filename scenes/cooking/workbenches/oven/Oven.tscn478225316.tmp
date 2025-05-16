@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7ikkerlqq6g6"]
+
+[ext_resource type="Script" uid="uid://dqw377e8ohg76" path="res://scenes/cooking/workbenches/oven/oven.gd" id="1_llvdt"]
+[ext_resource type="Resource" uid="uid://cn6dlpgedwdov" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_bobby.tres" id="2_2lhxp"]
+[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="2_ja2sr"]
+[ext_resource type="PackedScene" uid="uid://b7bgjj0x4lljg" path="res://scenes/cooking/workbenches/oven/oven_tracing_line.tscn" id="3_ja2sr"]
+[ext_resource type="Texture2D" uid="uid://cxtk2opt5e8a6" path="res://assets/placeholder/gear.png" id="5_x7xau"]
+
+[node name="Oven" type="Node2D"]
+script = ExtResource("1_llvdt")
+oven_tracing_line_data = ExtResource("2_2lhxp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.261864, 0.290695, 0.216719, 1)
+position = Vector2(619, 336)
+scale = Vector2(4.92188, 4.92188)
+texture = ExtResource("2_ja2sr")
+
+[node name="OvenTracingLine" parent="." instance=ExtResource("3_ja2sr")]
+
+[node name="CountDown" type="Timer" parent="."]
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.171875, 0.171875)
+texture = ExtResource("5_x7xau")
+
+[connection signal="timeout" from="CountDown" to="." method="_on_count_down_timeout"]

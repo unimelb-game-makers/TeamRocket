@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OvenLine" load_steps=2 format=3 uid="uid://gjo0mjdr5tpi"]
+
+[ext_resource type="Script" uid="uid://crq6pfgaslrgu" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_resource.gd" id="1_kks6a"]
+
+[resource]
+script = ExtResource("1_kks6a")
+perfect_line_width = 20.0
+good_line_factor = 1.1
+passable_line_factor = 3.0
+line_points = PackedVector2Array(113, 81, 215, 152, 247, 231, 387, 235, 510, 286, 623, 332, 677, 419, 820, 330, 914, 193)

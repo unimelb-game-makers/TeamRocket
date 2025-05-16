@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://unbm0ush87sw"]
+[gd_scene load_steps=14 format=3 uid="uid://unbm0ush87sw"]
 
-[ext_resource type="Script" uid="uid://chkpoqqsr6ngf" path="res://scripts/objects/interactables/altar.gd" id="1_rfv52"]
-[ext_resource type="Script" uid="uid://bswsoddpidu4d" path="res://resources/resource_scripts/item.gd" id="2_upo2r"]
-[ext_resource type="Resource" uid="uid://d4fvdxgm3d6pq" path="res://resources/items/spaghetti_bolognaise.tres" id="3_ikw8l"]
+[ext_resource type="Script" uid="uid://idb0kjlgp4ad" path="res://scripts/objects/interactables/altar.gd" id="1_rfv52"]
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_8yx1c"]
+[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_upo2r"]
+[ext_resource type="Resource" uid="uid://cq1taw61ifcp7" path="res://resources/cooking/foods/beef_curry.tres" id="3_qjrfk"]
 [ext_resource type="Texture2D" uid="uid://ck6wk3lfpwesd" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="4_eda5l"]
+[ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="4_ji3s6"]
+[ext_resource type="Resource" uid="uid://cxdb8u0ju6bk5" path="res://resources/cooking/foods/chicken_curry.tres" id="4_ttx8o"]
+[ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="5_0fmag"]
 [ext_resource type="Texture2D" uid="uid://dfs8ar6bwmgc1" path="res://assets/interiors/kitchen/altar.png" id="5_75tl3"]
 [ext_resource type="Texture2D" uid="uid://dc2fhcnhwqdg2" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown_pressed.png" id="5_d4yib"]
 [ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="6_2ofly"]
@@ -13,8 +17,9 @@ size = Vector2(99, 148)
 
 [node name="Area2D" type="Area2D"]
 collision_layer = 8
+collision_mask = 64
 script = ExtResource("1_rfv52")
-acceptable_foods = Array[ExtResource("2_upo2r")]([ExtResource("3_ikw8l")])
+acceptable_foods = Array[ExtResource("2_8yx1c")]([ExtResource("3_qjrfk"), ExtResource("4_ttx8o")])
 slots_num = 1
 items = Array[ExtResource("2_upo2r")]([null])
 
@@ -57,16 +62,19 @@ text = "Submit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InventorySelectList" parent="UI/CanvasLayer" instance=ExtResource("6_2ofly")]
-offset_left = 109.0
-offset_top = 117.0
-offset_right = 464.0
-offset_bottom = 545.0
+[node name="ItemContainers" type="GridContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -32.0
+offset_top = -152.0
+offset_right = 103.0
+offset_bottom = -2.00002
+scale = Vector2(1.5, 1.5)
+columns = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("5_75tl3")
-
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="pressed" from="UI/CanvasLayer/SubmitButton" to="." method="_on_submit_button_pressed"]
 [connection signal="item_selected" from="UI/CanvasLayer/InventorySelectList" to="." method="_on_inventory_select_list_item_selected"]

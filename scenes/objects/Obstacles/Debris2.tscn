@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ch7avwm4a4tnd" path="res://assets/Park/Objects/debris 2.png" id="1_7jkgm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgr28"]
-size = Vector2(400, 110)
+size = Vector2(462, 120)
 
 [node name="Debris" type="Node2D"]
 
@@ -14,5 +14,5 @@ texture = ExtResource("1_7jkgm")
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2, 0)
+position = Vector2(1, 31)
 shape = SubResource("RectangleShape2D_sgr28")

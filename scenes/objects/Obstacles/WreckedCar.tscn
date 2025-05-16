@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b71my56q2ykfi" path="res://assets/Park/Objects/car 1.png" id="1_1etd7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8bqy"]
-size = Vector2(610, 75)
+size = Vector2(610, 162)
 
 [node name="WreckedCar" type="Node2D"]
 y_sort_enabled = true
@@ -12,8 +12,9 @@ y_sort_enabled = true
 texture = ExtResource("1_1etd7")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 119)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 3.5)
+position = Vector2(0, -40)
 shape = SubResource("RectangleShape2D_b8bqy")
