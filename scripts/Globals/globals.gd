@@ -3,6 +3,8 @@ extends Node
 @export var default_player_stats: PlayerStatsResource
 @export var requested_dish_list: Array[Dish]
 
+signal devotion_changed(value: int)
+
 var player: Player
 var player_stats: PlayerStatsResource
 
@@ -21,7 +23,12 @@ var total_playtime = 0
 
 # Devotion stuff
 const STARTING_DEVOTION = 30
-var devotion = 30
+const FAILED_DEVOTION_PENALTY = 10
+const PASSED_DEVOTION_BONUS = 15
+var devotion: int = STARTING_DEVOTION:
+	set(value):
+		devotion = value
+		devotion_changed.emit(value)
 var current_requested_dish_idx = 0 # aka progress counter
 var current_day: int = 1
 
@@ -58,3 +65,23 @@ func update_total_playtime():
 	var played_time = Time.get_ticks_msec() - start_record_timestamp
 	total_playtime += played_time
 	start_record_timestamp = Time.get_ticks_msec() # Reset start timestamp
+
+
+func gameover():
+	print("Gameover")
+	return
+
+func victory():
+	print("Victory")
+	return
+
+func check_game_end_condition() -> bool:
+	if current_requested_dish_idx == requested_dish_list.size() - 1:
+		victory()
+		return true
+
+	if devotion <= 0:
+		gameover()
+		return true
+
+	return false

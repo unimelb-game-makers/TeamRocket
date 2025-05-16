@@ -68,8 +68,9 @@ func submit_item(item):
 	await get_tree().create_timer(2.0).timeout
 
 	# Simulate go to next day
-	Globals.current_day += 1
-	Globals.game_handler.switch_to_kitchen()
+	if not Globals.check_game_end_condition():
+		Globals.current_day += 1
+		Globals.game_handler.switch_to_kitchen()
 
 
 func interact():
@@ -124,12 +125,12 @@ func judge_food(submitted_item: Item):
 	if submitted_item is Dish:
 		var submitted_dish = submitted_item as Dish
 		if submitted_dish.item_name == wanted_dish.item_name:
-			print("Correct dish!")
+			Globals.devotion += Globals.PASSED_DEVOTION_BONUS
 			passed = true
 			if Globals.current_requested_dish_idx < Globals.requested_dish_list.size() - 1:
 				Globals.current_requested_dish_idx += 1
 			return
-	print("Failed")
+	Globals.devotion -= Globals.FAILED_DEVOTION_PENALTY
 	wanted_food_label_timer.stop()
 
 func update_wanted_food_label(chaotic = false):

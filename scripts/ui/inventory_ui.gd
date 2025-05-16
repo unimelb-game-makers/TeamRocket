@@ -10,12 +10,14 @@ signal item_selected(item, amount)
 @onready var inventory_container: Container = $VBoxContainer/ItemListBackground/InventoryContainer
 @onready var item_descriptor: ItemDescriptionBox = $VBoxContainer/ItemDescriptionBackground
 @onready var drop_button: Button = $VBoxContainer/ItemListBackground/ContextButtonList/DropButton
+@onready var devotion_label: Label = $OtherStats/VBoxContainer/DevotionLabel
 
 var is_open = false
 var current_selected_item: Item = null
 
 func _ready() -> void:
 	Globals.inventory_ui = self
+	Globals.devotion_changed.connect(func(value): devotion_label.text = "Devotion: {0}".format([value]))
 	reset_data()
 
 
@@ -30,6 +32,7 @@ func update_character_stats():
 	hp_label.text = "HP: {0} / {1}".format([Globals.player_stats.health, Globals.player_stats.max_health])
 	dmg_label.text = "DMG: {0}".format([Globals.player_stats.damage])
 	speed_label.text = "SPD: {0}".format([Globals.player_stats.speed])
+	devotion_label.text = "Devotion: {0}".format([Globals.devotion])
 
 
 func toggle_inventory(status: bool) -> void:
