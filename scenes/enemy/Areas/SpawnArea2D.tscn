@@ -1,6 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0ojokxokewku"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://ru54kcf2fgm7" path="res://scripts/enemy/Areas/spawnarea.gd" id="1_q8p6j"]
+=======
+[ext_resource type="Script" uid="uid://b8gnltdq3u3mi" path="res://scripts/enemy/Areas/spawnarea.gd" id="1_q8p6j"]
+>>>>>>> 4bb515c (godot 4.4 scene uids)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b2ux1"]
 resource_local_to_scene = true

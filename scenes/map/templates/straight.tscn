@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt5m74fjvh4om"]
+
+[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_505wj"]
+[ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_7rsnm"]
+
+[node name="straight" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_505wj")]
+sockets = Array[String](["A", "B", "A", "B"])
+doors = [null, NodePath("DoorArea"), null, NodePath("DoorArea2")]
+spawn = NodePath("Spawn")
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+offset_right = 1503.0
+offset_bottom = 760.0
+
+[node name="TileMap" parent="." index="1"]
+tile_map_data = PackedByteArray(0, 0, 2, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 80, 7, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 80, 12, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 80)
+
+[node name="DoorArea" parent="." index="2" instance=ExtResource("2_7rsnm")]
+position = Vector2(1453, 354)
+rotation = 1.5708
+
+[node name="DoorArea2" parent="." index="3" instance=ExtResource("2_7rsnm")]
+position = Vector2(53, 349)
+rotation = 1.5708
+direction = 3
+
+[node name="Spawn" type="Node2D" parent="." index="4"]
+position = Vector2(408, 342)
+
+[connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]

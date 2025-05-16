@@ -1,11 +1,19 @@
 [gd_scene load_steps=8 format=4 uid="uid://d0cl6866o0sif"]
 
 [ext_resource type="TileSet" uid="uid://c018cpgpmun08" path="res://assets/prototype_tileset.tres" id="1_81cn5"]
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://bddp0n0vjric4" path="res://scripts/terrain/ground.gd" id="2_8vjk7"]
 [ext_resource type="Script" uid="uid://birf3dca0i0xe" path="res://scripts/terrain/Obstacles.gd" id="3_plhiw"]
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="4_meq4f"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="6_jqvsv"]
 [ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/EnemyDasher.tscn" id="6_pfm7v"]
+=======
+[ext_resource type="Script" uid="uid://c7bth8i7q24f5" path="res://scripts/terrain/ground.gd" id="2_8vjk7"]
+[ext_resource type="Script" uid="uid://b5krncseu3e4p" path="res://scripts/terrain/Obstacles.gd" id="3_plhiw"]
+[ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="4_meq4f"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="6_jqvsv"]
+[ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/enemy_dasher.tscn" id="6_pfm7v"]
+>>>>>>> 4bb515c (godot 4.4 scene uids)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_uen1e"]
 vertices = PackedVector2Array(167.922, 1191.92, 1752.08, 1240.08, -472.078, 1240.08, -295.922, 1191.92, 1752.08, -216.078, 1575.92, 935.922, 1575.92, -39.9219, -472.078, -216.078, 344.078, -39.9219, 1240.08, 935.922, -295.922, 600.078, 344.078, 295.922, 167.922, 600.078, 1240.08, 295.922)
