@@ -10,10 +10,10 @@ var is_initialized: bool = false # Change to true once input and output items ha
 
 func initialize_activity(inputs: Array[Ingredient], output: Item):
 	# Extra validation protection
-	if len(input_ingredients) < 1:
+	if len(inputs) < 1:
 		push_error("Initializing activity with no input ingredients!")
 		return
-	if output_item == null:
+	if output == null:
 		push_error("Initializing activity with no output ingredient")
 		return
 		

@@ -63,7 +63,7 @@ func reset_game():
 	pass
 
 func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
-	super(input_ingredients, output_item)
+	#super(input_ingredients, output_item)
 	fry_progress.max_value = 2 * target_progress
 	tip_text.self_modulate.a = 0
 	target = ingredient_handler.selected_ingredients.size()

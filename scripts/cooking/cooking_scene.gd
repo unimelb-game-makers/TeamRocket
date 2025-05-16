@@ -62,8 +62,10 @@ func add_item(item: Ingredient, _amount: int):
 func call_and_run_activity(input_ingredients: Array[Ingredient], output_item: Item) -> void:
 	activity = activity_to_run.instantiate() as CookingActivity
 	activity.complete.connect(finish)
+	print(input_ingredients)
 	activity.initialize_activity(input_ingredients, output_item)
-	self.add_child(activity) # Starts the activity when it is added due to _ready()
+	if activity.is_initialized: # Extra protection
+		self.add_child(activity) # Starts the activity when it is added due to _ready()
 
 ## This method is called when the CookingActivity is finished (emitting signal 'complete')
 func finish(rating: float):
@@ -99,7 +101,7 @@ func _on_start_button_pressed() -> void:
 		chosen_food_area.visible = false
 		
 		activity_is_in_progress = true
-		
+		print(ingredient_handler.selected_ingredients)
 		call_and_run_activity(ingredient_handler.selected_ingredients, output_item)
 	else:
 		print("Output ingredient/dish failed to be generated!")

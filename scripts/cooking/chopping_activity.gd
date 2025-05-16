@@ -13,8 +13,8 @@ extends CookingActivity
 
 enum ACCURACY_SCORES {
 	PERFECT = 0,
-	GOOD = 1,
-	FAIL = 2
+	OKAY = 1,
+	MISSED = 2
 }
 
 var chop_progress = 0
@@ -75,7 +75,7 @@ func move_marker(delta: float) -> void:
 func check_chop() -> void:
 	# Calculate marker's local position as a percentage of boundary width
 	var marker_percentage = (marker.position.x / boundary.size.x) * 100
-	print("Marker position: %f%%" % marker_percentage)  # Only print when the button is pressed
+	#print("Marker position: %f%%" % marker_percentage)  # Only print when the button is pressed
 
 	# Check if the marker's percentage is in the perfect, okay, or fail region
 	if marker_percentage >= perfect_left and marker_percentage <= perfect_right:
@@ -85,6 +85,7 @@ func check_chop() -> void:
 		result_label.modulate = Color("#6BDE77")  # Green
 		sfx_chop_randomiser.play()
 		modulate_ingredient()
+		chop_table[ACCURACY_SCORES.PERFECT] += 1
 	elif marker_percentage >= okay_left and marker_percentage <= okay_right:
 		# Okay chop
 		chop_progress += okay_progress
@@ -92,10 +93,12 @@ func check_chop() -> void:
 		result_label.modulate = Color(1, 1, 0)  # Yellow
 		sfx_chop_randomiser.play()
 		modulate_ingredient()
+		chop_table[ACCURACY_SCORES.OKAY] += 1
 	else:
 		# Missed chop
 		result_label.text = "Missed!"
 		result_label.modulate = Color("#E75757")  # Red
+		chop_table[ACCURACY_SCORES.MISSED] += 1
 
 	# Update the ProgressBar value as a percentage
 	var chop_percentage = (float(chop_progress) / float(target)) * 100  # Calculate the percentage
@@ -114,13 +117,26 @@ func modulate_ingredient() -> void:
 
 func minigame_complete() -> void:
 	playing = false
-	result_label.text = "You Win!"
+	result_label.text = "Game Complete!"
 	result_label.modulate = Color(0, 1, 1)  # Cyan
 	var quality = _evaluate_chopping_quality()
+	
+	await get_tree().create_timer(2.0).timeout
+	
 	finish(quality)
 
 func _evaluate_chopping_quality() -> float:
-	return 100
+	var total_data_points = 0
+	
+	# If more PERFECT than the others
+	if chop_table[ACCURACY_SCORES.PERFECT] - chop_table[ACCURACY_SCORES.OKAY] -chop_table[ACCURACY_SCORES.MISSED] > 0:
+		return 100
+	# If more OKAY than the others
+	elif chop_table[ACCURACY_SCORES.OKAY] - chop_table[ACCURACY_SCORES.PERFECT] -chop_table[ACCURACY_SCORES.MISSED] > 0:
+		return 60
+	# If more MISSED than the others
+	else:
+		return 0
 	
 ## Set some ingredient to display while chopping
 func _set_ingredient_image() -> void:
