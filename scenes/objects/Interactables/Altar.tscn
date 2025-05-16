@@ -325,14 +325,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -188.0
+offset_left = -288.0
 offset_top = 40.0
-offset_right = 188.0
-offset_bottom = 82.0
+offset_right = 264.0
+offset_bottom = 192.0
 grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[shake][color=gray]It want vegetable curry[/color][/shake]"
+text = "[shake][color=gray][font_size=30]It want vegetable curry[/font_size][/color][/shake]"
+fit_content = true
 horizontal_alignment = 1
 
 [node name="SubmitButton" parent="CanvasLayer/UI/SubmitArea" instance=ExtResource("10_8yx1c")]
@@ -398,6 +398,10 @@ grow_vertical = 0
 texture = ExtResource("11_qjrfk")
 expand_mode = 1
 
+[node name="WantedFoodLabelTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
@@ -405,3 +409,4 @@ expand_mode = 1
 [connection signal="item_hover" from="CanvasLayer/UI/InventoryMenu/InventoryArea/InventoryContainer" to="." method="_on_inventory_container_item_hover"]
 [connection signal="item_select" from="CanvasLayer/UI/InventoryMenu/InventoryArea/InventoryContainer" to="." method="_on_inventory_container_item_select"]
 [connection signal="pressed" from="CanvasLayer/UI/SubmitArea/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="timeout" from="WantedFoodLabelTimer" to="." method="_on_wanted_food_label_timer_timeout"]

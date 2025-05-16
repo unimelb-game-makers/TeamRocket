@@ -29,6 +29,12 @@ func _ready() -> void:
 	offering_slot.button.self_modulate = Color(1, 1, 1, 0)
 
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause") and (canvas_layer.visible):
+		exit_altar_ui()
+		get_viewport().set_input_as_handled()
+
+
 func submit_item(item):
 	if is_judging:
 		return
@@ -51,6 +57,10 @@ func interact():
 	inventory_container.update_inventory_list()
 	update_wanted_food_label()
 	update_display()
+
+func exit_altar_ui():
+	canvas_layer.hide()
+	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
 
 func take_item(slot):
 	super (slot)
@@ -102,9 +112,15 @@ func judge_food(submitted_item: Item):
 	print("Failed")
 	return
 
-func update_wanted_food_label():
+func update_wanted_food_label(chaotic = false):
 	var wanted_dish = Globals.requested_dish_list[Globals.current_requested_dish_idx]
-	wanted_food_label.text = "[shake][color=gray]He want {0}[/color][/shake]".format([wanted_dish.item_name])
+	var entity_names = ["It", "They", "The entity", "The god"]
+	var demand_verb = ["want", "desire", "request", "demand"]
+	var final_content = "[font_size=30]He want {0}[/font_size]".format([wanted_dish.item_name])
+	if chaotic:
+		var rand_font_size = randi_range(20, 40)
+		final_content = "[font_size={0}]{1} {2} {3}[/font_size]".format([rand_font_size, entity_names.pick_random(), demand_verb.pick_random(), wanted_dish.item_name])
+	wanted_food_label.text = "[shake][color=gray]{0}[/color][/shake]".format([final_content])
 
 func update_item_description_area(item: Item):
 	item_name_label.text = item.item_name
@@ -128,6 +144,7 @@ func _on_reset_button_pressed() -> void:
 func _on_inventory_container_item_select(item: Item, _amount: int) -> void:
 	if is_judging:
 		return
+
 	if items[0] == null:
 		items[0] = item
 		InventoryGlobal.remove_item(item, 1)
@@ -140,10 +157,13 @@ func _on_area_entered(_area: Area2D) -> void:
 
 
 func _on_area_exited(_area: Area2D) -> void:
-	canvas_layer.hide()
-	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
-	item_containers.hide()
+	exit_altar_ui()
 
 
 func _on_inventory_container_item_hover(item: Item, _amount: int) -> void:
 	update_item_description_area(item)
+
+
+func _on_wanted_food_label_timer_timeout() -> void:
+	# Make wanted food text more chaotic
+	update_wanted_food_label(true)
