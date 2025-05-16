@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c2td7omrl6sqn" path="res://assets/textures/basic_light.webp" id="8_emt8s"]
 [ext_resource type="Texture2D" uid="uid://d3fhg66m1c0rh" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down01.png" id="8_x6n1m"]
 [ext_resource type="Texture2D" uid="uid://bj3fwesi5fljg" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down02.png" id="9_8ufqp"]
-[ext_resource type="Script" uid="uid://b1cmy4i1ysgb0" path="res://scripts/player/rifle.gd" id="9_usf71"]
+[ext_resource type="Script" path="res://scripts/player/rifle.gd" id="9_usf71"]
 [ext_resource type="PackedScene" uid="uid://c3jnad7h7ggpt" path="res://scenes/player/bullet.tscn" id="10_c4h7y"]
 [ext_resource type="Texture2D" uid="uid://ba6sk0si4xgoh" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down03.png" id="10_chcoi"]
 [ext_resource type="Texture2D" uid="uid://74aq7mvhmeeu" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down04.png" id="11_f5d4e"]

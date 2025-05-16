@@ -47,13 +47,13 @@ clip_1/auto_advance = 1
 clip_1/next_clip = 1
 _transitions = {
 Vector2i(0, 1): {
-"fade_beats": 1.0,
+"fade_beats": 1,
 "fade_mode": 4,
 "from_time": 3,
 "to_time": 1
 },
 Vector2i(1, 1): {
-"fade_beats": 1.0,
+"fade_beats": 1,
 "fade_mode": 4,
 "from_time": 3,
 "to_time": 1
