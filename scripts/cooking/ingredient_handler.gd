@@ -1,14 +1,13 @@
 extends Control
 class_name IngredientHandler
 
-var selected_ingredients: Array[Ingredient]
-var max_slots = 1
 @export var food_slot_scene: PackedScene
 
-signal update_list
+var selected_ingredients: Array[Ingredient]
+var max_slots = 1
 
-func ready() -> void:
-	pass
+signal update_list
+signal item_hover(item: Item)
 
 func create_slots() -> void:
 	# KILL ALL CHILDREN
@@ -32,6 +31,12 @@ func remove_item(index):
 	update_list.emit()
 	update_slots()
 
+
+func hover_item(index):
+	var item = selected_ingredients[index]
+	item_hover.emit(item)
+
+
 func clear_slots():
 	selected_ingredients = []
 
@@ -47,3 +52,4 @@ func update_slots() -> void:
 		if (i < len(selected_ingredients)):
 			slot.set_ingredient(selected_ingredients[i])
 			slot.food_removed.connect(remove_item)
+			slot.food_hovered.connect(hover_item)

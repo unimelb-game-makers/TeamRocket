@@ -5,6 +5,7 @@ extends Area2D
 
 func _ready() -> void:
 	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
+	fridge_ui.visible = false
 
 func interact():
 	if (fridge_ui.visible):

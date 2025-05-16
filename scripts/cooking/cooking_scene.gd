@@ -1,5 +1,9 @@
 class_name CookingScene extends Control
 
+@export var activity_name: String
+@export var activity_animated_texture: AnimatedTexture
+@export var crafting_station: CraftingStation
+
 @onready var ingredient_handler: IngredientHandler = %IngredientHandler
 @onready var start_button: TextureButton = $Background/ChosenFoodArea/StartButton
 @onready var inventory_container: Container = $Background/InventoryArea/InventoryContainer
@@ -7,14 +11,13 @@ class_name CookingScene extends Control
 @onready var selected_food_list: Container = $Background/ChosenFoodArea/SelectedFoodList
 @onready var activity_animated_sprite: TextureRect = $Background/ChosenFoodArea/ActivityAnimatedSprite
 @onready var activity_label: Label = $Background/ChosenFoodArea/ActivityLabel
+@onready var item_name_label: Label = $Background/ItemDescriptionArea/ItemName
+@onready var item_description_label: Label = $Background/ItemDescriptionArea/ItemDescription
+@onready var item_image: TextureRect = $Background/ItemDescriptionArea/ItemImage
 
 @onready var inventory_area: Control = $Background/InventoryArea
 @onready var chosen_food_area: Control = $Background/ChosenFoodArea
-
-@export var activity_name: String
-@export var activity_animated_texture: AnimatedTexture
-
-@export var crafting_station: CraftingStation
+@onready var item_description_area: Control = $Background/ItemDescriptionArea
 
 var recipe: Recipe
 var activity_is_in_progress = false
@@ -29,6 +32,7 @@ func _ready() -> void:
 		activity_animated_sprite.texture = activity_animated_texture
 	if crafting_station.recipes.size() == 0:
 		push_warning("{0} missing recipes data.".format([activity_name]))
+	clear_item_description_area_data()
 
 func reset():
 	ingredient_handler.max_slots = crafting_station.max_ingredients
@@ -44,6 +48,8 @@ func reset():
 
 	inventory_area.visible = true
 	chosen_food_area.visible = true
+	item_description_area.visible = true
+	clear_item_description_area_data()
 
 func add_item(item: Ingredient, _amount: int):
 	ingredient_handler.add_item(item)
@@ -58,6 +64,16 @@ func finish():
 	ingredient_handler.clear_slots()
 	reset()
 
+func update_item_description_area(item: Item):
+	item_name_label.text = item.item_name
+	item_description_label.text = item.description
+	item_image.texture = item.texture
+
+func clear_item_description_area_data():
+	item_name_label.text = ""
+	item_description_label.text = ""
+	item_image.texture = null
+
 func _on_start_button_pressed() -> void:
 	var output_item = crafting_station.craft_output(ingredient_handler.selected_ingredients)
 	if (output_item):
@@ -69,9 +85,12 @@ func _on_start_button_pressed() -> void:
 
 		inventory_area.visible = false
 		chosen_food_area.visible = false
+		item_description_area.visible = false
+		clear_item_description_area_data()
 
 		activity_is_in_progress = true
 		activity.start(ingredient_handler.selected_ingredients, output_item)
+
 
 func _on_ingredient_handler_update_list() -> void:
 	inventory_container.update_inventory_list()
@@ -80,3 +99,10 @@ func _on_inventory_container_item_select(item: Item, amount: int) -> void:
 	if item is Ingredient:
 		add_item(item, amount)
 	# else, print some notification to player that they can't use this item for cooking
+
+func _on_inventory_container_item_hover(item: Item, _amount: int) -> void:
+	update_item_description_area(item)
+
+
+func _on_ingredient_handler_item_hover(item: Item) -> void:
+	update_item_description_area(item)

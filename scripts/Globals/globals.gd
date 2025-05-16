@@ -20,6 +20,7 @@ var start_record_timestamp = 0
 var total_playtime = 0
 
 # Devotion stuff
+const STARTING_DEVOTION = 30
 var devotion = 30
 var current_requested_dish_idx = 0 # aka progress counter
 var current_day: int = 1
