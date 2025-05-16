@@ -1,4 +1,5 @@
 extends Control
+class_name FoodSlot
 
 @onready var button: BaseButton = $TextureButton
 @onready var food_label: Label = $TextureButton/FoodLabel

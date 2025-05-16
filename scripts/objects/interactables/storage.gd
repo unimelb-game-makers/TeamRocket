@@ -17,6 +17,10 @@ func _ready() -> void:
 	for i in range(slots_num):
 		items.append(null)
 	sprite.material.set_shader_parameter("thickness", 0)
+
+	for child in item_containers.get_children():
+		child.queue_free()
+
 	for i in range(slots_num):
 		var item_slot = item_slot_scene.instantiate()
 		item_slot.index = i

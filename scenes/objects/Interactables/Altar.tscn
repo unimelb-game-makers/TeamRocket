@@ -1,12 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://unbm0ush87sw"]
+[gd_scene load_steps=23 format=3 uid="uid://unbm0ush87sw"]
 
 [ext_resource type="Script" uid="uid://idb0kjlgp4ad" path="res://scripts/objects/interactables/altar.gd" id="1_rfv52"]
-[ext_resource type="Texture2D" uid="uid://ck6wk3lfpwesd" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="4_eda5l"]
 [ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="4_ji3s6"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="5_0fmag"]
 [ext_resource type="Texture2D" uid="uid://dfs8ar6bwmgc1" path="res://assets/interiors/kitchen/altar.png" id="5_75tl3"]
-[ext_resource type="Texture2D" uid="uid://dc2fhcnhwqdg2" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown_pressed.png" id="5_d4yib"]
 [ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/InventoryContainer.tscn" id="6_2ofly"]
+[ext_resource type="Texture2D" uid="uid://mql53aoddg1y" path="res://assets/textures/kenney_borders/default/Border/panel-border-001.png" id="8_b52d0"]
+[ext_resource type="Texture2D" uid="uid://dvwwrjhby6qk6" path="res://assets/interiors/kitchen/kitchen_wall.jpg" id="9_qjrfk"]
+[ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="10_8yx1c"]
+[ext_resource type="Texture2D" uid="uid://bei2syspon1ly" path="res://assets/food/curry.png" id="11_qjrfk"]
+[ext_resource type="Shader" uid="uid://bsvsigpjndqd7" path="res://scripts/shader/2d_burn_dissolve.gdshader" id="11_ttx8o"]
+[ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="13_53dj2"]
+[ext_resource type="Texture2D" uid="uid://cevkjrlj4y5qd" path="res://assets/food/tomato_raw.png" id="16_shxyd"]
+[ext_resource type="Texture2D" uid="uid://bai0mllc38ec1" path="res://assets/textures/kenney_borders/default/Border/panel-border-003.png" id="17_7iadk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xptoa"]
 size = Vector2(128, 112)
@@ -23,6 +29,34 @@ shader_parameter/aspect_ratio = 1.0
 shader_parameter/square_border = false
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
+
+[sub_resource type="Gradient" id="Gradient_qjrfk"]
+offsets = PackedFloat32Array(0, 0.1, 0.5, 0.9, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ttx8o"]
+gradient = SubResource("Gradient_qjrfk")
+
+[sub_resource type="Gradient" id="Gradient_8yx1c"]
+offsets = PackedFloat32Array(0, 0.3, 0.527624, 0.8, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0, 0.592157, 0.592157, 0.592157, 0, 0, 0, 0, 0, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qjrfk"]
+gradient = SubResource("Gradient_8yx1c")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_53dj2"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mh6vm"]
+seamless = true
+noise = SubResource("FastNoiseLite_53dj2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vb1y2"]
+shader = ExtResource("11_ttx8o")
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_mh6vm")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 0.04
+shader_parameter/burn_color = Color(1, 0.312356, 0, 1)
 
 [node name="Area2D" type="Area2D" node_paths=PackedStringArray("storage_ui")]
 collision_layer = 8
@@ -42,7 +76,14 @@ scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_75tl3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
+
+[node name="FadeBackground" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.713726)
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -53,103 +94,314 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="InventoryContainer" parent="CanvasLayer/UI" instance=ExtResource("6_2ofly")]
+[node name="InventoryMenu" type="ColorRect" parent="CanvasLayer/UI"]
+custom_minimum_size = Vector2(400, 500)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -305.0
-offset_top = -214.0
-offset_right = 305.0
-offset_bottom = 86.0
+offset_left = -576.0
+offset_top = -304.0
+offset_right = 8.0
+offset_bottom = 304.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+
+[node name="InventoryArea" type="Control" parent="CanvasLayer/UI/InventoryMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -240.0
+offset_right = 240.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ResetButton" type="TextureButton" parent="CanvasLayer/UI"]
+[node name="InventoryContainer" parent="CanvasLayer/UI/InventoryMenu/InventoryArea" instance=ExtResource("6_2ofly")]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -216.0
-offset_top = -192.0
-offset_right = -26.0
-offset_bottom = -142.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
 grow_horizontal = 2
-grow_vertical = 0
-texture_normal = ExtResource("4_eda5l")
-texture_pressed = ExtResource("5_d4yib")
+grow_vertical = 2
+n_slot_column = 7
 
-[node name="Label" type="Label" parent="CanvasLayer/UI/ResetButton"]
-layout_mode = 0
-offset_left = -1.0
-offset_top = -3.0
-offset_right = 190.0
-offset_bottom = 47.0
-text = "Reset"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SubmitButton" type="TextureButton" parent="CanvasLayer/UI"]
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/UI/InventoryMenu/InventoryArea"]
+modulate = Color(0.596078, 0.458824, 0.329412, 1)
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_b52d0")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/InventoryMenu/InventoryArea"]
+layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
+offset_left = -65.5
+offset_top = -48.0
+offset_right = 65.5
+offset_bottom = -8.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
+theme_override_font_sizes/font_size = 28
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="ItemDescriptionArea" type="Control" parent="CanvasLayer/UI/InventoryMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = 112.0
+offset_right = 240.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemImage" type="TextureRect" parent="CanvasLayer/UI/InventoryMenu/ItemDescriptionArea"]
+self_modulate = Color(1, 1, 1, 0.333333)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("16_shxyd")
+expand_mode = 1
+
+[node name="ItemName" type="Label" parent="CanvasLayer/UI/InventoryMenu/ItemDescriptionArea"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "Tomato"
+
+[node name="ItemDescription" type="Label" parent="CanvasLayer/UI/InventoryMenu/ItemDescriptionArea"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 24.0
-offset_top = -192.0
-offset_right = 214.0
-offset_bottom = -142.0
+offset_top = -96.0
+offset_right = -24.0
+offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("4_eda5l")
-texture_pressed = ExtResource("5_d4yib")
+theme_override_font_sizes/font_size = 14
+text = "Tomato description lora ipsum"
+autowrap_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/UI/SubmitButton"]
-layout_mode = 0
-offset_left = -1.0
-offset_top = -3.0
-offset_right = 190.0
-offset_bottom = 47.0
-text = "Submit"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/UI/InventoryMenu/ItemDescriptionArea"]
+modulate = Color(0.596078, 0.458824, 0.329412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_b52d0")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
-[node name="WantedFoodLabel" type="Label" parent="CanvasLayer/UI"]
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/UI/InventoryMenu"]
+modulate = Color(0.596078, 0.458824, 0.329412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("17_7iadk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="SubmitArea" type="Control" parent="CanvasLayer/UI"]
+anchors_preset = 0
+offset_left = 704.0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="BlackGradientBackdrop" type="TextureRect" parent="CanvasLayer/UI/SubmitArea"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -484.0
+offset_right = 264.0
+offset_bottom = 484.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ttx8o")
+
+[node name="KitchenWall" type="TextureRect" parent="CanvasLayer/UI/SubmitArea"]
+self_modulate = Color(0.316406, 0.316406, 0.316406, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -196.0
+offset_top = -529.0
+offset_right = 196.0
+offset_bottom = 529.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_qjrfk")
+expand_mode = 1
+
+[node name="BlackGradientForeground" type="TextureRect" parent="CanvasLayer/UI/SubmitArea"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -264.0
+offset_top = -484.0
+offset_right = 264.0
+offset_bottom = 484.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_qjrfk")
+
+[node name="Altar" type="TextureRect" parent="CanvasLayer/UI/SubmitArea"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -448.0
-offset_top = -136.0
-offset_right = 448.0
-offset_bottom = -94.0
+offset_left = -146.5
+offset_top = -280.0
+offset_right = 146.5
+offset_bottom = 207.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 24
-text = "The Entity want Curry"
+texture = ExtResource("5_75tl3")
+
+[node name="WantedFoodLabel" type="RichTextLabel" parent="CanvasLayer/UI/SubmitArea"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -188.0
+offset_top = 40.0
+offset_right = 188.0
+offset_bottom = 82.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[shake][color=gray]It want vegetable curry[/color][/shake]"
 horizontal_alignment = 1
 
-[node name="ItemContainers" type="GridContainer" parent="."]
-unique_name_in_owner = true
+[node name="SubmitButton" parent="CanvasLayer/UI/SubmitArea" instance=ExtResource("10_8yx1c")]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 632.0
+offset_right = 385.0
+offset_bottom = 688.0
+text = "Submit"
+
+[node name="ItemShadow" type="TextureRect" parent="CanvasLayer/UI/SubmitArea"]
 visible = false
-offset_left = -32.0
-offset_top = -152.0
-offset_right = 103.0
-offset_bottom = -2.00002
-scale = Vector2(1.5, 1.5)
-columns = 3
+self_modulate = Color(0, 0, 0, 0.576471)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -216.0
+offset_right = 56.0
+offset_bottom = -176.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("13_53dj2")
+expand_mode = 1
+
+[node name="ItemContainers" type="GridContainer" parent="CanvasLayer/UI/SubmitArea"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -320.0
+offset_right = -25.0
+offset_bottom = -261.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3, 3)
+
+[node name="FoodSlot" parent="CanvasLayer/UI/SubmitArea/ItemContainers" instance=ExtResource("4_ji3s6")]
+layout_mode = 2
+
+[node name="ItemImageForDissolve" type="TextureRect" parent="CanvasLayer/UI/SubmitArea"]
+visible = false
+material = SubResource("ShaderMaterial_vb1y2")
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -304.0
+offset_right = 80.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("11_qjrfk")
+expand_mode = 1
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="item_select" from="CanvasLayer/UI/InventoryContainer" to="." method="_on_inventory_container_item_select"]
-[connection signal="pressed" from="CanvasLayer/UI/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="item_hover" from="CanvasLayer/UI/InventoryMenu/InventoryArea/InventoryContainer" to="." method="_on_inventory_container_item_hover"]
+[connection signal="item_select" from="CanvasLayer/UI/InventoryMenu/InventoryArea/InventoryContainer" to="." method="_on_inventory_container_item_select"]
+[connection signal="pressed" from="CanvasLayer/UI/SubmitArea/SubmitButton" to="." method="_on_submit_button_pressed"]
