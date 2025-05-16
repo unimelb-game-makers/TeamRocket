@@ -33,10 +33,10 @@ script = ExtResource("1_yv1id")
 [node name="CharacterStats" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
-offset_left = 136.0
-offset_top = 264.0
-offset_right = 420.0
-offset_bottom = 632.0
+offset_left = 134.0
+offset_top = 64.0
+offset_right = 418.0
+offset_bottom = 464.0
 color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 
 [node name="PortaitBackground" type="TextureRect" parent="CharacterStats"]
@@ -131,6 +131,36 @@ patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
+
+[node name="StatusPanel" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+offset_left = 134.0
+offset_top = 485.0
+offset_right = 418.0
+offset_bottom = 636.0
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="StatusPanel"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_et0cm")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="StatusGridContainer" type="GridContainer" parent="StatusPanel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 273.0
+offset_bottom = 139.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

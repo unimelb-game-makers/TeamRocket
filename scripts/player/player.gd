@@ -53,6 +53,8 @@ var animation_locked = false
 @onready var footstep_audio: AudioStreamPlayer2D = $FootstepSoundEffect
 @onready var enemy_noise_rader: Sprite2D = $EnemyNoiseRadar
 
+@export var effect_mapping: Dictionary[Item.Effects, StatusEffect]
+
 func _ready() -> void:
 	Globals.player = self
 	curr_speed = Globals.player_stats.speed
@@ -307,7 +309,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if (animated_sprite_2d.animation.begins_with("shoot")):
 		animation_locked = false
 
-
 func _on_footstep_timer_timeout() -> void:
 	footstep_audio.play()
 	if is_sprinting:
@@ -316,5 +317,9 @@ func _on_footstep_timer_timeout() -> void:
 		sound_created.emit(global_position, walk_loudness)
 
 func eat_food(dish: Dish) -> void:
-	print("Eating " + dish.item_name)
+	for status_effect in dish.effects:
+		Globals.player_stats.apply_status(effect_mapping[status_effect])
 	return
+
+func _on_status_effect_tick_timer_timeout() -> void:
+	Globals.player_stats.tick_status_effects(StatusEffect.DurationCategory.SECONDS)

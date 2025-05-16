@@ -11,6 +11,9 @@ const CROUCH_MULTIPLIER = 0.5
 		health = value
 		if (health > max_health):
 			health = max_health
+		if (Globals):
+			if (Globals.player_ui):
+				Globals.player_ui.update_health(health, max_health)
 @export var damage: int
 @export var speed: float:
 	set(value):
@@ -67,13 +70,19 @@ func tick_status_effects(duration: StatusEffect.DurationCategory):
 	# Status effects should only tick if they are duration based (SECONDS, DAYS)
 	for status in status_effects.keys():
 		if (status.duration == duration):
-			status_effects[status] -= 1
-			status_effects[status].tick(self)
-			if (status_effects[status] <= 0):
-				status_effects[status].remove(self)
+			status_effects[status][0] -= 1
+			for stack in range(status_effects[status][1]):
+				status.tick(self)
+			if (status_effects[status][0] <= 0):
+				status.remove(self)
 				status_effects.erase(status)
+	Globals.inventory_ui.update_character_stats()
 
 func apply_status(status: StatusEffect):
+	status.apply(self)
+	Globals.inventory_ui.update_character_stats()
+	if (status.duration == StatusEffect.DurationCategory.INSTANT):
+		return
 	if (status not in status_effects.keys()):
 		status_effects[status] = [status.duration_int, 1]
 	elif (status.stackable):

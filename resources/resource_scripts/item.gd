@@ -10,17 +10,25 @@ enum Rarity {COMMON, UNCOMMON, RARE, LEGENDARY}
 # Effects should have
 # - Effect Level 
 # - Duration: X amount of seconds, Per Day, Permanent
+
+# Should be using straight StatusEffect Resource for this part but
+# Alpha deadline and all that, I don't want to rework the save system atm
 enum Effects {
 	# Good Effects
-	LETHALITY,
-	HEALTH,
+	LETHALITY_PERM,
+	LETHALITY_TEMP,
+	HEALTH_PERM,
+	HEALTH_TEMP,
+	HEAL_1,
 	VISION,
-	SPEED,
+	SPEED_PERM,
+	SPEED_TEMP,
 	DASH_COOLDOWN,
 	SILENCE,
 	
 	# Eldritch Effects
 	UNKNOWN1,
+	UNKNOWN2,
 	
 	# Bad Effects
 	SLOW,

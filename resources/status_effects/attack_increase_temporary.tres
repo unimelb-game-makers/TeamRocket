@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_xgw42")
-attack_increase = 10
+attack_increase = 5
 name = "Lethality"
 duration = 2
 duration_int = 1

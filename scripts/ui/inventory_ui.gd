@@ -7,10 +7,14 @@ signal item_selected(item, amount)
 @onready var dmg_label: Label = $CharacterStats/Stats/DmgLabel
 @onready var speed_label: Label = $CharacterStats/Stats/SpdLabel
 @onready var weight_label: Label = $VBoxContainer/ItemListBackground/WeightLabel
+
 @onready var inventory_container: Container = $VBoxContainer/ItemListBackground/InventoryContainer
 @onready var item_descriptor: ItemDescriptionBox = $VBoxContainer/ItemDescriptionBackground
+
 @onready var drop_button: Button = $VBoxContainer/ItemListBackground/ContextButtonList/DropButton
 @onready var use_button: TemplateButton = $VBoxContainer/ItemListBackground/ContextButtonList/UseButton
+
+@onready var status_grid_container: GridContainer = $StatusPanel/StatusGridContainer
 
 var is_open = false
 var current_selected_item: Item = null
@@ -32,6 +36,9 @@ func update_character_stats():
 	dmg_label.text = "DMG: {0}".format([Globals.player_stats.damage])
 	speed_label.text = "SPD: {0}".format([Globals.player_stats.speed])
 
+func update_status_panel():
+	for status in Globals.player_stats.status_effects:
+		print(status)
 
 func toggle_inventory(status: bool) -> void:
 	visible = status

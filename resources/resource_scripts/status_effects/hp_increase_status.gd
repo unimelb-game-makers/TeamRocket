@@ -5,8 +5,10 @@ extends StatusEffect
 
 func apply(stats: PlayerStatsResource):
 	stats.max_health += health_increase
+	stats.health += health_increase
 	return
 	
 func remove(stats: PlayerStatsResource):
 	stats.max_health -= health_increase
+	stats.health -= health_increase
 	return

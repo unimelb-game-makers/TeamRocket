@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MovespeedIncreaseStatus" load_steps=2 format=3 uid="uid://c3a3adhgjk5tl"]
+
+[ext_resource type="Script" uid="uid://c6yfi13084pva" path="res://resources/resource_scripts/status_effects/movespeed_increase_status.gd" id="1_1fssi"]
+
+[resource]
+script = ExtResource("1_1fssi")
+speed_increase = 20
+name = "Speed Increase"
+duration = 2
+duration_int = 1
+stackable = false
+metadata/_custom_type_script = "uid://c6yfi13084pva"

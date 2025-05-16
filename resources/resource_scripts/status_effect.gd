@@ -13,6 +13,7 @@ enum DurationCategory {
 @export var duration: DurationCategory
 @export var duration_int: int
 @export var stackable: bool
+@export var icon: Texture2D
 
 # Apply is run when the status is first acquired
 func apply(stats: PlayerStatsResource):
