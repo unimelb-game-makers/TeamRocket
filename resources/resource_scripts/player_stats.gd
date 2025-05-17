@@ -47,15 +47,28 @@ func load_stats(stats: Dictionary):
 	health = stats["health"]
 	damage = stats["damage"]
 	speed = stats["speed"]
+	for status in stats["status_effects"]:
+		var status_inst = load(status["status"])
+		status_effects[status_inst] = [status["duration"], status["stacks"]]
 	
 func export_stats():
+	var status_arr = []
+	for status: StatusEffect in status_effects:
+		var status_info = {
+			"status": status.resource_path,
+			"duration": status_effects[status][0],
+			"stacks": status_effects[status][1],
+			}
+		status_arr.append(status_info)
 	var stats = {
 		"level": level,
 		"max_health": max_health,
 		"health": health,
 		"damage": damage,
 		"speed": speed,
+		"status_effects": status_arr
 	}
+	print(stats)
 	return stats
 
 # Reset stats to base stats
