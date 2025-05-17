@@ -10,46 +10,42 @@ extends CookingActivity
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar # The progress bar
 @onready var timer_label: Label = $TimerLabel # The timer label
 
-var cooking_scene: CookingScene
-
 var required_speed = 1.5 # Minimum velocity required.
 var stirring_speed = 0.0 # Current speed of stirring.
 var rotation_speed = 0.0 # Rotation speed of the stew base (adjustable).
 var target_rotation_speed = 0.0 # Target rotation speed for smooth lerp.
-var is_playing = false
 var elapsed_time = 0.0 # Tracks valid stirring time.
 
 var initial_inner_circle_position: Vector2 # To store the editor-defined position of the inner circle.
+var is_playing = false
 var is_dragging = false # Tracks whether the user is dragging the circle.
 
 
 func _ready() -> void:
-	cooking_scene = get_parent()
 	sfx_boil_init.play()
-	initial_inner_circle_position = inner_circle.position
-	reset_game()
-
-func reset_game() -> void:
-	inner_circle.position = initial_inner_circle_position
-	stirring_speed = 0.0
-	rotation_speed = 0.0 # Reset rotation speed
-	target_rotation_speed = 0.0 # Reset target speed
-	elapsed_time = 0.0
-	feedback_label.text = ""
-	feedback_label.modulate = Color(1, 1, 1) # Reset to white.
-	texture_progress_bar.value = 0.0 # Reset progress bar
-	timer_label.text = "Time Left: 5.0" # Reset timer label to 5.0 seconds
-	is_playing = false
-	is_dragging = false
-
-func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
-	#super(input_ingredients, output_item)
-	reset_game()
-	is_playing = true
 	sfx_boil_loop.play()
-	cooking_scene.selected_food_list.visible = false
-	cooking_scene.inventory_container.visible = false
-	cooking_scene.start_button.visible = false
+	initial_inner_circle_position = inner_circle.position
+	is_playing = true
+	
+
+#func reset_game() -> void:
+	#inner_circle.position = initial_inner_circle_position
+	#stirring_speed = 0.0
+	#rotation_speed = 0.0 # Reset rotation speed
+	#target_rotation_speed = 0.0 # Reset target speed
+	#elapsed_time = 0.0
+	#feedback_label.text = ""
+	#feedback_label.modulate = Color(1, 1, 1) # Reset to white.
+	#texture_progress_bar.value = 0.0 # Reset progress bar
+	#timer_label.text = "Time Left: 5.0" # Reset timer label to 5.0 seconds
+	#is_playing = false
+	#is_dragging = false
+
+#func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
+	#reset_game()
+	#cooking_scene.selected_food_list.visible = false
+	#cooking_scene.inventory_container.visible = false
+	#cooking_scene.start_button.visible = false
 
 func _process(delta: float) -> void:
 	if not is_playing:
