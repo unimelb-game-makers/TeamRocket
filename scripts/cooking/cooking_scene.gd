@@ -62,7 +62,7 @@ func add_item(item: Ingredient, _amount: int):
 func call_and_run_activity(input_ingredients: Array[Ingredient], output_item: Item) -> void:
 	activity = activity_to_run.instantiate() as CookingActivity
 	activity.complete.connect(finish)
-	print(input_ingredients)
+	#print(input_ingredients)
 	activity.initialize_activity(input_ingredients, output_item)
 	if activity.is_initialized: # Extra protection
 		self.add_child(activity) # Starts the activity when it is added due to _ready()
