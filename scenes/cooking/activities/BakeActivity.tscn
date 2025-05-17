@@ -1,15 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://c7ikkerlqq6g6"]
 
-<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://dqw377e8ohg76" path="res://scripts/cooking/bake_activity.gd" id="1_bekao"]
 [ext_resource type="Resource" uid="uid://dgk2lsddimyuc" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_ClippingEachOther.tres" id="2_bekao"]
 [ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="3_62bgj"]
 [ext_resource type="PackedScene" uid="uid://b7bgjj0x4lljg" path="res://scenes/cooking/workbenches/oven/OvenTracingLine.tscn" id="4_mvfxb"]
 [ext_resource type="Texture2D" uid="uid://bjfcakcjjsl7s" path="res://assets/placeholder/star.png" id="5_cv35t"]
-=======
-[ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="1_ix7ql"]
-[ext_resource type="Script" uid="uid://b3wgw2k60bqh8" path="res://scripts/cooking/BakeActivity.gd" id="1_rkf7a"]
->>>>>>> 4bb515c (godot 4.4 scene uids)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x7xau"]
 radius = 1.0

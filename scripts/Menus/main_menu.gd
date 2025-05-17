@@ -13,7 +13,7 @@ extends Control
 @onready var fade_cover: ColorRect = $CanvasLayer/FadeCover
 
 var target_position
-
+	
 func _ready() -> void:
 	fade_cover.visible = true
 	await get_tree().create_timer(0.5).timeout
