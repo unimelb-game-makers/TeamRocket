@@ -1,15 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://c8ni7apwy8dyx"]
 
 [ext_resource type="Texture2D" uid="uid://fw7m087mo0ka" path="res://assets/Park/Objects/crate.png" id="1_0l3g5"]
-<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://20jjgwta05xw" path="res://scripts/objects/interactables/storage.gd" id="1_td6ss"]
 [ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_rw46d"]
 [ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="3_uyd3e"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="4_ajerb"]
-=======
-[ext_resource type="Script" uid="uid://m6xgpmtmrx2n" path="res://scripts/objects/interactables/storage.gd" id="1_td6ss"]
-[ext_resource type="Script" uid="uid://bswsoddpidu4d" path="res://resources/resource_scripts/item.gd" id="2_rw46d"]
->>>>>>> 4bb515c (godot 4.4 scene uids)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a64qg"]
 radius = 153.506

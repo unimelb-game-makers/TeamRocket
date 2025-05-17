@@ -1,10 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://c23naolscyluq"]
 
-<<<<<<< HEAD:scenes/enemy/EnemyFish.tscn
 [ext_resource type="Script" uid="uid://bkpsrk3vcsrx1" path="res://scripts/enemy/enemy_chicken.gd" id="1_3ewc1"]
-=======
-[ext_resource type="Script" uid="uid://cky7tcs3pqivh" path="res://scripts/enemy/enemy_chicken.gd" id="1_3ewc1"]
->>>>>>> 4bb515c (godot 4.4 scene uids):scenes/enemy/enemy_fish.tscn
 [ext_resource type="Texture2D" uid="uid://dwt5vp4lbx08o" path="res://assets/creatures/animal_fish/fish1.png" id="2_f3oqb"]
 [ext_resource type="Texture2D" uid="uid://d7mpnird2ljx" path="res://assets/creatures/animal_fish/fish2.png" id="3_oywh2"]
 [ext_resource type="Texture2D" uid="uid://b8yvb1jueea1m" path="res://assets/creatures/animal_fish/fish3.png" id="4_aehow"]

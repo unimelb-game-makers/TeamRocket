@@ -1,10 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3jnad7h7ggpt"]
 
-<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://0408pcgr2024" path="res://scripts/player/bullet.gd" id="1_fvcm2"]
-=======
-[ext_resource type="Script" uid="uid://q0et1xoq4coj" path="res://scripts/player/bullet.gd" id="1_fvcm2"]
->>>>>>> 4bb515c (godot 4.4 scene uids)
 [ext_resource type="Texture2D" uid="uid://b58a50e60p4fd" path="res://icon.svg" id="1_jo1re"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eca2e"]

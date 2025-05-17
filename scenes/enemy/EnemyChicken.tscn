@@ -1,18 +1,16 @@
-[gd_scene load_steps=31 format=3 uid="uid://vhnilqdkefsv"]
+[gd_scene load_steps=28 format=3 uid="uid://bwrb05nb0u0rs"]
 
-[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_wkk65"]
+[ext_resource type="PackedScene" uid="uid://c0dgri14uuw70" path="res://scenes/enemy/BasicEnemy.tscn" id="1_wkk65"]
 [ext_resource type="Texture2D" uid="uid://cq1iguugfglwg" path="res://assets/creatures/animal_headless_chicken/chicken1.png" id="2_djc8e"]
-[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_ngw0k"]
-[ext_resource type="Script" uid="uid://ckwc004ejx501" path="res://scripts/enemy/enemy_chicken.gd" id="2_t33i1"]
+[ext_resource type="Script" path="res://scripts/enemy/enemy_chicken.gd" id="2_t33i1"]
 [ext_resource type="Texture2D" uid="uid://bjt1wxo78e541" path="res://assets/creatures/animal_headless_chicken/chicken2.png" id="3_dtvso"]
 [ext_resource type="Texture2D" uid="uid://bmv2eumk5dj8d" path="res://assets/creatures/animal_headless_chicken/chicken3.png" id="4_0ugvd"]
-[ext_resource type="Texture2D" uid="uid://dc6mt81avbf6a" path="res://assets/food/mince_raw.png" id="4_84qel"]
-[ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="5_8pker"]
+[ext_resource type="Script" uid="uid://dwgr8rprecbfo" path="res://addons/godot_state_charts/transition.gd" id="5_8pker"]
 [ext_resource type="Texture2D" uid="uid://fxdbni0g5067" path="res://assets/creatures/animal_headless_chicken/chicken4.png" id="5_tsj1i"]
-[ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="6_ffh4s"]
+[ext_resource type="Script" uid="uid://cyw3vuu8wb4vn" path="res://addons/godot_state_charts/compound_state.gd" id="6_ffh4s"]
 [ext_resource type="Texture2D" uid="uid://dbsp4ofn4wrqa" path="res://assets/creatures/animal_headless_chicken/chicken5.png" id="6_voquw"]
 [ext_resource type="Texture2D" uid="uid://c1an4ursjb2fq" path="res://assets/creatures/animal_headless_chicken/chicken6.png" id="7_cebfr"]
-[ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="7_rj6jn"]
+[ext_resource type="Script" uid="uid://di7rh2bj4kanb" path="res://addons/godot_state_charts/atomic_state.gd" id="7_rj6jn"]
 [ext_resource type="Texture2D" uid="uid://c86ut846p2fsl" path="res://assets/creatures/animal_headless_chicken/chicken7.png" id="8_nq1op"]
 [ext_resource type="AudioStream" uid="uid://8378jjhuitio" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 2.wav" id="9_3wn4u"]
 [ext_resource type="AudioStream" uid="uid://ic1n4jn6pl0j" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken run away 2.wav" id="9_t33i1"]
@@ -24,16 +22,6 @@
 [ext_resource type="AudioStream" uid="uid://c5s2plhkq2kjw" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken hurt 3.wav" id="12_piqbv"]
 [ext_resource type="AudioStream" uid="uid://c2v4gn4gq86qi" path="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken run away 1.wav" id="13_byos2"]
 [ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="18_ewli2"]
-
-[sub_resource type="Resource" id="Resource_uhg0u"]
-script = ExtResource("2_ngw0k")
-texture = ExtResource("4_84qel")
-item_id = ""
-item_name = "Raw Ground Beef"
-description = "It looks like any other minced meat despite its questionable origin. Smells ok-ish.\\n“You can put almost anything in the mince and they won't notice the difference - Suzan, No-Waste Butcher Shop”"
-weight = 0.5
-rarity = 0
-quality = 0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wkk65"]
 animations = [{
@@ -89,8 +77,6 @@ script = ExtResource("2_t33i1")
 passive_speed = 50
 active_speed = 150
 max_health = 15
-dropped_items = Array[ExtResource("2_ngw0k")]([SubResource("Resource_uhg0u")])
-dropped_item_chances = Array[float]([1.0])
 sounds = Dictionary[String, Array]({
 "hurt": [ExtResource("11_8clun"), ExtResource("11_l7l25"), ExtResource("12_piqbv")],
 "idle": [ExtResource("12_bwky7"), ExtResource("9_3wn4u"), ExtResource("10_ddt6w"), ExtResource("11_4oyrq")],

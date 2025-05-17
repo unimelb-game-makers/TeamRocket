@@ -1,10 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dif5ua57y8udh"]
 
-<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://dqaso2g11m36d" path="res://scripts/ui/save_slot_item.gd" id="1_wo6cm"]
-=======
-[ext_resource type="Script" uid="uid://dtddoqb40x5vm" path="res://scripts/ui/save_slot_item.gd" id="1_wo6cm"]
->>>>>>> 4bb515c (godot 4.4 scene uids)
 [ext_resource type="Texture2D" uid="uid://mql53aoddg1y" path="res://assets/textures/kenney_borders/default/Border/panel-border-001.png" id="2_roc52"]
 
 [node name="SaveSlotItem" type="HBoxContainer"]
