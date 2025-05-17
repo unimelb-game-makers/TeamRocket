@@ -15,4 +15,5 @@ item_name = "Suspicious Curry"
 description = "Kinda Sussy"
 weight = 0.4
 rarity = 1
+quality = 0
 metadata/_custom_type_script = "uid://dqqa8ydotiigx"

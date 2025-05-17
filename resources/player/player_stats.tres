@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="PlayerStatsResource" load_steps=2 format=3 uid="uid://bgplmsv507g1w"]
 
-[ext_resource type="Script" uid="uid://ryulsn87ywll" path="res://resources/resource_scripts/player_stats.gd" id="1_mmiq5"]
+[ext_resource type="Script" path="res://resources/resource_scripts/player_stats.gd" id="1_mmiq5"]
 
 [resource]
 script = ExtResource("1_mmiq5")
-max_health = 50
-damage = 5
 level = 0
+max_health = 50
+health = 0
+damage = 5
 speed = 400.0

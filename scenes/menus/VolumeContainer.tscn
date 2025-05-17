@@ -1,10 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://hoiacky4452m"]
 
-<<<<<<< HEAD
-[ext_resource type="Script" uid="uid://sf0sts44twp2" path="res://scripts/menus/volume_container.gd" id="1_7e3c8"]
-=======
 [ext_resource type="Script" uid="uid://j1y7adgtmrrv" path="res://scripts/Menus/volume_container.gd" id="1_7e3c8"]
->>>>>>> 4bb515c (godot 4.4 scene uids)
 
 [node name="VolumeContainer" type="HBoxContainer"]
 alignment = 1

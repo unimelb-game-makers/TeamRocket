@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpwdv7vvm7kdc"]
+[gd_scene load_steps=6 format=3 uid="uid://daeq2qx8kiagm"]
 
 [ext_resource type="Script" uid="uid://b7lfb20mxiejg" path="res://scripts/ui/inventory_ui.gd" id="1_a3tyl"]
 [ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="1_k45lh"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cik7cck2oky1w"]
+[gd_scene load_steps=11 format=3 uid="uid://cdvpplae2lev3"]
 
 [ext_resource type="Texture2D" uid="uid://dgcn3fv1c6r3e" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="1_l2cwe"]
 [ext_resource type="Script" uid="uid://ddn22cds1pfny" path="res://scripts/ui/item_inventory_button.gd" id="1_vipfs"]

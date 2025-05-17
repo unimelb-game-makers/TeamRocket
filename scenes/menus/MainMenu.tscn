@@ -1,6 +1,5 @@
 [gd_scene load_steps=35 format=3 uid="uid://eg1evlw6ow0i"]
 
-<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://7r18m7ss37uf" path="res://scripts/Menus/main_menu.gd" id="1_fjdek"]
 [ext_resource type="PackedScene" uid="uid://c052mvm4gby07" path="res://scenes/environments/City.tscn" id="2_4achk"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="2_ik0mn"]
@@ -9,15 +8,6 @@
 [ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="3_cx0kh"]
 [ext_resource type="PackedScene" uid="uid://bacf4n55kn6yy" path="res://scenes/menus/Credits.tscn" id="3_magl1"]
 [ext_resource type="Shader" uid="uid://dtpxdtvbjh6t" path="res://scripts/shader/vignette.gdshader" id="3_nrdw3"]
-=======
-[ext_resource type="Script" uid="uid://bw11xgwsllkcx" path="res://scripts/Menus/main_menu.gd" id="1_fjdek"]
-[ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="2_ik0mn"]
-[ext_resource type="PackedScene" uid="uid://j00qr7dcyhv4" path="res://scenes/menus/SettingMenu.tscn" id="2_r7byj"]
-[ext_resource type="Resource" uid="uid://bgplmsv507g1w" path="res://resources/player/player_stats.tres" id="2_xtchd"]
-[ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_atwnr"]
-[ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="3_cx0kh"]
-[ext_resource type="Shader" uid="uid://opcafaot504w" path="res://scripts/shader/vignette.gdshader" id="3_nrdw3"]
->>>>>>> 4bb515c (godot 4.4 scene uids)
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="5_gkg36"]
 [ext_resource type="PackedScene" uid="uid://dif5ua57y8udh" path="res://scenes/ui/SaveSlotItem.tscn" id="5_v3mkp"]
 [ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="6_2govm"]
@@ -34,11 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://c0acap2jmh2f" path="res://scenes/objects/Lights/StreetlightUp.tscn" id="16_3nhns"]
 [ext_resource type="PackedScene" uid="uid://drxotm8osb7q0" path="res://scenes/objects/Lights/StreetlightRight.tscn" id="17_m8fl6"]
 [ext_resource type="PackedScene" uid="uid://cd6fc47tx6cyd" path="res://scenes/objects/Lake.tscn" id="18_60q0b"]
-<<<<<<< HEAD
 [ext_resource type="Shader" uid="uid://d0tviawj1e1lu" path="res://scripts/shader/gaussian_blur.gdshader" id="22_0u7it"]
-=======
-[ext_resource type="Shader" uid="uid://dj4mhxdn4xkwc" path="res://scripts/shader/gaussian_blur.gdshader" id="22_0u7it"]
->>>>>>> 4bb515c (godot 4.4 scene uids)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pukq8"]
 shader = ExtResource("22_0u7it")

@@ -15,4 +15,5 @@ item_name = "Suspicious Beans"
 description = "Suspicious looking beans"
 weight = 0.1
 rarity = 1
+quality = 0
 metadata/_custom_type_script = "uid://c27juqwadg5ol"
