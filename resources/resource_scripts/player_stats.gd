@@ -93,13 +93,16 @@ func tick_status_effects(duration: StatusEffect.DurationCategory):
 	Globals.inventory_ui.update_status_panel()
 
 func apply_status(status: StatusEffect):
-	status.apply(self)
-	Globals.inventory_ui.update_character_stats()
-	Globals.inventory_ui.update_status_panel()
 	if (status.duration == StatusEffect.DurationCategory.INSTANT):
+		status.apply(self)
 		return
 	if (status not in status_effects.keys()):
+		status.apply(self)
 		status_effects[status] = [status.duration_int, 1]
 	elif (status.stackable):
+		status.apply(self)
 		status_effects[status][1] += 1
 		status_effects[status][0] = status.duration_int
+	# Do not apply status if it is not stackable and already on the player
+	Globals.inventory_ui.update_character_stats()
+	Globals.inventory_ui.update_status_panel()
