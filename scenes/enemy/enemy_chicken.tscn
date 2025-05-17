@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bwrb05nb0u0rs"]
+[gd_scene load_steps=17 format=3 uid="uid://bipyppqrct8vg"]
 
 [ext_resource type="Script" uid="uid://cky7tcs3pqivh" path="res://scripts/enemy/enemy_chicken.gd" id="1_qyhrq"]
 [ext_resource type="Texture2D" uid="uid://cq1iguugfglwg" path="res://assets/creatures/animal_headless_chicken/chicken1.png" id="2_djc8e"]

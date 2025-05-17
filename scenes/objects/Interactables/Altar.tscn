@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" uid="uid://idb0kjlgp4ad" path="res://scripts/objects/interactables/altar.gd" id="1_rfv52"]
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_8yx1c"]
-[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_upo2r"]
+[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="2_upo2r"]
 [ext_resource type="Resource" uid="uid://cq1taw61ifcp7" path="res://resources/cooking/foods/beef_curry.tres" id="3_qjrfk"]
 [ext_resource type="Texture2D" uid="uid://ck6wk3lfpwesd" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="4_eda5l"]
-[ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="4_ji3s6"]
+[ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/food_slot.tscn" id="4_ji3s6"]
 [ext_resource type="Resource" uid="uid://cxdb8u0ju6bk5" path="res://resources/cooking/foods/chicken_curry.tres" id="4_ttx8o"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="5_0fmag"]
 [ext_resource type="Texture2D" uid="uid://dfs8ar6bwmgc1" path="res://assets/interiors/kitchen/altar.png" id="5_75tl3"]
 [ext_resource type="Texture2D" uid="uid://dc2fhcnhwqdg2" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown_pressed.png" id="5_d4yib"]
-[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/InventoryContainer.tscn" id="6_2ofly"]
+[ext_resource type="PackedScene" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="6_2ofly"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xptoa"]
 size = Vector2(128, 112)
@@ -72,6 +72,7 @@ offset_right = 305.0
 offset_bottom = 86.0
 grow_horizontal = 2
 grow_vertical = 2
+script = null
 
 [node name="ResetButton" type="TextureButton" parent="CanvasLayer/UI"]
 layout_mode = 1
@@ -139,6 +140,5 @@ columns = 3
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="item_select" from="CanvasLayer/UI/InventoryContainer" to="." method="_on_inventory_container_item_select"]
 [connection signal="pressed" from="CanvasLayer/UI/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/SubmitButton" to="." method="_on_submit_button_pressed"]

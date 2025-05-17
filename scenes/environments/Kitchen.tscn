@@ -2,12 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
-<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://chl1pijxwld8v" path="res://scripts/Game/kitchen_handler.gd" id="2_watt5"]
-=======
-[ext_resource type="Script" uid="uid://q41bhxm8ugls" path="res://scripts/Game/kitchen_handler.gd" id="2_watt5"]
-[ext_resource type="AudioStream" uid="uid://ca653a6ueta86" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_intro.ogg" id="3_u2yjv"]
->>>>>>> 4bb515c (godot 4.4 scene uids)
 [ext_resource type="Texture2D" uid="uid://b5jgmaxgknpb0" path="res://assets/interiors/kitchen/walls.png" id="3_yjya3"]
 [ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
@@ -18,8 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
 [ext_resource type="PackedScene" uid="uid://bhlarqiey25gc" path="res://scenes/cooking/workbenches/AssemblyPlate.tscn" id="20_twwyk"]
 
-<<<<<<< HEAD
-=======
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_5wnhy"]
 clip_count = 2
 clip_0/name = &"Kitchen Intro"
@@ -45,7 +38,6 @@ Vector2i(1, 1): {
 }
 }
 
->>>>>>> 4bb515c (godot 4.4 scene uids)
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5vy8l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oov5x"]

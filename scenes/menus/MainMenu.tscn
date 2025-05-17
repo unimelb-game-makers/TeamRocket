@@ -1,7 +1,6 @@
-[gd_scene load_steps=35 format=3 uid="uid://eg1evlw6ow0i"]
+[gd_scene load_steps=34 format=3 uid="uid://eg1evlw6ow0i"]
 
 [ext_resource type="Script" uid="uid://7r18m7ss37uf" path="res://scripts/Menus/main_menu.gd" id="1_fjdek"]
-[ext_resource type="PackedScene" uid="uid://c052mvm4gby07" path="res://scenes/environments/City.tscn" id="2_4achk"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="2_ik0mn"]
 [ext_resource type="PackedScene" uid="uid://j00qr7dcyhv4" path="res://scenes/menus/SettingMenu.tscn" id="2_r7byj"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_atwnr"]
@@ -126,7 +125,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fjdek")
-start_game_scene = ExtResource("2_4achk")
 credit_scene = ExtResource("3_magl1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://hoiacky4452m"]
 
-[ext_resource type="Script" uid="uid://j1y7adgtmrrv" path="res://scripts/Menus/volume_container.gd" id="1_7e3c8"]
+[ext_resource type="Script" uid="uid://sf0sts44twp2" path="res://scripts/Menus/volume_container.gd" id="1_7e3c8"]
 
 [node name="VolumeContainer" type="HBoxContainer"]
 alignment = 1
