@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://b53easc6px7q"]
+[gd_scene load_steps=6 format=4 uid="uid://b53easc6px7q"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_p6pc1"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_4ppne"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="3_4ppne"]
 [ext_resource type="PackedScene" uid="uid://cymv5i72rdk4v" path="res://scenes/enemy/EnemyLoneStalker.tscn" id="4_hfh3c"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="5_a1apy"]
 
 [node name="BaseRoom" node_paths=PackedStringArray("doors", "mediumSpawn", "largeSpawn", "spawnNodes") instance=ExtResource("1_p6pc1")]
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), null, NodePath("DoorArea3")]
@@ -40,3 +41,9 @@ position = Vector2(400, -1900)
 [node name="SpawnArea2D" parent="." index="7" instance=ExtResource("3_4ppne")]
 position = Vector2(-549, -1398)
 allowed_enemies = Array[PackedScene]([ExtResource("4_hfh3c")])
+
+[node name="Area2D" parent="." index="8" instance=ExtResource("5_a1apy")]
+position = Vector2(32, -1110)
+
+[node name="Area2D2" parent="." index="9" instance=ExtResource("5_a1apy")]
+position = Vector2(-781, -1642)

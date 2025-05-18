@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://13idwhn3nese"]
+[gd_scene load_steps=6 format=3 uid="uid://13idwhn3nese"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_jvckg"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_i84du"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="3_b5exj"]
 [ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/EnemyDasher.tscn" id="4_lcgkf"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="5_q4uk5"]
 
 [node name="Threeway" node_paths=PackedStringArray("doors", "spawn", "spawnNodes") instance=ExtResource("1_jvckg")]
 sockets = Array[String](["B", "B", "A", "B"])
@@ -37,6 +38,9 @@ position = Vector2(400, 400)
 [node name="SpawnArea2D" parent="." index="6" instance=ExtResource("3_b5exj")]
 position = Vector2(737, 1070)
 allowed_enemies = Array[PackedScene]([ExtResource("4_lcgkf")])
+
+[node name="Area2D" parent="." index="7" instance=ExtResource("5_q4uk5")]
+position = Vector2(303, 311)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
