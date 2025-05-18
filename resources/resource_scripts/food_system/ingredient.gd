@@ -8,6 +8,7 @@ enum IngredientType {
 	# Not Edible
 	SKEWER = 1,
 	SPICE_POWDER = 2,
+	STOCK = 3,
 	# Veges
 	POTATO = 100,
 	CARROT = 101,
@@ -25,6 +26,7 @@ enum IngredientType {
 	# CARBS
 	RICE = 300,
 	BREAD = 302,
+	NOODLE = 301,
 	
 	# RAW FOODS
 	RAW_POTATO = 401,
@@ -35,6 +37,10 @@ enum IngredientType {
 	RAW_GARLIC = 406,
 	RAW_GINGER = 407,
 	RAW_CABBAGE = 408,
+	
+	# ELDRITCH
+	GRAIN_MOSS = 501,
+	GRAIN_MOSS_BAKED = 502,
 }
 
 enum IngredientCategory {

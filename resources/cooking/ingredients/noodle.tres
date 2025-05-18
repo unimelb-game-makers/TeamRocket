@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://n7ddkhdoaj5d"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_0fbx8"]
+[ext_resource type="Texture2D" uid="uid://owhyhulao0ea" path="res://assets/food/spaghetti cooked.png" id="2_pfpn7"]
+
+[resource]
+script = ExtResource("1_0fbx8")
+ingredient_type = 0
+ingredient_category = 0
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_pfpn7")
+item_id = "noodle"
+item_name = "Egg Noodles"
+description = ""
+weight = 0.2
+rarity = 0
+quality = 0
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

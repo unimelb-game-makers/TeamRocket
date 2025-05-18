@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cr060faldn0rx"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_lpdnu"]
+[ext_resource type="Texture2D" uid="uid://4b8u32wm0npn" path="res://assets/food/soup broth.png" id="2_6gg5n"]
+
+[resource]
+script = ExtResource("1_lpdnu")
+ingredient_type = 3
+ingredient_category = 1
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_6gg5n")
+item_id = "broth"
+item_name = "Soup Stock"
+description = ""
+weight = 1.0
+rarity = 0
+quality = 0
+metadata/_custom_type_script = "uid://c27juqwadg5ol"
