@@ -28,9 +28,9 @@ const DOOR = "B"  # There is a door in this direction.
 
 @export var doors: Array[Area2D] = [] # Door scenes, cant get by get_tree
 @export var spawn: Node2D
-#const PLAYER = preload("res://scenes/player/Player.tscn")
 
-#var player: Player
+@export var mediumSpawn: Node2D
+@export var largeSpawn: Node2D
 
 func _ready() -> void:
 	
