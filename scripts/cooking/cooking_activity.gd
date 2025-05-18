@@ -25,4 +25,4 @@ func minigame_complete() -> void:
 	pass # Implement in child
 
 func finish(rating: Item.Quality):
-	complete.emit(Item.Quality)
+	complete.emit(rating)
