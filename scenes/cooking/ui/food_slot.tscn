@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://fe4uunjh2r4a"]
+[gd_scene load_steps=4 format=3 uid="uid://jeirr5kspy4"]
 
 [ext_resource type="Texture2D" uid="uid://cl3nktlqu747p" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_brown.png" id="1_gh5eo"]
 [ext_resource type="Texture2D" uid="uid://blocbouydvwko" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_brown_pressed.png" id="2_kwbnh"]
-[ext_resource type="Script" uid="uid://by56blbt7nw8t" path="res://scripts/cooking/food_slot.gd" id="3_10ak5"]
+[ext_resource type="Script" uid="uid://d2uady1mcqusq" path="res://scripts/cooking/food_slot.gd" id="3_10ak5"]
 
 [node name="FoodSlot" type="TextureButton"]
 offset_right = 45.0

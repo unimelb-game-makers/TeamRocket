@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcfegerycc50x"]
+[gd_scene load_steps=7 format=3 uid="uid://cbbkw551f77rw"]
 
 [ext_resource type="Script" uid="uid://dxqweml826fm" path="res://scripts/cooking/cooking_scene.gd" id="1_uorde"]
 [ext_resource type="Script" uid="uid://bt25lv5ufof4o" path="res://scripts/cooking/ingredient_handler.gd" id="2_7x78s"]
