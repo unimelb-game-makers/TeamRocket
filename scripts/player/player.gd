@@ -25,6 +25,7 @@ const SPRINT_FOOTSTEP_SFX_FREQUENCY = 0.5
 const AFTER_HURT_INVULNERABLE_DURATION = 1.0
 
 var can_move: bool = true
+var current_footstep_freq = WALK_FOOTSTEP_SFX_FREQUENCY
 
 # ----- MOVEMENT VARS -----
 # For smoother movement
@@ -206,7 +207,6 @@ func _on_standing_state_entered() -> void:
 	is_crouching = false
 	is_sprinting = false
 	footstep_audio.play()
-	footstep_timer.start(WALK_FOOTSTEP_SFX_FREQUENCY)
 	curr_speed = Globals.player_stats.speed
 	curr_accel = Globals.player_stats.accel
 

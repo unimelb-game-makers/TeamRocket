@@ -15,9 +15,11 @@ signal fired
 @onready var aiming_line_1 = $AimingUI/Line1
 @onready var aiming_line_2 = $AimingUI/Line2
 @onready var aiming_curve = $AimingUI
+@onready var reload_timer: Timer = $ReloadTimer
 
 @onready var fire_effect: AudioStreamPlayer2D = $SoundEffects/FireEffect
 @onready var reload_effect: AudioStreamPlayer2D = $SoundEffects/ReloadEffect
+@onready var fire_timer: Timer = $FireTimer
 # Inaccuracy value in degrees. Raycast will fire on a random degrees within -inaccuracy to +inaccuracy
 
 
@@ -38,10 +40,7 @@ var bullets = max_bullets:
 		bullets = bullets_in
 		if (bullets <= 0):
 			reload_effect.play()
-			$ReloadTimer.start()
 
-@onready var fire_timer: Timer = $FireTimer
-@onready var reload_timer: Timer = $ReloadTimer
 
 func _ready() -> void:
 	fire_timer.wait_time = 1.0 / fire_rate
