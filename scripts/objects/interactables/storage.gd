@@ -2,7 +2,6 @@ class_name Storage
 extends Area2D
 
 @export var slots_num: int
-@export var items: Array[Item]
 @export var item_slot_scene: PackedScene
 @export var storage_ui: Control
 
@@ -12,14 +11,25 @@ extends Area2D
 signal get_item(item, amount)
 
 var open_state = false
+var items: Array[Item] = []
 
 func _ready() -> void:
+	for i in range(slots_num):
+		items.append(null)
 	sprite.material.set_shader_parameter("thickness", 0)
+
+	for child in item_containers.get_children():
+		child.queue_free()
+
 	for i in range(slots_num):
 		var item_slot = item_slot_scene.instantiate()
 		item_slot.index = i
 		item_containers.add_child(item_slot)
 		item_slot.food_removed.connect(take_item)
+
+	await get_tree().process_frame
+	await get_tree().process_frame
+
 	update_display()
 
 func interact():
@@ -31,6 +41,7 @@ func add_item(item: Item):
 
 func take_item(slot):
 	var item = items[slot]
+	#print(item, item.get_scene_unique_id())
 	items[slot] = null
 	update_display()
 	if (item):

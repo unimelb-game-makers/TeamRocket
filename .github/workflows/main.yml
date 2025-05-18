@@ -20,18 +20,21 @@ jobs:
     container:
       image: barichello/godot-ci:4.4.1
     steps:
-      - name: Checkout
+      - name: Checkout with Git LFS
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
+          lfs: true
+
+      - name: ❌ Turn off LFS
+        run: >-
+          git lfs uninstall;
+          rm -Rf .git;
+          rm .gitattributes;
       
       # Git considers it unsafe since are using LFS under a docker image, so mark it as safe as workaround
       - name: Mark repo as safe
         run: git config --global --add safe.directory /__w/TeamRocket/TeamRocket
-
-      - name: Install Git LFS
-        run: |
-          apt update && apt install git-lfs -y
-          git lfs install
-          git lfs pull
 
       - name: Move export templates into position
         run: |
@@ -57,11 +60,12 @@ jobs:
           mv coi-serviceworker/coi-serviceworker.js build/web/coi-serviceworker.js
           sed -i '3 i <script src="coi-serviceworker.js"></script>' build/web/index.html
 
-      - name: Deploy
+      - name: 🚀 Deploy to `gh-pages` branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
+          publish_branch: gh-pages
           # force_orphan: true
           # NOTE: keeping files like this could be dangerous. Consider deleting stuff to save space if needed, depending on needs
           # e.g. Add an only-keep-last-10-version job
@@ -89,6 +93,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          lfs: true
 
       - name: Set up GitVersion
         uses: gittools/actions/gitversion/setup@v0.9.15
@@ -140,6 +145,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
+      with:
+        lfs: true
 
     - name: Download Web artifacts
       uses: actions/download-artifact@v4
@@ -150,6 +157,6 @@ jobs:
       env:
         BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_API_KEY }}
         CHANNEL: HTML
-        ITCH_GAME: godot-ci
+        ITCH_GAME: ${{ env.PROJECT_NAME }}
         ITCH_USER: gmcunimelb
         PACKAGE: ${{ env.PROJECT_NAME }}_web.zip

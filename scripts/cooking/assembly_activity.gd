@@ -4,30 +4,29 @@ extends CookingActivity
 @onready var feedback_label: Label = $FeedbackLabel
 @onready var cooking_scene: CookingScene = $".."
 
-var playing = false
-
-func reset_game():
-	pass
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-	
+	if get_tree().current_scene == self or is_initialized: # Runs if it as current scene or was initialized by something else then added to tree
+		feedback_label.text = ("You made " + output_item.item_name)
+		set_ingredient_image(output_item)
+		await get_tree().create_timer(3).timeout
+		complete_minigame()
 
-func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
-	super(input_ingredients, output_item)
-	feedback_label.text = ("You made " + output_item.item_name)
-	set_ingredient_image(output_item)
-	playing = true
-	await get_tree().create_timer(3).timeout
-	finish()
+#func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
+	#feedback_label.text = ("You made " + output_item.item_name)
+	#set_ingredient_image(output_item)
+	#await get_tree().create_timer(3).timeout
+	#complete_minigame()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func finish() -> void:
-	complete.emit()
+func complete_minigame() -> void:
+	# Simply get average quality of ingredients
+	var quality_avg = 0
+	for ingredient in input_ingredients:
+		#print(ingredient)
+		quality_avg += ingredient.quality
+	quality_avg = round(quality_avg/len(input_ingredients))
+	#print(quality_avg)
+	finish(quality_avg)
 	
 func set_ingredient_image(ingredient: Item) -> void:
 	if ingredient and ingredient_image_display:

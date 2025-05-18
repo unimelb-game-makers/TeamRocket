@@ -1,20 +1,18 @@
 [gd_scene load_steps=8 format=3 uid="uid://cass2bjp3d6eq"]
 
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="1_2xv6m"]
-[ext_resource type="Script" path="res://scripts/Game/game_handler.gd" id="1_eaqps"]
+[ext_resource type="Script" uid="uid://dswbwl8o4vfsd" path="res://scripts/Game/game_handler.gd" id="1_eaqps"]
 [ext_resource type="Script" uid="uid://dgayqf5bjeouf" path="res://scripts/item/item_handler.gd" id="1_p3mrr"]
 [ext_resource type="PackedScene" uid="uid://hgrksmummwv0" path="res://scenes/ui/MainUI.tscn" id="2_a8oao"]
-[ext_resource type="Script" path="res://scripts/Game/interactable_handler.gd" id="2_nlyqa"]
+[ext_resource type="Script" uid="uid://blaauerf105us" path="res://scripts/Game/interactable_handler.gd" id="2_nlyqa"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="3_ld3e5"]
 [ext_resource type="Script" path="res://scripts/enemy/Areas/enemy_handler.gd" id="4_omi12"]
 
-[node name="Base2" type="Node2D"]
+[node name="Base" type="Node2D"]
 y_sort_enabled = true
 
 [node name="GameHandler" type="Node" parent="."]
 script = ExtResource("1_eaqps")
-
-[node name="GameTimer" type="Timer" parent="GameHandler"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="GameHandler"]
 visible = false
@@ -65,6 +63,9 @@ y_sort_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_2xv6m")]
 position = Vector2(533, 480)
 
-[connection signal="timeout" from="GameHandler/GameTimer" to="GameHandler" method="_on_game_timer_timeout"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+
 [connection signal="channel_complete" from="Player" to="GameHandler" method="_on_player_channel_complete"]
 [connection signal="death" from="Player" to="GameHandler" method="_on_player_death"]

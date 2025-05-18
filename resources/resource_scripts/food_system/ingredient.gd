@@ -8,12 +8,16 @@ enum IngredientType {
 	# Not Edible
 	SKEWER = 1,
 	SPICE_POWDER = 2,
+	STOCK = 3,
 	# Veges
 	POTATO = 100,
 	CARROT = 101,
 	ONION = 102,
 	TOMATO = 103,
 	BEAN = 104,
+	GARLIC = 105,
+	GINGER = 106,
+	CABBAGE = 107,
 	# Meats
 	BEEF = 200,
 	PORK = 201,
@@ -22,13 +26,21 @@ enum IngredientType {
 	# CARBS
 	RICE = 300,
 	BREAD = 302,
+	NOODLE = 301,
 	
 	# RAW FOODS
 	RAW_POTATO = 401,
 	RAW_CARROT = 402,
 	RAW_ONION = 403,
 	RAW_TOMATO = 404,
-	RAW_RICE = 405
+	RAW_RICE = 405,
+	RAW_GARLIC = 406,
+	RAW_GINGER = 407,
+	RAW_CABBAGE = 408,
+	
+	# ELDRITCH
+	GRAIN_MOSS = 501,
+	GRAIN_MOSS_BAKED = 502,
 }
 
 enum IngredientCategory {
@@ -54,3 +66,26 @@ func save() -> Dictionary:
 #static func parse_dict(item_dict: Dictionary) -> Item:
 	#var ingredient: Ingredient = load(item_dict["item_id"])
 	#return ingredient
+func _to_string() -> String:
+	var name: String = super () + "(IngredientType: " + get_enum_name(ingredient_type) + ")"
+	return name
+	
+func get_enum_name(value: int) -> String:
+	for name in IngredientType.keys():
+		if IngredientType[name] == value:
+			return name
+	return "Unknown"
+
+
+static func convert_type_to_category(ingre_type: IngredientType) -> IngredientCategory:
+	var type_num = int(ingre_type)
+	if type_num <= 2:
+		return IngredientCategory.INEDIBLE
+	elif 100 <= type_num and type_num < 200:
+		return IngredientCategory.VEGETABLE
+	elif 200 <= type_num and type_num < 300:
+		return IngredientCategory.MEAT
+	elif 300 <= type_num and type_num < 400:
+		return IngredientCategory.GRAINS
+	else:
+		return IngredientCategory.OTHER

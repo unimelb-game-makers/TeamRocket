@@ -15,7 +15,7 @@ var floor_item_scene: PackedScene = preload("res://scenes/item/ItemOnFloor.tscn"
 
 func get_inventory(type: InventoryType = InventoryType.PLAYER) -> Dictionary:
 	return inventory_dict[type]
-	
+
 func clear_inventory(type: InventoryType) -> void:
 	inventory_dict[type] = {}
 
@@ -23,7 +23,7 @@ func update_ui() -> void:
 	var inventory_ui = Globals.inventory_ui
 	inventory_ui.inventory_container.update_inventory_list()
 	inventory_ui.update_weight_label()
-	
+
 func add_item(item: Item, amount: int, type: InventoryType = InventoryType.PLAYER) -> void:
 	if (inventory_dict[type].has(item)):
 		inventory_dict[type][item] += amount

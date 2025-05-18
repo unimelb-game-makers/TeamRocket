@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://ewky67btqhie"]
 
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_36qd6"]
-[ext_resource type="Texture2D" uid="uid://po2e2hxrnnr4" path="res://assets/food/carrot.png" id="2_36qd6"]
+[ext_resource type="Texture2D" uid="uid://po2e2hxrnnr4" path="res://assets/food/carrot_raw.png" id="2_36qd6"]
 
 [resource]
 script = ExtResource("1_36qd6")

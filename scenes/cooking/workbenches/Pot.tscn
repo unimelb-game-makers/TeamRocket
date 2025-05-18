@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="7_3xfbf"]
 [ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="8_44ufp"]
 [ext_resource type="Resource" uid="uid://cm8t0wikoaret" path="res://resources/cooking/recipes/ingredients/cooked_rice_rec.tres" id="8_fy06h"]
+[ext_resource type="Resource" uid="uid://dv4r412xreejp" path="res://resources/cooking/recipes/full_foods/noodle_soup.tres" id="9_3wnqu"]
+[ext_resource type="Resource" uid="uid://ci0itvpy7kfy5" path="res://resources/cooking/recipes/ingredients/stock_rec.tres" id="10_ymnrm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2mod"]
 size = Vector2(73, 59)
@@ -36,9 +38,9 @@ frame_1/duration = 0.25
 frame_2/texture = ExtResource("6_v3flu")
 frame_2/duration = 0.25
 
-[sub_resource type="Resource" id="Resource_fy06h"]
+[sub_resource type="Resource" id="Resource_3wnqu"]
 script = ExtResource("8_44ufp")
-recipes = Array[ExtResource("7_3xfbf")]([ExtResource("8_fy06h")])
+recipes = Array[ExtResource("7_3xfbf")]([ExtResource("8_fy06h"), ExtResource("9_3wnqu"), ExtResource("10_ymnrm")])
 max_ingredients = 5
 metadata/_custom_type_script = "uid://c0shkqininnkd"
 
@@ -55,10 +57,7 @@ texture = ExtResource("3_an7p1")
 
 [node name="CookingScene" parent="CanvasLayer" index="0"]
 visible = false
+activity_to_run = ExtResource("2_5al3h")
 activity_name = "Pot"
 activity_animated_texture = SubResource("AnimatedTexture_8w5dh")
-crafting_station = SubResource("Resource_fy06h")
-
-[node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("2_5al3h")]
-visible = false
-layout_mode = 1
+crafting_station = SubResource("Resource_3wnqu")

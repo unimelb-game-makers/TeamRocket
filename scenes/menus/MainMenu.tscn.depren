@@ -1,0 +1,417 @@
+[gd_scene load_steps=35 format=3 uid="uid://eg1evlw6ow0i"]
+
+[ext_resource type="Script" uid="uid://7r18m7ss37uf" path="res://scripts/menus/main_menu.gd" id="1_fjdek"]
+[ext_resource type="PackedScene" uid="uid://c052mvm4gby07" path="res://scenes/environments/City.tscn" id="2_4achk"]
+[ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="2_ik0mn"]
+[ext_resource type="PackedScene" uid="uid://j00qr7dcyhv4" path="res://scenes/menus/SettingMenu.tscn" id="2_r7byj"]
+[ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_atwnr"]
+[ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="3_cx0kh"]
+[ext_resource type="PackedScene" uid="uid://bacf4n55kn6yy" path="res://scenes/menus/Credits.tscn" id="3_magl1"]
+[ext_resource type="Shader" uid="uid://dtpxdtvbjh6t" path="res://scripts/shader/vignette.gdshader" id="3_nrdw3"]
+[ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="5_gkg36"]
+[ext_resource type="PackedScene" uid="uid://dif5ua57y8udh" path="res://scenes/ui/SaveSlotItem.tscn" id="5_v3mkp"]
+[ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="6_2govm"]
+[ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="6_hmsnk"]
+[ext_resource type="PackedScene" uid="uid://p6jrdiqo23p1" path="res://scenes/objects/Obstacles/WreckedCar3.tscn" id="7_s88nw"]
+[ext_resource type="PackedScene" uid="uid://vk8s3qx7g5vu" path="res://scenes/objects/Obstacles/Debris1.tscn" id="8_03kpm"]
+[ext_resource type="PackedScene" uid="uid://di1iud0i6uaou" path="res://scenes/objects/Obstacles/Debris2.tscn" id="9_w5xyq"]
+[ext_resource type="PackedScene" uid="uid://id6e3hwthctu" path="res://scenes/objects/Obstacles/Debris3.tscn" id="10_vrxij"]
+[ext_resource type="PackedScene" uid="uid://dpnpt3tyed25k" path="res://scenes/objects/Swing.tscn" id="11_m5tlc"]
+[ext_resource type="PackedScene" uid="uid://kv30bbcxclw0" path="res://scenes/objects/Slide.tscn" id="12_t5g4a"]
+[ext_resource type="PackedScene" uid="uid://cca4vmq1qi27o" path="res://scenes/objects/Sandbox.tscn" id="13_yc1xx"]
+[ext_resource type="PackedScene" uid="uid://ctpickf81rn6t" path="res://scenes/objects/Lights/StreetlightDown.tscn" id="14_1eqm2"]
+[ext_resource type="PackedScene" uid="uid://spuhih5te5ck" path="res://scenes/objects/Lights/StreetlightLeft.tscn" id="15_mfarv"]
+[ext_resource type="PackedScene" uid="uid://c0acap2jmh2f" path="res://scenes/objects/Lights/StreetlightUp.tscn" id="16_3nhns"]
+[ext_resource type="PackedScene" uid="uid://drxotm8osb7q0" path="res://scenes/objects/Lights/StreetlightRight.tscn" id="17_m8fl6"]
+[ext_resource type="PackedScene" uid="uid://cd6fc47tx6cyd" path="res://scenes/objects/Lake.tscn" id="18_60q0b"]
+[ext_resource type="Shader" uid="uid://d0tviawj1e1lu" path="res://scripts/shader/gaussian_blur.gdshader" id="22_0u7it"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pukq8"]
+shader = ExtResource("22_0u7it")
+shader_parameter/blur_amount = 1.0
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_347e1"]
+shader = ExtResource("3_nrdw3")
+shader_parameter/alpha = 0.7
+shader_parameter/inner_radius = 0.0
+shader_parameter/outer_radius = 1.0
+
+[sub_resource type="Animation" id="Animation_8f33s"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_gf0iw"]
+resource_name = "fade_out_and_in"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_camera"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wmust"]
+_data = {
+&"RESET": SubResource("Animation_8f33s"),
+&"fade_out_and_in": SubResource("Animation_gf0iw")
+}
+
+[sub_resource type="Animation" id="Animation_on21e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(219.5, 270)]
+}
+
+[sub_resource type="Animation" id="Animation_enxxl"]
+resource_name = "title_move_down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(219.5, 110), Vector2(219.5, 270)]
+}
+
+[sub_resource type="Animation" id="Animation_1aph7"]
+resource_name = "title_move_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(219.5, 270), Vector2(219.5, 110)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yclxk"]
+_data = {
+&"RESET": SubResource("Animation_on21e"),
+&"title_move_down": SubResource("Animation_enxxl"),
+&"title_move_up": SubResource("Animation_1aph7")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fjdek")
+start_game_scene = ExtResource("2_4achk")
+credit_scene = ExtResource("3_magl1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GaussianBlurShader" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_pukq8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="VignetteShader" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_347e1")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Title" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.5
+offset_top = -90.0
+offset_right = 420.5
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_atwnr")
+theme_override_colors/font_shadow_color = Color(0.603922, 0, 0.156863, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_cx0kh")
+theme_override_font_sizes/font_size = 120
+text = "The Last Diner"
+horizontal_alignment = 1
+
+[node name="SubTitle" type="Label" parent="CanvasLayer/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.0
+offset_top = -124.0
+offset_right = 684.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.174533
+theme = ExtResource("3_atwnr")
+theme_override_colors/font_color = Color(0.604813, 0.00188793, 0.158301, 1)
+theme_override_fonts/font = ExtResource("3_cx0kh")
+theme_override_font_sizes/font_size = 50
+text = "Prototype"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButtons" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -370.0
+offset_top = -114.0
+offset_right = 370.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 60
+alignment = 2
+
+[node name="Start" parent="CanvasLayer/MainMenuButtons" instance=ExtResource("6_2govm")]
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 2
+text = "Start"
+
+[node name="Settings" parent="CanvasLayer/MainMenuButtons" instance=ExtResource("6_2govm")]
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 2
+text = "Settings"
+
+[node name="Credits" parent="CanvasLayer/MainMenuButtons" instance=ExtResource("6_2govm")]
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 2
+text = "Credit"
+
+[node name="Exit" parent="CanvasLayer/MainMenuButtons" instance=ExtResource("6_2govm")]
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 2
+text = "Exit"
+
+[node name="SettingMenu" parent="CanvasLayer" instance=ExtResource("2_r7byj")]
+visible = false
+
+[node name="Version" type="Label" parent="CanvasLayer"]
+self_modulate = Color(0.609375, 0.609375, 0.609375, 1)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 14
+text = "v0.01 (Prototype)"
+horizontal_alignment = 1
+
+[node name="Disclaimer" type="Label" parent="CanvasLayer"]
+self_modulate = Color(0.609375, 0.609375, 0.609375, 1)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -282.5
+offset_top = -20.0
+offset_right = 282.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 14
+text = "Disclaimer: Gameplay is not indicitive of final product and is subject to change"
+horizontal_alignment = 1
+
+[node name="SaveUI" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -383.0
+offset_top = -64.0
+offset_right = 383.0
+offset_bottom = 298.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SaveUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.0
+offset_right = 275.0
+offset_bottom = 278.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="SaveSlotItem" parent="CanvasLayer/SaveUI/VBoxContainer" instance=ExtResource("5_v3mkp")]
+layout_mode = 2
+slot_id = 1
+
+[node name="SaveSlotItem2" parent="CanvasLayer/SaveUI/VBoxContainer" instance=ExtResource("5_v3mkp")]
+layout_mode = 2
+slot_id = 2
+
+[node name="SaveSlotItem3" parent="CanvasLayer/SaveUI/VBoxContainer" instance=ExtResource("5_v3mkp")]
+layout_mode = 2
+slot_id = 3
+
+[node name="SaveUIBackButton" parent="CanvasLayer/SaveUI" instance=ExtResource("6_2govm")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -44.0
+offset_right = 76.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+
+[node name="FadeCover" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BackgroundMap" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="BackgroundMap"]
+zoom = Vector2(0.5, 0.5)
+limit_left = 0
+limit_top = 0
+limit_right = 5000
+limit_bottom = 4000
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 0.02
+
+[node name="Dark" type="CanvasModulate" parent="BackgroundMap"]
+position = Vector2(533, 480)
+color = Color(0.462291, 0.462291, 0.462291, 1)
+
+[node name="Map" type="Node2D" parent="BackgroundMap"]
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundMap/Map"]
+offset_right = 5000.0
+offset_bottom = 4000.0
+texture = ExtResource("2_ik0mn")
+
+[node name="WreckedCar" parent="BackgroundMap/Map" instance=ExtResource("5_gkg36")]
+position = Vector2(762, 1600)
+
+[node name="WreckedCar2" parent="BackgroundMap/Map" instance=ExtResource("6_hmsnk")]
+position = Vector2(2412, 1284)
+
+[node name="WreckedCar3" parent="BackgroundMap/Map" instance=ExtResource("7_s88nw")]
+position = Vector2(2959, 1602)
+
+[node name="Debris" parent="BackgroundMap/Map" instance=ExtResource("8_03kpm")]
+position = Vector2(1592, 2512)
+
+[node name="Debris2" parent="BackgroundMap/Map" instance=ExtResource("9_w5xyq")]
+position = Vector2(3520, 419)
+
+[node name="Debris3" parent="BackgroundMap/Map" instance=ExtResource("10_vrxij")]
+position = Vector2(4149, 1301)
+
+[node name="Slide" parent="BackgroundMap/Map" instance=ExtResource("11_m5tlc")]
+position = Vector2(712, 2576)
+
+[node name="Slide2" parent="BackgroundMap/Map" instance=ExtResource("12_t5g4a")]
+position = Vector2(339, 2712)
+
+[node name="Sandbox" parent="BackgroundMap/Map" instance=ExtResource("13_yc1xx")]
+position = Vector2(314, 2334)
+
+[node name="Streetlight" parent="BackgroundMap/Map" instance=ExtResource("14_1eqm2")]
+position = Vector2(2269, 738)
+
+[node name="Streetlight2" parent="BackgroundMap/Map" instance=ExtResource("15_mfarv")]
+position = Vector2(4122, 418)
+
+[node name="Streetlight3" parent="BackgroundMap/Map" instance=ExtResource("16_3nhns")]
+position = Vector2(3860, 1571)
+
+[node name="Streetlight4" parent="BackgroundMap/Map" instance=ExtResource("17_m8fl6")]
+position = Vector2(1319, 2869)
+
+[node name="Lake" parent="BackgroundMap/Map" instance=ExtResource("18_60q0b")]
+position = Vector2(4236, 3577)
+
+[node name="CameraTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wmust")
+}
+
+[node name="TitleAnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_yclxk")
+}
+
+[connection signal="mouse_entered" from="CanvasLayer/MainMenuButtons/Start" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="CanvasLayer/MainMenuButtons/Start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/MainMenuButtons/Settings" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="CanvasLayer/MainMenuButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/MainMenuButtons/Credits" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="CanvasLayer/MainMenuButtons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/MainMenuButtons/Exit" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="CanvasLayer/MainMenuButtons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="back" from="CanvasLayer/SettingMenu" to="." method="_on_settings_back"]
+[connection signal="mouse_entered" from="CanvasLayer/SaveUI/SaveUIBackButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="CanvasLayer/SaveUI/SaveUIBackButton" to="." method="_on_save_ui_back_button_pressed"]
+[connection signal="timeout" from="CameraTimer" to="." method="_on_camera_timer_timeout"]

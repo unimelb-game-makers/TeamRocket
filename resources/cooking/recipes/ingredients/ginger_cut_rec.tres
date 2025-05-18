@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="IngredientRecipe" load_steps=3 format=3 uid="uid://guh1wg0140xx"]
+
+[ext_resource type="Script" uid="uid://bgf04urpx4mx5" path="res://resources/resource_scripts/food_system/recipe_scripts/ingredient_recipe.gd" id="1_r7f0u"]
+[ext_resource type="Resource" uid="uid://c1hch1g8on7qo" path="res://resources/cooking/ingredients/ginger_cut.tres" id="1_scil7"]
+
+[resource]
+script = ExtResource("1_r7f0u")
+output_ingredient = ExtResource("1_scil7")
+effects = Array[int]([])
+base_ingredients = Array[int]([407])
+metadata/_custom_type_script = "uid://bgf04urpx4mx5"

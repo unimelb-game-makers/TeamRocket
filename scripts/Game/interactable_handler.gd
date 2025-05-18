@@ -1,7 +1,9 @@
 extends Node2D
+class_name InteractableHandler
 
 @onready var interactable_spawn_points: Node = $InteractableSpawnPoints
 @onready var interactable_holder: Node2D = $InteractableHolder
+
 
 @export var chest_scene: PackedScene
 @export var loot_table: Array[Item] = []
@@ -11,6 +13,7 @@ func _ready() -> void:
 		var spawn_loot = randf() < 0.3
 		if spawn_loot:
 			spawn_interactable(spawn_point.global_position)
+			
 
 func spawn_interactable(spawn_pos: Vector2):
 	var interactable = chest_scene.instantiate()

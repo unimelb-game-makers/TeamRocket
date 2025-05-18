@@ -1,18 +1,19 @@
-[gd_scene load_steps=19 format=3 uid="uid://yskpqwwvcpce"]
+[gd_scene load_steps=20 format=3 uid="uid://yskpqwwvcpce"]
 
-[ext_resource type="Script" uid="uid://o1myk4vyb1cl" path="res://scripts/cooking/ChoppingActivity.gd" id="2_ojnvx"]
+[ext_resource type="Script" uid="uid://o1myk4vyb1cl" path="res://scripts/cooking/chopping_activity.gd" id="2_ojnvx"]
 [ext_resource type="Texture2D" uid="uid://chmpi1n4p1apn" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_pk5pp"]
+[ext_resource type="Resource" uid="uid://br4i6r5ewid8" path="res://scenes/cooking/workbenches/chopping_board/chopping_board_settings/default_chopping_board_settings.tres" id="2_s8500"]
 [ext_resource type="Texture2D" uid="uid://c28jljdwevpa5" path="res://assets/textures/workstation_textures/ChoppingZone_Texture.png" id="3_bjcle"]
 [ext_resource type="Texture2D" uid="uid://cbg7dcha6kjh8" path="res://assets/workstations/chopping_game/cutting board only.png" id="4_yn4oy"]
-[ext_resource type="AudioStream" uid="uid://b2acn5b5gib7i" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut1.wav" id="5_bhn3j"]
+[ext_resource type="AudioStream" uid="uid://ce1mrpp8g4wof" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut1.ogg" id="5_bhn3j"]
 [ext_resource type="FontFile" uid="uid://iqracr2sqomh" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="5_ihd3f"]
-[ext_resource type="AudioStream" uid="uid://vcg221bt5aiw" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut2.wav" id="6_8bat3"]
-[ext_resource type="AudioStream" uid="uid://c58ters8lxu0g" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut3.wav" id="7_3fpex"]
+[ext_resource type="AudioStream" uid="uid://b75akuq6eiwrw" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut2.ogg" id="6_8bat3"]
+[ext_resource type="AudioStream" uid="uid://cc7hbujmj2t63" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut3.ogg" id="7_3fpex"]
 [ext_resource type="Texture2D" uid="uid://bthdxl8mhhfga" path="res://assets/workstations/chopping_game/knife_top_down.png" id="7_be1gm"]
-[ext_resource type="AudioStream" uid="uid://251aww0a3858" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut4.wav" id="8_vhigo"]
-[ext_resource type="AudioStream" uid="uid://dhqafchw70kua" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut5.wav" id="9_4hnjx"]
-[ext_resource type="AudioStream" uid="uid://dxotqhdiila3a" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut6.wav" id="10_17sga"]
-[ext_resource type="AudioStream" uid="uid://ddy086m470tx7" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut7.wav" id="11_cdwm0"]
+[ext_resource type="AudioStream" uid="uid://uv4hwsmh6roh" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut4.ogg" id="8_vhigo"]
+[ext_resource type="AudioStream" uid="uid://clodqsar1m3do" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut5.ogg" id="9_4hnjx"]
+[ext_resource type="AudioStream" uid="uid://crq6e3f7111j3" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut6.ogg" id="10_17sga"]
+[ext_resource type="AudioStream" uid="uid://blu8awnkvfphq" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut7.ogg" id="11_cdwm0"]
 [ext_resource type="Texture2D" uid="uid://baecuvxkgnpcq" path="res://assets/food/salt.png" id="12_ihp6r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nyq3"]
@@ -41,7 +42,7 @@ stream_4/stream = ExtResource("9_4hnjx")
 stream_5/stream = ExtResource("10_17sga")
 stream_6/stream = ExtResource("11_cdwm0")
 
-[node name="Activity" type="Control"]
+[node name="ChoppingActivity" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,6 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_ojnvx")
+chopping_settings = ExtResource("2_s8500")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -109,7 +111,6 @@ offset_left = 566.0
 offset_top = 169.0
 offset_right = 720.0
 offset_bottom = 229.0
-text = "Perfect!"
 label_settings = SubResource("LabelSettings_f8eio")
 horizontal_alignment = 1
 
@@ -117,6 +118,7 @@ horizontal_alignment = 1
 stream = SubResource("AudioStreamRandomizer_xaacb")
 
 [node name="IngredientImageDisplay" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 550.0
 offset_top = 233.0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dalgxtcso4anc"
+path="res://.godot/imported/naked deer hunt2.ogg-4e163a137f9779ae9d6dd506410b6cc2.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/hunt/naked deer hunt2.ogg"
+dest_files=["res://.godot/imported/naked deer hunt2.ogg-4e163a137f9779ae9d6dd506410b6cc2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

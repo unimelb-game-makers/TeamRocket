@@ -47,8 +47,4 @@ autostart = true
 
 [node name="IconHolder" type="Node2D" parent="."]
 
-[node name="RadarItemIcon" parent="IconHolder" instance=ExtResource("4_llix5")]
-position = Vector2(-23.1667, 0)
-scale = Vector2(0.05, 0.05)
-
 [connection signal="timeout" from="RadarUpdateTimer" to="." method="_on_radar_update_timer_timeout"]

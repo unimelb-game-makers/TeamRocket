@@ -1,15 +1,25 @@
-[gd_scene load_steps=11 format=3 uid="uid://djxk0awyl2jvv"]
+[gd_scene load_steps=21 format=3 uid="uid://djxk0awyl2jvv"]
 
 [ext_resource type="Script" uid="uid://bbdlvbr48vh2" path="res://scenes/cooking/workbenches/fridge.gd" id="1_5lxtu"]
+[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_hv7gp"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_hx425"]
+[ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="3_b35ud"]
 [ext_resource type="Texture2D" uid="uid://d2rqbpk73pems" path="res://assets/workstations/fridge/fridge.png" id="3_qjnbx"]
+[ext_resource type="Resource" uid="uid://v5nqfcc5gsvk" path="res://resources/cooking/ingredients/beef_mince.tres" id="4_8e5go"]
 [ext_resource type="Script" uid="uid://co4o4u8u1bghf" path="res://scenes/cooking/workbenches/fridge_ui.gd" id="4_8g765"]
+[ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="5_vu3ao"]
+[ext_resource type="Resource" uid="uid://birn1wyb2g5bv" path="res://resources/cooking/ingredients/onion.tres" id="6_74di3"]
 [ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/InventoryContainer.tscn" id="6_pr8c1"]
 [ext_resource type="Texture2D" uid="uid://mql53aoddg1y" path="res://assets/textures/kenney_borders/default/Border/panel-border-001.png" id="7_2mtwf"]
+[ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="7_p30l0"]
+[ext_resource type="Resource" uid="uid://djfvdkf82lpn7" path="res://resources/cooking/ingredients/rice.tres" id="8_1byga"]
+[ext_resource type="Texture2D" uid="uid://cevkjrlj4y5qd" path="res://assets/food/tomato_raw.png" id="8_44r6t"]
 [ext_resource type="Texture2D" uid="uid://bai0mllc38ec1" path="res://assets/textures/kenney_borders/default/Border/panel-border-003.png" id="8_ccpos"]
+[ext_resource type="Resource" uid="uid://bgerkoono7uhm" path="res://resources/cooking/ingredients/suspicious_bean.tres" id="9_bn03o"]
+[ext_resource type="Resource" uid="uid://cwuer4u67t6om" path="res://resources/cooking/ingredients/spice_powder.tres" id="10_b35ud"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kqfx0"]
-size = Vector2(256, 368)
+size = Vector2(224, 328)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k3j0g"]
 resource_local_to_scene = true
@@ -31,9 +41,11 @@ size = Vector2(216, 104)
 collision_layer = 32
 collision_mask = 64
 script = ExtResource("1_5lxtu")
+debug_mode = true
+debug_bonus_item = Array[ExtResource("2_hv7gp")]([ExtResource("3_b35ud"), ExtResource("4_8e5go"), ExtResource("5_vu3ao"), ExtResource("6_74di3"), ExtResource("7_p30l0"), ExtResource("8_1byga"), ExtResource("9_bn03o"), ExtResource("10_b35ud")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 24)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_kqfx0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -62,9 +74,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -512.0
-offset_top = -272.0
+offset_top = -296.0
 offset_right = 512.0
-offset_bottom = 280.0
+offset_bottom = 304.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
@@ -75,9 +87,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 40.0
-offset_top = -172.0
-offset_right = 488.0
-offset_bottom = 172.0
+offset_top = -220.0
+offset_right = 456.0
+offset_bottom = 124.0
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/FridgeUI/Background/InventoryArea"]
@@ -124,13 +136,16 @@ patch_margin_bottom = 20
 
 [node name="FridgeArea" type="Control" parent="CanvasLayer/FridgeUI/Background"]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 528.0
-offset_top = -172.0
-offset_right = 976.0
-offset_bottom = 172.0
+offset_left = -456.0
+offset_top = -220.0
+offset_right = -40.0
+offset_bottom = 124.0
+grow_horizontal = 0
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/FridgeUI/Background/FridgeArea"]
@@ -190,6 +205,75 @@ patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
+[node name="ItemDescriptionArea" type="Control" parent="CanvasLayer/FridgeUI/Background"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 224.0
+offset_top = -152.0
+offset_right = 792.0
+offset_bottom = -32.0
+grow_vertical = 0
+
+[node name="ItemImage" type="TextureRect" parent="CanvasLayer/FridgeUI/Background/ItemDescriptionArea"]
+self_modulate = Color(1, 1, 1, 0.333333)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("8_44r6t")
+expand_mode = 1
+
+[node name="ItemName" type="Label" parent="CanvasLayer/FridgeUI/Background/ItemDescriptionArea"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 44.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "Tomato"
+
+[node name="ItemDescription" type="Label" parent="CanvasLayer/FridgeUI/Background/ItemDescriptionArea"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -72.0
+offset_right = -24.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 14
+text = "Tomato description lora ipsum"
+autowrap_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/FridgeUI/Background/ItemDescriptionArea"]
+modulate = Color(0.596078, 0.458824, 0.329412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_2mtwf")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
@@ -200,5 +284,7 @@ shape = SubResource("RectangleShape2D_twg4p")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="item_hover" from="CanvasLayer/FridgeUI/Background/InventoryArea/InventoryContainer" to="CanvasLayer/FridgeUI" method="_on_inventory_container_item_hover"]
 [connection signal="item_select" from="CanvasLayer/FridgeUI/Background/InventoryArea/InventoryContainer" to="." method="_on_inventory_container_item_select"]
+[connection signal="item_hover" from="CanvasLayer/FridgeUI/Background/FridgeArea/FridgeContainer" to="CanvasLayer/FridgeUI" method="_on_fridge_container_item_hover"]
 [connection signal="item_select" from="CanvasLayer/FridgeUI/Background/FridgeArea/FridgeContainer" to="." method="_on_fridge_container_item_select"]

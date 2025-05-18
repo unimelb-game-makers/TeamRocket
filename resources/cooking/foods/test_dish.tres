@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Dish" load_steps=5 format=3 uid="uid://diq2fkq7xdool"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_c35ro"]
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_7mfwc"]
+[ext_resource type="Resource" uid="uid://4rndf4mnu11g" path="res://resources/cooking/ingredients/carrot_cut.tres" id="2_lvl3h"]
+[ext_resource type="Texture2D" uid="uid://d3x8qge0v5l21" path="res://assets/placeholder/construction_icon.png" id="4_xgskt"]
+
+[resource]
+script = ExtResource("2_7mfwc")
+effects = Array[int]([])
+ingredients = Array[ExtResource("1_c35ro")]([ExtResource("2_lvl3h")])
+texture = ExtResource("4_xgskt")
+item_id = "test_dish"
+item_name = "Test Dish Basic"
+description = "Dish for testing"
+weight = 10.0
+rarity = 2
+quality = 100
+metadata/_custom_type_script = "uid://dqqa8ydotiigx"
