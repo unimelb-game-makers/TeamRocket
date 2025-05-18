@@ -349,24 +349,11 @@ func eat_food(dish: Dish) -> void:
 		Globals.player_stats.apply_status(effect_mapping[status_effect])
 	return
 
+func apply_status(status: StatusEffect):
+	Globals.player_stats.apply_status(status)
+
 func _on_status_effect_tick_timer_timeout() -> void:
 	Globals.player_stats.tick_status_effects(StatusEffect.DurationCategory.SECONDS)
-
-## Debuff
-func apply_slow_debuff():
-	var slow_debuff_time = 3
-	if not is_slowed:
-		is_slowed = true
-		speed_modifier -= 0.5
-		slow_debuff_timer.start(slow_debuff_time)
-
-func remove_slow_debuff():
-	if is_slowed:
-		speed_modifier += 0.5
-		is_slowed = false
-
-func _on_slow_debuff_timer_timeout() -> void:
-	remove_slow_debuff()
 
 
 func _on_after_hurt_invulnerable_timer_timeout() -> void:
