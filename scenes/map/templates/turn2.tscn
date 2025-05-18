@@ -9,7 +9,7 @@
 doors = [null, null, NodePath("DoorArea"), NodePath("DoorArea2")]
 mediumSpawn = NodePath("MediumSpawn")
 largeSpawn = NodePath("LargeSpawn")
-spawnNodes = [NodePath("")]
+spawnNodes = [NodePath("SpawnArea2D")]
 
 [node name="TileMap" parent="." index="0"]
 tile_map_data = PackedByteArray(0, 0, 4, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 80, 4, 0, 7, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 12, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 17, 0, 1, 0, 0, 0, 0, 0, 0, 0)

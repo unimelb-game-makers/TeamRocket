@@ -10,7 +10,7 @@
 [node name="FullRoom" node_paths=PackedStringArray("mediumSpawn", "largeSpawn", "spawnNodes") instance=ExtResource("1_sj8qq")]
 mediumSpawn = NodePath("MediumSpawn")
 largeSpawn = NodePath("LargeSpawn")
-spawnNodes = [null, NodePath("SpawnArea2D3")]
+spawnNodes = [NodePath("SpawnArea2D"), NodePath("SpawnArea2D3")]
 
 [node name="ColorRect" parent="." index="0"]
 offset_left = 508.0

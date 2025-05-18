@@ -166,6 +166,9 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	
 	selected_room = curr_room_data.roomscene.instantiate()
 	
+	for i in selected_room.spawnNodes:
+		i.reparent($EnemyHandler/SpawnAreas)
+	
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
 	var doors = selected_room.doors
@@ -243,8 +246,6 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	newcam.call_deferred("set_global_position", currplayer.global_position)
 	newcam.zoom = Vector2(0.3,0.3)
 	currcam = newcam
-	
-	
 
 func go_to_room(direction: Vector2):
 	if just_teleported1 == false and just_teleported2 == false:

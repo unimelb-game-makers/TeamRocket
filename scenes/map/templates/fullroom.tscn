@@ -10,7 +10,7 @@
 sockets = Array[String](["B", "B", "B", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
 spawn = NodePath("Spawn")
-spawnNodes = [NodePath(""), NodePath("")]
+spawnNodes = [NodePath("SpawnArea2D")]
 metadata/_edit_horizontal_guides_ = [738.0]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]

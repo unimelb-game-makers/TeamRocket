@@ -9,7 +9,7 @@
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), null, NodePath("DoorArea3")]
 mediumSpawn = NodePath("MediumSpawn")
 largeSpawn = NodePath("LargeSpawn")
-spawnNodes = [NodePath("")]
+spawnNodes = [NodePath("SpawnArea2D")]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 offset_left = -1599.0

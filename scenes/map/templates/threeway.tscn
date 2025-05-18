@@ -9,7 +9,7 @@
 sockets = Array[String](["B", "B", "A", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), null, NodePath("DoorArea3")]
 spawn = NodePath("Spawn")
-spawnNodes = [NodePath("")]
+spawnNodes = [NodePath("SpawnArea2D")]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 offset_right = 1496.0
