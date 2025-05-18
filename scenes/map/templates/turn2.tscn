@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_exlat"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_8o0yr"]
 
-[node name="BaseRoom" node_paths=PackedStringArray("doors", "mediumSpawn", "largeSpawn") instance=ExtResource("1_exlat")]
+[node name="BaseRoom" node_paths=PackedStringArray("doors", "mediumSpawn", "largeSpawn", "spawnNodes") instance=ExtResource("1_exlat")]
 doors = [null, null, NodePath("DoorArea"), NodePath("DoorArea2")]
 mediumSpawn = NodePath("MediumSpawn")
 largeSpawn = NodePath("LargeSpawn")
+spawnNodes = [NodePath("Node2D")]
 
 [node name="TileMap" parent="." index="0"]
 tile_map_data = PackedByteArray(0, 0, 4, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 80, 4, 0, 7, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 12, 0, 1, 0, 0, 0, 0, 0, 0, 0, 4, 0, 17, 0, 1, 0, 0, 0, 0, 0, 0, 0)
@@ -23,3 +24,6 @@ position = Vector2(2209, 1005)
 
 [node name="MediumSpawn" type="Node2D" parent="." index="4"]
 position = Vector2(1701, 997)
+
+[node name="Node2D" type="Node2D" parent="." index="5"]
+position = Vector2(937, 469)

@@ -2,9 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://ccmpxxyhlwyaw" path="res://scenes/map/templates/fullroom.tscn" id="1_sj8qq"]
 
-[node name="FullRoom" node_paths=PackedStringArray("mediumSpawn", "largeSpawn") instance=ExtResource("1_sj8qq")]
+[node name="FullRoom" node_paths=PackedStringArray("mediumSpawn", "largeSpawn", "spawnNodes") instance=ExtResource("1_sj8qq")]
 mediumSpawn = NodePath("MediumSpawn")
 largeSpawn = NodePath("LargeSpawn")
+spawnNodes = [NodePath("Node2D"), NodePath("Node2D2")]
 
 [node name="ColorRect" parent="." index="0"]
 offset_left = 508.0
@@ -34,3 +35,9 @@ position = Vector2(1000, 600)
 
 [node name="LargeSpawn" type="Node2D" parent="." index="8"]
 position = Vector2(500, 600)
+
+[node name="Node2D" type="Node2D" parent="." index="9"]
+position = Vector2(1038, 1427)
+
+[node name="Node2D2" type="Node2D" parent="." index="10"]
+position = Vector2(1738, 704)

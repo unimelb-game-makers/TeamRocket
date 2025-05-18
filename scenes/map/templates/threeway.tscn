@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_jvckg"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_i84du"]
 
-[node name="Threeway" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_jvckg")]
+[node name="Threeway" node_paths=PackedStringArray("doors", "spawn", "spawnNodes") instance=ExtResource("1_jvckg")]
 sockets = Array[String](["B", "B", "A", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), null, NodePath("DoorArea3")]
 spawn = NodePath("Spawn")
+spawnNodes = [NodePath("Node2D")]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 offset_right = 1496.0
@@ -30,6 +31,9 @@ direction = 3
 
 [node name="Spawn" type="Node2D" parent="." index="5"]
 position = Vector2(400, 400)
+
+[node name="Node2D" type="Node2D" parent="." index="6"]
+position = Vector2(730, 1096)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]

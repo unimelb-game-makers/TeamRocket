@@ -32,6 +32,8 @@ const DOOR = "B"  # There is a door in this direction.
 @export var mediumSpawn: Node2D
 @export var largeSpawn: Node2D
 
+@export var spawnNodes: Array[Node2D] = []
+
 func _ready() -> void:
 	
 	# Verify each socket only has 1 character

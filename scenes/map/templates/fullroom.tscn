@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_bbnrc"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_hawl3"]
 
-[node name="FullRoom" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_bbnrc")]
+[node name="FullRoom" node_paths=PackedStringArray("doors", "spawn", "spawnNodes") instance=ExtResource("1_bbnrc")]
 sockets = Array[String](["B", "B", "B", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
 spawn = NodePath("Spawn")
+spawnNodes = [NodePath("Node2D"), NodePath("Node2D2")]
 metadata/_edit_horizontal_guides_ = [738.0]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
@@ -34,6 +35,12 @@ rotation = 1.5708
 
 [node name="Spawn" type="Node2D" parent="." index="6"]
 position = Vector2(592, 479)
+
+[node name="Node2D" type="Node2D" parent="." index="7"]
+position = Vector2(558, 319)
+
+[node name="Node2D2" type="Node2D" parent="." index="8"]
+position = Vector2(1272, 1306)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
