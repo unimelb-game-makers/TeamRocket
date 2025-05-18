@@ -473,6 +473,14 @@ bus = &"Effects"
 [node name="EquipEffect" type="AudioStreamPlayer2D" parent="Rifle/SoundEffects"]
 bus = &"Effects"
 
+[node name="MuzzleFlash" type="PointLight2D" parent="Rifle"]
+position = Vector2(88, 0)
+color = Color(1, 0.744948, 0, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("8_emt8s")
+texture_scale = 2.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.156, 0.156)
 sprite_frames = SubResource("SpriteFrames_web4h")
