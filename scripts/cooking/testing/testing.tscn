@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcs7kawk06par"]
+
+[ext_resource type="Script" uid="uid://ct6xfidnckfaa" path="res://scripts/cooking/testing/testing.gd" id="1_7vkus"]
+[ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="2_7ysnm"]
+
+[node name="Testing" type="Node"]
+script = ExtResource("1_7vkus")
+resource_type = ExtResource("2_7ysnm")

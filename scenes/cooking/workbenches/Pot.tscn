@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bqjhwwixj8hir"]
+[gd_scene load_steps=15 format=3 uid="uid://bqjhwwixj8hir"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_j278a"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_0onca"]
@@ -57,10 +57,7 @@ texture = ExtResource("3_an7p1")
 
 [node name="CookingScene" parent="CanvasLayer" index="0"]
 visible = false
+activity_to_run = ExtResource("2_5al3h")
 activity_name = "Pot"
 activity_animated_texture = SubResource("AnimatedTexture_8w5dh")
 crafting_station = SubResource("Resource_3wnqu")
-
-[node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("2_5al3h")]
-visible = false
-layout_mode = 1

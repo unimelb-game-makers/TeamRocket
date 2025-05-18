@@ -1,8 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=34 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
-[ext_resource type="AudioStream" uid="uid://csjr1bs7pcsax" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg" id="2_1ecv6"]
-[ext_resource type="AudioStream" uid="uid://diyeciedxupvy" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg" id="3_8hg87"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="3_pa65j"]
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="4_2cddj"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="4_bdj2n"]
@@ -78,7 +76,6 @@ distance = -4000.0
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler" index="1"]
 process_mode = 3
-stream = SubResource("AudioStreamInteractive_y1gkg")
 autoplay = true
 bus = &"Music"
 

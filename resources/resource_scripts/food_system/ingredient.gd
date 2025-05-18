@@ -66,6 +66,15 @@ func save() -> Dictionary:
 #static func parse_dict(item_dict: Dictionary) -> Item:
 	#var ingredient: Ingredient = load(item_dict["item_id"])
 	#return ingredient
+func _to_string() -> String:
+	var name: String = super () + "(IngredientType: " + get_enum_name(ingredient_type) + ")"
+	return name
+	
+func get_enum_name(value: int) -> String:
+	for name in IngredientType.keys():
+		if IngredientType[name] == value:
+			return name
+	return "Unknown"
 
 
 static func convert_type_to_category(ingre_type: IngredientType) -> IngredientCategory:
