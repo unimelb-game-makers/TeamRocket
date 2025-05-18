@@ -24,7 +24,10 @@ var just_teleported2 = false
 
 const straight: PackedScene = preload("res://scenes/map/templates/straight.tscn")
 const deadend: PackedScene = preload("res://scenes/map/templates/dead_end.tscn")
-const bend: PackedScene = preload("res://scenes/map/templates/turn.tscn")
+const bend: Array[PackedScene] = [
+	preload("res://scenes/map/templates/turn.tscn"),
+	preload("res://scenes/map/templates/turn2.tscn")
+]
 const threeway: Array[PackedScene] = [
 	preload("res://scenes/map/templates/threeway.tscn"), 
 	preload("res://scenes/map/templates/threeway2.tscn")
@@ -152,7 +155,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 				if neighbors_array == ["A", "B", "A", "B"] or neighbors_array == ["B", "A", "B", "A"]:
 					newroomdata.roomscene = straight
 				else:
-					newroomdata.roomscene = bend
+					newroomdata.roomscene = bend.pick_random()
 			3:
 				newroomdata.roomscene = threeway.pick_random()
 			4:
@@ -203,7 +206,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	if selected_room.has_poi_markers():
 		print("HAS POI MARKERS")
 		if curr_room_data.poi_path == "":
-			if randi_range(0, 4) > 3:
+			if randi_range(0, 3) > 3:
 				curr_room_data.poi_path = "res://assets/map/POI/medium park background.png"
 				curr_room_data.poi_size = "med"
 			else:
@@ -215,10 +218,9 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 		poi_sprite.texture = load(curr_room_data.poi_path)
 		if curr_room_data.poi_size == "med":
 			poi_sprite.global_position = selected_room.mediumSpawn.global_position
-		if curr_room_data.poi_size == "large":
+		elif curr_room_data.poi_size == "large":
 			poi_sprite.global_position = selected_room.largeSpawn.global_position
-		
-		call_deferred("add_child", poi_sprite)
+		navigation_region_2d.call_deferred("add_child", poi_sprite)
 
 	
 	# Spawn player and camera
