@@ -4,7 +4,7 @@ signal fired
 
 @export var max_inaccuracy: float = 30.0
 @export var inaccuracy_change_rate_base: float = 0.05
-@export var bullet_scene: Resource
+# @export var bullet_scene: Resource
 @export var impact_scene: PackedScene
 @export var max_bullets = 5
 @export var fire_rate = 1.0
@@ -79,7 +79,7 @@ func fire(damage) -> void:
 		var impact = impact_scene.instantiate()
 		add_child(impact)
 		impact.global_position = hit_location
-		
+
 		fire_effect.play(0.3)
 		fired.emit()
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://bp53g1jmqlap"]
+[gd_scene load_steps=130 format=3 uid="uid://bp53g1jmqlap"]
 
 [ext_resource type="Script" uid="uid://dahmqbphxewm7" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" uid="uid://cucpys6u7vdh4" path="res://scripts/player/player.gd" id="1_lvdue"]
@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://d3fhg66m1c0rh" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down01.png" id="8_x6n1m"]
 [ext_resource type="Texture2D" uid="uid://bj3fwesi5fljg" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down02.png" id="9_8ufqp"]
 [ext_resource type="Script" uid="uid://dvt66tny6d4k8" path="res://scripts/player/rifle.gd" id="9_usf71"]
-[ext_resource type="PackedScene" uid="uid://c3jnad7h7ggpt" path="res://scenes/player/bullet.tscn" id="10_c4h7y"]
 [ext_resource type="Texture2D" uid="uid://ba6sk0si4xgoh" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down03.png" id="10_chcoi"]
 [ext_resource type="Texture2D" uid="uid://btnlnpqfbh115" path="res://assets/status_icons/cobweb.svg" id="11_6b0yd"]
 [ext_resource type="Texture2D" uid="uid://74aq7mvhmeeu" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down04.png" id="11_f5d4e"]
@@ -621,7 +620,6 @@ animation = &"crouch_idle"
 [node name="Rifle" type="Node2D" parent="."]
 position = Vector2(0, -96)
 script = ExtResource("9_usf71")
-bullet_scene = ExtResource("10_c4h7y")
 impact_scene = ExtResource("4_wuv7n")
 
 [node name="FireTimer" type="Timer" parent="Rifle"]
