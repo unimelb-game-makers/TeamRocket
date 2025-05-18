@@ -1,11 +1,16 @@
-[gd_scene load_steps=2 format=4 uid="uid://cv8b3m175lmmj"]
+[gd_scene load_steps=7 format=4 uid="uid://cv8b3m175lmmj"]
 
 [ext_resource type="PackedScene" uid="uid://ccmpxxyhlwyaw" path="res://scenes/map/templates/fullroom.tscn" id="1_sj8qq"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="2_rrtk3"]
+[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="2_w6bg6"]
+[ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="3_q3d64"]
+[ext_resource type="PackedScene" uid="uid://c23naolscyluq" path="res://scenes/enemy/EnemyFish.tscn" id="4_ta5ng"]
+[ext_resource type="PackedScene" uid="uid://bo6ywxnw6k5js" path="res://scenes/enemy/EnemySpider.tscn" id="6_ofpey"]
 
 [node name="FullRoom" node_paths=PackedStringArray("mediumSpawn", "largeSpawn", "spawnNodes") instance=ExtResource("1_sj8qq")]
 mediumSpawn = NodePath("MediumSpawn")
 largeSpawn = NodePath("LargeSpawn")
-spawnNodes = [NodePath("Node2D"), NodePath("Node2D2")]
+spawnNodes = [null, NodePath("SpawnArea2D3")]
 
 [node name="ColorRect" parent="." index="0"]
 offset_left = 508.0
@@ -36,8 +41,9 @@ position = Vector2(1000, 600)
 [node name="LargeSpawn" type="Node2D" parent="." index="8"]
 position = Vector2(500, 600)
 
-[node name="Node2D" type="Node2D" parent="." index="9"]
-position = Vector2(1038, 1427)
+[node name="SpawnArea2D" parent="." index="9"]
+allowed_enemies = Array[PackedScene]([ExtResource("2_w6bg6"), ExtResource("3_q3d64"), ExtResource("4_ta5ng")])
 
-[node name="Node2D2" type="Node2D" parent="." index="10"]
-position = Vector2(1738, 704)
+[node name="SpawnArea2D3" parent="." index="10" instance=ExtResource("2_rrtk3")]
+position = Vector2(1753, 683)
+allowed_enemies = Array[PackedScene]([ExtResource("3_q3d64"), ExtResource("6_ofpey")])
