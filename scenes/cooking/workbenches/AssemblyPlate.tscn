@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhlarqiey25gc"]
+[gd_scene load_steps=14 format=3 uid="uid://bhlarqiey25gc"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_st23u"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_38lgk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="4_30h3e"]
 [ext_resource type="Resource" uid="uid://d3b4eailp7hg2" path="res://resources/cooking/recipes/full_foods/vegetable_curry_rec.tres" id="6_3hbae"]
 [ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="6_erx1b"]
+[ext_resource type="Resource" uid="uid://cb1r3mgbgnv21" path="res://resources/cooking/recipes/full_foods/chicken_curry_rec.tres" id="7_erx1b"]
 [ext_resource type="Resource" uid="uid://cdkwk2i8v3mc8" path="res://resources/cooking/recipes/full_foods/test_dish_type.tres" id="8_erx1b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ee4c5"]
@@ -30,7 +31,7 @@ frame_0/texture = ExtResource("2_nv7a3")
 
 [sub_resource type="Resource" id="Resource_vhiap"]
 script = ExtResource("6_erx1b")
-recipes = Array[ExtResource("4_30h3e")]([ExtResource("6_3hbae"), ExtResource("8_erx1b")])
+recipes = Array[ExtResource("4_30h3e")]([ExtResource("6_3hbae"), ExtResource("7_erx1b"), ExtResource("8_erx1b")])
 max_ingredients = 5
 metadata/_custom_type_script = "uid://c0shkqininnkd"
 

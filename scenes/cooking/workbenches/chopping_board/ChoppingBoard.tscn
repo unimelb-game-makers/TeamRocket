@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dj4u0n4uqbwvg"]
+[gd_scene load_steps=14 format=3 uid="uid://dj4u0n4uqbwvg"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_n668q"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_2s1lh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="5_5mhn5"]
 [ext_resource type="Resource" uid="uid://d3b5yu03lwb2b" path="res://resources/cooking/recipes/ingredients/carrot_cut_rec.tres" id="6_h1c4s"]
 [ext_resource type="Resource" uid="uid://be78atnjt45hp" path="res://resources/cooking/recipes/ingredients/potato_cut_rec.tres" id="7_415b7"]
+[ext_resource type="Resource" uid="uid://cfgt0433t5duq" path="res://resources/cooking/recipes/ingredients/onion_cut_rec.tres" id="8_tfkcf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdbv1"]
 size = Vector2(160, 88)
@@ -30,7 +31,7 @@ frame_0/texture = ExtResource("3_b1lqa")
 
 [sub_resource type="Resource" id="Resource_v7ry0"]
 script = ExtResource("5_5mhn5")
-recipes = Array[ExtResource("4_v7ry0")]([ExtResource("6_h1c4s"), ExtResource("7_415b7")])
+recipes = Array[ExtResource("4_v7ry0")]([ExtResource("6_h1c4s"), ExtResource("7_415b7"), ExtResource("8_tfkcf")])
 max_ingredients = 5
 metadata/_custom_type_script = "uid://c0shkqininnkd"
 

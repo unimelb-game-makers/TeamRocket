@@ -32,7 +32,7 @@ func craft_output(input_ingredients: Array[Ingredient]) -> Item:
 	else:
 		print("No such recipe exist") # TODO: Showing this visually to the player is needed
 		return
-		
+
 ## We used `exact_number_of_ingredients` to make sure we can search for recipe that use same type of ingredients but
 ## with different amount. Example: Cut Carrot need 1 Carrot while Carrot Powder need 2 Carrot.
 func match_base_ingredient_types(ingredients: Array[Ingredient], exact_number_of_ingredients = false) -> Recipe:
@@ -68,7 +68,7 @@ func match_base_ingredient_types(ingredients: Array[Ingredient], exact_number_of
 				if recipe_base_ingredient_dict[ingredient_type] > ingredients_type_input_dict.get(ingredient_type, 0):
 					output_dish_matched = false
 					break
-	
+
 		# Check for swappable ingredient if is full DishRecipe
 		if recipe is DishRecipe:
 			 # Remove base ingredients from input ingredients dict
@@ -98,7 +98,7 @@ func match_base_ingredient_types(ingredients: Array[Ingredient], exact_number_of
 					if required_ingr_category_dict[ingr_category] > input_ingredient_category_dict.get(ingr_category, 0):
 						output_dish_matched = false
 						break
-			
+
 		if output_dish_matched:
 			return recipe
 
