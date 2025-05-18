@@ -7,7 +7,7 @@
 
 [resource]
 script = ExtResource("2_y6gln")
-effects = Array[int]([0, 6, 13])
+effects = Array[int]([0, 6])
 ingredients = Array[ExtResource("1_m5eeu")]([ExtResource("2_pb6hu")])
 texture = ExtResource("3_y6gln")
 item_id = "sus_curry"
