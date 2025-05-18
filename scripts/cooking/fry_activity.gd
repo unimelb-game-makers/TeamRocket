@@ -21,7 +21,7 @@ Currently, this is unused, as we just use a texture2D instead
 @onready var ingr: Sprite2D = $FryingPan/Ingredient
 @onready var warning: Label = $FryingPan/Ingredient/Label
 @onready var progress_debug: Label = $ProgressDebug
-@onready var ingredient_handler: HBoxContainer = %IngredientHandler
+#@onready var ingredient_handler: HBoxContainer = %IngredientHandler
 @onready var ingr_sprite: Sprite2D = $FryingPan/Ingredient/Sprite
 @onready var tip_text: Label = $TipText
 @onready var fry_progress: TextureProgressBar = $FryProgress
@@ -59,20 +59,32 @@ var cooking: bool = false
 # This will go to false when the activity is finished
 var playing: bool = false
 
-func reset_game():
-	pass
+func _ready() -> void:
+	if input_ingredients.size() == 0 or input_ingredients == null:
+		push_error("There needs to atleast be one input ingredient by default to run this minigame!")
+		return
+	
+	if get_tree().current_scene == self or is_initialized: # Runs if it as current scene or was initialized by something else then added to tree 
+		fry_progress.max_value = 2 * target_progress
+		tip_text.self_modulate.a = 0
+		#target = ingredient_handler.selected_ingredients.size() # HELP: Not sure why getting size this way
+		target = input_ingredients.size()
+		$FryingPan/Rings.scale *= PAN_SIZE / 55.0
+		playing = true
+		cooking = true
+		drop_ingredient()
+		print(PAN_SIZE, ", ", PAN_SIZE_SQUARED)
 
-func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
-	#super(input_ingredients, output_item)
-	fry_progress.max_value = 2 * target_progress
-	tip_text.self_modulate.a = 0
-	target = ingredient_handler.selected_ingredients.size()
-	$FryingPan/Rings.scale *= PAN_SIZE / 55.0
-	playing = true
-	cooking = true
-	drop_ingredient()
-	print(PAN_SIZE, ", ", PAN_SIZE_SQUARED)
-
+#func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
+	##super(input_ingredients, output_item)
+	#fry_progress.max_value = 2 * target_progress
+	#tip_text.self_modulate.a = 0
+	#target = ingredient_handler.selected_ingredients.size()
+	#$FryingPan/Rings.scale *= PAN_SIZE / 55.0
+	#playing = true
+	#cooking = true
+	#drop_ingredient()
+	#print(PAN_SIZE, ", ", PAN_SIZE_SQUARED)
 
 func _process(delta: float) -> void:
 	warning_timer -= delta
@@ -94,7 +106,7 @@ func _process(delta: float) -> void:
 			progress.append(0)
 			progress.append(0)
 			drop_ingredient()
-		if progress[side - 1] >= target_progress:
+		if progress[side - 1] >= target_progress: # What does this branch mean?
 			if warning_timer <= 0:
 				warning_timer = 0.5
 				warning.visible = !warning.visible
@@ -155,8 +167,9 @@ func _input(event: InputEvent) -> void:
 
 ## Use this whenever the game starts a new ingredient
 func drop_ingredient() -> void:
-	cooking = false
-	ingr_sprite.texture = (ingredient_handler.selected_ingredients[fried]).texture
+	cooking = false # Pause the cooking
+	#ingr_sprite.texture = (ingredient_handler.selected_ingredients[fried]).texture
+	ingr_sprite.texture = (input_ingredients[fried]).texture
 	ingr.scale = Vector2(20.0, 20.0) / ingr_sprite.texture.get_size()
 	ingr.position = Vector2.ZERO
 	ingr_sprite.self_modulate.v = (target_progress - progress[side] * 0.6) / (target_progress)

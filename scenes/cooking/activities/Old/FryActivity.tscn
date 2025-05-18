@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://bgrsak6sy4dcb"]
 
 [ext_resource type="PackedScene" uid="uid://b23qiygihwv2h" path="res://scenes/cooking/activities/Old/CookingBase.tscn" id="1_8tnn7"]
-[ext_resource type="Script" uid="uid://cbnjg44vj1mfk" path="res://scripts/cooking/FryActivity.gd" id="2_8d3b5"]
-[ext_resource type="Resource" uid="uid://dhf01em6mwxa8" path="res://resources/activities/frying.tres" id="2_bhayt"]
+[ext_resource type="Script" uid="uid://cbnjg44vj1mfk" path="res://scripts/cooking/fry_activity.gd" id="2_8d3b5"]
+[ext_resource type="Resource" path="res://resources/activities/frying.tres" id="2_bhayt"]
 [ext_resource type="Texture2D" uid="uid://chmpi1n4p1apn" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_ibkdy"]
 [ext_resource type="Texture2D" uid="uid://weorr57ynm3" path="res://assets/workstations/fry_game/frying_pan.png" id="5_1mvg8"]
 [ext_resource type="Texture2D" uid="uid://ctqn7ohdkuvgc" path="res://assets/textures/blank_circle_200x200.png" id="5_wim56"]

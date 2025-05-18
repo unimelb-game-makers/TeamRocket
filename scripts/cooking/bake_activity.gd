@@ -24,7 +24,7 @@ func _ready() -> void:
 	if !oven_tracing_line:
 		push_warning("No default settings is set for the oven tracing line") # Not necessary since other parts of the code protects it but is safe to have
 	
-	if get_tree().root == self or is_initialized: # Runs if it as current scene or was initialized by something else then added to tree
+	if get_tree().current_scene == self or is_initialized: # Runs if it as current scene or was initialized by something else then added to tree
 		oven_tracing_line.game_finish.connect(minigame_complete)
 		
 		determine_oven_tracing_line()

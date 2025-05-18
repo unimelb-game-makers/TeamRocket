@@ -42,13 +42,11 @@ func reset():
 	ingredient_handler.max_slots = crafting_station.max_ingredients
 	ingredient_handler.update_slots()
 	inventory_container.update_inventory_list()
-	#activity.reset_game() - No point since activity is only created when start button is pressed.
 
 	start_button.visible = true
 	ingredient_handler.visible = true
 	inventory_container.visible = true
 	selected_food_list.visible = true
-	#activity.visible = false - NOT NEEDED ANYMORE
 	
 	inventory_area.visible = true
 	chosen_food_area.visible = true

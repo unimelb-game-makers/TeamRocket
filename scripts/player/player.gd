@@ -28,6 +28,7 @@ var can_move: bool = true
 var curr_speed: float
 var curr_accel: float
 var speed_modifier = 1.0
+var speed_cache: float = 0# Save the speed modifer of the user (used for locking movement) 
 
 var direction: Vector2
 var is_moving = false
@@ -111,20 +112,26 @@ func die() -> void:
 	can_move = false
 	death.emit()
 
+
+## Toggles player ability to move with WASD
+func set_player_movement(state: bool) -> void:
+	can_move = state
+
 ### BASIC MOVEMENTS (Idle, Crouching, Walking, Running, NOT Rolling) ###
 
 # Events (holding down keys)
 func _on_basic_state_physics_processing(delta: float) -> void:
-	direction = Input.get_vector("left", "right", "up", "down")
-	velocity.x = move_toward(velocity.x, curr_speed * direction.x, curr_accel)
-	velocity.y = move_toward(velocity.y, curr_speed * direction.y, curr_accel)
-	velocity = velocity * speed_modifier
-	move_and_slide()
-
 	### State Chart ###
-
-	is_moving = velocity.length_squared() >= 0.005
-
+	if can_move:
+		direction = Input.get_vector("left", "right", "up", "down")
+		velocity.x = move_toward(velocity.x, curr_speed * direction.x, curr_accel)
+		velocity.y = move_toward(velocity.y, curr_speed * direction.y, curr_accel)
+		velocity = velocity * speed_modifier
+		move_and_slide()
+		is_moving = velocity.length_squared() >= 0.005
+	else:
+		is_moving = false # BUG: IDK how to stop the walking animation, this just disable audio.
+		
 	# Handle Motion State
 	if not is_moving: # To Idle
 		statechart.send_event("wasd_release") # Sprint to Idle, Walk to Idle
@@ -148,9 +155,12 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 		statechart.send_event("enter_aiming_mode")
 	if Input.is_action_just_released("aim"):
 		statechart.send_event("exit_aiming_mode")
-
+		
 # Polling (single key presses)
 func _on_basic_state_input(event: InputEvent) -> void:
+	if !can_move:
+		return
+		
 	# Rolling supercedes all states
 	if event.is_action_pressed("roll") and can_roll:
 		statechart.send_event("space_press")

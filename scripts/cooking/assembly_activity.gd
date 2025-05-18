@@ -6,10 +6,11 @@ extends CookingActivity
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	feedback_label.text = ("You made " + output_item.item_name)
-	set_ingredient_image(output_item)
-	await get_tree().create_timer(3).timeout
-	complete_minigame()
+	if get_tree().current_scene == self or is_initialized: # Runs if it as current scene or was initialized by something else then added to tree
+		feedback_label.text = ("You made " + output_item.item_name)
+		set_ingredient_image(output_item)
+		await get_tree().create_timer(3).timeout
+		complete_minigame()
 
 #func start(input_ingredients: Array[Ingredient], output_item: Item) -> void:
 	#feedback_label.text = ("You made " + output_item.item_name)

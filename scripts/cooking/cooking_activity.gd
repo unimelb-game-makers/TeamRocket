@@ -20,9 +20,6 @@ func initialize_activity(inputs: Array[Ingredient], output: Item):
 	self.input_ingredients = inputs
 	self.output_item = output
 	is_initialized = true
-	
-func reset_game():
-	pass
 
 func minigame_complete() -> void:
 	pass # Implement in child
