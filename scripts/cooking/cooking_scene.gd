@@ -53,7 +53,6 @@ func reset():
 	ingredient_handler.visible = true
 	inventory_container.visible = true
 	selected_food_list.visible = true
-	activity.visible = false
 
 	inventory_area.visible = true
 	chosen_food_area.visible = true
@@ -85,7 +84,7 @@ func finish(rating: Item.Quality):
 	var output_item = crafting_station.craft_output(ingredient_handler.selected_ingredients)
 	# Modify based on minigame outcome
 	output_item.quality = rating
-	
+
 	print("\nOutput Item: ")
 	print(output_item)
 	complete.emit(output_item) # Emit to what?
