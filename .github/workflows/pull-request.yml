@@ -78,7 +78,7 @@ jobs:
           publish_dir: ./build/web
           publish_branch: gh-pages
           keep_files: true
-          user_name: "github-actions[bot]"
+          user_name: "github-ci[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
           commit_message: "Deploy PR web deploy to subdirectory ${{ github.event.number }}"
           destination_dir: ${{ github.event.number }}

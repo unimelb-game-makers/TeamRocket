@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://8k7l6dctmqhg"
+path="res://.godot/imported/boil init.ogg-5cb31f7beb5f9e5e634a995239dab28a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/boil init.ogg"
+dest_files=["res://.godot/imported/boil init.ogg-5cb31f7beb5f9e5e634a995239dab28a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

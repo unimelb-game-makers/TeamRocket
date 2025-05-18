@@ -23,7 +23,7 @@ func _ready() -> void:
 	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 0), 1.0)
 	var intro_pathname = "res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_intro.ogg"
 	var loop_pathname = "res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_loop.ogg"
-	if $"..".name == "City":
+	if $"..".name != "Base" and $"..".name != "Kitchen":
 		intro_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg"
 		loop_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg"
 	load_and_play_main_bgm(intro_pathname, loop_pathname)
@@ -34,8 +34,9 @@ func _ready() -> void:
 func load_and_play_main_bgm(intro_pathname: String, loop_pathname: String):
 	var music_player_node = $MusicPlayer
 	var _on_audio_finished = func():
-		$MusicPlayer.stream = load(loop_pathname)
-		$MusicPlayer.play()
+		music_player_node = $MusicPlayer # in case it changed
+		music_player_node.stream = load(loop_pathname)
+		music_player_node.play()
 	if music_player_node:
 		music_player_node.stream = load(intro_pathname)
 		music_player_node.play()

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d2di50mrnmku6"
+path="res://.godot/imported/naked deer idle3.ogg-773f9e5a3e8c219cd898514933c1ea92.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/idle/naked deer idle3.ogg"
+dest_files=["res://.godot/imported/naked deer idle3.ogg-773f9e5a3e8c219cd898514933c1ea92.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

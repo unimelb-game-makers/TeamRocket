@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://6e513148ci6s"
+path="res://.godot/imported/naked deer attack2.ogg-bb2d5163e6f96d1af81428ffe73aedb5.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/naked deer/attack-pursuit/naked deer attack2.ogg"
+dest_files=["res://.godot/imported/naked deer attack2.ogg-bb2d5163e6f96d1af81428ffe73aedb5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
