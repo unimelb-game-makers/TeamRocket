@@ -53,6 +53,6 @@ func get_door_by_direction(incoming: Vector2):
 			return i
 
 func has_poi_markers():
-	if mediumSpawn and largeSpawn:
+	if mediumSpawn != null and largeSpawn != null:
 		return true
 	return false

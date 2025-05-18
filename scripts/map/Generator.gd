@@ -25,10 +25,13 @@ var just_teleported2 = false
 const straight: PackedScene = preload("res://scenes/map/templates/straight.tscn")
 const deadend: PackedScene = preload("res://scenes/map/templates/dead_end.tscn")
 const bend: PackedScene = preload("res://scenes/map/templates/turn.tscn")
-const threeway: PackedScene = preload("res://scenes/map/templates/threeway.tscn")
+const threeway: Array[PackedScene] = [
+	preload("res://scenes/map/templates/threeway.tscn"), 
+	preload("res://scenes/map/templates/threeway2.tscn")
+]
 const full: PackedScene = preload("res://scenes/map/templates/fullroom.tscn")
 const fulls: Array[PackedScene] = [
-	preload("res://scenes/map/templates/fullroom.tscn"),
+	#preload("res://scenes/map/templates/fullroom.tscn"),
 	preload("res://scenes/map/templates/fullroom2.tscn")
 ]
 
@@ -151,7 +154,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 				else:
 					newroomdata.roomscene = bend
 			3:
-				newroomdata.roomscene = threeway
+				newroomdata.roomscene = threeway.pick_random()
 			4:
 				newroomdata.roomscene = fulls.pick_random()
 		
@@ -198,7 +201,8 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	navigation_region_2d.call_deferred("add_child", selected_room)
 	
 	if selected_room.has_poi_markers():
-		if curr_room_data.poi_path == null:
+		print("HAS POI MARKERS")
+		if curr_room_data.poi_path == "":
 			if randi_range(0, 4) > 3:
 				curr_room_data.poi_path = "res://assets/map/POI/medium park background.png"
 				curr_room_data.poi_size = "med"
@@ -207,11 +211,14 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 				curr_room_data.poi_size = "large"
 		
 		var poi_sprite: Sprite2D = Sprite2D.new()
+		print("POI PATH: " + curr_room_data.poi_path)
 		poi_sprite.texture = load(curr_room_data.poi_path)
 		if curr_room_data.poi_size == "med":
 			poi_sprite.global_position = selected_room.mediumSpawn.global_position
 		if curr_room_data.poi_size == "large":
 			poi_sprite.global_position = selected_room.largeSpawn.global_position
+		
+		call_deferred("add_child", poi_sprite)
 
 	
 	# Spawn player and camera
