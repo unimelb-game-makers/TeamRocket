@@ -161,10 +161,10 @@ position = Vector2(712, 244)
 position = Vector2(1030, 195)
 
 [node name="Oven" parent="InteractableHandler/InteractableHolder" index="6" instance=ExtResource("13_8r8q0")]
-position = Vector2(1021, 655)
+position = Vector2(1021, 650)
 
 [node name="FryingPan" parent="InteractableHandler/InteractableHolder" index="7" instance=ExtResource("14_gr436")]
-position = Vector2(1148, 570)
+position = Vector2(1266, 506)
 
 [node name="Player" parent="." index="7"]
 position = Vector2(269, 549)

@@ -1,9 +1,9 @@
 extends CookingActivity
 
-@onready var marker: TextureRect = $Boundary/Marker  # Marker is now a child of Boundary
+@onready var marker: TextureRect = $Boundary/Marker # Marker is now a child of Boundary
 @onready var result_label: Label = $ResultLabel
-@onready var boundary: TextureRect = $Boundary  # Boundary node
-@onready var score_bar: ProgressBar = $ScoreBar  # The ProgressBar node
+@onready var boundary: TextureRect = $Boundary # Boundary node
+@onready var score_bar: ProgressBar = $ScoreBar # The ProgressBar node
 
 @onready var sfx_chop_randomiser: AudioStreamPlayer2D = $SFX_ChopRandomiser
 @onready var ingredient_image_display: TextureRect = $IngredientImageDisplay
@@ -20,17 +20,17 @@ enum ACCURACY_SCORES {
 var chop_progress = 0
 var playing = false
 var moving_right = true
-var chop_table: Array = [0,0,0] # Array indicating how many of each chop quality
+var chop_table: Array = [0, 0, 0] # Array indicating how many of each chop quality
 
 # Define the perfect and okay ranges based on percentages
 var perfect_left
 var perfect_right
 var okay_left
 var okay_right
-var target           # Total chop progress required
-var speed            # Speed of marker movement (pixels/sec)
+var target # Total chop progress required
+var speed # Speed of marker movement (pixels/sec)
 var perfect_progress # Progress for perfect chop
-var okay_progress    # Progress for okay chop
+var okay_progress # Progress for okay chop
 
 func _ready() -> void:
 	if !chopping_settings:
@@ -60,8 +60,8 @@ func move_marker(delta: float) -> void:
 	if moving_right:
 		marker_pos.x += speed * delta
 		# Reverse direction if marker hits the right side of the boundary
-		if marker_pos.x + marker.size.x*marker.scale.x >= boundary_width:
-			marker_pos.x = boundary_width - marker.size.x*marker.scale.x
+		if marker_pos.x + marker.size.x * marker.scale.x >= boundary_width:
+			marker_pos.x = boundary_width - marker.size.x * marker.scale.x
 			moving_right = false
 	else:
 		marker_pos.x -= speed * delta
@@ -82,7 +82,7 @@ func check_chop() -> void:
 		# Perfect chop
 		chop_progress += perfect_progress
 		result_label.text = "Perfect!"
-		result_label.modulate = Color("#6BDE77")  # Green
+		result_label.modulate = Color("#6BDE77") # Green
 		sfx_chop_randomiser.play()
 		modulate_ingredient()
 		chop_table[ACCURACY_SCORES.PERFECT] += 1
@@ -90,20 +90,20 @@ func check_chop() -> void:
 		# Okay chop
 		chop_progress += okay_progress
 		result_label.text = "Okay!"
-		result_label.modulate = Color(1, 1, 0)  # Yellow
+		result_label.modulate = Color(1, 1, 0) # Yellow
 		sfx_chop_randomiser.play()
 		modulate_ingredient()
 		chop_table[ACCURACY_SCORES.OKAY] += 1
 	else:
 		# Missed chop
 		result_label.text = "Missed!"
-		result_label.modulate = Color("#E75757")  # Red
+		result_label.modulate = Color("#E75757") # Red
 		chop_table[ACCURACY_SCORES.MISSED] += 1
 
 	# Update the ProgressBar value as a percentage
-	var chop_percentage = (float(chop_progress) / float(target)) * 100  # Calculate the percentage
+	var chop_percentage = (float(chop_progress) / float(target)) * 100 # Calculate the percentage
 	if score_bar:
-		score_bar.value = chop_percentage  # Update progress bar value directly
+		score_bar.value = chop_percentage # Update progress bar value directly
 
 	# Check for win condition
 	if chop_progress >= target:
@@ -118,7 +118,7 @@ func modulate_ingredient() -> void:
 func minigame_complete() -> void:
 	playing = false
 	result_label.text = "Game Complete!"
-	result_label.modulate = Color(0, 1, 1)  # Cyan
+	result_label.modulate = Color(0, 1, 1) # Cyan
 	var quality: Item.Quality = _evaluate_chopping_quality()
 	
 	await get_tree().create_timer(2.0).timeout
@@ -129,10 +129,10 @@ func _evaluate_chopping_quality() -> Item.Quality:
 	var total_data_points = 0
 	
 	# If more PERFECT than the others
-	if chop_table[ACCURACY_SCORES.PERFECT] - chop_table[ACCURACY_SCORES.OKAY] -chop_table[ACCURACY_SCORES.MISSED] > 0:
+	if chop_table[ACCURACY_SCORES.PERFECT] - chop_table[ACCURACY_SCORES.OKAY] - chop_table[ACCURACY_SCORES.MISSED] > 0:
 		return Item.Quality.PERFECT
 	# If more OKAY than the others
-	elif chop_table[ACCURACY_SCORES.OKAY] - chop_table[ACCURACY_SCORES.PERFECT] -chop_table[ACCURACY_SCORES.MISSED] > 0:
+	elif chop_table[ACCURACY_SCORES.OKAY] - chop_table[ACCURACY_SCORES.PERFECT] - chop_table[ACCURACY_SCORES.MISSED] > 0:
 		return Item.Quality.GOOD
 	# If more MISSED than the others
 	else:
@@ -149,20 +149,19 @@ func _set_ingredient_image() -> void:
 	var ingredient = input_ingredients[randi() % input_ingredients.size()]
 	
 	if ingredient and ingredient_image_display:
-		ingredient_image_display.texture = ingredient.texture  # Set the texture of the ingredient
-		ingredient_image_display.visible = true  # Ensure the image is visible
+		ingredient_image_display.texture = ingredient.texture # Set the texture of the ingredient
+		ingredient_image_display.visible = true # Ensure the image is visible
 	else:
-		ingredient_image_display.visible = false  # Hide the display if no ingredient is provided
+		ingredient_image_display.visible = false # Hide the display if no ingredient is provided
 
 func _initialize_marker_position() -> void:
 	# Center the marker inside the boundary
 	var boundary_width = boundary.size.x
 	# Position marker in the middle of the boundary (local coordinates)
-	marker.position.x = (boundary_width - marker.size.x) / 2  # Center marker within boundary width
+	marker.position.x = (boundary_width - marker.size.x) / 2 # Center marker within boundary width
 
 func _determine_chopping_settings() -> void:
 	# TODO: Figure out how to turn input_ingredients and output into a preset map/create in real-time (harder)
-	
 	# TODO: Make more robust, calculating the perfect left and right like this is not safe
 	# TODO: Convert to a @tool so can easily test visually
 	perfect_left = 50 - (chopping_settings.perfect_range / 2)
