@@ -16,6 +16,7 @@ enum IngredientType {
 	BEAN = 104,
 	GARLIC = 105,
 	GINGER = 106,
+	CABBAGE = 107,
 	# Meats
 	BEEF = 200,
 	PORK = 201,
@@ -33,6 +34,7 @@ enum IngredientType {
 	RAW_RICE = 405,
 	RAW_GARLIC = 406,
 	RAW_GINGER = 407,
+	RAW_CABBAGE = 408,
 }
 
 enum IngredientCategory {

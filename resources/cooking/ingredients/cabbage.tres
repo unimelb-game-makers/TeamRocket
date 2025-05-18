@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://btg8ekd7ovrcu"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_545l2"]
+[ext_resource type="Texture2D" uid="uid://0nayxl0h7bkb" path="res://assets/food/cabbage.png" id="2_pwy68"]
+
+[resource]
+script = ExtResource("1_545l2")
+ingredient_type = 408
+ingredient_category = 1
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_pwy68")
+item_id = "cabbage"
+item_name = "Cabbage"
+description = ""
+weight = 0.4
+rarity = 0
+quality = 0
+metadata/_custom_type_script = "uid://c27juqwadg5ol"
