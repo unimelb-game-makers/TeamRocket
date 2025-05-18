@@ -120,6 +120,10 @@ theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
 theme_override_font_sizes/font_size = 24
 text = "Spd: 200"
 
+[node name="Spacing" type="Control" parent="CharacterStats/Stats"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
 [node name="DevotionLabel" type="Label" parent="CharacterStats/Stats"]
 layout_mode = 2
 theme = ExtResource("3_drynj")
@@ -339,6 +343,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
+[connection signal="item_select" from="VBoxContainer/ItemListBackground/InventoryContainer" to="." method="_on_inventory_container_item_select"]
 [connection signal="mouse_entered" from="VBoxContainer/ItemListBackground/ContextButtonList/UseButton" to="." method="play_button_hover_sfx"]
 [connection signal="pressed" from="VBoxContainer/ItemListBackground/ContextButtonList/UseButton" to="." method="_on_use_button_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/ItemListBackground/ContextButtonList/DropButton" to="." method="play_button_hover_sfx"]

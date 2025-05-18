@@ -69,8 +69,8 @@ func reset_data():
 
 func _on_inventory_container_item_select(item: Item, amount: int) -> void:
 	current_selected_item = item
-	item_selected.emit(item, amount)
 	item_descriptor.update_description_info(item)
+	item_selected.emit(item, amount)
 	drop_button.disabled = false
 	if (current_selected_item is Dish):
 		use_button.disabled = false
