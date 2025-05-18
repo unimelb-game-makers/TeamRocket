@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=4 uid="uid://cv8b3m175lmmj"]
+[gd_scene load_steps=2 format=4 uid="uid://cv8b3m175lmmj"]
 
 [ext_resource type="PackedScene" uid="uid://ccmpxxyhlwyaw" path="res://scenes/map/templates/fullroom.tscn" id="1_sj8qq"]
-[ext_resource type="Texture2D" uid="uid://pepdk5p6o5lt" path="res://assets/map/Park_Medium_Example.jpg" id="2_rrtk3"]
 
-[node name="FullRoom" instance=ExtResource("1_sj8qq")]
+[node name="FullRoom" node_paths=PackedStringArray("mediumSpawn", "largeSpawn") instance=ExtResource("1_sj8qq")]
+mediumSpawn = NodePath("MediumSpawn")
+largeSpawn = NodePath("LargeSpawn")
 
 [node name="ColorRect" parent="." index="0"]
 offset_left = 508.0
@@ -11,27 +12,25 @@ offset_right = 2840.0
 offset_bottom = 2438.0
 
 [node name="TileMap" parent="." index="1"]
-tile_map_data = PackedByteArray("AAARAAoAAgAAAAAAAGAHABIAAQAAAAAAAFAMABIAAQAAAAAAAFARABIAAQAAAAAAAFAWABIAAAAAAAAAADAWAA0AAQAAAAAAAAAWAAgAAQAAAAAAAAAWAAMAAQAAAAAAAAAWABcAAgAAAAAAAAAbABIAAgAAAAAAAGA=")
+tile_map_data = PackedByteArray("AAAHABIAAQAAAAAAAFAMABIAAQAAAAAAAFARABIAAQAAAAAAAFAWABIAAAAAAAAAADAWAA0AAQAAAAAAAAAWAAgAAQAAAAAAAAAWAAMAAQAAAAAAAAAWABcAAgAAAAAAAAAbABIAAgAAAAAAAGA=")
 
-[node name="TextureRect" type="TextureRect" parent="." index="2"]
-offset_left = 500.0
-offset_top = 100.0
-offset_right = 2500.0
-offset_bottom = 2100.0
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("2_rrtk3")
-
-[node name="DoorArea" parent="." index="3"]
+[node name="DoorArea" parent="." index="2"]
 position = Vector2(2239, 184)
 
-[node name="DoorArea2" parent="." index="4"]
+[node name="DoorArea2" parent="." index="3"]
 position = Vector2(2723, 1730)
 
-[node name="DoorArea3" parent="." index="5"]
+[node name="DoorArea3" parent="." index="4"]
 position = Vector2(2125, 2344)
 
-[node name="DoorArea4" parent="." index="6"]
+[node name="DoorArea4" parent="." index="5"]
 position = Vector2(573, 1860)
 
-[node name="Spawn" parent="." index="7"]
+[node name="Spawn" parent="." index="6"]
 position = Vector2(582, 544)
+
+[node name="MediumSpawn" type="Node2D" parent="." index="7"]
+position = Vector2(1000, 600)
+
+[node name="LargeSpawn" type="Node2D" parent="." index="8"]
+position = Vector2(500, 600)
