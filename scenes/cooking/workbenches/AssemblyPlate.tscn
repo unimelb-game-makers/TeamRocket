@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bhlarqiey25gc"]
+[gd_scene load_steps=12 format=3 uid="uid://bhlarqiey25gc"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_st23u"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_38lgk"]
@@ -30,7 +30,7 @@ frame_0/texture = ExtResource("2_nv7a3")
 
 [sub_resource type="Resource" id="Resource_vhiap"]
 script = ExtResource("6_erx1b")
-recipes = Array[ExtResource("4_30h3e")]([ExtResource("5_3hbae"), ExtResource("6_3hbae")])
+recipes = Array[ExtResource("4_30h3e")]([ExtResource("5_3hbae")])
 max_ingredients = 5
 metadata/_custom_type_script = "uid://c0shkqininnkd"
 

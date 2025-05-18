@@ -1,10 +1,17 @@
 extends Area2D
 
+@export var debug_mode: bool = false
+@export var debug_bonus_item: Array[Item] = []
+
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var fridge_ui: Control = $CanvasLayer/FridgeUI
 
 func _ready() -> void:
 	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
+	fridge_ui.visible = false
+	if debug_mode:
+		for item in debug_bonus_item:
+			InventoryGlobal.add_item(item, 10, InventoryGlobal.InventoryType.FRIDGE)
 
 func interact():
 	if (fridge_ui.visible):

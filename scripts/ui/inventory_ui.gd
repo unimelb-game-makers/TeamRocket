@@ -14,8 +14,8 @@ signal item_selected(item, amount)
 @onready var item_descriptor: ItemDescriptionBox = $VBoxContainer/ItemDescriptionBackground
 
 @onready var drop_button: Button = $VBoxContainer/ItemListBackground/ContextButtonList/DropButton
+@onready var devotion_label: Label = $CharacterStats/Stats/DevotionLabel
 @onready var use_button: TemplateButton = $VBoxContainer/ItemListBackground/ContextButtonList/UseButton
-
 @onready var status_grid_container: GridContainer = $StatusPanel/StatusGridContainer
 
 var is_open = false
@@ -23,6 +23,7 @@ var current_selected_item: Item = null
 
 func _ready() -> void:
 	Globals.inventory_ui = self
+	Globals.devotion_changed.connect(func(value): devotion_label.text = "Devotion: {0}".format([value]))
 	await get_tree().process_frame
 	await get_tree().process_frame
 	inventory_container.update_inventory_list()
@@ -40,6 +41,7 @@ func update_character_stats():
 	hp_label.text = "HP: {0} / {1}".format([Globals.player_stats.health, Globals.player_stats.max_health])
 	dmg_label.text = "DMG: {0}".format([Globals.player_stats.damage])
 	speed_label.text = "SPD: {0}".format([Globals.player_stats.speed])
+	devotion_label.text = "Devotion: {0}".format([Globals.devotion])
 
 func update_status_panel():
 	for child in status_grid_container.get_children():
@@ -67,8 +69,8 @@ func reset_data():
 
 func _on_inventory_container_item_select(item: Item, amount: int) -> void:
 	current_selected_item = item
-	item_selected.emit(item, amount)
 	item_descriptor.update_description_info(item)
+	item_selected.emit(item, amount)
 	drop_button.disabled = false
 	if (current_selected_item is Dish):
 		use_button.disabled = false

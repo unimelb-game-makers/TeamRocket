@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
-[ext_resource type="Script" path="res://scripts/Game/kitchen_handler.gd" id="2_watt5"]
+[ext_resource type="Script" uid="uid://chl1pijxwld8v" path="res://scripts/Game/kitchen_handler.gd" id="2_watt5"]
 [ext_resource type="Texture2D" uid="uid://b5jgmaxgknpb0" path="res://assets/interiors/kitchen/walls.png" id="3_yjya3"]
 [ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
@@ -49,9 +49,6 @@ gradient = SubResource("Gradient_wmmsd")
 
 [node name="KitchenHandler" type="Node" parent="." index="0"]
 script = ExtResource("2_watt5")
-
-[node name="GameHandler" parent="." index="1"]
-TIMER = false
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler" index="1"]
 process_mode = 3
