@@ -20,7 +20,7 @@ func interact():
 	else:
 		reset_cooking()
 		cooking_scene.show()
-		emit_signal("is_interacting_with", true)
+		is_interacting_with.emit(true)
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") and (cooking_scene.visible):
@@ -29,7 +29,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func exit_cooking() -> void:
 	cooking_scene.hide() # BUG: This doesnt disable the minigame
-	emit_signal("is_interacting_with", false)
+	is_interacting_with.emit(false)
 
 #func _on_cooking_scene_complete(_output: Variant) -> void:
 	#cooking_scene.hide()

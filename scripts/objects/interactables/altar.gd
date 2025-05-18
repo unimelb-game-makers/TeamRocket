@@ -1,6 +1,8 @@
 extends Storage
+class_name Altar
 
 signal submit(item: Item)
+signal is_interacting_with(state: bool)
 
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
 @onready var main_ui: Control = $CanvasLayer/UI
@@ -75,6 +77,10 @@ func submit_item(item):
 
 func interact():
 	clear_item_description_area_data()
+	if canvas_layer.visible:
+		is_interacting_with.emit(false)
+	else:
+		is_interacting_with.emit(true)
 	canvas_layer.visible = not canvas_layer.visible
 	inventory_container.update_inventory_list()
 	update_wanted_food_label()
@@ -83,6 +89,7 @@ func interact():
 func exit_altar_ui():
 	canvas_layer.hide()
 	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
+	is_interacting_with.emit(false)
 
 func take_item(slot):
 	super (slot)

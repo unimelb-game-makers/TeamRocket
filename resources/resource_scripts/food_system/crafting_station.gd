@@ -36,7 +36,6 @@ func craft_output(input_ingredients: Array[Ingredient]) -> Item:
 ## We used `exact_number_of_ingredients` to make sure we can search for recipe that use same type of ingredients but
 ## with different amount. Example: Cut Carrot need 1 Carrot while Carrot Powder need 2 Carrot.
 func match_base_ingredient_types(ingredients: Array[Ingredient], exact_number_of_ingredients = false) -> Recipe:
-	print("match_base_ingredient_types ==================================")
 	# Grabbing all the ingredient types from ingredients input
 	var ingredients_type_input_dict: Dictionary = {}
 
@@ -56,8 +55,8 @@ func match_base_ingredient_types(ingredients: Array[Ingredient], exact_number_of
 
 		# Check tally that ingredients enough for base
 		var output_dish_matched = true
-		print("recipe_base_ingredient_dict ", recipe_base_ingredient_dict)
-		print("ingredients_type_input_dict ", ingredients_type_input_dict)
+		# print("recipe_base_ingredient_dict ", recipe_base_ingredient_dict)
+		# print("ingredients_type_input_dict ", ingredients_type_input_dict)
 		for ingredient_type in recipe_base_ingredient_dict.keys():
 			if exact_number_of_ingredients:
 				# If the base dish required different amount for that ingredient than given
@@ -79,8 +78,8 @@ func match_base_ingredient_types(ingredients: Array[Ingredient], exact_number_of
 					filtered_ingredients_type_input_dict[key] -= recipe_base_ingredient_dict[key]
 					if filtered_ingredients_type_input_dict[key] <= 0:
 						filtered_ingredients_type_input_dict.erase(key)
-			print("Recipe is a full DishRecipe, removed base ingredients.")
-			print("filtered_ingredients_type_input_dict ", filtered_ingredients_type_input_dict)
+			# print("Recipe is a full DishRecipe, removed base ingredients.")
+			# print("filtered_ingredients_type_input_dict ", filtered_ingredients_type_input_dict)
 			# Since these are IngredientType, not IngredientCategory, we need to convert them
 			var input_ingredient_category_dict: Dictionary = {}
 			for ingr_type in filtered_ingredients_type_input_dict:
@@ -106,7 +105,6 @@ func match_base_ingredient_types(ingredients: Array[Ingredient], exact_number_of
 	return null
 
 func match_variant(input_ingredients: Array[Ingredient], recipe: DishRecipe) -> Dish:
-	print("match_variant ==================================")
 	# Grabbing all the ingredient types from ingredients input
 	var input_ingre_type: Array[Ingredient.IngredientType] = []
 	for ingredient in input_ingredients:
@@ -125,9 +123,9 @@ func match_variant(input_ingredients: Array[Ingredient], recipe: DishRecipe) -> 
 
 		input_ingre_type_copy.sort()
 		dish_ingredients_type.sort()
-		print("dish name ", dish.item_name)
-		print("input_ingre_type_copy ", input_ingre_type_copy)
-		print("dish_ingredients_type ", dish_ingredients_type)
+		# print("dish name ", dish.item_name)
+		# print("input_ingre_type_copy ", input_ingre_type_copy)
+		# print("dish_ingredients_type ", dish_ingredients_type)
 		if input_ingre_type_copy == dish_ingredients_type:
 			return dish.duplicate()
 
