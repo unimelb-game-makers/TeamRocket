@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw85nhlrtdy2h"
-path="res://.godot/imported/mince cooked.png-3d717c14bff0e37dceb36a50a0040166.ctex"
+uid="uid://dx27hmji5r2d4"
+path="res://.godot/imported/chicken_cabbage_noodle_soup.png-2ce06a3c61b16a4af014198f666f7374.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/mince cooked.png"
-dest_files=["res://.godot/imported/mince cooked.png-3d717c14bff0e37dceb36a50a0040166.ctex"]
+source_file="res://assets/food/chicken_cabbage_noodle_soup.png"
+dest_files=["res://.godot/imported/chicken_cabbage_noodle_soup.png-2ce06a3c61b16a4af014198f666f7374.ctex"]
 
 [params]
 

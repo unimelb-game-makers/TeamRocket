@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmak7yjnmvisw"
-path="res://.godot/imported/ginger cut.png-2a08c84ae3e19c389d513785fc3127e8.ctex"
+uid="uid://bq1nvwssqxqml"
+path="res://.godot/imported/grain_moss_baked.png-1d97deda6a5249a8574550958c5e706b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/ginger cut.png"
-dest_files=["res://.godot/imported/ginger cut.png-2a08c84ae3e19c389d513785fc3127e8.ctex"]
+source_file="res://assets/food/grain_moss_baked.png"
+dest_files=["res://.godot/imported/grain_moss_baked.png-1d97deda6a5249a8574550958c5e706b.ctex"]
 
 [params]
 

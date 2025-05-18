@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd6l8o8lrr1yd"
-path="res://.godot/imported/bolognese sauce.png-022223082448d55111001147c21cee10.ctex"
+uid="uid://4b8u32wm0npn"
+path="res://.godot/imported/soup_broth.png-7c1d99f353d03bc1a050ec3ff97e866d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/bolognese sauce.png"
-dest_files=["res://.godot/imported/bolognese sauce.png-022223082448d55111001147c21cee10.ctex"]
+source_file="res://assets/food/soup_broth.png"
+dest_files=["res://.godot/imported/soup_broth.png-7c1d99f353d03bc1a050ec3ff97e866d.ctex"]
 
 [params]
 

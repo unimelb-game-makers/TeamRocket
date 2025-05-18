@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bdn1bbor2u47y"]
 
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_pjs83"]
-[ext_resource type="Texture2D" uid="uid://bq1nvwssqxqml" path="res://assets/food/grain moss baked.png" id="2_mdo13"]
+[ext_resource type="Texture2D" uid="uid://bq1nvwssqxqml" path="res://assets/food/grain_moss_baked.png" id="2_mdo13"]
 
 [resource]
 script = ExtResource("1_pjs83")

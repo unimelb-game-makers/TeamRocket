@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br2jllyaorxad"
-path="res://.godot/imported/spaghetti raw.png-e57c287e10fbf60022d5c8fc46ae1062.ctex"
+uid="uid://cm1tgcjaakbyh"
+path="res://.godot/imported/potato_raw.png-97343f4c5e1ed9da0b8daf9433e57fb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/spaghetti raw.png"
-dest_files=["res://.godot/imported/spaghetti raw.png-e57c287e10fbf60022d5c8fc46ae1062.ctex"]
+source_file="res://assets/food/potato_raw.png"
+dest_files=["res://.godot/imported/potato_raw.png-97343f4c5e1ed9da0b8daf9433e57fb6.ctex"]
 
 [params]
 

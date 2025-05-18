@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3yvp521necyd"
-path="res://.godot/imported/mossy chicken noodle soup.png-502f2aebe5d85621b86da086058db50c.ctex"
+uid="uid://po2e2hxrnnr4"
+path="res://.godot/imported/carrot_raw.png-f0cba7406db6d34ee8a7cc735a49bec7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/mossy chicken noodle soup.png"
-dest_files=["res://.godot/imported/mossy chicken noodle soup.png-502f2aebe5d85621b86da086058db50c.ctex"]
+source_file="res://assets/food/carrot_raw.png"
+dest_files=["res://.godot/imported/carrot_raw.png-f0cba7406db6d34ee8a7cc735a49bec7.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pcuu8o12tto6"
-path="res://.godot/imported/rice cooked.png-bc05c841489f372aecc8474b7ff7a17a.ctex"
+uid="uid://bltjurbemos4c"
+path="res://.godot/imported/spaghetti_bolognese.png-273abe3ae7a8641316504d56bb5d054e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/rice cooked.png"
-dest_files=["res://.godot/imported/rice cooked.png-bc05c841489f372aecc8474b7ff7a17a.ctex"]
+source_file="res://assets/food/spaghetti_bolognese.png"
+dest_files=["res://.godot/imported/spaghetti_bolognese.png-273abe3ae7a8641316504d56bb5d054e.ctex"]
 
 [params]
 

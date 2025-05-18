@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr1q0xv22lijj"
-path="res://.godot/imported/mince raw.png-cf4e939da8bcb3e390b025078db3ce79.ctex"
+uid="uid://ckibx0acbvgxy"
+path="res://.godot/imported/grain_moss.png-8e1d74e82048a6fc572246c1d6d0c39e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/mince raw.png"
-dest_files=["res://.godot/imported/mince raw.png-cf4e939da8bcb3e390b025078db3ce79.ctex"]
+source_file="res://assets/food/grain_moss.png"
+dest_files=["res://.godot/imported/grain_moss.png-8e1d74e82048a6fc572246c1d6d0c39e.ctex"]
 
 [params]
 

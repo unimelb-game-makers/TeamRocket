@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://dcedm8ygr7cfd" path="res://resources/cooking/ingredients/cabbage_cut.tres" id="2_7i2iu"]
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_x1g3p"]
 [ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="3_eetpe"]
-[ext_resource type="Texture2D" uid="uid://dx27hmji5r2d4" path="res://assets/food/chicken cabbage noodle soup.png" id="5_2pdc8"]
+[ext_resource type="Texture2D" uid="uid://dx27hmji5r2d4" path="res://assets/food/chicken_cabbage_noodle_soup.png" id="5_2pdc8"]
 
 [resource]
 script = ExtResource("2_x1g3p")

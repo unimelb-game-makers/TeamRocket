@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckibx0acbvgxy"
-path="res://.godot/imported/grain moss.png-28b7a4a54e64c48b4de8a1b049c75177.ctex"
+uid="uid://cd6l8o8lrr1yd"
+path="res://.godot/imported/bolognese_sauce.png-dab082caa382dcc61a0d1c26b0ef3a8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/grain moss.png"
-dest_files=["res://.godot/imported/grain moss.png-28b7a4a54e64c48b4de8a1b049c75177.ctex"]
+source_file="res://assets/food/bolognese_sauce.png"
+dest_files=["res://.godot/imported/bolognese_sauce.png-dab082caa382dcc61a0d1c26b0ef3a8c.ctex"]
 
 [params]
 

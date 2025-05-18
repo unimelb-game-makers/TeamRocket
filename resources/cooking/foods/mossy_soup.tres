@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_1hx8q"]
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_2syev"]
 [ext_resource type="Resource" uid="uid://bdn1bbor2u47y" path="res://resources/cooking/ingredients/grain_moss_baked.tres" id="2_skgkn"]
-[ext_resource type="Texture2D" uid="uid://d3yvp521necyd" path="res://assets/food/mossy chicken noodle soup.png" id="3_2syev"]
+[ext_resource type="Texture2D" uid="uid://d3yvp521necyd" path="res://assets/food/mossy_chicken_noodle_soup.png" id="3_2syev"]
 [ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="3_db2ya"]
 
 [resource]
