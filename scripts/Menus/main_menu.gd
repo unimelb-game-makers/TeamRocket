@@ -1,5 +1,5 @@
-class_name MainMenu
 extends Control
+class_name MainMenu
 
 @export var start_game_scene: PackedScene
 @export var credit_scene: PackedScene
@@ -14,7 +14,7 @@ extends Control
 @onready var fade_cover: ColorRect = $CanvasLayer/FadeCover
 
 var target_position
-	
+
 func _ready() -> void:
 	fade_cover.visible = true
 	await get_tree().create_timer(0.5).timeout
@@ -34,12 +34,12 @@ func start_game():
 	get_tree().change_scene_to_packed(start_game_scene)
 	SaveManager.load_game(Globals.chosen_slot_id)
 	Globals.start_record_playtime()
-	
+
 func _on_settings_pressed() -> void:
 	SoundManager.play_button_click_sfx()
 	main_menu_buttons.hide()
 	setting_menu.show()
-	
+
 func _on_settings_back() -> void:
 	SoundManager.play_button_click_sfx()
 	setting_menu.hide()
@@ -60,7 +60,7 @@ func reset_camera():
 	camera_2d.position = random_position
 	camera_2d.position_smoothing_enabled = true
 	camera_2d.position = Vector2(randi_range(500, 4500), randi_range(500, 3500))
-	
+
 func _on_camera_timer_timeout() -> void:
 	animation_player.play("fade_out_and_in")
 

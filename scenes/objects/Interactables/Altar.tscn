@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://unbm0ush87sw"]
 
-[ext_resource type="Script" uid="uid://idb0kjlgp4ad" path="res://scripts/objects/interactables/altar.gd" id="1_rfv52"]
+[ext_resource type="Script" path="res://scripts/objects/interactables/altar.gd" id="1_rfv52"]
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_8yx1c"]
 [ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="2_upo2r"]
 [ext_resource type="Resource" uid="uid://cq1taw61ifcp7" path="res://resources/cooking/foods/beef_curry.tres" id="3_qjrfk"]

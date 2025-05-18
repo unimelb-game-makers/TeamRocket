@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bo6ywxnw6k5js"]
 
-[ext_resource type="PackedScene" uid="uid://dl4d2r5o22lcf" path="res://scenes/enemy/BasicEnemy.tscn" id="1_un5pt"]
+[ext_resource type="PackedScene" uid="uid://c0dgri14uuw70" path="res://scenes/enemy/BasicEnemy.tscn" id="1_un5pt"]
 [ext_resource type="Script" uid="uid://c54a6f3wdfoy1" path="res://scripts/enemy/enemy_spider.gd" id="2_35b6m"]
 [ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="2_mobu3"]
 [ext_resource type="Texture2D" uid="uid://ceqjysptr3mgs" path="res://assets/creatures/enemy_spider/spider1.png" id="2_vnbgt"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=34 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="AudioStream" uid="uid://csjr1bs7pcsax" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg" id="2_1ecv6"]
@@ -21,6 +21,13 @@
 [ext_resource type="PackedScene" uid="uid://boou7kaxracje" path="res://scenes/objects/Buildings/Building.tscn" id="19_r84yg"]
 [ext_resource type="PackedScene" uid="uid://b0q3wyjdxrql8" path="res://scenes/objects/Buildings/Building2.tscn" id="20_wckc8"]
 [ext_resource type="PackedScene" uid="uid://cxqyl5m3yie2u" path="res://scenes/objects/Buildings/Building3.tscn" id="21_qrjp7"]
+[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="22_x524n"]
+[ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="23_kqqf2"]
+[ext_resource type="Resource" uid="uid://birn1wyb2g5bv" path="res://resources/cooking/ingredients/onion.tres" id="24_bdj2n"]
+[ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="25_7s0ty"]
+[ext_resource type="Resource" uid="uid://djfvdkf82lpn7" path="res://resources/cooking/ingredients/rice.tres" id="26_qgik8"]
+[ext_resource type="Resource" uid="uid://cwuer4u67t6om" path="res://resources/cooking/ingredients/spice_powder.tres" id="27_0h88t"]
+
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_y1gkg"]
 clip_count = 2
 clip_0/name = &"Central District Intro"
@@ -174,7 +181,7 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_sbhhl")
 
 [node name="InteractableHandler" parent="." index="5"]
-loot_table = Array[ExtResource("19_ryaas")]([ExtResource("26_bdj2n"), ExtResource("27_7s0ty"), ExtResource("32_66u1c")])
+loot_table = Array[ExtResource("22_x524n")]([ExtResource("23_kqqf2"), ExtResource("24_bdj2n"), ExtResource("25_7s0ty"), ExtResource("26_qgik8"), ExtResource("27_0h88t")])
 
 [node name="SpawnPoint1" type="Marker2D" parent="InteractableHandler/InteractableSpawnPoints" index="0"]
 position = Vector2(2523, 1646)
@@ -202,14 +209,3 @@ position = Vector2(182, 3938)
 
 [node name="Player" parent="." index="6"]
 position = Vector2(1727, 1598)
-
-[node name="Camera2D" parent="Player" index="17" groups=["Camera"]]
-limit_left = 0
-limit_top = -300
-limit_right = 5000
-limit_bottom = 4000
-limit_smoothed = true
-script = ExtResource("24_s3lfa")
-
-[connection signal="aim_mode_enter" from="Player" to="Player/Camera2D" method="enter_aim_mode"]
-[connection signal="aim_mode_exit" from="Player" to="Player/Camera2D" method="exit_aim_mode"]
