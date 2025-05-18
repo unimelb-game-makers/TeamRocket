@@ -420,20 +420,20 @@ height = 256
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_rl688"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0jidv"]
 noise_type = 0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vf56p"]
 seamless = true
-noise = SubResource("FastNoiseLite_rl688")
+noise = SubResource("FastNoiseLite_0jidv")
 
-[sub_resource type="Curve" id="Curve_hsnhf"]
+[sub_resource type="Curve" id="Curve_7l65s"]
 _limits = [0.05, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 0.05), 0.0, 0.0, 0, 0, Vector2(1, 0.05), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_c7dr8"]
-curve = SubResource("Curve_hsnhf")
+curve = SubResource("Curve_7l65s")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sadjk"]
 resource_local_to_scene = true
@@ -726,6 +726,10 @@ position = Vector2(0, -96)
 
 [node name="AfterHurtInvulnerableTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_anim_sprite_animation_finished"]
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]

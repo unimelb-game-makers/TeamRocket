@@ -20,6 +20,8 @@ var max_neighbors = 2
 var just_teleported1 = false
 var just_teleported2 = false
 
+@onready var navigation_region_2d: NavigationRegion2D = $NavigationRegion2D
+
 const straight: PackedScene = preload("res://scenes/map/templates/straight.tscn")
 const deadend: PackedScene = preload("res://scenes/map/templates/dead_end.tscn")
 const bend: PackedScene = preload("res://scenes/map/templates/turn.tscn")
@@ -191,11 +193,12 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	current_selected = selected_room
 	print("Current position" + str(coords))
 	
-	call_deferred("add_child", selected_room)
+	navigation_region_2d.call_deferred("add_child", selected_room)
 	
 	# Spawn player and camera
 	var s: Player = PLAYER.instantiate()
 	call_deferred("add_child", s)
+	s.channel_complete.connect($GameHandler.switch_to_kitchen)
 	s.global_position = selected_room.spawn.global_position
 	currplayer = s
 	
@@ -225,7 +228,6 @@ func go_to_room(direction: Vector2):
 	
 	print("Entered a door going into: " + str(direction))
 	print("------------------")
-
 
 func player_exit():
 	if just_teleported1 == true and just_teleported2 == false:
