@@ -13,6 +13,11 @@ on:
       - opened
       - edited
       - synchronize
+      - reopened
+      - ready_for_review
+      - review_requested
+      - review_request_removed
+      - converted_to_draft
 
 jobs:
   Web:
