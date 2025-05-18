@@ -14,7 +14,7 @@ signal item_selected(item, amount)
 @onready var item_descriptor: ItemDescriptionBox = $VBoxContainer/ItemDescriptionBackground
 
 @onready var drop_button: Button = $VBoxContainer/ItemListBackground/ContextButtonList/DropButton
-@onready var devotion_label: Label = $OtherStats/VBoxContainer/DevotionLabel
+@onready var devotion_label: Label = $CharacterStats/Stats/DevotionLabel
 @onready var use_button: TemplateButton = $VBoxContainer/ItemListBackground/ContextButtonList/UseButton
 @onready var status_grid_container: GridContainer = $StatusPanel/StatusGridContainer
 

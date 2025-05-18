@@ -50,8 +50,8 @@ var vsync_option_index: int = 1 # From 0 to 2 for DISABLED / ENABLED / ADAPTIVE
 var window_mode_index: int = 1 # From 0 to 2 for FULLSCREEN / WINDOWED / BORDERLESS WINDOWED
 
 func _ready() -> void:
-	SaveManager.load_setting_config()
 	player_stats = default_player_stats
+	SaveManager.load_setting_config()
 
 func reset_save_data():
 	start_record_timestamp = 0

@@ -35,10 +35,10 @@ status_slot = ExtResource("10_a8p5k")
 [node name="CharacterStats" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
-offset_left = 136.0
-offset_top = 264.0
+offset_left = 128.0
+offset_top = 64.0
 offset_right = 424.0
-offset_bottom = 640.0
+offset_bottom = 464.0
 color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 
 [node name="PortaitBackground" type="TextureRect" parent="CharacterStats"]
@@ -104,21 +104,31 @@ layout_mode = 2
 theme = ExtResource("3_drynj")
 theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
 theme_override_font_sizes/font_size = 24
-text = "HP: "
+text = "HP: 100/ 100"
 
 [node name="DmgLabel" type="Label" parent="CharacterStats/Stats"]
 layout_mode = 2
 theme = ExtResource("3_drynj")
 theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
 theme_override_font_sizes/font_size = 24
-text = "Dmg: "
+text = "Dmg: 10"
 
 [node name="SpdLabel" type="Label" parent="CharacterStats/Stats"]
 layout_mode = 2
 theme = ExtResource("3_drynj")
 theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
 theme_override_font_sizes/font_size = 24
-text = "Spd: "
+text = "Spd: 200"
+
+[node name="DevotionLabel" type="Label" parent="CharacterStats/Stats"]
+layout_mode = 2
+theme = ExtResource("3_drynj")
+theme_override_colors/font_shadow_color = Color(0.603922, 0, 0.156863, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "Devotion: 30"
+horizontal_alignment = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CharacterStats"]
 self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
@@ -134,37 +144,13 @@ patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
 
-[node name="OtherStats" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-offset_left = 136.0
-offset_top = 64.0
-offset_right = 424.0
-offset_bottom = 248.0
-color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="OtherStats"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 272.0
-offset_bottom = 168.0
-alignment = 1
-
-[node name="DevotionLabel" type="Label" parent="OtherStats/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
-theme_override_font_sizes/font_size = 24
-text = "Devotion: 30"
-horizontal_alignment = 1
-
 [node name="StatusPanel" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 1
-offset_left = 134.0
-offset_top = 485.0
-offset_right = 418.0
-offset_bottom = 636.0
+offset_left = 128.0
+offset_top = 480.0
+offset_right = 424.0
+offset_bottom = 640.0
 color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="StatusPanel"]
@@ -198,7 +184,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -192.0
 offset_top = -296.0
-offset_right = 508.0
+offset_right = 512.0
 offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
