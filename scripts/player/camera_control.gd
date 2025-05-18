@@ -13,9 +13,6 @@ var center_pos = position
 var shake_strength: float = 0
 
 func _ready():
-	#connect("aim_mode_enter", Callable(self, "enter_aim_mode"))
-	#connect("aim_mode_exit", Callable(self, "exit_aim_mode"))
-	
 	original_position = Vector2(position)
 	target_position = position
 
@@ -26,7 +23,7 @@ func _process(delta: float) -> void:
 		target_position = center_pos + direction * mouse_distance
 		
 		target_position = target_position.clamp(
-			center_pos - Vector2(max_distance_from_player, max_distance_from_player), 
+			center_pos - Vector2(max_distance_from_player, max_distance_from_player),
 			center_pos + Vector2(max_distance_from_player, max_distance_from_player)
 		)
 	else:
@@ -39,3 +36,16 @@ func enter_aim_mode():
 
 func exit_aim_mode():
 	in_aim_mode = false
+
+
+func _on_player_aim_mode_enter() -> void:
+	enter_aim_mode()
+
+
+func _on_player_aim_mode_exit() -> void:
+	exit_aim_mode()
+
+
+func _on_rifle_fired() -> void:
+	# Do screenshake when shoot here
+	pass # Replace with function body.

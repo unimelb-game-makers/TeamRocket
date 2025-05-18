@@ -35,9 +35,9 @@ status_slot = ExtResource("10_a8p5k")
 [node name="CharacterStats" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
-offset_left = 134.0
+offset_left = 128.0
 offset_top = 64.0
-offset_right = 418.0
+offset_right = 424.0
 offset_bottom = 464.0
 color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 
@@ -104,21 +104,35 @@ layout_mode = 2
 theme = ExtResource("3_drynj")
 theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
 theme_override_font_sizes/font_size = 24
-text = "HP: "
+text = "HP: 100/ 100"
 
 [node name="DmgLabel" type="Label" parent="CharacterStats/Stats"]
 layout_mode = 2
 theme = ExtResource("3_drynj")
 theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
 theme_override_font_sizes/font_size = 24
-text = "Dmg: "
+text = "Dmg: 10"
 
 [node name="SpdLabel" type="Label" parent="CharacterStats/Stats"]
 layout_mode = 2
 theme = ExtResource("3_drynj")
 theme_override_colors/font_color = Color(0.898039, 0.827451, 0.701961, 1)
 theme_override_font_sizes/font_size = 24
-text = "Spd: "
+text = "Spd: 200"
+
+[node name="Spacing" type="Control" parent="CharacterStats/Stats"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="DevotionLabel" type="Label" parent="CharacterStats/Stats"]
+layout_mode = 2
+theme = ExtResource("3_drynj")
+theme_override_colors/font_shadow_color = Color(0.603922, 0, 0.156863, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "Devotion: 30"
+horizontal_alignment = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CharacterStats"]
 self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
@@ -137,10 +151,10 @@ patch_margin_bottom = 20
 [node name="StatusPanel" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 1
-offset_left = 134.0
-offset_top = 485.0
-offset_right = 418.0
-offset_bottom = 636.0
+offset_left = 128.0
+offset_top = 480.0
+offset_right = 424.0
+offset_bottom = 640.0
 color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="StatusPanel"]
@@ -174,7 +188,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -192.0
 offset_top = -296.0
-offset_right = 508.0
+offset_right = 512.0
 offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -270,11 +284,29 @@ layout_mode = 2
 color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 script = ExtResource("5_2pfdl")
 
+[node name="ItemImage" type="TextureRect" parent="VBoxContainer/ItemDescriptionBackground"]
+self_modulate = Color(1, 1, 1, 0.333333)
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -122.0
+offset_right = -12.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("7_hffay")
+expand_mode = 1
+
 [node name="ItemName" type="Label" parent="VBoxContainer/ItemDescriptionBackground"]
 layout_mode = 1
-offset_left = 144.0
+offset_left = 24.0
 offset_top = 12.0
-offset_right = 680.0
+offset_right = 672.0
 offset_bottom = 48.0
 theme_override_font_sizes/font_size = 20
 text = "Tomato"
@@ -284,7 +316,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 144.0
+offset_left = 24.0
 offset_top = 52.0
 offset_right = -20.0
 offset_bottom = -18.0
@@ -294,20 +326,6 @@ theme_override_font_sizes/font_size = 14
 text = "Tomato description lora ipsum"
 autowrap_mode = 2
 
-[node name="ItemImage" type="TextureRect" parent="VBoxContainer/ItemDescriptionBackground"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 16.0
-offset_top = -63.0
-offset_right = 136.0
-offset_bottom = 57.0
-grow_vertical = 2
-texture = ExtResource("7_hffay")
-expand_mode = 1
-
 [node name="ItemDescriptionBackground" type="NinePatchRect" parent="VBoxContainer/ItemDescriptionBackground"]
 self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
 custom_minimum_size = Vector2(200, 150)
@@ -315,6 +333,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -4.0
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_et0cm")
@@ -323,6 +343,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
+[connection signal="item_select" from="VBoxContainer/ItemListBackground/InventoryContainer" to="." method="_on_inventory_container_item_select"]
 [connection signal="mouse_entered" from="VBoxContainer/ItemListBackground/ContextButtonList/UseButton" to="." method="play_button_hover_sfx"]
 [connection signal="pressed" from="VBoxContainer/ItemListBackground/ContextButtonList/UseButton" to="." method="_on_use_button_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/ItemListBackground/ContextButtonList/DropButton" to="." method="play_button_hover_sfx"]

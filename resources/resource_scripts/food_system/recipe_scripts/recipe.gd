@@ -1,6 +1,8 @@
 class_name Recipe
 extends Resource
 
+@export var recipe_name: String
+
 # Dish type defines the base effects
 @export var effects: Array[Item.Effects]
 

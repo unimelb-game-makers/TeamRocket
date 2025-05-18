@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=3 uid="uid://bp53g1jmqlap"]
+[gd_scene load_steps=130 format=3 uid="uid://bp53g1jmqlap"]
 
 [ext_resource type="Script" uid="uid://dahmqbphxewm7" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" uid="uid://cucpys6u7vdh4" path="res://scripts/player/player.gd" id="1_lvdue"]
@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://d3fhg66m1c0rh" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down01.png" id="8_x6n1m"]
 [ext_resource type="Texture2D" uid="uid://bj3fwesi5fljg" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down02.png" id="9_8ufqp"]
 [ext_resource type="Script" uid="uid://dvt66tny6d4k8" path="res://scripts/player/rifle.gd" id="9_usf71"]
-[ext_resource type="PackedScene" uid="uid://c3jnad7h7ggpt" path="res://scenes/player/bullet.tscn" id="10_c4h7y"]
 [ext_resource type="Texture2D" uid="uid://ba6sk0si4xgoh" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down03.png" id="10_chcoi"]
 [ext_resource type="Texture2D" uid="uid://btnlnpqfbh115" path="res://assets/status_icons/cobweb.svg" id="11_6b0yd"]
 [ext_resource type="Texture2D" uid="uid://74aq7mvhmeeu" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down04.png" id="11_f5d4e"]
@@ -36,9 +35,13 @@
 [ext_resource type="Texture2D" uid="uid://dgctlmfq5mj0j" path="res://assets/textures/rifle_placeholder.png" id="12_o5gnq"]
 [ext_resource type="Texture2D" uid="uid://dcs1n8owx1583" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down06.png" id="13_0xewb"]
 [ext_resource type="Texture2D" uid="uid://dquxi6eepllwm" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down07.png" id="14_00dvn"]
+[ext_resource type="Texture2D" uid="uid://d0ed1f3w0t8kk" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Up/crouch_up.png" id="15_6b0yd"]
+[ext_resource type="Texture2D" uid="uid://h34qj4i3xbrn" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Down/crouch_down.png" id="15_bjerx"]
 [ext_resource type="Texture2D" uid="uid://nv4brp6g5h2a" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_0_delay-0.13s.png" id="15_t2p34"]
 [ext_resource type="Texture2D" uid="uid://di86pwnyqattg" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_1_delay-0.13s.png" id="16_j11n7"]
+[ext_resource type="Texture2D" uid="uid://d0rb5i270qmys" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Left/crouch_left.png" id="16_n64jf"]
 [ext_resource type="Texture2D" uid="uid://uv8ow42xi6qp" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_2_delay-0.13s.png" id="17_3j5gf"]
+[ext_resource type="Texture2D" uid="uid://pjnhfqaeminu" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Right/crouch_right.png" id="17_bjerx"]
 [ext_resource type="Texture2D" uid="uid://dwyxlehdbfq2m" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 00.png" id="18_odnkq"]
 [ext_resource type="Texture2D" uid="uid://bp7y6kdy4yh1d" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_3_delay-0.13s.png" id="18_pa30l"]
 [ext_resource type="Texture2D" uid="uid://b52b675kybqqa" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_4_delay-0.13s.png" id="19_3oooa"]
@@ -106,6 +109,7 @@
 [ext_resource type="AudioStream" uid="uid://pbelltth7qay" path="res://assets/sfx/team rocket sfx/player/footstep_concrete.mp3" id="92_yuju3"]
 [ext_resource type="Shader" uid="uid://bepjrssoapr53" path="res://scripts/shader/directional_sound_hud.gdshader" id="97_0djkk"]
 [ext_resource type="PackedScene" uid="uid://bu6r7xofr0t8e" path="res://scenes/player/EnemyNoiseRadar.tscn" id="97_lxwhf"]
+[ext_resource type="Script" uid="uid://bbo7hysmawq83" path="res://scripts/player/camera_control.gd" id="111_q71nn"]
 
 [sub_resource type="Resource" id="Resource_f2wld"]
 script = ExtResource("3_h2bbt")
@@ -189,6 +193,46 @@ metadata/_custom_type_script = "uid://dq78rxiki3ndm"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_web4h"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_bjerx")
+}],
+"loop": true,
+"name": &"crouch_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_bjerx")
+}],
+"loop": true,
+"name": &"crouch_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_n64jf")
+}],
+"loop": true,
+"name": &"crouch_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_bjerx")
+}],
+"loop": true,
+"name": &"crouch_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_6b0yd")
+}],
+"loop": true,
+"name": &"crouch_up",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("6_yux1i")
@@ -571,11 +615,11 @@ texture = ExtResource("91_rlnnq")
 position = Vector2(0, -96)
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_web4h")
-animation = &"stand_down_aim"
+animation = &"crouch_idle"
 
 [node name="Rifle" type="Node2D" parent="."]
+position = Vector2(0, -96)
 script = ExtResource("9_usf71")
-bullet_scene = ExtResource("10_c4h7y")
 impact_scene = ExtResource("4_wuv7n")
 
 [node name="FireTimer" type="Timer" parent="Rifle"]
@@ -640,10 +684,11 @@ shape = SubResource("RectangleShape2D_d0p80")
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("2_7c1ag")]
 visible = false
-offset_left = 79.0
-offset_top = -202.0
-offset_right = 367.0
-offset_bottom = 51.0
+z_index = 4096
+offset_left = 112.0
+offset_top = -232.0
+offset_right = 513.0
+offset_bottom = 138.0
 initial_node_to_watch = NodePath("../StateChart")
 
 [node name="StateChart" type="Node" parent="."]
@@ -836,10 +881,14 @@ one_shot = true
 [node name="PlayerCamera" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+script = ExtResource("111_q71nn")
 
+[connection signal="aim_mode_enter" from="." to="PlayerCamera" method="_on_player_aim_mode_enter"]
+[connection signal="aim_mode_exit" from="." to="PlayerCamera" method="_on_player_aim_mode_exit"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_anim_sprite_animation_finished"]
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]
+[connection signal="fired" from="Rifle" to="PlayerCamera" method="_on_rifle_fired"]
 [connection signal="timeout" from="Rifle/ReloadTimer" to="Rifle" method="_on_reload_timer_timeout"]
 [connection signal="state_entered" from="StateChart/Movement/Roll" to="." method="_on_roll_state_entered"]
 [connection signal="state_exited" from="StateChart/Movement/Roll" to="." method="_on_roll_state_exited"]
@@ -854,6 +903,8 @@ position_smoothing_enabled = true
 [connection signal="state_physics_processing" from="StateChart/Movement/Basic/Stance/Aim/Aiming" to="." method="_on_aiming_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Crouched" to="." method="_on_crouched_state_entered"]
 [connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Posture/Standing" to="." method="_on_standing_state_entered"]
+[connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Motion/Walk" to="." method="_on_walk_state_entered"]
+[connection signal="state_entered" from="StateChart/Movement/Basic/Stance/Motion/Idle" to="." method="_on_idle_state_entered"]
 [connection signal="timeout" from="ChannelTimer" to="." method="_on_channel_timer_timeout"]
 [connection signal="timeout" from="FootstepSoundEffect/FootstepTimer" to="." method="_on_footstep_timer_timeout"]
 [connection signal="timeout" from="StatusEffectTickTimer" to="." method="_on_status_effect_tick_timer_timeout"]

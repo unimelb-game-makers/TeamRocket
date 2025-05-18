@@ -4,7 +4,7 @@ signal fired
 
 @export var max_inaccuracy: float = 30.0
 @export var inaccuracy_change_rate_base: float = 0.05
-@export var bullet_scene: Resource
+# @export var bullet_scene: Resource
 @export var impact_scene: PackedScene
 @export var max_bullets = 5
 @export var fire_rate = 1.0
@@ -15,9 +15,11 @@ signal fired
 @onready var aiming_line_1 = $AimingUI/Line1
 @onready var aiming_line_2 = $AimingUI/Line2
 @onready var aiming_curve = $AimingUI
+@onready var reload_timer: Timer = $ReloadTimer
 
 @onready var fire_effect: AudioStreamPlayer2D = $SoundEffects/FireEffect
 @onready var reload_effect: AudioStreamPlayer2D = $SoundEffects/ReloadEffect
+@onready var fire_timer: Timer = $FireTimer
 # Inaccuracy value in degrees. Raycast will fire on a random degrees within -inaccuracy to +inaccuracy
 
 
@@ -38,10 +40,7 @@ var bullets = max_bullets:
 		bullets = bullets_in
 		if (bullets <= 0):
 			reload_effect.play()
-			$ReloadTimer.start()
 
-@onready var fire_timer: Timer = $FireTimer
-@onready var reload_timer: Timer = $ReloadTimer
 
 func _ready() -> void:
 	fire_timer.wait_time = 1.0 / fire_rate
@@ -80,7 +79,7 @@ func fire(damage) -> void:
 		var impact = impact_scene.instantiate()
 		add_child(impact)
 		impact.global_position = hit_location
-		
+
 		fire_effect.play(0.3)
 		fired.emit()
 		
