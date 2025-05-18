@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cevkjrlj4y5qd"
-path="res://.godot/imported/tomato_raw.png-c61739fc645402e716456ed03ff1822c.ctex"
+uid="uid://ovng04cmxdxx"
+path="res://.godot/imported/garlic cut.png-6b356cd656b84df23881cc7072d163eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/tomato_raw.png"
-dest_files=["res://.godot/imported/tomato_raw.png-c61739fc645402e716456ed03ff1822c.ctex"]
+source_file="res://assets/food/garlic cut.png"
+dest_files=["res://.godot/imported/garlic cut.png-6b356cd656b84df23881cc7072d163eb.ctex"]
 
 [params]
 

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://uk4o31ltqopm"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_n7air"]
+[ext_resource type="Texture2D" uid="uid://4ge3de0vbaas" path="res://assets/food/ginger.png" id="2_ss8jl"]
+
+[resource]
+script = ExtResource("1_n7air")
+ingredient_type = 407
+ingredient_category = 1
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_ss8jl")
+item_id = "ginger"
+item_name = "Ginger"
+description = ""
+weight = 0.1
+rarity = 0
+quality = 0
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

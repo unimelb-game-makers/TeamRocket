@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="IngredientRecipe" load_steps=2 format=3 uid="uid://guh1wg0140xx"]
+
+[ext_resource type="Script" uid="uid://bgf04urpx4mx5" path="res://resources/resource_scripts/food_system/recipe_scripts/ingredient_recipe.gd" id="1_r7f0u"]
+
+[resource]
+script = ExtResource("1_r7f0u")
+effects = Array[int]([])
+base_ingredients = Array[int]([])
+metadata/_custom_type_script = "uid://bgf04urpx4mx5"

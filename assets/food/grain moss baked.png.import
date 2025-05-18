@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw11fr51fq4sj"
-path="res://.godot/imported/spaghetti_raw.png-fab1c8d7c63da5f3c2f42b4a95ecca77.ctex"
+uid="uid://bq1nvwssqxqml"
+path="res://.godot/imported/grain moss baked.png-72c7529bdf07ee85a8ec5cd8dd3831f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/spaghetti_raw.png"
-dest_files=["res://.godot/imported/spaghetti_raw.png-fab1c8d7c63da5f3c2f42b4a95ecca77.ctex"]
+source_file="res://assets/food/grain moss baked.png"
+dest_files=["res://.godot/imported/grain moss baked.png-72c7529bdf07ee85a8ec5cd8dd3831f4.ctex"]
 
 [params]
 

@@ -145,7 +145,6 @@ func _on_attack_state_physics_processing(_delta: float) -> void:
 		statechart.send_event("player_out_of_atk_range")
 		return
 
-
 func _on_dash_attack_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.damage(base_damage)

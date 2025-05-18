@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://1uk2iowxbyl2"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_hhou8"]
+[ext_resource type="Texture2D" uid="uid://ovng04cmxdxx" path="res://assets/food/garlic cut.png" id="2_cxskv"]
+
+[resource]
+script = ExtResource("1_hhou8")
+ingredient_type = 105
+ingredient_category = 2
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_cxskv")
+item_id = "garlic_cut"
+item_name = "Minced Garlic"
+description = "Minced Garlic"
+weight = 0.2
+rarity = 0
+quality = 0
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

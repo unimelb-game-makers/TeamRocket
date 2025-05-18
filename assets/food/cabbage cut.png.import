@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d242sxkaq3idj"
-path="res://.godot/imported/tomato_cut.png-b8841059840585fa2569108dfedfbc4b.ctex"
+uid="uid://be8j1wb0lidfq"
+path="res://.godot/imported/cabbage cut.png-83ee70301c963cef5c09e6e34dff2373.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/tomato_cut.png"
-dest_files=["res://.godot/imported/tomato_cut.png-b8841059840585fa2569108dfedfbc4b.ctex"]
+source_file="res://assets/food/cabbage cut.png"
+dest_files=["res://.godot/imported/cabbage cut.png-83ee70301c963cef5c09e6e34dff2373.ctex"]
 
 [params]
 

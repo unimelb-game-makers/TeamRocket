@@ -14,6 +14,8 @@ enum IngredientType {
 	ONION = 102,
 	TOMATO = 103,
 	BEAN = 104,
+	GARLIC = 105,
+	GINGER = 106,
 	# Meats
 	BEEF = 200,
 	PORK = 201,
@@ -28,7 +30,9 @@ enum IngredientType {
 	RAW_CARROT = 402,
 	RAW_ONION = 403,
 	RAW_TOMATO = 404,
-	RAW_RICE = 405
+	RAW_RICE = 405,
+	RAW_GARLIC = 406,
+	RAW_GINGER = 407,
 }
 
 enum IngredientCategory {
