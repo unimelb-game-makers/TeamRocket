@@ -137,8 +137,9 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	var neighbors_array = get_neighbors_array(grid, coords)
 	
 	var selected_room
+	var curr_room_data = roomdata[coords.x][coords.y]
 	
-	if roomdata[coords.x][coords.y] == null:
+	if curr_room_data == null:
 		var newroomdata = RoomData.new()
 		
 		match num_neighbors:
@@ -154,9 +155,10 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 			4:
 				newroomdata.roomscene = fulls.pick_random()
 		
-		roomdata[coords.x][coords.y] = newroomdata
+		curr_room_data = newroomdata
+		print("CREATED NEW ROOM DATA")
 	
-	selected_room = roomdata[coords.x][coords.y].roomscene.instantiate()
+	selected_room = curr_room_data.roomscene.instantiate()
 	
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
@@ -195,6 +197,23 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	
 	navigation_region_2d.call_deferred("add_child", selected_room)
 	
+	if selected_room.has_poi_markers():
+		if curr_room_data.poi_path == null:
+			if randi_range(0, 4) > 3:
+				curr_room_data.poi_path = "res://assets/map/POI/medium park background.png"
+				curr_room_data.poi_size = "med"
+			else:
+				curr_room_data.poi_path = "res://assets/map/POI/large park background.png"
+				curr_room_data.poi_size = "large"
+		
+		var poi_sprite: Sprite2D = Sprite2D.new()
+		poi_sprite.texture = load(curr_room_data.poi_path)
+		if curr_room_data.poi_size == "med":
+			poi_sprite.global_position = selected_room.mediumSpawn.global_position
+		if curr_room_data.poi_size == "large":
+			poi_sprite.global_position = selected_room.largeSpawn.global_position
+
+	
 	# Spawn player and camera
 	var s: Player = PLAYER.instantiate()
 	call_deferred("add_child", s)
@@ -215,6 +234,8 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	newcam.call_deferred("set_global_position", currplayer.global_position)
 	newcam.zoom = Vector2(0.3,0.3)
 	currcam = newcam
+	
+	
 
 func go_to_room(direction: Vector2):
 	if just_teleported1 == false and just_teleported2 == false:

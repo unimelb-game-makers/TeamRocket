@@ -3,6 +3,8 @@ extends Resource
 
 @export var roomscene: PackedScene # Correct room template to generate
 @export var enemies: Array[PackedScene]
+@export var poi_path: String
+@export var poi_size: String
 
 func save_enemies() -> Dictionary:
 	var enemiesdict = {}
