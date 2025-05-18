@@ -24,11 +24,17 @@ var just_teleported2 = false
 
 const straight: PackedScene = preload("res://scenes/map/templates/straight.tscn")
 const deadend: PackedScene = preload("res://scenes/map/templates/dead_end.tscn")
-const bend: PackedScene = preload("res://scenes/map/templates/turn.tscn")
-const threeway: PackedScene = preload("res://scenes/map/templates/threeway.tscn")
+const bend: Array[PackedScene] = [
+	preload("res://scenes/map/templates/turn.tscn"),
+	preload("res://scenes/map/templates/turn2.tscn")
+]
+const threeway: Array[PackedScene] = [
+	preload("res://scenes/map/templates/threeway.tscn"), 
+	preload("res://scenes/map/templates/threeway2.tscn")
+]
 const full: PackedScene = preload("res://scenes/map/templates/fullroom.tscn")
 const fulls: Array[PackedScene] = [
-	preload("res://scenes/map/templates/fullroom.tscn"),
+	#preload("res://scenes/map/templates/fullroom.tscn"),
 	preload("res://scenes/map/templates/fullroom2.tscn")
 ]
 
@@ -137,8 +143,9 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	var neighbors_array = get_neighbors_array(grid, coords)
 	
 	var selected_room
+	var curr_room_data = roomdata[coords.x][coords.y]
 	
-	if roomdata[coords.x][coords.y] == null:
+	if curr_room_data == null:
 		var newroomdata = RoomData.new()
 		
 		match num_neighbors:
@@ -148,15 +155,19 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 				if neighbors_array == ["A", "B", "A", "B"] or neighbors_array == ["B", "A", "B", "A"]:
 					newroomdata.roomscene = straight
 				else:
-					newroomdata.roomscene = bend
+					newroomdata.roomscene = bend.pick_random()
 			3:
-				newroomdata.roomscene = threeway
+				newroomdata.roomscene = threeway.pick_random()
 			4:
 				newroomdata.roomscene = fulls.pick_random()
 		
-		roomdata[coords.x][coords.y] = newroomdata
+		curr_room_data = newroomdata
+		print("CREATED NEW ROOM DATA")
 	
-	selected_room = roomdata[coords.x][coords.y].roomscene.instantiate()
+	selected_room = curr_room_data.roomscene.instantiate()
+	
+	for i in selected_room.spawnNodes:
+		i.reparent($EnemyHandler/SpawnAreas)
 	
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
@@ -194,6 +205,26 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 	print("Current position" + str(coords))
 	
 	navigation_region_2d.call_deferred("add_child", selected_room)
+	
+	if selected_room.has_poi_markers():
+		print("HAS POI MARKERS")
+		if curr_room_data.poi_path == "":
+			if randi_range(0, 3) > 3:
+				curr_room_data.poi_path = "res://assets/map/POI/medium park background.png"
+				curr_room_data.poi_size = "med"
+			else:
+				curr_room_data.poi_path = "res://assets/map/POI/large park background.png"
+				curr_room_data.poi_size = "large"
+		
+		var poi_sprite: Sprite2D = Sprite2D.new()
+		print("POI PATH: " + curr_room_data.poi_path)
+		poi_sprite.texture = load(curr_room_data.poi_path)
+		if curr_room_data.poi_size == "med":
+			poi_sprite.global_position = selected_room.mediumSpawn.global_position
+		elif curr_room_data.poi_size == "large":
+			poi_sprite.global_position = selected_room.largeSpawn.global_position
+		navigation_region_2d.call_deferred("add_child", poi_sprite)
+
 	
 	# Spawn player and camera
 	var s: Player = PLAYER.instantiate()
