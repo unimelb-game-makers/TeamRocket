@@ -7,7 +7,7 @@ extends Item
 @export var ingredients: Array[Ingredient]
 
 func save() -> Dictionary:
-	var item_dict = super()
+	var item_dict = super ()
 	item_dict["item_name"] = item_name
 	item_dict["item_type"] = ItemType.DISH
 	item_dict["effects"] = effects

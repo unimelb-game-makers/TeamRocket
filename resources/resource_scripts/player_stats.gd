@@ -4,9 +4,9 @@ extends Resource
 const SPRINT_MULTIPLIER = 2.0
 const CROUCH_MULTIPLIER = 0.5
 
-@export var level: int
-@export var max_health: int
-@export var health: int:
+@export var level: int = 1
+@export var max_health: int = 100
+@export var health: int = 100:
 	set(value):
 		health = value
 		if (health > max_health):
@@ -14,8 +14,8 @@ const CROUCH_MULTIPLIER = 0.5
 		if (Globals):
 			if (Globals.player_ui):
 				Globals.player_ui.update_health(health, max_health)
-@export var damage: int
-@export var speed: float:
+@export var damage: int = 10
+@export var speed: float = 200:
 	set(value):
 		speed = value
 		run_speed = speed * SPRINT_MULTIPLIER
@@ -74,8 +74,8 @@ func export_stats():
 # Reset stats to base stats
 func reset_stats():
 	level = 1
-	max_health = 50
-	health = 50
+	max_health = 100
+	health = 100
 	damage = 5
 	speed = 200
 

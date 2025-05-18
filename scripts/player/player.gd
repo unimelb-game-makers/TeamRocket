@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var walk_loudness: float = 100
 @export var sprint_loudness: float = 250
 @export var gun_loudness: float = 2000
+@export var player_stats: PlayerStatsResource
 
 # ---- Signals ----
 # For camera control
@@ -14,39 +15,49 @@ signal death
 signal channel_complete
 signal sound_created(location, loudness)
 
+const ROLL_SPEED: int = 800
+const ROLL_DURATION: float = 0.5
+const ROLL_COOLDOWN: float = 0
+const WALK_FOOTSTEP_SFX_FREQUENCY = 0.75
+const SPRINT_FOOTSTEP_SFX_FREQUENCY = 0.5
+const AFTER_HURT_INVULNERABLE_DURATION = 1.0
+
 var can_move: bool = true
 
 # ----- MOVEMENT VARS -----
 # For smoother movement
 var curr_speed: float
 var curr_accel: float
+var speed_modifier = 1.0
 
 var direction: Vector2
 var is_moving = false
 var is_sprinting = false
 var is_crouching = false
+var is_aiming = false
 
 # roll_timer affects speed over the course of the roll
-const ROLL_SPEED: int = 800
-const ROLL_DURATION: float = 0.5
 var roll_timer: float = 0
 
 # Roll cooldown
 # TODO: Integrate cooldown into statechart
-const ROLL_COOLDOWN: float = 0
 var roll_cd_timer: float = 0
 var can_roll: bool = true
 
-const WALK_FOOTSTEP_SFX_FREQUENCY = 0.75
-const SPRINT_FOOTSTEP_SFX_FREQUENCY = 0.5
 var fired = false
 var animation_locked = false
+
+# Status effect
+# TODO: Should have a separate system to track
+var is_slowed
+var is_unable_to_dash
+var is_invulnerable_after_hurt = false
 
 # ----- Node References -----
 @onready var interact_radius: Area2D = $InteractRadius
 @onready var rifle: Node2D = $Rifle
 @onready var statechart: StateChart = $StateChart
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var channel_timer: Timer = $ChannelTimer
 @onready var channeling_particles: CPUParticles2D = $Particles/ChannelingParticles
 @onready var footstep_timer: Timer = $FootstepSoundEffect/FootstepTimer
@@ -54,8 +65,11 @@ var animation_locked = false
 @onready var enemy_noise_rader: Sprite2D = $EnemyNoiseRadar
 
 @export var effect_mapping: Dictionary[Item.Effects, StatusEffect]
+@onready var slow_debuff_timer: Timer = $DebuffTimer/SlowDebuffTimer
+@onready var invulnerable_after_hurt_timer: Timer = $AfterHurtInvulnerableTimer
 
 func _ready() -> void:
+	Globals.player_stats = self.player_stats
 	Globals.player = self
 	curr_speed = Globals.player_stats.speed
 	curr_accel = Globals.player_stats.accel
@@ -85,9 +99,14 @@ func _process(_delta: float) -> void:
 		rifle.reload()
 
 func damage(value: int):
+	if is_invulnerable_after_hurt:
+		return
+	if value > 0:
+		Globals.player_ui.play_damaged_effect(value)
 	Globals.player_stats.health = clamp(0, Globals.player_stats.health - value, Globals.player_stats.max_health)
 	Globals.player_ui.update_health(Globals.player_stats.health, Globals.player_stats.max_health)
 	Globals.inventory_ui.update_character_stats()
+	make_player_invulnerable_after_hurt()
 	if (Globals.player_stats.health <= 0):
 		die()
 
@@ -102,6 +121,7 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 	direction = Input.get_vector("left", "right", "up", "down")
 	velocity.x = move_toward(velocity.x, curr_speed * direction.x, curr_accel)
 	velocity.y = move_toward(velocity.y, curr_speed * direction.y, curr_accel)
+	velocity = velocity * speed_modifier
 	move_and_slide()
 
 	### State Chart ###
@@ -206,11 +226,13 @@ func _on_aiming_state_entered() -> void:
 	rifle.enter_aiming_mode()
 	aim_mode_enter.emit()
 	curr_speed = curr_speed / 2
+	is_aiming = true
 
 func _on_aiming_state_exited() -> void:
 	rifle.exit_aiming_mode()
 	aim_mode_exit.emit()
 	curr_speed = curr_speed * 2
+	is_aiming = false
 
 func _on_channel_timer_timeout() -> void:
 	channel_complete.emit()
@@ -296,17 +318,23 @@ func handle_animation(action: String, _direction: String = "", secondary_action:
 		anim_array.append(secondary_action)
 	
 	var joined_anim = "_".join(anim_array)
-	if not joined_anim in animated_sprite_2d.sprite_frames.get_animation_names():
+	if not joined_anim in anim_sprite.sprite_frames.get_animation_names():
 		return
 	
 	if (action == "shoot"):
 		animation_locked = true
 	
-	animated_sprite_2d.scale = Vector2(sprite_scale, sprite_scale)
-	animated_sprite_2d.play(joined_anim)
+	anim_sprite.scale = Vector2(sprite_scale, sprite_scale)
+	anim_sprite.play(joined_anim)
 
-func _on_animated_sprite_2d_animation_finished() -> void:
-	if (animated_sprite_2d.animation.begins_with("shoot")):
+
+func make_player_invulnerable_after_hurt():
+	is_invulnerable_after_hurt = true
+	invulnerable_after_hurt_timer.start(AFTER_HURT_INVULNERABLE_DURATION)
+	anim_sprite.self_modulate = Color(1, 1, 1, 0.5)
+
+func _on_anim_sprite_animation_finished() -> void:
+	if (anim_sprite.animation.begins_with("shoot")):
 		animation_locked = false
 
 func _on_footstep_timer_timeout() -> void:
@@ -323,3 +351,24 @@ func eat_food(dish: Dish) -> void:
 
 func _on_status_effect_tick_timer_timeout() -> void:
 	Globals.player_stats.tick_status_effects(StatusEffect.DurationCategory.SECONDS)
+
+## Debuff
+func apply_slow_debuff():
+	var slow_debuff_time = 3
+	if not is_slowed:
+		is_slowed = true
+		speed_modifier -= 0.5
+		slow_debuff_timer.start(slow_debuff_time)
+
+func remove_slow_debuff():
+	if is_slowed:
+		speed_modifier += 0.5
+		is_slowed = false
+
+func _on_slow_debuff_timer_timeout() -> void:
+	remove_slow_debuff()
+
+
+func _on_after_hurt_invulnerable_timer_timeout() -> void:
+	is_invulnerable_after_hurt = false
+	anim_sprite.self_modulate = Color(1, 1, 1, 1)

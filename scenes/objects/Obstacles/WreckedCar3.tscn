@@ -20,7 +20,6 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(40.0112, -12.9444)
 rotation = -0.632842
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_b8bqy")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://he20mbvfu5em"]
+
+[ext_resource type="Script" uid="uid://da7vpww2qlc17" path="res://scripts/map/door_transporter.gd" id="1_1d1y4"]
+[ext_resource type="Texture2D" uid="uid://cnbdo0ynk48qd" path="res://assets/map/DoorArea.png" id="1_pyier"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v038f"]
+size = Vector2(128, 64)
+
+[node name="DoorArea" type="Area2D" groups=["DoorArea"]]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("1_1d1y4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_pyier")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v038f")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

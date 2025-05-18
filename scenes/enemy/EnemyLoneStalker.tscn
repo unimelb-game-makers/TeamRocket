@@ -1,0 +1,188 @@
+[gd_scene load_steps=16 format=3 uid="uid://cymv5i72rdk4v"]
+
+[ext_resource type="PackedScene" uid="uid://c0dgri14uuw70" path="res://scenes/enemy/BasicEnemy.tscn" id="1_dafq6"]
+[ext_resource type="Script" uid="uid://oqtxpr8lt40i" path="res://scripts/enemy/enemy_lone_stalker.gd" id="2_dafq6"]
+[ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="3_otmmk"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="3_pr8e8"]
+[ext_resource type="Texture2D" uid="uid://dppd5y2yek1pc" path="res://assets/creatures/enemy_lone_stalker/lone_stalker_1.png" id="4_dafq6"]
+[ext_resource type="Texture2D" uid="uid://bnx54spns0oih" path="res://assets/creatures/enemy_lone_stalker/lone_stalker_2.png" id="5_7cyrg"]
+[ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="5_8wcqh"]
+[ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="6_cl8fo"]
+[ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="7_tybiv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cyrg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_dafq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7cyrg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pr8e8"]
+size = Vector2(34.5, 8.16667)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dafq6"]
+radius = 1935.3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7cyrg"]
+radius = 2993.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cyrg"]
+size = Vector2(259, 158)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_otmmk"]
+size = Vector2(173, 92)
+
+[node name="EnemyLoneStalker" instance=ExtResource("1_dafq6")]
+collision_mask = 4
+script = ExtResource("2_dafq6")
+runaway_duration = 4.0
+transparency_when_stalk = 0.05
+passive_speed = 80
+active_speed = 120
+max_health = 60
+base_damage = 30
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
+layer = 20
+visible = false
+
+[node name="StateChartDebugger" parent="CanvasLayer" index="0" instance=ExtResource("3_pr8e8")]
+z_index = 1000
+offset_left = 48.0
+offset_top = 24.0
+offset_right = -672.0
+offset_bottom = -264.0
+scale = Vector2(0.5, 0.5)
+initial_node_to_watch = NodePath("../../StateChart")
+ignore_state_changes = true
+ignore_transitions = true
+
+[node name="Shadow" type="Sprite2D" parent="." index="1"]
+modulate = Color(0, 0, 0, 0.415686)
+position = Vector2(-3, 12)
+scale = Vector2(3.46875, 0.555483)
+texture = ExtResource("3_otmmk")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+position = Vector2(3, -190)
+sprite_frames = SubResource("SpriteFrames_7cyrg")
+frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="." index="3"]
+position = Vector2(-5.5, -2.5)
+shape = SubResource("RectangleShape2D_pr8e8")
+
+[node name="CollisionShape2D" parent="DetectionRadius" index="0"]
+shape = SubResource("CircleShape2D_dafq6")
+
+[node name="CollisionShape2D" parent="ChaseRadius" index="0"]
+shape = SubResource("CircleShape2D_7cyrg")
+
+[node name="To Search" parent="StateChart/EnemyBehaviour/Passive" index="3"]
+event = &"to_searchh"
+
+[node name="To Runaway" type="Node" parent="StateChart/EnemyBehaviour/Passive" index="4"]
+script = ExtResource("5_8wcqh")
+to = NodePath("../../Active/Runaway")
+event = &"to_runaway"
+delay_in_seconds = "0.0"
+
+[node name="to Attack" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="1"]
+script = ExtResource("5_8wcqh")
+to = NodePath("../../../Attack")
+event = &"to_attack"
+delay_in_seconds = "0.0"
+
+[node name="to Runaway" type="Node" parent="StateChart/EnemyBehaviour/Active/Chase" index="2"]
+script = ExtResource("5_8wcqh")
+to = NodePath("../../Runaway")
+event = &"to_runaway"
+delay_in_seconds = "0.0"
+
+[node name="Runaway" type="Node" parent="StateChart/EnemyBehaviour/Active" index="3"]
+script = ExtResource("7_tybiv")
+
+[node name="to Attack" type="Node" parent="StateChart/EnemyBehaviour/Active/Runaway" index="0"]
+script = ExtResource("5_8wcqh")
+to = NodePath("../../../Attack")
+event = &"to_attack"
+delay_in_seconds = "0.0"
+
+[node name="to Chase" type="Node" parent="StateChart/EnemyBehaviour/Active/Runaway" index="1"]
+script = ExtResource("5_8wcqh")
+to = NodePath("../../Chase")
+event = &"to_chase"
+delay_in_seconds = "0.0"
+
+[node name="Attack" type="Node" parent="StateChart/EnemyBehaviour" index="2"]
+script = ExtResource("6_cl8fo")
+initial_state = NodePath("Wind Up")
+
+[node name="Wind Up" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="0"]
+script = ExtResource("7_tybiv")
+
+[node name="to Pounce Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack/Wind Up" index="0"]
+script = ExtResource("5_8wcqh")
+to = NodePath("../../Pounce Attack")
+event = &"to_pounce_attack"
+delay_in_seconds = "0.5"
+
+[node name="Pounce Attack" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="1"]
+script = ExtResource("7_tybiv")
+
+[node name="to Wind Up" type="Node" parent="StateChart/EnemyBehaviour/Attack/Pounce Attack" index="0"]
+script = ExtResource("5_8wcqh")
+to = NodePath("../../Wind Up")
+event = &"to_wind_up"
+delay_in_seconds = "0.25"
+
+[node name="to Runaway" type="Node" parent="StateChart/EnemyBehaviour/Attack/Pounce Attack" index="1"]
+script = ExtResource("5_8wcqh")
+to = NodePath("../../../Active/Runaway")
+event = &"to_runaway"
+delay_in_seconds = "0.0"
+
+[node name="to Chase" type="Node" parent="StateChart/EnemyBehaviour/Attack" index="2"]
+script = ExtResource("5_8wcqh")
+to = NodePath("../../Active/Chase")
+event = &"to_chase"
+delay_in_seconds = "0.0"
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(-1.5, -47)
+shape = SubResource("RectangleShape2D_7cyrg")
+
+[node name="DashAttackArea" type="Area2D" parent="." index="10"]
+position = Vector2(0, -140)
+collision_layer = 2
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashAttackArea" index="0"]
+position = Vector2(-23.5, 100)
+shape = SubResource("RectangleShape2D_otmmk")
+debug_color = Color(0.701961, 0.00392157, 0.0196078, 0.25098)
+
+[node name="StopRunTimer" type="Timer" parent="." index="11"]
+one_shot = true
+
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Chase" to="." method="_on_chase_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Active/Chase" to="." method="_on_chase_state_exited"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Runaway" to="." method="_on_runaway_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Active/Runaway" to="." method="_on_runaway_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Active/Runaway" to="." method="_on_runaway_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Wind Up" to="." method="_on_wind_up_state_entered"]
+[connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Pounce Attack" to="." method="_on_pounce_attack_state_entered"]
+[connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack/Pounce Attack" to="." method="_on_pounce_attack_state_exited"]
+[connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack/Pounce Attack" to="." method="_on_pounce_attack_state_physics_processing"]
+[connection signal="body_entered" from="DashAttackArea" to="." method="_on_dash_attack_area_body_entered"]
+[connection signal="timeout" from="StopRunTimer" to="." method="_on_stop_run_timer_timeout"]

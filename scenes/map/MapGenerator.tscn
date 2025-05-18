@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://xxuamij5ryb7"]
+
+[ext_resource type="Script" uid="uid://caq8ki1bk05u5" path="res://scripts/map/Generator.gd" id="1_7lp7c"]
+[ext_resource type="Script" uid="uid://dswbwl8o4vfsd" path="res://scripts/Game/game_handler.gd" id="2_6jxcj"]
+[ext_resource type="PackedScene" uid="uid://hgrksmummwv0" path="res://scenes/ui/MainUI.tscn" id="3_ywkxy"]
+[ext_resource type="Script" uid="uid://dgayqf5bjeouf" path="res://scripts/item/item_handler.gd" id="4_vbwut"]
+[ext_resource type="Script" path="res://scripts/enemy/Areas/enemy_handler.gd" id="5_xbkgg"]
+[ext_resource type="Script" uid="uid://blaauerf105us" path="res://scripts/Game/interactable_handler.gd" id="6_qsbel"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="7_0ursy"]
+
+[node name="MapGen" type="Node2D"]
+script = ExtResource("1_7lp7c")
+
+[node name="GameHandler" type="Node" parent="."]
+script = ExtResource("2_6jxcj")
+
+[node name="GameTimer" type="Timer" parent="GameHandler"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="GameHandler"]
+visible = false
+
+[node name="FadeToBlack" type="ColorRect" parent="GameHandler/CanvasLayer"]
+z_index = 200
+offset_right = 5000.0
+offset_bottom = 4000.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MainUI" parent="GameHandler/CanvasLayer" instance=ExtResource("3_ywkxy")]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler"]
+process_mode = 3
+bus = &"Music"
+
+[node name="ItemHandler" type="Node" parent="." groups=["ItemHandler"]]
+script = ExtResource("4_vbwut")
+
+[node name="EnemyHandler" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("5_xbkgg")
+min_spawns_per_area = null
+max_spawns_per_area = null
+
+[node name="SpawnAreas" type="Node" parent="EnemyHandler"]
+
+[node name="Lighting" type="Node" parent="."]
+
+[node name="Dark" type="CanvasModulate" parent="Lighting"]
+position = Vector2(533, 480)
+color = Color(0.18359, 0.18359, 0.18359, 1)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["navigation"]]
+y_sort_enabled = true
+
+[node name="InteractableHandler" type="Node2D" parent="."]
+y_sort_enabled = true
+script = ExtResource("6_qsbel")
+chest_scene = ExtResource("7_0ursy")
+
+[node name="InteractableSpawnPoints" type="Node" parent="InteractableHandler"]
+
+[node name="InteractableHolder" type="Node2D" parent="InteractableHandler"]
+y_sort_enabled = true
+
+[connection signal="timeout" from="GameHandler/GameTimer" to="GameHandler" method="_on_game_timer_timeout"]

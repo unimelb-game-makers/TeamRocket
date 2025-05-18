@@ -47,7 +47,7 @@ enum IngredientCategory {
 @export var name_modifiers: Array[String]
 
 func save() -> Dictionary:
-	var item_dict = super()
+	var item_dict = super ()
 	item_dict["item_type"] = ItemType.INGREDIENT
 	return item_dict
 

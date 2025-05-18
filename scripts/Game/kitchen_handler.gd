@@ -10,7 +10,7 @@ func switch_to_city():
 	var tween = create_tween()
 	tween.tween_property($"../GameHandler/CanvasLayer/FadeToBlack", "modulate", Color(0, 0, 0, 2.0), 2.0)
 	await tween.finished
-	get_tree().change_scene_to_file("res://scenes/environments/City.tscn")
+	get_tree().change_scene_to_file("res://scenes/map/MapGenerator.tscn")
 
 func submit_food(item: Item):
 	var buff_i = randi_range(0, 3)

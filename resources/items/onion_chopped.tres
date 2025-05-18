@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bicl6a3rvlqmi"]
+
+[ext_resource type="Script" uid="uid://bswsoddpidu4d" path="res://resources/resource_scripts/item.gd" id="1_hd5ai"]
+[ext_resource type="Texture2D" uid="uid://bibh5t7iwbwja" path="res://assets/food/onion cut.png" id="2_3ru8y"]
+
+[resource]
+script = ExtResource("1_hd5ai")
+item_id = 31
+texture = ExtResource("2_3ru8y")
+item_name = "Chopped Onion"
+description = "A powerfully pungent vegetable. Eating it raw is not recommended. \\n“Back in **my** day, kids used to eat their onion **raw**, and they’d have it no other way! - Grandpa Sims, the Lee’s front porch”"
+weight = 0.1
+rarity = 0

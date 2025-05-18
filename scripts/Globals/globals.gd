@@ -35,10 +35,12 @@ var vsync_option_index: int = 1 # From 0 to 2 for DISABLED / ENABLED / ADAPTIVE
 var window_mode_index: int = 1 # From 0 to 2 for FULLSCREEN / WINDOWED / BORDERLESS WINDOWED
 
 func _ready() -> void:
-	load_item_database()
+	# load_item_database()
 	SaveManager.load_setting_config()
 	player_stats = default_player_stats
 
+## FIXME: This will broken in the build version, as we can't
+## load by browsing directory anymore after built.
 func load_item_database():
 	var directory_path = "res://resources/items/"
 	var tres_files: Array[Item] = []
