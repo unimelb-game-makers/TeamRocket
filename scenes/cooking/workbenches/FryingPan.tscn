@@ -1,12 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://dk6a5jgkvuwwt"]
+[gd_scene load_steps=13 format=3 uid="uid://dk6a5jgkvuwwt"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_kib3k"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_rk4q0"]
-[ext_resource type="Texture2D" uid="uid://exr5tyv2uhg6" path="res://assets/workstations/pot/stew2.png" id="2_u141n"]
 [ext_resource type="PackedScene" uid="uid://dw0k3wxf1ktoo" path="res://scenes/cooking/activities/FryActivity.tscn" id="3_cs31w"]
+[ext_resource type="Texture2D" uid="uid://ckuf8cpoij4ox" path="res://assets/placeholder/lighting.png" id="3_rdoeq"]
+[ext_resource type="Texture2D" uid="uid://d3x8qge0v5l21" path="res://assets/placeholder/construction_icon.png" id="5_jh44r"]
+[ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="6_gfqvr"]
+[ext_resource type="Resource" uid="uid://d3b5yu03lwb2b" path="res://resources/cooking/recipes/ingredients/carrot_cut_rec.tres" id="7_jeu8f"]
+[ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="8_081lw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvo21"]
-size = Vector2(82, 74)
+size = Vector2(32, 28)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xpl1x"]
 resource_local_to_scene = true
@@ -21,6 +25,19 @@ shader_parameter/square_border = false
 shader_parameter/offset = Vector2(0, 0)
 shader_parameter/max_or_add = false
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_waoa6"]
+frames = 2
+frame_0/texture = ExtResource("3_rdoeq")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("5_jh44r")
+frame_1/duration = 0.5
+
+[sub_resource type="Resource" id="Resource_b2due"]
+script = ExtResource("8_081lw")
+recipes = Array[ExtResource("6_gfqvr")]([ExtResource("7_jeu8f")])
+max_ingredients = 5
+metadata/_custom_type_script = "uid://c0shkqininnkd"
+
 [node name="FryingPan" instance=ExtResource("1_kib3k")]
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -30,7 +47,11 @@ shape = SubResource("RectangleShape2D_xvo21")
 [node name="Sprite2D" parent="." index="1"]
 material = SubResource("ShaderMaterial_xpl1x")
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("2_u141n")
+texture = ExtResource("3_rdoeq")
 
-[node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("3_cs31w")]
-layout_mode = 1
+[node name="CookingScene" parent="CanvasLayer" index="0"]
+visible = false
+activity_to_run = ExtResource("3_cs31w")
+activity_name = "Frying"
+activity_animated_texture = SubResource("AnimatedTexture_waoa6")
+crafting_station = SubResource("Resource_b2due")

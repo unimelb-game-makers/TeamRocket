@@ -1,7 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=25 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
-[ext_resource type="Script" uid="uid://b1wfbphngxipb" path="res://scenes/environments/kitchen.gd" id="2_1q6r3"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
 [ext_resource type="Script" uid="uid://chl1pijxwld8v" path="res://scripts/Game/kitchen_handler.gd" id="2_watt5"]
 [ext_resource type="Texture2D" uid="uid://b5jgmaxgknpb0" path="res://assets/interiors/kitchen/walls.png" id="3_yjya3"]
@@ -9,9 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
 [ext_resource type="PackedScene" uid="uid://bp3xwcc5hld8c" path="res://scenes/cooking/workbenches/RecipeBook.tscn" id="10_0g7fq"]
 [ext_resource type="PackedScene" uid="uid://cnddrwss6hk45" path="res://scenes/cooking/workbenches/oven/Oven.tscn" id="13_8r8q0"]
-[ext_resource type="PackedScene" uid="uid://dj4u0n4uqbwvg" path="res://scenes/cooking/workbenches/chopping_board/ChoppingBoard.tscn" id="13_y6d8o"]
+[ext_resource type="PackedScene" uid="uid://dj4u0n4uqbwvg" path="res://scenes/cooking/workbenches/ChoppingBoard.tscn" id="13_y6d8o"]
 [ext_resource type="PackedScene" uid="uid://djxk0awyl2jvv" path="res://scenes/cooking/workbenches/Fridge.tscn" id="14_12asn"]
-[ext_resource type="PackedScene" uid="uid://dk6a5jgkvuwwt" path="res://scenes/cooking/workbenches/FryingPan.tscn" id="14_gr436"]
 [ext_resource type="PackedScene" uid="uid://bqjhwwixj8hir" path="res://scenes/cooking/workbenches/Pot.tscn" id="14_l7h17"]
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
 [ext_resource type="PackedScene" uid="uid://bhlarqiey25gc" path="res://scenes/cooking/workbenches/AssemblyPlate.tscn" id="20_twwyk"]
@@ -48,11 +46,13 @@ colors = PackedColorArray(0, 0, 0, 1, 0.176419, 0.176419, 0.176419, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_dupnr"]
 gradient = SubResource("Gradient_wmmsd")
 
-[node name="Kitchen" instance=ExtResource("1_4boqu")]
-script = ExtResource("2_1q6r3")
+[node name="Base" instance=ExtResource("1_4boqu")]
 
 [node name="KitchenHandler" type="Node" parent="." index="0"]
 script = ExtResource("2_watt5")
+
+[node name="GameHandler" parent="." index="1"]
+TIMER = false
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler" index="1"]
 process_mode = 3
@@ -161,10 +161,7 @@ position = Vector2(712, 244)
 position = Vector2(1030, 195)
 
 [node name="Oven" parent="InteractableHandler/InteractableHolder" index="6" instance=ExtResource("13_8r8q0")]
-position = Vector2(1021, 650)
-
-[node name="FryingPan" parent="InteractableHandler/InteractableHolder" index="7" instance=ExtResource("14_gr436")]
-position = Vector2(1266, 506)
+position = Vector2(1021, 655)
 
 [node name="Player" parent="." index="7"]
 position = Vector2(269, 549)

@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://yskpqwwvcpce" path="res://scenes/cooking/activities/ChoppingActivity.tscn" id="4_f5jll"]
 [ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="4_v7ry0"]
 [ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="5_5mhn5"]
-
-[ext_resource type="Resource" uid="uid://d3b5yu03lwb2b" path="res://resources/cooking/recipes/ingredients/carrot_cut_rec.tres" id="5_h1c4s"]
-[ext_resource type="Resource" uid="uid://be78atnjt45hp" path="res://resources/cooking/recipes/ingredients/potato_cut_rec.tres" id="6_415b7"]
+[ext_resource type="Resource" uid="uid://d3b5yu03lwb2b" path="res://resources/cooking/recipes/ingredients/carrot_cut_rec.tres" id="6_h1c4s"]
+[ext_resource type="Resource" uid="uid://be78atnjt45hp" path="res://resources/cooking/recipes/ingredients/potato_cut_rec.tres" id="7_415b7"]
+[ext_resource type="Resource" uid="uid://cfgt0433t5duq" path="res://resources/cooking/recipes/ingredients/onion_cut_rec.tres" id="8_tfkcf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdbv1"]
 size = Vector2(160, 88)
@@ -31,7 +31,7 @@ frame_0/texture = ExtResource("3_b1lqa")
 
 [sub_resource type="Resource" id="Resource_v7ry0"]
 script = ExtResource("5_5mhn5")
-recipes = Array[ExtResource("4_v7ry0")]([ExtResource("5_h1c4s"), ExtResource("6_415b7")])
+recipes = Array[ExtResource("4_v7ry0")]([ExtResource("6_h1c4s"), ExtResource("7_415b7"), ExtResource("8_tfkcf")])
 max_ingredients = 5
 metadata/_custom_type_script = "uid://c0shkqininnkd"
 
@@ -50,10 +50,7 @@ texture = ExtResource("3_b1lqa")
 
 [node name="CookingScene" parent="CanvasLayer" index="0"]
 visible = false
+activity_to_run = ExtResource("4_f5jll")
 activity_name = "Chopping board"
 activity_animated_texture = SubResource("AnimatedTexture_dis1y")
 crafting_station = SubResource("Resource_v7ry0")
-
-[node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("4_f5jll")]
-visible = false
-layout_mode = 1

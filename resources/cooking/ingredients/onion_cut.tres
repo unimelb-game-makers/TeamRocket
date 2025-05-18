@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://d4jd37d2hc0b"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_yt5mb"]
+[ext_resource type="Texture2D" uid="uid://bibh5t7iwbwja" path="res://assets/food/onion cut.png" id="2_yt5mb"]
+
+[resource]
+script = ExtResource("1_yt5mb")
+ingredient_type = 102
+ingredient_category = 2
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_yt5mb")
+item_id = "onion_cut"
+item_name = "Cut Onion"
+description = "Sliced Onions"
+weight = 0.2
+rarity = 0
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

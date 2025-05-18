@@ -1,4 +1,12 @@
 class_name CookingScene extends Control
+"""
+CookingScene is the class that functions to allow the user to
+pass in ingredients to make an ingredient or a dish depending on the associated
+minigame extending class CookingActivity.
+
+CookingActivity minigame is passed into CookingScene as an export
+"""
+@export var activity_to_run: PackedScene
 
 @export var activity_name: String
 @export var activity_animated_texture: AnimatedTexture
@@ -7,7 +15,6 @@ class_name CookingScene extends Control
 @onready var ingredient_handler: IngredientHandler = %IngredientHandler
 @onready var start_button: TextureButton = $Background/ChosenFoodArea/StartButton
 @onready var inventory_container: Container = $Background/InventoryArea/InventoryContainer
-@onready var activity: Control = $Activity
 @onready var selected_food_list: Container = $Background/ChosenFoodArea/SelectedFoodList
 @onready var activity_animated_sprite: TextureRect = $Background/ChosenFoodArea/ActivityAnimatedSprite
 @onready var activity_label: Label = $Background/ChosenFoodArea/ActivityLabel
@@ -19,14 +26,17 @@ class_name CookingScene extends Control
 @onready var chosen_food_area: Control = $Background/ChosenFoodArea
 @onready var item_description_area: Control = $Background/ItemDescriptionArea
 
+var activity: CookingActivity
 var recipe: Recipe
 var activity_is_in_progress = false
 
 signal complete(output)
 
 func _ready() -> void:
-	activity.complete.connect(finish)
-	reset()
+	if activity_to_run == null:
+		push_error("Cooking Scene does not have an activity to run!!!")
+
+	reset() # Also sets the activity visibility off
 	activity_label.text = activity_name
 	if activity_animated_texture:
 		activity_animated_sprite.texture = activity_animated_texture
@@ -38,13 +48,11 @@ func reset():
 	ingredient_handler.max_slots = crafting_station.max_ingredients
 	ingredient_handler.update_slots()
 	inventory_container.update_inventory_list()
-	activity.reset_game()
 
 	start_button.visible = true
 	ingredient_handler.visible = true
 	inventory_container.visible = true
 	selected_food_list.visible = true
-	activity.visible = false
 
 	inventory_area.visible = true
 	chosen_food_area.visible = true
@@ -54,12 +62,32 @@ func reset():
 func add_item(item: Ingredient, _amount: int):
 	ingredient_handler.add_item(item)
 
-## This method is called when the CookingActivity is finished (emitting signal 'complete')
-func finish():
-	activity_is_in_progress = false
+## Creates an instance of the activity, called when start button pressed
+## @param input_ingredients: Used to determine minigame difficulty.
+## @param output_ingredient: Used to determine minigame difficulty.
+func call_and_run_activity(input_ingredients: Array[Ingredient], output_item: Item) -> void:
+	activity = activity_to_run.instantiate() as CookingActivity
+	activity.complete.connect(finish)
+	#print(input_ingredients)
+	activity.initialize_activity(input_ingredients, output_item)
+	if activity.is_initialized: # Extra protection
+		self.add_child(activity) # Starts the activity when it is added due to _ready()
 
+## This method is called when the CookingActivity is finished (emitting signal 'complete')
+func finish(rating: Item.Quality):
+	activity_is_in_progress = false
+	# Delete the activity
+	if activity != null:
+		activity.queue_free()
+
+	# Defensive copy of the output item to modify and return?
 	var output_item = crafting_station.craft_output(ingredient_handler.selected_ingredients)
-	complete.emit(output_item)
+	# Modify based on minigame outcome
+	output_item.quality = rating
+
+	print("\nOutput Item: ")
+	print(output_item)
+	complete.emit(output_item) # Emit to what?
 	InventoryGlobal.add_item(output_item, 1)
 	ingredient_handler.clear_slots()
 	reset()
@@ -75,11 +103,13 @@ func clear_item_description_area_data():
 	item_image.texture = null
 
 func _on_start_button_pressed() -> void:
+	# Determine what output ingredient/dish if any
 	var output_item = crafting_station.craft_output(ingredient_handler.selected_ingredients)
+
+	# Handles by button is abit weird
 	if (output_item):
 		start_button.visible = false
 		ingredient_handler.visible = false
-		activity.visible = true
 		selected_food_list.visible = false
 		inventory_container.visible = false
 
@@ -89,7 +119,10 @@ func _on_start_button_pressed() -> void:
 		clear_item_description_area_data()
 
 		activity_is_in_progress = true
-		activity.start(ingredient_handler.selected_ingredients, output_item)
+		print(ingredient_handler.selected_ingredients)
+		call_and_run_activity(ingredient_handler.selected_ingredients, output_item)
+	else:
+		print("Output ingredient/dish failed to be generated!")
 
 
 func _on_ingredient_handler_update_list() -> void:
