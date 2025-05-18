@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bp3xwcc5hld8c"]
 
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_cnj5q"]
-[ext_resource type="Script" uid="uid://555oxysqxy7h" path="res://scripts/objects/interactables/prototype_diagram.gd" id="2_piy3k"]
+[ext_resource type="Script" uid="uid://555oxysqxy7h" path="res://scripts/objects/interactables/recipe_book.gd" id="2_piy3k"]
 [ext_resource type="Texture2D" uid="uid://deyifpy2vhdtt" path="res://assets/recipe_book/recipe_book.png" id="3_1byrj"]
 [ext_resource type="Texture2D" uid="uid://bs18a7e3t3ldl" path="res://assets/recipe_book/vegetable_curry_recipe_page.png" id="4_e7l7o"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="5_1byrj"]
@@ -31,16 +31,16 @@ script = ExtResource("2_piy3k")
 position = Vector2(4, 0.5)
 shape = SubResource("RectangleShape2D_vlym8")
 
-[node name="PrototypeDiagram" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_hkfie")
 position = Vector2(-1.12506, 1.5)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_1byrj")
 
-[node name="UI" type="CanvasLayer" parent="PrototypeDiagram"]
+[node name="UI" type="CanvasLayer" parent="."]
 visible = false
 
-[node name="Background" type="ColorRect" parent="PrototypeDiagram/UI"]
+[node name="Background" type="ColorRect" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -48,7 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.501961)
 
-[node name="Diagram" type="TextureRect" parent="PrototypeDiagram/UI"]
+[node name="Diagram" type="TextureRect" parent="UI"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -62,7 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_e7l7o")
 
-[node name="TitleLabel" type="Label" parent="PrototypeDiagram/UI/Diagram"]
+[node name="TitleLabel" type="Label" parent="UI/Diagram"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -79,7 +79,7 @@ theme_override_font_sizes/font_size = 34
 text = "Vegetable Curry"
 horizontal_alignment = 1
 
-[node name="PageLabel" type="Label" parent="PrototypeDiagram/UI/Diagram"]
+[node name="PageLabel" type="Label" parent="UI/Diagram"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
