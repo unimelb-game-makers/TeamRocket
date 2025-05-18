@@ -1,29 +1,24 @@
-[gd_scene load_steps=128 format=3 uid="uid://bp53g1jmqlap"]
+[gd_scene load_steps=126 format=3 uid="uid://bp53g1jmqlap"]
 
-[ext_resource type="Script" uid="uid://dahmqbphxewm7" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
+[ext_resource type="Script" uid="uid://bagdchb1hwe0f" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" uid="uid://cucpys6u7vdh4" path="res://scripts/player/player.gd" id="1_lvdue"]
 [ext_resource type="Resource" uid="uid://bgplmsv507g1w" path="res://resources/player/player_stats.tres" id="2_0jidv"]
 [ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="2_0pnis"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_7c1ag"]
 [ext_resource type="Script" uid="uid://cj6qlxl2m71tr" path="res://addons/godot_state_charts/parallel_state.gd" id="2_44kvc"]
-[ext_resource type="Script" uid="uid://dusc61itvq8h1" path="res://resources/resource_scripts/status_effect.gd" id="2_f2wld"]
-[ext_resource type="Texture2D" uid="uid://h34qj4i3xbrn" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Down/crouch_down.png" id="3_4tl0c"]
+[ext_resource type="Script" path="res://resources/resource_scripts/status_effect.gd" id="2_f2wld"]
 [ext_resource type="Texture2D" uid="uid://bfbg1awb0nkfp" path="res://assets/status_icons/bullet-impacts.svg" id="3_bjerx"]
 [ext_resource type="Script" uid="uid://c4w27uduxpnqb" path="res://resources/resource_scripts/status_effects/attack_increase_status.gd" id="3_h2bbt"]
 [ext_resource type="Script" uid="uid://cyw3vuu8wb4vn" path="res://addons/godot_state_charts/compound_state.gd" id="3_u8x7w"]
 [ext_resource type="Resource" uid="uid://ckg582376bup7" path="res://resources/status_effects/attack_increase_temporary.tres" id="4_4gydf"]
-[ext_resource type="Texture2D" uid="uid://d0rb5i270qmys" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Left/crouch_left.png" id="4_lhhg1"]
 [ext_resource type="Script" uid="uid://di7rh2bj4kanb" path="res://addons/godot_state_charts/atomic_state.gd" id="4_px21u"]
 [ext_resource type="PackedScene" uid="uid://bpwuxxnbvf5aq" path="res://scenes/player/GunImpact.tscn" id="4_wuv7n"]
 [ext_resource type="Script" uid="uid://dwgr8rprecbfo" path="res://addons/godot_state_charts/transition.gd" id="5_6l3qh"]
 [ext_resource type="Script" uid="uid://b6yi4ggdw3s7h" path="res://scripts/ui/aiming_ui.gd" id="5_bb4ct"]
 [ext_resource type="Script" uid="uid://cg7rnst5hwwxp" path="res://resources/resource_scripts/status_effects/hp_increase_status.gd" id="5_kt2pj"]
-[ext_resource type="Texture2D" uid="uid://pjnhfqaeminu" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Right/crouch_right.png" id="5_norvr"]
-[ext_resource type="Texture2D" uid="uid://d0ed1f3w0t8kk" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Up/crouch_up.png" id="6_2vc2u"]
 [ext_resource type="Script" uid="uid://c6yfi13084pva" path="res://resources/resource_scripts/status_effects/movespeed_increase_status.gd" id="6_h2bbt"]
 [ext_resource type="Texture2D" uid="uid://b5mo6uosm58ww" path="res://assets/status_icons/heart-plus.svg" id="6_q71nn"]
 [ext_resource type="Texture2D" uid="uid://bqaed0kw83mxe" path="res://assets/Player/PlayerAnimations/Idle/down idle.png" id="6_yux1i"]
-[ext_resource type="Resource" uid="uid://c3a3adhgjk5tl" path="res://resources/status_effects/movespeed_increase_temporary.tres" id="7_4gydf"]
 [ext_resource type="AudioStream" uid="uid://cb5elyjnvnfcx" path="res://assets/sfx/team rocket sfx/gun/gun_fire.wav" id="7_brdgo"]
 [ext_resource type="Texture2D" uid="uid://b8bbug4hlqigi" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down00.png" id="7_eh15l"]
 [ext_resource type="AudioStream" uid="uid://dii8tfwe5ol0t" path="res://assets/sfx/team rocket sfx/gun/gun_reload.wav" id="7_ukr26"]
@@ -35,12 +30,12 @@
 [ext_resource type="Script" uid="uid://dvt66tny6d4k8" path="res://scripts/player/rifle.gd" id="9_usf71"]
 [ext_resource type="PackedScene" uid="uid://c3jnad7h7ggpt" path="res://scenes/player/bullet.tscn" id="10_c4h7y"]
 [ext_resource type="Texture2D" uid="uid://ba6sk0si4xgoh" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down03.png" id="10_chcoi"]
+[ext_resource type="Texture2D" uid="uid://btnlnpqfbh115" path="res://assets/status_icons/cobweb.svg" id="11_6b0yd"]
 [ext_resource type="Texture2D" uid="uid://74aq7mvhmeeu" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down04.png" id="11_f5d4e"]
 [ext_resource type="Texture2D" uid="uid://d2b7dljnqq5l0" path="res://assets/status_icons/poison-cloud.svg" id="11_jyf3t"]
 [ext_resource type="Texture2D" uid="uid://chhwknv6cp2vo" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down05.png" id="12_2eg2o"]
 [ext_resource type="Texture2D" uid="uid://dgctlmfq5mj0j" path="res://assets/textures/rifle_placeholder.png" id="12_o5gnq"]
 [ext_resource type="Texture2D" uid="uid://dcs1n8owx1583" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down06.png" id="13_0xewb"]
-[ext_resource type="Texture2D" uid="uid://cdlv3kqhupqok" path="res://assets/status_icons/healing.svg" id="13_3utcb"]
 [ext_resource type="Texture2D" uid="uid://dquxi6eepllwm" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down07.png" id="14_00dvn"]
 [ext_resource type="Texture2D" uid="uid://nv4brp6g5h2a" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_0_delay-0.13s.png" id="15_t2p34"]
 [ext_resource type="Texture2D" uid="uid://di86pwnyqattg" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_1_delay-0.13s.png" id="16_j11n7"]
@@ -113,7 +108,7 @@
 [ext_resource type="Shader" uid="uid://bepjrssoapr53" path="res://scripts/shader/directional_sound_hud.gdshader" id="97_0djkk"]
 [ext_resource type="PackedScene" uid="uid://bu6r7xofr0t8e" path="res://scenes/player/EnemyNoiseRadar.tscn" id="97_lxwhf"]
 
-[sub_resource type="Resource" id="Resource_3imom"]
+[sub_resource type="Resource" id="Resource_f2wld"]
 script = ExtResource("3_h2bbt")
 attack_increase = 5
 name = "Lethality"
@@ -123,54 +118,64 @@ stackable = true
 icon = ExtResource("3_bjerx")
 metadata/_custom_type_script = "uid://c4w27uduxpnqb"
 
-[sub_resource type="Resource" id="Resource_6b0yd"]
+[sub_resource type="Resource" id="Resource_h2bbt"]
 script = ExtResource("5_kt2pj")
 health_increase = 10
-name = "Maximum Health"
+name = "Health Increase"
 duration = 3
 duration_int = 0
 stackable = true
 icon = ExtResource("6_q71nn")
 metadata/_custom_type_script = "uid://cg7rnst5hwwxp"
 
-[sub_resource type="Resource" id="Resource_4gydf"]
+[sub_resource type="Resource" id="Resource_7g7qv"]
 script = ExtResource("5_kt2pj")
-health_increase = 10
-name = "Max Health Increase - Temporary"
+health_increase = 40
+name = "Health Increase"
 duration = 2
 duration_int = 1
 stackable = false
 icon = ExtResource("6_q71nn")
 metadata/_custom_type_script = "uid://cg7rnst5hwwxp"
 
-[sub_resource type="Resource" id="Resource_kt2pj"]
+[sub_resource type="Resource" id="Resource_n64jf"]
 script = ExtResource("6_h2bbt")
-speed_increase = 10
-name = "Speed Increase - Permanent"
+speed_increase = 5
+name = "Speed Increase"
 duration = 3
 duration_int = 0
 stackable = true
 icon = ExtResource("8_2mngy")
 metadata/_custom_type_script = "uid://c6yfi13084pva"
 
-[sub_resource type="Resource" id="Resource_7g7qv"]
+[sub_resource type="Resource" id="Resource_bjerx"]
+script = ExtResource("6_h2bbt")
+speed_increase = 50
+name = "Movespeed Increase"
+duration = 2
+duration_int = 1
+stackable = false
+icon = ExtResource("8_2mngy")
+metadata/_custom_type_script = "uid://c6yfi13084pva"
+
+[sub_resource type="Resource" id="Resource_q71nn"]
+script = ExtResource("6_h2bbt")
+speed_increase = -30
+name = "Slow"
+duration = 1
+duration_int = 10
+stackable = false
+icon = ExtResource("11_6b0yd")
+metadata/_custom_type_script = "uid://c6yfi13084pva"
+
+[sub_resource type="Resource" id="Resource_2mngy"]
 script = ExtResource("8_kt2pj")
-health_per_tick = -3
+health_per_tick = -2
 name = "Poison"
 duration = 1
 duration_int = 10
 stackable = true
 icon = ExtResource("11_jyf3t")
-metadata/_custom_type_script = "uid://dq78rxiki3ndm"
-
-[sub_resource type="Resource" id="Resource_n64jf"]
-script = ExtResource("8_kt2pj")
-health_per_tick = 3
-name = "Regeneration"
-duration = 1
-duration_int = 10
-stackable = false
-icon = ExtResource("13_3utcb")
 metadata/_custom_type_script = "uid://dq78rxiki3ndm"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_web4h"]
@@ -529,6 +534,16 @@ collision_layer = 65
 collision_mask = 6
 script = ExtResource("1_lvdue")
 player_stats = ExtResource("2_0jidv")
+effect_mapping = Dictionary[int, ExtResource("2_f2wld")]({
+0: SubResource("Resource_f2wld"),
+1: ExtResource("4_4gydf"),
+2: SubResource("Resource_h2bbt"),
+3: SubResource("Resource_7g7qv"),
+6: SubResource("Resource_n64jf"),
+7: SubResource("Resource_bjerx"),
+12: SubResource("Resource_q71nn"),
+13: SubResource("Resource_2mngy")
+})
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
@@ -802,7 +817,6 @@ position = Vector2(0, -96)
 [node name="StatusEffectTickTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [node name="DebuffTimer" type="Node2D" parent="."]
 
 [node name="SlowDebuffTimer" type="Timer" parent="DebuffTimer"]
@@ -814,6 +828,7 @@ one_shot = true
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_anim_sprite_animation_finished"]
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]
 [connection signal="timeout" from="Rifle/ReloadTimer" to="Rifle" method="_on_reload_timer_timeout"]
