@@ -54,3 +54,17 @@ func save() -> Dictionary:
 #static func parse_dict(item_dict: Dictionary) -> Item:
 	#var ingredient: Ingredient = load(item_dict["item_id"])
 	#return ingredient
+
+
+static func convert_type_to_category(ingre_type: IngredientType) -> IngredientCategory:
+	var type_num = int(ingre_type)
+	if type_num <= 2:
+		return IngredientCategory.INEDIBLE
+	elif 100 <= type_num and type_num < 200:
+		return IngredientCategory.VEGETABLE
+	elif 200 <= type_num and type_num < 300:
+		return IngredientCategory.MEAT
+	elif 300 <= type_num and type_num < 400:
+		return IngredientCategory.GRAINS
+	else:
+		return IngredientCategory.OTHER

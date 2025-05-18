@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_n0py6")
 output_ingredient = ExtResource("1_veql6")
+recipe_name = "Cook rice"
 effects = Array[int]([])
 base_ingredients = Array[int]([405])
 metadata/_custom_type_script = "uid://bgf04urpx4mx5"

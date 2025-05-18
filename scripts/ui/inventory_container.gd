@@ -8,6 +8,7 @@ extends Control
 @onready var grid_container: GridContainer = $GridContainer
 
 signal item_select(item: Item, amount: int)
+signal item_hover(item: Item, amount: int)
 
 func _ready() -> void:
 	grid_container.columns = n_slot_column
@@ -26,10 +27,15 @@ func update_inventory_list():
 		item_button.item = item
 		item_button.amount = inventory_dict[item]
 		item_button.item_selected.connect(select_item)
+		item_button.item_hovered.connect(hover_item)
+
 		grid_container.add_child(item_button)
 
-func select_item(item, amount):
+func select_item(item: Item, amount: int):
 	item_select.emit(item, amount)
+
+func hover_item(item: Item, amount: int):
+	item_hover.emit(item, amount)
 
 func drop_item(item, amount):
 	InventoryGlobal.drop_item(item, amount)
