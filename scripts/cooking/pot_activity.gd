@@ -87,7 +87,7 @@ func _process(delta: float) -> void:
 		complete_minigame()
 
 func complete_minigame() -> void:
-	finish(100)
+	finish(Item.Quality.GOOD)
 
 func _input(event: InputEvent) -> void:
 	if not is_playing:

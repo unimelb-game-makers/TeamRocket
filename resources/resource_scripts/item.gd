@@ -7,6 +7,15 @@ enum ItemType {ITEM, INGREDIENT, DISH}
 
 enum Rarity {COMMON, UNCOMMON, RARE, LEGENDARY}
 
+enum Quality {
+	RUINED,     ## Unusable essentially
+	POOR,       ## Left for too long, bad cooking
+	NORMAL,     ## What you typically find
+	GOOD,       ## The uncommon finds
+	EXCELLENT,  ## The rare finds
+	PERFECT     ## Super rare finds, hard to maintain when using it
+}
+
 enum Effects {
 	HP1,
 	HP2,
@@ -28,7 +37,7 @@ enum Effects {
 @export var rarity: Rarity
 # Quality ranging from 0 to 100
 # If quality is 0, do not need to display or save
-@export_range(0, 100, 1) var quality: int
+@export var quality: Quality = Quality.NORMAL
 
 func save() -> Dictionary:
 	var item_dict = {}
@@ -55,5 +64,23 @@ static func parse_dict(item_dict: Dictionary) -> Item:
 	return item
 
 func _to_string() -> String:
-	var name :String = item_name + "(Quality: " + str(round(quality)) + ")"
+	#var name :String = item_name + "(Quality: " + str(round(quality)) + ")" + "(" + str(self.get_instance_id()) + ")"
+	var name :String = item_name + "(Quality: " + _quality_to_string(self.quality) + ")"
 	return name
+
+func _quality_to_string(quality: Quality) -> String:
+	match quality:
+		Quality.RUINED:
+			return "Ruined"
+		Quality.POOR:
+			return "Poor"
+		Quality.NORMAL:
+			return "Normal"
+		Quality.GOOD:
+			return "Good"
+		Quality.EXCELLENT:
+			return "Excellent"
+		Quality.PERFECT:
+			return "Perfect"
+		_:
+			return "Unknown"

@@ -119,24 +119,24 @@ func minigame_complete() -> void:
 	playing = false
 	result_label.text = "Game Complete!"
 	result_label.modulate = Color(0, 1, 1)  # Cyan
-	var quality = _evaluate_chopping_quality()
+	var quality: Item.Quality = _evaluate_chopping_quality()
 	
 	await get_tree().create_timer(2.0).timeout
 	
 	finish(quality)
 
-func _evaluate_chopping_quality() -> float:
+func _evaluate_chopping_quality() -> Item.Quality:
 	var total_data_points = 0
 	
 	# If more PERFECT than the others
 	if chop_table[ACCURACY_SCORES.PERFECT] - chop_table[ACCURACY_SCORES.OKAY] -chop_table[ACCURACY_SCORES.MISSED] > 0:
-		return 100
+		return Item.Quality.PERFECT
 	# If more OKAY than the others
 	elif chop_table[ACCURACY_SCORES.OKAY] - chop_table[ACCURACY_SCORES.PERFECT] -chop_table[ACCURACY_SCORES.MISSED] > 0:
-		return 60
+		return Item.Quality.GOOD
 	# If more MISSED than the others
 	else:
-		return 0
+		return Item.Quality.POOR
 	
 ## Set some ingredient to display while chopping
 func _set_ingredient_image() -> void:

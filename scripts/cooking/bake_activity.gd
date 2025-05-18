@@ -81,13 +81,14 @@ func minigame_complete() -> void:
 	else:
 		final_score = (accuracy + timeliness) / 2
 		print("FINAL SCORE: ", final_score)
-	
-	close_minigame(final_score)
+		
+	var quality: Item.Quality = _convert_score_to_quality(final_score)
+	close_minigame(quality)
 
 ## Called when the minigame is completed
 ## To re-enable mouse control for the normal game
 ## Emit signal of completion
-func close_minigame(final_score: float) -> void:
+func close_minigame(final_score: Item.Quality) -> void:
 	# Undo game restrictions
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	# TODO: Do what with the final score over here
@@ -121,3 +122,17 @@ func run_countdown():
 func determine_oven_tracing_line() -> void:
 	# TODO: Determine difficulty of oven tracing line
 	pass # Currently it just runs whatever was in the editor
+	
+func _convert_score_to_quality(final_score: float) -> Item.Quality:
+	if final_score < 10.0:
+		return Item.Quality.RUINED
+	elif final_score < 30.0:
+		return Item.Quality.POOR
+	elif final_score < 60.0:
+		return Item.Quality.NORMAL
+	elif final_score < 80.0:
+		return Item.Quality.GOOD
+	elif final_score < 95.0:
+		return Item.Quality.EXCELLENT
+	else:
+		return Item.Quality.PERFECT

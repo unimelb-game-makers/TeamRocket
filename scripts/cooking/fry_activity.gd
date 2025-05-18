@@ -181,4 +181,4 @@ func drop_ingredient() -> void:
 func minigame_complete() -> void:
 	playing = false
 	print("Frying Finished!")
-	finish(100)
+	finish(Item.Quality.GOOD)

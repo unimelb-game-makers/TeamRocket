@@ -66,7 +66,7 @@ func call_and_run_activity(input_ingredients: Array[Ingredient], output_item: It
 		self.add_child(activity) # Starts the activity when it is added due to _ready()
 
 ## This method is called when the CookingActivity is finished (emitting signal 'complete')
-func finish(rating: float):
+func finish(rating: Item.Quality):
 	activity_is_in_progress = false
 	# Delete the activity
 	if activity != null:

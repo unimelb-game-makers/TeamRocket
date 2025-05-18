@@ -1,7 +1,7 @@
 class_name CookingActivity
 extends Control
 
-signal complete(rating: float)
+signal complete(rating: Item.Quality)
 
 @export var input_ingredients: Array[Ingredient]
 @export var output_item: Item
@@ -24,5 +24,5 @@ func initialize_activity(inputs: Array[Ingredient], output: Item):
 func minigame_complete() -> void:
 	pass # Implement in child
 
-func finish(rating: float):
-	complete.emit(rating)
+func finish(rating: Item.Quality):
+	complete.emit(Item.Quality)

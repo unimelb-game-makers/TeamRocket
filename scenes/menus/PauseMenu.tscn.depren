@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck0jasabkl7co"]
+
+[ext_resource type="Script" uid="uid://gnvi1q5pg44m" path="res://scripts/menus/pause_menu.gd" id="1_jkfna"]
+[ext_resource type="Shader" uid="uid://d0tviawj1e1lu" path="res://scripts/shader/gaussian_blur.gdshader" id="2_gli1x"]
+[ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="3_ffjgk"]
+[ext_resource type="PackedScene" uid="uid://j00qr7dcyhv4" path="res://scenes/menus/SettingMenu.tscn" id="3_o8fp3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ip6y1"]
+shader = ExtResource("2_gli1x")
+shader_parameter/blur_amount = 1.0
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jkfna")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ip6y1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MainPauseMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.5
+offset_top = -88.0
+offset_right = 220.5
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ResumeButton" parent="MainPauseMenu/VBoxContainer" instance=ExtResource("3_ffjgk")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Resume"
+
+[node name="SettingsButton" parent="MainPauseMenu/VBoxContainer" instance=ExtResource("3_ffjgk")]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Settings"
+
+[node name="MainMenuButton" parent="MainPauseMenu/VBoxContainer" instance=ExtResource("3_ffjgk")]
+layout_mode = 2
+text = "Main menu"
+
+[node name="SettingMenu" parent="." instance=ExtResource("3_o8fp3")]
+visible = false
+layout_mode = 1
+
+[connection signal="mouse_entered" from="MainPauseMenu/VBoxContainer/ResumeButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="MainPauseMenu/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="MainPauseMenu/VBoxContainer/SettingsButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="MainPauseMenu/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="MainPauseMenu/VBoxContainer/MainMenuButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="MainPauseMenu/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

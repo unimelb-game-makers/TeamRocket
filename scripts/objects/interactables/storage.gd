@@ -31,6 +31,7 @@ func add_item(item: Item):
 
 func take_item(slot):
 	var item = items[slot]
+	#print(item, item.get_scene_unique_id())
 	items[slot] = null
 	update_display()
 	if (item):

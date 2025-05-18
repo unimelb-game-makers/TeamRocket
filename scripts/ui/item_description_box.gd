@@ -10,7 +10,7 @@ func _ready() -> void:
 	reset_display()
 
 func update_description_info(item: Item):
-	item_name.text = item.item_name
+	item_name.text = str(item)
 	item_desc.text = item.description.c_unescape()
 	item_image.texture = item.texture
 

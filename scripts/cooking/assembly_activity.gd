@@ -24,7 +24,8 @@ func complete_minigame() -> void:
 	for ingredient in input_ingredients:
 		#print(ingredient)
 		quality_avg += ingredient.quality
-	quality_avg = quality_avg/len(input_ingredients)
+	quality_avg = round(quality_avg/len(input_ingredients))
+	#print(quality_avg)
 	finish(quality_avg)
 	
 func set_ingredient_image(ingredient: Item) -> void:
