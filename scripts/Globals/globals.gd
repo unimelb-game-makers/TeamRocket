@@ -84,7 +84,7 @@ func victory():
 	return
 
 func check_game_end_condition() -> bool:
-	if current_requested_dish_idx == requested_dish_list.size() - 1:
+	if current_requested_dish_idx > requested_dish_list.size() - 1:
 		victory()
 		return true
 
