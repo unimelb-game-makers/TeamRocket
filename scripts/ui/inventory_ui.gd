@@ -23,6 +23,8 @@ var current_selected_item: Item = null
 
 func _ready() -> void:
 	Globals.inventory_ui = self
+	await get_tree().process_frame
+	await get_tree().process_frame
 	inventory_container.update_inventory_list()
 	reset_data()
 
@@ -71,7 +73,7 @@ func _on_inventory_container_item_select(item: Item, amount: int) -> void:
 	if (current_selected_item is Dish):
 		use_button.disabled = false
 	else:
-		use_button.disabled =  true
+		use_button.disabled = true
 
 func _on_drop_button_pressed() -> void:
 	SoundManager.play_button_click_sfx()

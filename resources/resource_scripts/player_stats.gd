@@ -20,7 +20,7 @@ const CROUCH_MULTIPLIER = 0.5
 		speed = value
 		run_speed = speed * SPRINT_MULTIPLIER
 		crouch_speed = speed * CROUCH_MULTIPLIER
-		
+
 		accel = speed / 5
 		run_accel = run_speed / 5
 		crouch_accel = crouch_speed / 5
@@ -50,7 +50,7 @@ func load_stats(stats: Dictionary):
 	for status in stats["status_effects"]:
 		var status_inst = load(status["status"])
 		status_effects[status_inst] = [status["duration"], status["stacks"]]
-	
+
 func export_stats():
 	var status_arr = []
 	for status: StatusEffect in status_effects:

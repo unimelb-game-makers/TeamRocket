@@ -35,27 +35,8 @@ var vsync_option_index: int = 1 # From 0 to 2 for DISABLED / ENABLED / ADAPTIVE
 var window_mode_index: int = 1 # From 0 to 2 for FULLSCREEN / WINDOWED / BORDERLESS WINDOWED
 
 func _ready() -> void:
-	# load_item_database()
-	SaveManager.load_setting_config()
 	player_stats = default_player_stats
-
-## FIXME: This will broken in the build version, as we can't
-## load by browsing directory anymore after built.
-func load_item_database():
-	var directory_path = "res://resources/items/"
-	var tres_files: Array[Item] = []
-	var dir = DirAccess.open(directory_path)
-
-	if dir:
-		var files = dir.get_files() # Get all files in the directory
-		for file in files:
-			if file.ends_with(".tres"):
-				var resource = ResourceLoader.load(directory_path + "/" + file)
-				if resource:
-					tres_files.append(resource as Item)
-	else:
-		print("Failed to open directory: ", directory_path)
-	item_database = tres_files
+	SaveManager.load_setting_config()
 
 func reset_save_data():
 	start_record_timestamp = 0

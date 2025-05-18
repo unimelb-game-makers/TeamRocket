@@ -16,13 +16,13 @@ enum DurationCategory {
 @export var icon: Texture2D
 
 # Apply is run when the status is first acquired
-func apply(stats: PlayerStatsResource):
+func apply(_stats: PlayerStatsResource):
 	return
 	
 # Remove is run when the status is removed from the player
-func remove(stats: PlayerStatsResource):
+func remove(_stats: PlayerStatsResource):
 	return
 
 # Tick is run whenever a status ticks down (Either seconds or days)
-func tick(stats: PlayerStatsResource):
+func tick(_stats: PlayerStatsResource):
 	return

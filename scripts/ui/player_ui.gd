@@ -14,6 +14,8 @@ var vignette_fade_speed = 0.5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Globals.player_ui = self
+	await get_tree().process_frame
+	await get_tree().process_frame
 	update_health(Globals.player_stats.health, Globals.player_stats.max_health)
 	vignette_shader.material.set_shader_parameter("alpha", 0)
 

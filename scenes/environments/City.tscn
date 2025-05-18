@@ -1,11 +1,14 @@
-[gd_scene load_steps=34 format=3 uid="uid://c052mvm4gby07"]
+[gd_scene load_steps=37 format=3 uid="uid://c052mvm4gby07"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_7mlma"]
 [ext_resource type="AudioStream" uid="uid://csjr1bs7pcsax" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg" id="2_1ecv6"]
 [ext_resource type="AudioStream" uid="uid://diyeciedxupvy" path="res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg" id="3_8hg87"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="3_pa65j"]
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="4_2cddj"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="4_bdj2n"]
+[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="5_7s0ty"]
 [ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="5_oq3tf"]
+[ext_resource type="PackedScene" uid="uid://c6jq64hs6hvtm" path="res://scenes/enemy/EnemySpider.tscn" id="5_qgik8"]
 [ext_resource type="PackedScene" uid="uid://p6jrdiqo23p1" path="res://scenes/objects/Obstacles/WreckedCar3.tscn" id="6_fuahw"]
 [ext_resource type="PackedScene" uid="uid://vk8s3qx7g5vu" path="res://scenes/objects/Obstacles/Debris1.tscn" id="7_ttjpc"]
 [ext_resource type="PackedScene" uid="uid://di1iud0i6uaou" path="res://scenes/objects/Obstacles/Debris2.tscn" id="8_xlu3i"]
@@ -21,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://boou7kaxracje" path="res://scenes/objects/Buildings/Building.tscn" id="19_r84yg"]
 [ext_resource type="PackedScene" uid="uid://b0q3wyjdxrql8" path="res://scenes/objects/Buildings/Building2.tscn" id="20_wckc8"]
 [ext_resource type="PackedScene" uid="uid://cxqyl5m3yie2u" path="res://scenes/objects/Buildings/Building3.tscn" id="21_qrjp7"]
-[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="22_x524n"]
+[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="22_x524n"]
 [ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="23_kqqf2"]
 [ext_resource type="Resource" uid="uid://birn1wyb2g5bv" path="res://resources/cooking/ingredients/onion.tres" id="24_bdj2n"]
 [ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="25_7s0ty"]
@@ -82,6 +85,14 @@ bus = &"Music"
 [node name="EnemyHandler" parent="." index="2" groups=["EnemyHandler"]]
 min_spawns_per_area = 1
 max_spawns_per_area = 1
+
+[node name="SpawnArea2D" parent="EnemyHandler/SpawnAreas" index="0" instance=ExtResource("4_bdj2n")]
+position = Vector2(4324, 2477)
+allowed_enemies = Array[PackedScene]([ExtResource("5_qgik8")])
+
+[node name="SpawnArea2D2" parent="EnemyHandler/SpawnAreas" index="1" instance=ExtResource("4_bdj2n")]
+position = Vector2(1394, 598)
+allowed_enemies = Array[PackedScene]([ExtResource("5_7s0ty")])
 
 [node name="Dark" parent="Lighting" index="0"]
 visible = true
