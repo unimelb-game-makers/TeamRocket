@@ -20,18 +20,14 @@ jobs:
     container:
       image: barichello/godot-ci:4.4.1
     steps:
-      - name: Checkout
+      - name: Checkout with Git LFS
         uses: actions/checkout@v4
+        with:
+          lfs: true
       
       # Git considers it unsafe since are using LFS under a docker image, so mark it as safe as workaround
       - name: Mark repo as safe
         run: git config --global --add safe.directory /__w/TeamRocket/TeamRocket
-
-      - name: Install Git LFS
-        run: |
-          apt update && apt install git-lfs -y
-          git lfs install
-          git lfs pull
 
       - name: Move export templates into position
         run: |
@@ -150,6 +146,6 @@ jobs:
       env:
         BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_API_KEY }}
         CHANNEL: HTML
-        ITCH_GAME: godot-ci
+        ITCH_GAME: ${{ env.PROJECT_NAME }}
         ITCH_USER: gmcunimelb
         PACKAGE: ${{ env.PROJECT_NAME }}_web.zip
