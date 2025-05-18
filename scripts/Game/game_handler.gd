@@ -8,7 +8,6 @@ class_name GameHandler
 
 var paused = false
 
-
 func _ready() -> void:
 	Globals.game_handler = self
 	canvas.show()

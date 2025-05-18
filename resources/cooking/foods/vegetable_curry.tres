@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="Dish" load_steps=6 format=3 uid="uid://dhnvd2ibvwqaq"]
 
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_clfwr"]
+[ext_resource type="Resource" uid="uid://4rndf4mnu11g" path="res://resources/cooking/ingredients/carrot_cut.tres" id="2_clfwr"]
 [ext_resource type="Resource" uid="uid://denvbscfcf0it" path="res://resources/cooking/ingredients/potato_cut.tres" id="2_yqkpv"]
-[ext_resource type="Resource" uid="uid://4rndf4mnu11g" path="res://resources/cooking/ingredients/carrot_cut.tres" id="3_clfwr"]
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="4_5bf4d"]
 [ext_resource type="Texture2D" uid="uid://bei2syspon1ly" path="res://assets/food/curry.png" id="5_kmidx"]
 
 [resource]
 script = ExtResource("4_5bf4d")
-effects = Array[int]([])
-ingredients = Array[ExtResource("1_clfwr")]([ExtResource("2_yqkpv"), ExtResource("3_clfwr")])
+effects = Array[int]([3, 7])
+ingredients = Array[ExtResource("1_clfwr")]([ExtResource("2_clfwr"), ExtResource("2_yqkpv")])
 texture = ExtResource("5_kmidx")
 item_id = "vegetable_curry"
 item_name = "Vegetable Curry"

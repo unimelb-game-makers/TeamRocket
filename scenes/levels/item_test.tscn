@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://uyerpdkmkjaa" path="res://scripts/ui/inventory_ui.gd" id="7_h2p8g"]
 [ext_resource type="PackedScene" uid="uid://wv12mpqwbndl" path="res://scenes/cooking/workbenches/Old/ChoppingBoard.tscn" id="11_dr1ic"]
 [ext_resource type="Script" uid="uid://l5p3k3h6pvpl" path="res://scripts/cooking/cooking_handler.gd" id="11_k4ddl"]
+[ext_resource type="Script" uid="uid://c3mqvedthxlmq" path="res://scripts/ui/item_containers.gd" id="11_nm0r3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_o4lb4"]
 vertices = PackedVector2Array(703, 319, 703, 65, 1219.91, 63, 1222.17, 577, 319, 63, 449, 65, 319, 577, 449, 319)

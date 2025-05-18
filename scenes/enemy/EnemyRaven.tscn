@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://jymq8qvrgg6f"]
 
-[ext_resource type="PackedScene" uid="uid://b85syheym6imi" path="res://scenes/enemy/BasicEnemy.tscn" id="1_4nirv"]
-[ext_resource type="Script" path="res://scripts/enemy/enemy_raven.gd" id="2_5o2u2"]
+[ext_resource type="PackedScene" uid="uid://c0dgri14uuw70" path="res://scenes/enemy/BasicEnemy.tscn" id="1_4nirv"]
+[ext_resource type="Script" uid="uid://cn6xm76hrw8ix" path="res://scripts/enemy/enemy_raven.gd" id="2_5o2u2"]
 [ext_resource type="Texture2D" uid="uid://q8udj8wg64rc" path="res://assets/creatures/enemy_raven/raven_attack.png" id="4_qf2io"]
 [ext_resource type="Texture2D" uid="uid://q4dxoav25bfe" path="res://assets/creatures/enemy_raven/raven1.png" id="5_5o2u2"]
 [ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="5_dqi3k"]

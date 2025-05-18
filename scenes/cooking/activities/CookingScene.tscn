@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://dcfegerycc50x"]
 
-[ext_resource type="Script" uid="uid://d33mlkoo31k1k" path="res://scripts/cooking/cooking_scene.gd" id="1_et2wc"]
+[ext_resource type="Script" path="res://scripts/cooking/cooking_scene.gd" id="1_et2wc"]
 [ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/InventoryContainer.tscn" id="2_kjxus"]
-[ext_resource type="Script" uid="uid://by0tg8n7ce5se" path="res://scripts/cooking/ingredient_handler.gd" id="3_2kcow"]
+[ext_resource type="Script" path="res://scripts/cooking/ingredient_handler.gd" id="3_2kcow"]
 [ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="4_utnq0"]
 [ext_resource type="Texture2D" uid="uid://dgcn3fv1c6r3e" path="res://assets/textures/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="5_v3vyk"]
 [ext_resource type="Texture2D" uid="uid://exr5tyv2uhg6" path="res://assets/workstations/pot/stew2.png" id="6_76i7r"]

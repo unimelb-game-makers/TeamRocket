@@ -15,7 +15,7 @@ var floor_item_scene: PackedScene = preload("res://scenes/item/ItemOnFloor.tscn"
 
 func get_inventory(type: InventoryType = InventoryType.PLAYER) -> Dictionary:
 	return inventory_dict[type]
-
+	
 func clear_inventory(type: InventoryType) -> void:
 	inventory_dict[type] = {}
 

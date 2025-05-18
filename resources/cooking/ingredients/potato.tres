@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_k4pvl")
 ingredient_type = 401
-ingredient_category = 2
+ingredient_category = 0
 effects = Array[int]([])
 name_modifiers = Array[String]([])
 texture = ExtResource("2_bgonc")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cpwdv7vvm7kdc"]
+[gd_scene load_steps=16 format=3 uid="uid://cpwdv7vvm7kdc"]
 
 [ext_resource type="Script" uid="uid://ns46i1pet5jg" path="res://scripts/ui/inventory_ui.gd" id="1_yv1id"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_drynj"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://djgoyymxhkgsw" path="res://scenes/ui/portrait_eye_follow_mouse.gd" id="7_3ewop"]
 [ext_resource type="Texture2D" uid="uid://cevkjrlj4y5qd" path="res://assets/food/tomato_raw.png" id="7_hffay"]
 [ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="9_et0cm"]
+[ext_resource type="PackedScene" uid="uid://d0yuy1wvgeuq6" path="res://scenes/ui/StatusPanelSlot.tscn" id="10_a8p5k"]
 [ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="11_dycha"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kcf3a"]
@@ -29,6 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_yv1id")
+status_slot = ExtResource("10_a8p5k")
 
 [node name="CharacterStats" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(200, 200)
@@ -156,7 +158,16 @@ theme_override_font_sizes/font_size = 24
 text = "Devotion: 30"
 horizontal_alignment = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="OtherStats"]
+[node name="StatusPanel" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+offset_left = 134.0
+offset_top = 485.0
+offset_right = 418.0
+offset_bottom = 636.0
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="StatusPanel"]
 self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -169,6 +180,14 @@ patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
+
+[node name="StatusGridContainer" type="GridContainer" parent="StatusPanel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 12.0
+offset_right = 274.0
+offset_bottom = 138.0
+columns = 7
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -207,16 +226,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="InventoryContainer" parent="VBoxContainer/ItemListBackground" instance=ExtResource("4_rg2h7")]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 56.0
-offset_top = -136.0
-offset_right = 456.0
-offset_bottom = 164.0
-grow_vertical = 2
-n_slot_column = 6
+layout_mode = 0
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 480.0
+offset_bottom = 364.0
+n_slot_column = 7
 
 [node name="ContextButtonList" type="VBoxContainer" parent="VBoxContainer/ItemListBackground"]
 layout_mode = 1
@@ -338,7 +353,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[connection signal="item_select" from="VBoxContainer/ItemListBackground/InventoryContainer" to="." method="_on_inventory_container_item_select"]
 [connection signal="mouse_entered" from="VBoxContainer/ItemListBackground/ContextButtonList/UseButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="VBoxContainer/ItemListBackground/ContextButtonList/UseButton" to="." method="_on_use_button_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/ItemListBackground/ContextButtonList/DropButton" to="." method="play_button_hover_sfx"]
 [connection signal="pressed" from="VBoxContainer/ItemListBackground/ContextButtonList/DropButton" to="." method="_on_drop_button_pressed"]
