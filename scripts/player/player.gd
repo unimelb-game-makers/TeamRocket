@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var walk_loudness: float = 100
 @export var sprint_loudness: float = 250
 @export var gun_loudness: float = 2000
+@export var player_stats: PlayerStatsResource
 
 # ---- Signals ----
 # For camera control
@@ -67,6 +68,7 @@ var is_invulnerable_after_hurt = false
 @onready var invulnerable_after_hurt_timer: Timer = $AfterHurtInvulnerableTimer
 
 func _ready() -> void:
+	Globals.player_stats = self.player_stats
 	Globals.player = self
 	curr_speed = Globals.player_stats.speed
 	curr_accel = Globals.player_stats.accel

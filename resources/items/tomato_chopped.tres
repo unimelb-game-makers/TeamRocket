@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://crgwevfrmuvpk"]
+
+[ext_resource type="Script" uid="uid://bswsoddpidu4d" path="res://resources/resource_scripts/item.gd" id="1_05i3g"]
+[ext_resource type="Texture2D" uid="uid://d242sxkaq3idj" path="res://assets/food/tomato cut.png" id="2_8fpd1"]
+
+[resource]
+script = ExtResource("1_05i3g")
+item_id = 41
+texture = ExtResource("2_8fpd1")
+item_name = "Chopped Tomato"
+description = "A plump source of refreshing acidic flavours. Perfect for any meal really.\\n“Tomatoes, man, top 5 all time greatest vegetables - Slim Bobby, Radio Metro”"
+weight = 0.1
+rarity = 0

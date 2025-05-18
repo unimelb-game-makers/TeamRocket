@@ -15,4 +15,5 @@ item_name = "Carrot"
 description = "Carrot"
 weight = 0.1
 rarity = 0
+quality = 0
 metadata/_custom_type_script = "uid://c27juqwadg5ol"

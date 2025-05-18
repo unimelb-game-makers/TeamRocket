@@ -16,6 +16,7 @@ var current_selected_item: Item = null
 
 func _ready() -> void:
 	Globals.inventory_ui = self
+	inventory_container.update_inventory_list()
 	reset_data()
 
 

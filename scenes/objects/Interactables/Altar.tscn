@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://unbm0ush87sw"]
 
-[ext_resource type="Script" uid="uid://idb0kjlgp4ad" path="res://scripts/objects/interactables/altar.gd" id="1_rfv52"]
+[ext_resource type="Script" path="res://scripts/objects/interactables/altar.gd" id="1_rfv52"]
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_8yx1c"]
-[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_upo2r"]
+[ext_resource type="Script" path="res://resources/resource_scripts/item.gd" id="2_upo2r"]
 [ext_resource type="Resource" uid="uid://cq1taw61ifcp7" path="res://resources/cooking/foods/beef_curry.tres" id="3_qjrfk"]
 [ext_resource type="Texture2D" uid="uid://ck6wk3lfpwesd" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_brown.png" id="4_eda5l"]
 [ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="4_ji3s6"]
@@ -60,18 +60,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="InventoryContainer" parent="CanvasLayer/UI" instance=ExtResource("6_2ofly")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -305.0
-offset_top = -214.0
-offset_right = 305.0
-offset_bottom = 86.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
 
 [node name="ResetButton" type="TextureButton" parent="CanvasLayer/UI"]
 layout_mode = 1
@@ -139,6 +128,5 @@ columns = 3
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="item_select" from="CanvasLayer/UI/InventoryContainer" to="." method="_on_inventory_container_item_select"]
 [connection signal="pressed" from="CanvasLayer/UI/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/SubmitButton" to="." method="_on_submit_button_pressed"]

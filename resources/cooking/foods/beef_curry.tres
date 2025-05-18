@@ -16,4 +16,5 @@ item_name = "Beef Curry"
 description = "Beef Curry!!!"
 weight = 0.3
 rarity = 0
+quality = 0
 metadata/_custom_type_script = "uid://dqqa8ydotiigx"
