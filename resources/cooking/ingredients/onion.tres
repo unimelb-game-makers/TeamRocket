@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_lu2db")
-ingredient_type = 102
+ingredient_type = 403
 ingredient_category = 2
 effects = Array[int]([])
 name_modifiers = Array[String]([])
@@ -15,4 +15,5 @@ item_name = "Onion"
 description = "ON ION"
 weight = 0.2
 rarity = 0
+quality = 0
 metadata/_custom_type_script = "uid://c27juqwadg5ol"

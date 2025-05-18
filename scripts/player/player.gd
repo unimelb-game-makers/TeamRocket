@@ -64,6 +64,7 @@ var is_invulnerable_after_hurt = false
 @onready var footstep_audio: AudioStreamPlayer2D = $FootstepSoundEffect
 @onready var enemy_noise_rader: Sprite2D = $EnemyNoiseRadar
 
+@export var effect_mapping: Dictionary[Item.Effects, StatusEffect]
 @onready var slow_debuff_timer: Timer = $DebuffTimer/SlowDebuffTimer
 @onready var invulnerable_after_hurt_timer: Timer = $AfterHurtInvulnerableTimer
 
@@ -336,7 +337,6 @@ func _on_anim_sprite_animation_finished() -> void:
 	if (anim_sprite.animation.begins_with("shoot")):
 		animation_locked = false
 
-
 func _on_footstep_timer_timeout() -> void:
 	footstep_audio.play()
 	if is_sprinting:
@@ -344,22 +344,16 @@ func _on_footstep_timer_timeout() -> void:
 	else:
 		sound_created.emit(global_position, walk_loudness)
 
+func eat_food(dish: Dish) -> void:
+	for status_effect in dish.effects:
+		Globals.player_stats.apply_status(effect_mapping[status_effect])
+	return
 
-## Debuff
-func apply_slow_debuff():
-	var slow_debuff_time = 3
-	if not is_slowed:
-		is_slowed = true
-		speed_modifier -= 0.5
-		slow_debuff_timer.start(slow_debuff_time)
+func apply_status(status: StatusEffect):
+	Globals.player_stats.apply_status(status)
 
-func remove_slow_debuff():
-	if is_slowed:
-		speed_modifier += 0.5
-		is_slowed = false
-
-func _on_slow_debuff_timer_timeout() -> void:
-	remove_slow_debuff()
+func _on_status_effect_tick_timer_timeout() -> void:
+	Globals.player_stats.tick_status_effects(StatusEffect.DurationCategory.SECONDS)
 
 
 func _on_after_hurt_invulnerable_timer_timeout() -> void:

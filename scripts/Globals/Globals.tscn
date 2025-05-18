@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://nodsuwresxmj"]
 
-[ext_resource type="Script" path="res://scripts/Globals/globals.gd" id="1_om560"]
+[ext_resource type="Script" uid="uid://dua0bgrksnrl6" path="res://scripts/Globals/globals.gd" id="1_om560"]
 [ext_resource type="Resource" uid="uid://bgplmsv507g1w" path="res://resources/player/player_stats.tres" id="2_jb3i0"]
 
 [node name="Globals" type="Node"]

@@ -1,12 +1,36 @@
-[gd_scene load_steps=14 format=3 uid="uid://bo6ywxnw6k5js"]
+[gd_scene load_steps=20 format=3 uid="uid://c6jq64hs6hvtm"]
 
 [ext_resource type="PackedScene" uid="uid://c0dgri14uuw70" path="res://scenes/enemy/BasicEnemy.tscn" id="1_un5pt"]
 [ext_resource type="Script" uid="uid://c54a6f3wdfoy1" path="res://scripts/enemy/enemy_spider.gd" id="2_35b6m"]
 [ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="2_mobu3"]
 [ext_resource type="Texture2D" uid="uid://ceqjysptr3mgs" path="res://assets/creatures/enemy_spider/spider1.png" id="2_vnbgt"]
+[ext_resource type="Texture2D" uid="uid://d2b7dljnqq5l0" path="res://assets/status_icons/poison-cloud.svg" id="3_rm0bn"]
+[ext_resource type="Script" uid="uid://c6yfi13084pva" path="res://resources/resource_scripts/status_effects/movespeed_increase_status.gd" id="3_uxdrg"]
+[ext_resource type="Script" uid="uid://dq78rxiki3ndm" path="res://resources/resource_scripts/status_effects/regeneration_status.gd" id="4_3y6ce"]
+[ext_resource type="Texture2D" uid="uid://btnlnpqfbh115" path="res://assets/status_icons/cobweb.svg" id="5_0rcma"]
 [ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="5_trdn0"]
 [ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="6_omm2d"]
 [ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="7_omm2d"]
+
+[sub_resource type="Resource" id="Resource_ji3n8"]
+script = ExtResource("4_3y6ce")
+health_per_tick = -1
+name = "Strange Venom"
+duration = 1
+duration_int = 20
+stackable = true
+icon = ExtResource("3_rm0bn")
+metadata/_custom_type_script = "uid://dq78rxiki3ndm"
+
+[sub_resource type="Resource" id="Resource_ei78k"]
+script = ExtResource("3_uxdrg")
+speed_increase = -30
+name = "Slow Toxin"
+duration = 1
+duration_int = 10
+stackable = false
+icon = ExtResource("5_0rcma")
+metadata/_custom_type_script = "uid://c6yfi13084pva"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mobu3"]
 animations = [{
@@ -38,6 +62,8 @@ size = Vector2(208, 72)
 collision_mask = 4
 script = ExtResource("2_35b6m")
 dodge_chance_when_defend = 0.5
+poison_status = SubResource("Resource_ji3n8")
+slow_status = SubResource("Resource_ei78k")
 active_speed = 110
 max_health = 70
 base_damage = 15

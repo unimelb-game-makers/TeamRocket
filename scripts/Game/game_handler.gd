@@ -13,20 +13,6 @@ extends Node
 var time
 var paused = false
 
-
-# Load and play bgm, intro goes to loop theme
-# Replacement for the buggy AudioInteractiveStream
-func load_and_play_main_bgm(intro_pathname:String, loop_pathname: String):
-	var music_player_node = $MusicPlayer
-	var _on_audio_finished = func():
-		$MusicPlayer.stream = load(loop_pathname)
-		$MusicPlayer.play()
-	if music_player_node:
-		music_player_node.stream = load(intro_pathname)
-		music_player_node.play()
-		music_player_node.connect("finished", _on_audio_finished)
-
-
 func _ready() -> void:
 	canvas.show()
 	if TIMER:
@@ -42,8 +28,23 @@ func _ready() -> void:
 		loop_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg"
 	load_and_play_main_bgm(intro_pathname, loop_pathname)
 
+
+# Load and play bgm, intro goes to loop theme
+# Replacement for the buggy AudioInteractiveStream
+func load_and_play_main_bgm(intro_pathname: String, loop_pathname: String):
+	var music_player_node = $MusicPlayer
+	var _on_audio_finished = func():
+		$MusicPlayer.stream = load(loop_pathname)
+		$MusicPlayer.play()
+	if music_player_node:
+		music_player_node.stream = load(intro_pathname)
+		music_player_node.play()
+		music_player_node.connect("finished", _on_audio_finished)
+
+
 func _on_game_timer_timeout() -> void:
-	Globals.player_ui.update_time(time)
+	if Globals.player_ui:
+		Globals.player_ui.update_time(time)
 	time += 1
 	if time >= MAX_TIME:
 		switch_to_kitchen()
