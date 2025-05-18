@@ -1,5 +1,8 @@
 extends Node
 
+## On Windows, save location probably in sth like this:
+## C:\Users\[Username]\AppData\Roaming\Godot\app_userdata\Team-Rocket Game
+
 var save_data_is_loaded = false
 var is_saving = false
 
@@ -9,41 +12,6 @@ signal setting_config_loaded
 
 func _ready() -> void:
 	load_setting_config()
-	
-#func convert_item_resource_to_id(resource_dict: Dictionary) -> Dictionary:
-	#var result: Dictionary = {}
-	#for key in resource_dict:
-		#var item_id = key.item_id
-		#result[item_id] = resource_dict[key]
-	#return result
-#
-#func convert_id_to_item_resource(id_dict: Dictionary) -> Dictionary:
-	#var result: Dictionary = {}
-	#for item_id in id_dict:
-		#for db_item in Globals.item_database:
-			#if db_item.item_id == int(item_id):
-				#result[db_item] = id_dict[item_id]
-	#return result
-
-#func convert_inventory_data_when_save(inventory_dict: Dictionary):
-	#var new_dict = {
-		#0: null,
-		#1: {},
-		#2: {}
-	#}
-	#new_dict[1] = convert_item_resource_to_id(inventory_dict[1])
-	#new_dict[2] = convert_item_resource_to_id(inventory_dict[2])
-	#return new_dict
-#
-#func convert_inventory_data_when_load(saved_dict: Dictionary):
-	#var new_dict = {
-		#0: null,
-		#1: {},
-		#2: {}
-	#}
-	#new_dict[1] = convert_id_to_item_resource(saved_dict["1"])
-	#new_dict[2] = convert_id_to_item_resource(saved_dict["2"])
-	#return new_dict
 
 func save_inventory(inventory_dict: Dictionary):
 	var output_dict = {}
@@ -71,21 +39,13 @@ func load_inventory(inventory_dict: Dictionary):
 			for item in output_inv:
 				var loaded_item: Item = Item.load_item(item["item"])
 				inv_dict[loaded_item] = inv_dict.get(loaded_item, 0) + item["amount"]
-				#InventoryGlobal.add_item(loaded_item, item["amount"], inv)
 		parsed_dict[inv] = inv_dict
 	return parsed_dict
-	
+
 func delete_save_file(slot_id: int):
 	var save_path = get_savefile_name(slot_id)
 	var dir = DirAccess.open("user://")
 
-	# Clear inventory resource
-	var path = "res://resources/inventory_saves/file" + str(slot_id) +  ".tres"
-	#var save_file: InventorySave = load(path)
-	#if (save_file):
-		#save_file.reset_inventories()
-	#ResourceSaver.save(save_file, path)
-	
 	if dir and dir.file_exists(save_path):
 		var result = dir.remove(save_path)
 		if result == OK:
@@ -103,10 +63,12 @@ func save_game(slot_id):
 	var player_stats = Globals.player_stats.export_stats()
 	var inventory_dict = save_inventory(InventoryGlobal.inventory_dict)
 	var save_dict = {
-		#"inventory_dict": convert_inventory_data_when_save(InventoryGlobal.inventory_dict),
 		"player_stats": player_stats,
 		"total_playtime": Globals.total_playtime,
-		"inventory": inventory_dict
+		"inventory": inventory_dict,
+		"current_day": Globals.current_day,
+		"current_requested_dish_idx": Globals.current_requested_dish_idx,
+		"devotion": Globals.devotion
 	}
 	var save_file = FileAccess.open(get_savefile_name(slot_id), FileAccess.WRITE)
 	var json_string = JSON.stringify(save_dict)
@@ -140,10 +102,13 @@ func load_game(slot_id):
 	if save_data.is_empty():
 		return
 
-	#InventoryGlobal.inventory_dict = convert_inventory_data_when_load(save_data["inventory_dict"])
 	InventoryGlobal.inventory_dict = load_inventory(save_data["inventory"])
 	Globals.player_stats.load_stats(save_data["player_stats"])
 	Globals.total_playtime = save_data["total_playtime"]
+	Globals.current_day = save_data.get("current_day", 1)
+	Globals.current_requested_dish_idx = save_data.get("current_requested_dish_idx", 0)
+	Globals.devotion = save_data.get("devotion", Globals.STARTING_DEVOTION)
+
 
 func get_savefile_name(slot_id: int) -> String:
 	return "user://savegame_slot{0}.save".format([slot_id])
@@ -166,7 +131,6 @@ func save_setting_config():
 
 func load_setting_config():
 	var config = ConfigFile.new()
-
 	var err = config.load("user://setting.cfg")
 
 	# If the file didn't load, ignore it.

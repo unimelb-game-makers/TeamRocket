@@ -54,9 +54,6 @@ script = ExtResource("2_1q6r3")
 [node name="KitchenHandler" type="Node" parent="." index="0"]
 script = ExtResource("2_watt5")
 
-[node name="GameHandler" parent="." index="1"]
-TIMER = false
-
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler" index="1"]
 process_mode = 3
 bus = &"Music"

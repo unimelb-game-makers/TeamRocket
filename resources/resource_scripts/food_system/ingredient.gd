@@ -55,7 +55,7 @@ func save() -> Dictionary:
 	#var ingredient: Ingredient = load(item_dict["item_id"])
 	#return ingredient
 func _to_string() -> String:
-	var name :String = super() + "(IngredientType: " + get_enum_name(ingredient_type) + ")"
+	var name: String = super () + "(IngredientType: " + get_enum_name(ingredient_type) + ")"
 	return name
 	
 func get_enum_name(value: int) -> String:
@@ -63,3 +63,17 @@ func get_enum_name(value: int) -> String:
 		if IngredientType[name] == value:
 			return name
 	return "Unknown"
+
+
+static func convert_type_to_category(ingre_type: IngredientType) -> IngredientCategory:
+	var type_num = int(ingre_type)
+	if type_num <= 2:
+		return IngredientCategory.INEDIBLE
+	elif 100 <= type_num and type_num < 200:
+		return IngredientCategory.VEGETABLE
+	elif 200 <= type_num and type_num < 300:
+		return IngredientCategory.MEAT
+	elif 300 <= type_num and type_num < 400:
+		return IngredientCategory.GRAINS
+	else:
+		return IngredientCategory.OTHER

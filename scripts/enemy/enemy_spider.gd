@@ -2,6 +2,8 @@ extends BasicEnemy
 
 ## From 0 to 1
 @export var dodge_chance_when_defend = 0.5
+@export var poison_status: StatusEffect
+@export var slow_status: StatusEffect
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dash_atk_area: Area2D = $DashAttackArea
@@ -147,6 +149,8 @@ func _on_attack_state_physics_processing(_delta: float) -> void:
 func _on_dash_attack_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.damage(base_damage)
+		body.apply_status(poison_status)
+		body.apply_status(slow_status)
 		if combo_counter == 0:
 			combo_counter = 1
 

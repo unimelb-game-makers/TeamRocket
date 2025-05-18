@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://kwstocsoy6sg"
+path="res://.godot/imported/chicken idle 3.ogg-85fdf82047ba4a1aabe37e8b701e7736.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken idle 3.ogg"
+dest_files=["res://.godot/imported/chicken idle 3.ogg-85fdf82047ba4a1aabe37e8b701e7736.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

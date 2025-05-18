@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_fhfrf")
 output_ingredient = ExtResource("1_0y65r")
+recipe_name = "Create spice powder"
 effects = Array[int]([])
-base_ingredients = Array[int]([101, 101])
+base_ingredients = Array[int]([101])
 metadata/_custom_type_script = "uid://bgf04urpx4mx5"

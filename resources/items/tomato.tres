@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Food" load_steps=3 format=3 uid="uid://c2s6lwbyk5fkd"]
+
+[ext_resource type="Script" uid="uid://du7ux2gaf1g4b" path="res://resources/resource_scripts/food.gd" id="1_frc5k"]
+[ext_resource type="Texture2D" uid="uid://cevkjrlj4y5qd" path="res://assets/food/tomato raw.png" id="2_n2jer"]
+
+[resource]
+script = ExtResource("1_frc5k")
+food_value = 0
+buffs = Array[String]([])
+food_stats = {}
+item_id = 40
+texture = ExtResource("2_n2jer")
+item_name = "Tomato"
+description = "A plump source of refreshing acidic flavours. Perfect for any meal really.\\n“Tomatoes, man, top 5 all time greatest vegetables - Slim Bobby, Radio Metro”"
+weight = 0.1
+rarity = 0

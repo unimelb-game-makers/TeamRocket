@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cjkpn8o1atcey"
+path="res://.godot/imported/fry loop.ogg-e6710b1c76ff92d95e49f132d155d014.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/fry loop.ogg"
+dest_files=["res://.godot/imported/fry loop.ogg-e6710b1c76ff92d95e49f132d155d014.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

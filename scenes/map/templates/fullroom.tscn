@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=4 uid="uid://ccmpxxyhlwyaw"]
+
+[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_bbnrc"]
+[ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_hawl3"]
+
+[node name="FullRoom" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_bbnrc")]
+sockets = Array[String](["B", "B", "B", "B"])
+doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
+spawn = NodePath("Spawn")
+metadata/_edit_horizontal_guides_ = [738.0]
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+offset_top = 97.0
+offset_right = 2020.0
+offset_bottom = 1601.0
+
+[node name="TileMap" parent="." index="1"]
+tile_map_data = PackedByteArray("AAACAAgAAQAAAAAAAFAHAAgAAQAAAAAAAFAMAAgAAQAAAAAAAFARAAgAAQAAAAAAAFAGAA0AAgAAAAAAAAANAAMAAgAAAAAAADA=")
+
+[node name="DoorArea" parent="." index="2" instance=ExtResource("2_hawl3")]
+position = Vector2(1345, 207)
+
+[node name="DoorArea2" parent="." index="3" instance=ExtResource("2_hawl3")]
+position = Vector2(1933, 847)
+rotation = 1.5708
+
+[node name="DoorArea3" parent="." index="4" instance=ExtResource("2_hawl3")]
+position = Vector2(648, 1469)
+direction = 3
+
+[node name="DoorArea4" parent="." index="5" instance=ExtResource("2_hawl3")]
+position = Vector2(70, 828)
+rotation = 1.5708
+
+[node name="Spawn" type="Node2D" parent="." index="6"]
+position = Vector2(592, 479)
+
+[connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea3" to="DoorArea3" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea4" to="DoorArea4" method="_on_area_entered"]

@@ -26,11 +26,13 @@ func _ready() -> void:
 	save_data = SaveManager.load_data_only(slot_id)
 	if not save_data.is_empty():
 		var player_stats = save_data["player_stats"]
-		var level = player_stats["level"]
+		var level = int(player_stats.get("level", 1))
+		var day = int(save_data.get("current_day", 1))
+		var devotion = int(save_data.get("devotion", Globals.STARTING_DEVOTION))
 		var playtime = save_data.get("total_playtime", 0)
 		load_button_label.text = "[b][color=green]Slot {0}[/color][/b] \
-			\nLevel: {1} \
-			\nPlaytime: {2}".format([slot_id, level, format_time(playtime)])
+			\nLevel: {1} | Day: {2} | Devotion: {3} \
+			\nPlaytime: {4}".format([slot_id, level, day, devotion, format_time(playtime)])
 		delete_button.disabled = false
 		load_button_border.modulate = Color.GREEN
 	else:

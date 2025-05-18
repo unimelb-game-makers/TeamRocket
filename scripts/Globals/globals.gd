@@ -1,6 +1,9 @@
 extends Node
 
 @export var default_player_stats: PlayerStatsResource
+@export var requested_dish_list: Array[Dish]
+
+signal devotion_changed(value: int)
 
 var player: Player
 var player_stats: PlayerStatsResource
@@ -8,6 +11,7 @@ var player_stats: PlayerStatsResource
 var item_handler
 var map
 var enemy_handler: EnemyHandler
+var game_handler: GameHandler
 
 var main_ui: MainUI
 var inventory_ui: InventoryUI
@@ -17,7 +21,18 @@ var chosen_slot_id = -1 # For saving
 var start_record_timestamp = 0
 var total_playtime = 0
 
-var item_database: Array[Item]
+# Devotion stuff
+const STARTING_DEVOTION = 30
+const FAILED_DEVOTION_PENALTY = 10
+const PASSED_DEVOTION_BONUS = 15
+var devotion: int = STARTING_DEVOTION:
+	set(value):
+		devotion = value
+		devotion_changed.emit(value)
+var current_requested_dish_idx = 0 # aka progress counter
+var current_day: int = 1
+
+# var item_database: Array[Item]
 
 # Setting parameters here
 const FPS_LIMIT_ARRAY = [30, 60, 120, 144, 240, 0]
@@ -35,27 +50,8 @@ var vsync_option_index: int = 1 # From 0 to 2 for DISABLED / ENABLED / ADAPTIVE
 var window_mode_index: int = 1 # From 0 to 2 for FULLSCREEN / WINDOWED / BORDERLESS WINDOWED
 
 func _ready() -> void:
-	# load_item_database()
-	SaveManager.load_setting_config()
 	player_stats = default_player_stats
-
-## FIXME: This will broken in the build version, as we can't
-## load by browsing directory anymore after built.
-func load_item_database():
-	var directory_path = "res://resources/items/"
-	var tres_files: Array[Item] = []
-	var dir = DirAccess.open(directory_path)
-
-	if dir:
-		var files = dir.get_files() # Get all files in the directory
-		for file in files:
-			if file.ends_with(".tres"):
-				var resource = ResourceLoader.load(directory_path + "/" + file)
-				if resource:
-					tres_files.append(resource as Item)
-	else:
-		print("Failed to open directory: ", directory_path)
-	item_database = tres_files
+	SaveManager.load_setting_config()
 
 func reset_save_data():
 	start_record_timestamp = 0
@@ -69,3 +65,23 @@ func update_total_playtime():
 	var played_time = Time.get_ticks_msec() - start_record_timestamp
 	total_playtime += played_time
 	start_record_timestamp = Time.get_ticks_msec() # Reset start timestamp
+
+
+func gameover():
+	print("Gameover")
+	return
+
+func victory():
+	print("Victory")
+	return
+
+func check_game_end_condition() -> bool:
+	if current_requested_dish_idx == requested_dish_list.size() - 1:
+		victory()
+		return true
+
+	if devotion <= 0:
+		gameover()
+		return true
+
+	return false

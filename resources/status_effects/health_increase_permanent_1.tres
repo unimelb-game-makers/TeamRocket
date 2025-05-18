@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HealthIncreaseStatus" load_steps=2 format=3 uid="uid://bqb2xyhqjre01"]
+
+[ext_resource type="Script" uid="uid://cg7rnst5hwwxp" path="res://resources/resource_scripts/status_effects/hp_increase_status.gd" id="1_ray71"]
+
+[resource]
+script = ExtResource("1_ray71")
+health_increase = 20
+name = "Max Health Increase"
+duration = 3
+duration_int = 0
+stackable = true
+metadata/_custom_type_script = "uid://cg7rnst5hwwxp"

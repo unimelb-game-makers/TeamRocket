@@ -9,6 +9,9 @@
 [ext_resource type="Resource" uid="uid://d3b5yu03lwb2b" path="res://resources/cooking/recipes/ingredients/carrot_cut_rec.tres" id="6_h1c4s"]
 [ext_resource type="Resource" uid="uid://be78atnjt45hp" path="res://resources/cooking/recipes/ingredients/potato_cut_rec.tres" id="7_415b7"]
 
+[ext_resource type="Resource" uid="uid://d3b5yu03lwb2b" path="res://resources/cooking/recipes/ingredients/carrot_cut_rec.tres" id="5_h1c4s"]
+[ext_resource type="Resource" uid="uid://be78atnjt45hp" path="res://resources/cooking/recipes/ingredients/potato_cut_rec.tres" id="6_415b7"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdbv1"]
 size = Vector2(160, 88)
 
@@ -28,7 +31,7 @@ shader_parameter/max_or_add = false
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_dis1y"]
 frame_0/texture = ExtResource("3_b1lqa")
 
-[sub_resource type="Resource" id="Resource_h1c4s"]
+[sub_resource type="Resource" id="Resource_v7ry0"]
 script = ExtResource("5_5mhn5")
 recipes = Array[ExtResource("4_v7ry0")]([ExtResource("6_h1c4s"), ExtResource("7_415b7")])
 max_ingredients = 5
@@ -52,4 +55,8 @@ visible = false
 activity_to_run = ExtResource("4_f5jll")
 activity_name = "Chopping board"
 activity_animated_texture = SubResource("AnimatedTexture_dis1y")
-crafting_station = SubResource("Resource_h1c4s")
+crafting_station = SubResource("Resource_v7ry0")
+
+[node name="Activity" parent="CanvasLayer/CookingScene" index="1" instance=ExtResource("4_f5jll")]
+visible = false
+layout_mode = 1

@@ -41,5 +41,6 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 3
 
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_pressed"]
 [connection signal="mouse_entered" from="TextureButton/FoodTexture" to="." method="play_button_hover_sfx"]

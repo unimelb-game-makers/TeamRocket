@@ -7,6 +7,7 @@ var item: Item
 var amount: int
 
 signal item_selected(item, amount)
+signal item_hovered(item, amount)
 
 func _ready() -> void:
 	set_displays()
@@ -23,5 +24,6 @@ func _on_name_button_pressed() -> void:
 	SoundManager.play_button_click_sfx()
 	item_selected.emit(item, amount)
 
-func play_button_hover_sfx():
+func _on_item_button_mouse_entered() -> void:
 	SoundManager.play_button_hover_sfx()
+	item_hovered.emit(item, amount)

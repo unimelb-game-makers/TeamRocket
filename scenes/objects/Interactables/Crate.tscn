@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8ni7apwy8dyx"]
+[gd_scene load_steps=8 format=3 uid="uid://c8ni7apwy8dyx"]
 
 [ext_resource type="Texture2D" uid="uid://fw7m087mo0ka" path="res://assets/Park/Objects/crate.png" id="1_0l3g5"]
 [ext_resource type="Script" uid="uid://20jjgwta05xw" path="res://scripts/objects/interactables/storage.gd" id="1_td6ss"]
-[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_rw46d"]
 [ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="3_uyd3e"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="4_ajerb"]
 
@@ -26,10 +25,10 @@ shader_parameter/max_or_add = false
 size = Vector2(176, 63)
 
 [node name="Area2D" type="Area2D" node_paths=PackedStringArray("storage_ui")]
+z_index = 100
 collision_layer = 8
 script = ExtResource("1_td6ss")
 slots_num = 9
-items = Array[ExtResource("2_rw46d")]([null, null, null, null, null, null, null, null, null])
 item_slot_scene = ExtResource("3_uyd3e")
 storage_ui = NodePath("UI")
 

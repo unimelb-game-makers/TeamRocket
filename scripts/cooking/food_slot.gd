@@ -1,4 +1,5 @@
 extends Control
+class_name FoodSlot
 
 @onready var button: BaseButton = $TextureButton
 @onready var food_label: Label = $TextureButton/FoodLabel
@@ -7,6 +8,7 @@ extends Control
 var index
 
 signal food_removed(index)
+signal food_hovered(index)
 
 func set_ingredient(item: Item):
 	if (item):
@@ -24,3 +26,6 @@ func _on_pressed() -> void:
 
 func play_button_hover_sfx():
 	SoundManager.play_button_hover_sfx()
+
+func _on_texture_button_mouse_entered() -> void:
+	food_hovered.emit(index)
