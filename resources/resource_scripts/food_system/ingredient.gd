@@ -8,12 +8,16 @@ enum IngredientType {
 	# Not Edible
 	SKEWER = 1,
 	SPICE_POWDER = 2,
+	STOCK = 3,
 	# Veges
 	POTATO = 100,
 	CARROT = 101,
 	ONION = 102,
 	TOMATO = 103,
 	BEAN = 104,
+	GARLIC = 105,
+	GINGER = 106,
+	CABBAGE = 107,
 	# Meats
 	BEEF = 200,
 	PORK = 201,
@@ -22,13 +26,21 @@ enum IngredientType {
 	# CARBS
 	RICE = 300,
 	BREAD = 302,
+	NOODLE = 301,
 	
 	# RAW FOODS
 	RAW_POTATO = 401,
 	RAW_CARROT = 402,
 	RAW_ONION = 403,
 	RAW_TOMATO = 404,
-	RAW_RICE = 405
+	RAW_RICE = 405,
+	RAW_GARLIC = 406,
+	RAW_GINGER = 407,
+	RAW_CABBAGE = 408,
+	
+	# ELDRITCH
+	GRAIN_MOSS = 501,
+	GRAIN_MOSS_BAKED = 502,
 }
 
 enum IngredientCategory {

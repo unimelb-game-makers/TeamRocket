@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="IngredientRecipe" load_steps=3 format=3 uid="uid://bqhh5yefrvegj"]
+
+[ext_resource type="Resource" uid="uid://bdn1bbor2u47y" path="res://resources/cooking/ingredients/grain_moss_baked.tres" id="1_fw2ib"]
+[ext_resource type="Script" uid="uid://bgf04urpx4mx5" path="res://resources/resource_scripts/food_system/recipe_scripts/ingredient_recipe.gd" id="1_yrwqd"]
+
+[resource]
+script = ExtResource("1_yrwqd")
+output_ingredient = ExtResource("1_fw2ib")
+effects = Array[int]([])
+base_ingredients = Array[int]([501])
+metadata/_custom_type_script = "uid://bgf04urpx4mx5"

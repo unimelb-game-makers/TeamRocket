@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ykp7dqbdgdtc"
-path="res://.godot/imported/carrot sliced.png-d3c7dfbd6425f2cdff294b94bbc882c3.ctex"
+uid="uid://dx27hmji5r2d4"
+path="res://.godot/imported/chicken_cabbage_noodle_soup.png-2ce06a3c61b16a4af014198f666f7374.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/carrot sliced.png"
-dest_files=["res://.godot/imported/carrot sliced.png-d3c7dfbd6425f2cdff294b94bbc882c3.ctex"]
+source_file="res://assets/food/chicken_cabbage_noodle_soup.png"
+dest_files=["res://.godot/imported/chicken_cabbage_noodle_soup.png-2ce06a3c61b16a4af014198f666f7374.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bibh5t7iwbwja"
-path="res://.godot/imported/onion cut.png-8e9c39b85bb5a4fbe973b6759c9e2faa.ctex"
+uid="uid://bpc5et0ew0joe"
+path="res://.godot/imported/curry powder.png-1802b00cbd461ac98cdf27f9de21b3ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/onion cut.png"
-dest_files=["res://.godot/imported/onion cut.png-8e9c39b85bb5a4fbe973b6759c9e2faa.ctex"]
+source_file="res://assets/food/curry powder.png"
+dest_files=["res://.godot/imported/curry powder.png-1802b00cbd461ac98cdf27f9de21b3ea.ctex"]
 
 [params]
 

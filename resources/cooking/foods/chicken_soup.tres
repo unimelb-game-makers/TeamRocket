@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Dish" load_steps=6 format=3 uid="uid://cwwxaf8y2xnra"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_0q1ou"]
+[ext_resource type="Resource" uid="uid://dcedm8ygr7cfd" path="res://resources/cooking/ingredients/cabbage_cut.tres" id="2_7i2iu"]
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_x1g3p"]
+[ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="3_eetpe"]
+[ext_resource type="Texture2D" uid="uid://dx27hmji5r2d4" path="res://assets/food/chicken_cabbage_noodle_soup.png" id="5_2pdc8"]
+
+[resource]
+script = ExtResource("2_x1g3p")
+effects = Array[int]([1, 2])
+ingredients = Array[ExtResource("1_0q1ou")]([ExtResource("2_7i2iu"), ExtResource("3_eetpe")])
+texture = ExtResource("5_2pdc8")
+item_id = "chicken_soup"
+item_name = "Chicken Noodle Soup"
+description = "Chicken noodle soup!"
+weight = 0.4
+rarity = 0
+quality = 0
+metadata/_custom_type_script = "uid://dqqa8ydotiigx"

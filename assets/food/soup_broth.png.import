@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm1tgcjaakbyh"
-path="res://.godot/imported/potato.png-99aaa1629d919f85b6cabde2d42f9414.ctex"
+uid="uid://4b8u32wm0npn"
+path="res://.godot/imported/soup_broth.png-7c1d99f353d03bc1a050ec3ff97e866d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/potato.png"
-dest_files=["res://.godot/imported/potato.png-99aaa1629d919f85b6cabde2d42f9414.ctex"]
+source_file="res://assets/food/soup_broth.png"
+dest_files=["res://.godot/imported/soup_broth.png-7c1d99f353d03bc1a050ec3ff97e866d.ctex"]
 
 [params]
 

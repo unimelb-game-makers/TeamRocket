@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd6l8o8lrr1yd"
-path="res://.godot/imported/bolognese sauce.png-022223082448d55111001147c21cee10.ctex"
+uid="uid://be8j1wb0lidfq"
+path="res://.godot/imported/cabbage_cut.png-72fb3dabaab602dce0d324174f2e5b7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/bolognese sauce.png"
-dest_files=["res://.godot/imported/bolognese sauce.png-022223082448d55111001147c21cee10.ctex"]
+source_file="res://assets/food/cabbage_cut.png"
+dest_files=["res://.godot/imported/cabbage_cut.png-72fb3dabaab602dce0d324174f2e5b7c.ctex"]
 
 [params]
 

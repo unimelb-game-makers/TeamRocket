@@ -367,7 +367,6 @@ func apply_status(status: StatusEffect):
 func _on_status_effect_tick_timer_timeout() -> void:
 	Globals.player_stats.tick_status_effects(StatusEffect.DurationCategory.SECONDS)
 
-
 func _on_after_hurt_invulnerable_timer_timeout() -> void:
 	is_invulnerable_after_hurt = false
 	anim_sprite.self_modulate = Color(1, 1, 1, 1)

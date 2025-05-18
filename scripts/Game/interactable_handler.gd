@@ -1,5 +1,5 @@
-class_name InteractableHandler
 extends Node2D
+class_name InteractableHandler
 
 @onready var interactable_spawn_points: Node = $InteractableSpawnPoints
 @onready var interactable_holder: Node2D = $InteractableHolder

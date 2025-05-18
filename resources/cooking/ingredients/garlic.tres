@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cwfjd2rnpe473"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_sgjvv"]
+[ext_resource type="Texture2D" uid="uid://dsvhygo8y3ckh" path="res://assets/food/garlic.png" id="2_pdgjr"]
+
+[resource]
+script = ExtResource("1_sgjvv")
+ingredient_type = 406
+ingredient_category = 1
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_pdgjr")
+item_id = "garlic"
+item_name = "Raw Garlic"
+description = "Raw Garlic"
+weight = 0.2
+rarity = 0
+quality = 0
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

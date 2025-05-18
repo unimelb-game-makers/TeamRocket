@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bltjurbemos4c"
-path="res://.godot/imported/spaghetti bolognese.png-83dc93e624401a8184b7e7aa57865037.ctex"
+uid="uid://d3yvp521necyd"
+path="res://.godot/imported/mossy_chicken_noodle_soup.png-2980007ef7dcf9b52f7848bb1c661102.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/spaghetti bolognese.png"
-dest_files=["res://.godot/imported/spaghetti bolognese.png-83dc93e624401a8184b7e7aa57865037.ctex"]
+source_file="res://assets/food/mossy_chicken_noodle_soup.png"
+dest_files=["res://.godot/imported/mossy_chicken_noodle_soup.png-2980007ef7dcf9b52f7848bb1c661102.ctex"]
 
 [params]
 

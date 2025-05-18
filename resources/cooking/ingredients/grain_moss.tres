@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://djws883kmg1sy"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_4jh3u"]
+[ext_resource type="Texture2D" uid="uid://ckibx0acbvgxy" path="res://assets/food/grain_moss.png" id="2_escba"]
+
+[resource]
+script = ExtResource("1_4jh3u")
+ingredient_type = 501
+ingredient_category = 1
+effects = Array[int]([10])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_escba")
+item_id = "grain_moss"
+item_name = "Grain Moss"
+description = ""
+weight = 0.2
+rarity = 0
+quality = 0
+metadata/_custom_type_script = "uid://c27juqwadg5ol"
