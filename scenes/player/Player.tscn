@@ -1,7 +1,8 @@
-[gd_scene load_steps=107 format=3 uid="uid://bp53g1jmqlap"]
+[gd_scene load_steps=108 format=3 uid="uid://bp53g1jmqlap"]
 
 [ext_resource type="Script" uid="uid://bagdchb1hwe0f" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_lvdue"]
+[ext_resource type="Resource" uid="uid://bgplmsv507g1w" path="res://resources/player/player_stats.tres" id="2_0jidv"]
 [ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="2_0pnis"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_7c1ag"]
 [ext_resource type="Script" uid="uid://cj6qlxl2m71tr" path="res://addons/godot_state_charts/parallel_state.gd" id="2_44kvc"]
@@ -451,6 +452,7 @@ y_sort_enabled = true
 collision_layer = 65
 collision_mask = 6
 script = ExtResource("1_lvdue")
+player_stats = ExtResource("2_0jidv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

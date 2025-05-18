@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dswbwl8o4vfsd" path="res://scripts/Game/game_handler.gd" id="1_eaqps"]
 [ext_resource type="Script" uid="uid://dgayqf5bjeouf" path="res://scripts/item/item_handler.gd" id="1_p3mrr"]
 [ext_resource type="PackedScene" uid="uid://hgrksmummwv0" path="res://scenes/ui/MainUI.tscn" id="2_a8oao"]
-[ext_resource type="Script" path="res://scripts/Game/interactable_handler.gd" id="2_nlyqa"]
+[ext_resource type="Script" uid="uid://blaauerf105us" path="res://scripts/Game/interactable_handler.gd" id="2_nlyqa"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="3_ld3e5"]
 [ext_resource type="Script" path="res://scripts/enemy/Areas/enemy_handler.gd" id="4_omi12"]
 
