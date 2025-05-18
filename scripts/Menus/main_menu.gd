@@ -3,6 +3,7 @@ extends Control
 
 @export var start_game_scene: PackedScene
 @export var credit_scene: PackedScene
+@export var player_stats: PlayerStatsResource
 
 @onready var camera_2d: Camera2D = $BackgroundMap/Camera2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -21,6 +22,7 @@ func _ready() -> void:
 	tween.tween_property(fade_cover, "modulate", Color(0, 0, 0, 0), 1.0)
 	reset_camera()
 	save_ui.visible = false
+	Globals.player_stats = player_stats
 
 func _on_start_pressed() -> void:
 	title_anim_player.play("title_move_up")

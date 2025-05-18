@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ls8tjfmx0yjg"]
+[gd_scene load_steps=12 format=3 uid="uid://wkf0mragtl5a"]
 
 [ext_resource type="Texture2D" uid="uid://cs4ean4jys6o7" path="res://assets/textures/ui/radial_progress.png" id="3_35kky"]
 [ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="5_a4tvh"]

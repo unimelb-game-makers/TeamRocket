@@ -13,31 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
 [ext_resource type="PackedScene" uid="uid://bhlarqiey25gc" path="res://scenes/cooking/workbenches/AssemblyPlate.tscn" id="20_twwyk"]
 
-[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_5wnhy"]
-clip_count = 2
-clip_0/name = &"Kitchen Intro"
-clip_0/stream = ExtResource("3_u2yjv")
-clip_0/auto_advance = 1
-clip_0/next_clip = 1
-clip_1/name = &"Kitchen Loop"
-clip_1/stream = ExtResource("4_0hx8f")
-clip_1/auto_advance = 1
-clip_1/next_clip = 1
-_transitions = {
-Vector2i(0, 1): {
-"fade_beats": 1.0,
-"fade_mode": 4,
-"from_time": 3,
-"to_time": 1
-},
-Vector2i(1, 1): {
-"fade_beats": 1.0,
-"fade_mode": 4,
-"from_time": 3,
-"to_time": 1
-}
-}
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5vy8l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oov5x"]

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="1_yv1id"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_drynj"]
 [ext_resource type="Shader" uid="uid://sxp5t7b7j286" path="res://scripts/shader/sprite_doodle.gdshader" id="4_esraw"]
-[ext_resource type="PackedScene" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="4_rg2h7"]
+[ext_resource type="PackedScene" uid="uid://tq5lx00lkfo2" path="res://scenes/cooking/ui/inventory_select_list.tscn" id="4_rg2h7"]
 [ext_resource type="Script" path="res://scripts/ui/item_description_box.gd" id="5_2pfdl"]
 [ext_resource type="Texture2D" uid="uid://8onwddc0bdip" path="res://assets/textures/kenney_borders/default/Border/panel-border-007.png" id="5_fl6er"]
 [ext_resource type="Texture2D" uid="uid://cw5pbx874gjij" path="res://assets/Player/sprite/portrait_backgrond.png" id="5_lhps5"]

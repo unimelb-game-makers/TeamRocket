@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="3_ld3e5"]
 [ext_resource type="Script" path="res://scripts/enemy/Areas/enemy_handler.gd" id="4_omi12"]
 
-[node name="Base" type="Node2D"]
+[node name="Base2" type="Node2D"]
 y_sort_enabled = true
 
 [node name="GameHandler" type="Node" parent="."]
