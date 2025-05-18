@@ -212,6 +212,7 @@ func _on_area_entered(_area: Area2D) -> void:
 
 
 func _on_area_exited(_area: Area2D) -> void:
+	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
 	exit_altar_ui()
 
 
@@ -225,3 +226,9 @@ func _on_wanted_food_label_timer_timeout() -> void:
 
 func play_hover_sfx():
 	SoundManager.play_button_hover_sfx()
+
+func _on_body_exited(_body: Node2D) -> void:
+	return
+
+func _on_body_entered(_body: Node2D) -> void:
+	return

@@ -106,7 +106,6 @@ texture = ExtResource("5_uiv4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Map/Bench" index="0"]
 collision_layer = 4
-collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/Bench/StaticBody2D" index="0"]
 position = Vector2(-13.3335, 126.667)
@@ -118,6 +117,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_47cob")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Map/Fryer" index="0"]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/Fryer/StaticBody2D" index="0"]
 position = Vector2(100, 142.5)
@@ -160,11 +160,13 @@ position = Vector2(712, 244)
 [node name="Fridge" parent="InteractableHandler/InteractableHolder" index="5" instance=ExtResource("14_12asn")]
 position = Vector2(1030, 195)
 
-[node name="Oven" parent="InteractableHandler/InteractableHolder" index="6" instance=ExtResource("13_8r8q0")]
-position = Vector2(1021, 650)
+[node name="Oven_NotUsedYet" parent="InteractableHandler/InteractableHolder" index="6" instance=ExtResource("13_8r8q0")]
+visible = false
+position = Vector2(98, 1078)
 
-[node name="FryingPan" parent="InteractableHandler/InteractableHolder" index="7" instance=ExtResource("14_gr436")]
-position = Vector2(1266, 506)
+[node name="FryingPan_NotUsedYet" parent="InteractableHandler/InteractableHolder" index="7" instance=ExtResource("14_gr436")]
+visible = false
+position = Vector2(241, 1078)
 
 [node name="Player" parent="." index="7"]
 position = Vector2(269, 549)
