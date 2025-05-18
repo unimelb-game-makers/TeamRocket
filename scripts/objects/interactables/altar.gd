@@ -76,6 +76,8 @@ func submit_item(item):
 
 
 func interact():
+	if Globals.is_game_ended:
+		return
 	clear_item_description_area_data()
 	if canvas_layer.visible:
 		is_interacting_with.emit(false)

@@ -32,7 +32,8 @@ var devotion: int = STARTING_DEVOTION:
 var current_requested_dish_idx = 0 # aka progress counter
 var current_day: int = 1
 
-# var item_database: Array[Item]
+var is_game_ended = false
+var dont_save_game = false
 
 # Setting parameters here
 const FPS_LIMIT_ARRAY = [30, 60, 120, 144, 240, 0]
@@ -56,6 +57,8 @@ func _ready() -> void:
 func reset_save_data():
 	start_record_timestamp = 0
 	total_playtime = 0
+	is_game_ended = false
+	dont_save_game = false
 	InventoryGlobal.reset_save_data()
 
 func start_record_playtime():
@@ -69,10 +72,15 @@ func update_total_playtime():
 
 func gameover():
 	print("Gameover")
+	dont_save_game = true
+	player.set_player_movement(false)
+	game_handler.show_game_over_screen()
 	return
 
 func victory():
 	print("Victory")
+	player.set_player_movement(false)
+	game_handler.show_victory_screen()
 	return
 
 func check_game_end_condition() -> bool:

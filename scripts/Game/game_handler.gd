@@ -5,12 +5,15 @@ class_name GameHandler
 @onready var fade_to_black: ColorRect = $CanvasLayer/FadeToBlack
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 
+@onready var canvas2: CanvasLayer = $CanvasLayer2
+@onready var endgame_label: Label = $CanvasLayer2/EndgameUI/Label
 
 var paused = false
 
 func _ready() -> void:
 	Globals.game_handler = self
-	canvas.show()
+	canvas.visible = true
+	canvas2.visible = false
 	var tween = create_tween()
 	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 0), 1.0)
 	var intro_pathname = "res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_intro.ogg"
@@ -55,3 +58,18 @@ func _on_player_death() -> void:
 func _on_player_channel_complete() -> void:
 	Globals.player_stats.health = Globals.player_stats.max_health
 	switch_to_kitchen()
+
+
+func _on_endgame_title_button_pressed() -> void:
+	Globals.reset_save_data()
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/menus/MainMenu.tscn")
+
+
+func show_game_over_screen():
+	endgame_label.text = "You failed"
+	canvas2.visible = true
+
+func show_victory_screen():
+	endgame_label.text = "You survived"
+	canvas2.visible = true

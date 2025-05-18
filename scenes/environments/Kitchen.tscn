@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
 [ext_resource type="PackedScene" uid="uid://bp3xwcc5hld8c" path="res://scenes/cooking/workbenches/RecipeBook.tscn" id="10_0g7fq"]
-[ext_resource type="PackedScene" uid="uid://cnddrwss6hk45" path="res://scenes/cooking/workbenches/oven/Oven.tscn" id="13_8r8q0"]
+[ext_resource type="PackedScene" uid="uid://bpx5ay6gfltel" path="res://scenes/cooking/workbenches/oven/Oven.tscn" id="13_8r8q0"]
 [ext_resource type="PackedScene" uid="uid://dj4u0n4uqbwvg" path="res://scenes/cooking/workbenches/chopping_board/ChoppingBoard.tscn" id="13_y6d8o"]
 [ext_resource type="PackedScene" uid="uid://djxk0awyl2jvv" path="res://scenes/cooking/workbenches/Fridge.tscn" id="14_12asn"]
 [ext_resource type="PackedScene" uid="uid://dk6a5jgkvuwwt" path="res://scenes/cooking/workbenches/FryingPan.tscn" id="14_gr436"]
