@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ccg43fm8jtn60"
+path="res://.godot/imported/ui5.ogg-3b48a15981119ccd643dc3a21126964c.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/ui5.ogg"
+dest_files=["res://.godot/imported/ui5.ogg-3b48a15981119ccd643dc3a21126964c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

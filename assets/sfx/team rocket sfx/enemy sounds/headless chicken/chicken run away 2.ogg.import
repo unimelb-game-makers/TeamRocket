@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c1rfrctruxqbf"
+path="res://.godot/imported/chicken run away 2.ogg-8d14aaf5e51a6230217a735f4d262d4d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/headless chicken/chicken run away 2.ogg"
+dest_files=["res://.godot/imported/chicken run away 2.ogg-8d14aaf5e51a6230217a735f4d262d4d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
