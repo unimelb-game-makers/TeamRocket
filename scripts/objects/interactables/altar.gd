@@ -76,6 +76,8 @@ func submit_item(item):
 
 
 func interact():
+	if Globals.is_game_ended or judged:
+		return
 	clear_item_description_area_data()
 	if canvas_layer.visible:
 		is_interacting_with.emit(false)
@@ -104,6 +106,9 @@ func update_display():
 	else:
 		item_shadow.visible = false
 
+	if Globals.current_requested_dish_idx >= Globals.requested_dish_list.size() or Globals.is_game_ended:
+		submit_button.disabled = true
+
 
 func dissolve_food_image():
 	wanted_food_label.visible = false
@@ -128,19 +133,25 @@ func dissolve_food_image():
 	item_containers.visible = true
 
 func judge_food(submitted_item: Item):
+	if Globals.current_requested_dish_idx >= Globals.requested_dish_list.size():
+		return
 	var wanted_dish = Globals.requested_dish_list[Globals.current_requested_dish_idx]
 	if submitted_item is Dish:
 		var submitted_dish = submitted_item as Dish
 		if submitted_dish.item_name == wanted_dish.item_name:
 			Globals.devotion += Globals.PASSED_DEVOTION_BONUS
 			passed = true
-			if Globals.current_requested_dish_idx < Globals.requested_dish_list.size() - 1:
-				Globals.current_requested_dish_idx += 1
+			Globals.current_requested_dish_idx += 1
 			return
 	Globals.devotion -= Globals.FAILED_DEVOTION_PENALTY
 	wanted_food_label_timer.stop()
 
 func update_wanted_food_label(chaotic = false):
+	if Globals.current_requested_dish_idx >= Globals.requested_dish_list.size():
+		var no_request = "{0} is silent".format([entity_names.pick_random()])
+		wanted_food_label.text = "[shake][color=gray]{0}[/color][/shake]".format([no_request])
+		return
+
 	var wanted_dish = Globals.requested_dish_list[Globals.current_requested_dish_idx]
 	var final_content = "[font_size=30]He want {0}[/font_size]".format([wanted_dish.item_name])
 	if chaotic:
@@ -210,6 +221,7 @@ func _on_area_entered(_area: Area2D) -> void:
 
 
 func _on_area_exited(_area: Area2D) -> void:
+	sprite.material.set_shader_parameter("outline_color", Color.YELLOW)
 	exit_altar_ui()
 
 
@@ -223,3 +235,9 @@ func _on_wanted_food_label_timer_timeout() -> void:
 
 func play_hover_sfx():
 	SoundManager.play_button_hover_sfx()
+
+func _on_body_exited(_body: Node2D) -> void:
+	return
+
+func _on_body_entered(_body: Node2D) -> void:
+	return

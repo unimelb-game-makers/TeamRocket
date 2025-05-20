@@ -13,7 +13,7 @@ config_version=5
 config/name="Team-Rocket Game"
 run/main_scene="res://scenes/menus/MainMenu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cbcyhg367labm"
 
 [autoload]
 
