@@ -89,6 +89,10 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Return to title"
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler"]
+process_mode = 3
+bus = &"Music"
+
 [node name="ItemHandler" type="Node" parent="." groups=["ItemHandler"]]
 script = ExtResource("1_p3mrr")
 

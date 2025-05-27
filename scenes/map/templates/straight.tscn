@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt5m74fjvh4om"]
 
-[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_505wj"]
+[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_505wj"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_7rsnm"]
 
 [node name="straight" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_505wj")]

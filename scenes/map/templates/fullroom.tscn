@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://ccmpxxyhlwyaw"]
 
-[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_bbnrc"]
+[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_bbnrc"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_hawl3"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="3_aypqx"]
 [ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="4_372yl"]
@@ -18,9 +18,10 @@ metadata/_edit_horizontal_guides_ = [738.0]
 offset_top = 97.0
 offset_right = 2020.0
 offset_bottom = 1601.0
+color = Color(0.851563, 0.851563, 0.851563, 1)
 
 [node name="TileMap" parent="." index="1"]
-tile_map_data = PackedByteArray("AAACAAgAAQAAAAAAAFAHAAgAAQAAAAAAAFAMAAgAAQAAAAAAAFARAAgAAQAAAAAAAFAGAA0AAgAAAAAAAAANAAMAAgAAAAAAADA=")
+tile_map_data = PackedByteArray("AAACAAgAAQAAAAAAAFAHAAgAAQAAAAAAAFAMAAgAAQAAAAAAAFARAAgAAQAAAAAAAFAGAA0AAgAAAAAAAAANAAMAAgAAAAAAADAEAAAAAAAAAAIAAAAEAAEAAAAAAAIAAAAEAAIAAAAAAAIAAAAEAAMAAAAAAAIAAFADAAMAAAAAAAEAAGACAAMAAAAAAAIAAFABAAMAAAAAAAIAAFAAAAMAAAAAAAIAAFAFAAMAAAAAAAIAAFAGAAMAAAAAAAIAAFABAAQAAAAAAAIAADA=")
 
 [node name="DoorArea" parent="." index="2" instance=ExtResource("2_hawl3")]
 position = Vector2(1345, 207)

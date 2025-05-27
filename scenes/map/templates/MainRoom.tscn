@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=4 uid="uid://cj2loifnvyckx"]
+
+[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_hovfd"]
+[ext_resource type="Texture2D" uid="uid://xrhly4rowkk2" path="res://assets/map/map_tileset.png" id="2_4budv"]
+[ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="3_darxa"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="4_4mb1v"]
+[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="5_ayp1v"]
+[ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="6_61mkc"]
+[ext_resource type="PackedScene" uid="uid://c6jq64hs6hvtm" path="res://scenes/enemy/EnemySpider.tscn" id="7_d0sm7"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="8_cisdh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2cxpt"]
+texture = ExtResource("2_4budv")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_84l3n"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_2cxpt")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wkoim"]
+vertices = PackedVector2Array(2870, 2550, 10, 2550, 10, 10, 2870, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 2880, 0, 2880, 2560, 0, 2560)])
+
+[node name="MainRoom" instance=ExtResource("1_hovfd")]
+
+[node name="TileMap" parent="." index="0"]
+tile_map_data = PackedByteArray("AAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAAIAAAAAAAIAAAAGAAMAAAAAAAIAAAAGAAQAAAAAAAIAAAAGAAUAAAAAAAIAAAAGAAYAAAAAAAIAAAAGAAcAAAAAAAIAAAAIAAUAAAAAAAIAAFAHAAUAAAAAAAIAAFAFAAYAAAAAAAIAAFAEAAYAAAAAAAIAAFADAAYAAAAAAAIAAFACAAYAAAAAAAIAAFABAAYAAAAAAAIAAFAAAAYAAAAAAAIAAFA=")
+tile_set = SubResource("TileSet_84l3n")
+
+[node name="ColorRect" type="ColorRect" parent="." index="1"]
+z_index = -10
+offset_right = 2880.0
+offset_bottom = 2560.0
+color = Color(0.851563, 0.851563, 0.851563, 1)
+
+[node name="DoorArea" parent="." index="2" instance=ExtResource("3_darxa")]
+position = Vector2(2080, 120)
+
+[node name="DoorArea2" parent="." index="3" instance=ExtResource("3_darxa")]
+position = Vector2(2800, 1768)
+rotation = 1.5708
+
+[node name="DoorArea3" parent="." index="4" instance=ExtResource("3_darxa")]
+position = Vector2(2080, 2432)
+direction = 3
+
+[node name="DoorArea4" parent="." index="5" instance=ExtResource("3_darxa")]
+position = Vector2(88, 2080)
+rotation = 1.5708
+
+[node name="Spawn" type="Node2D" parent="." index="6"]
+position = Vector2(1664, 1664)
+
+[node name="MediumSpawn" type="Node2D" parent="." index="7"]
+position = Vector2(1000, 600)
+
+[node name="LargeSpawn" type="Node2D" parent="." index="8"]
+position = Vector2(500, 600)
+
+[node name="SpawnArea2D" parent="." index="9" instance=ExtResource("4_4mb1v")]
+position = Vector2(584, 392)
+allowed_enemies = Array[PackedScene]([ExtResource("5_ayp1v"), ExtResource("6_61mkc")])
+
+[node name="SpawnArea2D3" parent="." index="10" instance=ExtResource("4_4mb1v")]
+position = Vector2(2568, 1072)
+allowed_enemies = Array[PackedScene]([ExtResource("6_61mkc"), ExtResource("7_d0sm7")])
+
+[node name="Area2D2" parent="." index="11" instance=ExtResource("8_cisdh")]
+position = Vector2(2448, 2224)
+
+[node name="Area2D" parent="." index="12" instance=ExtResource("8_cisdh")]
+position = Vector2(1096, 1264)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="13"]
+navigation_polygon = SubResource("NavigationPolygon_wkoim")
+
+[connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea3" to="DoorArea3" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea4" to="DoorArea4" method="_on_area_entered"]

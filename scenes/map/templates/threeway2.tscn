@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://b53easc6px7q"]
 
-[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_p6pc1"]
+[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_p6pc1"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_4ppne"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="3_4ppne"]
 [ext_resource type="PackedScene" uid="uid://cymv5i72rdk4v" path="res://scenes/enemy/EnemyLoneStalker.tscn" id="4_hfh3c"]

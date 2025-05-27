@@ -55,10 +55,6 @@ script = ExtResource("2_1q6r3")
 script = ExtResource("2_watt5")
 fade_to_black = NodePath("../GameHandler/CanvasLayer/FadeToBlack")
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler" index="1"]
-process_mode = 3
-bus = &"Music"
-
 [node name="EnemyHandler" parent="." index="3"]
 min_spawns_per_area = 1
 max_spawns_per_area = 1

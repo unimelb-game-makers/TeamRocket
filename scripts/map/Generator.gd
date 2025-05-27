@@ -33,9 +33,8 @@ const threeway: Array[PackedScene] = [
 	preload("res://scenes/map/templates/threeway.tscn"),
 	# preload("res://scenes/map/templates/threeway2.tscn")
 ]
-const full: PackedScene = preload("res://scenes/map/templates/fullroom.tscn")
+const full: PackedScene = preload("res://scenes/map/templates/MainRoom.tscn")
 const fulls: Array[PackedScene] = [
-	#preload("res://scenes/map/templates/fullroom.tscn"),
 	preload("res://scenes/map/templates/fullroom2.tscn")
 ]
 
@@ -141,8 +140,8 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 	var num_neighbors = get_num_neighbors(grid, coords)
 	var neighbors_array = get_neighbors_array(grid, coords)
 
-	var selected_room
-	
+	var selected_room: ProceduralRoom
+
 	var curr_room_data = roomdata[coords.x][coords.y]
 	if curr_room_data == null:
 		var newroomdata = RoomData.new()
@@ -159,16 +158,16 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 				newroomdata.roomscene = threeway.pick_random()
 			4:
 				newroomdata.roomscene = fulls.pick_random()
-		
+
 		curr_room_data = newroomdata
 		print("CREATED NEW ROOM DATA")
-	
+
 	selected_room = curr_room_data.roomscene.instantiate()
-	
+
 	for i in selected_room.spawnNodes:
 		if i != null:
 			i.reparent($EnemyHandler/SpawnAreas)
-	
+
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
 	var doors = selected_room.doors
@@ -205,7 +204,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 	print("Current position" + str(coords))
 
 	navigation_region_2d.call_deferred("add_child", selected_room)
-	
+
 	if selected_room.has_poi_markers():
 		print("HAS POI MARKERS")
 		if curr_room_data.poi_path == "":
@@ -215,7 +214,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 			else:
 				curr_room_data.poi_path = "res://assets/map/POI/large park background.png"
 				curr_room_data.poi_size = "large"
-		
+
 		var poi_sprite: Sprite2D = Sprite2D.new()
 		print("POI PATH: " + curr_room_data.poi_path)
 		poi_sprite.texture = load(curr_room_data.poi_path)
@@ -226,7 +225,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 			poi_sprite.global_position = selected_room.largeSpawn.global_position
 		navigation_region_2d.call_deferred("add_child", poi_sprite)
 
-	
+
 	# Spawn player and camera
 	player.channel_complete.connect($GameHandler.switch_to_kitchen)
 	player.global_position = selected_room.spawn.global_position
@@ -245,6 +244,8 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 	newcam.call_deferred("set_global_position", currplayer.global_position)
 	newcam.zoom = Vector2(0.3, 0.3)
 	currcam = newcam
+
+	navigation_region_2d.navigation_polygon = selected_room.navigation_region.navigation_polygon
 
 func go_to_room(direction: Vector2):
 	if just_teleported1 == false and just_teleported2 == false:
