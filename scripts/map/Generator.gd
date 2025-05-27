@@ -219,6 +219,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 		var poi_sprite: Sprite2D = Sprite2D.new()
 		print("POI PATH: " + curr_room_data.poi_path)
 		poi_sprite.texture = load(curr_room_data.poi_path)
+		poi_sprite.z_index = -10
 		if curr_room_data.poi_size == "med":
 			poi_sprite.global_position = selected_room.mediumSpawn.global_position
 		elif curr_room_data.poi_size == "large":

@@ -6,17 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://c6jq64hs6hvtm" path="res://scenes/enemy/EnemySpider.tscn" id="6_ofpey"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="7_q3d64"]
 
-[node name="FullRoom" node_paths=PackedStringArray("mediumSpawn", "largeSpawn", "spawnNodes") instance=ExtResource("1_sj8qq")]
+[node name="FullRoom2" node_paths=PackedStringArray("mediumSpawn", "largeSpawn", "spawnNodes") instance=ExtResource("1_sj8qq")]
 mediumSpawn = NodePath("MediumSpawn")
 largeSpawn = NodePath("LargeSpawn")
 spawnNodes = [NodePath("SpawnArea2D"), NodePath("SpawnArea2D3")]
 
 [node name="ColorRect" parent="." index="0"]
+z_index = -10
 offset_left = 508.0
 offset_right = 2840.0
 offset_bottom = 2438.0
 
 [node name="TileMap" parent="." index="1"]
+z_index = -10
 tile_map_data = PackedByteArray("AAAHABIAAQAAAAAAAFAMABIAAQAAAAAAAFARABIAAQAAAAAAAFAWABIAAAAAAAAAADAWAA0AAQAAAAAAAAAWAAgAAQAAAAAAAAAWAAMAAQAAAAAAAAAWABcAAgAAAAAAAAAbABIAAgAAAAAAAGA=")
 
 [node name="DoorArea" parent="." index="2"]
