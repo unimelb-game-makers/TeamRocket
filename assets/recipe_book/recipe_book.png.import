@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs1fnv8y7b0k0"
-path="res://.godot/imported/potato cut.png-2bcb18ca94d267ebf30b821f5f22e1ae.ctex"
+uid="uid://deyifpy2vhdtt"
+path="res://.godot/imported/recipe_book.png-9dd38cbe95023e56e9200599ba432690.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food/potato cut.png"
-dest_files=["res://.godot/imported/potato cut.png-2bcb18ca94d267ebf30b821f5f22e1ae.ctex"]
+source_file="res://assets/recipe_book/recipe_book.png"
+dest_files=["res://.godot/imported/recipe_book.png-9dd38cbe95023e56e9200599ba432690.ctex"]
 
 [params]
 

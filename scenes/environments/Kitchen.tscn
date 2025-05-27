@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
 [ext_resource type="PackedScene" uid="uid://bp3xwcc5hld8c" path="res://scenes/cooking/workbenches/RecipeBook.tscn" id="10_0g7fq"]
-[ext_resource type="PackedScene" uid="uid://cnddrwss6hk45" path="res://scenes/cooking/workbenches/oven/Oven.tscn" id="13_8r8q0"]
+[ext_resource type="PackedScene" uid="uid://bpx5ay6gfltel" path="res://scenes/cooking/workbenches/oven/Oven.tscn" id="13_8r8q0"]
 [ext_resource type="PackedScene" uid="uid://dj4u0n4uqbwvg" path="res://scenes/cooking/workbenches/chopping_board/ChoppingBoard.tscn" id="13_y6d8o"]
 [ext_resource type="PackedScene" uid="uid://djxk0awyl2jvv" path="res://scenes/cooking/workbenches/Fridge.tscn" id="14_12asn"]
 [ext_resource type="PackedScene" uid="uid://dk6a5jgkvuwwt" path="res://scenes/cooking/workbenches/FryingPan.tscn" id="14_gr436"]
@@ -106,7 +106,6 @@ texture = ExtResource("5_uiv4g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Map/Bench" index="0"]
 collision_layer = 4
-collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/Bench/StaticBody2D" index="0"]
 position = Vector2(-13.3335, 126.667)
@@ -118,6 +117,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_47cob")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="NavigationRegion2D/Map/Fryer" index="0"]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/Fryer/StaticBody2D" index="0"]
 position = Vector2(100, 142.5)
@@ -160,11 +160,13 @@ position = Vector2(712, 244)
 [node name="Fridge" parent="InteractableHandler/InteractableHolder" index="5" instance=ExtResource("14_12asn")]
 position = Vector2(1030, 195)
 
-[node name="Oven" parent="InteractableHandler/InteractableHolder" index="6" instance=ExtResource("13_8r8q0")]
-position = Vector2(1021, 650)
+[node name="Oven_NotUsedYet" parent="InteractableHandler/InteractableHolder" index="6" instance=ExtResource("13_8r8q0")]
+visible = false
+position = Vector2(98, 1078)
 
-[node name="FryingPan" parent="InteractableHandler/InteractableHolder" index="7" instance=ExtResource("14_gr436")]
-position = Vector2(1266, 506)
+[node name="FryingPan_NotUsedYet" parent="InteractableHandler/InteractableHolder" index="7" instance=ExtResource("14_gr436")]
+visible = false
+position = Vector2(241, 1078)
 
 [node name="Player" parent="." index="7"]
 position = Vector2(269, 549)

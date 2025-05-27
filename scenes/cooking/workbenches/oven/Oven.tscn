@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnddrwss6hk45"]
+[gd_scene load_steps=15 format=3 uid="uid://bpx5ay6gfltel"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_llvdt"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_ja2sr"]

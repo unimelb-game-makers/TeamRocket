@@ -30,9 +30,13 @@ func _ready() -> void:
 		var day = int(save_data.get("current_day", 1))
 		var devotion = int(save_data.get("devotion", Globals.STARTING_DEVOTION))
 		var playtime = save_data.get("total_playtime", 0)
+		var current_requested_dish_idx = save_data.get("current_requested_dish_idx", 0)
+		var progress_perc = (current_requested_dish_idx / float(Globals.requested_dish_list.size())) * 100
+		progress_perc = snapped(progress_perc, 1)
+
 		load_button_label.text = "[b][color=green]Slot {0}[/color][/b] \
-			\nLevel: {1} | Day: {2} | Devotion: {3} \
-			\nPlaytime: {4}".format([slot_id, level, day, devotion, format_time(playtime)])
+			\nLevel: {1} | Day: {2} | Devotion: {3} | {4}%\
+			\nPlaytime: {5}".format([slot_id, level, day, devotion, progress_perc, format_time(playtime)])
 		delete_button.disabled = false
 		load_button_border.modulate = Color.GREEN
 	else:

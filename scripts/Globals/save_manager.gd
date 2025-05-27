@@ -56,6 +56,8 @@ func delete_save_file(slot_id: int):
 		print("Save file does not exist.")
 
 func save_game(slot_id):
+	if Globals.dont_save_game:
+		return
 	Globals.update_total_playtime()
 	is_saving = true
 	started_saving.emit()
