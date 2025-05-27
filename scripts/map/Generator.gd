@@ -21,16 +21,17 @@ var just_teleported1 = false
 var just_teleported2 = false
 
 @onready var navigation_region_2d: NavigationRegion2D = $NavigationRegion2D
+@onready var player: Player = $Player
 
 const straight: PackedScene = preload("res://scenes/map/templates/straight.tscn")
 const deadend: PackedScene = preload("res://scenes/map/templates/dead_end.tscn")
 const bend: Array[PackedScene] = [
 	preload("res://scenes/map/templates/turn.tscn"),
-	preload("res://scenes/map/templates/turn2.tscn")
+	# preload("res://scenes/map/templates/turn2.tscn")
 ]
 const threeway: Array[PackedScene] = [
 	preload("res://scenes/map/templates/threeway.tscn"),
-	preload("res://scenes/map/templates/threeway2.tscn")
+	# preload("res://scenes/map/templates/threeway2.tscn")
 ]
 const full: PackedScene = preload("res://scenes/map/templates/fullroom.tscn")
 const fulls: Array[PackedScene] = [
@@ -38,7 +39,6 @@ const fulls: Array[PackedScene] = [
 	preload("res://scenes/map/templates/fullroom2.tscn")
 ]
 
-const PLAYER = preload("res://scenes/player/Player.tscn")
 var currplayer
 var currcam
 
@@ -53,13 +53,13 @@ func _ready() -> void:
 	start_gen() # only grid explored here
 
 	print(curr_rooms)
-	var count = 0
+	var _count = 0
 	for i in range(DIM_Y):
 		var row = ""
 		for j in range(DIM_X):
 			if grid[j][i]:
 				row += "■ "
-				count += 1
+				_count += 1
 			else:
 				row += "□ "
 		print(row)
@@ -114,22 +114,22 @@ func get_neighbors(current_pos: Vector2) -> Array:
 	neighbors.shuffle()
 	return neighbors
 
-func get_num_neighbors(grid, current_pos: Vector2) -> int:
+func get_num_neighbors(_grid, current_pos: Vector2) -> int:
 	var num = 0
 	for d in directions:
 		var neighbor: Vector2 = current_pos + d
-		if check_bounds(neighbor) and grid[neighbor.x][neighbor.y] == 1:
+		if check_bounds(neighbor) and _grid[neighbor.x][neighbor.y] == 1:
 			num += 1
 	return num
 
 # Room gen
 
-func get_neighbors_array(grid, current_pos: Vector2) -> Array:
+func get_neighbors_array(_grid, current_pos: Vector2) -> Array:
 	var arr = []
 	for d in directions:
 		var neighbor = current_pos + d
 		# Door
-		if check_bounds(neighbor) and grid[neighbor.x][neighbor.y] == 1:
+		if check_bounds(neighbor) and _grid[neighbor.x][neighbor.y] == 1:
 			arr.append("B")
 		# Empty
 		else:
@@ -137,19 +137,14 @@ func get_neighbors_array(grid, current_pos: Vector2) -> Array:
 	return arr
 
 func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO):
-	var room = grid[coords.x][coords.y]
+	# var room = grid[coords.x][coords.y]
 	var num_neighbors = get_num_neighbors(grid, coords)
 	var neighbors_array = get_neighbors_array(grid, coords)
 
 	var selected_room
-<< << << < HEAD
-	var curr_room_data = roomdata[coords.x][coords.y]
 	
+	var curr_room_data = roomdata[coords.x][coords.y]
 	if curr_room_data == null:
-== == == =
-
-	if roomdata[coords.x][coords.y] == null:
->> >> >> > main
 		var newroomdata = RoomData.new()
 
 		match num_neighbors:
@@ -171,12 +166,13 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 	selected_room = curr_room_data.roomscene.instantiate()
 	
 	for i in selected_room.spawnNodes:
-		i.reparent($EnemyHandler/SpawnAreas)
+		if i != null:
+			i.reparent($EnemyHandler/SpawnAreas)
 	
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
 	var doors = selected_room.doors
-	var total_rotations = 0
+	var _total_rotations = 0
 	print("Fresh Sockets: " + str(sockets))
 	while sockets != neighbors_array:
 		var temp = sockets.pop_front()
@@ -186,7 +182,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 		doors.append(temp2)
 
 		selected_room.rotate(-PI / 2)
-		total_rotations += -PI / 2
+		_total_rotations += -PI / 2
 
 	selected_room.doors = doors
 	selected_room.sockets = sockets
@@ -231,17 +227,15 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 
 	
 	# Spawn player and camera
-	var s: Player = PLAYER.instantiate()
-	call_deferred("add_child", s)
-	s.channel_complete.connect($GameHandler.switch_to_kitchen)
-	s.global_position = selected_room.spawn.global_position
-	currplayer = s
+	player.channel_complete.connect($GameHandler.switch_to_kitchen)
+	player.global_position = selected_room.spawn.global_position
+	currplayer = player
 
 	#Spawn player at incoming door
 	var incoming_direction = Vector2.ZERO - outgoing_direction
 	if incoming_direction != Vector2.ZERO:
 		assert(incoming_direction.is_normalized())
-		var door_index = directions.find(incoming_direction)
+		var _door_index = directions.find(incoming_direction)
 		currplayer.global_position = selected_room.get_door_by_direction(incoming_direction).global_position
 
 	var newcam = Camera2D.new()

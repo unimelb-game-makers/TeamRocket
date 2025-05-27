@@ -104,7 +104,6 @@ max_spawns_per_area = null
 
 [node name="Dark" type="CanvasModulate" parent="Lighting"]
 visible = false
-position = Vector2(533, 480)
 color = Color(0.18359, 0.18359, 0.18359, 1)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["navigation"]]
