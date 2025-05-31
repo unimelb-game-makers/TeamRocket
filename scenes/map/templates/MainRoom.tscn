@@ -26,6 +26,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 2880, 0, 2880, 2560, 0, 2560)])
 
 [node name="MainRoom" instance=ExtResource("1_hovfd")]
+room_name = "MainRoom"
 
 [node name="TileMap" parent="." index="0"]
 tile_map_data = PackedByteArray("AAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAAIAAAAAAAIAAAAGAAMAAAAAAAIAAAAGAAQAAAAAAAIAAAAGAAUAAAAAAAIAAAAGAAYAAAAAAAIAAAAGAAcAAAAAAAIAAAAIAAUAAAAAAAIAAFAHAAUAAAAAAAIAAFAFAAYAAAAAAAIAAFAEAAYAAAAAAAIAAFADAAYAAAAAAAIAAFACAAYAAAAAAAIAAFABAAYAAAAAAAIAAFAAAAYAAAAAAAIAAFA=")
@@ -46,7 +47,6 @@ rotation = 1.5708
 
 [node name="DoorArea3" parent="." index="4" instance=ExtResource("3_darxa")]
 position = Vector2(2080, 2432)
-direction = 3
 
 [node name="DoorArea4" parent="." index="5" instance=ExtResource("3_darxa")]
 position = Vector2(88, 2080)

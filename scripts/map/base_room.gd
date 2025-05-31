@@ -13,6 +13,8 @@ const WEST = 3
 const BLANK = "A" # No room can be attached to this socket.
 const DOOR = "B" # There is a door in this direction.
 
+@export var room_name: String
+
 ## In the order of NESW, enter the appropriate socket in the array in the Inspector.
 ## For example, if this room has 1 door in the South and 2 doors in the West,
 ## then replace "A" with one "B" in '2' and '3' each.
@@ -37,6 +39,7 @@ const DOOR = "B" # There is a door in this direction.
 
 func _ready() -> void:
 	# Verify each socket only has 1 character
+	print("This room is ", room_name)
 	for i in sockets:
 		assert(len(i) <= 1, "Socket must have 1 character")
 

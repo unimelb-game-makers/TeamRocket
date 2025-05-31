@@ -21,25 +21,23 @@ var just_teleported1 = false
 var just_teleported2 = false
 
 @onready var navigation_region_2d: NavigationRegion2D = $NavigationRegion2D
+@onready var game_handler: GameHandler = $GameHandler
 @onready var player: Player = $Player
 
-const straight: PackedScene = preload("res://scenes/map/templates/straight.tscn")
-const deadend: PackedScene = preload("res://scenes/map/templates/dead_end.tscn")
+const straight: PackedScene = preload("res://scenes/map/templates/Straight.tscn")
+const deadend: PackedScene = preload("res://scenes/map/templates/DeadEnd.tscn")
 const bend: Array[PackedScene] = [
-	preload("res://scenes/map/templates/turn.tscn"),
-	# preload("res://scenes/map/templates/turn2.tscn")
+	preload("res://scenes/map/templates/Turn.tscn"),
 ]
 const threeway: Array[PackedScene] = [
-	preload("res://scenes/map/templates/threeway.tscn"),
-	# preload("res://scenes/map/templates/threeway2.tscn")
+	preload("res://scenes/map/templates/Threeway.tscn"),
 ]
 const full: PackedScene = preload("res://scenes/map/templates/MainRoom.tscn")
 const fulls: Array[PackedScene] = [
-	preload("res://scenes/map/templates/fullroom2.tscn")
+	preload("res://scenes/map/templates/Fullroom2.tscn")
 ]
 
-var currplayer
-var currcam
+var currplayer: Player
 
 func _ready() -> void:
 	for i in DIM_X:
@@ -57,7 +55,10 @@ func _ready() -> void:
 		var row = ""
 		for j in range(DIM_X):
 			if grid[j][i]:
-				row += "■ "
+				if i == 2 and j == 2:
+					row += "◩ "
+				else:
+					row += "■ "
 				_count += 1
 			else:
 				row += "□ "
@@ -166,7 +167,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 
 	for i in selected_room.spawnNodes:
 		if i != null:
-			i.reparent($EnemyHandler/SpawnAreas)
+			i.call_deferred("reparent", $EnemyHandler/SpawnAreas)
 
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
@@ -201,7 +202,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 
 	current_room = Vector2(coords.x, coords.y)
 	current_selected = selected_room
-	print("Current position" + str(coords))
+	print("CURRENT POSITION " + str(coords))
 
 	navigation_region_2d.call_deferred("add_child", selected_room)
 
@@ -227,7 +228,6 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 
 
 	# Spawn player and camera
-	player.channel_complete.connect($GameHandler.switch_to_kitchen)
 	player.global_position = selected_room.spawn.global_position
 	currplayer = player
 
@@ -238,14 +238,10 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 		var _door_index = directions.find(incoming_direction)
 		currplayer.global_position = selected_room.get_door_by_direction(incoming_direction).global_position
 
-	var newcam = Camera2D.new()
-	#newcam.make_current()
-	currplayer.call_deferred("add_child", newcam)
-	newcam.call_deferred("set_global_position", currplayer.global_position)
-	newcam.zoom = Vector2(0.3, 0.3)
-	currcam = newcam
-
-	navigation_region_2d.navigation_polygon = selected_room.navigation_region.navigation_polygon
+	if selected_room.navigation_region != null:
+		navigation_region_2d.navigation_polygon = selected_room.navigation_region.navigation_polygon
+	else:
+		push_warning("This room {0} doesn't have NavigationRegion".format([selected_room.room_name]))
 
 func go_to_room(direction: Vector2):
 	if just_teleported1 == false and just_teleported2 == false:
@@ -253,8 +249,6 @@ func go_to_room(direction: Vector2):
 	else:
 		return
 	current_selected.queue_free()
-	currplayer.queue_free()
-	currcam.queue_free()
 	initialize_room(Vector2(current_room.x + direction.x, current_room.y + direction.y), direction)
 
 	print("Entered a door going into: " + str(direction))

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgq65qqynjm2q"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_brl46"]
-[ext_resource type="Script" uid="uid://caq8ki1bk05u5" path="res://scripts/map/generator.gd" id="2_v5udi"]
+[ext_resource type="Script" uid="uid://caq8ki1bk05u5" path="res://scripts/map/map_generator.gd" id="2_v5udi"]
 
 [node name="CityGeneratedMap" instance=ExtResource("1_brl46")]
 script = ExtResource("2_v5udi")

@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="6_xku4r"]
 
 [node name="FullRoom" node_paths=PackedStringArray("doors", "spawn", "spawnNodes") instance=ExtResource("1_bbnrc")]
+room_name = "Fullroom"
 sockets = Array[String](["B", "B", "B", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
 spawn = NodePath("Spawn")
@@ -32,7 +33,6 @@ rotation = 1.5708
 
 [node name="DoorArea3" parent="." index="4" instance=ExtResource("2_hawl3")]
 position = Vector2(648, 1469)
-direction = 3
 
 [node name="DoorArea4" parent="." index="5" instance=ExtResource("2_hawl3")]
 position = Vector2(70, 828)

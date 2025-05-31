@@ -27,6 +27,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 2880, 0, 2880, 25
 
 [node name="FullRoom2" type="Node2D" node_paths=PackedStringArray("doors", "spawn", "spawnNodes", "navigation_region")]
 script = ExtResource("1_ta5ng")
+room_name = "Fullroom2"
 sockets = Array[String](["B", "B", "B", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
 spawn = NodePath("Spawn")
@@ -55,7 +56,6 @@ rotation = 1.5708
 
 [node name="DoorArea3" parent="." instance=ExtResource("3_a3836")]
 position = Vector2(2080, 2432)
-direction = 3
 
 [node name="DoorArea4" parent="." instance=ExtResource("3_a3836")]
 position = Vector2(88, 2080)
