@@ -1,6 +1,6 @@
 # Secrets: ITCH_IO_API_KEY
 
-name: "Godot CI/CD"
+name: "Godot CI/CD on push to main"
 
 env:
   GODOT_VERSION: 4.4
@@ -9,9 +9,6 @@ env:
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
 
@@ -32,6 +29,14 @@ jobs:
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
       - name: Create staging directory
         run: mkdir -v -p build/web
+        
+      - name: Import assets
+        run: |
+          godot --import --headless
+          # Run a second time to make sure that the warnings have cleared.
+          # This should exit pretty much immediately.
+          godot --import --headless
+          ls .godot
 
       - name: Build
         run: godot -v --export-release --headless "Web"
@@ -47,10 +52,13 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
-          force_orphan: true
+          # force_orphan: true
+          # NOTE: keeping files like this could be dangerous. Consider deleting stuff to save space if needed, depending on needs
+          # e.g. Add an only-keep-last-10-version job
+          keep_files: true
           user_name: "github-ci[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
-          commit_message: "Update Github Pages"
+          commit_message: "Deploy main branch push to main directory"
 
       - name: Zip Web artifacts
         run: zip -r "${{ env.PROJECT_NAME }}_web.zip" build/web
@@ -61,8 +69,7 @@ jobs:
           name: ${{ env.PROJECT_NAME }}_web
           path: ${{ env.PROJECT_NAME }}_web.zip
 
-  release:
-    if: github.event_name != 'pull_request'
+  Release:
     needs: [Web]
     runs-on: ubuntu-latest
     permissions:
@@ -99,10 +106,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{env.GitVersion_MajorMinorPatch}}
-          release_name: ${{env.GitVersion_MajorMinorPatch}}
+          tag_name: ${{env.GitVersion_FullSemVer}}
+          release_name: ${{env.GitVersion_FullSemVer}}
           body: |
-            Release notes for ${{env.GitVersion_MajorMinorPatch}}
+            Release notes for ${{env.GitVersion_FullSemVer}}
           draft: false
           prerelease: true
 
@@ -117,8 +124,7 @@ jobs:
           asset_name: "${{ env.PROJECT_NAME }}_web.zip"
           asset_content_type: application/zip
 
-  itch-deploy:
-    if: github.event_name != 'pull_request'
+  Itch-deploy:
     needs: [Web]
     runs-on: ubuntu-latest
     steps:
