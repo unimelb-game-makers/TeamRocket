@@ -253,6 +253,7 @@ func go_to_room(direction: Vector2):
 	else:
 		return
 	current_selected.queue_free()
+	enemy_handler.clear_room()
 	initialize_room(Vector2(current_room.x + direction.x, current_room.y + direction.y), direction)
 
 	print("Entered a door going into: " + str(direction))
