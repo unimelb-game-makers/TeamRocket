@@ -24,7 +24,6 @@ func _ready() -> void:
 func spawn_single():
 	var enemy_inst = allowed_enemies.pick_random().instantiate()
 	enemy_inst.global_position = global_position + collisionshape.shape.radius * get_random_point()
-	print("Spawn 1 enemy ", enemy_inst.name)
 	# Add child to root node
 	Globals.enemy_handler.add_child(enemy_inst)
 	Globals.enemy_handler.add_enemy_to_list(enemy_inst)

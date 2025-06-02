@@ -1,6 +1,6 @@
 extends Node
 
-var grid = [] # 2D Array for generation
+var grid: Array[Array] = [] # 2D Array for generation
 const DIM_X = 7
 const DIM_Y = 7
 
@@ -64,9 +64,14 @@ func _ready() -> void:
 				row += "□ "
 		print(row)
 
+	
 	# Initialize starting room and put player in it
-	initialize_room(starting_room, )
+	initialize_room(starting_room)
 
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+	Globals.player_ui.create_minimap(grid, current_room)
 
 func start_gen():
 	grid[starting_room.x][starting_room.y] = 1
@@ -252,12 +257,21 @@ func go_to_room(direction: Vector2):
 		just_teleported1 = true
 	else:
 		return
+
+	await enemy_handler.clear_room()
 	current_selected.queue_free()
-	enemy_handler.clear_room()
+
+	await get_tree().process_frame
+	await get_tree().process_frame
+
 	initialize_room(Vector2(current_room.x + direction.x, current_room.y + direction.y), direction)
 
 	print("Entered a door going into: " + str(direction))
 	print("------------------")
+
+	print("Current room ", current_room)
+	Globals.player_ui.create_minimap(grid, current_room)
+
 
 func player_exit():
 	if just_teleported1 == true and just_teleported2 == false:

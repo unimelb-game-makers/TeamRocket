@@ -130,7 +130,7 @@ text = "5/5"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ColorRect" type="NinePatchRect" parent="PlayerUI/GunInfo"]
+[node name="NinePatchRect" type="NinePatchRect" parent="PlayerUI/GunInfo"]
 self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -157,6 +157,251 @@ grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "Day 1"
 horizontal_alignment = 2
+
+[node name="MinimapBG" type="ColorRect" parent="PlayerUI"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -224.0
+offset_right = 240.0
+offset_bottom = -8.0
+grow_vertical = 0
+color = Color(0, 0, 0, 0.52549)
+
+[node name="Minimap" type="ScrollContainer" parent="PlayerUI/MinimapBG"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="PlayerUI/MinimapBG/Minimap"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 7
+
+[node name="ColorRect" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect2" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect3" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect4" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect5" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect6" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect7" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect8" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect9" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect10" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect11" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect12" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect13" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect14" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect15" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect16" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect17" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect18" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect19" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect20" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect21" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect22" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect23" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect24" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect25" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect26" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect27" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect28" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect29" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect30" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect31" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect32" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect33" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect34" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect35" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect36" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect37" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect38" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect39" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect40" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect41" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect42" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect43" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect44" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect45" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect46" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect47" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect48" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="ColorRect49" type="ColorRect" parent="PlayerUI/MinimapBG/Minimap/GridContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PlayerUI/MinimapBG"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_07ked")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
 [node name="PauseMenu" parent="." instance=ExtResource("6_t0vuv")]
 visible = false
