@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://ccmpxxyhlwyaw"]
+[gd_scene load_steps=9 format=4 uid="uid://ccmpxxyhlwyaw"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_bbnrc"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_hawl3"]
@@ -7,12 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="5_xku4r"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="6_xku4r"]
 
-[node name="FullRoom" node_paths=PackedStringArray("doors", "spawn", "spawnNodes") instance=ExtResource("1_bbnrc")]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dq2p3"]
+vertices = PackedVector2Array(2230, 1582.03, 10, 1589.96, 10, 10, 2230, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 2240, 0, 2240, 1592, 0, 1600)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq2p3"]
+size = Vector2(2936, 82)
+
+[node name="FullRoom" node_paths=PackedStringArray("doors", "spawn", "enemy_spawn_nodes", "navigation_region") instance=ExtResource("1_bbnrc")]
 room_name = "Fullroom"
 sockets = Array[String](["B", "B", "B", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
 spawn = NodePath("Spawn")
-spawnNodes = [NodePath("SpawnArea2D")]
+enemy_spawn_nodes = [NodePath("SpawnArea2D")]
+navigation_region = NodePath("NavigationRegion2D")
 metadata/_edit_horizontal_guides_ = [738.0]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
@@ -48,6 +57,47 @@ allowed_enemies = Array[PackedScene]([ExtResource("4_372yl"), ExtResource("5_xku
 
 [node name="Crate" parent="." index="8" instance=ExtResource("6_xku4r")]
 position = Vector2(378, 408)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="9"]
+navigation_polygon = SubResource("NavigationPolygon_dq2p3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="10"]
+position = Vector2(1096, -32)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(180, 0)
+shape = SubResource("RectangleShape2D_dq2p3")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." index="11"]
+position = Vector2(1056, 1640)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" index="0"]
+position = Vector2(180, 0)
+shape = SubResource("RectangleShape2D_dq2p3")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." index="12"]
+position = Vector2(-48, 872)
+rotation = 1.57079
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" index="0"]
+position = Vector2(180, 0)
+shape = SubResource("RectangleShape2D_dq2p3")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="." index="13"]
+position = Vector2(2280, 704)
+rotation = 1.57079
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" index="0"]
+position = Vector2(180, 0)
+shape = SubResource("RectangleShape2D_dq2p3")
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]

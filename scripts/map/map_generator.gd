@@ -23,6 +23,7 @@ var just_teleported2 = false
 @onready var navigation_region_2d: NavigationRegion2D = $NavigationRegion2D
 @onready var game_handler: GameHandler = $GameHandler
 @onready var player: Player = $Player
+@onready var enemy_handler: EnemyHandler = $EnemyHandler
 
 const straight: PackedScene = preload("res://scenes/map/templates/Straight.tscn")
 const deadend: PackedScene = preload("res://scenes/map/templates/DeadEnd.tscn")
@@ -164,9 +165,9 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 
 	selected_room = curr_room_data.roomscene.instantiate()
 
-	for i in selected_room.spawnNodes:
+	for i in selected_room.enemy_spawn_nodes:
 		if i != null:
-			i.call_deferred("reparent", $EnemyHandler/SpawnAreas)
+			i.call_deferred("reparent", enemy_handler.spawn_areas)
 
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
@@ -220,7 +221,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 		poi_sprite.texture = load(curr_room_data.poi_path)
 		poi_sprite.z_index = -10
 		if curr_room_data.poi_size == "med":
-			poi_sprite.global_position = selected_room.mediumSpawn.global_position
+			poi_sprite.global_position = selected_room.medium_spawn.global_position
 		elif curr_room_data.poi_size == "large":
 			poi_sprite.global_position = selected_room.largeSpawn.global_position
 		navigation_region_2d.call_deferred("add_child", poi_sprite)
@@ -231,7 +232,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 	player.global_position = selected_room.spawn.global_position
 	currplayer = player
 
-	#Spawn player at incoming door
+	# Spawn player at incoming door
 	var incoming_direction = Vector2.ZERO - outgoing_direction
 	if incoming_direction != Vector2.ZERO:
 		assert(incoming_direction.is_normalized())
@@ -242,6 +243,9 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 		navigation_region_2d.navigation_polygon = selected_room.navigation_region.navigation_polygon
 	else:
 		push_warning("This room {0} doesn't have NavigationRegion".format([selected_room.room_name]))
+
+	# Spawn enemies
+	enemy_handler.call_deferred("spawn_enemies")
 
 func go_to_room(direction: Vector2):
 	if just_teleported1 == false and just_teleported2 == false:

@@ -640,7 +640,8 @@ texture = ExtResource("12_o5gnq")
 [node name="RayCast2D" type="RayCast2D" parent="Rifle"]
 position = Vector2(41, 1)
 target_position = Vector2(2000, 0)
-collision_mask = 6
+collision_mask = 132
+collide_with_areas = true
 
 [node name="AimingUI" type="Node2D" parent="Rifle"]
 z_index = 1
@@ -650,12 +651,12 @@ script = ExtResource("5_bb4ct")
 [node name="Line1" type="Line2D" parent="Rifle/AimingUI"]
 points = PackedVector2Array(0, 0, 100, 0)
 width = 5.0
-default_color = Color(1, 1, 1, 0.239216)
+default_color = Color(1, 0.015625, 0.015625, 0.239216)
 
 [node name="Line2" type="Line2D" parent="Rifle/AimingUI"]
 points = PackedVector2Array(0, 0, 100, 0)
 width = 5.0
-default_color = Color(1, 1, 1, 0.239216)
+default_color = Color(1, 0.015625, 0.015625, 0.239216)
 
 [node name="SoundEffects" type="Node2D" parent="Rifle"]
 
@@ -887,8 +888,8 @@ script = ExtResource("111_q71nn")
 
 [connection signal="aim_mode_enter" from="." to="PlayerCamera" method="_on_player_aim_mode_enter"]
 [connection signal="aim_mode_exit" from="." to="PlayerCamera" method="_on_player_aim_mode_exit"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_anim_sprite_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]
 [connection signal="fired" from="Rifle" to="PlayerCamera" method="_on_rifle_fired"]
 [connection signal="timeout" from="Rifle/ReloadTimer" to="Rifle" method="_on_reload_timer_timeout"]

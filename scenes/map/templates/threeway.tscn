@@ -6,12 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/EnemyDasher.tscn" id="4_lcgkf"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="5_q4uk5"]
 
-[node name="Threeway" node_paths=PackedStringArray("doors", "spawn", "spawnNodes") instance=ExtResource("1_jvckg")]
+[node name="Threeway" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_jvckg")]
 room_name = "Threeway"
 sockets = Array[String](["B", "B", "A", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), null, NodePath("DoorArea3")]
 spawn = NodePath("Spawn")
-spawnNodes = [NodePath("SpawnArea2D")]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 z_index = -10

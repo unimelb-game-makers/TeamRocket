@@ -32,10 +32,10 @@ const DOOR = "B" # There is a door in this direction.
 @export var doors: Array[Area2D] = [] # Door scenes, cant get by get_tree
 @export var spawn: Node2D
 
-@export var mediumSpawn: Node2D
-@export var largeSpawn: Node2D
+@export var medium_spawn: Node2D
+@export var large_spawn: Node2D
 
-@export var spawnNodes: Array[Node2D] = []
+@export var enemy_spawn_nodes: Array[Node2D] = []
 @export var navigation_region: NavigationRegion2D
 
 func _ready() -> void:
@@ -59,6 +59,6 @@ func get_door_by_direction(incoming: Vector2):
 			return i
 
 func has_poi_markers():
-	if mediumSpawn != null and largeSpawn != null:
+	if medium_spawn != null and large_spawn != null:
 		return true
 	return false
