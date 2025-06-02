@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b8cckow3na0pq" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_brown.png" id="2_p8ga0"]
 [ext_resource type="Texture2D" uid="uid://dmbquitnmj5ib" path="res://scenes/ui/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_brown_pressed.png" id="3_n7krq"]
 [ext_resource type="Texture2D" uid="uid://ver5p03n0w5i" path="res://assets/food/tomato_cut.png" id="4_k03ck"]
-[ext_resource type="Script" uid="uid://bec0i5lj72tyd" path="res://scenes/ui/button_hover_effect.gd" id="4_q1vbu"]
+[ext_resource type="Script" uid="uid://bec0i5lj72tyd" path="res://scripts/ui/button_hover_effect.gd" id="4_q1vbu"]
 
 [node name="ItemInventoryButton" type="MarginContainer"]
 custom_minimum_size = Vector2(64, 64)

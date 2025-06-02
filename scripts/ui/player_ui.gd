@@ -1,6 +1,8 @@
 extends Control
 class_name PlayerUI
 
+@export var minimap_square_prefab: PackedScene
+
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var gun_texture: TextureRect = $GunInfo/GunTexture
 @onready var ammo_count: Label = $GunInfo/AmmoCount
@@ -56,16 +58,7 @@ func create_minimap(map_grid: Array[Array], current_room: Vector2):
 
 	for i in range(map_grid.size()):
 		for j in range(map_grid[i].size()):
-			if map_grid[j][i]:
-				if i == current_room.y and j == current_room.x:
-					create_minimap_square(Color.GREEN)
-				else:
-					create_minimap_square(Color.WHITE)
-			else:
-				create_minimap_square(Color.BLACK)
-
-func create_minimap_square(color: Color):
-	var square_inst = ColorRect.new()
-	square_inst.modulate = color
-	square_inst.custom_minimum_size = Vector2(20, 20)
-	minimap_grid.add_child(square_inst)
+			var inst: MinimapSquare = minimap_square_prefab.instantiate()
+			minimap_grid.add_child(inst)
+			inst.init(map_grid, Vector2(j, i), current_room)
+	print(map_grid)

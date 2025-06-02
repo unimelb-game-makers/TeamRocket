@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5qjcot0kmmft"]
+
+[ext_resource type="Script" uid="uid://bt8gk85ncfk6y" path="res://scripts/ui/minimap_square.gd" id="1_3rd21"]
+[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="1_t5yr2"]
+
+[node name="MinimapSquare" type="ColorRect"]
+custom_minimum_size = Vector2(20, 20)
+script = ExtResource("1_3rd21")
+
+[node name="PathTop" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.828125, 0.828125, 0.828125, 1)
+layout_mode = 0
+offset_left = 7.0
+offset_right = 13.0
+offset_bottom = 6.0
+rotation = -1.5708
+texture = ExtResource("1_t5yr2")
+expand_mode = 1
+
+[node name="PathRight" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.828125, 0.828125, 0.828125, 1)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 7.0
+offset_right = 26.0
+offset_bottom = 13.0
+texture = ExtResource("1_t5yr2")
+expand_mode = 1
+
+[node name="PathDown" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.828125, 0.828125, 0.828125, 1)
+layout_mode = 0
+offset_left = 7.0
+offset_top = 26.0
+offset_right = 13.0
+offset_bottom = 32.0
+rotation = -1.5708
+texture = ExtResource("1_t5yr2")
+expand_mode = 1
+
+[node name="PathLeft" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.828125, 0.828125, 0.828125, 1)
+layout_mode = 0
+offset_left = -6.0
+offset_top = 7.0
+offset_bottom = 13.0
+texture = ExtResource("1_t5yr2")
+expand_mode = 1
