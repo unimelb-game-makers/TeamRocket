@@ -127,7 +127,6 @@ chest_scene = ExtResource("3_ld3e5")
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_2xv6m")]
-position = Vector2(533, 480)
 
 [connection signal="pressed" from="GameHandler/CanvasLayer2/EndgameUI/EndgameTitleButton" to="GameHandler" method="_on_endgame_title_button_pressed"]
 [connection signal="channel_complete" from="Player" to="GameHandler" method="_on_player_channel_complete"]

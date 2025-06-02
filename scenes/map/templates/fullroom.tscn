@@ -16,26 +16,27 @@ spawnNodes = [NodePath("SpawnArea2D")]
 metadata/_edit_horizontal_guides_ = [738.0]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
-offset_top = 97.0
-offset_right = 2020.0
+z_index = -10
+offset_right = 2240.0
 offset_bottom = 1601.0
 color = Color(0.851563, 0.851563, 0.851563, 1)
 
 [node name="TileMap" parent="." index="1"]
-tile_map_data = PackedByteArray("AAACAAgAAQAAAAAAAFAHAAgAAQAAAAAAAFAMAAgAAQAAAAAAAFARAAgAAQAAAAAAAFAGAA0AAgAAAAAAAAANAAMAAgAAAAAAADAEAAAAAAAAAAIAAAAEAAEAAAAAAAIAAAAEAAIAAAAAAAIAAAAEAAMAAAAAAAIAAFADAAMAAAAAAAEAAGACAAMAAAAAAAIAAFABAAMAAAAAAAIAAFAAAAMAAAAAAAIAAFAFAAMAAAAAAAIAAFAGAAMAAAAAAAIAAFABAAQAAAAAAAIAADA=")
+z_index = -10
+tile_map_data = PackedByteArray("AAAEAAAAAAAAAAIAAAAEAAEAAAAAAAIAAAAEAAIAAAAAAAIAAAAEAAMAAAAAAAIAAFADAAMAAAAAAAEAAGACAAMAAAAAAAIAAFABAAMAAAAAAAIAAFAAAAMAAAAAAAIAAFAFAAMAAAAAAAIAAFAGAAMAAAAAAAIAAFABAAQAAAAAAAIAADA=")
 
 [node name="DoorArea" parent="." index="2" instance=ExtResource("2_hawl3")]
-position = Vector2(1345, 207)
+position = Vector2(1440, 64)
 
 [node name="DoorArea2" parent="." index="3" instance=ExtResource("2_hawl3")]
-position = Vector2(1933, 847)
+position = Vector2(2176, 1120)
 rotation = 1.5708
 
 [node name="DoorArea3" parent="." index="4" instance=ExtResource("2_hawl3")]
-position = Vector2(648, 1469)
+position = Vector2(480, 1536)
 
 [node name="DoorArea4" parent="." index="5" instance=ExtResource("2_hawl3")]
-position = Vector2(70, 828)
+position = Vector2(56, 1120)
 rotation = 1.5708
 
 [node name="Spawn" type="Node2D" parent="." index="6"]
@@ -45,7 +46,7 @@ position = Vector2(592, 479)
 position = Vector2(1255, 1311)
 allowed_enemies = Array[PackedScene]([ExtResource("4_372yl"), ExtResource("5_xku4r")])
 
-[node name="Area2D" parent="." index="8" instance=ExtResource("6_xku4r")]
+[node name="Crate" parent="." index="8" instance=ExtResource("6_xku4r")]
 position = Vector2(378, 408)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]

@@ -11,14 +11,16 @@ spawn = NodePath("Spawn")
 spawnNodes = [NodePath("Node2D")]
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
-offset_right = 904.0
-offset_bottom = 692.0
+z_index = -10
+offset_right = 952.0
+offset_bottom = 960.0
 
 [node name="TileMap" parent="." index="1"]
-tile_map_data = PackedByteArray(0, 0, 4, 0, 4, 0, 2, 0, 0, 0, 0, 0, 0, 0)
+z_index = -10
+tile_map_data = PackedByteArray(0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="DoorArea" parent="." index="2" instance=ExtResource("2_kugv0")]
-position = Vector2(442, 643)
+position = Vector2(480, 904)
 
 [node name="Spawn" type="Node2D" parent="." index="3"]
 position = Vector2(488, 408)

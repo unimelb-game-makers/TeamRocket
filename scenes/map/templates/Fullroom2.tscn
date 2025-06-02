@@ -25,18 +25,20 @@ vertices = PackedVector2Array(2870, 2550, 10, 2550, 10, 10, 2870, 10)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 2880, 0, 2880, 2560, 0, 2560)])
 
-[node name="MainRoom" instance=ExtResource("1_hovfd")]
+[node name="MainRoom" node_paths=PackedStringArray("spawn") instance=ExtResource("1_hovfd")]
 room_name = "MainRoom"
+spawn = NodePath("Spawn")
 
-[node name="TileMap" parent="." index="0"]
-tile_map_data = PackedByteArray("AAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAAIAAAAAAAIAAAAGAAMAAAAAAAIAAAAGAAQAAAAAAAIAAAAGAAUAAAAAAAIAAAAGAAYAAAAAAAIAAAAGAAcAAAAAAAIAAAAIAAUAAAAAAAIAAFAHAAUAAAAAAAIAAFAFAAYAAAAAAAIAAFAEAAYAAAAAAAIAAFADAAYAAAAAAAIAAFACAAYAAAAAAAIAAFABAAYAAAAAAAIAAFAAAAYAAAAAAAIAAFA=")
-tile_set = SubResource("TileSet_84l3n")
-
-[node name="ColorRect" type="ColorRect" parent="." index="1"]
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
 z_index = -10
 offset_right = 2880.0
 offset_bottom = 2560.0
 color = Color(0.851563, 0.851563, 0.851563, 1)
+
+[node name="TileMap" parent="." index="1"]
+z_index = -10
+tile_map_data = PackedByteArray("AAAGAAAAAAAAAAIAAAAGAAEAAAAAAAIAAAAGAAIAAAAAAAIAAAAGAAMAAAAAAAIAAAAGAAQAAAAAAAIAAAAGAAUAAAAAAAIAAAAGAAYAAAAAAAIAAAAGAAcAAAAAAAIAAAAIAAUAAAAAAAIAAFAHAAUAAAAAAAIAAFAFAAYAAAAAAAIAAFAEAAYAAAAAAAIAAFADAAYAAAAAAAIAAFACAAYAAAAAAAIAAFABAAYAAAAAAAIAAFAAAAYAAAAAAAIAAFA=")
+tile_set = SubResource("TileSet_84l3n")
 
 [node name="DoorArea" parent="." index="2" instance=ExtResource("3_darxa")]
 position = Vector2(2080, 120)
@@ -55,27 +57,21 @@ rotation = 1.5708
 [node name="Spawn" type="Node2D" parent="." index="6"]
 position = Vector2(1664, 1664)
 
-[node name="MediumSpawn" type="Node2D" parent="." index="7"]
-position = Vector2(1000, 600)
-
-[node name="LargeSpawn" type="Node2D" parent="." index="8"]
-position = Vector2(500, 600)
-
-[node name="SpawnArea2D" parent="." index="9" instance=ExtResource("4_4mb1v")]
+[node name="SpawnArea2D" parent="." index="7" instance=ExtResource("4_4mb1v")]
 position = Vector2(584, 392)
 allowed_enemies = Array[PackedScene]([ExtResource("5_ayp1v"), ExtResource("6_61mkc")])
 
-[node name="SpawnArea2D3" parent="." index="10" instance=ExtResource("4_4mb1v")]
+[node name="SpawnArea2D3" parent="." index="8" instance=ExtResource("4_4mb1v")]
 position = Vector2(2568, 1072)
 allowed_enemies = Array[PackedScene]([ExtResource("6_61mkc"), ExtResource("7_d0sm7")])
 
-[node name="Area2D2" parent="." index="11" instance=ExtResource("8_cisdh")]
+[node name="Crate" parent="." index="9" instance=ExtResource("8_cisdh")]
 position = Vector2(2448, 2224)
 
-[node name="Area2D" parent="." index="12" instance=ExtResource("8_cisdh")]
+[node name="Crate2" parent="." index="10" instance=ExtResource("8_cisdh")]
 position = Vector2(1096, 1264)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="13"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="11"]
 navigation_polygon = SubResource("NavigationPolygon_wkoim")
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]

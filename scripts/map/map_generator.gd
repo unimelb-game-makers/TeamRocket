@@ -32,9 +32,8 @@ const bend: Array[PackedScene] = [
 const threeway: Array[PackedScene] = [
 	preload("res://scenes/map/templates/Threeway.tscn"),
 ]
-const full: PackedScene = preload("res://scenes/map/templates/MainRoom.tscn")
 const fulls: Array[PackedScene] = [
-	preload("res://scenes/map/templates/Fullroom2.tscn")
+	preload("res://scenes/map/templates/Fullroom.tscn"),
 ]
 
 var currplayer: Player

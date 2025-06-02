@@ -28,6 +28,7 @@ const DOOR = "B" # There is a door in this direction.
 ## Chance of this room appearing in the map. 1 = least likely, 5 = most likely.
 @export_range(1, 5) var room_weighting: int = 1
 
+## 4 items max, in North, East, South, West order
 @export var doors: Array[Area2D] = [] # Door scenes, cant get by get_tree
 @export var spawn: Node2D
 
