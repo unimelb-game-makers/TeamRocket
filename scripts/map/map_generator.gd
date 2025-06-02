@@ -228,6 +228,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 
 
 	# Spawn player and camera
+	player.camera.temporarily_disable_smooth_for_scene_change()
 	player.global_position = selected_room.spawn.global_position
 	currplayer = player
 
