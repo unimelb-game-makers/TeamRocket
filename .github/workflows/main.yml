@@ -4,6 +4,8 @@ env:
   GODOT_VERSION: 4.4.1
   # Project name here will be used as the distributed executable name on steam
   PROJECT_NAME: 'the-last-diner'
+  # This must match with the itch page of the game
+  ITCH_PROJECT_NAME: 'team-rocket'
 
 on:
   workflow_dispatch:
@@ -201,7 +203,7 @@ jobs:
       env:
         BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_API_KEY }}
         CHANNEL: HTML
-        ITCH_GAME: ${{ env.PROJECT_NAME }}
+        ITCH_GAME: ${{ env.ITCH_PROJECT_NAME }}
         ITCH_USER: gmcunimelb
         PACKAGE: ${{ env.PROJECT_NAME }}_web.zip
   
