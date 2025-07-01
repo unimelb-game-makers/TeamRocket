@@ -2,7 +2,8 @@ name: "Godot CI/CD"
 
 env:
   GODOT_VERSION: 4.4.1
-  PROJECT_NAME: 'ci_example'
+  # Project name here will be used as the distributed executable name on steam
+  PROJECT_NAME: 'the-last-diner'
 
 on:
   workflow_dispatch:
