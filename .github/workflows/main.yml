@@ -1,19 +1,22 @@
-# Secrets: ITCH_IO_API_KEY
-
-name: "Godot CI/CD on push to main"
+name: "Godot CI/CD"
 
 env:
   GODOT_VERSION: 4.4.1
-  PROJECT_NAME: 'team-rocket'
+  # Project name here will be used as the distributed executable name on steam
+  PROJECT_NAME: 'the-last-diner'
+  # This must match with the itch page of the game
+  ITCH_PROJECT_NAME: 'team-rocket'
 
 on:
   workflow_dispatch:
   push:
     branches:
       - main
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
 
 jobs:
-  Web:
+  Builds:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -26,22 +29,10 @@ jobs:
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
           lfs: true
 
-      - name: ❌ Turn off LFS
-        run: >-
-          git lfs uninstall;
-          rm -Rf .git;
-          rm .gitattributes;
-      
-      # Git considers it unsafe since are using LFS under a docker image, so mark it as safe as workaround
-      - name: Mark repo as safe
-        run: git config --global --add safe.directory /__w/TeamRocket/TeamRocket
-
       - name: Move export templates into position
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
-      - name: Create staging directory
-        run: mkdir -v -p build/web
 
       - name: Import assets
         run: |
@@ -51,8 +42,28 @@ jobs:
           # This should exit pretty much immediately.
           godot --import --headless
 
-      - name: Build
-        run: godot -v --export-release --headless "Web"
+      - name: Web Build
+        run: |
+          mkdir -v -p build/web
+          godot -v --export-release --headless "Web"
+
+      - name: Windows Build
+        run: |
+          mkdir -v -p build/windows
+          EXPORT_DIR="$(readlink -f build)"
+          godot --headless --verbose --export-release "Windows Desktop" "$EXPORT_DIR/windows/${{ env.PROJECT_NAME }}_windows.exe"
+
+      - name: Linux Build
+        run: |
+          mkdir -v -p build/linux
+          EXPORT_DIR="$(readlink -f build)"
+          godot --headless --verbose --export-release "Linux/X11" "$EXPORT_DIR/linux/${{ env.PROJECT_NAME }}_linux.x86_64"
+
+      - name: MacOS Build
+        run: |
+          mkdir -v -p build/macos
+          EXPORT_DIR="$(readlink -f build)"
+          godot --headless --verbose --export-release "macOS" "$EXPORT_DIR/macos/${{ env.PROJECT_NAME }}_mac.app"
 
       - name: Add coi-service-worker
         run: |
@@ -60,19 +71,34 @@ jobs:
           mv coi-serviceworker/coi-serviceworker.js build/web/coi-serviceworker.js
           sed -i '3 i <script src="coi-serviceworker.js"></script>' build/web/index.html
 
-      - name: 🚀 Deploy to `gh-pages` branch
+      - name: 🚀 Deploy to `gh-pages` branch # Push - deploy to main directory
+        if: github.event_name == 'push'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
           publish_branch: gh-pages
-          # force_orphan: true
+          force_orphan: true
           # NOTE: keeping files like this could be dangerous. Consider deleting stuff to save space if needed, depending on needs
           # e.g. Add an only-keep-last-10-version job
           keep_files: true
           user_name: "github-ci[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
           commit_message: "Deploy main branch push to main directory"
+
+      - name: 🚀 Deploy to `gh-pages` branch # PR - deploy to subdirectory
+        if: github.event_name == 'pull_request'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+          publish_branch: gh-pages
+          force_orphan: true
+          keep_files: true
+          user_name: "github-ci[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_message: "Deploy PR web deploy to subdirectory ${{ github.event.number }}"
+          destination_dir: ${{ github.event.number }}
 
       - name: Zip Web artifacts
         run: zip -r "${{ env.PROJECT_NAME }}_web.zip" build/web
@@ -82,9 +108,28 @@ jobs:
         with:
           name: ${{ env.PROJECT_NAME }}_web
           path: ${{ env.PROJECT_NAME }}_web.zip
+          
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PROJECT_NAME }}_windows
+          path: build/windows
 
-  Release:
-    needs: [Web]
+      - name: Upload MacOS artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PROJECT_NAME }}_macos
+          path: build/macos
+          
+      - name: Upload Linux artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PROJECT_NAME }}_linux
+          path: build/linux
+
+  Github-page-release: # Push only - create github releases
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    needs: [Builds]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -139,8 +184,9 @@ jobs:
           asset_name: "${{ env.PROJECT_NAME }}_web.zip"
           asset_content_type: application/zip
 
-  Itch-deploy:
-    needs: [Web]
+  Itch-deploy: # Push only - create itch releases
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    needs: [Builds]
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -157,6 +203,84 @@ jobs:
       env:
         BUTLER_CREDENTIALS: ${{ secrets.ITCH_IO_API_KEY }}
         CHANNEL: HTML
-        ITCH_GAME: ${{ env.PROJECT_NAME }}
+        ITCH_GAME: ${{ env.ITCH_PROJECT_NAME }}
         ITCH_USER: gmcunimelb
         PACKAGE: ${{ env.PROJECT_NAME }}_web.zip
+  
+  Steam-deploy: # Push only - deploy for steam
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    needs: [Builds]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download Windows Build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ env.PROJECT_NAME }}_windows
+        path: build/windows
+
+    - name: Download MacOS Build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ env.PROJECT_NAME }}_macos
+        path: build/macos
+        
+    - name: Download Linux Build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ env.PROJECT_NAME }}_linux
+        path: build/linux
+
+    - name: Check required secrets exist # Fail if secrets not defined
+      env: 
+        STEAM_APPID_LOCAL: ${{ secrets.STEAM_APPID }}
+        STEAM_USERNAME_LOCAL: ${{ secrets.STEAM_USERNAME }}
+        STEAM_CONFIG_VDF_LOCAL: ${{ secrets.STEAM_CONFIG_VDF }}
+      run: |
+        if [ -z "$STEAM_APPID_LOCAL" ]; then
+          exit 1
+        fi
+        if [ -z "$STEAM_USERNAME_LOCAL" ]; then
+          exit 1
+        fi
+        if [ -z "$STEAM_CONFIG_VDF_LOCAL" ]; then
+          exit 1
+        fi
+
+    # https://github.com/game-ci/steam-deploy, using configVdf to authenticate
+    - uses: game-ci/steam-deploy@v3
+      with:
+        username: ${{ secrets.STEAM_USERNAME }}          
+        configVdf: ${{ secrets.STEAM_CONFIG_VDF}}         
+        appId: ${{ secrets.STEAM_APPID }}
+        buildDescription: Auto Steam Deploy ${{env.GitVersion_FullSemVer}}
+        rootPath: build
+        depot1Path: windows
+        # depot1InstallScriptPath: StandaloneWindows64/install_script.vdf
+        depot2Path: macos
+        depot3Path: linux
+        # Might be too dangerous to immediately release the build onto some branch.
+        # Steam-ci also doesn't support releasing to a branch protected by password for now it seems.
+        # So for now, manually release the build to the correct branch on steamworks.
+        # releaseBranch: develop
+         
+  PR-comment-update: # PR only - comment preview link
+    if: github.event_name == 'pull_request'
+    needs: [Builds]
+    runs-on: ubuntu-latest
+    permissions: 
+      pull-requests: write
+    steps:
+      - name: Set preview URL message
+        id: set-message
+        run: |
+          if [[ "${{ needs.Builds.result }}" == "success" ]]; then
+            echo "message=🌐 [Web Preview](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/${{ github.event.pull_request.number }}/)" >> $GITHUB_OUTPUT
+          else
+            echo "message=❌ Deployment failed for this PR." >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment deploy preview URL
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          message: ${{ steps.set-message.outputs.message }}
+          comment-tag: execution
