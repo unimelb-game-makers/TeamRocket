@@ -1,35 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://13idwhn3nese"]
+[gd_scene load_steps=6 format=4 uid="uid://13idwhn3nese"]
 
-[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_jvckg"]
+[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_jvckg"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_i84du"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="3_b5exj"]
+[ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/EnemyDasher.tscn" id="4_lcgkf"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="5_q4uk5"]
 
 [node name="Threeway" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_jvckg")]
+room_name = "Threeway"
 sockets = Array[String](["B", "B", "A", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), null, NodePath("DoorArea3")]
 spawn = NodePath("Spawn")
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
-offset_right = 1496.0
+z_index = -10
+offset_right = 1600.0
 offset_bottom = 1228.0
 
 [node name="TileMap" parent="." index="1"]
-tile_map_data = PackedByteArray(0, 0, 2, 0, 7, 0, 1, 0, 0, 0, 0, 0, 0, 80, 7, 0, 2, 0, 2, 0, 0, 0, 0, 0, 0, 48, 7, 0, 7, 0, 1, 0, 0, 0, 0, 0, 0, 80, 12, 0, 7, 0, 1, 0, 0, 0, 0, 0, 0, 80)
+z_index = -10
+tile_map_data = PackedByteArray("AAAAAAIAAAAAAAIAAGABAAIAAAAAAAEAAGACAAIAAAAAAAIAAGADAAIAAAAAAAEAAFAEAAIAAAAAAAIAAGACAAEAAAAAAAEAAAACAAAAAAAAAAIAADA=")
 
 [node name="DoorArea" parent="." index="2" instance=ExtResource("2_i84du")]
-position = Vector2(736, 85)
+position = Vector2(808, 72)
 
 [node name="DoorArea2" parent="." index="3" instance=ExtResource("2_i84du")]
-position = Vector2(1434, 742)
+position = Vector2(1464, 800)
 rotation = 1.5708
-direction = 3
 
 [node name="DoorArea3" parent="." index="4" instance=ExtResource("2_i84du")]
-position = Vector2(46, 758)
+position = Vector2(56, 800)
 rotation = 1.5708
-direction = 3
 
 [node name="Spawn" type="Node2D" parent="." index="5"]
 position = Vector2(400, 400)
+
+[node name="SpawnArea2D" parent="." index="6" instance=ExtResource("3_b5exj")]
+position = Vector2(1264, 296)
+allowed_enemies = Array[PackedScene]([ExtResource("4_lcgkf")])
+
+[node name="Crate" parent="." index="7" instance=ExtResource("5_q4uk5")]
+position = Vector2(296, 320)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]

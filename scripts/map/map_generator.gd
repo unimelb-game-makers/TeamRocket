@@ -1,12 +1,12 @@
 extends Node
 
-var grid = []      # 2D Array for generation
+var grid: Array[Array] = [] # 2D Array for generation
 const DIM_X = 7
 const DIM_Y = 7
 
 var roomdata = []
 
-var starting_room = Vector2(2,2)
+var starting_room = Vector2(2, 2)
 var current_room: Vector2
 var current_selected
 
@@ -21,20 +21,23 @@ var just_teleported1 = false
 var just_teleported2 = false
 
 @onready var navigation_region_2d: NavigationRegion2D = $NavigationRegion2D
+@onready var game_handler: GameHandler = $GameHandler
+@onready var player: Player = $Player
+@onready var enemy_handler: EnemyHandler = $EnemyHandler
 
-const straight: PackedScene = preload("res://scenes/map/templates/straight.tscn")
-const deadend: PackedScene = preload("res://scenes/map/templates/dead_end.tscn")
-const bend: PackedScene = preload("res://scenes/map/templates/turn.tscn")
-const threeway: PackedScene = preload("res://scenes/map/templates/threeway.tscn")
-const full: PackedScene = preload("res://scenes/map/templates/fullroom.tscn")
+const straight: PackedScene = preload("res://scenes/map/templates/Straight.tscn")
+const deadend: PackedScene = preload("res://scenes/map/templates/DeadEnd.tscn")
+const bend: Array[PackedScene] = [
+	preload("res://scenes/map/templates/Turn.tscn"),
+]
+const threeway: Array[PackedScene] = [
+	preload("res://scenes/map/templates/Threeway.tscn"),
+]
 const fulls: Array[PackedScene] = [
-	preload("res://scenes/map/templates/fullroom.tscn"),
-	preload("res://scenes/map/templates/fullroom2.tscn")
+	preload("res://scenes/map/templates/Fullroom.tscn"),
 ]
 
-const PLAYER = preload("res://scenes/player/Player.tscn")
-var currplayer
-var currcam
+var currplayer: Player
 
 func _ready() -> void:
 	for i in DIM_X:
@@ -47,23 +50,30 @@ func _ready() -> void:
 	start_gen() # only grid explored here
 
 	print(curr_rooms)
-	var count = 0
+	var _count = 0
 	for i in range(DIM_Y):
 		var row = ""
 		for j in range(DIM_X):
 			if grid[j][i]:
-				row += "■ "
-				count += 1
+				if i == 2 and j == 2:
+					row += "◩ "
+				else:
+					row += "■ "
+				_count += 1
 			else:
 				row += "□ "
 		print(row)
 
+	
 	# Initialize starting room and put player in it
-	initialize_room(starting_room,)
+	initialize_room(starting_room)
 
+	await get_tree().process_frame
+	await get_tree().process_frame
+
+	Globals.player_ui.create_minimap(grid, current_room)
 
 func start_gen():
-
 	grid[starting_room.x][starting_room.y] = 1
 	generation_queue.append(starting_room)
 
@@ -109,36 +119,37 @@ func get_neighbors(current_pos: Vector2) -> Array:
 	neighbors.shuffle()
 	return neighbors
 
-func get_num_neighbors(grid, current_pos: Vector2) -> int:
+func get_num_neighbors(_grid, current_pos: Vector2) -> int:
 	var num = 0
 	for d in directions:
 		var neighbor: Vector2 = current_pos + d
-		if check_bounds(neighbor) and grid[neighbor.x][neighbor.y] == 1:
+		if check_bounds(neighbor) and _grid[neighbor.x][neighbor.y] == 1:
 			num += 1
 	return num
 
 # Room gen
 
-func get_neighbors_array(grid, current_pos: Vector2) -> Array:
+func get_neighbors_array(_grid, current_pos: Vector2) -> Array:
 	var arr = []
 	for d in directions:
 		var neighbor = current_pos + d
 		# Door
-		if check_bounds(neighbor) and grid[neighbor.x][neighbor.y] == 1:
+		if check_bounds(neighbor) and _grid[neighbor.x][neighbor.y] == 1:
 			arr.append("B")
 		# Empty
 		else:
 			arr.append("A")
 	return arr
 
-func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
-	var room = grid[coords.x][coords.y]
+func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO):
+	# var room = grid[coords.x][coords.y]
 	var num_neighbors = get_num_neighbors(grid, coords)
 	var neighbors_array = get_neighbors_array(grid, coords)
 
-	var selected_room
+	var selected_room: ProceduralRoom
 
-	if roomdata[coords.x][coords.y] == null:
+	var curr_room_data = roomdata[coords.x][coords.y]
+	if curr_room_data == null:
 		var newroomdata = RoomData.new()
 
 		match num_neighbors:
@@ -148,20 +159,25 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 				if neighbors_array == ["A", "B", "A", "B"] or neighbors_array == ["B", "A", "B", "A"]:
 					newroomdata.roomscene = straight
 				else:
-					newroomdata.roomscene = bend
+					newroomdata.roomscene = bend.pick_random()
 			3:
-				newroomdata.roomscene = threeway
+				newroomdata.roomscene = threeway.pick_random()
 			4:
 				newroomdata.roomscene = fulls.pick_random()
 
-		roomdata[coords.x][coords.y] = newroomdata
+		curr_room_data = newroomdata
+		print("CREATED NEW ROOM DATA")
 
-	selected_room = roomdata[coords.x][coords.y].roomscene.instantiate()
+	selected_room = curr_room_data.roomscene.instantiate()
+
+	for i in selected_room.enemy_spawn_nodes:
+		if i != null:
+			i.call_deferred("reparent", enemy_handler.spawn_areas)
 
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
 	var doors = selected_room.doors
-	var total_rotations = 0
+	var _total_rotations = 0
 	print("Fresh Sockets: " + str(sockets))
 	while sockets != neighbors_array:
 		var temp = sockets.pop_front()
@@ -170,8 +186,8 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 		var temp2 = doors.pop_front()
 		doors.append(temp2)
 
-		selected_room.rotate(-PI/2)
-		total_rotations += -PI/2
+		selected_room.rotate(-PI / 2)
+		_total_rotations += -PI / 2
 
 	selected_room.doors = doors
 	selected_room.sockets = sockets
@@ -191,43 +207,71 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2=Vector2.ZERO):
 
 	current_room = Vector2(coords.x, coords.y)
 	current_selected = selected_room
-	print("Current position" + str(coords))
+	print("CURRENT POSITION " + str(coords))
 
 	navigation_region_2d.call_deferred("add_child", selected_room)
 
-	# Spawn player and camera
-	var s: Player = PLAYER.instantiate()
-	call_deferred("add_child", s)
-	s.channel_complete.connect($GameHandler.switch_to_kitchen)
-	s.global_position = selected_room.spawn.global_position
-	currplayer = s
+	if selected_room.has_poi_markers():
+		print("HAS POI MARKERS")
+		if curr_room_data.poi_path == "":
+			if randi_range(0, 3) > 3:
+				curr_room_data.poi_path = "res://assets/map/POI/medium park background.png"
+				curr_room_data.poi_size = "med"
+			else:
+				curr_room_data.poi_path = "res://assets/map/POI/large park background.png"
+				curr_room_data.poi_size = "large"
 
-	#Spawn player at incoming door
+		var poi_sprite: Sprite2D = Sprite2D.new()
+		print("POI PATH: " + curr_room_data.poi_path)
+		poi_sprite.texture = load(curr_room_data.poi_path)
+		poi_sprite.z_index = -10
+		if curr_room_data.poi_size == "med":
+			poi_sprite.global_position = selected_room.medium_spawn.global_position
+		elif curr_room_data.poi_size == "large":
+			poi_sprite.global_position = selected_room.largeSpawn.global_position
+		navigation_region_2d.call_deferred("add_child", poi_sprite)
+
+
+	# Spawn player and camera
+	player.camera.temporarily_disable_smooth_for_scene_change()
+	player.global_position = selected_room.spawn.global_position
+	currplayer = player
+
+	# Spawn player at incoming door
 	var incoming_direction = Vector2.ZERO - outgoing_direction
 	if incoming_direction != Vector2.ZERO:
 		assert(incoming_direction.is_normalized())
-		var door_index = directions.find(incoming_direction)
+		var _door_index = directions.find(incoming_direction)
 		currplayer.global_position = selected_room.get_door_by_direction(incoming_direction).global_position
 
-	var newcam = Camera2D.new()
-	#newcam.make_current()
-	currplayer.call_deferred("add_child", newcam)
-	newcam.call_deferred("set_global_position", currplayer.global_position)
-	newcam.zoom = Vector2(0.3,0.3)
-	currcam = newcam
+	if selected_room.navigation_region != null:
+		navigation_region_2d.navigation_polygon = selected_room.navigation_region.navigation_polygon
+	else:
+		push_warning("This room {0} doesn't have NavigationRegion".format([selected_room.room_name]))
+
+	# Spawn enemies
+	enemy_handler.call_deferred("spawn_enemies")
 
 func go_to_room(direction: Vector2):
 	if just_teleported1 == false and just_teleported2 == false:
 		just_teleported1 = true
 	else:
 		return
+
+	await enemy_handler.clear_room()
 	current_selected.queue_free()
-	currplayer.queue_free()
-	currcam.queue_free()
+
+	await get_tree().process_frame
+	await get_tree().process_frame
+
 	initialize_room(Vector2(current_room.x + direction.x, current_room.y + direction.y), direction)
 
 	print("Entered a door going into: " + str(direction))
 	print("------------------")
+
+	print("Current room ", current_room)
+	Globals.player_ui.create_minimap(grid, current_room)
+
 
 func player_exit():
 	if just_teleported1 == true and just_teleported2 == false:

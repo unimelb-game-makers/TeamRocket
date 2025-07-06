@@ -7,8 +7,8 @@
 [ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="4_30h3e"]
 [ext_resource type="Resource" uid="uid://d3b4eailp7hg2" path="res://resources/cooking/recipes/full_foods/vegetable_curry_rec.tres" id="6_3hbae"]
 [ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="6_erx1b"]
-[ext_resource type="Resource" uid="uid://cb1r3mgbgnv21" path="res://resources/cooking/recipes/full_foods/chicken_curry_rec.tres" id="7_erx1b"]
-[ext_resource type="Resource" uid="uid://cdkwk2i8v3mc8" path="res://resources/cooking/recipes/full_foods/test_dish_type.tres" id="8_erx1b"]
+[ext_resource type="Resource" uid="uid://cekv3gsqq857k" path="res://resources/cooking/recipes/full_foods/chicken_curry_rec.tres" id="7_erx1b"]
+[ext_resource type="Resource" path="res://resources/cooking/recipes/full_foods/test_dish_type.tres" id="8_erx1b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ee4c5"]
 size = Vector2(96, 72)

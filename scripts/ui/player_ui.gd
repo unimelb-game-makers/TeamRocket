@@ -1,11 +1,16 @@
 extends Control
 class_name PlayerUI
 
+@export var minimap_square_prefab: PackedScene
+
 @onready var health_bar: TextureProgressBar = $HealthBar
 @onready var gun_texture: TextureRect = $GunInfo/GunTexture
 @onready var ammo_count: Label = $GunInfo/AmmoCount
 @onready var day_label: Label = $DayLabel
 @onready var vignette_shader: ColorRect = $VignetteShader
+@onready var minimap: Container = $MinimapBG/Minimap
+@onready var minimap_grid: GridContainer = $MinimapBG/Minimap/GridContainer
+
 
 var vignette_alpha = 0.7
 var vignette_fade_speed = 0.5
@@ -46,3 +51,14 @@ func play_damaged_effect(damaged_amount: int):
 	Engine.time_scale = time_scale
 	await get_tree().create_timer(slow_time_duration * Engine.time_scale).timeout
 	Engine.time_scale = 1
+
+func create_minimap(map_grid: Array[Array], current_room: Vector2):
+	for child in minimap_grid.get_children():
+		child.queue_free()
+
+	for i in range(map_grid.size()):
+		for j in range(map_grid[i].size()):
+			var inst: MinimapSquare = minimap_square_prefab.instantiate()
+			minimap_grid.add_child(inst)
+			inst.init(map_grid, Vector2(j, i), current_room)
+	print(map_grid)

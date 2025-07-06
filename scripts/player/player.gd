@@ -32,7 +32,7 @@ var current_footstep_freq = WALK_FOOTSTEP_SFX_FREQUENCY
 var curr_speed: float
 var curr_accel: float
 var speed_modifier = 1.0
-var speed_cache: float = 0# Save the speed modifer of the user (used for locking movement) 
+var speed_cache: float = 0 # Save the speed modifer of the user (used for locking movement)
 
 var direction: Vector2
 var is_moving = false
@@ -67,6 +67,7 @@ var is_invulnerable_after_hurt = false
 @onready var footstep_timer: Timer = $FootstepSoundEffect/FootstepTimer
 @onready var footstep_audio: AudioStreamPlayer2D = $FootstepSoundEffect
 @onready var enemy_noise_rader: Sprite2D = $EnemyNoiseRadar
+@onready var camera: Camera2D = $PlayerCamera
 
 @export var effect_mapping: Dictionary[Item.Effects, StatusEffect]
 @onready var slow_debuff_timer: Timer = $DebuffTimer/SlowDebuffTimer

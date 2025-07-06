@@ -49,3 +49,8 @@ func _on_player_aim_mode_exit() -> void:
 func _on_rifle_fired() -> void:
 	# Do screenshake when shoot here
 	pass # Replace with function body.
+
+func temporarily_disable_smooth_for_scene_change(wait_time: float = 0.25):
+	position_smoothing_enabled = false
+	await get_tree().create_timer(wait_time).timeout
+	position_smoothing_enabled = true

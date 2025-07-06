@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://xxuamij5ryb7"]
 
-[ext_resource type="Script" uid="uid://caq8ki1bk05u5" path="res://scripts/map/Generator.gd" id="1_7lp7c"]
+[ext_resource type="Script" uid="uid://caq8ki1bk05u5" path="res://scripts/map/map_generator.gd" id="1_7lp7c"]
 [ext_resource type="Script" uid="uid://dswbwl8o4vfsd" path="res://scripts/Game/game_handler.gd" id="2_6jxcj"]
 [ext_resource type="PackedScene" uid="uid://hgrksmummwv0" path="res://scenes/ui/MainUI.tscn" id="3_ywkxy"]
 [ext_resource type="Script" uid="uid://dgayqf5bjeouf" path="res://scripts/item/item_handler.gd" id="4_vbwut"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://blaauerf105us" path="res://scripts/Game/interactable_handler.gd" id="6_qsbel"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="7_0ursy"]
 
-[node name="MapGen" type="Node2D"]
+[node name="MapGenerator" type="Node2D"]
 script = ExtResource("1_7lp7c")
 
 [node name="GameHandler" type="Node" parent="."]
@@ -46,7 +46,6 @@ max_spawns_per_area = null
 [node name="Lighting" type="Node" parent="."]
 
 [node name="Dark" type="CanvasModulate" parent="Lighting"]
-position = Vector2(533, 480)
 color = Color(0.18359, 0.18359, 0.18359, 1)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["navigation"]]

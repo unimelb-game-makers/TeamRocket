@@ -89,6 +89,10 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Return to title"
 
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler"]
+process_mode = 3
+bus = &"Music"
+
 [node name="ItemHandler" type="Node" parent="." groups=["ItemHandler"]]
 script = ExtResource("1_p3mrr")
 
@@ -104,7 +108,6 @@ max_spawns_per_area = null
 
 [node name="Dark" type="CanvasModulate" parent="Lighting"]
 visible = false
-position = Vector2(533, 480)
 color = Color(0.18359, 0.18359, 0.18359, 1)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["navigation"]]
@@ -124,11 +127,6 @@ chest_scene = ExtResource("3_ld3e5")
 y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_2xv6m")]
-position = Vector2(533, 480)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.5, 0.5)
-position_smoothing_enabled = true
 
 [connection signal="pressed" from="GameHandler/CanvasLayer2/EndgameUI/EndgameTitleButton" to="GameHandler" method="_on_endgame_title_button_pressed"]
 [connection signal="channel_complete" from="Player" to="GameHandler" method="_on_player_channel_complete"]

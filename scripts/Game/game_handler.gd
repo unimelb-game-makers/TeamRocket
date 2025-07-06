@@ -4,7 +4,6 @@ class_name GameHandler
 @onready var canvas: CanvasLayer = $CanvasLayer
 @onready var fade_to_black: ColorRect = $CanvasLayer/FadeToBlack
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
-
 @onready var canvas2: CanvasLayer = $CanvasLayer2
 @onready var endgame_label: Label = $CanvasLayer2/EndgameUI/Label
 

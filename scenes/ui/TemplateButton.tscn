@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="1_mqvtx"]
 [ext_resource type="Texture2D" uid="uid://mql53aoddg1y" path="res://assets/textures/kenney_borders/default/Border/panel-border-001.png" id="2_4q1p4"]
-[ext_resource type="Script" uid="uid://bec0i5lj72tyd" path="res://scenes/ui/button_hover_effect.gd" id="2_idu18"]
+[ext_resource type="Script" uid="uid://bec0i5lj72tyd" path="res://scripts/ui/button_hover_effect.gd" id="2_idu18"]
 
 [node name="Button" type="Button"]
 custom_minimum_size = Vector2(140, 40)

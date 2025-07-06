@@ -1,28 +1,30 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt5m74fjvh4om"]
 
-[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseRoom.tscn" id="1_505wj"]
-[ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_7rsnm"]
+[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_46ymu"]
+[ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_uc075"]
 
-[node name="straight" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_505wj")]
+[node name="Straight" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_46ymu")]
+room_name = "Straight"
 sockets = Array[String](["A", "B", "A", "B"])
 doors = [null, NodePath("DoorArea"), null, NodePath("DoorArea2")]
 spawn = NodePath("Spawn")
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
-offset_right = 1503.0
-offset_bottom = 760.0
+z_index = -10
+offset_right = 1600.0
+offset_bottom = 896.0
 
 [node name="TileMap" parent="." index="1"]
-tile_map_data = PackedByteArray(0, 0, 2, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 80, 7, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 80, 12, 0, 3, 0, 1, 0, 0, 0, 0, 0, 0, 80)
+z_index = -10
+tile_map_data = PackedByteArray(0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 96, 1, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 96, 2, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 96, 3, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 96, 4, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 96)
 
-[node name="DoorArea" parent="." index="2" instance=ExtResource("2_7rsnm")]
-position = Vector2(1453, 354)
+[node name="DoorArea" parent="." index="2" instance=ExtResource("2_uc075")]
+position = Vector2(1544, 480)
 rotation = 1.5708
 
-[node name="DoorArea2" parent="." index="3" instance=ExtResource("2_7rsnm")]
-position = Vector2(53, 349)
+[node name="DoorArea2" parent="." index="3" instance=ExtResource("2_uc075")]
+position = Vector2(72, 480)
 rotation = 1.5708
-direction = 3
 
 [node name="Spawn" type="Node2D" parent="." index="4"]
 position = Vector2(408, 342)
