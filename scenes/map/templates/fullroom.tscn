@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://ccmpxxyhlwyaw"]
+[gd_scene load_steps=8 format=4 uid="uid://ccmpxxyhlwyaw"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_bbnrc"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_hawl3"]
@@ -8,96 +8,50 @@
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="6_xku4r"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dq2p3"]
-vertices = PackedVector2Array(2230, 1582.03, 10, 1589.96, 10, 10, 2230, 10)
+vertices = PackedVector2Array(2726, 1837.9, -3302.13, 1782.09, -3357.85, -2166.05, 2726, -2197.94)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 2240, 0, 2240, 1592, 0, 1600)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-3368, -2176, 2736, -2208, 2736, 1848, -3312, 1792)])
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq2p3"]
-size = Vector2(2936, 82)
-
-[node name="FullRoom" node_paths=PackedStringArray("doors", "spawn", "enemy_spawn_nodes", "navigation_region") instance=ExtResource("1_bbnrc")]
+[node name="FullRoom" node_paths=PackedStringArray("doors", "possible_small_poi_spawn", "enemy_spawn_nodes", "navigation_region") instance=ExtResource("1_bbnrc")]
 room_name = "Fullroom"
 sockets = Array[String](["B", "B", "B", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
-spawn = NodePath("Spawn")
+possible_small_poi_spawn = [null, null, null]
 enemy_spawn_nodes = [NodePath("SpawnArea2D")]
 navigation_region = NodePath("NavigationRegion2D")
 metadata/_edit_horizontal_guides_ = [738.0]
 
-[node name="ColorRect" type="ColorRect" parent="." index="0"]
+[node name="TileMap" parent="." index="0"]
 z_index = -10
-offset_right = 2240.0
-offset_bottom = 1601.0
-color = Color(0.851563, 0.851563, 0.851563, 1)
+tile_map_data = PackedByteArray("AAAEAAMAAAAAAAIAAFADAAMAAAAAAAEAAGACAAMAAAAAAAIAAFABAAMAAAAAAAIAAFAAAAMAAAAAAAIAAFAFAAMAAAABAAEAAAD//wMAAAAAAAIAAFD+/wMAAAAAAAIAAFD9/wMAAAAAAAIAAFD8/wMAAAAAAAIAAFD7/wMAAAAAAAIAAFD6/wMAAAAAAAIAAFADAP7/AAABAAEAAAADAP//AAABAAAAAAADAAAAAAABAAAAAAADAAEAAAABAAAAAAADAAIAAAABAAAAAAABAAIAAAAAAAIAAAAAAAIAAAABAAAAAAD//wIAAAABAAAAAAD+/wIAAAABAAAAAAD9/wIAAAABAAAAAAD9/wEAAAABAAAAAAD9/wAAAAABAAAAAAD9////AAABAAAAAAD+////AAABAAAAAAD+//7/AAABAAEAAAD///7/AAABAAEAAAACAP7/AAABAAEAAAABAP7/AAABAAEAAAAAAP7/AAABAAEAAAD/////AAABAAAAAAD+/wAAAAABAAAAAAD//wAAAAABAAAAAAAAAP//AAABAAAAAAABAP//AAAAAAIAAAABAAAAAAAAAAIAAAAAAAAAAAABAAAAAAD//wEAAAABAAAAAAAAAAEAAAABAAAAAAABAAEAAAAAAAIAAAD+/wEAAAABAAAAAAAFAP7/AAABAAEAAAAFAP//AAABAAEAAAAFAAAAAAABAAEAAAAFAAEAAAABAAEAAAAFAAIAAAABAAEAAAD8/wIAAAABAAAAAAD7/wIAAAABAAAAAAD6/wIAAAABAAAAAAD6/wEAAAABAAAAAAD6/wAAAAABAAAAAAD6////AAABAAAAAAD6//7/AAABAAEAAAD9//7/AAABAAEAAAD8//7/AAABAAEAAAD8////AAABAAAAAAD8/wAAAAABAAAAAAD8/wEAAAABAAAAAAD7/wEAAAABAAAAAAD7/wAAAAABAAAAAAD7////AAABAAAAAAD7//7/AAABAAEAAAD6/wQAAAABAAAAAAD6/wYAAAABAAEAAAAAAAYAAAABAAEAAAAAAAQAAAABAAAAAAD//wQAAAAAAAEAAAD+/wQAAAABAAAAAAD9/wQAAAABAAAAAAD8/wQAAAABAAAAAAD7/wQAAAABAAAAAAD//wYAAAABAAEAAAD+/wYAAAABAAEAAAD9/wYAAAABAAEAAAD8/wYAAAABAAEAAAD7/wYAAAABAAEAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAAEAAQAAAABAAAAAAAFAAQAAAABAAEAAAACAAYAAAABAAEAAAAFAAUAAAABAAEAAAAFAAYAAAABAAEAAAAEAAYAAAABAAEAAAADAAYAAAABAAEAAAACAP//AAABAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAACAAIAAAABAAAAAAD5//7/AAABAAEAAAD5////AAABAAEAAAD5/wAAAAABAAEAAAD5/wEAAAABAAEAAAD5/wIAAAABAAEAAAD5/wMAAAABAAEAAAD5/wQAAAABAAEAAAD5/wUAAAABAAEAAAD5/wYAAAABAAEAAAAEAAIAAAABAAAAAAAEAAEAAAABAAAAAAAEAAAAAAABAAAAAAAEAP//AAABAAAAAAAEAP7/AAABAAEAAAD6/wUAAAABAAAAAAD7/wUAAAABAAAAAAD8/wUAAAABAAAAAAD9/wUAAAABAAAAAAD+/wUAAAABAAAAAAD//wUAAAAAAAIAAAAAAAUAAAABAAAAAAACAAUAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAABAAQAAAABAAAAAAABAAUAAAABAAAAAAABAAYAAAABAAEAAAA=")
 
-[node name="TileMap" parent="." index="1"]
-z_index = -10
-tile_map_data = PackedByteArray("AAAEAAAAAAAAAAIAAAAEAAEAAAAAAAIAAAAEAAIAAAAAAAIAAAAEAAMAAAAAAAIAAFADAAMAAAAAAAEAAGACAAMAAAAAAAIAAFABAAMAAAAAAAIAAFAAAAMAAAAAAAIAAFAFAAMAAAAAAAIAAFAGAAMAAAAAAAIAAFABAAQAAAAAAAIAADA=")
+[node name="DoorArea" parent="." index="1" instance=ExtResource("2_hawl3")]
+position = Vector2(768, -368)
 
-[node name="DoorArea" parent="." index="2" instance=ExtResource("2_hawl3")]
-position = Vector2(1440, 64)
-
-[node name="DoorArea2" parent="." index="3" instance=ExtResource("2_hawl3")]
-position = Vector2(2176, 1120)
+[node name="DoorArea2" parent="." index="2" instance=ExtResource("2_hawl3")]
+position = Vector2(2504, 1800)
 rotation = 1.5708
 
-[node name="DoorArea3" parent="." index="4" instance=ExtResource("2_hawl3")]
-position = Vector2(480, 1536)
+[node name="DoorArea3" parent="." index="3" instance=ExtResource("2_hawl3")]
+position = Vector2(-248, 2968)
 
-[node name="DoorArea4" parent="." index="5" instance=ExtResource("2_hawl3")]
-position = Vector2(56, 1120)
+[node name="DoorArea4" parent="." index="4" instance=ExtResource("2_hawl3")]
+position = Vector2(-2992, 1792)
 rotation = 1.5708
 
-[node name="Spawn" type="Node2D" parent="." index="6"]
-position = Vector2(592, 479)
+[node name="PlayerSpawn" type="Marker2D" parent="." index="5"]
+position = Vector2(232, -24)
 
-[node name="SpawnArea2D" parent="." index="7" instance=ExtResource("3_aypqx")]
+[node name="SpawnArea2D" parent="." index="6" instance=ExtResource("3_aypqx")]
 position = Vector2(1255, 1311)
 allowed_enemies = Array[PackedScene]([ExtResource("4_372yl"), ExtResource("5_xku4r")])
 
-[node name="Crate" parent="." index="8" instance=ExtResource("6_xku4r")]
-position = Vector2(378, 408)
+[node name="Crate" parent="." index="7" instance=ExtResource("6_xku4r")]
+position = Vector2(240, 480)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="9"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="8"]
+position = Vector2(72, 1504)
 navigation_polygon = SubResource("NavigationPolygon_dq2p3")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="10"]
-position = Vector2(1096, -32)
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2(180, 0)
-shape = SubResource("RectangleShape2D_dq2p3")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="." index="11"]
-position = Vector2(1056, 1640)
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" index="0"]
-position = Vector2(180, 0)
-shape = SubResource("RectangleShape2D_dq2p3")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="." index="12"]
-position = Vector2(-48, 872)
-rotation = 1.57079
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" index="0"]
-position = Vector2(180, 0)
-shape = SubResource("RectangleShape2D_dq2p3")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="." index="13"]
-position = Vector2(2280, 704)
-rotation = 1.57079
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" index="0"]
-position = Vector2(180, 0)
-shape = SubResource("RectangleShape2D_dq2p3")
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]

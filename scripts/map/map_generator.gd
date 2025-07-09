@@ -226,15 +226,15 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 		poi_sprite.texture = load(curr_room_data.poi_path)
 		poi_sprite.z_index = -10
 		if curr_room_data.poi_size == "med":
-			poi_sprite.global_position = selected_room.medium_spawn.global_position
+			poi_sprite.global_position = selected_room.medium_poi_spawn.global_position
 		elif curr_room_data.poi_size == "large":
-			poi_sprite.global_position = selected_room.largeSpawn.global_position
+			poi_sprite.global_position = selected_room.large_poi_spawn.global_position
 		navigation_region_2d.call_deferred("add_child", poi_sprite)
 
 
 	# Spawn player and camera
 	player.camera.temporarily_disable_smooth_for_scene_change()
-	player.global_position = selected_room.spawn.global_position
+	player.global_position = selected_room.get_player_spawn_pos()
 	currplayer = player
 
 	# Spawn player at incoming door
