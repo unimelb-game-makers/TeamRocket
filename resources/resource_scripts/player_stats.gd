@@ -25,14 +25,14 @@ const CROUCH_MULTIPLIER = 0.5
 		run_accel = run_speed / 5
 		crouch_accel = crouch_speed / 5
 
-@export var max_stamina: int = 100
-@export var stamina: int = 100:
+@export var max_stamina: float = 100
+@export var stamina: float = 100:
 	set(value):
 		stamina = value
-		if (stamina > max_stamina):
-			stamina = max_stamina
+		stamina = clamp(stamina, 0, max_stamina)
 		if (Globals.player_ui != null):
 			Globals.player_ui.update_stamina(stamina, max_stamina)
+@export var stamina_regen: float = 30
 
 # Status Effects listed by duration (Either in seconds or days, -1 if instant or permanent)
 # Status Effect Structure:
