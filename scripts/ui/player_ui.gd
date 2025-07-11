@@ -10,7 +10,7 @@ class_name PlayerUI
 @onready var vignette_shader: ColorRect = $VignetteShader
 @onready var minimap: Container = $MinimapBG/Minimap
 @onready var minimap_grid: GridContainer = $MinimapBG/Minimap/GridContainer
-
+@onready var stamina_bar: TextureProgressBar = $StaminaBar
 
 var vignette_alpha = 0.7
 var vignette_fade_speed = 0.5
@@ -34,6 +34,10 @@ func _process(delta: float) -> void:
 func update_health(health, max_health):
 	health_bar.value = health
 	health_bar.max_value = max_health
+
+func update_stamina(stamina, max_stamina):
+	stamina_bar.value = stamina
+	stamina_bar.max_value = max_stamina
 
 func update_bullets(bullets, max_bullets):
 	ammo_count.text = str(bullets) + "/" + str(max_bullets)

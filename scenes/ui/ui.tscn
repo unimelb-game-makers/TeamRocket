@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://wkf0mragtl5a"]
+[gd_scene load_steps=12 format=3 uid="uid://b7n1a46ncie8w"]
 
 [ext_resource type="Texture2D" uid="uid://cs4ean4jys6o7" path="res://assets/textures/ui/radial_progress.png" id="3_35kky"]
 [ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="5_a4tvh"]
-[ext_resource type="Script" path="res://scripts/ui/player_ui.gd" id="6_hhsni"]
+[ext_resource type="Script" uid="uid://cwnv5i1gfxf3o" path="res://scripts/ui/player_ui.gd" id="6_hhsni"]
 [ext_resource type="Texture2D" uid="uid://dgctlmfq5mj0j" path="res://assets/textures/rifle_placeholder.png" id="6_tctv1"]
 [ext_resource type="PackedScene" uid="uid://cpwdv7vvm7kdc" path="res://scenes/ui/InventoryUI.tscn" id="6_xyb2j"]
 [ext_resource type="PackedScene" uid="uid://ck0jasabkl7co" path="res://scenes/menus/PauseMenu.tscn" id="8_1b1tq"]
