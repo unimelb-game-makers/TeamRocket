@@ -25,14 +25,14 @@ shader_parameter/max_or_add = false
 size = Vector2(176, 63)
 
 [node name="Crate" type="Area2D" node_paths=PackedStringArray("storage_ui")]
-z_index = 100
+y_sort_enabled = true
 collision_layer = 8
 script = ExtResource("1_td6ss")
 slots_num = 9
 item_slot_scene = ExtResource("3_uyd3e")
 storage_ui = NodePath("UI")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="InteractArea" type="CollisionShape2D" parent="."]
 position = Vector2(-1.5, -62.625)
 shape = SubResource("CircleShape2D_a64qg")
 
@@ -53,6 +53,7 @@ shape = SubResource("RectangleShape2D_hqr6h")
 
 [node name="UI" type="Control" parent="."]
 visible = false
+z_index = 1000
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

@@ -1,11 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://ccmpxxyhlwyaw"]
+[gd_scene load_steps=5 format=4 uid="uid://cjwia1b4w5ipa"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_bbnrc"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_hawl3"]
-[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="3_aypqx"]
-[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="4_372yl"]
-[ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="5_xku4r"]
-[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="6_xku4r"]
 [ext_resource type="PackedScene" uid="uid://3r03r5f8fs70" path="res://scenes/environments/POI/TestMediumPOI.tscn" id="7_b5n2w"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dq2p3"]
@@ -13,12 +9,13 @@ vertices = PackedVector2Array(2726, 1837.9, -3302.13, 1782.09, -3357.85, -2166.0
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-3368, -2176, 2736, -2208, 2736, 1848, -3312, 1792)])
 
-[node name="FullRoom" node_paths=PackedStringArray("doors", "player_spawn", "enemy_spawn_nodes", "navigation_region") instance=ExtResource("1_bbnrc")]
+[node name="FullRoom" node_paths=PackedStringArray("doors", "medium_poi_spawn", "navigation_region") instance=ExtResource("1_bbnrc")]
+y_sort_enabled = true
 room_name = "Fullroom"
 sockets = Array[String](["B", "B", "B", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
-player_spawn = NodePath("PlayerSpawn")
-enemy_spawn_nodes = [NodePath("SpawnArea2D")]
+possible_medium_poi_spawn = Array[PackedScene]([ExtResource("7_b5n2w")])
+medium_poi_spawn = NodePath("MediumPOISpawn")
 navigation_region = NodePath("NavigationRegion2D")
 metadata/_edit_horizontal_guides_ = [738.0]
 
@@ -40,22 +37,12 @@ position = Vector2(-248, 2968)
 position = Vector2(-2992, 1792)
 rotation = 1.5708
 
-[node name="PlayerSpawn" type="Marker2D" parent="." index="5"]
-position = Vector2(232, -24)
-
-[node name="SpawnArea2D" parent="." index="6" instance=ExtResource("3_aypqx")]
-position = Vector2(1255, 1311)
-allowed_enemies = Array[PackedScene]([ExtResource("4_372yl"), ExtResource("5_xku4r")])
-
-[node name="Crate" parent="." index="7" instance=ExtResource("6_xku4r")]
-position = Vector2(240, 480)
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="8"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="5"]
 position = Vector2(72, 1504)
 navigation_polygon = SubResource("NavigationPolygon_dq2p3")
 
-[node name="TestMediumPoI" parent="." index="9" instance=ExtResource("7_b5n2w")]
-position = Vector2(-2232, -256)
+[node name="MediumPOISpawn" type="Marker2D" parent="." index="6"]
+position = Vector2(-2232, -264)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]

@@ -40,6 +40,7 @@ const fulls: Array[PackedScene] = [
 var currplayer: Player
 
 func _ready() -> void:
+	clear_unused_node()
 	for i in DIM_X:
 		grid.append([])
 		roomdata.append([])
@@ -209,27 +210,14 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 	current_selected = selected_room
 	print("CURRENT POSITION " + str(coords))
 
-	navigation_region_2d.call_deferred("add_child", selected_room)
+	navigation_region_2d.add_child(selected_room)
 
-	if selected_room.has_poi_markers():
-		print("HAS POI MARKERS")
-		if curr_room_data.poi_path == "":
-			if randi_range(0, 3) > 3:
-				curr_room_data.poi_path = "res://assets/map/POI/medium park background.png"
-				curr_room_data.poi_size = "med"
-			else:
-				curr_room_data.poi_path = "res://assets/map/POI/large park background.png"
-				curr_room_data.poi_size = "large"
-
-		var poi_sprite: Sprite2D = Sprite2D.new()
-		print("POI PATH: " + curr_room_data.poi_path)
-		poi_sprite.texture = load(curr_room_data.poi_path)
-		poi_sprite.z_index = -10
-		if curr_room_data.poi_size == "med":
-			poi_sprite.global_position = selected_room.medium_poi_spawn.global_position
-		elif curr_room_data.poi_size == "large":
-			poi_sprite.global_position = selected_room.large_poi_spawn.global_position
-		navigation_region_2d.call_deferred("add_child", poi_sprite)
+	# Copy the selected_room's navigation region data into the CityGeneratedMap room
+	if selected_room.navigation_region != null:
+		navigation_region_2d.navigation_polygon = selected_room.navigation_region.navigation_polygon
+		selected_room.navigation_region.queue_free()
+	else:
+		push_warning("This room {0} doesn't have NavigationRegion".format([selected_room.room_name]))
 
 
 	# Spawn player and camera
@@ -244,13 +232,14 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 		var _door_index = directions.find(incoming_direction)
 		currplayer.global_position = selected_room.get_door_by_direction(incoming_direction).global_position
 
-	if selected_room.navigation_region != null:
-		navigation_region_2d.navigation_polygon = selected_room.navigation_region.navigation_polygon
-	else:
-		push_warning("This room {0} doesn't have NavigationRegion".format([selected_room.room_name]))
+	# Spawn POI
+	selected_room.spawn_poi()
+	navigation_region_2d.bake_navigation_polygon()
 
 	# Spawn enemies
 	enemy_handler.call_deferred("spawn_enemies")
+	
+	selected_room.register_entities()
 
 func go_to_room(direction: Vector2):
 	if just_teleported1 == false and just_teleported2 == false:
@@ -280,3 +269,6 @@ func player_exit():
 	if just_teleported1 == true and just_teleported2 == true:
 		just_teleported1 = false
 		just_teleported2 = false
+
+func clear_unused_node():
+	navigation_region_2d.get_node("Map").queue_free()

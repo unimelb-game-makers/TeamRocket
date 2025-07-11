@@ -31,7 +31,7 @@ const DOOR = "B" # There is a door in this direction.
 ## 4 items max, in North, East, South, West order
 @export var doors: Array[Area2D] = [] # Door scenes, cant get by get_tree
 
-@export var possible_small_poi_spawn: Array[Node2D]
+@export var possible_medium_poi_spawn: Array[PackedScene]
 
 @export var player_spawn: Marker2D
 @export var medium_poi_spawn: Marker2D
@@ -65,6 +65,20 @@ func has_poi_markers():
 		return true
 	return false
 
+func spawn_poi():
+	if medium_poi_spawn != null and possible_medium_poi_spawn.size() > 0:
+		var chosen_medium_poi = possible_medium_poi_spawn.pick_random()
+		var inst = chosen_medium_poi.instantiate()
+		add_child(inst)
+		inst.global_position = medium_poi_spawn.global_position
+
 
 func get_player_spawn_pos() -> Vector2:
 	return player_spawn.global_position
+
+
+# Add stuff such as creature and crate to CityGeneratedMap's handler
+func register_entities():
+	# register enemies from POI
+	# register interactable (crate, barrel) from POI
+	return
