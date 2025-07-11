@@ -8,4 +8,4 @@ script = ExtResource("2_v5udi")
 
 [node name="EnemyHandler" parent="." index="2"]
 min_spawns_per_area = 1
-max_spawns_per_area = 2
+max_spawns_per_area = 1

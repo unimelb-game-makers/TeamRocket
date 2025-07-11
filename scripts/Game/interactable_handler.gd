@@ -6,7 +6,7 @@ class_name InteractableHandler
 
 
 @export var chest_scene: PackedScene
-@export var loot_table: Array[Item] = []
+@export var global_loot_table: Array[Item] = []
 
 func _ready() -> void:
 	for spawn_point in interactable_spawn_points.get_children():
@@ -25,7 +25,7 @@ func spawn_interactable(spawn_pos: Vector2):
 func generate_loot(slots) -> Array[Item]:
 	var loot_array: Array[Item] = []
 	for i in range(slots):
-		var loot = randi_range(0, len(loot_table) - 1)
-		loot_array.append(loot_table[loot])
+		var loot = randi_range(0, len(global_loot_table) - 1)
+		loot_array.append(global_loot_table[loot])
 
 	return loot_array

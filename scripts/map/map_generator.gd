@@ -24,6 +24,7 @@ var just_teleported2 = false
 @onready var game_handler: GameHandler = $GameHandler
 @onready var player: Player = $Player
 @onready var enemy_handler: EnemyHandler = $EnemyHandler
+@onready var interactable_handler: InteractableHandler = $InteractableHandler
 
 const straight: PackedScene = preload("res://scenes/map/templates/Straight.tscn")
 const deadend: PackedScene = preload("res://scenes/map/templates/DeadEnd.tscn")
@@ -65,7 +66,7 @@ func _ready() -> void:
 				row += "□ "
 		print(row)
 
-	
+
 	# Initialize starting room and put player in it
 	initialize_room(starting_room)
 
@@ -171,10 +172,6 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 
 	selected_room = curr_room_data.roomscene.instantiate()
 
-	for i in selected_room.enemy_spawn_nodes:
-		if i != null:
-			i.call_deferred("reparent", enemy_handler.spawn_areas)
-
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
 	var doors = selected_room.doors
@@ -236,10 +233,18 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 	selected_room.spawn_poi()
 	navigation_region_2d.bake_navigation_polygon()
 
+	# Reorganize entities
+	for elem in selected_room.get_enemy_spawns():
+		elem.reparent(enemy_handler.spawn_areas)
+
+	for elem in selected_room.get_enemies():
+		elem.reparent(enemy_handler)
+
+	for elem in selected_room.get_interactables():
+		elem.reparent(interactable_handler.interactable_holder)
+
 	# Spawn enemies
-	enemy_handler.call_deferred("spawn_enemies")
-	
-	selected_room.register_entities()
+	enemy_handler.spawn_enemies()
 
 func go_to_room(direction: Vector2):
 	if just_teleported1 == false and just_teleported2 == false:
