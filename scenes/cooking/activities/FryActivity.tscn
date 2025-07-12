@@ -1,9 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dw0k3wxf1ktoo"]
+[gd_scene load_steps=18 format=3 uid="uid://dw0k3wxf1ktoo"]
 
-[ext_resource type="Script" uid="uid://cbnjg44vj1mfk" path="res://scripts/cooking/FryActivity.gd" id="1_hkju0"]
+[ext_resource type="Script" uid="uid://cbnjg44vj1mfk" path="res://scripts/cooking/fry_activity.gd" id="1_hkju0"]
 [ext_resource type="Texture2D" uid="uid://weorr57ynm3" path="res://assets/workstations/fry_game/frying_pan.png" id="2_0essr"]
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="2_nfx1w"]
 [ext_resource type="Texture2D" uid="uid://ctqn7ohdkuvgc" path="res://assets/textures/blank_circle_200x200.png" id="3_1px4q"]
+[ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="3_8aff5"]
 [ext_resource type="FontFile" uid="uid://iqracr2sqomh" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="4_2363y"]
+[ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="4_fgvui"]
+[ext_resource type="Resource" uid="uid://cwuer4u67t6om" path="res://resources/cooking/ingredients/spice_powder.tres" id="5_naqmv"]
 [ext_resource type="Texture2D" uid="uid://ctkeslcjhp4qx" path="res://assets/textures/ui/Circle_Under.png" id="5_yvg57"]
 [ext_resource type="Texture2D" uid="uid://dlmhvkumh44c7" path="res://assets/textures/ui/Circle_Progress.png" id="6_gkapq"]
 
@@ -95,6 +99,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hkju0")
+input_ingredients = Array[ExtResource("2_nfx1w")]([ExtResource("3_8aff5"), ExtResource("4_fgvui")])
+output_item = ExtResource("5_naqmv")
 
 [node name="FryingPan" type="Sprite2D" parent="."]
 z_index = 7
@@ -200,20 +206,23 @@ texture = SubResource("PlaceholderTexture2D_nq03i")
 
 [node name="ProgressDebug" type="Label" parent="."]
 visible = false
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_4sm8j")
+&"": SubResource("AnimationLibrary_4sm8j")
 }
 autoplay = "idle"
 
 [node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TipText" type="Label" parent="."]
+layout_mode = 0
 offset_left = 458.0
 offset_top = 202.0
 offset_right = 826.0
@@ -222,6 +231,7 @@ text = "Stay near the center!"
 label_settings = SubResource("LabelSettings_f0qk3")
 
 [node name="FryProgress" type="TextureProgressBar" parent="."]
+layout_mode = 0
 offset_left = 807.0
 offset_top = 409.0
 offset_right = 1151.0

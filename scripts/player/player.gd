@@ -32,6 +32,7 @@ var current_footstep_freq = WALK_FOOTSTEP_SFX_FREQUENCY
 var curr_speed: float
 var curr_accel: float
 var speed_modifier = 1.0
+var speed_cache: float = 0 # Save the speed modifer of the user (used for locking movement)
 
 var direction: Vector2
 var is_moving = false
@@ -55,6 +56,7 @@ var animation_locked = false
 var is_slowed
 var is_unable_to_dash
 var is_invulnerable_after_hurt = false
+var stamina_regen = false
 
 # ----- Node References -----
 @onready var interact_radius: Area2D = $InteractRadius
@@ -66,6 +68,8 @@ var is_invulnerable_after_hurt = false
 @onready var footstep_timer: Timer = $FootstepSoundEffect/FootstepTimer
 @onready var footstep_audio: AudioStreamPlayer2D = $FootstepSoundEffect
 @onready var enemy_noise_rader: Sprite2D = $EnemyNoiseRadar
+@onready var camera: Camera2D = $PlayerCamera
+@onready var stamina_delay_timer: Timer = $StaminaDelayTimer
 
 @export var effect_mapping: Dictionary[Item.Effects, StatusEffect]
 @onready var slow_debuff_timer: Timer = $DebuffTimer/SlowDebuffTimer
@@ -117,20 +121,26 @@ func die() -> void:
 	can_move = false
 	death.emit()
 
+
+## Toggles player ability to move with WASD
+func set_player_movement(state: bool) -> void:
+	can_move = state
+
 ### BASIC MOVEMENTS (Idle, Crouching, Walking, Running, NOT Rolling) ###
 
 # Events (holding down keys)
 func _on_basic_state_physics_processing(delta: float) -> void:
-	direction = Input.get_vector("left", "right", "up", "down")
-	velocity.x = move_toward(velocity.x, curr_speed * direction.x, curr_accel)
-	velocity.y = move_toward(velocity.y, curr_speed * direction.y, curr_accel)
-	velocity = velocity * speed_modifier
-	move_and_slide()
-
 	### State Chart ###
-
-	is_moving = velocity.length_squared() >= 0.005
-
+	if can_move:
+		direction = Input.get_vector("left", "right", "up", "down")
+		velocity.x = move_toward(velocity.x, curr_speed * direction.x, curr_accel)
+		velocity.y = move_toward(velocity.y, curr_speed * direction.y, curr_accel)
+		velocity = velocity * speed_modifier
+		move_and_slide()
+		is_moving = velocity.length_squared() >= 0.005
+	else:
+		is_moving = false # BUG: IDK how to stop the walking animation, this just disable audio.
+		
 	# Handle Motion State
 	if not is_moving: # To Idle
 		statechart.send_event("wasd_release") # Sprint to Idle, Walk to Idle
@@ -138,7 +148,8 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 		statechart.send_event("wasd_hold") # Idle To Walk
 
 	# Handle Basic State
-	if Input.is_action_pressed("sprint") and is_moving:
+	if Input.is_action_pressed("sprint") and is_moving and player_stats.stamina > 30:
+		stamina_regen = false
 		statechart.send_event("shift_hold") # Stance to Sprint
 	if Input.is_action_just_released("sprint"):
 		statechart.send_event("shift_release") # Sprint To Walk
@@ -154,11 +165,16 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 		statechart.send_event("enter_aiming_mode")
 	if Input.is_action_just_released("aim"):
 		statechart.send_event("exit_aiming_mode")
-
+		
+		
 # Polling (single key presses)
 func _on_basic_state_input(event: InputEvent) -> void:
+	if !can_move:
+		return
+		
 	# Rolling supercedes all states
-	if event.is_action_pressed("roll") and can_roll:
+	if event.is_action_pressed("roll") and can_roll and player_stats.stamina >= 20:
+		player_stats.stamina -= 20
 		statechart.send_event("space_press")
 	if event.is_action_pressed("crouch"):
 		statechart.send_event("ctrl_press") # Crouch <-> Standing
@@ -176,6 +192,8 @@ func _on_roll_state_entered() -> void:
 func _on_roll_state_exited() -> void:
 	can_roll = false # For roll cooldown
 	roll_cd_timer = 0
+	stamina_delay_timer.start()
+	stamina_regen = false
 
 func _on_roll_state_physics_processing(delta: float) -> void:
 	roll_timer += delta
@@ -216,7 +234,12 @@ func _on_run_state_entered() -> void:
 	footstep_timer.start(SPRINT_FOOTSTEP_SFX_FREQUENCY)
 	curr_speed = Globals.player_stats.run_speed
 	curr_accel = Globals.player_stats.run_accel
-
+	
+	stamina_regen = false
+	
+func _on_run_state_exited() -> void:
+	stamina_delay_timer.start()
+	
 func _on_crouched_state_entered() -> void:
 	enemy_noise_rader.visible = true
 	is_crouching = true
@@ -235,13 +258,15 @@ func _on_aiming_state_exited() -> void:
 	aim_mode_exit.emit()
 	curr_speed = curr_speed * 2
 	is_aiming = false
+	
+
 
 func _on_channel_timer_timeout() -> void:
 	channel_complete.emit()
 
 # --- State Machine Processing Logic for Animations ---
 
-func _on_unarmed_state_physics_processing(_delta: float) -> void:
+func _on_unarmed_state_physics_processing(delta: float) -> void:
 	# If x movement > 0 and y movement < x then left/right movement
 	# Else if y movement > x then up/down movement
 	var animation_speed = curr_speed / (Globals.player_stats.speed)
@@ -256,8 +281,12 @@ func _on_unarmed_state_physics_processing(_delta: float) -> void:
 			handle_direction_anim("move", direction, "", animation_speed)
 		else:
 			handle_animation("idle")
+			
+	# Stamina regen (in walking/aiming state only)
+	if (stamina_regen):
+		player_stats.stamina += player_stats.stamina_regen * delta
 
-func _on_aiming_state_physics_processing(_delta: float) -> void:
+func _on_aiming_state_physics_processing(delta: float) -> void:
 	if (direction.length() > 0.1):
 		var animation_speed = curr_speed / (Globals.player_stats.speed)
 		handle_direction_anim("move", direction, "aim", animation_speed)
@@ -270,14 +299,23 @@ func _on_aiming_state_physics_processing(_delta: float) -> void:
 	if Input.is_action_just_pressed("fire"):
 		rifle.fire(Globals.player_stats.damage)
 		sound_created.emit(global_position, gun_loudness)
+		
+	# Stamina regen (in walking/aiming state only)
+	if (stamina_regen):
+		player_stats.stamina += player_stats.stamina_regen * delta
 
-func _on_run_state_physics_processing(_delta: float) -> void:
+func _on_run_state_physics_processing(delta: float) -> void:
 	# Handle Movement Animations (Temp Solution)
 	# If x movement > 0 and y movement < x then left/right movement
 	# Else if y movement > x then up/down movement
 	var animation_speed = curr_speed / (Globals.player_stats.speed)
 	if (direction.length() > 0.1):
 		handle_direction_anim("move", direction, "run", animation_speed)
+		
+	player_stats.stamina -= 20 * delta
+	if (player_stats.stamina <= 0):
+		print("Player Stamina 0")
+		statechart.send_event("shift_release")
 
 func _on_rifle_fired() -> void:
 	fired = true
@@ -357,7 +395,9 @@ func apply_status(status: StatusEffect):
 func _on_status_effect_tick_timer_timeout() -> void:
 	Globals.player_stats.tick_status_effects(StatusEffect.DurationCategory.SECONDS)
 
-
 func _on_after_hurt_invulnerable_timer_timeout() -> void:
 	is_invulnerable_after_hurt = false
 	anim_sprite.self_modulate = Color(1, 1, 1, 1)
+
+func _on_stamina_delay_timer_timeout() -> void:
+	stamina_regen = true

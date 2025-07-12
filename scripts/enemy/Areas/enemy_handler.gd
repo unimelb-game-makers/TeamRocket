@@ -12,12 +12,7 @@ signal enemy_list_updated
 
 func _ready() -> void:
 	Globals.enemy_handler = self
-	for area in spawn_areas.get_children():
-		# var spawn_mob = randf() < 0.5
-		var spawn_mob = true
-		if spawn_mob:
-			var spawns = randi_range(min_spawns_per_area, max_spawns_per_area)
-			area.spawn_batch(spawns)
+	spawn_enemies()
 	await get_tree().process_frame
 	await get_tree().process_frame
 	Globals.player.sound_created.connect(check_enemy_detect_player_by_sound)
@@ -38,3 +33,18 @@ func check_enemy_detect_player_by_sound(player_pos: Vector2, sound_loudness: flo
 			# TODO: Implement all enemy Alerted state here
 			enemy.alerted(player_pos)
 			# print("Enemy {0} alerted by player noise from {1} units!".format([enemy.name, distance_to_player]))
+
+func spawn_enemies():
+	for area in spawn_areas.get_children():
+		# var spawn_mob = randf() < 0.5
+		var spawn_mob = true
+		if spawn_mob:
+			var spawns = randi_range(min_spawns_per_area, max_spawns_per_area)
+			area.spawn_batch(spawns)
+
+func clear_room():
+	for child in spawn_areas.get_children():
+		child.queue_free()
+	for child in enemy_list:
+		child.queue_free()
+	enemy_list = []

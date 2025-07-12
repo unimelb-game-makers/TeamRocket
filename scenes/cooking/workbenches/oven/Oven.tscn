@@ -1,0 +1,56 @@
+[gd_scene load_steps=15 format=3 uid="uid://bpx5ay6gfltel"]
+
+[ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_llvdt"]
+[ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_ja2sr"]
+[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="3_ja2sr"]
+[ext_resource type="PackedScene" uid="uid://c7ikkerlqq6g6" path="res://scenes/cooking/activities/BakeActivity.tscn" id="4_2lhxp"]
+[ext_resource type="Texture2D" uid="uid://cmgum5hbl8qh" path="res://assets/placeholder/health.png" id="5_x7xau"]
+[ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="6_4d5bw"]
+[ext_resource type="Resource" uid="uid://be78atnjt45hp" path="res://resources/cooking/recipes/ingredients/potato_cut_rec.tres" id="7_rjpw4"]
+[ext_resource type="Resource" uid="uid://cm8t0wikoaret" path="res://resources/cooking/recipes/ingredients/cooked_rice_rec.tres" id="8_jwrei"]
+[ext_resource type="Resource" uid="uid://d3b5yu03lwb2b" path="res://resources/cooking/recipes/ingredients/carrot_cut_rec.tres" id="9_n3jwe"]
+[ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="10_s6kex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lhxp"]
+size = Vector2(92, 88)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lhxp"]
+resource_local_to_scene = true
+shader = ExtResource("2_ja2sr")
+shader_parameter/thickness = 5.0
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = 0.0
+shader_parameter/outline_color = Color(1, 0.906591, 0, 1)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/max_or_add = false
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_p2acj"]
+frames = 2
+frame_0/texture = ExtResource("3_ja2sr")
+frame_1/texture = ExtResource("5_x7xau")
+frame_1/duration = 1.0
+
+[sub_resource type="Resource" id="Resource_ycff0"]
+script = ExtResource("10_s6kex")
+recipes = Array[ExtResource("6_4d5bw")]([ExtResource("7_rjpw4"), ExtResource("8_jwrei"), ExtResource("9_n3jwe")])
+max_ingredients = 5
+metadata/_custom_type_script = "uid://c0shkqininnkd"
+
+[node name="Oven" instance=ExtResource("1_llvdt")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_2lhxp")
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_2lhxp")
+texture = ExtResource("3_ja2sr")
+
+[node name="CookingScene" parent="CanvasLayer" index="0"]
+visible = false
+activity_to_run = ExtResource("4_2lhxp")
+activity_name = "Baking"
+activity_animated_texture = SubResource("AnimatedTexture_p2acj")
+crafting_station = SubResource("Resource_ycff0")

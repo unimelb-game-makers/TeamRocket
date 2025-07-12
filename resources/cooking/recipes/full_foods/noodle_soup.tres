@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DishRecipe" load_steps=5 format=3 uid="uid://dv4r412xreejp"]
+
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="1_ivtb7"]
+[ext_resource type="Resource" uid="uid://cwwxaf8y2xnra" path="res://resources/cooking/foods/chicken_soup.tres" id="2_0fffa"]
+[ext_resource type="Script" uid="uid://dbchi3jhl5d0x" path="res://resources/resource_scripts/food_system/recipe_scripts/dish_recipe.gd" id="2_l43am"]
+[ext_resource type="Resource" uid="uid://uk2won1wpi1w" path="res://resources/cooking/foods/mossy_soup.tres" id="3_shpws"]
+
+[resource]
+script = ExtResource("2_l43am")
+swappable_ingredients = Array[int]([2, 2, 3])
+dishes = Array[ExtResource("1_ivtb7")]([ExtResource("2_0fffa"), ExtResource("3_shpws")])
+effects = Array[int]([])
+base_ingredients = Array[int]([3, 301, 203])
+metadata/_custom_type_script = "uid://dbchi3jhl5d0x"

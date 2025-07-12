@@ -1,4 +1,5 @@
 extends Area2D
+class_name SpawnArea
 
 # Spawns enemy within radius
 # The CollisionShape2D is local to scene, so if there are multiple of this node,
@@ -21,11 +22,11 @@ func _ready() -> void:
 	collisionshape.set("radius", radius)
 
 func spawn_single():
-	var e = allowed_enemies.pick_random().instantiate()
-	e.global_position = global_position + collisionshape.shape.radius * get_random_point()
+	var enemy_inst = allowed_enemies.pick_random().instantiate()
+	enemy_inst.global_position = global_position + collisionshape.shape.radius * get_random_point()
 	# Add child to root node
-	Globals.enemy_handler.add_child(e)
-	Globals.enemy_handler.add_enemy_to_list(e)
+	Globals.enemy_handler.add_child(enemy_inst)
+	Globals.enemy_handler.add_enemy_to_list(enemy_inst)
 
 
 func spawn_batch(amount: int):

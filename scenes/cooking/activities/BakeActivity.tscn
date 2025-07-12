@@ -9,7 +9,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_x7xau"]
 radius = 1.0
 
-[node name="Oven" type="Control"]
+[node name="OvenActivity" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

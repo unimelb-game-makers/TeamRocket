@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DishRecipe" load_steps=4 format=3 uid="uid://cdkwk2i8v3mc8"]
+
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="1_k2qhe"]
+[ext_resource type="Resource" uid="uid://diq2fkq7xdool" path="res://resources/cooking/foods/test_dish.tres" id="2_cho8w"]
+[ext_resource type="Script" uid="uid://dbchi3jhl5d0x" path="res://resources/resource_scripts/food_system/recipe_scripts/dish_recipe.gd" id="3_ovilr"]
+
+[resource]
+script = ExtResource("3_ovilr")
+swappable_ingredients = Array[int]([])
+dishes = Array[ExtResource("1_k2qhe")]([ExtResource("2_cho8w")])
+effects = Array[int]([])
+base_ingredients = Array[int]([401])
+metadata/_custom_type_script = "uid://dbchi3jhl5d0x"

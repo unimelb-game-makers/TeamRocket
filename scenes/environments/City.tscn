@@ -49,11 +49,6 @@ distance = -4000.0
 
 [node name="City" instance=ExtResource("1_7mlma")]
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="GameHandler" index="1"]
-process_mode = 3
-autoplay = true
-bus = &"Music"
-
 [node name="EnemyHandler" parent="." index="2" groups=["EnemyHandler"]]
 min_spawns_per_area = 1
 max_spawns_per_area = 1

@@ -13,7 +13,7 @@ config_version=5
 config/name="Team-Rocket Game"
 run/main_scene="res://scenes/menus/MainMenu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://cbcyhg367labm"
 
 [autoload]
 
@@ -40,6 +40,10 @@ navigation="For Navigation Layer"
 Item=""
 Workbench=""
 Camera=""
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
 
 [input]
 
@@ -133,6 +137,7 @@ channel={
 2d_physics/layer_5="Projectiles"
 2d_physics/layer_6="Interactables"
 2d_physics/layer_7="PlayerInteractArea"
+2d_physics/layer_8="EnemyHitbox"
 
 [rendering]
 

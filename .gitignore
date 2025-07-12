@@ -17,6 +17,8 @@ export.cfg
 data_*/
 mono_crash.*.json
 
+.vscode/settings.json
+
 /build_win/
 /build_mac/
 /build_linux/

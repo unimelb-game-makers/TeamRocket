@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="Activity" load_steps=3 format=3 uid="uid://dhf01em6mwxa8"]
-
-[ext_resource type="Script" uid="uid://w4fgu5fosjn5" path="res://resources/resource_scripts/recipe.gd" id="1_6vahf"]
-[ext_resource type="Script" uid="uid://o5kj763m31qw" path="res://resources/resource_scripts/activity.gd" id="5_w48if"]
-
-[resource]
-script = ExtResource("5_w48if")
-recipes = Array[ExtResource("1_6vahf")]([null])
-max_ingredients = 4

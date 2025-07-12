@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://birn1wyb2g5bv"]
 
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_lu2db"]
-[ext_resource type="Texture2D" uid="uid://b07kivrp37jh3" path="res://assets/food/onion_raw.png" id="2_ox1ld"]
+[ext_resource type="Texture2D" uid="uid://d2et1cfnx7x14" path="res://assets/food/onion_raw.png" id="2_lu2db"]
 
 [resource]
 script = ExtResource("1_lu2db")
@@ -9,7 +9,7 @@ ingredient_type = 403
 ingredient_category = 2
 effects = Array[int]([])
 name_modifiers = Array[String]([])
-texture = ExtResource("2_ox1ld")
+texture = ExtResource("2_lu2db")
 item_id = "onion_raw"
 item_name = "Onion"
 description = "ON ION"

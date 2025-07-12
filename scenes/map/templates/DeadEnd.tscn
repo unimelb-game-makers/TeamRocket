@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4d7fe4uur1y1"]
+
+[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_1x1qf"]
+[ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_kugv0"]
+
+[node name="DeadEnd" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_1x1qf")]
+room_name = "DeadEnd"
+sockets = Array[String](["A", "A", "B", "A"])
+doors = [null, null, NodePath("DoorArea"), null]
+spawn = NodePath("Spawn")
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+z_index = -10
+offset_right = 952.0
+offset_bottom = 960.0
+
+[node name="TileMap" parent="." index="1"]
+z_index = -10
+tile_map_data = PackedByteArray(0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 2, 0, 0, 0, 1, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="DoorArea" parent="." index="2" instance=ExtResource("2_kugv0")]
+position = Vector2(480, 904)
+
+[node name="Spawn" type="Node2D" parent="." index="3"]
+position = Vector2(488, 408)
+
+[connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
