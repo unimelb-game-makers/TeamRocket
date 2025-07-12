@@ -80,7 +80,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
           publish_branch: gh-pages
-          force_orphan: true
           # NOTE: keeping files like this could be dangerous. Consider deleting stuff to save space if needed, depending on needs
           # e.g. Add an only-keep-last-10-version job
           keep_files: true
@@ -95,7 +94,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
           publish_branch: gh-pages
-          force_orphan: true
           keep_files: true
           user_name: "github-ci[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
