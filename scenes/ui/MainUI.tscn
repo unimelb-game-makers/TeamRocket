@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://hgrksmummwv0"]
+[gd_scene load_steps=13 format=3 uid="uid://hgrksmummwv0"]
 
 [ext_resource type="Script" uid="uid://caseuyrdmakps" path="res://scripts/ui/main_ui.gd" id="1_4xgkk"]
 [ext_resource type="Script" uid="uid://cwnv5i1gfxf3o" path="res://scripts/ui/player_ui.gd" id="2_yyelw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dsqcru2h58r83" path="res://assets/Player/sprite/weapon_rifle.png" id="4_kvrx6"]
 [ext_resource type="Texture2D" uid="uid://b5oyt8wn2cl4n" path="res://assets/textures/kenney_borders/default/Border/panel-border-028.png" id="5_qbwp1"]
 [ext_resource type="PackedScene" uid="uid://ck0jasabkl7co" path="res://scenes/menus/PauseMenu.tscn" id="6_t0vuv"]
+[ext_resource type="Texture2D" uid="uid://cwp34g2fynu22" path="res://assets/textures/kenney_borders/default/Border/panel-border-008.png" id="7_lcjjm"]
 [ext_resource type="PackedScene" uid="uid://cpwdv7vvm7kdc" path="res://scenes/ui/InventoryUI.tscn" id="7_pb8bc"]
 [ext_resource type="PackedScene" uid="uid://b5qjcot0kmmft" path="res://scenes/ui/MinimapSquare.tscn" id="8_qg6rx"]
 
@@ -75,6 +76,42 @@ offset_top = 24.0
 offset_right = 400.0
 offset_bottom = 44.0
 texture = ExtResource("5_qbwp1")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="StaminaBar" type="TextureProgressBar" parent="PlayerUI"]
+layout_mode = 1
+offset_left = 31.0
+offset_top = 53.0
+offset_right = 286.0
+offset_bottom = 67.0
+mouse_filter = 2
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 10
+stretch_margin_bottom = 10
+texture_under = ExtResource("4_1vp2p")
+texture_progress = ExtResource("4_1vp2p")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0.175849, 0.451107, 0.30898, 1)
+
+[node name="StaminaBarBorder" type="NinePatchRect" parent="PlayerUI/StaminaBar"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -3.0
+offset_right = 7.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_lcjjm")
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
