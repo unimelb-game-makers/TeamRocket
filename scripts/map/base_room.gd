@@ -83,6 +83,10 @@ func get_player_spawn_pos() -> Vector2:
 	return player_spawn.global_position
 
 
+func generate_loot_for_container():
+	for elem in spawned_pois:
+		elem.generate_loot_for_container()
+
 func get_enemy_spawns():
 	var res = []
 	for elem in spawned_pois:

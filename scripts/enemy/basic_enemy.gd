@@ -3,6 +3,8 @@ class_name BasicEnemy
 
 # BasicEnemy is non-boss enemy with uhh basic behaviours.
 
+# FIXME: Navigation didnt work properly, should fix it
+
 @export var passive_speed = 85
 @export var active_speed = 180
 

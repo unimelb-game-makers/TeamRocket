@@ -233,6 +233,9 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 	selected_room.spawn_poi()
 	navigation_region_2d.bake_navigation_polygon()
 
+	# Spawn loot in crate
+	selected_room.generate_loot_for_container()
+
 	# Reorganize entities
 	for elem in selected_room.get_enemy_spawns():
 		elem.reparent(enemy_handler.spawn_areas)

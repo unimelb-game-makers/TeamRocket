@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cass2bjp3d6eq"]
+[gd_scene load_steps=14 format=3 uid="uid://cass2bjp3d6eq"]
 
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="1_2xv6m"]
 [ext_resource type="Script" uid="uid://dswbwl8o4vfsd" path="res://scripts/Game/game_handler.gd" id="1_eaqps"]
@@ -8,8 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="3_ld3e5"]
 [ext_resource type="Texture2D" uid="uid://dmnuc1rmciuv3" path="res://assets/textures/kenney_borders/default/Border/panel-border-014.png" id="3_mnjbh"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_oxogg"]
-[ext_resource type="Script" path="res://scripts/enemy/Areas/enemy_handler.gd" id="4_omi12"]
+[ext_resource type="Script" uid="uid://df8l5v83coiwy" path="res://scripts/enemy/Areas/enemy_handler.gd" id="4_omi12"]
 [ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="5_c5e5s"]
+[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="10_a1qu0"]
+[ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="11_1om1c"]
+[ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="12_1om1c"]
 
 [node name="Base" type="Node2D"]
 y_sort_enabled = true
@@ -119,7 +122,8 @@ y_sort_enabled = true
 [node name="InteractableHandler" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("2_nlyqa")
-chest_scene = ExtResource("3_ld3e5")
+crate_scene = ExtResource("3_ld3e5")
+global_loot_table = Array[ExtResource("10_a1qu0")]([ExtResource("11_1om1c"), ExtResource("12_1om1c")])
 
 [node name="InteractableSpawnPoints" type="Node" parent="InteractableHandler"]
 
