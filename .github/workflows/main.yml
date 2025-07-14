@@ -32,6 +32,8 @@ jobs:
       - name: Move export templates into position
         run: |
           mkdir -v -p ~/.local/share/godot/export_templates
+          mkdir -v -p ~/.config/
+          mv /root/.config/godot ~/.config/godot
           mv /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable
 
       - name: Import assets
@@ -72,13 +74,12 @@ jobs:
           sed -i '3 i <script src="coi-serviceworker.js"></script>' build/web/index.html
 
       - name: 🚀 Deploy to `gh-pages` branch # Push - deploy to main directory
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
           publish_branch: gh-pages
-          force_orphan: true
           # NOTE: keeping files like this could be dangerous. Consider deleting stuff to save space if needed, depending on needs
           # e.g. Add an only-keep-last-10-version job
           keep_files: true
@@ -93,7 +94,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
           publish_branch: gh-pages
-          force_orphan: true
           keep_files: true
           user_name: "github-ci[bot]"
           user_email: "github-actions[bot]@users.noreply.github.com"
