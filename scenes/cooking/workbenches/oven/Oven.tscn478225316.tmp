@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dqw377e8ohg76" path="res://scenes/cooking/workbenches/oven/oven.gd" id="1_llvdt"]
 [ext_resource type="Resource" uid="uid://cn6dlpgedwdov" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_bobby.tres" id="2_2lhxp"]
 [ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="2_ja2sr"]
-[ext_resource type="PackedScene" uid="uid://b7bgjj0x4lljg" path="res://scenes/cooking/workbenches/oven/oven_tracing_line.tscn" id="3_ja2sr"]
+[ext_resource type="PackedScene" uid="uid://b7bgjj0x4lljg" path="res://scenes/cooking/workbenches/oven/OvenTracingLine.tscn" id="3_ja2sr"]
 [ext_resource type="Texture2D" uid="uid://cxtk2opt5e8a6" path="res://assets/placeholder/gear.png" id="5_x7xau"]
 
 [node name="Oven" type="Node2D"]

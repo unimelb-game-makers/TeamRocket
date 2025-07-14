@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/cooking/activity_station.gd" id="1_vsmah"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_5v0fl"]
-[ext_resource type="PackedScene" uid="uid://dcfegerycc50x" path="res://scenes/cooking/activities/cooking_scene.tscn" id="2_7qqeh"]
+[ext_resource type="PackedScene" uid="uid://dcfegerycc50x" path="res://scenes/cooking/activities/CookingScene.tscn" id="2_7qqeh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_as2om"]
 resource_local_to_scene = true

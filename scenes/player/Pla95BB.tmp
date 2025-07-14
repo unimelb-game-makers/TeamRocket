@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="5_6l3qh"]
 [ext_resource type="Texture2D" uid="uid://c2td7omrl6sqn" path="res://assets/textures/basic_light.webp" id="8_emt8s"]
 [ext_resource type="Script" path="res://scripts/player/rifle.gd" id="9_usf71"]
-[ext_resource type="PackedScene" uid="uid://c3jnad7h7ggpt" path="res://scenes/player/bullet.tscn" id="10_c4h7y"]
+[ext_resource type="PackedScene" uid="uid://c3jnad7h7ggpt" path="res://scenes/player/Bullet.tscn" id="10_c4h7y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0p80"]
 size = Vector2(40, 40)
