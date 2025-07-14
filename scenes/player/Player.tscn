@@ -892,8 +892,8 @@ one_shot = true
 
 [connection signal="aim_mode_enter" from="." to="PlayerCamera" method="_on_player_aim_mode_enter"]
 [connection signal="aim_mode_exit" from="." to="PlayerCamera" method="_on_player_aim_mode_exit"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_anim_sprite_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_anim_sprite_animation_finished"]
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]
 [connection signal="fired" from="Rifle" to="PlayerCamera" method="_on_rifle_fired"]
 [connection signal="timeout" from="Rifle/ReloadTimer" to="Rifle" method="_on_reload_timer_timeout"]
@@ -916,4 +916,5 @@ one_shot = true
 [connection signal="timeout" from="ChannelTimer" to="." method="_on_channel_timer_timeout"]
 [connection signal="timeout" from="FootstepSoundEffect/FootstepTimer" to="." method="_on_footstep_timer_timeout"]
 [connection signal="timeout" from="StatusEffectTickTimer" to="." method="_on_status_effect_tick_timer_timeout"]
+[connection signal="timeout" from="AfterHurtInvulnerableTimer" to="." method="_on_after_hurt_invulnerable_timer_timeout"]
 [connection signal="timeout" from="StaminaDelayTimer" to="." method="_on_stamina_delay_timer_timeout"]
