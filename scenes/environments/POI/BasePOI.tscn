@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://63x2ldnuagja"]
+[gd_scene load_steps=8 format=3 uid="uid://63x2ldnuagja"]
 
 [ext_resource type="Script" uid="uid://d0f0hkms0jr0b" path="res://scenes/environments/POI/placeable_poi.gd" id="1_rnmuo"]
 [ext_resource type="Texture2D" uid="uid://xrhly4rowkk2" path="res://assets/map/map_tileset.png" id="2_erv77"]
+[ext_resource type="Texture2D" uid="uid://c0veapujgrjjo" path="res://assets/map/wall_tileset.png" id="3_u04a8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nes2n"]
 texture = ExtResource("2_erv77")
@@ -19,6 +20,22 @@ physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_nes2n")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_il60d"]
+texture = ExtResource("3_u04a8")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/y_sort_origin = 31
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0 = 0
+0:1/0/y_sort_origin = 31
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_rh8cv"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 0
+sources/1 = SubResource("TileSetAtlasSource_il60d")
+
 [node name="BasePOI" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_rnmuo")
@@ -31,6 +48,9 @@ tile_set = SubResource("TileSet_ef7oo")
 
 [node name="Wall" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="WallTileMap" type="TileMapLayer" parent="Wall"]
+tile_set = SubResource("TileSet_rh8cv")
 
 [node name="EnemyHolder" type="Node2D" parent="."]
 y_sort_enabled = true

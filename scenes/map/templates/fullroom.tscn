@@ -42,7 +42,7 @@ position = Vector2(72, 1504)
 navigation_polygon = SubResource("NavigationPolygon_dq2p3")
 
 [node name="MediumPOISpawn" type="Marker2D" parent="." index="6"]
-position = Vector2(-1632, -240)
+position = Vector2(-1744, -312)
 
 [node name="PlayerSpawn" parent="." index="7"]
 position = Vector2(712, -160)
