@@ -34,6 +34,7 @@ func _ready() -> void:
 
 func interact():
 	storage_ui.visible = not storage_ui.visible
+	Globals.inventory_ui.can_open = not storage_ui.visible
 
 func add_item(item: Item):
 	if (items.size() < slots_num):
