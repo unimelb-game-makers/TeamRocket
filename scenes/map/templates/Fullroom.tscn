@@ -1,103 +1,67 @@
-[gd_scene load_steps=9 format=4 uid="uid://ccmpxxyhlwyaw"]
+[gd_scene load_steps=7 format=4 uid="uid://cjwia1b4w5ipa"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_bbnrc"]
+[ext_resource type="PackedScene" uid="uid://cu51txwabxhgh" path="res://scenes/environments/POI/Medium4x3_1.tscn" id="2_cvc7y"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_hawl3"]
-[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="3_aypqx"]
-[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="4_372yl"]
-[ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="5_xku4r"]
-[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="6_xku4r"]
+[ext_resource type="PackedScene" uid="uid://b0mj75rlxuyqm" path="res://scenes/environments/POI/Medium4x3_2.tscn" id="3_amx0r"]
+[ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="5_amx0r"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dq2p3"]
-vertices = PackedVector2Array(2230, 1582.03, 10, 1589.96, 10, 10, 2230, 10)
+vertices = PackedVector2Array(2726, 1838.04, -2365.9, 1861.95, -2326.09, -2190.01, 2726, -2197.98)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 2240, 0, 2240, 1592, 0, 1600)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2336, -2200, 2736, -2208, 2736, 1848, -2376, 1872)])
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq2p3"]
-size = Vector2(2936, 82)
-
-[node name="FullRoom" node_paths=PackedStringArray("doors", "spawn", "enemy_spawn_nodes", "navigation_region") instance=ExtResource("1_bbnrc")]
+[node name="FullRoom" node_paths=PackedStringArray("doors", "medium_poi_spawn") instance=ExtResource("1_bbnrc")]
+y_sort_enabled = true
 room_name = "Fullroom"
 sockets = Array[String](["B", "B", "B", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
-spawn = NodePath("Spawn")
-enemy_spawn_nodes = [NodePath("SpawnArea2D")]
-navigation_region = NodePath("NavigationRegion2D")
+possible_medium_poi_spawn = Array[PackedScene]([ExtResource("2_cvc7y"), ExtResource("3_amx0r")])
+medium_poi_spawn = NodePath("MediumPOISpawn")
 metadata/_edit_horizontal_guides_ = [738.0]
 
-[node name="ColorRect" type="ColorRect" parent="." index="0"]
+[node name="TileMap" parent="." index="0"]
 z_index = -10
-offset_right = 2240.0
-offset_bottom = 1601.0
-color = Color(0.851563, 0.851563, 0.851563, 1)
+tile_map_data = PackedByteArray("AAAEAAMAAAACAAEAAAADAAMAAAAAAAIAAAACAAMAAAAAAAIAAAABAAMAAAAEAAEAAAAAAAMAAAABAAIAAAAFAAMAAAABAAIAAAD//wMAAAADAAEAAAD+/wMAAAABAAIAAAD9/wMAAAABAAIAAAD8/wMAAAABAAIAAAADAP7/AAAAAAIAAAADAP//AAAAAAIAAAADAAAAAAAAAAIAAAADAAEAAAAAAAIAAAADAAIAAAAAAAIAAAABAAIAAAAEAAEAAAAAAAIAAAADAAEAAAD//wIAAAADAAEAAAD+/wIAAAABAAIAAAD9/wIAAAADAAEAAAD9/wEAAAABAAIAAAD9/wAAAAADAAEAAAD9////AAADAAEAAAD+////AAADAAEAAAD+//7/AAABAAIAAAD///7/AAADAAEAAAACAP7/AAAAAAIAAAABAP7/AAAEAAEAAAAAAP7/AAADAAEAAAD/////AAABAAIAAAD+/wAAAAABAAIAAAD//wAAAAADAAEAAAAAAP//AAABAAIAAAABAP//AAAEAAEAAAABAAAAAAAEAAEAAAAAAAAAAAADAAEAAAD//wEAAAABAAIAAAAAAAEAAAADAAEAAAABAAEAAAAEAAEAAAD+/wEAAAABAAIAAAAFAP7/AAABAAIAAAAFAP//AAADAAEAAAAFAAAAAAABAAIAAAAFAAEAAAABAAIAAAAFAAIAAAABAAIAAAD8/wIAAAABAAIAAAD9//7/AAADAAEAAAD8//7/AAABAAIAAAD8////AAADAAEAAAD8/wAAAAABAAIAAAD8/wEAAAADAAEAAAD//wQAAAABAAIAAAD//wYAAAAAAAIAAFAFAAQAAAADAAEAAAAFAAUAAAADAAIAAAAFAAYAAAAAAAIAAFACAP//AAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAIAAAACAAIAAAAAAAIAAAAEAAIAAAACAAEAAAAEAAEAAAACAAEAAAAEAAAAAAACAAEAAAAEAP//AAACAAEAAAAEAP7/AAACAAEAAAD//wUAAAADAAIAAAD7//7/AAABAAIAAAD7////AAADAAEAAAD7/wAAAAABAAIAAAD7/wEAAAABAAIAAAD7/wIAAAADAAEAAAD7/wMAAAABAAIAAAD7/wQAAAABAAIAAAD7/wUAAAADAAIAAAD7/wYAAAAAAAIAAFAEAAUAAAACAAIAAAAEAAQAAAACAAEAAAADAAUAAAAAAAEAADADAAQAAAAAAAIAAAACAAUAAAAAAAEAADACAAQAAAAAAAIAAAABAAUAAAAEAAIAAAABAAQAAAAEAAEAAAAAAAUAAAADAAIAAAAAAAQAAAABAAIAAAAEAAYAAAAAAAEAAGADAAYAAAAAAAAAAGACAAYAAAAAAAAAADABAAYAAAAAAAIAAFAAAAYAAAAAAAIAAFD+/wUAAAADAAIAAAD+/wQAAAADAAEAAAD9/wUAAAADAAIAAAD9/wQAAAABAAIAAAD8/wUAAAADAAIAAAD8/wQAAAADAAEAAAD+/wYAAAAAAAIAAFD9/wYAAAAAAAEAAFD8/wYAAAAAAAIAAFD//wkAAAAAAAIAADD//woAAAAAAAIAADD4//7/AAADAAEAAAD4////AAABAAIAAAD4/wAAAAADAAEAAAD4/wEAAAABAAIAAAD4/wIAAAABAAIAAAD4/wMAAAABAAIAAAD4/wQAAAABAAIAAAD4/wUAAAADAAIAAAD4/wYAAAAAAAIAAFD4/wcAAAAAAAIAAFD4/wgAAAADAAAAAAD4/wkAAAABAAIAAAD5//7/AAADAAEAAAD5////AAABAAIAAAD5/wAAAAABAAIAAAD5/wEAAAADAAEAAAD5/wIAAAABAAIAAAD5/wMAAAADAAEAAAD5/wQAAAABAAIAAAD5/wUAAAADAAIAAAD5/wYAAAAAAAIAAFD5/wcAAAAAAAIAAFD5/wgAAAADAAAAAAD5/wkAAAADAAEAAAD6//7/AAADAAEAAAD6////AAABAAIAAAD6/wAAAAADAAEAAAD6/wEAAAABAAIAAAD6/wIAAAADAAEAAAD6/wMAAAABAAIAAAD6/wQAAAABAAIAAAD6/wUAAAADAAIAAAD6/wYAAAAAAAIAAFD6/wcAAAAAAAIAAFD6/wgAAAADAAAAAAD6/wkAAAADAAEAAAD7/wcAAAAAAAIAAFD7/wgAAAADAAAAAAD7/wkAAAABAAIAAAD8/wcAAAAAAAIAAFD8/wgAAAADAAAAAAD8/wkAAAABAAIAAAD9/wcAAAAAAAEAAFD9/wgAAAAEAAAAAAD9/wkAAAAEAAEAAAD+/wcAAAAAAAAAAFD+/wgAAAAAAAEAAAD+/wkAAAAAAAIAADD//wcAAAAAAAAAAAD//wgAAAAAAAEAAAAAAAcAAAAAAAIAAFAAAAgAAAACAAAAAAAAAAkAAAACAAEAAAD4/woAAAABAAIAAAD4/wsAAAADAAEAAAD5/woAAAABAAIAAAD5/wsAAAABAAIAAAD6/woAAAADAAEAAAD6/wsAAAADAAEAAAD7/woAAAADAAEAAAD7/wsAAAABAAIAAAD8/woAAAADAAEAAAD8/wsAAAABAAIAAAD9/woAAAAEAAEAAAD9/wsAAAAEAAEAAAD+/woAAAAAAAIAADD+/wsAAAAAAAIAADD//wsAAAAAAAIAADAAAAoAAAACAAEAAAAAAAsAAAACAAEAAAABAAcAAAAAAAIAAFABAAgAAAADAAAAAAABAAkAAAADAAEAAAABAAoAAAADAAEAAAABAAsAAAABAAIAAAACAAcAAAAAAAIAAFACAAgAAAADAAAAAAACAAkAAAADAAEAAAACAAoAAAADAAEAAAACAAsAAAADAAEAAAADAAcAAAAAAAIAAFADAAgAAAADAAAAAAADAAkAAAADAAEAAAADAAoAAAADAAEAAAADAAsAAAADAAEAAAAEAAcAAAAAAAEAAGAEAAgAAAADAAAAAAAEAAkAAAABAAIAAAAEAAoAAAABAAIAAAAEAAsAAAADAAEAAAAFAAcAAAAAAAIAAFAFAAgAAAADAAAAAAAFAAkAAAADAAEAAAAFAAoAAAADAAEAAAAFAAsAAAADAAEAAAAGAAEAAAADAAEAAAAGAAIAAAADAAEAAAAGAAMAAAABAAIAAAAGAAQAAAABAAIAAAAGAAUAAAADAAIAAAAGAAYAAAAAAAIAAFAGAAcAAAAAAAIAAFAGAAgAAAADAAAAAAAGAAkAAAADAAEAAAAGAAoAAAABAAIAAAAGAAsAAAADAAEAAAAHAAEAAAADAAEAAAAHAAIAAAADAAEAAAAHAAMAAAABAAIAAAAHAAQAAAADAAEAAAAHAAUAAAADAAIAAAAHAAYAAAAAAAIAAFAHAAcAAAAAAAIAAFAHAAgAAAADAAAAAAAHAAkAAAADAAEAAAAHAAoAAAADAAEAAAAHAAsAAAABAAIAAAAIAAEAAAABAAIAAAAIAAIAAAABAAIAAAAIAAMAAAABAAIAAAAIAAQAAAABAAIAAAAIAAUAAAADAAIAAAAIAAYAAAAAAAIAAFAIAAcAAAAAAAIAAFAIAAgAAAADAAAAAAAIAAkAAAADAAEAAAAIAAoAAAABAAIAAAAIAAsAAAADAAEAAAAJAAEAAAABAAIAAAAJAAIAAAADAAEAAAAJAAMAAAADAAEAAAAJAAQAAAADAAEAAAAJAAUAAAADAAIAAAAJAAYAAAAAAAIAAFAJAAcAAAAAAAIAAFAJAAgAAAADAAAAAAAJAAkAAAABAAIAAAAJAAoAAAADAAEAAAAJAAsAAAABAAIAAAAGAP7/AAABAAIAAAAGAP//AAADAAEAAAAGAAAAAAADAAEAAAAHAP7/AAADAAEAAAAHAP//AAADAAEAAAAHAAAAAAABAAIAAAAIAP7/AAADAAEAAAAIAP//AAADAAEAAAAIAAAAAAADAAEAAAAJAP7/AAADAAEAAAAJAP//AAABAAIAAAAJAAAAAAADAAEAAAD3//3/AAABAAEAAAD4//3/AAABAAEAAAD5//3/AAABAAEAAAD6//3/AAABAAEAAAD7//3/AAABAAEAAAD8//3/AAABAAEAAAD9//3/AAABAAEAAAD+//3/AAABAAEAAAD///3/AAABAAEAAAAAAP3/AAABAAEAAAABAP3/AAABAAEAAAACAP3/AAABAAEAAAADAP3/AAABAAEAAAAEAP3/AAABAAEAAAAFAP3/AAABAAEAAAAGAP3/AAABAAEAAAAHAP3/AAABAAEAAAAIAP3/AAABAAEAAAAJAP3/AAABAAEAAAAKAP3/AAABAAEAAAAKAP7/AAABAAEAAAAKAP//AAABAAEAAAAKAAAAAAABAAEAAAAKAAEAAAABAAEAAAAKAAIAAAABAAEAAAAKAAMAAAABAAEAAAAKAAQAAAABAAEAAAAKAAUAAAABAAEAAAAKAAYAAAABAAEAAAAKAAcAAAABAAEAAAAKAAgAAAABAAEAAAAKAAkAAAABAAEAAAAKAAoAAAABAAEAAAAKAAsAAAABAAEAAAAKAAwAAAABAAEAAAD3/wwAAAABAAEAAAD4/wwAAAABAAEAAAD5/wwAAAABAAEAAAD6/wwAAAABAAEAAAD7/wwAAAABAAEAAAD8/wwAAAABAAEAAAD9/wwAAAABAAEAAAD+/wwAAAABAAEAAAD//wwAAAABAAEAAAAAAAwAAAABAAEAAAABAAwAAAABAAEAAAACAAwAAAABAAEAAAADAAwAAAABAAEAAAAEAAwAAAABAAEAAAAFAAwAAAABAAEAAAAGAAwAAAABAAEAAAAHAAwAAAABAAEAAAAIAAwAAAABAAEAAAAJAAwAAAABAAEAAAD3//7/AAABAAEAAAD3////AAABAAEAAAD3/wAAAAABAAEAAAD3/wEAAAABAAEAAAD3/wIAAAABAAEAAAD3/wMAAAABAAEAAAD3/wQAAAABAAEAAAD3/wUAAAABAAEAAAD3/wYAAAABAAEAAAD3/wcAAAABAAEAAAD3/wgAAAABAAEAAAD3/wkAAAABAAEAAAD3/woAAAABAAEAAAD3/wsAAAABAAEAAAA=")
 
-[node name="TileMap" parent="." index="1"]
-z_index = -10
-tile_map_data = PackedByteArray("AAAEAAAAAAAAAAIAAAAEAAEAAAAAAAIAAAAEAAIAAAAAAAIAAAAEAAMAAAAAAAIAAFADAAMAAAAAAAEAAGACAAMAAAAAAAIAAFABAAMAAAAAAAIAAFAAAAMAAAAAAAIAAFAFAAMAAAAAAAIAAFAGAAMAAAAAAAIAAFABAAQAAAAAAAIAADA=")
+[node name="DoorArea" parent="." index="1" instance=ExtResource("2_hawl3")]
+position = Vector2(768, -448)
 
-[node name="DoorArea" parent="." index="2" instance=ExtResource("2_hawl3")]
-position = Vector2(1440, 64)
-
-[node name="DoorArea2" parent="." index="3" instance=ExtResource("2_hawl3")]
-position = Vector2(2176, 1120)
+[node name="DoorArea2" parent="." index="2" instance=ExtResource("2_hawl3")]
+position = Vector2(2504, 1800)
 rotation = 1.5708
 
-[node name="DoorArea3" parent="." index="4" instance=ExtResource("2_hawl3")]
-position = Vector2(480, 1536)
+[node name="DoorArea3" parent="." index="3" instance=ExtResource("2_hawl3")]
+position = Vector2(-248, 3008)
 
-[node name="DoorArea4" parent="." index="5" instance=ExtResource("2_hawl3")]
-position = Vector2(56, 1120)
-rotation = 1.5708
+[node name="DoorArea4" parent="." index="4" instance=ExtResource("2_hawl3")]
+position = Vector2(-1976, 1800)
+rotation = -1.57079
 
-[node name="Spawn" type="Node2D" parent="." index="6"]
-position = Vector2(592, 479)
-
-[node name="SpawnArea2D" parent="." index="7" instance=ExtResource("3_aypqx")]
-position = Vector2(1255, 1311)
-allowed_enemies = Array[PackedScene]([ExtResource("4_372yl"), ExtResource("5_xku4r")])
-
-[node name="Crate" parent="." index="8" instance=ExtResource("6_xku4r")]
-position = Vector2(378, 408)
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="9"]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." index="5"]
+position = Vector2(72, 1504)
 navigation_polygon = SubResource("NavigationPolygon_dq2p3")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="10"]
-position = Vector2(1096, -32)
-collision_layer = 4
-collision_mask = 0
+[node name="MediumPOISpawn" type="Marker2D" parent="." index="6"]
+position = Vector2(-2032, -496)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2(180, 0)
-shape = SubResource("RectangleShape2D_dq2p3")
+[node name="PlayerSpawn" parent="." index="7"]
+position = Vector2(712, -160)
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="." index="11"]
-position = Vector2(1056, 1640)
-collision_layer = 4
-collision_mask = 0
+[node name="InteractableHolder" type="Node2D" parent="." index="8"]
+y_sort_enabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" index="0"]
-position = Vector2(180, 0)
-shape = SubResource("RectangleShape2D_dq2p3")
+[node name="Bush" parent="InteractableHolder" index="0" instance=ExtResource("5_amx0r")]
+position = Vector2(136, 280)
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="." index="12"]
-position = Vector2(-48, 872)
-rotation = 1.57079
-collision_layer = 4
-collision_mask = 0
+[node name="Bush2" parent="InteractableHolder" index="1" instance=ExtResource("5_amx0r")]
+position = Vector2(160, 472)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" index="0"]
-position = Vector2(180, 0)
-shape = SubResource("RectangleShape2D_dq2p3")
+[node name="Bush3" parent="InteractableHolder" index="2" instance=ExtResource("5_amx0r")]
+position = Vector2(136, 656)
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="." index="13"]
-position = Vector2(2280, 704)
-rotation = 1.57079
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4" index="0"]
-position = Vector2(180, 0)
-shape = SubResource("RectangleShape2D_dq2p3")
+[node name="Bush4" parent="InteractableHolder" index="3" instance=ExtResource("5_amx0r")]
+position = Vector2(128, 888)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]

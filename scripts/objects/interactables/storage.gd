@@ -1,9 +1,10 @@
-class_name Storage
 extends Area2D
+class_name Storage
 
 @export var slots_num: int
 @export var item_slot_scene: PackedScene
 @export var storage_ui: Control
+@export var randomized_loot = true
 
 @onready var item_containers: GridContainer = %ItemContainers
 @onready var sprite: Sprite2D = $Sprite2D
@@ -31,6 +32,18 @@ func _ready() -> void:
 	await get_tree().process_frame
 
 	update_display()
+
+func generate_loot(loot_table: Array[Item]):
+	var loot_array: Array[Item] = []
+	var n_item_to_spawn = randi_range(0, slots_num - 1)
+	for i in range(n_item_to_spawn):
+		var loot_idx = randi_range(0, len(loot_table) - 1)
+		loot_array.append(loot_table[loot_idx])
+	while loot_array.size() < slots_num:
+		loot_array.append(null)
+
+	items = loot_array
+
 
 func interact():
 	storage_ui.visible = not storage_ui.visible

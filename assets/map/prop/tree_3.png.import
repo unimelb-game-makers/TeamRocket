@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci51qai2crfah"
-path="res://.godot/imported/tall grass.png-ef7ec47853e67df8cfaf43e488778098.ctex"
+uid="uid://cxcnt78e1xu0s"
+path="res://.godot/imported/tree_3.png-006ec94260150fa4993f5772f544f2b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/map/POI/tall grass.png"
-dest_files=["res://.godot/imported/tall grass.png-ef7ec47853e67df8cfaf43e488778098.ctex"]
+source_file="res://assets/map/prop/tree_3.png"
+dest_files=["res://.godot/imported/tree_3.png-006ec94260150fa4993f5772f544f2b5.ctex"]
 
 [params]
 

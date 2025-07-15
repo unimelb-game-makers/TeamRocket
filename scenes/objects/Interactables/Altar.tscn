@@ -68,6 +68,7 @@ script = ExtResource("1_rfv52")
 slots_num = 1
 item_slot_scene = ExtResource("4_ji3s6")
 storage_ui = NodePath("CanvasLayer/UI")
+randomized_loot = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 16)

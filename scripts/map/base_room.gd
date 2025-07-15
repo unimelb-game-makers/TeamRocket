@@ -15,6 +15,7 @@ const DOOR = "B" # There is a door in this direction.
 
 @export var room_name: String
 
+@export_group("Generation setting")
 ## In the order of NESW, enter the appropriate socket in the array in the Inspector.
 ## For example, if this room has 1 door in the South and 2 doors in the West,
 ## then replace "A" with one "B" in '2' and '3' each.
@@ -24,19 +25,25 @@ const DOOR = "B" # There is a door in this direction.
 	"A", # and enter the value in the Inspector
 	"A"
 ]
-
 ## Chance of this room appearing in the map. 1 = least likely, 5 = most likely.
 @export_range(1, 5) var room_weighting: int = 1
-
 ## 4 items max, in North, East, South, West order
 @export var doors: Array[Area2D] = [] # Door scenes, cant get by get_tree
-@export var spawn: Node2D
 
-@export var medium_spawn: Node2D
-@export var large_spawn: Node2D
+@export_group("Point of Interest")
+@export var possible_medium_poi_spawn: Array[PackedScene]
+@export var player_spawn: Marker2D
+@export var medium_poi_spawn: Marker2D
+@export var large_poi_spawn: Marker2D
 
+@export_group("Map setting")
 @export var enemy_spawn_nodes: Array[Node2D] = []
-@export var navigation_region: NavigationRegion2D
+@export var map_loot_table: Array[Item] = []
+
+
+@onready var navigation_region: NavigationRegion2D = $NavigationRegion2D
+
+var spawned_pois: Array[PlaceablePOI] = []
 
 func _ready() -> void:
 	# Verify each socket only has 1 character
@@ -59,6 +66,41 @@ func get_door_by_direction(incoming: Vector2):
 			return i
 
 func has_poi_markers():
-	if medium_spawn != null and large_spawn != null:
+	if medium_poi_spawn != null and large_poi_spawn != null:
 		return true
 	return false
+
+func spawn_poi():
+	if medium_poi_spawn != null and possible_medium_poi_spawn.size() > 0:
+		var chosen_medium_poi = possible_medium_poi_spawn.pick_random()
+		var inst = chosen_medium_poi.instantiate()
+		add_child(inst)
+		inst.global_position = medium_poi_spawn.global_position
+		spawned_pois.append(inst)
+
+
+func get_player_spawn_pos() -> Vector2:
+	return player_spawn.global_position
+
+
+func generate_loot_for_container():
+	for elem in spawned_pois:
+		elem.generate_loot_for_container()
+
+func get_enemy_spawns():
+	var res = []
+	for elem in spawned_pois:
+		res.append_array(elem.get_enemy_spawns())
+	return res
+
+func get_interactables():
+	var res = []
+	for elem in spawned_pois:
+		res.append_array(elem.get_interactables())
+	return res
+
+func get_enemies():
+	var res = []
+	for elem in spawned_pois:
+		res.append_array(elem.get_enemies())
+	return res

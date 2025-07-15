@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn0h4ghumvrgf"]
+
+[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="1_pwrhi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbfba"]
+size = Vector2(129, 64.5)
+
+[node name="ExplosiveBarrel" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.350161, 0, 1)
+position = Vector2(0, -72)
+scale = Vector2(2, 3.25)
+texture = ExtResource("1_pwrhi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.25)
+shape = SubResource("RectangleShape2D_bbfba")

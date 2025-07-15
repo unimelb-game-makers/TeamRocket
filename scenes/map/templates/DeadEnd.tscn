@@ -3,11 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_1x1qf"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_kugv0"]
 
-[node name="DeadEnd" node_paths=PackedStringArray("doors", "spawn") instance=ExtResource("1_1x1qf")]
+[node name="DeadEnd" node_paths=PackedStringArray("doors") instance=ExtResource("1_1x1qf")]
 room_name = "DeadEnd"
 sockets = Array[String](["A", "A", "B", "A"])
 doors = [null, null, NodePath("DoorArea"), null]
-spawn = NodePath("Spawn")
 
 [node name="ColorRect" type="ColorRect" parent="." index="0"]
 z_index = -10

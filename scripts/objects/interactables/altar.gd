@@ -1,6 +1,8 @@
 extends Storage
 class_name Altar
 
+# TODO: Altar should be its own class instead of extend Storage
+
 signal submit(item: Item)
 signal is_interacting_with(state: bool)
 

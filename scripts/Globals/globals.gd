@@ -11,6 +11,7 @@ var player_stats: PlayerStatsResource
 var item_handler
 var map
 var enemy_handler: EnemyHandler
+var interactable_handler: InteractableHandler
 var game_handler: GameHandler
 
 var main_ui: MainUI

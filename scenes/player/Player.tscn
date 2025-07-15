@@ -1,19 +1,19 @@
 [gd_scene load_steps=131 format=3 uid="uid://bp53g1jmqlap"]
 
-[ext_resource type="Script" uid="uid://bagdchb1hwe0f" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
+[ext_resource type="Script" uid="uid://dahmqbphxewm7" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" uid="uid://cucpys6u7vdh4" path="res://scripts/player/player.gd" id="1_lvdue"]
 [ext_resource type="Resource" uid="uid://bgplmsv507g1w" path="res://resources/player/player_stats.tres" id="2_0jidv"]
 [ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="2_0pnis"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_7c1ag"]
-[ext_resource type="Script" uid="uid://cj6qlxl2m71tr" path="res://addons/godot_state_charts/parallel_state.gd" id="2_44kvc"]
-[ext_resource type="Script" path="res://resources/resource_scripts/status_effect.gd" id="2_f2wld"]
+[ext_resource type="Script" uid="uid://dcjhq64uacsfa" path="res://addons/godot_state_charts/parallel_state.gd" id="2_44kvc"]
+[ext_resource type="Script" uid="uid://dusc61itvq8h1" path="res://resources/resource_scripts/status_effect.gd" id="2_f2wld"]
 [ext_resource type="Texture2D" uid="uid://bfbg1awb0nkfp" path="res://assets/status_icons/bullet-impacts.svg" id="3_bjerx"]
 [ext_resource type="Script" uid="uid://c4w27uduxpnqb" path="res://resources/resource_scripts/status_effects/attack_increase_status.gd" id="3_h2bbt"]
-[ext_resource type="Script" uid="uid://cyw3vuu8wb4vn" path="res://addons/godot_state_charts/compound_state.gd" id="3_u8x7w"]
-[ext_resource type="Script" uid="uid://di7rh2bj4kanb" path="res://addons/godot_state_charts/atomic_state.gd" id="4_px21u"]
+[ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="3_u8x7w"]
+[ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="4_px21u"]
 [ext_resource type="PackedScene" uid="uid://bpwuxxnbvf5aq" path="res://scenes/player/GunImpact.tscn" id="4_wuv7n"]
-[ext_resource type="Script" uid="uid://dwgr8rprecbfo" path="res://addons/godot_state_charts/transition.gd" id="5_6l3qh"]
-[ext_resource type="Script" uid="uid://b6yi4ggdw3s7h" path="res://scripts/ui/aiming_ui.gd" id="5_bb4ct"]
+[ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="5_6l3qh"]
+[ext_resource type="Script" uid="uid://bnfyacnboc43k" path="res://scripts/ui/aiming_ui.gd" id="5_bb4ct"]
 [ext_resource type="Script" uid="uid://cg7rnst5hwwxp" path="res://resources/resource_scripts/status_effects/hp_increase_status.gd" id="5_kt2pj"]
 [ext_resource type="Script" uid="uid://c6yfi13084pva" path="res://resources/resource_scripts/status_effects/movespeed_increase_status.gd" id="6_h2bbt"]
 [ext_resource type="Texture2D" uid="uid://b5mo6uosm58ww" path="res://assets/status_icons/heart-plus.svg" id="6_q71nn"]
@@ -583,11 +583,11 @@ shader_parameter/foreground = Vector4(1, 1, 1, 1)
 shader_parameter/background = Vector4(0, 0, 0, 0)
 
 [node name="Player" type="CharacterBody2D"]
-y_sort_enabled = true
 collision_layer = 65
 collision_mask = 6
 script = ExtResource("1_lvdue")
 player_stats = ExtResource("2_0jidv")
+run_stamina_cost = 5
 effect_mapping = Dictionary[int, ExtResource("2_f2wld")]({
 0: SubResource("Resource_f2wld"),
 1: SubResource("Resource_3imom"),
@@ -599,7 +599,7 @@ effect_mapping = Dictionary[int, ExtResource("2_f2wld")]({
 13: SubResource("Resource_2mngy")
 })
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="DebugWhiteSquare" type="Sprite2D" parent="."]
 visible = false
 self_modulate = Color(0.367188, 0.367188, 0.367188, 1)
 position = Vector2(8, -88)
@@ -892,8 +892,8 @@ one_shot = true
 
 [connection signal="aim_mode_enter" from="." to="PlayerCamera" method="_on_player_aim_mode_enter"]
 [connection signal="aim_mode_exit" from="." to="PlayerCamera" method="_on_player_aim_mode_exit"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_anim_sprite_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]
 [connection signal="fired" from="Rifle" to="PlayerCamera" method="_on_rifle_fired"]
 [connection signal="timeout" from="Rifle/ReloadTimer" to="Rifle" method="_on_reload_timer_timeout"]
@@ -916,4 +916,5 @@ one_shot = true
 [connection signal="timeout" from="ChannelTimer" to="." method="_on_channel_timer_timeout"]
 [connection signal="timeout" from="FootstepSoundEffect/FootstepTimer" to="." method="_on_footstep_timer_timeout"]
 [connection signal="timeout" from="StatusEffectTickTimer" to="." method="_on_status_effect_tick_timer_timeout"]
+[connection signal="timeout" from="AfterHurtInvulnerableTimer" to="." method="_on_after_hurt_invulnerable_timer_timeout"]
 [connection signal="timeout" from="StaminaDelayTimer" to="." method="_on_stamina_delay_timer_timeout"]
