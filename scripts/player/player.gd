@@ -7,6 +7,9 @@ extends CharacterBody2D
 @export var sprint_loudness: float = 250
 @export var gun_loudness: float = 2000
 @export var player_stats: PlayerStatsResource
+@export var run_stamina_cost = 20
+@export var roll_stamina_cost = 20
+
 
 # ---- Signals ----
 # For camera control
@@ -173,8 +176,8 @@ func _on_basic_state_input(event: InputEvent) -> void:
 		return
 		
 	# Rolling supercedes all states
-	if event.is_action_pressed("roll") and can_roll and player_stats.stamina >= 20:
-		player_stats.stamina -= 20
+	if event.is_action_pressed("roll") and can_roll and player_stats.stamina >= roll_stamina_cost:
+		player_stats.stamina -= roll_stamina_cost
 		statechart.send_event("space_press")
 	if event.is_action_pressed("crouch"):
 		statechart.send_event("ctrl_press") # Crouch <-> Standing
@@ -260,7 +263,6 @@ func _on_aiming_state_exited() -> void:
 	is_aiming = false
 	
 
-
 func _on_channel_timer_timeout() -> void:
 	channel_complete.emit()
 
@@ -312,7 +314,7 @@ func _on_run_state_physics_processing(delta: float) -> void:
 	if (direction.length() > 0.1):
 		handle_direction_anim("move", direction, "run", animation_speed)
 		
-	player_stats.stamina -= 20 * delta
+	player_stats.stamina -= run_stamina_cost * delta
 	if (player_stats.stamina <= 0):
 		print("Player Stamina 0")
 		statechart.send_event("shift_release")

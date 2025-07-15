@@ -14,6 +14,7 @@
 poi_loot_table = Array[ExtResource("2_kcfuv")]([ExtResource("3_j2e28"), ExtResource("4_bbfba")])
 
 [node name="TileMap" parent="." index="0"]
+visible = false
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAADAAEAAAABAAAAAAADAAIAAAABAAAAAAACAAIAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAABAAAAAAACAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAA=")
 
 [node name="WallTileMap" parent="Wall" index="0"]

@@ -1,27 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnqxqnaid3q3a"]
+[gd_scene load_steps=3 format=3 uid="uid://dnqxqnaid3q3a"]
 
 [ext_resource type="Script" uid="uid://chbh13wl1vyn6" path="res://scripts/map/base_room.gd" id="1_t0uyp"]
-[ext_resource type="Texture2D" uid="uid://xrhly4rowkk2" path="res://assets/map/map_tileset.png" id="2_hdygl"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ta5ng"]
-texture = ExtResource("2_hdygl")
-texture_region_size = Vector2i(256, 256)
-0:0/0 = 0
-0:0/0/y_sort_origin = 127
-0:1/0 = 0
-0:1/0/y_sort_origin = 127
-0:2/0 = 0
-0:2/0/y_sort_origin = 127
-1:0/0 = 0
-1:0/0/y_sort_origin = 127
-1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
-
-[sub_resource type="TileSet" id="TileSet_0b30f"]
-tile_size = Vector2i(256, 256)
-physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_ta5ng")
+[ext_resource type="TileSet" uid="uid://blu4c3vmuk83t" path="res://scenes/map/base_map_tileset.tres" id="2_t0uyp"]
 
 [node name="BaseProceduralRoom" type="Node2D" node_paths=PackedStringArray("player_spawn")]
 script = ExtResource("1_t0uyp")
@@ -29,8 +9,7 @@ player_spawn = NodePath("PlayerSpawn")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 z_index = -1
-scale = Vector2(2, 2)
-tile_set = SubResource("TileSet_0b30f")
+tile_set = ExtResource("2_t0uyp")
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(232, -24)
