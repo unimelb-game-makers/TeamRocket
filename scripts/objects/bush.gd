@@ -4,7 +4,7 @@ extends Node2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 
-const ROTATE_STRENGTH = 6.0
+const ROTATE_STRENGTH = 4.0
 const ROTATE_DURATION = 0.2
 
 var tween: Tween = null

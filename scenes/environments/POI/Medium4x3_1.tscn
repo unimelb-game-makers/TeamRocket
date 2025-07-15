@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cu51txwabxhgh"]
+[gd_scene load_steps=12 format=4 uid="uid://cu51txwabxhgh"]
 
 [ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_23clr"]
 [ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_05b3g"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="5_n0jgf"]
 [ext_resource type="PackedScene" uid="uid://c6jq64hs6hvtm" path="res://scenes/enemy/EnemySpider.tscn" id="6_05b3g"]
 [ext_resource type="PackedScene" uid="uid://bn0h4ghumvrgf" path="res://scenes/objects/Interactables/ExplosiveBarrel.tscn" id="6_aovus"]
+[ext_resource type="PackedScene" uid="uid://bdrwyr3m3l6gx" path="res://scenes/environments/prop/Tree.tscn" id="7_payfy"]
+[ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="8_utfa0"]
 
 [node name="BasePOI" instance=ExtResource("1_23clr")]
 poi_loot_table = Array[ExtResource("2_05b3g")]([ExtResource("3_aovus"), ExtResource("4_aovus")])
@@ -28,6 +30,21 @@ position = Vector2(272, 1424)
 
 [node name="ExplosiveBarrel" parent="InteractableHolder" index="2" instance=ExtResource("6_aovus")]
 position = Vector2(1392, 752)
+
+[node name="Tree" parent="InteractableHolder" index="3" instance=ExtResource("7_payfy")]
+position = Vector2(1032, 872)
+
+[node name="Bush" parent="InteractableHolder" index="4" instance=ExtResource("8_utfa0")]
+position = Vector2(1152, 1352)
+
+[node name="Bush2" parent="InteractableHolder" index="5" instance=ExtResource("8_utfa0")]
+position = Vector2(1512, 1112)
+
+[node name="Bush3" parent="InteractableHolder" index="6" instance=ExtResource("8_utfa0")]
+position = Vector2(1888, 760)
+
+[node name="Bush4" parent="InteractableHolder" index="7" instance=ExtResource("8_utfa0")]
+position = Vector2(248, 976)
 
 [node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("4_irjpm")]
 position = Vector2(1072, 224)
