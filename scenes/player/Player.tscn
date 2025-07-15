@@ -583,7 +583,6 @@ shader_parameter/foreground = Vector4(1, 1, 1, 1)
 shader_parameter/background = Vector4(0, 0, 0, 0)
 
 [node name="Player" type="CharacterBody2D"]
-y_sort_enabled = true
 collision_layer = 65
 collision_mask = 6
 script = ExtResource("1_lvdue")
@@ -600,7 +599,7 @@ effect_mapping = Dictionary[int, ExtResource("2_f2wld")]({
 13: SubResource("Resource_2mngy")
 })
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="DebugWhiteSquare" type="Sprite2D" parent="."]
 visible = false
 self_modulate = Color(0.367188, 0.367188, 0.367188, 1)
 position = Vector2(8, -88)
