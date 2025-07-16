@@ -9,6 +9,7 @@
 script = ExtResource("2_l43am")
 swappable_ingredients = Array[int]([2, 2, 3])
 dishes = Array[ExtResource("1_ivtb7")]([ExtResource("2_0fffa"), ExtResource("3_shpws")])
+recipe_name = ""
 effects = Array[int]([])
 base_ingredients = Array[int]([3, 301, 203])
 metadata/_custom_type_script = "uid://dbchi3jhl5d0x"

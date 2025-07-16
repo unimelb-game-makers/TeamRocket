@@ -39,7 +39,7 @@ var bullets = max_bullets:
 		Globals.player_ui.update_bullets(bullets_in, max_bullets)
 		bullets = bullets_in
 		if (bullets <= 0):
-			reload_effect.play()
+			reload()
 
 
 func _ready() -> void:

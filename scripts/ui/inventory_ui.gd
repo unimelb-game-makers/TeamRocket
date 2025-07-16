@@ -18,6 +18,7 @@ signal item_selected(item, amount)
 @onready var use_button: TemplateButton = $VBoxContainer/ItemListBackground/ContextButtonList/UseButton
 @onready var status_grid_container: GridContainer = $StatusPanel/StatusGridContainer
 
+var can_open = true
 var is_open = false
 var current_selected_item: Item = null
 
@@ -29,9 +30,8 @@ func _ready() -> void:
 	inventory_container.update_inventory_list()
 	reset_data()
 
-
 func _process(_delta: float) -> void:
-	if (Input.is_action_just_pressed("inventory")):
+	if (Input.is_action_just_pressed("inventory") and can_open):
 		toggle_inventory(not is_open)
 
 func update_weight_label():
@@ -55,6 +55,8 @@ func update_status_panel():
 func toggle_inventory(status: bool) -> void:
 	visible = status
 	is_open = visible
+	Globals.player.can_interact = not is_open
+	Globals.player.can_move = not is_open
 	reset_data()
 
 func update_description(item: Item, _amount: int):

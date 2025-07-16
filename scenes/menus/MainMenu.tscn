@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://eg1evlw6ow0i"]
 
-[ext_resource type="Script" uid="uid://7r18m7ss37uf" path="res://scripts/menus/main_menu.gd" id="1_fjdek"]
+[ext_resource type="Script" uid="uid://7r18m7ss37uf" path="res://scripts/Menus/main_menu.gd" id="1_fjdek"]
 [ext_resource type="PackedScene" uid="uid://8o3mlc7okpi7" path="res://scenes/environments/Kitchen.tscn" id="2_4achk"]
 [ext_resource type="Texture2D" uid="uid://b6nlvgmsrpnys" path="res://assets/Park/city park background.png" id="2_ik0mn"]
 [ext_resource type="PackedScene" uid="uid://j00qr7dcyhv4" path="res://scenes/menus/SettingMenu.tscn" id="2_r7byj"]

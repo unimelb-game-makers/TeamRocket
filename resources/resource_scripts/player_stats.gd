@@ -30,8 +30,9 @@ const CROUCH_MULTIPLIER = 0.5
 	set(value):
 		stamina = value
 		stamina = clamp(stamina, 0, max_stamina)
-		if (Globals.player_ui != null):
-			Globals.player_ui.update_stamina(stamina, max_stamina)
+		if (Globals):
+			if (Globals.player_ui != null):
+				Globals.player_ui.update_stamina(stamina, max_stamina)
 @export var stamina_regen: float = 30
 
 # Status Effects listed by duration (Either in seconds or days, -1 if instant or permanent)
