@@ -13,3 +13,7 @@ tile_set = ExtResource("2_t0uyp")
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(232, -24)
+
+[node name="InteractableHolder" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]

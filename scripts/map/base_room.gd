@@ -40,7 +40,6 @@ const DOOR = "B" # There is a door in this direction.
 @export var enemy_spawn_nodes: Array[Node2D] = []
 @export var map_loot_table: Array[Item] = []
 
-
 @onready var navigation_region: NavigationRegion2D = $NavigationRegion2D
 
 var spawned_pois: Array[PlaceablePOI] = []
