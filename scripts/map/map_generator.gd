@@ -255,7 +255,8 @@ func go_to_room(direction: Vector2):
 	else:
 		return
 
-	await enemy_handler.clear_room()
+	enemy_handler.clear_room()
+	interactable_handler.clear_room()
 	current_selected.queue_free()
 
 	await get_tree().process_frame
