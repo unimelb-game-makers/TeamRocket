@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PotMinigameSettings" load_steps=2 format=3 uid="uid://docyqpasq3f7i"]
+
+[ext_resource type="Script" uid="uid://b5nit6x54kcrg" path="res://scenes/cooking/workbenches/pot/pot_minigame_settings.gd" id="1_o8mrl"]
+
+[resource]
+script = ExtResource("1_o8mrl")
+required_speed = 1.5
+required_stir_duration = 5.0
+difficulty = 5
+metadata/_custom_type_script = "uid://b5nit6x54kcrg"

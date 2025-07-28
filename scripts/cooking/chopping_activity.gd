@@ -164,7 +164,6 @@ func _initialize_marker_position() -> void:
 
 func _determine_chopping_settings() -> void:
 	_determine_chop_settings_aux()
-	# TODO: Figure out how to turn input_ingredients and output into a preset map/create in real-time (harder)
 	# TODO: Make more robust, calculating the perfect left and right like this is not safe
 	# TODO: Convert to a @tool so can easily test visually
 	perfect_left = 50 - (chopping_setting.perfect_range / 2)
