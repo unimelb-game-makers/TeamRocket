@@ -10,15 +10,15 @@ extends CookingActivity
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar # The progress bar
 @onready var timer_label: Label = $TimerLabel # The timer label
 
-@export var pot_settings_list: Array[PotMinigameSettings]
+@export var pot_settings: Array[PotMinigameSetting]
 @export var force_selected: bool = false ## When true, the selected setting in the editor WILL be select
-@export var pot_settings: PotMinigameSettings 
-var required_speed = 1.5 ## Minimum velocity required. Readjusted by pot_settings.
+@export var pot_setting: PotMinigameSetting 
+var required_speed = 1.5 ## Minimum velocity required. Readjusted by pot_setting.
 var stirring_speed = 0.0 # Current speed of stirring.
 var rotation_speed = 0.0 # Rotation speed of the stew base (adjustable).
 var target_rotation_speed = 0.0 # Target rotation speed for smooth lerp.
 var elapsed_time = 0.0 # Tracks valid stirring time.
-var required_stir_duration: float = 10.0 ## Readjusted by pot_settings.
+var required_stir_duration: float = 10.0 ## Readjusted by pot_setting.
 
 
 var initial_inner_circle_position: Vector2 # To store the editor-defined position of the inner circle.
@@ -35,8 +35,8 @@ func _ready() -> void:
 	
 func _determine_pot_settings() -> void:
 	if force_selected:
-		required_speed = pot_settings.required_speed
-		required_stir_duration = pot_settings.required_stir_duration
+		required_speed = pot_setting.required_speed
+		required_stir_duration = pot_setting.required_stir_duration
 		return
 	
 	# Picks one resource from the given array with a probability inversely proportional to its difficulty. Method from ChatGPT.
@@ -44,7 +44,7 @@ func _determine_pot_settings() -> void:
 	var total_weight = 0.0   # Sum of all weights, used for normalizing selection
 	
 	# Step 1: Calculate weights based on 1 / difficulty
-	for res in pot_settings_list:
+	for res in pot_settings:
 		# Prevent division by zero in case difficulty is 0 or missing
 		var difficulty = max(res.difficulty, 0.0001)
 		var weight = 1.0 / difficulty
@@ -57,20 +57,20 @@ func _determine_pot_settings() -> void:
 	var cumulative = 0.0  # This will track the cumulative weight as we iterate
 	
 	# Step 3: Iterate through oven_tracing_lines and select the one where the random value falls
-	for i in pot_settings_list.size():
+	for i in pot_settings.size():
 		cumulative += weights[i]
 		if rand <= cumulative:
 			# We've found the selected resource
-			pot_settings =  pot_settings_list[i]
+			pot_setting =  pot_settings[i]
 			break
 	
 	# Step 4: Fallback in case of rounding error (shouldn't normally happen)
-	if pot_settings == null:
+	if pot_setting == null:
 		print("Settings are null")
-		pot_settings = pot_settings_list[-1]  # Return the last resource as a fallback
+		pot_setting = pot_settings[-1]  # Return the last resource as a fallback
 	
-	required_speed = pot_settings.required_speed
-	required_stir_duration = pot_settings.required_stir_duration
+	required_speed = pot_setting.required_speed
+	required_stir_duration = pot_setting.required_stir_duration
 
 	
 #func reset_game() -> void:

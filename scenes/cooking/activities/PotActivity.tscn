@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://4s64a0adjxlr"]
 
 [ext_resource type="Script" uid="uid://busp0mos1wg7w" path="res://scripts/cooking/pot_activity.gd" id="1_ishcw"]
-[ext_resource type="Script" uid="uid://b5nit6x54kcrg" path="res://scenes/cooking/workbenches/pot/pot_minigame_settings.gd" id="2_aruxa"]
+[ext_resource type="Script" uid="uid://b5nit6x54kcrg" path="res://scenes/cooking/workbenches/pot/pot_minigame_setting.gd" id="2_aruxa"]
 [ext_resource type="Resource" uid="uid://40tmnmmtippj" path="res://scenes/cooking/workbenches/pot/settings/setting_1.tres" id="2_mtbbh"]
 [ext_resource type="Resource" uid="uid://docyqpasq3f7i" path="res://scenes/cooking/workbenches/pot/settings/default_setting.tres" id="3_w11kf"]
 [ext_resource type="Texture2D" uid="uid://tq63nq80td5t" path="res://assets/workstations/stew_game/stew_top1.png" id="5_vbh60"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PotMinigameSettings" load_steps=2 format=3 uid="uid://docyqpasq3f7i"]
 
-[ext_resource type="Script" uid="uid://b5nit6x54kcrg" path="res://scenes/cooking/workbenches/pot/pot_minigame_settings.gd" id="1_o8mrl"]
+[ext_resource type="Script" uid="uid://b5nit6x54kcrg" path="res://scenes/cooking/workbenches/pot/pot_minigame_setting.gd" id="1_o8mrl"]
 
 [resource]
 script = ExtResource("1_o8mrl")

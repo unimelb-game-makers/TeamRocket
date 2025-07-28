@@ -27,8 +27,3 @@ func minigame_complete() -> void:
 
 func finish(rating: Item.Quality):
 	complete.emit(rating)
-
-#static func create_activity(settings: MinigameSettings) -> CookingActivity:
-	#push_error("Needs to be implemented in child!!!")
-	#var ins: CookingActivity = load("res://scenes/cooking/activities/ChoppingActivity.tscn").instantiate()
-	#return ins

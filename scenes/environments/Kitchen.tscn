@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bpx5ay6gfltel" path="res://scenes/cooking/workbenches/oven/Oven.tscn" id="13_8r8q0"]
 [ext_resource type="PackedScene" uid="uid://dj4u0n4uqbwvg" path="res://scenes/cooking/workbenches/chopping_board/ChoppingBoard.tscn" id="13_y6d8o"]
 [ext_resource type="PackedScene" uid="uid://djxk0awyl2jvv" path="res://scenes/cooking/workbenches/Fridge.tscn" id="14_12asn"]
-[ext_resource type="PackedScene" uid="uid://dk6a5jgkvuwwt" path="res://scenes/cooking/workbenches/FryingPan.tscn" id="14_gr436"]
+[ext_resource type="PackedScene" uid="uid://dk6a5jgkvuwwt" path="res://scenes/cooking/workbenches/fryer/FryingPan.tscn" id="14_gr436"]
 [ext_resource type="PackedScene" uid="uid://bqjhwwixj8hir" path="res://scenes/cooking/workbenches/pot/Pot.tscn" id="14_l7h17"]
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
 [ext_resource type="PackedScene" uid="uid://bhlarqiey25gc" path="res://scenes/cooking/workbenches/AssemblyPlate.tscn" id="20_twwyk"]
