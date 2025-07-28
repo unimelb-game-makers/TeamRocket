@@ -10,4 +10,5 @@ okay_range = 40
 okay_progress = 5
 target = 50
 speed = 300
+difficulty = 5
 metadata/_custom_type_script = "uid://dcmgisvsbxvo6"

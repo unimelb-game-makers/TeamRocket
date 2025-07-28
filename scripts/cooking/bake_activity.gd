@@ -10,7 +10,7 @@ Baking activity
 5. If count down reaches 0, and player not at end, game ends - fail
 """
 @export var oven_tracing_lines: Array[OvenLine]
-@export var force_selected: bool = false
+@export var force_selected: bool = false ## When true, the selected setting in the editor WILL be select
 @export var selected_oven_tracing_line_data: OvenLine ## The over tracing line data to use. This is overided during _ready() by default, change force_selected to true to always choose the one placed in here.
 
 @onready var oven_tracing_line: OvenTracingLine = $OvenTracingLine

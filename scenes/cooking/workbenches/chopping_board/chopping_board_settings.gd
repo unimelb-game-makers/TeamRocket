@@ -1,5 +1,5 @@
 class_name ChoppingBoardSettings
-extends Resource
+extends MinigameSettings
 
 """
 Resource that simply stores the data to modify the chopping board settings.

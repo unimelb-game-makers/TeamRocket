@@ -9,7 +9,9 @@ extends CookingActivity
 @onready var ingredient_image_display: TextureRect = $IngredientImageDisplay
 
 # Settings
-@export var chopping_settings: ChoppingBoardSettings
+@export var chopping_settings: Array[ChoppingBoardSettings]
+@export var force_selected: bool = false ## When true, the selected setting in the editor WILL be select
+@export var chopping_setting: ChoppingBoardSettings
 
 enum ACCURACY_SCORES {
 	PERFECT = 0,
@@ -33,7 +35,7 @@ var perfect_progress # Progress for perfect chop
 var okay_progress # Progress for okay chop
 
 func _ready() -> void:
-	if !chopping_settings:
+	if !chopping_setting:
 		push_warning("No default settings is set for chopping board settings") # Not necessary since other parts of the code protects it but is safe to have
 	
 	if get_tree().current_scene == self or is_initialized: # Runs if it as current scene or was initialized by something else then added to tree
@@ -161,14 +163,48 @@ func _initialize_marker_position() -> void:
 	marker.position.x = (boundary_width - marker.size.x) / 2 # Center marker within boundary width
 
 func _determine_chopping_settings() -> void:
+	_determine_chop_settings_aux()
 	# TODO: Figure out how to turn input_ingredients and output into a preset map/create in real-time (harder)
 	# TODO: Make more robust, calculating the perfect left and right like this is not safe
 	# TODO: Convert to a @tool so can easily test visually
-	perfect_left = 50 - (chopping_settings.perfect_range / 2)
-	perfect_right = 50 + (chopping_settings.perfect_range / 2)
-	okay_left = 50 - (chopping_settings.okay_range / 2)
-	okay_right = 50 + (chopping_settings.okay_range / 2)
-	target = chopping_settings.target
-	speed = chopping_settings.speed
-	perfect_progress = chopping_settings.perfect_progress
-	okay_progress = chopping_settings.okay_progress
+	perfect_left = 50 - (chopping_setting.perfect_range / 2)
+	perfect_right = 50 + (chopping_setting.perfect_range / 2)
+	okay_left = 50 - (chopping_setting.okay_range / 2)
+	okay_right = 50 + (chopping_setting.okay_range / 2)
+	target = chopping_setting.target
+	speed = chopping_setting.speed
+	perfect_progress = chopping_setting.perfect_progress
+	okay_progress = chopping_setting.okay_progress
+
+func _determine_chop_settings_aux() -> void:
+	if force_selected:
+		return
+	
+	# Picks one resource from the given array with a probability inversely proportional to its difficulty. Method from ChatGPT.
+	var weights = []         # This will store the calculated weights for each resource
+	var total_weight = 0.0   # Sum of all weights, used for normalizing selection
+	
+	# Step 1: Calculate weights based on 1 / difficulty
+	for res in chopping_settings:
+		# Prevent division by zero in case difficulty is 0 or missing
+		var difficulty = max(res.difficulty, 0.0001)
+		var weight = 1.0 / difficulty
+		
+		weights.append(weight)       # Store this resource's weight
+		total_weight += weight       # Add to the running total of weights
+	
+	# Step 2: Generate a random number between 0 and total_weight
+	var rand = randf() * total_weight
+	var cumulative = 0.0  # This will track the cumulative weight as we iterate
+	
+	# Step 3: Iterate through oven_tracing_lines and select the one where the random value falls
+	for i in chopping_settings.size():
+		cumulative += weights[i]
+		if rand <= cumulative:
+			# We've found the selected resource
+			chopping_setting =  chopping_settings[i]
+			return
+	
+	# Step 4: Fallback in case of rounding error (shouldn't normally happen)
+	chopping_setting = chopping_settings[-1]  # Return the last resource as a fallback
+	
