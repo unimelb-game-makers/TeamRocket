@@ -15,6 +15,8 @@ var stirring_speed = 0.0 # Current speed of stirring.
 var rotation_speed = 0.0 # Rotation speed of the stew base (adjustable).
 var target_rotation_speed = 0.0 # Target rotation speed for smooth lerp.
 var elapsed_time = 0.0 # Tracks valid stirring time.
+@export var required_stir_duration: float = 10.0
+
 
 var initial_inner_circle_position: Vector2 # To store the editor-defined position of the inner circle.
 var is_playing = false
@@ -72,14 +74,14 @@ func _process(delta: float) -> void:
 	rotation_speed = lerp(rotation_speed, target_rotation_speed, 0.2)
 
 	# Calculate time left as a percentage and update the progress bar
-	var time_left = max(5.0 - elapsed_time, 0)
-	var progress_value = (1 - time_left / 5.0) * 100.0 # Convert time left to a progress percentage
+	var time_left = max(required_stir_duration - elapsed_time, 0)
+	var progress_value = (1 - time_left / required_stir_duration) * 100.0 # Convert time left to a progress percentage
 	texture_progress_bar.value = progress_value
 
 	# Update timer label text
 	timer_label.text = str(round(time_left * 10) / 10.0) + " SECONDS"
 
-	if elapsed_time >= 5.0:
+	if elapsed_time >= required_stir_duration:
 		is_playing = false
 		timer_label.text = "0.0" # Final time left
 		feedback_label.text = "Success!"
@@ -87,7 +89,7 @@ func _process(delta: float) -> void:
 		complete_minigame()
 
 func complete_minigame() -> void:
-	finish(Item.Quality.GOOD)
+	finish(Item.Quality.GOOD) # TODO: Determine Quality
 
 func _input(event: InputEvent) -> void:
 	if not is_playing:

@@ -27,8 +27,8 @@ Currently, this is unused, as we just use a texture2D instead
 @onready var fry_progress: TextureProgressBar = $FryProgress
 
 
-## Radius of frying pan
-@export var PAN_SIZE: float = 75
+
+@export var PAN_SIZE: float = 75 ## Radius of frying pan
 # We do this calculation just once and store it, since it
 # will be used a lot
 @onready var PAN_SIZE_SQUARED = PAN_SIZE * PAN_SIZE
@@ -37,8 +37,8 @@ Currently, this is unused, as we just use a texture2D instead
 # How long to fry for
 var progress: Array = [0, 0]
 var side: int = 0
-## How long to fry each side for, in number of seconds
-@export var target_progress := 5.0
+
+@export var target_progress := 5.0 ## How long to fry each side for, in number of seconds
 
 # A brief cooldown for the warning "!" flash
 var warning_timer: float
