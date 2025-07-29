@@ -1,0 +1,367 @@
+[gd_scene load_steps=10 format=3 uid="uid://bsm72mj6udeil"]
+
+[ext_resource type="Script" uid="uid://k0ur6lwnpmw7" path="res://scripts/ui/debug_ui.gd" id="1_cv3ip"]
+[ext_resource type="Script" uid="uid://bgt31fvpoyy33" path="res://scripts/ui/Debug/player_debug_ui.gd" id="2_hwcit"]
+[ext_resource type="Script" uid="uid://kr737cs6588f" path="res://scripts/ui/Debug/enemy_debug_ui.gd" id="3_4846i"]
+[ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/EnemyDasher.tscn" id="4_qacwx"]
+[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="5_y3jxi"]
+[ext_resource type="PackedScene" uid="uid://c6jq64hs6hvtm" path="res://scenes/enemy/EnemySpider.tscn" id="6_78q82"]
+[ext_resource type="PackedScene" path="res://scenes/enemy/EnemyLoneStalker.tscn" id="7_78q82"]
+[ext_resource type="PackedScene" uid="uid://djgvayx5wpdta" path="res://scenes/enemy/EnemyRatMonarch.tscn" id="8_buxjs"]
+[ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="9_5btes"]
+
+[node name="DebugUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cv3ip")
+
+[node name="PlayerDebugUI" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = -249.0
+offset_right = 282.0
+offset_bottom = 87.0
+grow_vertical = 2
+script = ExtResource("2_hwcit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerDebugUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="PlayerDebugUI/VBoxContainer"]
+custom_minimum_size = Vector2(12, 25)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerDebugUI/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.1667
+offset_bottom = 11.1667
+grow_horizontal = 2
+grow_vertical = 2
+text = "Player Stats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MaxHP" type="Control" parent="PlayerDebugUI/VBoxContainer"]
+custom_minimum_size = Vector2(12, 25)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerDebugUI/VBoxContainer/MaxHP"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.1667
+offset_right = 112.0
+offset_bottom = 11.1667
+grow_vertical = 2
+text = "Max HP"
+vertical_alignment = 1
+
+[node name="MaxHPLineEdit" type="LineEdit" parent="PlayerDebugUI/VBoxContainer/MaxHP"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -68.5417
+offset_top = -15.1667
+offset_bottom = 15.1667
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HP" type="Control" parent="PlayerDebugUI/VBoxContainer"]
+custom_minimum_size = Vector2(12, 25)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerDebugUI/VBoxContainer/HP"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.1667
+offset_right = 112.0
+offset_bottom = 11.1667
+grow_vertical = 2
+text = "HP"
+vertical_alignment = 1
+
+[node name="HPLineEdit" type="LineEdit" parent="PlayerDebugUI/VBoxContainer/HP"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -68.5417
+offset_top = -15.1667
+offset_bottom = 15.1667
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Damage" type="Control" parent="PlayerDebugUI/VBoxContainer"]
+custom_minimum_size = Vector2(12, 25)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerDebugUI/VBoxContainer/Damage"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.1667
+offset_right = 112.0
+offset_bottom = 11.1667
+grow_vertical = 2
+text = "Damage"
+vertical_alignment = 1
+
+[node name="DamageLineEdit" type="LineEdit" parent="PlayerDebugUI/VBoxContainer/Damage"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -68.5417
+offset_top = -15.1667
+offset_bottom = 15.1667
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Speed" type="Control" parent="PlayerDebugUI/VBoxContainer"]
+custom_minimum_size = Vector2(12, 25)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerDebugUI/VBoxContainer/Speed"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.1667
+offset_right = 112.0
+offset_bottom = 11.1667
+grow_vertical = 2
+text = "Speed"
+vertical_alignment = 1
+
+[node name="SpeedLineEdit" type="LineEdit" parent="PlayerDebugUI/VBoxContainer/Speed"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -68.5417
+offset_top = -15.1667
+offset_bottom = 15.1667
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MaxStamina" type="Control" parent="PlayerDebugUI/VBoxContainer"]
+custom_minimum_size = Vector2(12, 25)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerDebugUI/VBoxContainer/MaxStamina"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.1667
+offset_right = 112.0
+offset_bottom = 11.1667
+grow_vertical = 2
+text = "Max Stamina"
+vertical_alignment = 1
+
+[node name="MaxStaminaLineEdit" type="LineEdit" parent="PlayerDebugUI/VBoxContainer/MaxStamina"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -68.5417
+offset_top = -15.1667
+offset_bottom = 15.1667
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="StaminaRegen" type="Control" parent="PlayerDebugUI/VBoxContainer"]
+custom_minimum_size = Vector2(12, 25)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PlayerDebugUI/VBoxContainer/StaminaRegen"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.1667
+offset_right = 112.0
+offset_bottom = 11.1667
+grow_vertical = 2
+text = "Stamina Regen"
+vertical_alignment = 1
+
+[node name="StaminaRegenLineEdit" type="LineEdit" parent="PlayerDebugUI/VBoxContainer/StaminaRegen"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -68.5417
+offset_top = -15.1667
+offset_bottom = 15.1667
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="EnemyDebugUI" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 1004.0
+offset_top = -245.0
+offset_right = 1248.0
+offset_bottom = 91.0
+grow_vertical = 2
+script = ExtResource("3_4846i")
+summons = Dictionary[String, PackedScene]({
+"chicken": ExtResource("5_y3jxi"),
+"deer": ExtResource("4_qacwx"),
+"rat_monarch": ExtResource("8_buxjs"),
+"raven": ExtResource("9_5btes"),
+"spider": ExtResource("6_78q82"),
+"stalker": ExtResource("7_78q82")
+})
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EnemyDebugUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="EnemyDebugUI/VBoxContainer"]
+custom_minimum_size = Vector2(12, 25)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="EnemyDebugUI/VBoxContainer/Title"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.1667
+offset_bottom = 11.1667
+grow_horizontal = 2
+grow_vertical = 2
+text = "Spawn Enemies"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeerButton" type="Button" parent="EnemyDebugUI/VBoxContainer"]
+layout_mode = 2
+text = "Spawn Dasher"
+
+[node name="ChickenButton" type="Button" parent="EnemyDebugUI/VBoxContainer"]
+layout_mode = 2
+text = "Spawn Chicken
+"
+
+[node name="SpiderButton" type="Button" parent="EnemyDebugUI/VBoxContainer"]
+layout_mode = 2
+text = "Spawn Spider"
+
+[node name="BirdButton" type="Button" parent="EnemyDebugUI/VBoxContainer"]
+layout_mode = 2
+text = "Spawn Raven"
+
+[node name="StalkerButton" type="Button" parent="EnemyDebugUI/VBoxContainer"]
+layout_mode = 2
+text = "Spawn Stalker
+"
+
+[node name="MonarchButton" type="Button" parent="EnemyDebugUI/VBoxContainer"]
+layout_mode = 2
+text = "Spawn Rat Monarch (?)"
+
+[node name="ItemsDebugUI" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 724.0
+offset_top = -245.0
+offset_right = 968.0
+offset_bottom = 91.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemsDebugUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="ItemsDebugUI/VBoxContainer"]
+custom_minimum_size = Vector2(12, 25)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ItemsDebugUI/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.1667
+offset_right = 112.0
+offset_bottom = 11.1667
+grow_vertical = 2
+text = "Player Max HP"
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="ItemsDebugUI/VBoxContainer/Control"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -10.5
+offset_bottom = 9.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "100"
+
+[connection signal="text_submitted" from="PlayerDebugUI/VBoxContainer/MaxHP/MaxHPLineEdit" to="PlayerDebugUI" method="_on_max_hp_text_edit_text_set"]
+[connection signal="text_submitted" from="PlayerDebugUI/VBoxContainer/HP/HPLineEdit" to="PlayerDebugUI" method="_on_hp_text_edit_text_set"]
+[connection signal="text_submitted" from="PlayerDebugUI/VBoxContainer/Damage/DamageLineEdit" to="PlayerDebugUI" method="_on_damage_text_edit_text_set"]
+[connection signal="text_submitted" from="PlayerDebugUI/VBoxContainer/Speed/SpeedLineEdit" to="PlayerDebugUI" method="_on_speed_text_edit_text_set"]
+[connection signal="text_submitted" from="PlayerDebugUI/VBoxContainer/MaxStamina/MaxStaminaLineEdit" to="PlayerDebugUI" method="_on_max_stamina_text_edit_text_set"]
+[connection signal="text_submitted" from="PlayerDebugUI/VBoxContainer/StaminaRegen/StaminaRegenLineEdit" to="PlayerDebugUI" method="_on_stamina_regen_text_edit_text_set"]
+[connection signal="pressed" from="EnemyDebugUI/VBoxContainer/DeerButton" to="EnemyDebugUI" method="_on_deer_button_pressed"]
+[connection signal="pressed" from="EnemyDebugUI/VBoxContainer/ChickenButton" to="EnemyDebugUI" method="_on_chicken_button_pressed"]
+[connection signal="pressed" from="EnemyDebugUI/VBoxContainer/SpiderButton" to="EnemyDebugUI" method="_on_spider_button_pressed"]
+[connection signal="pressed" from="EnemyDebugUI/VBoxContainer/BirdButton" to="EnemyDebugUI" method="_on_bird_button_pressed"]
+[connection signal="pressed" from="EnemyDebugUI/VBoxContainer/StalkerButton" to="EnemyDebugUI" method="_on_stalker_button_pressed"]
+[connection signal="pressed" from="EnemyDebugUI/VBoxContainer/MonarchButton" to="EnemyDebugUI" method="_on_monarch_button_pressed"]
