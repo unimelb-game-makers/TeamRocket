@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://cjwia1b4w5ipa"]
+[gd_scene load_steps=8 format=4 uid="uid://cjwia1b4w5ipa"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_bbnrc"]
 [ext_resource type="PackedScene" uid="uid://cu51txwabxhgh" path="res://scenes/environments/POI/Medium4x3_1.tscn" id="2_cvc7y"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_hawl3"]
 [ext_resource type="PackedScene" uid="uid://b0mj75rlxuyqm" path="res://scenes/environments/POI/Medium4x3_2.tscn" id="3_amx0r"]
 [ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="5_amx0r"]
+[ext_resource type="PackedScene" uid="uid://d2wlqyfnuebj" path="res://scenes/environments/prop/Restaurant.tscn" id="6_dq2p3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dq2p3"]
 vertices = PackedVector2Array(2678.06, -590.109, 2701.93, 3166.08, -2205.97, 3205.91, -2198.02, -645.883)
@@ -56,7 +57,11 @@ position = Vector2(-1048, 2520)
 [node name="Bush4" parent="InteractableHolder" index="3" instance=ExtResource("5_amx0r")]
 position = Vector2(1928, 2440)
 
+[node name="Restaurant" parent="InteractableHolder" index="4" instance=ExtResource("6_dq2p3")]
+position = Vector2(2216, 184)
+
 [node name="NavigationRegion2D" parent="." index="8"]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_dq2p3")
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
