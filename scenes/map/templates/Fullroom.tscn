@@ -61,7 +61,6 @@ position = Vector2(1928, 2440)
 position = Vector2(2216, 184)
 
 [node name="NavigationRegion2D" parent="." index="8"]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_dq2p3")
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]

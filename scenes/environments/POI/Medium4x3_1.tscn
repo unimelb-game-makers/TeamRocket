@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="8_utfa0"]
 
 [node name="Medium4x3_1" instance=ExtResource("1_23clr")]
+potential_enter_direction = 4
 poi_loot_table = Array[ExtResource("2_05b3g")]([ExtResource("3_aovus"), ExtResource("4_aovus")])
 
 [node name="TileMap" parent="." index="0"]
