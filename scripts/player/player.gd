@@ -28,6 +28,7 @@ const SPRINT_FOOTSTEP_SFX_FREQUENCY = 0.5
 const AFTER_HURT_INVULNERABLE_DURATION = 1.0
 
 var can_move: bool = true
+var can_interact: bool = true
 var current_footstep_freq = WALK_FOOTSTEP_SFX_FREQUENCY
 
 # ----- MOVEMENT VARS -----
@@ -87,7 +88,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# Code for item pickup
-	if (Input.is_action_just_pressed("interact")):
+	if (Input.is_action_just_pressed("interact") and can_interact):
 		if (interact_radius.has_overlapping_areas()):
 			var area = interact_radius.get_overlapping_areas()[0]
 			area.interact()
@@ -122,6 +123,7 @@ func damage(value: int):
 
 func die() -> void:
 	can_move = false
+	can_interact = false
 	death.emit()
 
 

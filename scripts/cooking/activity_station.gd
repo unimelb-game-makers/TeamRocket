@@ -21,6 +21,7 @@ func interact():
 		reset_cooking()
 		cooking_scene.show()
 		is_interacting_with.emit(true)
+		Globals.inventory_ui.can_open = false
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") and (cooking_scene.visible):
@@ -30,6 +31,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 func exit_cooking() -> void:
 	cooking_scene.hide() # BUG: This doesnt disable the minigame
 	is_interacting_with.emit(false)
+	Globals.inventory_ui.can_open = true
 
 #func _on_cooking_scene_complete(_output: Variant) -> void:
 	#cooking_scene.hide()

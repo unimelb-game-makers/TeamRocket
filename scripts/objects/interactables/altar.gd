@@ -83,8 +83,10 @@ func interact():
 	clear_item_description_area_data()
 	if canvas_layer.visible:
 		is_interacting_with.emit(false)
+		Globals.inventory_ui.can_open = true
 	else:
 		is_interacting_with.emit(true)
+		Globals.inventory_ui.can_open = false
 	canvas_layer.visible = not canvas_layer.visible
 	inventory_container.update_inventory_list()
 	update_wanted_food_label()

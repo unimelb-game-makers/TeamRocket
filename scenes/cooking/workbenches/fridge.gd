@@ -16,9 +16,11 @@ func _ready() -> void:
 func interact():
 	if (fridge_ui.visible):
 		fridge_ui.hide()
+		Globals.inventory_ui.can_open = true
 	else:
 		fridge_ui.reset()
 		fridge_ui.show()
+		Globals.inventory_ui.can_open = false
 
 
 func _on_fridge_container_item_select(item: Item, _amount: int) -> void:
