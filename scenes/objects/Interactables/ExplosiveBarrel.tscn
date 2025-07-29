@@ -1,20 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn0h4ghumvrgf"]
+[gd_scene load_steps=8 format=3 uid="uid://bn0h4ghumvrgf"]
 
-[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="1_pwrhi"]
+[ext_resource type="Script" uid="uid://bolnp6gbjndcy" path="res://scripts/objects/interactables/explosive_barrel.gd" id="1_pv02h"]
+[ext_resource type="Texture2D" uid="uid://bmbkegykx1q5n" path="res://assets/map/prop/fire_barrel.png" id="1_pwrhi"]
+[ext_resource type="PackedScene" uid="uid://b0jgd5d73o3ch" path="res://scenes/objects/misc/Fire.tscn" id="2_ejkbn"]
+[ext_resource type="Script" uid="uid://ltt3ftwnn813" path="res://scripts/objects/interactables/environment_hitbox.gd" id="4_vcjdq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bbfba"]
 size = Vector2(129, 64.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejkbn"]
+size = Vector2(112, 192)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vcjdq"]
+radius = 384.083
+
 [node name="ExplosiveBarrel" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("1_pv02h")
+fire_scene = ExtResource("2_ejkbn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0.350161, 0, 1)
-position = Vector2(0, -72)
-scale = Vector2(2, 3.25)
+position = Vector2(0, -64)
 texture = ExtResource("1_pwrhi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_bbfba")
+
+[node name="EnvironmentHitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("4_vcjdq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnvironmentHitbox"]
+position = Vector2(0, -72)
+shape = SubResource("RectangleShape2D_ejkbn")
+
+[node name="ExplosionRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 129
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRange"]
+shape = SubResource("CircleShape2D_vcjdq")
+
+[connection signal="damaged" from="EnvironmentHitbox" to="." method="_on_environment_hitbox_damaged"]

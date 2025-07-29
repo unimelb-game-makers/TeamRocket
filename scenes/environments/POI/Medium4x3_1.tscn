@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cu51txwabxhgh"]
+[gd_scene load_steps=13 format=4 uid="uid://cu51txwabxhgh"]
 
 [ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_23clr"]
 [ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_05b3g"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bn0h4ghumvrgf" path="res://scenes/objects/Interactables/ExplosiveBarrel.tscn" id="6_aovus"]
 [ext_resource type="PackedScene" uid="uid://bdrwyr3m3l6gx" path="res://scenes/environments/prop/Tree.tscn" id="7_payfy"]
 [ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="8_utfa0"]
+[ext_resource type="PackedScene" uid="uid://b0jgd5d73o3ch" path="res://scenes/objects/misc/Fire.tscn" id="9_8lr7d"]
 
 [node name="BasePOI" instance=ExtResource("1_23clr")]
 poi_loot_table = Array[ExtResource("2_05b3g")]([ExtResource("3_aovus"), ExtResource("4_aovus")])
@@ -45,6 +46,8 @@ position = Vector2(1888, 760)
 
 [node name="Bush4" parent="InteractableHolder" index="7" instance=ExtResource("8_utfa0")]
 position = Vector2(248, 976)
+
+[node name="Fire" parent="InteractableHolder" index="8" instance=ExtResource("9_8lr7d")]
 
 [node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("4_irjpm")]
 position = Vector2(1072, 224)

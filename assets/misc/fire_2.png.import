@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kn0k2fmakmpr"
-path="res://.godot/imported/diagram.jpg-00847b9bb57811ec763718595e3a7f09.ctex"
+uid="uid://bq4a1vwa1clyc"
+path="res://.godot/imported/fire_2.png-3af587d80e02e5473ca3d97667451438.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/prototype/diagram.jpg"
-dest_files=["res://.godot/imported/diagram.jpg-00847b9bb57811ec763718595e3a7f09.ctex"]
+source_file="res://assets/misc/fire_2.png"
+dest_files=["res://.godot/imported/fire_2.png-3af587d80e02e5473ca3d97667451438.ctex"]
 
 [params]
 

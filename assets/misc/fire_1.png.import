@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mjicbpu4ld0w"
-path="res://.godot/imported/crossing.png-dc0e1d5d7d33205ec9bdc3e84a3586bd.ctex"
+uid="uid://hcabugfx1xl7"
+path="res://.godot/imported/fire_1.png-b9fee5c200dd9a7d99b85783063097fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/map/crossing.png"
-dest_files=["res://.godot/imported/crossing.png-dc0e1d5d7d33205ec9bdc3e84a3586bd.ctex"]
+source_file="res://assets/misc/fire_1.png"
+dest_files=["res://.godot/imported/fire_1.png-b9fee5c200dd9a7d99b85783063097fa.ctex"]
 
 [params]
 

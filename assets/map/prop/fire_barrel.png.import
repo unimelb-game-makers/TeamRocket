@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btosada5d5unc"
-path="res://.godot/imported/roadsmerged.png-57204c69d3cc9950b812e7ab0e2eba48.ctex"
+uid="uid://bmbkegykx1q5n"
+path="res://.godot/imported/fire_barrel.png-0197b696126ca533103a2f09ee82040f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/map/roadsmerged.png"
-dest_files=["res://.godot/imported/roadsmerged.png-57204c69d3cc9950b812e7ab0e2eba48.ctex"]
+source_file="res://assets/map/prop/fire_barrel.png"
+dest_files=["res://.godot/imported/fire_barrel.png-0197b696126ca533103a2f09ee82040f.ctex"]
 
 [params]
 
