@@ -1,4 +1,5 @@
 extends Node
+class_name ItemHandler
 
 func _ready() -> void:
 	# TODO: Fix YSort so player dont get draw 

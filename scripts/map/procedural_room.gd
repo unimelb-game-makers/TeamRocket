@@ -43,6 +43,7 @@ const DOOR = "B" # There is a door in this direction.
 @onready var navigation_region: NavigationRegion2D = $NavigationRegion2D
 
 var spawned_pois: Array[PlaceablePOI] = []
+var coords: Vector2
 
 func _ready() -> void:
 	# Verify each socket only has 1 character

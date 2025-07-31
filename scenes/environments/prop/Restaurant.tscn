@@ -103,9 +103,9 @@ texture = ExtResource("4_itktx")
 [node name="Label" type="Label" parent="Entry"]
 z_index = 1
 offset_left = -128.0
-offset_top = -48.0
+offset_top = -60.0
 offset_right = 128.0
-offset_bottom = 36.0
+offset_bottom = 24.0
 theme_override_colors/font_color = Color(0.0397135, 1, 0.0309665, 0.75)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.608)
 theme_override_constants/shadow_offset_x = 2
