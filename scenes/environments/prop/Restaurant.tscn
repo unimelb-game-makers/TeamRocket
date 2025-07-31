@@ -1,0 +1,146 @@
+[gd_scene load_steps=13 format=3 uid="uid://d2wlqyfnuebj"]
+
+[ext_resource type="Script" uid="uid://cqwubcsgvxwm8" path="res://scripts/objects/interactables/restaurant.gd" id="1_bi3uy"]
+[ext_resource type="Texture2D" uid="uid://ssyygrrmnosc" path="res://assets/map/prop/restaurant.png" id="1_eq24b"]
+[ext_resource type="Texture2D" uid="uid://c2td7omrl6sqn" path="res://assets/textures/basic_light.webp" id="2_ot5pb"]
+[ext_resource type="Shader" uid="uid://ndf5f71lgwr6" path="res://scripts/shader/scrolling_line.gdshader" id="3_vae06"]
+[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="4_itktx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eq24b"]
+size = Vector2(1592, 498)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot5pb"]
+size = Vector2(264, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_keged"]
+size = Vector2(256, 112)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yun1h"]
+shader = ExtResource("3_vae06")
+shader_parameter/color_one = Color(0.042778, 1, 0.0377613, 0.5)
+shader_parameter/color_two = Color(0, 0, 0, 0.5)
+shader_parameter/angle = 75.0
+shader_parameter/line_count = 80.0
+shader_parameter/speed = 1.0
+shader_parameter/blur = 0.0
+
+[sub_resource type="Animation" id="Animation_2r7h2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-128, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_38rk5"]
+resource_name = "hover"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 2.5, 3),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(-128, -48), Vector2(-128, -60), Vector2(-128, -60), Vector2(-128, -48), Vector2(-128, -48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2r7h2"]
+_data = {
+&"RESET": SubResource("Animation_2r7h2"),
+&"hover": SubResource("Animation_38rk5")
+}
+
+[node name="Restaurant" type="StaticBody2D"]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_bi3uy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -524)
+texture = ExtResource("1_eq24b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -285)
+shape = SubResource("RectangleShape2D_eq24b")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-524, 32)
+shape = SubResource("RectangleShape2D_ot5pb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(512, 32)
+shape = SubResource("RectangleShape2D_ot5pb")
+
+[node name="Entry" type="Area2D" parent="."]
+position = Vector2(-16, -56)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entry"]
+shape = SubResource("RectangleShape2D_keged")
+
+[node name="Sprite2D" type="Sprite2D" parent="Entry"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_yun1h")
+position = Vector2(1.90735e-06, 28)
+scale = Vector2(4, 0.875)
+texture = ExtResource("4_itktx")
+
+[node name="Label" type="Label" parent="Entry"]
+z_index = 1
+offset_left = -128.0
+offset_top = -60.0
+offset_right = 128.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(0.0397135, 1, 0.0309665, 0.75)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.608)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 60
+text = "ENTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Entry"]
+libraries = {
+&"": SubResource("AnimationLibrary_2r7h2")
+}
+autoplay = "hover"
+
+[node name="DoorLight" type="PointLight2D" parent="."]
+position = Vector2(-8, -188)
+scale = Vector2(2.48438, 2.48438)
+color = Color(1, 0.0766683, 0, 1)
+energy = 2.0
+shadow_enabled = true
+texture = ExtResource("2_ot5pb")
+
+[node name="LampLight" type="PointLight2D" parent="."]
+position = Vector2(-256, -212)
+scale = Vector2(1.16797, 1.16797)
+color = Color(1, 0.958813, 0, 1)
+shadow_enabled = true
+texture = ExtResource("2_ot5pb")
+
+[node name="LampLight2" type="PointLight2D" parent="."]
+position = Vector2(256, -204)
+scale = Vector2(1.16797, 1.16797)
+color = Color(1, 0.958813, 0, 1)
+shadow_enabled = true
+texture = ExtResource("2_ot5pb")
+
+[connection signal="body_entered" from="Entry" to="." method="_on_entry_body_entered"]

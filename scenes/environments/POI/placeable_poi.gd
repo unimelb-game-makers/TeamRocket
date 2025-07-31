@@ -12,15 +12,17 @@ enum EnterDirectionEnum {
 @export var potential_enter_direction: EnterDirectionEnum
 @export var poi_loot_table: Array[Item] = []
 
-
 @onready var enemy_holder: Node2D = $EnemyHolder
 @onready var spawn_holder: Node2D = $SpawnHolder
 @onready var interactable_holder: Node2D = $InteractableHolder
 
+var map_room: ProceduralRoom # Set in procedural_room.gd
 
 func generate_loot_for_container():
     var combined_loot_table = Globals.interactable_handler.global_loot_table
     combined_loot_table.append_array(poi_loot_table)
+    if map_room:
+        combined_loot_table.append_array(map_room.map_loot_table)
 
     for elem in interactable_holder.get_children():
         if elem is Storage:

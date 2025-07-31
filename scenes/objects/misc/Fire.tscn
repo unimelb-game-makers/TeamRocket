@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0jgd5d73o3ch"]
+
+[ext_resource type="Script" uid="uid://bsponbmg6uq4j" path="res://scripts/objects/interactables/fire.gd" id="1_fe1fc"]
+[ext_resource type="Texture2D" uid="uid://lyqt5vte4c5" path="res://assets/misc/fire_0.png" id="1_x2vq1"]
+[ext_resource type="Texture2D" uid="uid://hcabugfx1xl7" path="res://assets/misc/fire_1.png" id="2_6pt5x"]
+[ext_resource type="Texture2D" uid="uid://bq4a1vwa1clyc" path="res://assets/misc/fire_2.png" id="3_fe1fc"]
+[ext_resource type="Texture2D" uid="uid://c2td7omrl6sqn" path="res://assets/textures/basic_light.webp" id="4_6pt5x"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yvxoa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x2vq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6pt5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_fe1fc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x2vq1"]
+size = Vector2(216, 48)
+
+[node name="Fire" type="Area2D"]
+collision_layer = 0
+collision_mask = 129
+script = ExtResource("1_fe1fc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -88)
+sprite_frames = SubResource("SpriteFrames_yvxoa")
+autoplay = "default"
+frame_progress = 0.391804
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_x2vq1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(2, 2)
+color = Color(1, 0.633142, 0.0406199, 1)
+energy = 2.0
+texture = ExtResource("4_6pt5x")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

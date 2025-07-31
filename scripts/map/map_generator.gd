@@ -51,6 +51,7 @@ func _ready() -> void:
 
 	start_gen() # only grid explored here
 
+	# Debug stuff
 	print(curr_rooms)
 	var _count = 0
 	for i in range(DIM_Y):
@@ -171,6 +172,7 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 		print("CREATED NEW ROOM DATA")
 
 	selected_room = curr_room_data.roomscene.instantiate()
+	selected_room.coords = coords
 
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
@@ -255,7 +257,8 @@ func go_to_room(direction: Vector2):
 	else:
 		return
 
-	await enemy_handler.clear_room()
+	enemy_handler.clear_room()
+	interactable_handler.clear_room()
 	current_selected.queue_free()
 
 	await get_tree().process_frame
