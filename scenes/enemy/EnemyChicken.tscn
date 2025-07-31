@@ -76,6 +76,7 @@ motion_mode = 1
 script = ExtResource("2_t33i1")
 passive_speed = 50
 active_speed = 150
+enemy_id = 1
 max_health = 15
 sounds = Dictionary[String, Array]({
 "hurt": [ExtResource("11_8clun"), ExtResource("11_l7l25"), ExtResource("12_piqbv")],

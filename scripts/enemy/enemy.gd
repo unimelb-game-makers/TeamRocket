@@ -3,7 +3,17 @@ extends CharacterBody2D
 # Enemy class will be extended by
 # BasicEnemy - Your usual enemies with some attack moves
 # BossEnemy - Extra special
+enum EnemyEnumId {
+	NONE,
+	CHICKEN,
+	DEER,
+	RAT_MONARCH,
+	RAVEN,
+	LONE_STALKER,
+	SPIDER,
+}
 
+@export var enemy_id: EnemyEnumId
 @export var max_health: int = 50
 ## If enemy has multiple attacks, their dmg will be based on this value, such as 150% or 30%.
 @export var base_damage: int = 10
@@ -17,6 +27,7 @@ extends CharacterBody2D
 var item_floor_scene: PackedScene = preload("res://scenes/item/ItemOnFloor.tscn")
 var attack_damage: int
 var health: int
+
 
 func _ready() -> void:
 	health = max_health
@@ -78,3 +89,10 @@ func play_sound(sound_name: String):
 
 func alerted(_sound_position: Vector2):
 	return
+
+
+func get_save_data():
+	return {
+		"enemy_id": enemy_id,
+		"global_position": global_position,
+	}

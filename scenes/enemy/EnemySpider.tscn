@@ -65,6 +65,7 @@ dodge_chance_when_defend = 0.5
 poison_status = SubResource("Resource_ji3n8")
 slow_status = SubResource("Resource_ei78k")
 active_speed = 110
+enemy_id = 6
 max_health = 70
 base_damage = 15
 

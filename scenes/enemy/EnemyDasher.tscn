@@ -103,6 +103,7 @@ motion_mode = 1
 script = ExtResource("2_1leqm")
 range_before_dash_attack = 500
 active_speed = 160
+enemy_id = 2
 max_health = 70
 base_damage = 20
 dropped_items = Array[ExtResource("3_v7e55")]([SubResource("Resource_uhg0u")])

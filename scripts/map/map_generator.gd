@@ -256,6 +256,8 @@ func go_to_room(direction: Vector2):
 		just_teleported1 = true
 	else:
 		return
+	
+	# Save current room data
 
 	enemy_handler.clear_room()
 	interactable_handler.clear_room()
@@ -265,6 +267,8 @@ func go_to_room(direction: Vector2):
 	await get_tree().process_frame
 
 	initialize_room(Vector2(current_room.x + direction.x, current_room.y + direction.y), direction)
+
+	# Load new room data, otherwise spawn stuff
 
 	print("Entered a door going into: " + str(direction))
 	print("------------------")

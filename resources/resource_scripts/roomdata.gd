@@ -1,23 +1,22 @@
-class_name RoomData
 extends Resource
+class_name RoomData
 
-@export var roomscene: PackedScene # Correct room template to generate
-@export var enemies: Array[PackedScene]
+@export var roomScene: PackedScene # Correct room template to generate
 @export var poi_path: String
 @export var poi_size: String
 
-func save_enemies() -> Dictionary:
-	var enemiesdict = {}
-	for i in enemies:
-		var curr = {}
-	return enemiesdict
+func save_enemies(enemies: Array[Enemy]) -> Dictionary:
+	var enemyDict = {}
+	for elem in enemies:
+		# Save enemy type and location here
+		pass
+	return enemyDict
 
 func save() -> Dictionary:
-	var roomdatadict = {}
-	roomdatadict["roomscenepath"] = roomscene.resource_path
-	roomdatadict["enemies"] = save_enemies()
+	var roomDataDict = {}
+	roomDataDict["roomScenePath"] = roomScene.resource_path
 	
-	return roomdatadict
+	return roomDataDict
 
 static func parse_dict(item_dict: Dictionary):
 	#var dish: Dish = Dish.new()
