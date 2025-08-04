@@ -31,7 +31,9 @@ const DOOR = "B" # There is a door in this direction.
 @export var doors: Array[Area2D] = [] # Door scenes, cant get by get_tree
 
 @export_group("Point of Interest")
+@export var select_first_medium_poi: bool = false ## When true, generate the POI in the 0th index, for debugging.
 @export var possible_medium_poi_spawn: Array[PackedScene]
+@export var select_first_large_poi: bool = false ## When true, generate the POI in the 0th index, for debugging.
 @export var possible_large_poi_spawn: Array[PackedScene]
 @export var player_spawn: Marker2D
 @export var medium_poi_spawn: Marker2D
@@ -72,7 +74,13 @@ func has_poi_markers():
 
 func spawn_poi():
 	if medium_poi_spawn != null and possible_medium_poi_spawn.size() > 0:
+		
 		var chosen_medium_poi = possible_medium_poi_spawn.pick_random()
+		
+		if select_first_medium_poi: ## Overrides
+			push_warning("DEBUG OVERRIDE SELECTION ON IN ", self)
+			chosen_medium_poi = possible_medium_poi_spawn[0]
+			
 		var inst = chosen_medium_poi.instantiate()
 		add_child(inst)
 		inst.global_position = medium_poi_spawn.global_position
@@ -81,6 +89,11 @@ func spawn_poi():
 
 	if large_poi_spawn != null and possible_large_poi_spawn.size() > 0:
 		var chosen_large_poi = possible_large_poi_spawn.pick_random()
+		
+		if select_first_large_poi: ## Overrides
+			push_warning("DEBUG OVERRIDE SELECTION ON IN ", self)
+			chosen_large_poi = possible_large_poi_spawn[0]
+		
 		var inst = chosen_large_poi.instantiate()
 		add_child(inst)
 		inst.global_position = large_poi_spawn.global_position
