@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnqxqnaid3q3a"]
 
-[ext_resource type="Script" uid="uid://chbh13wl1vyn6" path="res://scripts/map/base_room.gd" id="1_t0uyp"]
+[ext_resource type="Script" uid="uid://chbh13wl1vyn6" path="res://scripts/map/procedural_room.gd" id="1_t0uyp"]
 [ext_resource type="TileSet" uid="uid://blu4c3vmuk83t" path="res://scenes/map/base_map_tileset.tres" id="2_t0uyp"]
 
 [node name="BaseProceduralRoom" type="Node2D" node_paths=PackedStringArray("player_spawn")]
@@ -13,3 +13,7 @@ tile_set = ExtResource("2_t0uyp")
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(232, -24)
+
+[node name="InteractableHolder" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]

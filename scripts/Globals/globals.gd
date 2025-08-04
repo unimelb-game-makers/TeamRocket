@@ -8,8 +8,7 @@ signal devotion_changed(value: int)
 var player: Player
 var player_stats: PlayerStatsResource
 
-var item_handler
-var map
+var item_handler: ItemHandler
 var enemy_handler: EnemyHandler
 var interactable_handler: InteractableHandler
 var game_handler: GameHandler
@@ -35,6 +34,9 @@ var current_day: int = 1
 
 var is_game_ended = false
 var dont_save_game = false
+
+# Room state save data
+var map_room_states = {}
 
 # Setting parameters here
 const FPS_LIMIT_ARRAY = [30, 60, 120, 144, 240, 0]

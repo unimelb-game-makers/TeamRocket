@@ -37,6 +37,7 @@ func load_and_play_main_bgm(intro_pathname: String, loop_pathname: String):
 
 
 func switch_to_kitchen():
+	Globals.player_stats.health = Globals.player_stats.max_health
 	SaveManager.save_game(Globals.chosen_slot_id)
 	var tween = create_tween()
 	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 2.0), 2.0)
@@ -55,7 +56,6 @@ func _on_player_death() -> void:
 
 # Temp Signal so player can return to home easier
 func _on_player_channel_complete() -> void:
-	Globals.player_stats.health = Globals.player_stats.max_health
 	switch_to_kitchen()
 
 

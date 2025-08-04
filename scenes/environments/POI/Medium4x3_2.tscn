@@ -12,7 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://bdrwyr3m3l6gx" path="res://scenes/environments/prop/Tree.tscn" id="7_j2e28"]
 [ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="8_bbfba"]
 
-[node name="BasePOI" instance=ExtResource("1_fftgs")]
+[node name="Medium4x3_2" instance=ExtResource("1_fftgs")]
+potential_enter_direction = 4
 poi_loot_table = Array[ExtResource("2_kcfuv")]([ExtResource("3_j2e28"), ExtResource("4_bbfba")])
 
 [node name="TileMap" parent="." index="0"]

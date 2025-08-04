@@ -39,7 +39,7 @@ var bullets = max_bullets:
 		Globals.player_ui.update_bullets(bullets_in, max_bullets)
 		bullets = bullets_in
 		if (bullets <= 0):
-			reload_effect.play()
+			reload()
 
 
 func _ready() -> void:
@@ -72,7 +72,9 @@ func fire(damage) -> void:
 		raycast.rotation_degrees = randf_range(-inaccuracy, inaccuracy)
 		var target = raycast.get_collider()
 		if (target):
-			if (target is EnemyHitbox):
+			if target is EnemyHitbox:
+				target.damage(damage)
+			elif target.has_method("damage"):
 				target.damage(damage)
 				
 		var hit_location = raycast.get_collision_point()

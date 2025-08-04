@@ -32,18 +32,18 @@ const DOOR = "B" # There is a door in this direction.
 
 @export_group("Point of Interest")
 @export var possible_medium_poi_spawn: Array[PackedScene]
+@export var possible_large_poi_spawn: Array[PackedScene]
 @export var player_spawn: Marker2D
 @export var medium_poi_spawn: Marker2D
 @export var large_poi_spawn: Marker2D
 
 @export_group("Map setting")
-@export var enemy_spawn_nodes: Array[Node2D] = []
 @export var map_loot_table: Array[Item] = []
-
 
 @onready var navigation_region: NavigationRegion2D = $NavigationRegion2D
 
 var spawned_pois: Array[PlaceablePOI] = []
+var coords: Vector2
 
 func _ready() -> void:
 	# Verify each socket only has 1 character
@@ -76,6 +76,15 @@ func spawn_poi():
 		var inst = chosen_medium_poi.instantiate()
 		add_child(inst)
 		inst.global_position = medium_poi_spawn.global_position
+		inst.map_room = self
+		spawned_pois.append(inst)
+
+	if large_poi_spawn != null and possible_large_poi_spawn.size() > 0:
+		var chosen_large_poi = possible_large_poi_spawn.pick_random()
+		var inst = chosen_large_poi.instantiate()
+		add_child(inst)
+		inst.global_position = large_poi_spawn.global_position
+		inst.map_room = self
 		spawned_pois.append(inst)
 
 

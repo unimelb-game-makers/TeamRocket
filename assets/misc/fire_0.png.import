@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4irdo4hv8dw4"
-path="res://.godot/imported/corner.png-d99161331e25af5071644fa4cebb7490.ctex"
+uid="uid://lyqt5vte4c5"
+path="res://.godot/imported/fire_0.png-791a3a9327a63fb9c3da977b40156c77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/map/corner.png"
-dest_files=["res://.godot/imported/corner.png-d99161331e25af5071644fa4cebb7490.ctex"]
+source_file="res://assets/misc/fire_0.png"
+dest_files=["res://.godot/imported/fire_0.png-791a3a9327a63fb9c3da977b40156c77.ctex"]
 
 [params]
 

@@ -21,3 +21,10 @@ func spawn_crate(spawn_pos: Vector2):
 	interactable_holder.add_child(crate)
 	crate.generate_loot(global_loot_table)
 	crate.update_display()
+
+
+func clear_room():
+	for child in interactable_spawn_points.get_children():
+		child.queue_free()
+	for child in interactable_holder.get_children():
+		child.queue_free()
