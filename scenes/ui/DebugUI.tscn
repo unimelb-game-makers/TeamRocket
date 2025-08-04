@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsm72mj6udeil"]
+[gd_scene load_steps=37 format=3 uid="uid://bsm72mj6udeil"]
 
 [ext_resource type="Script" uid="uid://k0ur6lwnpmw7" path="res://scripts/ui/debug_ui.gd" id="1_cv3ip"]
 [ext_resource type="Script" uid="uid://bgt31fvpoyy33" path="res://scripts/ui/Debug/player_debug_ui.gd" id="2_hwcit"]
@@ -9,6 +9,33 @@
 [ext_resource type="PackedScene" path="res://scenes/enemy/EnemyLoneStalker.tscn" id="7_78q82"]
 [ext_resource type="PackedScene" uid="uid://djgvayx5wpdta" path="res://scenes/enemy/EnemyRatMonarch.tscn" id="8_buxjs"]
 [ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="9_5btes"]
+[ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="10_ngduk"]
+[ext_resource type="Script" uid="uid://cit4tbk8p85p0" path="res://scripts/ui/Debug/items_debug_ui.gd" id="10_rd6i4"]
+[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="11_ao44j"]
+[ext_resource type="Resource" uid="uid://bgerkoono7uhm" path="res://resources/cooking/ingredients/suspicious_bean.tres" id="12_lqjxs"]
+[ext_resource type="Resource" uid="uid://cwuer4u67t6om" path="res://resources/cooking/ingredients/spice_powder.tres" id="13_furpo"]
+[ext_resource type="Resource" uid="uid://cr060faldn0rx" path="res://resources/cooking/ingredients/soup_stock.tres" id="14_rhynt"]
+[ext_resource type="Resource" uid="uid://bke58eqhi7ued" path="res://resources/cooking/ingredients/rice_cooked.tres" id="15_j2vg8"]
+[ext_resource type="Resource" uid="uid://djfvdkf82lpn7" path="res://resources/cooking/ingredients/rice.tres" id="16_380pk"]
+[ext_resource type="Resource" uid="uid://denvbscfcf0it" path="res://resources/cooking/ingredients/potato_cut.tres" id="17_yi8j3"]
+[ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="18_ux2qw"]
+[ext_resource type="Resource" uid="uid://d4jd37d2hc0b" path="res://resources/cooking/ingredients/onion_cut.tres" id="19_5munt"]
+[ext_resource type="Resource" uid="uid://birn1wyb2g5bv" path="res://resources/cooking/ingredients/onion.tres" id="20_ee18c"]
+[ext_resource type="Resource" uid="uid://n7ddkhdoaj5d" path="res://resources/cooking/ingredients/noodle.tres" id="21_uf0au"]
+[ext_resource type="Resource" uid="uid://bdn1bbor2u47y" path="res://resources/cooking/ingredients/grain_moss_baked.tres" id="22_y0umc"]
+[ext_resource type="Resource" uid="uid://djws883kmg1sy" path="res://resources/cooking/ingredients/grain_moss.tres" id="23_4rd7m"]
+[ext_resource type="Resource" uid="uid://uk4o31ltqopm" path="res://resources/cooking/ingredients/ginger.tres" id="24_3krcl"]
+[ext_resource type="Resource" uid="uid://1uk2iowxbyl2" path="res://resources/cooking/ingredients/garlic_cut.tres" id="25_kx3gj"]
+[ext_resource type="Resource" uid="uid://cwfjd2rnpe473" path="res://resources/cooking/ingredients/garlic.tres" id="26_qbokj"]
+[ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="27_2n7n8"]
+[ext_resource type="Resource" uid="uid://4rndf4mnu11g" path="res://resources/cooking/ingredients/carrot_cut.tres" id="28_mavt0"]
+[ext_resource type="Resource" uid="uid://dcedm8ygr7cfd" path="res://resources/cooking/ingredients/cabbage_cut.tres" id="29_q0g5p"]
+[ext_resource type="Resource" uid="uid://btg8ekd7ovrcu" path="res://resources/cooking/ingredients/cabbage.tres" id="30_ihfen"]
+[ext_resource type="Resource" uid="uid://v5nqfcc5gsvk" path="res://resources/cooking/ingredients/beef_mince.tres" id="31_y8ix6"]
+[ext_resource type="Resource" uid="uid://dhnvd2ibvwqaq" path="res://resources/cooking/foods/vegetable_curry.tres" id="32_cxufm"]
+[ext_resource type="Resource" uid="uid://cgii3iioos5j2" path="res://resources/cooking/foods/suspicious_curry.tres" id="33_a6nyk"]
+[ext_resource type="Resource" uid="uid://uk2won1wpi1w" path="res://resources/cooking/foods/mossy_soup.tres" id="34_vwld1"]
+[ext_resource type="Resource" uid="uid://cwwxaf8y2xnra" path="res://resources/cooking/foods/chicken_soup.tres" id="35_7m0gk"]
 
 [node name="DebugUI" type="Control"]
 layout_mode = 3
@@ -313,6 +340,9 @@ offset_top = -245.0
 offset_right = 968.0
 offset_bottom = 91.0
 grow_vertical = 2
+script = ExtResource("10_rd6i4")
+items_display = Array[ExtResource("11_ao44j")]([ExtResource("12_lqjxs"), ExtResource("13_furpo"), ExtResource("14_rhynt"), ExtResource("15_j2vg8"), ExtResource("16_380pk"), ExtResource("16_380pk"), ExtResource("17_yi8j3"), ExtResource("18_ux2qw"), ExtResource("19_5munt"), ExtResource("20_ee18c"), ExtResource("21_uf0au"), ExtResource("22_y0umc"), ExtResource("23_4rd7m"), ExtResource("24_3krcl"), ExtResource("25_kx3gj"), ExtResource("26_qbokj"), ExtResource("27_2n7n8"), ExtResource("28_mavt0"), ExtResource("29_q0g5p"), ExtResource("30_ihfen"), ExtResource("31_y8ix6"), ExtResource("32_cxufm"), ExtResource("33_a6nyk"), ExtResource("34_vwld1"), ExtResource("35_7m0gk")])
+food_slot_scene = ExtResource("10_ngduk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ItemsDebugUI"]
 layout_mode = 1
@@ -322,36 +352,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="ItemsDebugUI/VBoxContainer"]
+[node name="Title" type="Control" parent="ItemsDebugUI/VBoxContainer"]
 custom_minimum_size = Vector2(12, 25)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ItemsDebugUI/VBoxContainer/Control"]
+[node name="Label" type="Label" parent="ItemsDebugUI/VBoxContainer/Title"]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -11.1667
-offset_right = 112.0
-offset_bottom = 11.1667
-grow_vertical = 2
-text = "Player Max HP"
-vertical_alignment = 1
-
-[node name="TextEdit" type="TextEdit" parent="ItemsDebugUI/VBoxContainer/Control"]
-custom_minimum_size = Vector2(0, 25)
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -126.0
-offset_top = -10.5
-offset_bottom = 9.5
-grow_horizontal = 0
+offset_top = -11.1667
+offset_bottom = 11.1667
+grow_horizontal = 2
 grow_vertical = 2
-text = "100"
+text = "Items"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ItemsDebugUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="ItemsDebugUI/ScrollContainer"]
+layout_mode = 2
+columns = 4
 
 [connection signal="text_submitted" from="PlayerDebugUI/VBoxContainer/MaxHP/MaxHPLineEdit" to="PlayerDebugUI" method="_on_max_hp_text_edit_text_set"]
 [connection signal="text_submitted" from="PlayerDebugUI/VBoxContainer/HP/HPLineEdit" to="PlayerDebugUI" method="_on_hp_text_edit_text_set"]
