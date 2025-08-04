@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=4 uid="uid://bwh4g2fpsfyjn"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_aguj4"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="2_0sqfv"]
+[ext_resource type="PackedScene" uid="uid://bn0h4ghumvrgf" path="res://scenes/objects/Interactables/ExplosiveBarrel.tscn" id="3_5h7sh"]
+[ext_resource type="Script" uid="uid://ru54kcf2fgm7" path="res://scripts/enemy/Areas/spawnarea.gd" id="4_pbk8p"]
+[ext_resource type="PackedScene" uid="uid://c6jq64hs6hvtm" path="res://scenes/enemy/EnemySpider.tscn" id="5_csd31"]
+
+[node name="BasePOI" instance=ExtResource("1_aguj4")]
+potential_enter_direction = 4
+
+[node name="TileMap" parent="." index="0"]
+visible = false
+
+[node name="WallTileMap" parent="Wall" index="0"]
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAABAAEAAQAAAAEAAAACAAEAAQAAAAEAAAADAAEAAQAAAAEAAAAEAAEAAQAAAAEAAAAFAAEAAQAAAAEAAAAGAAEAAQAAAAEAAAAHAAEAAQAAAAEAAAAIAAEAAQAAAAEAAAAJAAEAAQAAAAEAAAAKAAEAAQAAAAEAAAALAAEAAQAAAAEAAAAMAAEAAQAAAAEAAAABAAIAAQAAAAEAAAACAAIAAQAAAAEAAAADAAIAAQAAAAEAAAAEAAIAAQAAAAEAAAAFAAIAAQAAAAEAAAAGAAIAAQAAAAEAAAAHAAIAAQAAAAEAAAAKAAIAAQAAAAEAAAALAAIAAQAAAAEAAAAMAAIAAQAAAAEAAAAJAAIAAQAAAAEAAAAIAAIAAQAAAAEAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAANAAIAAQAAAAEAAAANAAEAAQAAAAEAAAAOAAEAAQAAAAEAAAAOAAIAAQAAAAEAAAAPAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAAPAAEAAQAAAAEAAAAPAAIAAQAAAAEAAAAQAAEAAQAAAAEAAAAQAAIAAQAAAAEAAAARAAAAAQAAAAAAAAARAAEAAQAAAAAAAAARAAIAAQAAAAAAAAARAAMAAQAAAAAAAAARAAQAAQAAAAAAAAARAAUAAQAAAAAAAAARAAYAAQAAAAAAAAARAAcAAQAAAAAAAAARAAgAAQAAAAAAAAARAAkAAQAAAAAAAAARAAoAAQAAAAAAAAARAAsAAQAAAAAAAAARAAwAAQAAAAAAAAARAA0AAQAAAAAAAAARAA4AAQAAAAAAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAEAAAARAA8AAQAAAAEAAAARABAAAQAAAAEAAAA=")
+
+[node name="Crate" parent="InteractableHolder" index="0" instance=ExtResource("2_0sqfv")]
+position = Vector2(976, 258)
+
+[node name="ExplosiveBarrel" parent="InteractableHolder" index="1" instance=ExtResource("3_5h7sh")]
+position = Vector2(809, 1030)
+
+[node name="ExplosiveBarrel2" parent="InteractableHolder" index="2" instance=ExtResource("3_5h7sh")]
+position = Vector2(128, 528)
+
+[node name="SpawnArea" type="Area2D" parent="SpawnHolder" index="0"]
+position = Vector2(781, 300)
+script = ExtResource("4_pbk8p")
+allowed_enemies = Array[PackedScene]([ExtResource("5_csd31")])
+radius = 1.0
+metadata/_custom_type_script = "uid://ru54kcf2fgm7"
