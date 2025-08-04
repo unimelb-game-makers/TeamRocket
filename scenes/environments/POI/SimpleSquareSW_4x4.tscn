@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=4 uid="uid://cvg4v5goggodd"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_p3xi2"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="2_70xjw"]
+[ext_resource type="PackedScene" uid="uid://bn0h4ghumvrgf" path="res://scenes/objects/Interactables/ExplosiveBarrel.tscn" id="3_msqej"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="4_12ylj"]
+[ext_resource type="PackedScene" uid="uid://c6jq64hs6hvtm" path="res://scenes/enemy/EnemySpider.tscn" id="5_70xjw"]
+
+[node name="BasePOI" instance=ExtResource("1_p3xi2")]
+potential_enter_direction = 4
+
+[node name="TileMap" parent="." index="0"]
+visible = false
+
+[node name="WallTileMap" parent="Wall" index="0"]
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAcAAQAAAAAAAAAAAAgAAQAAAAAAAAAAAAkAAQAAAAAAAAAAAAoAAQAAAAAAAAAAAAsAAQAAAAAAAAAAAAwAAQAAAAAAAAAAAA0AAQAAAAAAAAAAABAAAQAAAAEAAAAAAA4AAQAAAAAAAAAAAA8AAQAAAAEAAAABAA4AAQAAAAAAAAACAA4AAQAAAAAAAAADAA4AAQAAAAAAAAAEAA4AAQAAAAAAAAAFAA4AAQAAAAAAAAAGAA4AAQAAAAAAAAAHAA4AAQAAAAAAAAAIAA4AAQAAAAAAAAAJAA4AAQAAAAAAAAAKAA4AAQAAAAAAAAALAA4AAQAAAAAAAAAMAA4AAQAAAAAAAAANAA4AAQAAAAAAAAAOAA4AAQAAAAAAAAAPAA4AAQAAAAAAAAAQAA4AAQAAAAAAAAABAA8AAQAAAAEAAAACAA8AAQAAAAEAAAADAA8AAQAAAAEAAAAEAA8AAQAAAAEAAAAFAA8AAQAAAAEAAAAGAA8AAQAAAAEAAAAHAA8AAQAAAAEAAAAIAA8AAQAAAAEAAAAJAA8AAQAAAAEAAAAKAA8AAQAAAAEAAAALAA8AAQAAAAEAAAAMAA8AAQAAAAEAAAANAA8AAQAAAAEAAAAOAA8AAQAAAAEAAAAPAA8AAQAAAAEAAAAQAA8AAQAAAAEAAAAQABAAAQAAAAEAAAAPABAAAQAAAAEAAAAOABAAAQAAAAEAAAANABAAAQAAAAEAAAAMABAAAQAAAAEAAAALABAAAQAAAAEAAAAKABAAAQAAAAEAAAAJABAAAQAAAAEAAAAIABAAAQAAAAEAAAAHABAAAQAAAAEAAAAGABAAAQAAAAEAAAAFABAAAQAAAAEAAAAEABAAAQAAAAEAAAADABAAAQAAAAEAAAACABAAAQAAAAEAAAABABAAAQAAAAEAAAA=")
+
+[node name="Crate" parent="InteractableHolder" index="0" instance=ExtResource("2_70xjw")]
+position = Vector2(231, 802)
+
+[node name="ExplosiveBarrel" parent="InteractableHolder" index="1" instance=ExtResource("3_msqej")]
+position = Vector2(989, 708)
+
+[node name="ExplosiveBarrel2" parent="InteractableHolder" index="2" instance=ExtResource("3_msqej")]
+position = Vector2(406, 164)
+
+[node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("4_12ylj")]
+position = Vector2(386, 653)
+allowed_enemies = Array[PackedScene]([ExtResource("5_70xjw")])
