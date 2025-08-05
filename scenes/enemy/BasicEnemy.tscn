@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c0dgri14uuw70"]
+[gd_scene load_steps=23 format=3 uid="uid://c0dgri14uuw70"]
 
 [ext_resource type="Script" uid="uid://bk6qxeoptikjq" path="res://scripts/enemy/basic_enemy.gd" id="1_mi47r"]
 [ext_resource type="Script" uid="uid://bagdchb1hwe0f" path="res://addons/godot_state_charts/state_chart.gd" id="3_q7ouv"]
@@ -54,6 +54,25 @@ radius = 1000.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tc3i"]
 radius = 59.7097
+
+[sub_resource type="Gradient" id="Gradient_ia0ec"]
+colors = PackedColorArray(0.509751, 0.0450778, 0.598892, 1, 0.81502, 3.58574e-06, 7.70092e-07, 1)
+
+[sub_resource type="Curve" id="Curve_lcgj0"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_lcgj0"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ia0ec"]
+gradient = SubResource("Gradient_lcgj0")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
 
 [node name="BasicEnemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -224,6 +243,30 @@ script = ExtResource("13_lcgj0")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_0tc3i")
 debug_color = Color(0.7, 0.647647, 0, 0.42)
+
+[node name="EliteEffects" type="Node2D" parent="."]
+visible = false
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="EliteEffects"]
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2(0, -2)
+spread = 90.0
+gravity = Vector2(0, -100)
+initial_velocity_min = 5.0
+initial_velocity_max = 100.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+color_ramp = SubResource("Gradient_ia0ec")
+hue_variation_min = -0.2
+hue_variation_max = -0.2
+hue_variation_curve = SubResource("Curve_lcgj0")
+
+[node name="PointLight2D" type="PointLight2D" parent="EliteEffects"]
+color = Color(0.315642, 0.0729553, 0.274341, 1)
+energy = 3.0
+texture = SubResource("GradientTexture2D_ia0ec")
+texture_scale = 2.0
 
 [connection signal="area_entered" from="DetectionRadius" to="." method="_on_detection_radius_area_entered"]
 [connection signal="area_entered" from="ChaseRadius" to="." method="_on_chase_radius_area_entered"]
