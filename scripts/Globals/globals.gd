@@ -2,6 +2,8 @@ extends Node
 
 @export var default_player_stats: PlayerStatsResource
 @export var requested_dish_list: Array[Dish]
+## Check Enemy.EnemyEnumId for order
+@export var enemy_scene_database: Array[PackedScene]
 
 signal devotion_changed(value: int)
 

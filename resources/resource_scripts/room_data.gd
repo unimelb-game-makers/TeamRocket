@@ -3,7 +3,7 @@ class_name RoomData
 
 # Note: What to save
 # Enemy - type, location
-# Environment - Map room type, PoI spawned
+# [DONE] Environment - Map room type, PoI spawned
 # Interactable - Crates, barrel (destroyed or not)
 # Item - Items on ground (optional), items inside crates
 
@@ -20,11 +20,13 @@ var coord: Vector2
 var room_enemy_data = []
 
 func save_enemies(enemies: Array[Enemy]):
+	room_enemy_data = []
 	for elem in enemies:
 		# Save enemy type and location here
 		room_enemy_data.append(elem.get_save_data())
 
-func save():
+func save_room_data():
+	print("Save data at ", coord)
 	save_enemies(Globals.enemy_handler.enemy_list)
 
 

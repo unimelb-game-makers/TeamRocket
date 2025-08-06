@@ -12,9 +12,9 @@ signal enemy_list_updated
 
 func _ready() -> void:
 	Globals.enemy_handler = self
+	await get_tree().process_frame
+	await get_tree().process_frame
 	spawn_enemies()
-	await get_tree().process_frame
-	await get_tree().process_frame
 	Globals.player.sound_created.connect(check_enemy_detect_player_by_sound)
 
 
@@ -35,6 +35,26 @@ func check_enemy_detect_player_by_sound(player_pos: Vector2, sound_loudness: flo
 			# print("Enemy {0} alerted by player noise from {1} units!".format([enemy.name, distance_to_player]))
 
 func spawn_enemies():
+	var room_data = Globals.map_generator.get_current_room_data()
+
+	# Load existing data
+	if not room_data.is_new:
+		for elem in room_data.room_enemy_data:
+			var enemy_id = elem['id']
+			var enemy_global_position = elem['global_position']
+			var enemy_is_elite = elem['is_elite']
+			var enemy_scene = Globals.enemy_scene_database[enemy_id - 1]
+
+			var enemy_inst: Enemy = enemy_scene.instantiate()
+			enemy_inst.is_elite = enemy_is_elite
+			# Add child to root node
+			add_child(enemy_inst)
+			add_enemy_to_list(enemy_inst)
+			enemy_inst.global_position = enemy_global_position
+
+		return
+
+	# Spawn new
 	for area in spawn_areas.get_children():
 		# var spawn_mob = randf() < 0.5
 		var spawn_mob = true

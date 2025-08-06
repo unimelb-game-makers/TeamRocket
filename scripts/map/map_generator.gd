@@ -257,13 +257,14 @@ func initialize_room(coord: Vector2, outgoing_direction: Vector2 = Vector2.ZERO)
 	enemy_handler.spawn_enemies()
 
 func go_to_room(direction: Vector2):
+	var current_room_data = all_room_data[current_room_coord.x][current_room_coord.y] as RoomData
 	if just_teleported1 == false and just_teleported2 == false:
 		just_teleported1 = true
 	else:
 		return
 
 	# Save current room data
-
+	current_room_data.save_room_data()
 	enemy_handler.clear_room()
 	interactable_handler.clear_room()
 	current_selected.queue_free()
@@ -292,3 +293,7 @@ func player_exit():
 
 func clear_unused_node():
 	navigation_region_2d.get_node("Map").queue_free()
+
+func get_current_room_data() -> RoomData:
+	var current_room_data = all_room_data[current_room_coord.x][current_room_coord.y] as RoomData
+	return current_room_data

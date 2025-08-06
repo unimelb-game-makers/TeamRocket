@@ -12,7 +12,9 @@ class_name BasicEnemy
 @onready var statechart: StateChart = $StateChart
 @onready var elite_effects: Node2D = $EliteEffects
 
-@export var elite = false
+const ELITE_HP_MULT = 1.5
+const ELITE_DMG_MULT = 1.5
+const ELITE_SPEED_MULT = 1.2
 
 var navigation_region: NavigationRegion2D
 var movement_speed: float
@@ -47,16 +49,16 @@ func _ready():
 	movement_speed = passive_speed
 	original_position = Vector2(position)
 	
-	var elite_chance = randi_range(1, 10)
+	var elite_chance = randi_range(1, 5)
 	if (elite_chance == 1):
-		elite = true
+		is_elite = true
 	
-	if (elite):
+	if (is_elite):
 		elite_effects.show()
-		max_health *= 1.5
-		health *= 1.5
-		base_damage *= 1.5
-		active_speed *= 1.2
+		max_health = int(max_health * ELITE_HP_MULT)
+		health = int(health * ELITE_HP_MULT)
+		base_damage = int(base_damage * ELITE_DMG_MULT)
+		active_speed *= ELITE_SPEED_MULT
 
 func alerted(sound_position: Vector2):
 	super (sound_position)
@@ -93,9 +95,9 @@ func damage(value: int):
 	statechart.send_event("to_chase")
 	
 func die():
-	if (elite):
+	if (is_elite):
 		drop_item()
-	super()
+	super ()
 	
 # FIXME: Enemy's speed when using this function is not consistent
 func move_along_path(delta):

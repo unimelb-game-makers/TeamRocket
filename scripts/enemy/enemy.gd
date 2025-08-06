@@ -27,6 +27,7 @@ enum EnemyEnumId {
 var item_floor_scene: PackedScene = preload("res://scenes/item/ItemOnFloor.tscn")
 var attack_damage: int
 var health: int
+var is_elite = false
 
 
 func _ready() -> void:
@@ -93,6 +94,7 @@ func alerted(_sound_position: Vector2):
 
 func get_save_data():
 	return {
-		"enemy_id": enemy_id,
+		"id": enemy_id,
 		"global_position": global_position,
+		"is_elite": is_elite
 	}

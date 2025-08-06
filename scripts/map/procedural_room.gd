@@ -73,8 +73,9 @@ func has_poi_markers():
 	return false
 
 func spawn_poi():
-	var room_data = Globals.map_generator.all_room_data[coord.x][coord.y] as RoomData
+	var room_data = Globals.map_generator.get_current_room_data()
 
+	# Load existing data
 	if not room_data.is_new:
 		if room_data.medium_poi_scene:
 			var inst = room_data.medium_poi_scene.instantiate()
@@ -92,6 +93,7 @@ func spawn_poi():
 
 		return
 
+	# Spawn new
 	if medium_poi_spawn != null and possible_medium_poi_spawn.size() > 0:
 		var chosen_medium_poi = possible_medium_poi_spawn.pick_random()
 		if select_first_medium_poi: ## Overrides
