@@ -12,6 +12,7 @@ var item_handler: ItemHandler
 var enemy_handler: EnemyHandler
 var interactable_handler: InteractableHandler
 var game_handler: GameHandler
+var map_generator: MapGenerator
 
 var main_ui: MainUI
 var inventory_ui: InventoryUI

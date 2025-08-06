@@ -56,7 +56,7 @@ func play_damaged_effect(damaged_amount: int):
 	await get_tree().create_timer(slow_time_duration * Engine.time_scale).timeout
 	Engine.time_scale = 1
 
-func create_minimap(map_grid: Array[Array], current_room: Vector2):
+func create_minimap(map_grid: Array[Array], current_room_coord: Vector2):
 	for child in minimap_grid.get_children():
 		child.queue_free()
 
@@ -64,5 +64,5 @@ func create_minimap(map_grid: Array[Array], current_room: Vector2):
 		for j in range(map_grid[i].size()):
 			var inst: MinimapSquare = minimap_square_prefab.instantiate()
 			minimap_grid.add_child(inst)
-			inst.init(map_grid, Vector2(j, i), current_room)
+			inst.init_minimap(map_grid, Vector2(j, i), current_room_coord)
 	print(map_grid)

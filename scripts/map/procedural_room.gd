@@ -45,7 +45,7 @@ const DOOR = "B" # There is a door in this direction.
 @onready var navigation_region: NavigationRegion2D = $NavigationRegion2D
 
 var spawned_pois: Array[PlaceablePOI] = []
-var coords: Vector2
+var coord: Vector2
 
 func _ready() -> void:
 	# Verify each socket only has 1 character
@@ -73,32 +73,52 @@ func has_poi_markers():
 	return false
 
 func spawn_poi():
+	var room_data = Globals.map_generator.all_room_data[coord.x][coord.y] as RoomData
+
+	if not room_data.is_new:
+		if room_data.medium_poi_scene:
+			var inst = room_data.medium_poi_scene.instantiate()
+			add_child(inst)
+			inst.global_position = room_data.medium_poi_location
+			inst.map_room = self
+			spawned_pois.append(inst)
+
+		if room_data.large_poi_scene:
+			var inst = room_data.large_poi_scene.instantiate()
+			add_child(inst)
+			inst.global_position = room_data.large_poi_location
+			inst.map_room = self
+			spawned_pois.append(inst)
+
+		return
+
 	if medium_poi_spawn != null and possible_medium_poi_spawn.size() > 0:
-		
 		var chosen_medium_poi = possible_medium_poi_spawn.pick_random()
-		
 		if select_first_medium_poi: ## Overrides
 			push_warning("DEBUG OVERRIDE SELECTION ON IN ", self)
-			chosen_medium_poi = possible_medium_poi_spawn[0]
 			
 		var inst = chosen_medium_poi.instantiate()
 		add_child(inst)
 		inst.global_position = medium_poi_spawn.global_position
 		inst.map_room = self
 		spawned_pois.append(inst)
+		# Save room data
+		room_data.medium_poi_scene = chosen_medium_poi
+		room_data.medium_poi_location = medium_poi_spawn.global_position
 
 	if large_poi_spawn != null and possible_large_poi_spawn.size() > 0:
 		var chosen_large_poi = possible_large_poi_spawn.pick_random()
-		
 		if select_first_large_poi: ## Overrides
 			push_warning("DEBUG OVERRIDE SELECTION ON IN ", self)
 			chosen_large_poi = possible_large_poi_spawn[0]
-		
 		var inst = chosen_large_poi.instantiate()
 		add_child(inst)
 		inst.global_position = large_poi_spawn.global_position
 		inst.map_room = self
 		spawned_pois.append(inst)
+		# Save room data
+		room_data.large_poi_scene = chosen_large_poi
+		room_data.large_poi_location = large_poi_spawn.global_position
 
 
 func get_player_spawn_pos() -> Vector2:

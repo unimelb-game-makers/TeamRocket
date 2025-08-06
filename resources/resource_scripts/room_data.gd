@@ -7,22 +7,26 @@ class_name RoomData
 # Interactable - Crates, barrel (destroyed or not)
 # Item - Items on ground (optional), items inside crates
 
-@export var roomScene: PackedScene # Correct room template to generate
-@export var poi_path: String
-@export var poi_size: String
+var room_scene: PackedScene # Correct room template to generate
 
-var enemyDict: Dictionary = {}
+var is_new = true
+var medium_poi_scene: PackedScene
+var medium_poi_location: Vector2
+var large_poi_scene: PackedScene
+var large_poi_location: Vector2
 
-func save_enemies(room_coords: Vector2, enemies: Array[Enemy]):
-	var enemySaveDataArray = []
+var coord: Vector2
+
+var room_enemy_data = []
+
+func save_enemies(enemies: Array[Enemy]):
 	for elem in enemies:
 		# Save enemy type and location here
-		enemySaveDataArray.append(elem.get_save_data())
-	enemyDict[get_room_id(room_coords)] = enemySaveDataArray
+		room_enemy_data.append(elem.get_save_data())
 
-func save(room_coords: Vector2):
-	save_enemies(room_coords, Globals.enemy_handler.enemy_list)
+func save():
+	save_enemies(Globals.enemy_handler.enemy_list)
 
 
-func get_room_id(coords: Vector2):
-	return "room_%d_%d" % [coords[0], coords[1]]
+func get_room_id():
+	return "room_%d_%d" % [coord[0], coord[1]]

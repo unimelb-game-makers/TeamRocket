@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cu51txwabxhgh" path="res://scenes/environments/POI/Medium4x3_1.tscn" id="2_cvc7y"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_hawl3"]
 [ext_resource type="PackedScene" uid="uid://b0mj75rlxuyqm" path="res://scenes/environments/POI/Medium4x3_2.tscn" id="3_amx0r"]
-[ext_resource type="PackedScene" uid="uid://bwh4g2fpsfyjn" path="res://scenes/environments/POI/SimpleSquareNE_4x4.tscn" id="5_3rjle"]
+[ext_resource type="PackedScene" uid="uid://bwh4g2fpsfyjn" path="res://scenes/environments/POI/SimpleSquareNW_4x4.tscn" id="5_3rjle"]
 [ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="5_amx0r"]
 [ext_resource type="PackedScene" uid="uid://b2xxuuinc0yrn" path="res://scenes/environments/POI/SimpleSquareSE_4x4.tscn" id="6_ar6wf"]
 [ext_resource type="PackedScene" uid="uid://d2wlqyfnuebj" path="res://scenes/environments/prop/Restaurant.tscn" id="6_dq2p3"]
@@ -22,7 +22,6 @@ y_sort_enabled = true
 room_name = "Fullroom"
 sockets = Array[String](["B", "B", "B", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
-select_first_medium_poi = true
 possible_medium_poi_spawn = Array[PackedScene]([ExtResource("2_ar6wf"), ExtResource("2_3rjle"), ExtResource("5_3rjle"), ExtResource("2_cvc7y"), ExtResource("3_amx0r"), ExtResource("5_3rjle"), ExtResource("6_ar6wf"), ExtResource("7_bn5q2")])
 medium_poi_spawn = NodePath("MediumPOISpawn")
 metadata/_edit_horizontal_guides_ = [738.0]
