@@ -10,6 +10,9 @@ class_name BasicEnemy
 
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var statechart: StateChart = $StateChart
+@onready var elite_effects: Node2D = $EliteEffects
+
+@export var elite = false
 
 var navigation_region: NavigationRegion2D
 var movement_speed: float
@@ -43,6 +46,17 @@ func _ready():
 
 	movement_speed = passive_speed
 	original_position = Vector2(position)
+	
+	var elite_chance = randi_range(1, 10)
+	if (elite_chance == 1):
+		elite = true
+	
+	if (elite):
+		elite_effects.show()
+		max_health *= 1.5
+		health *= 1.5
+		base_damage *= 1.5
+		active_speed *= 1.2
 
 func alerted(sound_position: Vector2):
 	super (sound_position)
@@ -77,7 +91,12 @@ func damage(value: int):
 	super (value)
 	target_creature = Globals.player
 	statechart.send_event("to_chase")
-
+	
+func die():
+	if (elite):
+		drop_item()
+	super()
+	
 # FIXME: Enemy's speed when using this function is not consistent
 func move_along_path(delta):
 	if path.is_empty():

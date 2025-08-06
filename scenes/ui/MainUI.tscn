@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://hgrksmummwv0"]
+[gd_scene load_steps=14 format=3 uid="uid://hgrksmummwv0"]
 
 [ext_resource type="Script" uid="uid://caseuyrdmakps" path="res://scripts/ui/main_ui.gd" id="1_4xgkk"]
 [ext_resource type="Script" uid="uid://cwnv5i1gfxf3o" path="res://scripts/ui/player_ui.gd" id="2_yyelw"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cwp34g2fynu22" path="res://assets/textures/kenney_borders/default/Border/panel-border-008.png" id="7_lcjjm"]
 [ext_resource type="PackedScene" uid="uid://cpwdv7vvm7kdc" path="res://scenes/ui/InventoryUI.tscn" id="7_pb8bc"]
 [ext_resource type="PackedScene" uid="uid://b5qjcot0kmmft" path="res://scenes/ui/MinimapSquare.tscn" id="8_qg6rx"]
+[ext_resource type="PackedScene" uid="uid://bsm72mj6udeil" path="res://scenes/ui/DebugUI.tscn" id="12_7s5y6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7s5y6"]
 resource_local_to_scene = true
@@ -253,4 +254,7 @@ mouse_filter = 1
 
 [node name="Inventory" parent="." instance=ExtResource("7_pb8bc")]
 visible = false
+layout_mode = 1
+
+[node name="DebugUI" parent="." instance=ExtResource("12_7s5y6")]
 layout_mode = 1

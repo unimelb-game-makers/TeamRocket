@@ -23,7 +23,6 @@ func _on_pressed() -> void:
 	SoundManager.play_button_click_sfx()
 	food_removed.emit(index)
 
-
 func play_button_hover_sfx():
 	SoundManager.play_button_hover_sfx()
 
