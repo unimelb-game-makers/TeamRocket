@@ -27,8 +27,11 @@ Currently, this is unused, as we just use a texture2D instead
 @onready var fry_progress: TextureProgressBar = $FryProgress
 
 
-## Radius of frying pan
-@export var PAN_SIZE: float = 75
+@export var fry_settings: Array[FryMinigameSetting]
+@export var force_selected: bool = false ## When true, the selected setting in the editor WILL be select
+@export var fry_setting: FryMinigameSetting ## This is overided during _ready() by default, change force_selected to true to always choose the one placed in here.
+
+@export var PAN_SIZE: float = 75 ## Radius of frying pan
 # We do this calculation just once and store it, since it
 # will be used a lot
 @onready var PAN_SIZE_SQUARED = PAN_SIZE * PAN_SIZE
@@ -37,8 +40,8 @@ Currently, this is unused, as we just use a texture2D instead
 # How long to fry for
 var progress: Array = [0, 0]
 var side: int = 0
-## How long to fry each side for, in number of seconds
-@export var target_progress := 5.0
+
+@export var target_progress := 5.0 ## How long to fry each side for, in number of seconds
 
 # A brief cooldown for the warning "!" flash
 var warning_timer: float
@@ -65,6 +68,8 @@ func _ready() -> void:
 		return
 	
 	if get_tree().current_scene == self or is_initialized: # Runs if it as current scene or was initialized by something else then added to tree 
+		_determine_fry_settings()
+		
 		fry_progress.max_value = 2 * target_progress
 		tip_text.self_modulate.a = 0
 		#target = ingredient_handler.selected_ingredients.size() # HELP: Not sure why getting size this way
@@ -182,3 +187,42 @@ func minigame_complete() -> void:
 	playing = false
 	print("Frying Finished!")
 	finish(Item.Quality.GOOD)
+
+func _determine_fry_settings() -> void:
+	if force_selected:
+		PAN_SIZE = fry_setting.pan_size
+		target_progress = fry_setting.fry_duration
+		return
+	
+	# Picks one resource from the given array with a probability inversely proportional to its difficulty. Method from ChatGPT.
+	var weights = []         # This will store the calculated weights for each resource
+	var total_weight = 0.0   # Sum of all weights, used for normalizing selection
+	
+	# Step 1: Calculate weights based on 1 / difficulty
+	for res in fry_settings:
+		# Prevent division by zero in case difficulty is 0 or missing
+		var difficulty = max(res.difficulty, 0.0001)
+		var weight = 1.0 / difficulty
+		
+		weights.append(weight)       # Store this resource's weight
+		total_weight += weight       # Add to the running total of weights
+	
+	# Step 2: Generate a random number between 0 and total_weight
+	var rand = randf() * total_weight
+	var cumulative = 0.0  # This will track the cumulative weight as we iterate
+	
+	# Step 3: Iterate through oven_tracing_lines and select the one where the random value falls
+	for i in fry_settings.size():
+		cumulative += weights[i]
+		if rand <= cumulative:
+			# We've found the selected resource
+			fry_setting =  fry_settings[i]
+			break
+	
+	# Step 4: Fallback in case of rounding error (shouldn't normally happen)
+	if fry_setting == null:
+		print("Settings are null")
+		fry_setting = fry_settings[-1]  # Return the last resource as a fallback
+	
+	PAN_SIZE = fry_setting.pan_size
+	target_progress = fry_setting.fry_duration

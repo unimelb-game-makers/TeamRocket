@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ChoppingBoardSettings" load_steps=2 format=3 uid="uid://46v0fog77l88"]
+
+[ext_resource type="Script" uid="uid://dcmgisvsbxvo6" path="res://scenes/cooking/workbenches/chopping_board/chopping_board_settings.gd" id="1_0laa1"]
+
+[resource]
+script = ExtResource("1_0laa1")
+perfect_range = 5
+perfect_progress = 5
+okay_range = 30
+okay_progress = 5
+target = 50
+speed = 600
+difficulty = 50
+metadata/_custom_type_script = "uid://dcmgisvsbxvo6"

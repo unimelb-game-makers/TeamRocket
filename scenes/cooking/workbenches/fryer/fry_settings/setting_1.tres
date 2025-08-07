@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FryMinigameSetting" load_steps=2 format=3 uid="uid://w1mpo0n4s2au"]
+
+[ext_resource type="Script" uid="uid://kni8juisn3o8" path="res://scenes/cooking/workbenches/fryer/fry_minigame_settings.gd" id="1_mc232"]
+
+[resource]
+script = ExtResource("1_mc232")
+pan_size = 75.0
+fry_duration = 3.0
+difficulty = 5
+metadata/_custom_type_script = "uid://kni8juisn3o8"

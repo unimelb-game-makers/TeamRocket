@@ -1,5 +1,6 @@
+@tool
 class_name OvenLine
-extends Resource
+extends MinigameSettings
 
 """
 Contains the data for a mingame of the oven, includes:
@@ -8,11 +9,11 @@ Contains the data for a mingame of the oven, includes:
 """
 
 @export_category("Time Allocated")
-@export_range(1, 300, 1) var time_allocated: int = 60 ## Time allocated in seconds
+@export_range(1, 300, 1) var time_allocated: int = 20 ## Time allocated in seconds
 
 @export_category("Line Data")
-@export var perfect_line_width: float
-@export var good_line_factor: float
+@export var perfect_line_width: float ## The pixel size for the perfect line
+@export var good_line_factor: float ## 
 @export var passable_line_factor: float
 @export var line_points: PackedVector2Array
 

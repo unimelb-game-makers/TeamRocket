@@ -8,9 +8,9 @@
 [ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="5_5mhn5"]
 [ext_resource type="Resource" uid="uid://d3b5yu03lwb2b" path="res://resources/cooking/recipes/ingredients/carrot_cut_rec.tres" id="5_h1c4s"]
 [ext_resource type="Resource" uid="uid://be78atnjt45hp" path="res://resources/cooking/recipes/ingredients/potato_cut_rec.tres" id="6_415b7"]
-[ext_resource type="Resource" path="res://resources/cooking/recipes/ingredients/garlic_cut_rec.tres" id="7_txi13"]
-[ext_resource type="Resource" path="res://resources/cooking/recipes/ingredients/ginger_cut_rec.tres" id="8_gqp5q"]
-[ext_resource type="Resource" path="res://resources/cooking/recipes/ingredients/cabbage_cut_rec.tres" id="9_rub52"]
+[ext_resource type="Resource" uid="uid://cwusiicbnq7ml" path="res://resources/cooking/recipes/ingredients/garlic_cut_rec.tres" id="7_txi13"]
+[ext_resource type="Resource" uid="uid://guh1wg0140xx" path="res://resources/cooking/recipes/ingredients/ginger_cut_rec.tres" id="8_gqp5q"]
+[ext_resource type="Resource" uid="uid://8o63qiu2pu61" path="res://resources/cooking/recipes/ingredients/cabbage_cut_rec.tres" id="9_rub52"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdbv1"]
 size = Vector2(160, 88)
