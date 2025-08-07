@@ -1,6 +1,7 @@
 extends CookingActivity
 
 @onready var marker: TextureRect = $Boundary/Marker # Marker is now a child of Boundary
+@onready var TESTING_HB := $Boundary/ColorRect
 @onready var result_label: Label = $ResultLabel
 @onready var boundary: TextureRect = $Boundary # Boundary node
 @onready var score_bar: ProgressBar = $ScoreBar # The ProgressBar node
@@ -76,9 +77,9 @@ func move_marker(delta: float) -> void:
 
 func check_chop() -> void:
 	# Calculate marker's local position as a percentage of boundary width
-	var marker_percentage = (marker.position.x / boundary.size.x) * 100
+	var marker_percentage = ((marker.position.x + marker.size.x/2) / boundary.size.x) * 100
 	#print("Marker position: %f%%" % marker_percentage)  # Only print when the button is pressed
-
+	TESTING_HB.position = Vector2(marker.position.x + marker.size.x/2, TESTING_HB.position.y)
 	# Check if the marker's percentage is in the perfect, okay, or fail region
 	if marker_percentage >= perfect_left and marker_percentage <= perfect_right:
 		# Perfect chop

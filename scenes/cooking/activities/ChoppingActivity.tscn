@@ -60,8 +60,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_ojnvx")
-chopping_settings = Array[ExtResource("2_tiyf5")]([ExtResource("2_s8500"), ExtResource("4_ov5ga"), ExtResource("5_g0s7b"), ExtResource("6_o8rdf"), ExtResource("7_wqw7f"), ExtResource("8_siyfw"), ExtResource("9_j4l7l"), ExtResource("10_x1xsa"), ExtResource("11_vguec"), ExtResource("12_lkwrr")])
-chopping_setting = ExtResource("2_s8500")
+chopping_settings = Array[ExtResource("2_tiyf5")]([ExtResource("12_lkwrr"), ExtResource("2_s8500"), ExtResource("4_ov5ga"), ExtResource("5_g0s7b"), ExtResource("6_o8rdf"), ExtResource("7_wqw7f"), ExtResource("8_siyfw"), ExtResource("9_j4l7l"), ExtResource("10_x1xsa"), ExtResource("11_vguec")])
+force_selected = true
+chopping_setting = ExtResource("12_lkwrr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -70,22 +71,6 @@ offset_top = 250.0
 offset_right = 812.0
 offset_bottom = 457.0
 texture = ExtResource("4_yn4oy")
-
-[node name="OldProgressBar" type="ProgressBar" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = 113.0
-offset_right = 200.0
-offset_bottom = 159.0
-grow_horizontal = 2
-grow_vertical = 2
-show_percentage = false
 
 [node name="ScoreBar" type="ProgressBar" parent="."]
 layout_mode = 0
@@ -106,15 +91,6 @@ offset_top = 456.0
 offset_right = 806.0
 offset_bottom = 504.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_jnwx0")
-
-[node name="ScoreLabel" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 320.0
-offset_top = 137.0
-offset_right = 360.0
-offset_bottom = 160.0
-text = "Progress: 0%"
 
 [node name="ResultLabel" type="Label" parent="."]
 layout_mode = 0
@@ -159,3 +135,18 @@ offset_right = 180.0
 offset_bottom = 495.0
 scale = Vector2(0.85, 0.85)
 texture = ExtResource("7_be1gm")
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Boundary/Marker"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+editor_only = false
+
+[node name="ColorRect" type="ColorRect" parent="Boundary"]
+layout_mode = 1
+offset_right = 3.0
+offset_bottom = 100.0
+pivot_offset = Vector2(10, 10)
