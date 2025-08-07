@@ -16,12 +16,13 @@ func initialize_activity(inputs: Array[Ingredient], output: Item):
 	if output == null:
 		push_error("Initializing activity with no output ingredient")
 		return
-		
+
 	self.input_ingredients = inputs
 	self.output_item = output
 	is_initialized = true
 
 func minigame_complete() -> void:
+	push_warning("Minigame completed function not implemented in child!!!")
 	pass # Implement in child
 
 func finish(rating: Item.Quality):

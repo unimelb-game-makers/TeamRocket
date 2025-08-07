@@ -1,10 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7ikkerlqq6g6"]
+[gd_scene load_steps=17 format=3 uid="uid://c7ikkerlqq6g6"]
 
 [ext_resource type="Script" uid="uid://dqw377e8ohg76" path="res://scripts/cooking/bake_activity.gd" id="1_bekao"]
-[ext_resource type="Resource" uid="uid://dgk2lsddimyuc" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_ClippingEachOther.tres" id="2_bekao"]
+[ext_resource type="Resource" uid="uid://gjo0mjdr5tpi" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_1.tres" id="2_bekao"]
+[ext_resource type="Script" uid="uid://crq6pfgaslrgu" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_resource.gd" id="2_huds3"]
 [ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="3_62bgj"]
 [ext_resource type="PackedScene" uid="uid://b7bgjj0x4lljg" path="res://scenes/cooking/workbenches/oven/OvenTracingLine.tscn" id="4_mvfxb"]
+[ext_resource type="Resource" uid="uid://cn6dlpgedwdov" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_2.tres" id="4_rjy6u"]
 [ext_resource type="Texture2D" uid="uid://bjfcakcjjsl7s" path="res://assets/placeholder/star.png" id="5_cv35t"]
+[ext_resource type="Resource" uid="uid://dgk2lsddimyuc" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_3.tres" id="5_o3yrg"]
+[ext_resource type="Resource" uid="uid://b53k6rhac707q" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_4.tres" id="6_w2ai4"]
+[ext_resource type="Resource" uid="uid://chuy6365k0ek2" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_5.tres" id="7_2rey5"]
+[ext_resource type="Resource" uid="uid://dlfptxr714n3n" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_6.tres" id="8_vrvhs"]
+[ext_resource type="Resource" uid="uid://dghdbnbrhlkv5" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_7.tres" id="9_5fiuc"]
+[ext_resource type="Resource" uid="uid://ckqfd0wrme672" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_8.tres" id="10_6gyfs"]
+[ext_resource type="Resource" uid="uid://sanvg6snr2ur" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_9.tres" id="11_5rdpd"]
+[ext_resource type="Resource" uid="uid://b3rwukpli6t3n" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_10.tres" id="12_8pnr0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x7xau"]
 radius = 1.0
@@ -17,7 +27,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bekao")
-oven_tracing_line_data = ExtResource("2_bekao")
+oven_tracing_lines = Array[ExtResource("2_huds3")]([ExtResource("2_bekao"), ExtResource("4_rjy6u"), ExtResource("5_o3yrg"), ExtResource("6_w2ai4"), ExtResource("7_2rey5"), ExtResource("8_vrvhs"), ExtResource("9_5fiuc"), ExtResource("10_6gyfs"), ExtResource("11_5rdpd"), ExtResource("12_8pnr0")])
+selected_oven_tracing_line_data = ExtResource("12_8pnr0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.14278, 0.301469, 0.168023, 1)

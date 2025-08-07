@@ -9,8 +9,9 @@ Baking activity
 4. If player leaves line fully, game ends - fails
 5. If count down reaches 0, and player not at end, game ends - fail
 """
-
-@export var oven_tracing_line_data: OvenLine
+@export var oven_tracing_lines: Array[OvenLine]
+@export var force_selected: bool = false ## When true, the selected setting in the editor WILL be select
+@export var selected_oven_tracing_line_data: OvenLine ## The over tracing line data to use. This is overided during _ready() by default, change force_selected to true to always choose the one placed in here.
 
 @onready var oven_tracing_line: OvenTracingLine = $OvenTracingLine
 @onready var player_cursor: Area2D = $PlayerCursor
@@ -27,16 +28,14 @@ func _ready() -> void:
 	if get_tree().current_scene == self or is_initialized: # Runs if it as current scene or was initialized by something else then added to tree
 		oven_tracing_line.game_finish.connect(minigame_complete)
 		
-		determine_oven_tracing_line()
-		#self.input_ingredients = input_ingredients
-		#self.output_item = output_item
+		_determine_oven_tracing_line()
 		
 		# Setup the board and player
-		oven_tracing_line.initialize_data(oven_tracing_line_data)
+		oven_tracing_line.initialize_data(selected_oven_tracing_line_data)
 		
-		time_bar.max_value = oven_tracing_line_data.time_allocated
-		time_bar.value = oven_tracing_line_data.time_allocated
-		remaining_time = oven_tracing_line_data.time_allocated
+		time_bar.max_value = selected_oven_tracing_line_data.time_allocated
+		time_bar.value = selected_oven_tracing_line_data.time_allocated
+		remaining_time = selected_oven_tracing_line_data.time_allocated
 		
 		player_cursor.position = oven_tracing_line.get_starting_point()
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -119,9 +118,38 @@ func run_countdown():
 
 	countdown_label.visible = false
 
-func determine_oven_tracing_line() -> void:
-	# TODO: Determine difficulty of oven tracing line
-	pass # Currently it just runs whatever was in the editor
+func _determine_oven_tracing_line() -> void:
+	if force_selected:
+		return
+	
+	# Picks one resource from the given array with a probability inversely proportional to its difficulty. Method from ChatGPT.
+	var weights = []         # This will store the calculated weights for each resource
+	var total_weight = 0.0   # Sum of all weights, used for normalizing selection
+	
+	# Step 1: Calculate weights based on 1 / difficulty
+	for res in oven_tracing_lines:
+		# Prevent division by zero in case difficulty is 0 or missing
+		var difficulty = max(res.difficulty, 0.0001)
+		var weight = 1.0 / difficulty
+		
+		weights.append(weight)       # Store this resource's weight
+		total_weight += weight       # Add to the running total of weights
+	
+	# Step 2: Generate a random number between 0 and total_weight
+	var rand = randf() * total_weight
+	var cumulative = 0.0  # This will track the cumulative weight as we iterate
+	
+	# Step 3: Iterate through oven_tracing_lines and select the one where the random value falls
+	for i in oven_tracing_lines.size():
+		cumulative += weights[i]
+		if rand <= cumulative:
+			# We've found the selected resource
+			selected_oven_tracing_line_data =  oven_tracing_lines[i]
+			return
+	
+	# Step 4: Fallback in case of rounding error (shouldn't normally happen)
+	selected_oven_tracing_line_data = oven_tracing_lines[-1]  # Return the last resource as a fallback
+	
 	
 func _convert_score_to_quality(final_score: float) -> Item.Quality:
 	if final_score < 10.0:

@@ -10,11 +10,16 @@ extends CookingActivity
 @onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar # The progress bar
 @onready var timer_label: Label = $TimerLabel # The timer label
 
-var required_speed = 1.5 # Minimum velocity required.
+@export var pot_settings: Array[PotMinigameSetting]
+@export var force_selected: bool = false ## When true, the selected setting in the editor WILL be select
+@export var pot_setting: PotMinigameSetting 
+var required_speed = 1.5 ## Minimum velocity required. Readjusted by pot_setting.
 var stirring_speed = 0.0 # Current speed of stirring.
 var rotation_speed = 0.0 # Rotation speed of the stew base (adjustable).
 var target_rotation_speed = 0.0 # Target rotation speed for smooth lerp.
 var elapsed_time = 0.0 # Tracks valid stirring time.
+var required_stir_duration: float = 10.0 ## Readjusted by pot_setting.
+
 
 var initial_inner_circle_position: Vector2 # To store the editor-defined position of the inner circle.
 var is_playing = false
@@ -22,12 +27,52 @@ var is_dragging = false # Tracks whether the user is dragging the circle.
 
 
 func _ready() -> void:
+	_determine_pot_settings()
 	sfx_boil_init.play()
 	sfx_boil_loop.play()
 	initial_inner_circle_position = inner_circle.position
 	is_playing = true
 	
+func _determine_pot_settings() -> void:
+	if force_selected:
+		required_speed = pot_setting.required_speed
+		required_stir_duration = pot_setting.required_stir_duration
+		return
+	
+	# Picks one resource from the given array with a probability inversely proportional to its difficulty. Method from ChatGPT.
+	var weights = []         # This will store the calculated weights for each resource
+	var total_weight = 0.0   # Sum of all weights, used for normalizing selection
+	
+	# Step 1: Calculate weights based on 1 / difficulty
+	for res in pot_settings:
+		# Prevent division by zero in case difficulty is 0 or missing
+		var difficulty = max(res.difficulty, 0.0001)
+		var weight = 1.0 / difficulty
+		
+		weights.append(weight)       # Store this resource's weight
+		total_weight += weight       # Add to the running total of weights
+	
+	# Step 2: Generate a random number between 0 and total_weight
+	var rand = randf() * total_weight
+	var cumulative = 0.0  # This will track the cumulative weight as we iterate
+	
+	# Step 3: Iterate through oven_tracing_lines and select the one where the random value falls
+	for i in pot_settings.size():
+		cumulative += weights[i]
+		if rand <= cumulative:
+			# We've found the selected resource
+			pot_setting =  pot_settings[i]
+			break
+	
+	# Step 4: Fallback in case of rounding error (shouldn't normally happen)
+	if pot_setting == null:
+		print("Settings are null")
+		pot_setting = pot_settings[-1]  # Return the last resource as a fallback
+	
+	required_speed = pot_setting.required_speed
+	required_stir_duration = pot_setting.required_stir_duration
 
+	
 #func reset_game() -> void:
 	#inner_circle.position = initial_inner_circle_position
 	#stirring_speed = 0.0
@@ -72,14 +117,14 @@ func _process(delta: float) -> void:
 	rotation_speed = lerp(rotation_speed, target_rotation_speed, 0.2)
 
 	# Calculate time left as a percentage and update the progress bar
-	var time_left = max(5.0 - elapsed_time, 0)
-	var progress_value = (1 - time_left / 5.0) * 100.0 # Convert time left to a progress percentage
+	var time_left = max(required_stir_duration - elapsed_time, 0)
+	var progress_value = (1 - time_left / required_stir_duration) * 100.0 # Convert time left to a progress percentage
 	texture_progress_bar.value = progress_value
 
 	# Update timer label text
 	timer_label.text = str(round(time_left * 10) / 10.0) + " SECONDS"
 
-	if elapsed_time >= 5.0:
+	if elapsed_time >= required_stir_duration:
 		is_playing = false
 		timer_label.text = "0.0" # Final time left
 		feedback_label.text = "Success!"
@@ -87,7 +132,7 @@ func _process(delta: float) -> void:
 		complete_minigame()
 
 func complete_minigame() -> void:
-	finish(Item.Quality.GOOD)
+	finish(Item.Quality.GOOD) # TODO: Determine Quality
 
 func _input(event: InputEvent) -> void:
 	if not is_playing:
