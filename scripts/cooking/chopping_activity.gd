@@ -6,6 +6,7 @@ extends CookingActivity
 @onready var boundary: TextureRect = $Boundary # Boundary node
 @onready var score_bar: ProgressBar = $ScoreBar # The ProgressBar node
 @onready var chopping_track: ChoppingTrack = $ChoppingTrack
+@onready var info_label: Label = $InfoLabel
 
 @onready var sfx_chop_randomiser: AudioStreamPlayer2D = $SFX_ChopRandomiser
 @onready var ingredient_image_display: TextureRect = $IngredientImageDisplay
@@ -56,6 +57,7 @@ func _process(delta: float) -> void:
 		move_marker(delta)
 		if Input.is_action_just_pressed("roll"): # This is the space button - rolling was for when the player dashes
 			check_chop()
+			info_label.hide()
 
 func move_marker(delta: float) -> void:
 	var boundary_width = boundary.size.x
