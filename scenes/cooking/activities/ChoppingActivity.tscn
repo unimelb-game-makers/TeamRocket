@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://chmpi1n4p1apn" path="res://assets/textures/kenney_ui-pack-pixel-adventure/Tiles/Large tiles/Thick outline/tile_0032.png" id="2_pk5pp"]
 [ext_resource type="Resource" uid="uid://cnskixx66osdn" path="res://scenes/cooking/workbenches/chopping_board/chopping_board_settings/chop_board_settings_1.tres" id="2_s8500"]
 [ext_resource type="Script" uid="uid://dcmgisvsbxvo6" path="res://scenes/cooking/workbenches/chopping_board/chopping_board_settings.gd" id="2_tiyf5"]
-[ext_resource type="Texture2D" uid="uid://c28jljdwevpa5" path="res://assets/textures/workstation_textures/ChoppingZone_Texture.png" id="3_bjcle"]
 [ext_resource type="Resource" uid="uid://c1eonbbpe8p5b" path="res://scenes/cooking/workbenches/chopping_board/chopping_board_settings/chop_board_settings_2.tres" id="4_ov5ga"]
 [ext_resource type="Texture2D" uid="uid://cbg7dcha6kjh8" path="res://assets/workstations/chopping_game/cutting board only.png" id="4_yn4oy"]
 [ext_resource type="AudioStream" uid="uid://ce1mrpp8g4wof" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut1.ogg" id="5_bhn3j"]
@@ -25,16 +24,10 @@
 [ext_resource type="Resource" uid="uid://46v0fog77l88" path="res://scenes/cooking/workbenches/chopping_board/chopping_board_settings/chop_board_settings_9.tres" id="11_vguec"]
 [ext_resource type="Texture2D" uid="uid://baecuvxkgnpcq" path="res://assets/food/salt.png" id="12_ihp6r"]
 [ext_resource type="Resource" uid="uid://br4i6r5ewid8" path="res://scenes/cooking/workbenches/chopping_board/chopping_board_settings/default_chopping_board_settings.tres" id="12_lkwrr"]
+[ext_resource type="PackedScene" uid="uid://det5518ijalkn" path="res://scenes/cooking/workbenches/chopping_board/ChoppingTrack.tscn" id="25_ov5ga"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6nyq3"]
 bg_color = Color(1, 0.638184, 0.276091, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jnwx0"]
-texture = ExtResource("2_pk5pp")
-texture_margin_left = 24.0
-texture_margin_top = 24.0
-texture_margin_right = 24.0
-texture_margin_bottom = 24.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_f8eio"]
 font = ExtResource("5_ihd3f")
@@ -52,6 +45,13 @@ stream_4/stream = ExtResource("9_4hnjx")
 stream_5/stream = ExtResource("10_17sga")
 stream_6/stream = ExtResource("11_cdwm0")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jnwx0"]
+texture = ExtResource("2_pk5pp")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+
 [node name="ChoppingActivity" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -61,7 +61,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_ojnvx")
 chopping_settings = Array[ExtResource("2_tiyf5")]([ExtResource("12_lkwrr"), ExtResource("2_s8500"), ExtResource("4_ov5ga"), ExtResource("5_g0s7b"), ExtResource("6_o8rdf"), ExtResource("7_wqw7f"), ExtResource("8_siyfw"), ExtResource("9_j4l7l"), ExtResource("10_x1xsa"), ExtResource("11_vguec")])
-force_selected = true
 chopping_setting = ExtResource("12_lkwrr")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -83,14 +82,6 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
 theme_override_fonts/font = ExtResource("5_ihd3f")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6nyq3")
-
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_left = 491.0
-offset_top = 456.0
-offset_right = 806.0
-offset_bottom = 504.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_jnwx0")
 
 [node name="ResultLabel" type="Label" parent="."]
 layout_mode = 0
@@ -114,10 +105,21 @@ offset_bottom = 533.0
 scale = Vector2(0.65, 0.65)
 texture = ExtResource("12_ihp6r")
 
-[node name="ChoppingTrack" type="Sprite2D" parent="."]
-position = Vector2(648.5, 480.125)
-scale = Vector2(0.977419, 0.580769)
-texture = ExtResource("3_bjcle")
+[node name="ChoppingTrack" parent="." instance=ExtResource("25_ov5ga")]
+layout_mode = 1
+offset_left = -141.0
+offset_top = 101.0
+offset_right = 59.0
+offset_bottom = 131.0
+scale = Vector2(1.5, 1.5)
+
+[node name="TrackBorderPanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 456.0
+offset_right = 802.0
+offset_bottom = 508.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_jnwx0")
 
 [node name="Boundary" type="TextureRect" parent="."]
 layout_mode = 0
@@ -143,9 +145,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-editor_only = false
 
 [node name="ColorRect" type="ColorRect" parent="Boundary"]
+visible = false
 layout_mode = 1
 offset_right = 3.0
 offset_bottom = 100.0

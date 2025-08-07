@@ -5,6 +5,7 @@ extends CookingActivity
 @onready var result_label: Label = $ResultLabel
 @onready var boundary: TextureRect = $Boundary # Boundary node
 @onready var score_bar: ProgressBar = $ScoreBar # The ProgressBar node
+@onready var chopping_track: ChoppingTrack = $ChoppingTrack
 
 @onready var sfx_chop_randomiser: AudioStreamPlayer2D = $SFX_ChopRandomiser
 @onready var ingredient_image_display: TextureRect = $IngredientImageDisplay
@@ -79,7 +80,7 @@ func check_chop() -> void:
 	# Calculate marker's local position as a percentage of boundary width
 	var marker_percentage = ((marker.position.x + marker.size.x/2) / boundary.size.x) * 100
 	#print("Marker position: %f%%" % marker_percentage)  # Only print when the button is pressed
-	TESTING_HB.position = Vector2(marker.position.x + marker.size.x/2, TESTING_HB.position.y)
+	#TESTING_HB.position = Vector2(marker.position.x + marker.size.x/2, TESTING_HB.position.y) # THIS WAS FOR DEBUGGING
 	# Check if the marker's percentage is in the perfect, okay, or fail region
 	if marker_percentage >= perfect_left and marker_percentage <= perfect_right:
 		# Perfect chop
@@ -175,6 +176,7 @@ func _determine_chopping_settings() -> void:
 	speed = chopping_setting.speed
 	perfect_progress = chopping_setting.perfect_progress
 	okay_progress = chopping_setting.okay_progress
+	chopping_track.set_ranges(chopping_setting)
 
 func _determine_chop_settings_aux() -> void:
 	if force_selected:

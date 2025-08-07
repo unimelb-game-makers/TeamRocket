@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://det5518ijalkn"]
+
+[ext_resource type="Script" uid="uid://cd43f11lneuxl" path="res://scenes/cooking/workbenches/chopping_board/chopping_track.gd" id="1_ws4p8"]
+
+[node name="CenterContainer" type="CenterContainer"]
+custom_minimum_size = Vector2(200, 30)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -10.0
+offset_right = 100.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ws4p8")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+
+[node name="BadRange" type="ColorRect" parent="PanelContainer"]
+layout_mode = 2
+color = Color(1, 0.227451, 0.227451, 1)
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(159, 30)
+layout_mode = 2
+
+[node name="GoodRange" type="ColorRect" parent="PanelContainer2"]
+layout_mode = 2
+color = Color(1, 0.784314, 0.227451, 1)
+
+[node name="PanelContainer3" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+
+[node name="PerfectRange" type="ColorRect" parent="PanelContainer3"]
+layout_mode = 2
+color = Color(0.611765, 1, 0.227451, 1)
+
+[connection signal="resized" from="." to="." method="_on_resized"]
