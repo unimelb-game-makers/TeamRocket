@@ -1,7 +1,7 @@
 extends Area2D
 class_name Storage
 
-@export var slots_num: int
+@export var slots_num: int = 9
 @export var item_slot_scene: PackedScene
 @export var storage_ui: Control
 @export var randomized_loot = true
@@ -13,6 +13,8 @@ signal get_item(item, amount)
 
 var open_state = false
 var items: Array[Item] = []
+
+const MIN_AMOUNT_OF_LOOT = 1
 
 func _ready() -> void:
 	for i in range(slots_num):
@@ -35,23 +37,29 @@ func _ready() -> void:
 
 func generate_loot(loot_table: Array[Item]):
 	var loot_array: Array[Item] = []
-	var n_item_to_spawn = randi_range(0, slots_num - 1)
+	var n_item_to_spawn = randi_range(MIN_AMOUNT_OF_LOOT, slots_num - 1)
 	for i in range(n_item_to_spawn):
 		var loot_idx = randi_range(0, len(loot_table) - 1)
 		loot_array.append(loot_table[loot_idx])
 	while loot_array.size() < slots_num:
 		loot_array.append(null)
-
 	items = loot_array
+
+func load_loot_from_save(contained_items_data):
+	for elem in contained_items_data:
+		var item: Item = Item.load_item(elem)
+		add_item(item)
 
 
 func interact():
 	storage_ui.visible = not storage_ui.visible
 	Globals.inventory_ui.can_open = not storage_ui.visible
 
-func add_item(item: Item):
-	if (items.size() < slots_num):
-		items.append(item)
+func add_item(new_item: Item):
+	for i in range(len(items)):
+		if items[i] == null:
+			items[i] = new_item
+			return
 
 func take_item(slot):
 	var item = items[slot]
@@ -63,8 +71,8 @@ func take_item(slot):
 
 func update_display():
 	var slots = item_containers.get_children()
-	for slot in range(slots.size()):
-		slots[slot].set_ingredient(items[slot])
+	for i in range(slots.size()):
+		slots[i].set_ingredient(items[i])
 
 func _on_body_exited(_body: Node2D) -> void:
 	storage_ui.hide()
@@ -72,3 +80,17 @@ func _on_body_exited(_body: Node2D) -> void:
 
 func _on_body_entered(_body: Node2D) -> void:
 	sprite.material.set_shader_parameter("thickness", 5)
+
+func get_save_data():
+	var contained_items_data = []
+	for item in items:
+		if item:
+			contained_items_data.append(item.save())
+
+	return {
+		"name": "crate",
+		"type": "storage",
+		"slots_num": slots_num,
+		"global_position": global_position,
+		"contained_items_data": contained_items_data
+	}

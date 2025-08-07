@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cass2bjp3d6eq"]
+[gd_scene load_steps=15 format=3 uid="uid://cass2bjp3d6eq"]
 
 [ext_resource type="PackedScene" uid="uid://bp53g1jmqlap" path="res://scenes/player/Player.tscn" id="1_2xv6m"]
 [ext_resource type="Script" uid="uid://dswbwl8o4vfsd" path="res://scripts/Game/game_handler.gd" id="1_eaqps"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://df8l5v83coiwy" path="res://scripts/enemy/Areas/enemy_handler.gd" id="4_omi12"]
 [ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="5_c5e5s"]
 [ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="10_a1qu0"]
+[ext_resource type="PackedScene" uid="uid://bn0h4ghumvrgf" path="res://scenes/objects/Interactables/ExplosiveBarrel.tscn" id="10_ayqgh"]
 [ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="11_1om1c"]
 [ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="12_1om1c"]
 
@@ -102,8 +103,6 @@ script = ExtResource("1_p3mrr")
 [node name="EnemyHandler" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("4_omi12")
-min_spawns_per_area = null
-max_spawns_per_area = null
 
 [node name="SpawnAreas" type="Node" parent="EnemyHandler"]
 
@@ -123,6 +122,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 script = ExtResource("2_nlyqa")
 crate_scene = ExtResource("3_ld3e5")
+explosive_barrel_scene = ExtResource("10_ayqgh")
 global_loot_table = Array[ExtResource("10_a1qu0")]([ExtResource("11_1om1c"), ExtResource("12_1om1c")])
 
 [node name="InteractableSpawnPoints" type="Node" parent="InteractableHandler"]

@@ -43,6 +43,7 @@ const DOOR = "B" # There is a door in this direction.
 @export var map_loot_table: Array[Item] = []
 
 @onready var navigation_region: NavigationRegion2D = $NavigationRegion2D
+@onready var interactable_holder: Node2D = $InteractableHolder
 
 var spawned_pois: Array[PlaceablePOI] = []
 var coord: Vector2
@@ -132,18 +133,20 @@ func generate_loot_for_container():
 		elem.generate_loot_for_container()
 
 func get_enemy_spawns():
+	# TODO: Add spawns from map room too
 	var res = []
 	for elem in spawned_pois:
 		res.append_array(elem.get_enemy_spawns())
 	return res
 
 func get_interactables():
-	var res = []
+	var res = interactable_holder.get_children()
 	for elem in spawned_pois:
 		res.append_array(elem.get_interactables())
 	return res
 
 func get_enemies():
+	# TODO: Add enemies from map room too
 	var res = []
 	for elem in spawned_pois:
 		res.append_array(elem.get_enemies())

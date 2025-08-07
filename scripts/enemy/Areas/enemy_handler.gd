@@ -14,7 +14,7 @@ func _ready() -> void:
 	Globals.enemy_handler = self
 	await get_tree().process_frame
 	await get_tree().process_frame
-	spawn_enemies()
+	# spawn_enemies()
 	Globals.player.sound_created.connect(check_enemy_detect_player_by_sound)
 
 
@@ -55,7 +55,7 @@ func spawn_enemies():
 		return
 
 	# Spawn new
-	for area in spawn_areas.get_children():
+	for area: SpawnArea in spawn_areas.get_children():
 		# var spawn_mob = randf() < 0.5
 		var spawn_mob = true
 		if spawn_mob:

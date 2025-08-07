@@ -25,3 +25,10 @@ func explosion():
 	for body in explosion_range.get_overlapping_bodies():
 		if body.has_method("damage"):
 			body.damage(explosion_damage)
+
+func get_save_data():
+	return {
+		"name": "explosive_barrel",
+		"type": "interactable",
+		"global_position": global_position,
+	}

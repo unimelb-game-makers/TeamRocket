@@ -2,10 +2,10 @@ extends Resource
 class_name RoomData
 
 # Note: What to save
-# Enemy - type, location
+# [DONE] Enemy - type, location
 # [DONE] Environment - Map room type, PoI spawned
-# Interactable - Crates, barrel (destroyed or not)
-# Item - Items on ground (optional), items inside crates
+# Interactable - Crates (included its items), barrel (destroyed or not)
+# Item on ground (optional)
 
 var room_scene: PackedScene # Correct room template to generate
 
@@ -18,6 +18,7 @@ var large_poi_location: Vector2
 var coord: Vector2
 
 var room_enemy_data = []
+var room_interactable_data = []
 
 func save_enemies(enemies: Array[Enemy]):
 	room_enemy_data = []
@@ -25,9 +26,16 @@ func save_enemies(enemies: Array[Enemy]):
 		# Save enemy type and location here
 		room_enemy_data.append(elem.get_save_data())
 
+func save_interactables(interactables: Array[Node]):
+	room_interactable_data = []
+	for elem in interactables:
+		if elem.has_method("get_save_data"):
+			room_interactable_data.append(elem.get_save_data())
+
 func save_room_data():
 	print("Save data at ", coord)
 	save_enemies(Globals.enemy_handler.enemy_list)
+	save_interactables(Globals.interactable_handler.interactable_holder.get_children())
 
 
 func get_room_id():

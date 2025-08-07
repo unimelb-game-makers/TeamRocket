@@ -253,6 +253,18 @@ func initialize_room(coord: Vector2, outgoing_direction: Vector2 = Vector2.ZERO)
 	for elem in selected_room.get_interactables():
 		elem.reparent(interactable_handler.interactable_holder)
 
+	# Check for saved and load
+	# TODO: Improve how we save/load interactables later, this doesn't scale well
+	if not curr_room_data.is_new:
+		for elem in interactable_handler.interactable_holder.get_children():
+			# If node has this method, it mean it can be saved.
+			# Therefore, we should delete all of them and re-instantiate from saved data.
+			if elem.has_method("get_save_data"):
+				elem.queue_free()
+		# Now, re-instantiate them
+		interactable_handler.spawn_interactables_from_save()
+
+
 	# Spawn enemies
 	enemy_handler.spawn_enemies()
 

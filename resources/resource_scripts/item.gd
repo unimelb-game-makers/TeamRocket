@@ -58,7 +58,8 @@ enum Effects {
 
 func save() -> Dictionary:
 	var item_dict = {}
-	item_dict["item_id"] = self.resource_path
+	item_dict["item_id"] = item_id
+	item_dict["item_resource_path"] = resource_path
 	item_dict["item_type"] = ItemType.ITEM
 	return item_dict
 	
@@ -77,7 +78,7 @@ static func load_item(dict: Dictionary) -> Item:
 	return
 
 static func parse_dict(item_dict: Dictionary) -> Item:
-	var item: Item = load(item_dict["item_id"])
+	var item: Item = load(item_dict["item_resource_path"])
 	return item
 
 func _to_string() -> String:
@@ -85,8 +86,8 @@ func _to_string() -> String:
 	var name: String = item_name + "(Quality: " + _quality_to_string(self.quality) + ")"
 	return name
 
-func _quality_to_string(quality: Quality) -> String:
-	match quality:
+func _quality_to_string(_quality: Quality) -> String:
+	match _quality:
 		Quality.RUINED:
 			return "Ruined"
 		Quality.POOR:
