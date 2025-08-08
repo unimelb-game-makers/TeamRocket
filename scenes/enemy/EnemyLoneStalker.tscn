@@ -46,6 +46,7 @@ runaway_duration = 4.0
 transparency_when_stalk = 0.05
 passive_speed = 80
 active_speed = 120
+enemy_id = 5
 max_health = 60
 base_damage = 30
 

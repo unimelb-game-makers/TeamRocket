@@ -29,7 +29,6 @@ y_sort_enabled = true
 collision_layer = 32
 collision_mask = 64
 script = ExtResource("1_td6ss")
-slots_num = 9
 item_slot_scene = ExtResource("3_uyd3e")
 storage_ui = NodePath("UI")
 

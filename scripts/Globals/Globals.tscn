@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://nodsuwresxmj"]
+[gd_scene load_steps=11 format=3 uid="uid://nodsuwresxmj"]
 
 [ext_resource type="Script" uid="uid://dua0bgrksnrl6" path="res://scripts/Globals/globals.gd" id="1_om560"]
 [ext_resource type="Resource" uid="uid://bgplmsv507g1w" path="res://resources/player/player_stats.tres" id="2_jb3i0"]
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="3_jcdkj"]
 [ext_resource type="Resource" uid="uid://dhnvd2ibvwqaq" path="res://resources/cooking/foods/vegetable_curry.tres" id="4_rd5xv"]
+[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="5_rd5xv"]
+[ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/EnemyDasher.tscn" id="6_h0d7b"]
+[ext_resource type="PackedScene" uid="uid://djgvayx5wpdta" path="res://scenes/enemy/EnemyRatMonarch.tscn" id="7_taqoc"]
+[ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="8_oxuie"]
+[ext_resource type="PackedScene" uid="uid://cymv5i72rdk4v" path="res://scenes/enemy/EnemyLoneStalker.tscn" id="9_c4f4s"]
+[ext_resource type="PackedScene" uid="uid://c6jq64hs6hvtm" path="res://scenes/enemy/EnemySpider.tscn" id="10_hj4wi"]
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_om560")
 default_player_stats = ExtResource("2_jb3i0")
 requested_dish_list = Array[ExtResource("3_jcdkj")]([ExtResource("4_rd5xv"), ExtResource("4_rd5xv"), ExtResource("4_rd5xv")])
+enemy_scene_database = Array[PackedScene]([ExtResource("5_rd5xv"), ExtResource("6_h0d7b"), ExtResource("7_taqoc"), ExtResource("8_oxuie"), ExtResource("9_c4f4s"), ExtResource("10_hj4wi")])

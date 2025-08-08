@@ -1,13 +1,14 @@
 extends Node
+class_name MapGenerator
 
 var grid: Array[Array] = [] # 2D Array for generation
 const DIM_X = 7
 const DIM_Y = 7
 
-var roomdata = []
+var all_room_data = []
 
 var starting_room = Vector2(2, 2)
-var current_room: Vector2
+var current_room_coord: Vector2
 var current_selected
 
 var curr_rooms = 0
@@ -41,13 +42,14 @@ const fulls: Array[PackedScene] = [
 var currplayer: Player
 
 func _ready() -> void:
+	Globals.map_generator = self
 	clear_unused_node()
 	for i in DIM_X:
 		grid.append([])
-		roomdata.append([])
+		all_room_data.append([])
 		for j in DIM_Y:
 			grid[i].append(0)
-			roomdata[i].append(null)
+			all_room_data[i].append(null)
 
 	start_gen() # only grid explored here
 
@@ -74,7 +76,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 
-	Globals.player_ui.create_minimap(grid, current_room)
+	Globals.player_ui.create_minimap(grid, current_room_coord)
 
 func start_gen():
 	grid[starting_room.x][starting_room.y] = 1
@@ -144,36 +146,39 @@ func get_neighbors_array(_grid, current_pos: Vector2) -> Array:
 			arr.append("A")
 	return arr
 
-func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO):
-	# var room = grid[coords.x][coords.y]
-	var num_neighbors = get_num_neighbors(grid, coords)
-	var neighbors_array = get_neighbors_array(grid, coords)
-
+func initialize_room(coord: Vector2, outgoing_direction: Vector2 = Vector2.ZERO):
+	var num_neighbors = get_num_neighbors(grid, coord)
+	var neighbors_array = get_neighbors_array(grid, coord)
 	var selected_room: ProceduralRoom
+	var curr_room_data = all_room_data[coord.x][coord.y]
 
-	var curr_room_data = roomdata[coords.x][coords.y]
+	# New room, instantiate new room data
 	if curr_room_data == null:
-		var newroomdata = RoomData.new()
-
+		var new_room_data = RoomData.new()
+		new_room_data.coord = coord
 		match num_neighbors:
 			1:
-				newroomdata.roomscene = deadend
+				new_room_data.room_scene = deadend
 			2:
 				if neighbors_array == ["A", "B", "A", "B"] or neighbors_array == ["B", "A", "B", "A"]:
-					newroomdata.roomscene = straight
+					new_room_data.room_scene = straight
 				else:
-					newroomdata.roomscene = bend.pick_random()
+					new_room_data.room_scene = bend.pick_random()
 			3:
-				newroomdata.roomscene = threeway.pick_random()
+				new_room_data.room_scene = threeway.pick_random()
 			4:
-				newroomdata.roomscene = fulls.pick_random()
+				new_room_data.room_scene = fulls.pick_random()
 
-		curr_room_data = newroomdata
-		print("CREATED NEW ROOM DATA")
+		new_room_data.is_new = true
+		curr_room_data = new_room_data
+		all_room_data[coord.x][coord.y] = new_room_data
+	else:
+		curr_room_data.is_new = false
 
-	selected_room = curr_room_data.roomscene.instantiate()
-	selected_room.coords = coords
+	selected_room = curr_room_data.room_scene.instantiate()
+	selected_room.coord = coord
 
+	# FIXME: Replace rotate with manual rotated map
 	# Rotate room to match selected_room.sockets with neighbors_array
 	var sockets: Array[String] = selected_room.sockets
 	var doors = selected_room.doors
@@ -205,9 +210,9 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 		selected_room.doors[i].go_to_room.connect(Callable(self, "go_to_room"))
 		selected_room.doors[i].player_exit.connect(Callable(self, "player_exit"))
 
-	current_room = Vector2(coords.x, coords.y)
+	current_room_coord = Vector2(coord.x, coord.y)
 	current_selected = selected_room
-	print("CURRENT POSITION " + str(coords))
+	print("CURRENT POSITION " + str(coord))
 
 	navigation_region_2d.add_child(selected_room)
 
@@ -248,15 +253,30 @@ func initialize_room(coords: Vector2, outgoing_direction: Vector2 = Vector2.ZERO
 	for elem in selected_room.get_interactables():
 		elem.reparent(interactable_handler.interactable_holder)
 
+	# Check for saved and load
+	# TODO: Improve how we save/load interactables later, this doesn't scale well
+	if not curr_room_data.is_new:
+		for elem in interactable_handler.interactable_holder.get_children():
+			# If node has this method, it mean it can be saved.
+			# Therefore, we should delete all of them and re-instantiate from saved data.
+			if elem.has_method("get_save_data"):
+				elem.queue_free()
+		# Now, re-instantiate them
+		interactable_handler.spawn_interactables_from_save()
+
+
 	# Spawn enemies
 	enemy_handler.spawn_enemies()
 
 func go_to_room(direction: Vector2):
+	var current_room_data = all_room_data[current_room_coord.x][current_room_coord.y] as RoomData
 	if just_teleported1 == false and just_teleported2 == false:
 		just_teleported1 = true
 	else:
 		return
 
+	# Save current room data
+	current_room_data.save_room_data()
 	enemy_handler.clear_room()
 	interactable_handler.clear_room()
 	current_selected.queue_free()
@@ -264,13 +284,15 @@ func go_to_room(direction: Vector2):
 	await get_tree().process_frame
 	await get_tree().process_frame
 
-	initialize_room(Vector2(current_room.x + direction.x, current_room.y + direction.y), direction)
+	initialize_room(Vector2(current_room_coord.x + direction.x, current_room_coord.y + direction.y), direction)
+
+	# Load new room data, otherwise spawn stuff
 
 	print("Entered a door going into: " + str(direction))
 	print("------------------")
 
-	print("Current room ", current_room)
-	Globals.player_ui.create_minimap(grid, current_room)
+	print("Current room ", current_room_coord)
+	Globals.player_ui.create_minimap(grid, current_room_coord)
 
 
 func player_exit():
@@ -283,3 +305,7 @@ func player_exit():
 
 func clear_unused_node():
 	navigation_region_2d.get_node("Map").queue_free()
+
+func get_current_room_data() -> RoomData:
+	var current_room_data = all_room_data[current_room_coord.x][current_room_coord.y] as RoomData
+	return current_room_data

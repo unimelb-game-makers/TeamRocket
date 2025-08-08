@@ -43,9 +43,10 @@ const DOOR = "B" # There is a door in this direction.
 @export var map_loot_table: Array[Item] = []
 
 @onready var navigation_region: NavigationRegion2D = $NavigationRegion2D
+@onready var interactable_holder: Node2D = $InteractableHolder
 
 var spawned_pois: Array[PlaceablePOI] = []
-var coords: Vector2
+var coord: Vector2
 
 func _ready() -> void:
 	# Verify each socket only has 1 character
@@ -73,32 +74,54 @@ func has_poi_markers():
 	return false
 
 func spawn_poi():
+	var room_data = Globals.map_generator.get_current_room_data()
+
+	# Load existing data
+	if not room_data.is_new:
+		if room_data.medium_poi_scene:
+			var inst = room_data.medium_poi_scene.instantiate()
+			add_child(inst)
+			inst.global_position = room_data.medium_poi_location
+			inst.map_room = self
+			spawned_pois.append(inst)
+
+		if room_data.large_poi_scene:
+			var inst = room_data.large_poi_scene.instantiate()
+			add_child(inst)
+			inst.global_position = room_data.large_poi_location
+			inst.map_room = self
+			spawned_pois.append(inst)
+
+		return
+
+	# Spawn new
 	if medium_poi_spawn != null and possible_medium_poi_spawn.size() > 0:
-		
 		var chosen_medium_poi = possible_medium_poi_spawn.pick_random()
-		
 		if select_first_medium_poi: ## Overrides
 			push_warning("DEBUG OVERRIDE SELECTION ON IN ", self)
-			chosen_medium_poi = possible_medium_poi_spawn[0]
 			
 		var inst = chosen_medium_poi.instantiate()
 		add_child(inst)
 		inst.global_position = medium_poi_spawn.global_position
 		inst.map_room = self
 		spawned_pois.append(inst)
+		# Save room data
+		room_data.medium_poi_scene = chosen_medium_poi
+		room_data.medium_poi_location = medium_poi_spawn.global_position
 
 	if large_poi_spawn != null and possible_large_poi_spawn.size() > 0:
 		var chosen_large_poi = possible_large_poi_spawn.pick_random()
-		
 		if select_first_large_poi: ## Overrides
 			push_warning("DEBUG OVERRIDE SELECTION ON IN ", self)
 			chosen_large_poi = possible_large_poi_spawn[0]
-		
 		var inst = chosen_large_poi.instantiate()
 		add_child(inst)
 		inst.global_position = large_poi_spawn.global_position
 		inst.map_room = self
 		spawned_pois.append(inst)
+		# Save room data
+		room_data.large_poi_scene = chosen_large_poi
+		room_data.large_poi_location = large_poi_spawn.global_position
 
 
 func get_player_spawn_pos() -> Vector2:
@@ -110,18 +133,20 @@ func generate_loot_for_container():
 		elem.generate_loot_for_container()
 
 func get_enemy_spawns():
+	# TODO: Add spawns from map room too
 	var res = []
 	for elem in spawned_pois:
 		res.append_array(elem.get_enemy_spawns())
 	return res
 
 func get_interactables():
-	var res = []
+	var res = interactable_holder.get_children()
 	for elem in spawned_pois:
 		res.append_array(elem.get_interactables())
 	return res
 
 func get_enemies():
+	# TODO: Add enemies from map room too
 	var res = []
 	for elem in spawned_pois:
 		res.append_array(elem.get_enemies())
