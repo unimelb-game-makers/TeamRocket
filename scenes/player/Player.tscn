@@ -643,12 +643,12 @@ position = Vector2(48, 2)
 script = ExtResource("5_bb4ct")
 
 [node name="Line1" type="Line2D" parent="Rifle/AimingUI"]
-points = PackedVector2Array(0, 0, 100, 0)
+points = PackedVector2Array(0, 0, 720, 0)
 width = 5.0
 default_color = Color(1, 0.015625, 0.015625, 0.239216)
 
 [node name="Line2" type="Line2D" parent="Rifle/AimingUI"]
-points = PackedVector2Array(0, 0, 100, 0)
+points = PackedVector2Array(0, 0, 720, 0)
 width = 5.0
 default_color = Color(1, 0.015625, 0.015625, 0.239216)
 
