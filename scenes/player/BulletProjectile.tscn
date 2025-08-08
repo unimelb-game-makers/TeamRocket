@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3jnad7h7ggpt"]
+
+[ext_resource type="Script" uid="uid://c0c5h5rvxtenx" path="res://scripts/player/bullet_projectile.gd" id="1_njqm3"]
+[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="2_scf4j"]
+[ext_resource type="Texture2D" uid="uid://c2td7omrl6sqn" path="res://assets/textures/basic_light.webp" id="3_scf4j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eca2e"]
+radius = 8.0
+height = 16.0
+
+[node name="BulletProjectile" type="Node2D"]
+top_level = true
+script = ExtResource("1_njqm3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.983, 1, 0, 0.547)
+scale = Vector2(0.2, 0.1)
+texture = ExtResource("2_scf4j")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 164
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_eca2e")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-8, 0)
+scale = Vector2(0.1875, 0.125)
+color = Color(1, 0.9463, 0, 1)
+texture = ExtResource("3_scf4j")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

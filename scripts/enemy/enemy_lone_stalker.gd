@@ -3,7 +3,6 @@ extends BasicEnemy
 @export var runaway_duration: float = 4
 @export var transparency_when_stalk: float = 0.1
 
-@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dash_atk_area: Area2D = $DashAttackArea
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var stop_run_timer: Timer = $StopRunTimer
@@ -87,8 +86,8 @@ func check_player_moving() -> bool:
 	return player.velocity.length() > 0.1
 
 
-func damage(value: int) -> void:
-	super (value)
+func damage(value: int, damage_source_position: Vector2 = Vector2.ZERO) -> void:
+	super (value, damage_source_position)
 	# hurt_effect.play()
 	var tween = create_tween()
 	tween.tween_property(anim_sprite, "self_modulate:a", 1, 1)

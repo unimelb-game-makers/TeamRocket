@@ -3,7 +3,6 @@ extends BasicEnemy
 @export var range_before_dash_attack = 500
 
 @onready var dash_attack_area: Area2D = $DashAttackArea
-@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var dash_attack_vector: Vector2 # Position of player when winding up
 var dash_attack_range: float = 1000
@@ -88,8 +87,8 @@ func _on_active_state_entered() -> void:
 	super ()
 	play_sound("hunt")
 
-func damage(value: int):
-	super (value)
+func damage(value: int, damage_source_position: Vector2 = Vector2.ZERO):
+	super (value, damage_source_position)
 	play_sound("hurt")
 
 

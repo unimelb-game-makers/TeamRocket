@@ -11,10 +11,12 @@ class_name BasicEnemy
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var statechart: StateChart = $StateChart
 @onready var elite_effects: Node2D = $EliteEffects
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 const ELITE_HP_MULT = 1.5
 const ELITE_DMG_MULT = 1.5
 const ELITE_SPEED_MULT = 1.2
+const HIT_SHRINK_AMOUNT = 0.95
 
 var navigation_region: NavigationRegion2D
 var movement_speed: float
@@ -89,8 +91,19 @@ func set_movement_target(movement_target: Vector2):
 	navigation_agent.target_position = movement_target
 
 
-func damage(value: int):
+func damage(value: int, _damage_source_position: Vector2 = Vector2.ZERO):
 	super (value)
+	# Tint sprite red
+	var tween = create_tween()
+	tween.tween_property(anim_sprite, "self_modulate", Color.RED, 0.1)
+	tween.tween_property(anim_sprite, "self_modulate", Color(1, 1, 1), 0.1)
+
+	# Shrink sprite a bit
+	var before_hit_scale = anim_sprite.scale
+	var tween2 = create_tween()
+	tween2.tween_property(anim_sprite, "scale", before_hit_scale * HIT_SHRINK_AMOUNT, 0.1)
+	tween2.tween_property(anim_sprite, "scale", before_hit_scale, 0.1)
+
 	target_creature = Globals.player
 	statechart.send_event("to_chase")
 	

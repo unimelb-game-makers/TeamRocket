@@ -5,7 +5,6 @@ extends BasicEnemy
 @export var poison_status: StatusEffect
 @export var slow_status: StatusEffect
 
-@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dash_atk_area: Area2D = $DashAttackArea
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
@@ -63,13 +62,13 @@ func _on_chase_state_physics_processing(delta: float) -> void:
 	super (delta)
 
 
-func damage(value: int) -> void:
+func damage(value: int, damage_source_position: Vector2 = Vector2.ZERO) -> void:
 	var dodge_roll = randf_range(0, 1)
 	target_creature = Globals.player
 	if dodge_roll < dodge_chance_when_defend:
 		play_jump_effect()
-		return
-	super (value)
+	else:
+		super (value, damage_source_position)
 
 func play_jump_effect():
 	var tween = create_tween()
@@ -160,7 +159,7 @@ func _on_triangle_attack_state_entered() -> void:
 	dash_atk_area.monitoring = true
 	tri_dash_attack_timer = 0
 	tri_attack_dash_counter += 1
-	
+
 	# If this is first dash in the triangle attack,
 	# then calculate the positions.
 	# Calculate 3 point around player, where 1st point is original pos,

@@ -5,16 +5,16 @@ extends StaticBody2D
 
 @onready var explosion_range: Area2D = $ExplosionRange
 
-func damage(_value: int):
+func damage(_value: int, _damage_source_position: Vector2 = Vector2.ZERO):
 	var fire_inst = fire_scene.instantiate()
-	Globals.interactable_handler.interactable_holder.add_child(fire_inst)
+	get_tree().get_root().call_deferred("add_child", fire_inst)
 	fire_inst.global_position = global_position
 	# TODO: Play explosive VFX and SFX here
-	explosion()
-	queue_free()
+	call_deferred("explosion")
+	call_deferred("queue_free")
 
-func _on_environment_hitbox_damaged(value: int) -> void:
-	damage(value)
+func _on_environment_hitbox_damaged(value: int, damage_source_position: Vector2) -> void:
+	damage(value, damage_source_position)
 
 
 func explosion():
