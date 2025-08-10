@@ -11,9 +11,9 @@
 [ext_resource type="Script" uid="uid://c4w27uduxpnqb" path="res://resources/resource_scripts/status_effects/attack_increase_status.gd" id="3_h2bbt"]
 [ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="3_u8x7w"]
 [ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="4_px21u"]
-[ext_resource type="PackedScene" uid="uid://bpwuxxnbvf5aq" path="res://scenes/player/GunImpact.tscn" id="4_wuv7n"]
+[ext_resource type="PackedScene" uid="uid://bpwuxxnbvf5aq" path="res://scenes/player/BulletImpact.tscn" id="4_wuv7n"]
 [ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="5_6l3qh"]
-[ext_resource type="Script" uid="uid://bnfyacnboc43k" path="res://scripts/ui/aiming_ui.gd" id="5_bb4ct"]
+[ext_resource type="Script" uid="uid://b6yi4ggdw3s7h" path="res://scripts/ui/aiming_ui.gd" id="5_bb4ct"]
 [ext_resource type="Script" uid="uid://cg7rnst5hwwxp" path="res://resources/resource_scripts/status_effects/hp_increase_status.gd" id="5_kt2pj"]
 [ext_resource type="Script" uid="uid://c6yfi13084pva" path="res://resources/resource_scripts/status_effects/movespeed_increase_status.gd" id="6_h2bbt"]
 [ext_resource type="Texture2D" uid="uid://b5mo6uosm58ww" path="res://assets/status_icons/heart-plus.svg" id="6_q71nn"]
@@ -616,7 +616,7 @@ texture = ExtResource("91_rlnnq")
 position = Vector2(0, -96)
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_web4h")
-animation = &"crouch_idle"
+animation = &"stand_up_aim"
 
 [node name="Rifle" type="Node2D" parent="."]
 position = Vector2(0, -96)
@@ -643,14 +643,14 @@ position = Vector2(48, 2)
 script = ExtResource("5_bb4ct")
 
 [node name="Line1" type="Line2D" parent="Rifle/AimingUI"]
-points = PackedVector2Array(0, 0, 720, 0)
+points = PackedVector2Array(0, 0, 360, 0)
 width = 5.0
-default_color = Color(1, 0.015625, 0.015625, 0.239216)
+default_color = Color(1, 0.744948, 0, 0.239216)
 
 [node name="Line2" type="Line2D" parent="Rifle/AimingUI"]
-points = PackedVector2Array(0, 0, 720, 0)
+points = PackedVector2Array(0, 0, 360, 0)
 width = 5.0
-default_color = Color(1, 0.015625, 0.015625, 0.239216)
+default_color = Color(1, 0.760051, 0, 0.239216)
 
 [node name="SoundEffects" type="Node2D" parent="Rifle"]
 

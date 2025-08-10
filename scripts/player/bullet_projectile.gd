@@ -1,6 +1,7 @@
 extends Node2D
 class_name BulletProjectile
 
+@export var bullet_impact_scene: PackedScene
 @export var speed: float = 5000
 
 @onready var hurt_box: Area2D = $HurtBox
@@ -43,6 +44,9 @@ func _on_hurt_box_body_entered(body: Node2D) -> void:
 
 
 func destroyed():
+	var impact_inst = bullet_impact_scene.instantiate()
+	get_tree().get_root().add_child(impact_inst)
+	impact_inst.global_position = global_position
 	bullet_sprite.visible = false
 	speed = 0
 	used = true
