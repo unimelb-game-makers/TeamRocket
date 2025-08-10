@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c0dgri14uuw70"]
+[gd_scene load_steps=24 format=3 uid="uid://c0dgri14uuw70"]
 
 [ext_resource type="Script" uid="uid://bk6qxeoptikjq" path="res://scripts/enemy/basic_enemy.gd" id="1_mi47r"]
 [ext_resource type="Script" uid="uid://dahmqbphxewm7" path="res://addons/godot_state_charts/state_chart.gd" id="3_q7ouv"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://boixyyp84v32v" path="res://assets/creatures/enemy_longneck/longneck6.png" id="8_qdxwj"]
 [ext_resource type="Texture2D" uid="uid://bftt6dkjddhcb" path="res://assets/creatures/enemy_longneck/longneck7.png" id="9_aivvf"]
 [ext_resource type="Script" uid="uid://dkjrqbk2ts5qd" path="res://scripts/enemy/enemy_hitbox.gd" id="13_lcgj0"]
+[ext_resource type="AudioStream" uid="uid://ga8r2ag74xyd" path="res://assets/sfx/other/hitmarker.wav" id="14_ia0ec"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mgjl5"]
 animations = [{
@@ -267,6 +268,10 @@ color = Color(0.315642, 0.0729553, 0.274341, 1)
 energy = 3.0
 texture = SubResource("GradientTexture2D_ia0ec")
 texture_scale = 2.0
+
+[node name="HitSfxPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_ia0ec")
+bus = &"Effects"
 
 [connection signal="area_entered" from="DetectionRadius" to="." method="_on_detection_radius_area_entered"]
 [connection signal="area_entered" from="ChaseRadius" to="." method="_on_chase_radius_area_entered"]

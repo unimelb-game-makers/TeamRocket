@@ -12,6 +12,7 @@ class_name BasicEnemy
 @onready var statechart: StateChart = $StateChart
 @onready var elite_effects: Node2D = $EliteEffects
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hit_sfx_player: AudioStreamPlayer2D = $HitSfxPlayer2D
 
 const ELITE_HP_MULT = 1.5
 const ELITE_DMG_MULT = 1.5
@@ -103,7 +104,8 @@ func damage(value: int, _damage_source_position: Vector2 = Vector2.ZERO):
 	var tween2 = create_tween()
 	tween2.tween_property(anim_sprite, "scale", before_hit_scale * HIT_SHRINK_AMOUNT, 0.1)
 	tween2.tween_property(anim_sprite, "scale", before_hit_scale, 0.1)
-
+	hit_sfx_player.play()
+	
 	target_creature = Globals.player
 	statechart.send_event("to_chase")
 	
