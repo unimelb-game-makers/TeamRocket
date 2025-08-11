@@ -8,9 +8,9 @@
 [ext_resource type="Script" uid="uid://c6yfi13084pva" path="res://resources/resource_scripts/status_effects/movespeed_increase_status.gd" id="3_uxdrg"]
 [ext_resource type="Script" uid="uid://dq78rxiki3ndm" path="res://resources/resource_scripts/status_effects/regeneration_status.gd" id="4_3y6ce"]
 [ext_resource type="Texture2D" uid="uid://btnlnpqfbh115" path="res://assets/status_icons/cobweb.svg" id="5_0rcma"]
-[ext_resource type="Script" uid="uid://cyw3vuu8wb4vn" path="res://addons/godot_state_charts/compound_state.gd" id="5_trdn0"]
-[ext_resource type="Script" uid="uid://di7rh2bj4kanb" path="res://addons/godot_state_charts/atomic_state.gd" id="6_omm2d"]
-[ext_resource type="Script" uid="uid://dwgr8rprecbfo" path="res://addons/godot_state_charts/transition.gd" id="7_omm2d"]
+[ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="5_trdn0"]
+[ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="6_omm2d"]
+[ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="7_omm2d"]
 
 [sub_resource type="Resource" id="Resource_ji3n8"]
 script = ExtResource("4_3y6ce")
@@ -61,7 +61,7 @@ size = Vector2(208, 72)
 [node name="EnemySpider" instance=ExtResource("1_un5pt")]
 collision_mask = 4
 script = ExtResource("2_35b6m")
-dodge_chance_when_defend = 0.5
+dodge_chance_when_defend = 0.2
 poison_status = SubResource("Resource_ji3n8")
 slow_status = SubResource("Resource_ei78k")
 active_speed = 110

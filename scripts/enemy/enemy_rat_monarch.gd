@@ -5,7 +5,6 @@ extends BasicEnemy
 @export var n_rat_after_split = 2
 @export var attack_cooldown = 2
 
-@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var dash_atk_area: Area2D = $DashAttackArea
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
@@ -88,8 +87,8 @@ func move_along_path(delta):
 		move_and_slide()
 
 
-func damage(value: int) -> void:
-	super (value)
+func damage(value: int, damage_source_position: Vector2 = Vector2.ZERO) -> void:
+	super (value, damage_source_position)
 	if health <= max_health * 0.66 and splitted_time < max_split_time:
 		split()
 

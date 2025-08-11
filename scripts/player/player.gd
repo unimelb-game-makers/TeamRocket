@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var gun_loudness: float = 2000
 @export var player_stats: PlayerStatsResource
 @export var run_stamina_cost = 20
-@export var roll_stamina_cost = 20
+@export var dodge_stamina_cost = 20
 
 
 # ---- Signals ----
@@ -20,9 +20,9 @@ signal death
 signal channel_complete
 signal sound_created(location, loudness)
 
-const ROLL_SPEED: int = 800
-const ROLL_DURATION: float = 0.5
-const ROLL_COOLDOWN: float = 0
+const DODGE_SPEED: int = 1000
+const DODGE_DURATION: float = 0.5
+const DODGE_COOLDOWN: float = 0.5
 const WALK_FOOTSTEP_SFX_FREQUENCY = 0.75
 const SPRINT_FOOTSTEP_SFX_FREQUENCY = 0.5
 const AFTER_HURT_INVULNERABLE_DURATION = 1.0
@@ -162,7 +162,7 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 	# Roll cooldown
 	if not can_roll:
 		roll_cd_timer += delta
-		if roll_cd_timer >= ROLL_COOLDOWN:
+		if roll_cd_timer >= DODGE_COOLDOWN:
 			can_roll = true
 
 	# Handle Aim State
@@ -178,8 +178,8 @@ func _on_basic_state_input(event: InputEvent) -> void:
 		return
 		
 	# Rolling supercedes all states
-	if event.is_action_pressed("roll") and can_roll and player_stats.stamina >= roll_stamina_cost:
-		player_stats.stamina -= roll_stamina_cost
+	if event.is_action_pressed("roll") and can_roll and player_stats.stamina >= dodge_stamina_cost:
+		player_stats.stamina -= dodge_stamina_cost
 		statechart.send_event("space_press")
 	if event.is_action_pressed("crouch"):
 		statechart.send_event("ctrl_press") # Crouch <-> Standing
@@ -202,18 +202,20 @@ func _on_roll_state_exited() -> void:
 
 func _on_roll_state_physics_processing(delta: float) -> void:
 	roll_timer += delta
-
-	if roll_timer >= ROLL_DURATION:
+	var animation_speed = curr_speed / (Globals.player_stats.speed)
+	if (direction.length() > 0.1):
+		handle_direction_anim("dodge", direction, "", animation_speed)
+	if roll_timer >= DODGE_DURATION:
 		statechart.send_event("roll_finished")
 	else:
-		curr_speed = roll_speed(roll_timer)
+		curr_speed = DODGE_speed(roll_timer)
 		velocity = direction * curr_speed
 		move_and_slide()
 
-# Quadratic curve starting at ROLL_SPEED and ending at CROUCH_SPEED
-func roll_speed(elapsed_time: float) -> float:
-	var t: float = elapsed_time / ROLL_DURATION
-	return ROLL_SPEED - (ROLL_SPEED - Globals.player_stats.crouch_speed) * t * t
+# Quadratic curve starting at DODGE_SPEED and ending at CROUCH_SPEED
+func DODGE_speed(elapsed_time: float) -> float:
+	var t: float = elapsed_time / DODGE_DURATION
+	return DODGE_SPEED - (DODGE_SPEED - Globals.player_stats.crouch_speed) * t * t
 
 func _on_idle_state_entered() -> void:
 	footstep_timer.stop()

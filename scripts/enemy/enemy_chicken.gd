@@ -1,6 +1,5 @@
 extends BasicEnemy
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var detection_area: Area2D = $DetectionRadius
 @onready var stop_run_timer: Timer = $StopRunTimer
 
@@ -17,13 +16,13 @@ func _on_runaway_state_physics_processing(_delta: float) -> void:
 		direction = target_creature.global_position.direction_to(global_position)
 	velocity = direction * movement_speed
 	if (velocity.x > 0.0):
-		animated_sprite_2d.flip_h = true
+		anim_sprite.flip_h = true
 	else:
-		animated_sprite_2d.flip_h = false
+		anim_sprite.flip_h = false
 	move_and_slide()
 
 func _on_runaway_state_entered() -> void:
-	animated_sprite_2d.play("walk", 3.0)
+	anim_sprite.play("walk", 3.0)
 	stop_run_timer.start(runaway_duration)
 
 
@@ -46,8 +45,8 @@ func _on_chase_radius_area_entered(_area: Area2D) -> void:
 func _on_chase_radius_area_exited(_area: Area2D) -> void:
 	return
 
-func damage(value) -> void:
-	super (value)
+func damage(value, damage_source_position: Vector2 = Vector2.ZERO) -> void:
+	super (value, damage_source_position)
 	play_sound("hurt")
 	if target_creature != null:
 		direction = target_creature.global_position.direction_to(global_position)
@@ -69,4 +68,4 @@ func _on_stop_run_timer_timeout() -> void:
 		stop_run_timer.start(runaway_duration)
 	else:
 		statechart.send_event("to_return")
-		animated_sprite_2d.play("walk")
+		anim_sprite.play("walk")

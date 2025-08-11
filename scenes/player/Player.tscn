@@ -1,18 +1,18 @@
-[gd_scene load_steps=131 format=3 uid="uid://bp53g1jmqlap"]
+[gd_scene load_steps=143 format=3 uid="uid://bp53g1jmqlap"]
 
-[ext_resource type="Script" uid="uid://bagdchb1hwe0f" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
+[ext_resource type="Script" uid="uid://dahmqbphxewm7" path="res://addons/godot_state_charts/state_chart.gd" id="1_600i3"]
 [ext_resource type="Script" uid="uid://cucpys6u7vdh4" path="res://scripts/player/player.gd" id="1_lvdue"]
 [ext_resource type="Resource" uid="uid://bgplmsv507g1w" path="res://resources/player/player_stats.tres" id="2_0jidv"]
 [ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="2_0pnis"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="2_7c1ag"]
-[ext_resource type="Script" uid="uid://cj6qlxl2m71tr" path="res://addons/godot_state_charts/parallel_state.gd" id="2_44kvc"]
-[ext_resource type="Script" path="res://resources/resource_scripts/status_effect.gd" id="2_f2wld"]
+[ext_resource type="Script" uid="uid://dcjhq64uacsfa" path="res://addons/godot_state_charts/parallel_state.gd" id="2_44kvc"]
+[ext_resource type="Script" uid="uid://dusc61itvq8h1" path="res://resources/resource_scripts/status_effect.gd" id="2_f2wld"]
 [ext_resource type="Texture2D" uid="uid://bfbg1awb0nkfp" path="res://assets/status_icons/bullet-impacts.svg" id="3_bjerx"]
 [ext_resource type="Script" uid="uid://c4w27uduxpnqb" path="res://resources/resource_scripts/status_effects/attack_increase_status.gd" id="3_h2bbt"]
-[ext_resource type="Script" uid="uid://cyw3vuu8wb4vn" path="res://addons/godot_state_charts/compound_state.gd" id="3_u8x7w"]
-[ext_resource type="Script" uid="uid://di7rh2bj4kanb" path="res://addons/godot_state_charts/atomic_state.gd" id="4_px21u"]
-[ext_resource type="PackedScene" uid="uid://bpwuxxnbvf5aq" path="res://scenes/player/GunImpact.tscn" id="4_wuv7n"]
-[ext_resource type="Script" uid="uid://dwgr8rprecbfo" path="res://addons/godot_state_charts/transition.gd" id="5_6l3qh"]
+[ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="3_u8x7w"]
+[ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="4_px21u"]
+[ext_resource type="PackedScene" uid="uid://bpwuxxnbvf5aq" path="res://scenes/player/BulletImpact.tscn" id="4_wuv7n"]
+[ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="5_6l3qh"]
 [ext_resource type="Script" uid="uid://b6yi4ggdw3s7h" path="res://scripts/ui/aiming_ui.gd" id="5_bb4ct"]
 [ext_resource type="Script" uid="uid://cg7rnst5hwwxp" path="res://resources/resource_scripts/status_effects/hp_increase_status.gd" id="5_kt2pj"]
 [ext_resource type="Script" uid="uid://c6yfi13084pva" path="res://resources/resource_scripts/status_effects/movespeed_increase_status.gd" id="6_h2bbt"]
@@ -30,7 +30,6 @@
 [ext_resource type="Texture2D" uid="uid://74aq7mvhmeeu" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down04.png" id="11_f5d4e"]
 [ext_resource type="Texture2D" uid="uid://d2b7dljnqq5l0" path="res://assets/status_icons/poison-cloud.svg" id="11_jyf3t"]
 [ext_resource type="Texture2D" uid="uid://chhwknv6cp2vo" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down05.png" id="12_2eg2o"]
-[ext_resource type="Texture2D" uid="uid://dgctlmfq5mj0j" path="res://assets/textures/rifle_placeholder.png" id="12_o5gnq"]
 [ext_resource type="Texture2D" uid="uid://dcs1n8owx1583" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down06.png" id="13_0xewb"]
 [ext_resource type="Texture2D" uid="uid://dquxi6eepllwm" path="res://assets/Player/PlayerAnimations/Walking/Walk Down Animation/down07.png" id="14_00dvn"]
 [ext_resource type="Texture2D" uid="uid://d0ed1f3w0t8kk" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Up/crouch_up.png" id="15_6b0yd"]
@@ -42,29 +41,41 @@
 [ext_resource type="Texture2D" uid="uid://pjnhfqaeminu" path="res://assets/Player/PlayerAnimations/Crouch/Crouch Right/crouch_right.png" id="17_bjerx"]
 [ext_resource type="Texture2D" uid="uid://dwyxlehdbfq2m" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 00.png" id="18_odnkq"]
 [ext_resource type="Texture2D" uid="uid://bp7y6kdy4yh1d" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_3_delay-0.13s.png" id="18_pa30l"]
+[ext_resource type="Texture2D" uid="uid://bixbyyf0lvldb" path="res://assets/Player/PlayerAnimations/Dodge/Dodge Down/dodge down 00.png" id="19_2usyi"]
 [ext_resource type="Texture2D" uid="uid://b52b675kybqqa" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_4_delay-0.13s.png" id="19_3oooa"]
 [ext_resource type="Texture2D" uid="uid://vqlkx4v2wvd8" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 01.png" id="19_jiyrq"]
 [ext_resource type="Texture2D" uid="uid://bc4u5goj4ffr2" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 02.png" id="20_2pgx4"]
 [ext_resource type="Texture2D" uid="uid://wcd73g7til3i" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_5_delay-0.13s.png" id="20_cetet"]
+[ext_resource type="Texture2D" uid="uid://cmav53xqfdtuc" path="res://assets/Player/PlayerAnimations/Dodge/Dodge Down/dodge down 01.png" id="20_w8i16"]
 [ext_resource type="Texture2D" uid="uid://bfvbv5xtj1j63" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 03.png" id="21_fvpc7"]
 [ext_resource type="Texture2D" uid="uid://ca53u11ldlory" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_6_delay-0.13s.png" id="21_qjn0l"]
+[ext_resource type="Texture2D" uid="uid://c51r1i8u06xvs" path="res://assets/Player/PlayerAnimations/Dodge/Dodge Down/dodge down 02.png" id="21_scjgt"]
 [ext_resource type="Texture2D" uid="uid://di8360caqy7c8" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 04.png" id="22_1a5nx"]
+[ext_resource type="Texture2D" uid="uid://bfpldq87cy5j8" path="res://assets/Player/PlayerAnimations/Dodge/Dodge Left/dodge left 00.png" id="22_8jnc8"]
 [ext_resource type="Texture2D" uid="uid://yab1oufid13y" path="res://assets/Player/PlayerAnimations/Walking/WalkLeft/frame_7_delay-0.13s.png" id="22_nxogw"]
+[ext_resource type="Texture2D" uid="uid://cl11a808u1622" path="res://assets/Player/PlayerAnimations/Dodge/Dodge Left/dodge left 01.png" id="23_2l06y"]
 [ext_resource type="Texture2D" uid="uid://bdjdcpo225fq7" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_0_delay-0.13s.png" id="23_ewgrd"]
 [ext_resource type="Texture2D" uid="uid://br53fiqh6v3hm" path="res://assets/Player/PlayerAnimations/Aiming/Aim Down + Idle/aim down 05.png" id="23_y8xoq"]
+[ext_resource type="Texture2D" uid="uid://ifu325r1hkwo" path="res://assets/Player/PlayerAnimations/Dodge/Dodge Left/dodge left 02.png" id="24_3lumm"]
 [ext_resource type="Texture2D" uid="uid://cfqpnxb7qjir1" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_1_delay-0.13s.png" id="24_cq5lk"]
 [ext_resource type="Texture2D" uid="uid://c1xrl6na61w0g" path="res://assets/Player/PlayerAnimations/Running/Run Down/run down 00.png" id="24_ng3yo"]
 [ext_resource type="Texture2D" uid="uid://d188fvg4x3ble" path="res://assets/Player/PlayerAnimations/Running/Run Down/run down 01.png" id="25_g8nah"]
+[ext_resource type="Texture2D" uid="uid://c0cpc0a6ku6yh" path="res://assets/Player/PlayerAnimations/Dodge/Dodge Right/dodge right 00.png" id="25_mwrva"]
 [ext_resource type="Texture2D" uid="uid://1fuk5rxd48wb" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_2_delay-0.13s.png" id="25_tch83"]
 [ext_resource type="Texture2D" uid="uid://brfebtxhjb0ov" path="res://assets/Player/PlayerAnimations/Running/Run Down/run down 02.png" id="26_7e4j6"]
+[ext_resource type="Texture2D" uid="uid://ceyo74rbem2ks" path="res://assets/Player/PlayerAnimations/Dodge/Dodge Right/dodge right 01.png" id="26_py75u"]
 [ext_resource type="Texture2D" uid="uid://dbwqkau3h0647" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_3_delay-0.13s.png" id="26_ukwyt"]
+[ext_resource type="Texture2D" uid="uid://c7tle8x5iyrwc" path="res://assets/Player/PlayerAnimations/Dodge/Dodge Right/dodge right 02.png" id="27_r564e"]
 [ext_resource type="Texture2D" uid="uid://bdaajbipwxa00" path="res://assets/Player/PlayerAnimations/Running/Run Down/run down 03.png" id="27_rmv3m"]
 [ext_resource type="Texture2D" uid="uid://gqm8o2w6mfvb" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_4_delay-0.13s.png" id="27_vi73o"]
+[ext_resource type="Texture2D" uid="uid://br1aluh3jgsqd" path="res://assets/Player/PlayerAnimations/Dodge/Dodge Up/dodge up 00.png" id="28_5vsji"]
 [ext_resource type="Texture2D" uid="uid://blws51lgkcnoq" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_5_delay-0.13s.png" id="28_a8xye"]
 [ext_resource type="Texture2D" uid="uid://c5ew85glti42p" path="res://assets/Player/PlayerAnimations/Running/Run Down/run down 04.png" id="28_anqsc"]
+[ext_resource type="Texture2D" uid="uid://cxx676aimufop" path="res://assets/Player/PlayerAnimations/Dodge/Dodge Up/dodge up 01.png" id="29_2v0l0"]
 [ext_resource type="Texture2D" uid="uid://dwo04e0nf3s6v" path="res://assets/Player/PlayerAnimations/Running/Run Down/run down 05.png" id="29_7gyx0"]
 [ext_resource type="Texture2D" uid="uid://e4ycheuds5d2" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_6_delay-0.13s.png" id="29_rxytg"]
 [ext_resource type="Texture2D" uid="uid://bk73q34mywfx7" path="res://assets/Player/PlayerAnimations/Walking/WalkRight/frame_7_delay-0.13s.png" id="30_8o04s"]
+[ext_resource type="Texture2D" uid="uid://dp6t203vedojd" path="res://assets/Player/PlayerAnimations/Dodge/Dodge Up/dodge up 02.png" id="30_ej0xu"]
 [ext_resource type="Texture2D" uid="uid://cjc6sxe1n8ghj" path="res://assets/Player/PlayerAnimations/Walking/Walk Up Animation/up00.png" id="31_wk045"]
 [ext_resource type="Texture2D" uid="uid://bx75yt0ud5y71" path="res://assets/Player/PlayerAnimations/Walking/Walk Up Animation/up01.png" id="32_s4jya"]
 [ext_resource type="Texture2D" uid="uid://cxg56hrrjlv1y" path="res://assets/Player/PlayerAnimations/Walking/Walk Up Animation/up02.png" id="33_qdcbl"]
@@ -106,6 +117,7 @@
 [ext_resource type="Texture2D" uid="uid://ctqn7ohdkuvgc" path="res://assets/textures/blank_circle_200x200.png" id="91_rlnnq"]
 [ext_resource type="AudioStream" uid="uid://pbelltth7qay" path="res://assets/sfx/team rocket sfx/player/footstep_concrete.mp3" id="92_yuju3"]
 [ext_resource type="AudioStream" uid="uid://lr0f2i7g3oob" path="res://assets/sfx/team rocket sfx/gun/gun_fire.ogg" id="95_3imom"]
+[ext_resource type="PackedScene" uid="uid://c3jnad7h7ggpt" path="res://scenes/player/BulletProjectile.tscn" id="95_q71nn"]
 [ext_resource type="AudioStream" uid="uid://b8y0dsl1q88oy" path="res://assets/sfx/team rocket sfx/gun/gun_reload.ogg" id="96_3imom"]
 [ext_resource type="Shader" uid="uid://bepjrssoapr53" path="res://scripts/shader/directional_sound_hud.gdshader" id="97_0djkk"]
 [ext_resource type="AudioStream" uid="uid://cmma8dq5yq3we" path="res://assets/sfx/team rocket sfx/gun/gun_equip.ogg" id="97_6b0yd"]
@@ -232,6 +244,62 @@ animations = [{
 }],
 "loop": true,
 "name": &"crouch_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_2usyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_w8i16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_scjgt")
+}],
+"loop": true,
+"name": &"dodge_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_8jnc8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_2l06y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_3lumm")
+}],
+"loop": true,
+"name": &"dodge_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_mwrva")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_py75u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_r564e")
+}],
+"loop": true,
+"name": &"dodge_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_5vsji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_2v0l0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_ej0xu")
+}],
+"loop": true,
+"name": &"dodge_up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -616,11 +684,12 @@ texture = ExtResource("91_rlnnq")
 position = Vector2(0, -96)
 scale = Vector2(0.12, 0.12)
 sprite_frames = SubResource("SpriteFrames_web4h")
-animation = &"crouch_idle"
+animation = &"dodge_up"
 
 [node name="Rifle" type="Node2D" parent="."]
 position = Vector2(0, -96)
 script = ExtResource("9_usf71")
+bullet_prefab = ExtResource("95_q71nn")
 impact_scene = ExtResource("4_wuv7n")
 
 [node name="FireTimer" type="Timer" parent="Rifle"]
@@ -629,13 +698,6 @@ one_shot = true
 [node name="ReloadTimer" type="Timer" parent="Rifle"]
 wait_time = 3.5
 one_shot = true
-
-[node name="RifleSprite" type="Sprite2D" parent="Rifle"]
-visible = false
-z_index = 1
-position = Vector2(36, 9)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("12_o5gnq")
 
 [node name="RayCast2D" type="RayCast2D" parent="Rifle"]
 position = Vector2(41, 1)
@@ -649,14 +711,14 @@ position = Vector2(48, 2)
 script = ExtResource("5_bb4ct")
 
 [node name="Line1" type="Line2D" parent="Rifle/AimingUI"]
-points = PackedVector2Array(0, 0, 100, 0)
+points = PackedVector2Array(0, 0, 360, 0)
 width = 5.0
-default_color = Color(1, 0.015625, 0.015625, 0.239216)
+default_color = Color(1, 0.744948, 0, 0.239216)
 
 [node name="Line2" type="Line2D" parent="Rifle/AimingUI"]
-points = PackedVector2Array(0, 0, 100, 0)
+points = PackedVector2Array(0, 0, 360, 0)
 width = 5.0
-default_color = Color(1, 0.015625, 0.015625, 0.239216)
+default_color = Color(1, 0.760051, 0, 0.239216)
 
 [node name="SoundEffects" type="Node2D" parent="Rifle"]
 
@@ -892,8 +954,8 @@ one_shot = true
 
 [connection signal="aim_mode_enter" from="." to="PlayerCamera" method="_on_player_aim_mode_enter"]
 [connection signal="aim_mode_exit" from="." to="PlayerCamera" method="_on_player_aim_mode_exit"]
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_anim_sprite_animation_finished"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_anim_sprite_animation_finished"]
 [connection signal="fired" from="Rifle" to="." method="_on_rifle_fired"]
 [connection signal="fired" from="Rifle" to="PlayerCamera" method="_on_rifle_fired"]
 [connection signal="timeout" from="Rifle/ReloadTimer" to="Rifle" method="_on_reload_timer_timeout"]

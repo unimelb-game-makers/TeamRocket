@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3jnad7h7ggpt"]
+
+[ext_resource type="Script" uid="uid://c0c5h5rvxtenx" path="res://scripts/player/bullet_projectile.gd" id="1_njqm3"]
+[ext_resource type="PackedScene" uid="uid://bpwuxxnbvf5aq" path="res://scenes/player/BulletImpact.tscn" id="2_8k1nr"]
+[ext_resource type="Texture2D" uid="uid://c2td7omrl6sqn" path="res://assets/textures/basic_light.webp" id="3_scf4j"]
+[ext_resource type="Texture2D" uid="uid://dyiw8h6enxqb3" path="res://assets/placeholder/circle_hires.png" id="3_wqbbi"]
+[ext_resource type="PackedScene" uid="uid://ir65a3nvdky" path="res://scenes/player/Trail2D.tscn" id="5_8k1nr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eca2e"]
+radius = 8.0
+height = 16.0
+
+[node name="BulletProjectile" type="Node2D"]
+top_level = true
+script = ExtResource("1_njqm3")
+bullet_impact_scene = ExtResource("2_8k1nr")
+
+[node name="Trail2D" parent="." instance=ExtResource("5_8k1nr")]
+points = PackedVector2Array(24, 0, 32, 0)
+begin_cap_mode = 2
+end_cap_mode = 2
+is_emitting = true
+lifetime = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.692936, 0, 1)
+position = Vector2(0, 2.38419e-07)
+scale = Vector2(0.0546875, 0.0390625)
+texture = ExtResource("3_wqbbi")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 164
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CapsuleShape2D_eca2e")
+
+[node name="LifeTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(-8, 0)
+scale = Vector2(0.1875, 0.125)
+color = Color(1, 0.9463, 0, 1)
+texture = ExtResource("3_scf4j")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
