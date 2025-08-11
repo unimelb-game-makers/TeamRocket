@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpwuxxnbvf5aq"]
+
+[sub_resource type="Gradient" id="Gradient_1yp38"]
+offsets = PackedFloat32Array(0, 0.144068)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_80t7b"]
+gradient = SubResource("Gradient_1yp38")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_guu1s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hl13g"]
+resource_name = "play"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wiw42"]
+_data = {
+&"RESET": SubResource("Animation_guu1s"),
+&"play": SubResource("Animation_hl13g")
+}
+
+[node name="GunImpact" type="CPUParticles2D"]
+top_level = true
+emitting = false
+texture = SubResource("GradientTexture2D_80t7b")
+lifetime = 0.05
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+initial_velocity_min = 600.0
+initial_velocity_max = 1000.0
+color = Color(0.670539, 0.523111, 0.262991, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wiw42")
+}
+autoplay = "play"

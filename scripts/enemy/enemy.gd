@@ -33,10 +33,13 @@ var is_elite = false
 func _ready() -> void:
 	health = max_health
 
-func damage(value: int, _damage_source_position: Vector2 = Vector2.ZERO) -> void:
+func damage(value: int) -> void:
 	# Override in subclass
 	# Play any damaged effects/animations
 	health -= value
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(0.8, 0.5, 0.5), 0.2)
+	tween.tween_property(self, "modulate", Color(1, 1, 1), 0.2)
 	if health <= 0:
 		die()
 

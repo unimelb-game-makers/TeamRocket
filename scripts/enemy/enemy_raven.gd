@@ -17,6 +17,7 @@ extends BasicEnemy
 @onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
 
 @onready var fly_attack_area: Area2D = $FlyAttackArea
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var circling_attack_timer: Timer = $CirclingAttackTimer
 
 # Use these coeffcient to check whether circling or chase to make it smoother
@@ -127,6 +128,6 @@ func _on_fly_attack_area_body_entered(body: Node2D) -> void:
 	if body is Player:
 		body.damage(base_damage)
 
-func damage(value: int, damage_source_position: Vector2 = Vector2.ZERO):
-	super (value, damage_source_position)
+func damage(value: int):
+	super (value)
 	hurt_effect.play()
