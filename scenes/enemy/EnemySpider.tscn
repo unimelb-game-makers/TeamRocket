@@ -173,7 +173,13 @@ position = Vector2(0, 160)
 shape = SubResource("RectangleShape2D_omm2d")
 debug_color = Color(0.701961, 0.00392157, 0.0196078, 0.25098)
 
-[node name="DodgedLabel" type="Label" parent="." index="12"]
+[node name="ChaseModeLabel" parent="." index="12"]
+offset_left = -64.0
+offset_top = -96.0
+offset_right = -14.0
+offset_bottom = -12.25
+
+[node name="DodgedLabel" type="Label" parent="." index="13"]
 offset_left = -80.0
 offset_top = -80.0
 offset_right = 80.0

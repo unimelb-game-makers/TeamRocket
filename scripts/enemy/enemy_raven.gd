@@ -50,10 +50,12 @@ func _on_circling_state_physics_processing(delta: float) -> void:
 	if target_creature == null:
 		statechart.send_event("to_search")
 		return
+
 	var distance = global_position.distance_to(target_creature.global_position)
 	if distance > circling_radius * CIRCLING_RADIUS_COEFFICIENT_TO_CHASE:
 		statechart.send_event("to_chase")
 		return
+
 	circling_angle += cirling_speed * delta
 	var offset = Vector2(cos(circling_angle), sin(circling_angle)) * circling_radius
 	var target_position = target_creature.global_position + offset
@@ -85,6 +87,9 @@ func _on_wind_up_state_physics_processing(_delta: float) -> void:
 
 # Get direction to player
 func _on_fly_attack_state_entered() -> void:
+	if target_creature == null:
+		return
+
 	is_flying_attack = true
 	attack_effect.play()
 	fly_attack_timer = 0

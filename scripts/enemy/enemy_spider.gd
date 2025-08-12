@@ -57,10 +57,12 @@ func _on_chase_state_physics_processing(delta: float) -> void:
 		else:
 			movement_speed = active_speed
 
-	var distance = global_position.distance_to(target_creature.global_position)
-	if distance < range_before_attack:
-		statechart.send_event("to_attack")
-		return
+	if target_creature != null:
+		var distance = global_position.distance_to(target_creature.global_position)
+		if distance < range_before_attack:
+			statechart.send_event("to_attack")
+			return
+
 	super (delta)
 
 
@@ -118,6 +120,9 @@ func _on_wind_up_state_entered() -> void:
 
 
 func _on_pounce_attack_state_entered() -> void:
+	if target_creature == null:
+		return
+
 	play_jump_effect()
 	dash_atk_area.monitoring = true
 	# anim_sprite.play("attack")

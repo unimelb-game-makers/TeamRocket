@@ -62,21 +62,22 @@ shader_parameter/distortion = 0.0
 shader_parameter/heightOffset = 0.0
 shader_parameter/offset = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ck34"]
-size = Vector2(128, 56)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_btshf"]
+radius = 50.0
+height = 160.0
 
-[node name="Bush" type="Node2D"]
+[node name="Bush" type="Node2D" node_paths=PackedStringArray("sprites")]
+y_sort_enabled = true
 script = ExtResource("1_2ck34")
+sprites = [NodePath("Sprite2D")]
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 0.407843)
-position = Vector2(-2.14577e-06, 8)
 scale = Vector2(0.48, 0.16)
 texture = ExtResource("3_btshf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_dq2p3")
-position = Vector2(0, 8)
 texture = ExtResource("2_btshf")
 offset = Vector2(0, -136)
 
@@ -86,7 +87,8 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -12)
-shape = SubResource("RectangleShape2D_2ck34")
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_btshf")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

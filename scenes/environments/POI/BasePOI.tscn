@@ -34,10 +34,12 @@ tile_set = ExtResource("2_u04a8")
 y_sort_enabled = true
 
 [node name="WallTileMap" type="TileMapLayer" parent="Wall"]
+y_sort_enabled = true
 tile_set = SubResource("TileSet_rh8cv")
 
 [node name="WallTileMap2" type="TileMapLayer" parent="Wall"]
 tile_set = ExtResource("4_il60d")
+use_kinematic_bodies = true
 
 [node name="EnemyHolder" type="Node2D" parent="."]
 y_sort_enabled = true

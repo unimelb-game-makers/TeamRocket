@@ -19,6 +19,7 @@ signal aim_mode_exit
 signal death
 signal channel_complete
 signal sound_created(location, loudness)
+signal hidden_status_changed
 
 const DODGE_SPEED: int = 1000
 const DODGE_DURATION: float = 0.5
@@ -57,22 +58,17 @@ var fired = false
 var animation_locked = false
 
 # Status effect
-# TODO: Should have a separate system to track
-var is_slowed
-var is_unable_to_dash
 var is_invulnerable_after_hurt = false
 var stamina_regen = false
 var is_hidden_count = 0: # Use count instead of bool for stability when using multiple hidden bushes
 	set(value):
 		if value != is_hidden_count:
 			if value > 0:
-				# Globals.player_ui.vignette_shader.material.set_shader_parameter("alpha", VIGNETTE_ALPHA_WHEN_HIDDEN)
-				# Globals.player_ui.vignette_alpha = VIGNETTE_ALPHA_WHEN_HIDDEN
-				# Globals.player_ui.fadeout_vignette = false
 				anim_sprite.self_modulate = Color(0.5, 0.5, 0.5, 0.5)
+				hidden_status_changed.emit()
 			else:
-				# Globals.player_ui.fadeout_vignette = true
 				anim_sprite.self_modulate = Color(1, 1, 1, 1)
+				hidden_status_changed.emit()
 		is_hidden_count = value
 
 

@@ -123,6 +123,12 @@ position = Vector2(-4, 140)
 shape = SubResource("RectangleShape2D_omm2d")
 debug_color = Color(0.701961, 0.00392157, 0.0196078, 0.25098)
 
+[node name="ChaseModeLabel" parent="." index="12"]
+offset_left = -120.0
+offset_top = -152.0
+offset_right = -70.0
+offset_bottom = -68.25
+
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]
 [connection signal="state_physics_processing" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_physics_processing"]

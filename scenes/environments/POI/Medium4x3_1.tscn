@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cu51txwabxhgh"]
+[gd_scene load_steps=13 format=4 uid="uid://cu51txwabxhgh"]
 
 [ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_23clr"]
 [ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="2_05b3g"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bn0h4ghumvrgf" path="res://scenes/objects/Interactables/ExplosiveBarrel.tscn" id="6_aovus"]
 [ext_resource type="PackedScene" uid="uid://bdrwyr3m3l6gx" path="res://scenes/environments/prop/Tree.tscn" id="7_payfy"]
 [ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="8_utfa0"]
+[ext_resource type="PackedScene" uid="uid://bxhx21f0uymat" path="res://scenes/environments/prop/BigBush.tscn" id="9_8lr7d"]
 
 [node name="Medium4x3_1" instance=ExtResource("1_23clr")]
 potential_enter_direction = 4
@@ -20,14 +21,18 @@ poi_loot_table = Array[ExtResource("2_05b3g")]([ExtResource("3_aovus"), ExtResou
 visible = false
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAADAAEAAAABAAAAAAADAAIAAAABAAAAAAACAAIAAAABAAAAAAABAAIAAAABAAAAAAABAAEAAAABAAAAAAACAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAA=")
 
+[node name="WallTileMap" parent="Wall" index="0"]
+y_sort_enabled = true
+
 [node name="WallTileMap2" parent="Wall" index="1"]
+y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAMAAAAAAAEAAQAAAAQAAAAAAAIAAQAAAAQAAAAAAAMAAQAAAAQAAAAAAAQAAQAAAAQAAAAAAAUAAQAAAAQAAAAHAAAAAQACAAMAAAAHAAEAAQAAAAQAAAAHAAIAAQACAAQAAAAAAAYAAQAAAAUAAAABAAYAAQABAAMAAAACAAYAAQABAAMAAAADAAYAAQABAAMAAAAEAAYAAQABAAMAAAAFAAYAAQABAAMAAAAGAAYAAQABAAMAAAAHAAYAAQADAAUAAAABAAAAAQABAAMAAAACAAAAAQABAAMAAAADAAAAAQABAAMAAAAEAAAAAQABAAMAAAAFAAAAAQABAAMAAAAGAAAAAQABAAMAAAA=")
 
 [node name="Crate" parent="InteractableHolder" index="0" instance=ExtResource("3_m0nbt")]
 position = Vector2(1640, 320)
 
 [node name="Crate2" parent="InteractableHolder" index="1" instance=ExtResource("3_m0nbt")]
-position = Vector2(304, 1400)
+position = Vector2(336, 1448)
 
 [node name="ExplosiveBarrel" parent="InteractableHolder" index="2" instance=ExtResource("6_aovus")]
 position = Vector2(1392, 752)
@@ -38,19 +43,34 @@ position = Vector2(1032, 872)
 [node name="Bush" parent="InteractableHolder" index="4" instance=ExtResource("8_utfa0")]
 position = Vector2(1152, 1352)
 
-[node name="Bush2" parent="InteractableHolder" index="5" instance=ExtResource("8_utfa0")]
-position = Vector2(1512, 1112)
+[node name="Bush5" parent="InteractableHolder" index="5" instance=ExtResource("8_utfa0")]
+position = Vector2(1616, 1128)
 
-[node name="Bush3" parent="InteractableHolder" index="6" instance=ExtResource("8_utfa0")]
-position = Vector2(1888, 760)
+[node name="Bush2" parent="InteractableHolder" index="6" instance=ExtResource("8_utfa0")]
+position = Vector2(1240, 1296)
 
-[node name="Bush4" parent="InteractableHolder" index="7" instance=ExtResource("8_utfa0")]
+[node name="Bush3" parent="InteractableHolder" index="7" instance=ExtResource("8_utfa0")]
+position = Vector2(1936, 920)
+
+[node name="Bush4" parent="InteractableHolder" index="8" instance=ExtResource("8_utfa0")]
 position = Vector2(248, 976)
+
+[node name="BigBush" parent="InteractableHolder" index="9" instance=ExtResource("9_8lr7d")]
+position = Vector2(1456, 1224)
+
+[node name="BigBush2" parent="InteractableHolder" index="10" instance=ExtResource("9_8lr7d")]
+position = Vector2(1744, 1016)
+
+[node name="BigBush3" parent="InteractableHolder" index="11" instance=ExtResource("9_8lr7d")]
+position = Vector2(656, 1488)
+
+[node name="BigBush4" parent="InteractableHolder" index="12" instance=ExtResource("9_8lr7d")]
+position = Vector2(904, 1368)
 
 [node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("4_irjpm")]
 position = Vector2(1016, 328)
 allowed_enemies = Array[PackedScene]([ExtResource("5_n0jgf"), ExtResource("6_05b3g")])
 
 [node name="SpawnArea2D2" parent="SpawnHolder" index="1" instance=ExtResource("4_irjpm")]
-position = Vector2(424, 616)
+position = Vector2(632, 1040)
 allowed_enemies = Array[PackedScene]([ExtResource("5_n0jgf"), ExtResource("6_05b3g")])
