@@ -10,8 +10,9 @@ vertices = PackedVector2Array(3942.03, -1126.01, 3957.96, 3430.03, -901.906, 344
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-872, -1144, 3952, -1136, 3968, 3440, -912, 3456)])
 
-[node name="MainRoom" instance=ExtResource("1_hovfd")]
-room_name = "MainRoom"
+[node name="MainRoom" node_paths=PackedStringArray("unique_poi_spawn") instance=ExtResource("1_hovfd")]
+room_name = "Fullroom2"
+unique_poi_spawn = NodePath("UniquePoISpawn")
 
 [node name="TileMap" parent="." index="0"]
 z_index = -10
@@ -32,7 +33,7 @@ position = Vector2(-664, 1296)
 rotation = 1.5708
 
 [node name="Bush" parent="InteractableHolder" index="0" instance=ExtResource("3_vkf03")]
-position = Vector2(928, -120)
+position = Vector2(2168, -616)
 
 [node name="Bush2" parent="InteractableHolder" index="1" instance=ExtResource("3_vkf03")]
 position = Vector2(288, 1960)
@@ -48,6 +49,9 @@ position = Vector2(1536, 1344)
 
 [node name="NavigationRegion2D" parent="." index="7"]
 navigation_polygon = SubResource("NavigationPolygon_wkoim")
+
+[node name="UniquePoISpawn" type="Marker2D" parent="." index="8"]
+position = Vector2(2008, -768)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]

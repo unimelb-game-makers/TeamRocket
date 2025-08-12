@@ -10,6 +10,9 @@ class_name RoomData
 var room_scene: PackedScene # Correct room template to generate
 
 var is_new = true
+var unique_poi_scene: PackedScene
+var unique_poi_location: Vector2
+var unique_poi_id: PlaceablePOI.UniquePoiEnum
 var medium_poi_scene: PackedScene
 var medium_poi_location: Vector2
 var large_poi_scene: PackedScene

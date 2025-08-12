@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=4 uid="uid://4o0bd3yaeuy4"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_6ey33"]
+[ext_resource type="PackedScene" uid="uid://dg6uw05hver41" path="res://scenes/environments/prop/ConvenientAlcove.tscn" id="2_fcg56"]
+
+[node name="ConvenientAlcovePoI7x5" instance=ExtResource("1_6ey33")]
+
+[node name="TileMap" parent="." index="0"]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAADAAIAAAABAAAAAAAGAAQAAAABAAAAAAA=")
+
+[node name="WallTileMap2" parent="Wall" index="1"]
+tile_map_data = PackedByteArray("AAAAAAMAAQAAAAQAAAAAAAIAAQAAAAQAAAAAAAEAAQAAAAQAAAAAAAAAAQAAAAMAAAABAAAAAQABAAMAAAACAAAAAQABAAMAAAADAAAAAQABAAMAAAAEAAAAAQABAAMAAAAFAAAAAQABAAMAAAAGAAAAAQACAAMAAAAGAAEAAQAAAAQAAAAGAAIAAQAAAAQAAAAGAAMAAQAAAAQAAAAAAAQAAQAAAAUAAAABAAQAAQADAAUAAAAGAAQAAQABAAUAAAAFAAQAAQACAAUAAAA=")
+
+[node name="ConvenientAlcove" parent="InteractableHolder" index="0" instance=ExtResource("2_fcg56")]
+position = Vector2(872, 888)

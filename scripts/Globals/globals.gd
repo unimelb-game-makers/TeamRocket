@@ -40,8 +40,8 @@ var current_day: int = 1
 var is_game_ended = false
 var dont_save_game = false
 
-# Room state save data
-var map_room_states = {}
+# Map generation data stuff
+var spawn_unique_pois: Array[PlaceablePOI.UniquePoiEnum] = []
 
 # Setting parameters here
 const FPS_LIMIT_ARRAY = [30, 60, 120, 144, 240, 0]

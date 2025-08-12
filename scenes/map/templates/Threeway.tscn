@@ -9,10 +9,12 @@ vertices = PackedVector2Array(3973.91, -870.031, 3950.08, 1846.05, -125.852, 186
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-96, -896, 3984, -880, 3960, 1856, -136, 1880)])
 
-[node name="Threeway" node_paths=PackedStringArray("doors") instance=ExtResource("1_jvckg")]
+[node name="Threeway" node_paths=PackedStringArray("doors", "unique_poi_spawn") instance=ExtResource("1_jvckg")]
 room_name = "Threeway"
 sockets = Array[String](["B", "B", "A", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), null, NodePath("DoorArea3")]
+unique_poi_chance_perc = 25
+unique_poi_spawn = NodePath("UniquePoISpawn")
 
 [node name="TileMap" parent="." index="0"]
 z_index = -10
@@ -34,6 +36,9 @@ position = Vector2(1768, 288)
 
 [node name="NavigationRegion2D" parent="." index="6"]
 navigation_polygon = SubResource("NavigationPolygon_7d6pv")
+
+[node name="UniquePoISpawn" type="Marker2D" parent="." index="7"]
+position = Vector2(-32, -952)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
