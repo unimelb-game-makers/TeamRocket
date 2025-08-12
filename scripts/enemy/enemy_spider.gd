@@ -1,12 +1,13 @@
 extends BasicEnemy
 
 ## From 0 to 1
-@export var dodge_chance_when_defend = 0.5
+@export var dodge_chance_when_defend = 0.25
 @export var poison_status: StatusEffect
 @export var slow_status: StatusEffect
 
 @onready var dash_atk_area: Area2D = $DashAttackArea
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var dodged_label: Label = $DodgedLabel
 
 const DEFENDING_MOVESPEED_COEFFICIENT = 0.25
 const AIM_THRESHOLD_IN_DEGREE = 90
@@ -40,6 +41,7 @@ var tri_dash_attack_duration: float = 0.5
 
 func _ready() -> void:
 	super ()
+	dodged_label.self_modulate = Color(1, 1, 1, 0)
 	anim_sprite_original_pos = anim_sprite.position
 
 func _process(_delta: float) -> void:
@@ -66,6 +68,9 @@ func damage(value: int, damage_source_position: Vector2 = Vector2.ZERO) -> void:
 	var dodge_roll = randf_range(0, 1)
 	target_creature = Globals.player
 	if dodge_roll < dodge_chance_when_defend:
+		var tween_dodge = create_tween()
+		dodged_label.self_modulate = Color(1, 1, 1, 1)
+		tween_dodge.tween_property(dodged_label, "self_modulate:a", 0, 1)
 		play_jump_effect()
 	else:
 		super (value, damage_source_position)
@@ -74,7 +79,6 @@ func play_jump_effect():
 	var tween = create_tween()
 	tween.tween_property(anim_sprite, "position:y", anim_sprite_original_pos.y - 30, 0.2)
 	tween.tween_property(anim_sprite, "position:y", anim_sprite_original_pos.y, 0.2)
-
 
 func player_is_aiming_at_enemy() -> bool:
 	if target_creature == null or not target_creature is Player:

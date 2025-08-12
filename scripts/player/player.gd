@@ -318,7 +318,10 @@ func _on_aiming_state_physics_processing(delta: float) -> void:
 
 	if Input.is_action_just_pressed("fire"):
 		rifle.fire(Globals.player_stats.damage)
-		sound_created.emit(global_position, gun_loudness)
+		var rand_x = randf_range(0.75, 1.25)
+		var rand_y = randf_range(0.75, 1.25)
+		var general_gun_position = global_position * Vector2(rand_x, rand_y) # Varied it a bit so the location is not exactly where player is
+		sound_created.emit(general_gun_position, gun_loudness)
 
 	# Stamina regen (in walking/aiming state only)
 	if (stamina_regen):

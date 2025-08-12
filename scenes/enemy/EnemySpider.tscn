@@ -61,7 +61,7 @@ size = Vector2(208, 72)
 [node name="EnemySpider" instance=ExtResource("1_un5pt")]
 collision_mask = 4
 script = ExtResource("2_35b6m")
-dodge_chance_when_defend = 0.2
+dodge_chance_when_defend = 0.25
 poison_status = SubResource("Resource_ji3n8")
 slow_status = SubResource("Resource_ei78k")
 active_speed = 110
@@ -172,6 +172,17 @@ monitoring = false
 position = Vector2(0, 160)
 shape = SubResource("RectangleShape2D_omm2d")
 debug_color = Color(0.701961, 0.00392157, 0.0196078, 0.25098)
+
+[node name="DodgedLabel" type="Label" parent="." index="12"]
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = -32.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "DODGED!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]
