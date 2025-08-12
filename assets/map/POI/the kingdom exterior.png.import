@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bumpa0clpekht"
-path="res://.godot/imported/wall_tileset.png-4d053362f159543b6355d9334fb0e335.ctex"
+uid="uid://bngahd354uokj"
+path="res://.godot/imported/the kingdom exterior.png-424a0d9c0e171edadceb55ea21597e04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/map/wall_tileset.png"
-dest_files=["res://.godot/imported/wall_tileset.png-4d053362f159543b6355d9334fb0e335.ctex"]
+source_file="res://assets/map/POI/the kingdom exterior.png"
+dest_files=["res://.godot/imported/the kingdom exterior.png-424a0d9c0e171edadceb55ea21597e04.ctex"]
 
 [params]
 
