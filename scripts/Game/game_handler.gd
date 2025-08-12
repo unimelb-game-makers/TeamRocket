@@ -15,15 +15,13 @@ func _ready() -> void:
 	canvas2.visible = false
 	var tween = create_tween()
 	tween.tween_property(fade_to_black, "modulate", Color(0, 0, 0, 0), 1.0)
-	var intro_pathname = "res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_intro.ogg"
-	var loop_pathname = "res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_loop.ogg"
 	if $"..".name != "Base" and $"..".name != "Kitchen":
-		intro_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg"
-		loop_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg"
-	load_and_play_main_bgm(intro_pathname, loop_pathname)
+		var intro_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_intro.ogg"
+		var loop_pathname = "res://assets/sfx/team rocket sfx/area themes/central district/central_district_loop.ogg"
+		load_and_play_main_bgm(intro_pathname, loop_pathname)
 
 
-# Load and play bgm, intro goes to loop theme
+# Load and play bgm, intro goes to loop theme for non-kitchen map
 # Replacement for the buggy AudioInteractiveStream
 func load_and_play_main_bgm(intro_pathname: String, loop_pathname: String):
 	var music_player_node = music_player

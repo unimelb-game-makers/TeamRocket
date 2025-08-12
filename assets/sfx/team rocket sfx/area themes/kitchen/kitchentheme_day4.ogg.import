@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://7q6qb4b1ntb3"
+path="res://.godot/imported/kitchentheme_day4.ogg-66726c9c4d5aa937e902004c2c604f0e.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchentheme_day4.ogg"
+dest_files=["res://.godot/imported/kitchentheme_day4.ogg-66726c9c4d5aa937e902004c2c604f0e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

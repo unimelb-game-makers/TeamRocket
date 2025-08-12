@@ -1,10 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=33 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Script" uid="uid://b1wfbphngxipb" path="res://scenes/environments/kitchen.gd" id="2_1q6r3"]
 [ext_resource type="Texture2D" uid="uid://dnj6uexsx6r84" path="res://assets/interiors/kitchen/floor.png" id="2_86nue"]
 [ext_resource type="Script" uid="uid://chl1pijxwld8v" path="res://scripts/Game/kitchen_handler.gd" id="2_watt5"]
+[ext_resource type="AudioStream" uid="uid://7q6qb4b1ntb3" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchentheme_day4.ogg" id="3_onhng"]
 [ext_resource type="Texture2D" uid="uid://b5jgmaxgknpb0" path="res://assets/interiors/kitchen/walls.png" id="3_yjya3"]
+[ext_resource type="AudioStream" uid="uid://dmqkjuy4xkvau" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchentheme_day7.ogg" id="4_sh0d3"]
+[ext_resource type="AudioStream" uid="uid://c5luyg7buxvk3" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchentheme_dayfinal.ogg" id="5_thoby"]
 [ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
 [ext_resource type="PackedScene" uid="uid://bp3xwcc5hld8c" path="res://scenes/cooking/workbenches/RecipeBook.tscn" id="10_0g7fq"]
@@ -14,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://dk6a5jgkvuwwt" path="res://scenes/cooking/workbenches/fryer/FryingPan.tscn" id="14_gr436"]
 [ext_resource type="PackedScene" uid="uid://bqjhwwixj8hir" path="res://scenes/cooking/workbenches/pot/Pot.tscn" id="14_l7h17"]
 [ext_resource type="PackedScene" uid="uid://unbm0ush87sw" path="res://scenes/objects/Interactables/Altar.tscn" id="16_7km4m"]
+[ext_resource type="AudioStream" uid="uid://cqct262req4c7" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchentheme_day1.ogg" id="16_gi2r0"]
+[ext_resource type="AudioStream" uid="uid://bkpjmmw6pl077" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_minigame.ogg" id="17_dp8sv"]
 [ext_resource type="PackedScene" uid="uid://bhlarqiey25gc" path="res://scenes/cooking/workbenches/AssemblyPlate.tscn" id="20_twwyk"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5vy8l"]
@@ -53,6 +58,10 @@ gradient = SubResource("Gradient_wmmsd")
 
 [node name="Kitchen" instance=ExtResource("1_4boqu")]
 script = ExtResource("2_1q6r3")
+music_theme_day_1 = ExtResource("16_gi2r0")
+music_theme_day_4 = ExtResource("3_onhng")
+music_theme_day_7 = ExtResource("4_sh0d3")
+music_theme_day_10 = ExtResource("5_thoby")
 
 [node name="KitchenHandler" type="Node" parent="." index="0" node_paths=PackedStringArray("fade_to_black")]
 script = ExtResource("2_watt5")
@@ -171,6 +180,17 @@ position = Vector2(241, 1078)
 
 [node name="Player" parent="." index="7"]
 position = Vector2(269, 549)
+
+[node name="MainThemePlayer" type="AudioStreamPlayer" parent="." index="8"]
+stream = ExtResource("16_gi2r0")
+autoplay = true
+bus = &"Music"
+
+[node name="MinigameThemePlayer" type="AudioStreamPlayer" parent="." index="9"]
+stream = ExtResource("17_dp8sv")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="body_entered" from="NavigationRegion2D/Map/ExitArea" to="KitchenHandler" method="_on_exit_area_body_entered"]
 [connection signal="submit" from="InteractableHandler/InteractableHolder/Altar" to="KitchenHandler" method="submit_food"]

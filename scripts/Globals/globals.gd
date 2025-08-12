@@ -10,6 +10,8 @@ signal devotion_changed(value: int)
 var player: Player
 var player_stats: PlayerStatsResource
 
+var kitchen: Kitchen
+
 var item_handler: ItemHandler
 var enemy_handler: EnemyHandler
 var interactable_handler: InteractableHandler
