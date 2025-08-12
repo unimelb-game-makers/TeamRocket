@@ -139,11 +139,22 @@ func _on_recalculate_path_timeout() -> void:
 func _on_detection_radius_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		target_creature = area.get_parent();
+		
+		if target_creature is Player:
+			var player: Player = target_creature
+			if player.is_hidden_count > 0:
+				return
+
 		statechart.send_event("player_detected") # Triggers To Chase State
 
 func _on_chase_radius_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
 		target_creature = area.get_parent();
+
+		if target_creature is Player:
+			var player: Player = target_creature
+			if player.is_hidden_count > 0:
+				return
 
 		# When this enemy is searching for the player,
 		# if they are still in the chase radius, then continue chasing.

@@ -14,6 +14,8 @@ class_name PlayerUI
 
 var vignette_alpha = 0.7
 var vignette_fade_speed = 0.5
+var fadeout_vignette = true
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,7 +28,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if vignette_alpha > 0:
+	if vignette_alpha > 0 and fadeout_vignette:
 		vignette_alpha = vignette_alpha - vignette_fade_speed * delta
 		vignette_shader.material.set_shader_parameter("alpha", vignette_alpha)
 

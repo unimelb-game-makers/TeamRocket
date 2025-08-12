@@ -26,6 +26,7 @@ const DODGE_COOLDOWN: float = 0.5
 const WALK_FOOTSTEP_SFX_FREQUENCY = 0.75
 const SPRINT_FOOTSTEP_SFX_FREQUENCY = 0.5
 const AFTER_HURT_INVULNERABLE_DURATION = 1.0
+const VIGNETTE_ALPHA_WHEN_HIDDEN = 0.7
 
 var can_move: bool = true
 var can_interact: bool = true
@@ -61,6 +62,19 @@ var is_slowed
 var is_unable_to_dash
 var is_invulnerable_after_hurt = false
 var stamina_regen = false
+var is_hidden_count = 0: # Use count instead of bool for stability when using multiple hidden bushes
+	set(value):
+		if value != is_hidden_count:
+			if value > 0:
+				Globals.player_ui.vignette_shader.material.set_shader_parameter("alpha", VIGNETTE_ALPHA_WHEN_HIDDEN)
+				Globals.player_ui.vignette_alpha = VIGNETTE_ALPHA_WHEN_HIDDEN
+				Globals.player_ui.fadeout_vignette = false
+				anim_sprite.self_modulate = Color(0.5, 0.5, 0.5, 0.5)
+			else:
+				Globals.player_ui.fadeout_vignette = true
+				anim_sprite.self_modulate = Color(1, 1, 1, 1)
+		is_hidden_count = value
+
 
 # ----- Node References -----
 @onready var interact_radius: Area2D = $InteractRadius

@@ -31,8 +31,11 @@ func shake():
 	tween.tween_property(sprite, "rotation_degrees", original_rotation - rand_rotate_strenth, rand_rotate_duration)
 	tween.tween_property(sprite, "rotation_degrees", original_rotation, rand_rotate_duration)
 
-func _on_area_2d_body_exited(_body: Node2D) -> void:
-	return
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body is Player:
+		body.is_hidden_count -= 1
 
-func _on_area_2d_body_entered(_body: Node2D) -> void:
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	shake()
+	if body is Player:
+		body.is_hidden_count += 1
