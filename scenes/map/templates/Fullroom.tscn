@@ -25,7 +25,8 @@ unique_poi_chance_perc = 100
 unique_poi_dict = Dictionary[int, PackedScene]({
 1: ExtResource("10_3rjle")
 })
-possible_medium_poi_spawn = Array[PackedScene]([ExtResource("2_ar6wf"), ExtResource("2_3rjle"), ExtResource("5_3rjle"), ExtResource("2_cvc7y"), ExtResource("3_amx0r"), ExtResource("5_3rjle"), ExtResource("7_bn5q2")])
+select_first_medium_poi = true
+possible_medium_poi_spawn = Array[PackedScene]([ExtResource("2_cvc7y"), ExtResource("2_ar6wf"), ExtResource("2_3rjle"), ExtResource("5_3rjle"), ExtResource("3_amx0r"), ExtResource("5_3rjle"), ExtResource("7_bn5q2")])
 unique_poi_spawn = NodePath("UniquePoiMarker")
 medium_poi_spawn = NodePath("MediumPOISpawn")
 metadata/_edit_horizontal_guides_ = [738.0]

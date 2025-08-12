@@ -139,6 +139,7 @@ func spawn_poi():
 		var chosen_medium_poi = possible_medium_poi_spawn.pick_random()
 		if select_first_medium_poi: ## Overrides
 			push_warning("DEBUG OVERRIDE SELECTION ON IN ", self)
+			chosen_medium_poi = possible_medium_poi_spawn[0]
 			
 		var inst = chosen_medium_poi.instantiate()
 		add_child(inst)
