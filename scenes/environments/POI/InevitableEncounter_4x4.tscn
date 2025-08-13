@@ -11,6 +11,7 @@
 potential_enter_direction = 4
 
 [node name="TileMap" parent="." index="0"]
+visible = false
 tile_map_data = PackedByteArray()
 
 [node name="WallTileMap2" parent="Wall" index="1"]

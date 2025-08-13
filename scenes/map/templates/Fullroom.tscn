@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cjwia1b4w5ipa"]
+[gd_scene load_steps=16 format=4 uid="uid://cjwia1b4w5ipa"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_bbnrc"]
 [ext_resource type="PackedScene" uid="uid://c2papvqiw0puj" path="res://scenes/environments/POI/InevitableEncounter_4x4.tscn" id="2_3rjle"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_hawl3"]
 [ext_resource type="PackedScene" uid="uid://b0mj75rlxuyqm" path="res://scenes/environments/POI/Medium4x3_2.tscn" id="3_amx0r"]
 [ext_resource type="PackedScene" uid="uid://dtrm38nc0yg62" path="res://scenes/environments/POI/SneakHalf_6x7.tscn" id="3_ar6wf"]
+[ext_resource type="PackedScene" uid="uid://cuqeayjyckxv7" path="res://scenes/environments/POI/SimpleSneaking_7x5.tscn" id="3_bn5q2"]
+[ext_resource type="PackedScene" uid="uid://bfrnhnbh0r6vl" path="res://scenes/environments/POI/ParkAndTrees_11x8.tscn" id="3_jjk7w"]
+[ext_resource type="PackedScene" uid="uid://cn1ed6h771p76" path="res://scenes/environments/POI/SimpleSneaking2_7x5.tscn" id="3_ns1uk"]
 [ext_resource type="PackedScene" uid="uid://bwh4g2fpsfyjn" path="res://scenes/environments/POI/SimpleSquareNE_4x4.tscn" id="5_3rjle"]
 [ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="5_amx0r"]
 [ext_resource type="PackedScene" uid="uid://cvg4v5goggodd" path="res://scenes/environments/POI/SimpleSquareSW_4x4.tscn" id="7_bn5q2"]
@@ -27,7 +30,7 @@ unique_poi_dict = Dictionary[int, PackedScene]({
 1: ExtResource("10_3rjle")
 })
 select_first_medium_poi = true
-possible_medium_poi_spawn = Array[PackedScene]([ExtResource("3_ar6wf"), ExtResource("2_ar6wf"), ExtResource("2_cvc7y"), ExtResource("2_3rjle"), ExtResource("5_3rjle"), ExtResource("3_amx0r"), ExtResource("5_3rjle"), ExtResource("7_bn5q2")])
+possible_medium_poi_spawn = Array[PackedScene]([ExtResource("3_jjk7w"), ExtResource("3_ns1uk"), ExtResource("3_bn5q2"), ExtResource("3_ar6wf"), ExtResource("2_ar6wf"), ExtResource("2_cvc7y"), ExtResource("2_3rjle"), ExtResource("5_3rjle"), ExtResource("3_amx0r"), ExtResource("5_3rjle"), ExtResource("7_bn5q2")])
 unique_poi_spawn = NodePath("UniquePoiMarker")
 medium_poi_spawn = NodePath("MediumPOISpawn")
 metadata/_edit_horizontal_guides_ = [738.0]
