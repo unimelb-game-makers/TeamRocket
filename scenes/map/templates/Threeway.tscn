@@ -11,7 +11,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-96, -896, 3984, -880, 
 
 [node name="Threeway" node_paths=PackedStringArray("doors", "unique_poi_spawn") instance=ExtResource("1_jvckg")]
 room_name = "Threeway"
-sockets = Array[String](["B", "B", "A", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), null, NodePath("DoorArea3")]
 unique_poi_chance_perc = 25
 unique_poi_spawn = NodePath("UniquePoISpawn")

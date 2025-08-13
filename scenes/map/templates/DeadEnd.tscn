@@ -10,7 +10,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1144, -3168, 2184, -32
 
 [node name="DeadEnd" node_paths=PackedStringArray("doors") instance=ExtResource("1_1x1qf")]
 room_name = "DeadEnd"
-sockets = Array[String](["A", "A", "B", "A"])
+sockets = Array[int]([1, 1, 2, 1])
 doors = [null, null, NodePath("DoorArea"), null]
 
 [node name="TileMap" parent="." index="0"]
