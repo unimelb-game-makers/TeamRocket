@@ -1,0 +1,212 @@
+[gd_scene load_steps=40 format=3 uid="uid://bcde5fosbcqr5"]
+
+[ext_resource type="Script" uid="uid://cnc7mdbpslcw8" path="res://scripts/ui/recipe_book.gd" id="1_0ocwx"]
+[ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="1_1ppsf"]
+[ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="2_ardhh"]
+[ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_2fixo"]
+[ext_resource type="Resource" uid="uid://cekv3gsqq857k" path="res://resources/cooking/recipes/full_foods/chicken_curry_rec.tres" id="3_enp5i"]
+[ext_resource type="PackedScene" uid="uid://cik7cck2oky1w" path="res://scenes/ui/ItemInventoryButton.tscn" id="4_eix7w"]
+[ext_resource type="Resource" uid="uid://d3b5yu03lwb2b" path="res://resources/cooking/recipes/ingredients/carrot_cut_rec.tres" id="5_1f1hc"]
+[ext_resource type="PackedScene" uid="uid://btx7xwf52mffb" path="res://scenes/ui/RecipeButtonScene.tscn" id="6_3d2tt"]
+[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="6_g75hg"]
+[ext_resource type="Resource" uid="uid://cwuer4u67t6om" path="res://resources/cooking/ingredients/spice_powder.tres" id="7_j6jej"]
+[ext_resource type="Resource" uid="uid://cr060faldn0rx" path="res://resources/cooking/ingredients/soup_stock.tres" id="8_nywro"]
+[ext_resource type="Resource" uid="uid://denvbscfcf0it" path="res://resources/cooking/ingredients/potato_cut.tres" id="9_j1a1v"]
+[ext_resource type="Resource" uid="uid://4rndf4mnu11g" path="res://resources/cooking/ingredients/carrot_cut.tres" id="10_l1lxc"]
+[ext_resource type="Resource" uid="uid://d4jd37d2hc0b" path="res://resources/cooking/ingredients/onion_cut.tres" id="11_uhfp2"]
+[ext_resource type="Resource" uid="uid://bgerkoono7uhm" path="res://resources/cooking/ingredients/suspicious_bean.tres" id="12_vpon3"]
+[ext_resource type="Resource" uid="uid://1uk2iowxbyl2" path="res://resources/cooking/ingredients/garlic_cut.tres" id="13_yxb4e"]
+[ext_resource type="Resource" uid="uid://c1hch1g8on7qo" path="res://resources/cooking/ingredients/ginger_cut.tres" id="14_vd31q"]
+[ext_resource type="Resource" uid="uid://dcedm8ygr7cfd" path="res://resources/cooking/ingredients/cabbage_cut.tres" id="15_gyl2d"]
+[ext_resource type="Resource" uid="uid://v5nqfcc5gsvk" path="res://resources/cooking/ingredients/beef_mince.tres" id="16_xnfvv"]
+[ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="17_girm1"]
+[ext_resource type="Resource" uid="uid://bke58eqhi7ued" path="res://resources/cooking/ingredients/rice_cooked.tres" id="18_wth1l"]
+[ext_resource type="Resource" uid="uid://n7ddkhdoaj5d" path="res://resources/cooking/ingredients/noodle.tres" id="19_lgx6u"]
+[ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="20_vpon3"]
+[ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="21_yxb4e"]
+[ext_resource type="Resource" uid="uid://birn1wyb2g5bv" path="res://resources/cooking/ingredients/onion.tres" id="22_vd31q"]
+[ext_resource type="Resource" uid="uid://djfvdkf82lpn7" path="res://resources/cooking/ingredients/rice.tres" id="23_girm1"]
+[ext_resource type="Resource" uid="uid://cwfjd2rnpe473" path="res://resources/cooking/ingredients/garlic.tres" id="24_wth1l"]
+[ext_resource type="Resource" uid="uid://uk4o31ltqopm" path="res://resources/cooking/ingredients/ginger.tres" id="25_lgx6u"]
+[ext_resource type="Resource" uid="uid://btg8ekd7ovrcu" path="res://resources/cooking/ingredients/cabbage.tres" id="26_b4725"]
+[ext_resource type="Resource" uid="uid://djws883kmg1sy" path="res://resources/cooking/ingredients/grain_moss.tres" id="27_kxhg0"]
+[ext_resource type="Resource" uid="uid://cfgt0433t5duq" path="res://resources/cooking/recipes/ingredients/onion_cut_rec.tres" id="28_g4v7v"]
+[ext_resource type="Resource" uid="uid://cwusiicbnq7ml" path="res://resources/cooking/recipes/ingredients/garlic_cut_rec.tres" id="29_4jjm1"]
+[ext_resource type="Resource" uid="uid://guh1wg0140xx" path="res://resources/cooking/recipes/ingredients/ginger_cut_rec.tres" id="30_qgk21"]
+[ext_resource type="Resource" uid="uid://be78atnjt45hp" path="res://resources/cooking/recipes/ingredients/potato_cut_rec.tres" id="31_vkxgx"]
+[ext_resource type="Resource" uid="uid://8o63qiu2pu61" path="res://resources/cooking/recipes/ingredients/cabbage_cut_rec.tres" id="32_g75hg"]
+[ext_resource type="Resource" uid="uid://cm8t0wikoaret" path="res://resources/cooking/recipes/ingredients/cooked_rice_rec.tres" id="33_vkxgx"]
+[ext_resource type="Resource" uid="uid://ci0itvpy7kfy5" path="res://resources/cooking/recipes/ingredients/stock_rec.tres" id="34_g75hg"]
+[ext_resource type="Resource" uid="uid://dv4r412xreejp" path="res://resources/cooking/recipes/full_foods/noodle_soup.tres" id="35_3d2tt"]
+[ext_resource type="Resource" uid="uid://d3b4eailp7hg2" path="res://resources/cooking/recipes/full_foods/vegetable_curry_rec.tres" id="36_g75hg"]
+
+[node name="RecipeBook" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 140.0
+offset_top = 60.0
+offset_right = -140.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ocwx")
+unlocked_recipes = Array[ExtResource("2_ardhh")]([ExtResource("28_g4v7v"), ExtResource("36_g75hg")])
+item_button_scene = ExtResource("4_eix7w")
+recipe_button_scene = ExtResource("6_3d2tt")
+selected_recipe = ExtResource("5_1f1hc")
+sample_ingredients = Dictionary[int, ExtResource("6_g75hg")]({
+2: ExtResource("7_j6jej"),
+3: ExtResource("8_nywro"),
+100: ExtResource("9_j1a1v"),
+101: ExtResource("10_l1lxc"),
+102: ExtResource("11_uhfp2"),
+104: ExtResource("12_vpon3"),
+105: ExtResource("13_yxb4e"),
+106: ExtResource("14_vd31q"),
+107: ExtResource("15_gyl2d"),
+200: ExtResource("16_xnfvv"),
+203: ExtResource("17_girm1"),
+300: ExtResource("18_wth1l"),
+301: ExtResource("19_lgx6u"),
+401: ExtResource("20_vpon3"),
+402: ExtResource("21_yxb4e"),
+403: ExtResource("22_vd31q"),
+405: ExtResource("23_girm1"),
+406: ExtResource("24_wth1l"),
+407: ExtResource("25_lgx6u"),
+408: ExtResource("26_b4725"),
+501: ExtResource("27_kxhg0")
+})
+sample_ingredients_category = Dictionary[int, ExtResource("6_g75hg")]({
+2: ExtResource("21_yxb4e"),
+3: ExtResource("17_girm1"),
+5: ExtResource("18_wth1l")
+})
+chopping_recipes = Array[ExtResource("2_ardhh")]([ExtResource("5_1f1hc"), ExtResource("28_g4v7v"), ExtResource("29_4jjm1"), ExtResource("30_qgk21"), ExtResource("31_vkxgx"), ExtResource("32_g75hg"), null])
+pot_recipes = Array[ExtResource("2_ardhh")]([ExtResource("33_vkxgx"), ExtResource("34_g75hg"), ExtResource("35_3d2tt")])
+assembly_recipes = Array[ExtResource("2_ardhh")]([ExtResource("36_g75hg"), ExtResource("3_enp5i")])
+
+[node name="StatusPanel" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="StatusPanel"]
+self_modulate = Color(0.596078, 0.458824, 0.329412, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1ppsf")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="LeftPage" type="Panel" parent="."]
+layout_mode = 1
+offset_left = 42.0
+offset_top = 47.0
+offset_right = 445.0
+offset_bottom = 547.0
+
+[node name="Label" type="Label" parent="LeftPage"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_right = 74.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme = ExtResource("3_2fixo")
+theme_override_font_sizes/font_size = 42
+text = "Recipe List"
+
+[node name="RecipeGrid" type="GridContainer" parent="LeftPage"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = 50.0
+offset_right = -34.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="RightPage" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -453.0
+offset_top = 46.0
+offset_right = -50.0
+offset_bottom = 546.0
+grow_horizontal = 0
+
+[node name="RecipeName" type="Label" parent="RightPage"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.0
+offset_right = 108.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme = ExtResource("3_2fixo")
+theme_override_font_sizes/font_size = 42
+text = "Food Name Here"
+
+[node name="RecipeTexture" type="TextureRect" parent="RightPage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -148.5
+offset_top = -187.0
+offset_right = -5.5
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+
+[node name="IngredientList" type="GridContainer" parent="RightPage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -182.5
+offset_top = 39.0
+offset_right = 190.5
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 5
+
+[node name="CraftingStationName" type="Label" parent="RightPage"]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 67.0
+offset_right = 352.0
+offset_bottom = 105.0
+text = "Oven"
+horizontal_alignment = 1
+vertical_alignment = 1

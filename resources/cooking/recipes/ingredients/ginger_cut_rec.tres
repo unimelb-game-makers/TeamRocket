@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_r7f0u")
 output_ingredient = ExtResource("1_scil7")
+recipe_name = ""
 effects = Array[int]([])
 base_ingredients = Array[int]([407])
 metadata/_custom_type_script = "uid://bgf04urpx4mx5"
