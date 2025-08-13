@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=4 uid="uid://dtrm38nc0yg62"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_xa4ng"]
+[ext_resource type="PackedScene" uid="uid://bxhx21f0uymat" path="res://scenes/environments/prop/BigBush.tscn" id="2_6lnj3"]
+[ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="3_ofi5m"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="4_dla86"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="5_l5spf"]
+[ext_resource type="PackedScene" uid="uid://c6jq64hs6hvtm" path="res://scenes/enemy/EnemySpider.tscn" id="6_pp7db"]
+[ext_resource type="PackedScene" uid="uid://djgvayx5wpdta" path="res://scenes/enemy/EnemyRatMonarch.tscn" id="7_4uqc6"]
+
+[node name="BasePOI" instance=ExtResource("1_xa4ng")]
+potential_enter_direction = 3
+
+[node name="TileMap" parent="." index="0"]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAGAAAAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAAAAAMAAAABAAAAAAAAAAQAAAABAAAAAAAAAAUAAAABAAAAAAA=")
+
+[node name="WallTileMap2" parent="Wall" index="1"]
+tile_map_data = PackedByteArray("AAAAAAMAAQAAAAMAAAAGAAMAAQAAAAQAAAABAAMAAQABAAMAAAACAAMAAQABAAMAAAADAAMAAQABAAMAAAAEAAMAAQABAAMAAAAAAAUAAQAAAAUAAAAAAAQAAQAAAAQAAAABAAUAAQABAAMAAAACAAUAAQABAAMAAAADAAUAAQABAAMAAAAEAAUAAQABAAMAAAAFAAUAAQABAAMAAAAGAAUAAQABAAUAAAAGAAQAAQAAAAQAAAAGAAIAAQABAAQAAAA=")
+
+[node name="BigBush" parent="InteractableHolder" index="0" instance=ExtResource("2_6lnj3")]
+position = Vector2(210, 164)
+
+[node name="BigBush2" parent="InteractableHolder" index="1" instance=ExtResource("2_6lnj3")]
+position = Vector2(495, 191)
+
+[node name="BigBush3" parent="InteractableHolder" index="2" instance=ExtResource("2_6lnj3")]
+position = Vector2(809, 171)
+
+[node name="BigBush4" parent="InteractableHolder" index="3" instance=ExtResource("2_6lnj3")]
+position = Vector2(1110, 95)
+
+[node name="BigBush9" parent="InteractableHolder" index="4" instance=ExtResource("2_6lnj3")]
+position = Vector2(749, 329)
+
+[node name="BigBush5" parent="InteractableHolder" index="5" instance=ExtResource("2_6lnj3")]
+position = Vector2(475, 372)
+
+[node name="Bush" parent="InteractableHolder" index="6" instance=ExtResource("3_ofi5m")]
+position = Vector2(826, 309)
+
+[node name="BigBush6" parent="InteractableHolder" index="7" instance=ExtResource("2_6lnj3")]
+position = Vector2(1094, 299)
+
+[node name="BigBush7" parent="InteractableHolder" index="8" instance=ExtResource("2_6lnj3")]
+z_index = 1
+position = Vector2(1257, 429)
+
+[node name="BigBush8" parent="InteractableHolder" index="9" instance=ExtResource("2_6lnj3")]
+position = Vector2(1472, 165)
+
+[node name="Bush2" parent="InteractableHolder" index="10" instance=ExtResource("3_ofi5m")]
+position = Vector2(1462, 355)
+
+[node name="Bush3" parent="InteractableHolder" index="11" instance=ExtResource("3_ofi5m")]
+z_index = 1
+position = Vector2(1533, 423)
+
+[node name="Crate2" parent="InteractableHolder" index="12" instance=ExtResource("4_dla86")]
+z_index = 1
+position = Vector2(1482, 269)
+
+[node name="Crate" parent="InteractableHolder" index="13" instance=ExtResource("4_dla86")]
+position = Vector2(316, 1218)
+
+[node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("5_l5spf")]
+position = Vector2(1469, 759)
+allowed_enemies = Array[PackedScene]([ExtResource("6_pp7db"), ExtResource("7_4uqc6")])
