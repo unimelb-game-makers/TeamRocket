@@ -39,6 +39,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_chase_state_entered() -> void:
+	super ()
 	var tween = create_tween()
 	tween.tween_property(anim_sprite, "self_modulate:a", transparency_when_stalk, 1)
 	# anim_sprite.self_modulate = Color(1, 1, 1, transparency_when_stalk)

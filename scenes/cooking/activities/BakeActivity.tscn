@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7ikkerlqq6g6"]
+[gd_scene load_steps=18 format=3 uid="uid://c7ikkerlqq6g6"]
 
 [ext_resource type="Script" uid="uid://dqw377e8ohg76" path="res://scripts/cooking/bake_activity.gd" id="1_bekao"]
 [ext_resource type="Resource" uid="uid://gjo0mjdr5tpi" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_1.tres" id="2_bekao"]
@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://ckqfd0wrme672" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_8.tres" id="10_6gyfs"]
 [ext_resource type="Resource" uid="uid://sanvg6snr2ur" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_9.tres" id="11_5rdpd"]
 [ext_resource type="Resource" uid="uid://b3rwukpli6t3n" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_10.tres" id="12_8pnr0"]
+[ext_resource type="Texture2D" uid="uid://duu3gq420suf2" path="res://assets/interiors/kitchen/oven background.png" id="13_rjy6u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x7xau"]
 radius = 1.0
@@ -29,6 +30,17 @@ grow_vertical = 2
 script = ExtResource("1_bekao")
 oven_tracing_lines = Array[ExtResource("2_huds3")]([ExtResource("2_bekao"), ExtResource("4_rjy6u"), ExtResource("5_o3yrg"), ExtResource("6_w2ai4"), ExtResource("7_2rey5"), ExtResource("8_vrvhs"), ExtResource("9_5fiuc"), ExtResource("10_6gyfs"), ExtResource("11_5rdpd"), ExtResource("12_8pnr0")])
 selected_oven_tracing_line_data = ExtResource("12_8pnr0")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0.550781, 0.550781, 0.550781, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_rjy6u")
+expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0.14278, 0.301469, 0.168023, 1)

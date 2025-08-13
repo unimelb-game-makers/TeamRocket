@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b73fb6d80sq5y"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_vwb7n"]
+[ext_resource type="PackedScene" uid="uid://d2wlqyfnuebj" path="res://scenes/environments/prop/Restaurant.tscn" id="2_lxhit"]
+
+[node name="RestaurantPoI7x6" instance=ExtResource("1_vwb7n")]
+
+[node name="TileMap" parent="." index="0"]
+visible = false
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 6, 0, 5, 0, 0, 0, 1, 0, 0, 0, 0, 0)
+
+[node name="Restaurant" parent="InteractableHolder" index="0" instance=ExtResource("2_lxhit")]
+position = Vector2(928, 1256)

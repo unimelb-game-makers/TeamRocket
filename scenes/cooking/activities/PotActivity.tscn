@@ -1,16 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://4s64a0adjxlr"]
+[gd_scene load_steps=16 format=3 uid="uid://4s64a0adjxlr"]
 
 [ext_resource type="Script" uid="uid://busp0mos1wg7w" path="res://scripts/cooking/pot_activity.gd" id="1_ishcw"]
-[ext_resource type="Script" uid="uid://b5nit6x54kcrg" path="res://scenes/cooking/workbenches/pot/pot_minigame_setting.gd" id="2_aruxa"]
-[ext_resource type="Resource" uid="uid://40tmnmmtippj" path="res://scenes/cooking/workbenches/pot/settings/setting_1.tres" id="2_mtbbh"]
-[ext_resource type="Resource" uid="uid://docyqpasq3f7i" path="res://scenes/cooking/workbenches/pot/settings/default_setting.tres" id="3_w11kf"]
+[ext_resource type="Texture2D" uid="uid://c0mtg0xojdkfe" path="res://assets/interiors/kitchen/stove background.png" id="2_mtbbh"]
 [ext_resource type="Texture2D" uid="uid://tq63nq80td5t" path="res://assets/workstations/stew_game/stew_top1.png" id="5_vbh60"]
-[ext_resource type="Resource" uid="uid://cxaahpeus8seo" path="res://scenes/cooking/workbenches/pot/settings/setting_2.tres" id="5_w6qwl"]
-[ext_resource type="Resource" uid="uid://f6av3iqaxye0" path="res://scenes/cooking/workbenches/pot/settings/setting_3.tres" id="6_nuanc"]
 [ext_resource type="Texture2D" uid="uid://cdtofnyg3fpkq" path="res://assets/workstations/stew_game/stew_top2.png" id="6_xa1cm"]
-[ext_resource type="Resource" uid="uid://dlw85loye54c" path="res://scenes/cooking/workbenches/pot/settings/setting_4.tres" id="7_0onbf"]
 [ext_resource type="Texture2D" uid="uid://ccsaoleicyf63" path="res://assets/workstations/stew_game/stew_top3.png" id="7_ykhlr"]
-[ext_resource type="Resource" uid="uid://dud5s15xrih36" path="res://scenes/cooking/workbenches/pot/settings/setting_5.tres" id="8_mu2dh"]
 [ext_resource type="Texture2D" uid="uid://3i4vvw4e5j8q" path="res://assets/workstations/stew_game/wooden_spoon_tr.png" id="8_n6sfw"]
 [ext_resource type="AudioStream" uid="uid://dvno6lfx3sxon" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/boil loop.ogg" id="8_r1wrs"]
 [ext_resource type="FontFile" uid="uid://bsmko3x66vlgt" path="res://assets/fonts/BebasNeue-Regular.ttf" id="9_015fk"]
@@ -41,9 +35,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ishcw")
-pot_settings_list = Array[ExtResource("2_aruxa")]([ExtResource("3_w11kf"), ExtResource("2_mtbbh"), ExtResource("5_w6qwl"), ExtResource("6_nuanc"), ExtResource("7_0onbf"), ExtResource("8_mu2dh")])
-force_selected = true
-pot_settings = ExtResource("3_w11kf")
+
+[node name="Background" type="TextureRect" parent="."]
+self_modulate = Color(0.550781, 0.550781, 0.550781, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mtbbh")
+expand_mode = 1
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(645.995, 347.938)

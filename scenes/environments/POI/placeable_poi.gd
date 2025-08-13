@@ -9,6 +9,13 @@ enum EnterDirectionEnum {
 	RIGHT
 }
 
+enum UniquePoiEnum {
+	NONE,
+	RESTAURANT,
+	ALCOVE,
+	KINGDOM
+}
+
 @export var potential_enter_direction: EnterDirectionEnum
 @export var poi_loot_table: Array[Item] = []
 

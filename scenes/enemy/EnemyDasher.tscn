@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://c0dgri14uuw70" path="res://scenes/enemy/BasicEnemy.tscn" id="1_cno7g"]
 [ext_resource type="Script" uid="uid://blek2xolb070t" path="res://scripts/enemy/enemy_dasher.gd" id="2_1leqm"]
-[ext_resource type="Script" uid="uid://cyw3vuu8wb4vn" path="res://addons/godot_state_charts/compound_state.gd" id="2_e75rs"]
-[ext_resource type="Script" uid="uid://di7rh2bj4kanb" path="res://addons/godot_state_charts/atomic_state.gd" id="3_klj4n"]
+[ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="2_e75rs"]
+[ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="3_klj4n"]
 [ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="3_v7e55"]
-[ext_resource type="Script" uid="uid://dwgr8rprecbfo" path="res://addons/godot_state_charts/transition.gd" id="4_dhk6e"]
+[ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="4_dhk6e"]
 [ext_resource type="Texture2D" uid="uid://dc6mt81avbf6a" path="res://assets/food/mince_raw.png" id="4_ytwmp"]
 [ext_resource type="Texture2D" uid="uid://cbb3m3hvwukrv" path="res://assets/placeholder/circle.png" id="5_hxbls"]
 [ext_resource type="Texture2D" uid="uid://b0yjyft6548gl" path="res://assets/creatures/enemy_longneck/longneck_attack.png" id="6_fkyv3"]
@@ -191,6 +191,12 @@ position = Vector2(0, -144)
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_o87wb")
+
+[node name="ChaseModeLabel" parent="." index="12"]
+offset_left = -104.0
+offset_top = -392.0
+offset_right = -54.0
+offset_bottom = -308.25
 
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]

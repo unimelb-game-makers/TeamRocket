@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://63x2ldnuagja"]
+[gd_scene load_steps=7 format=3 uid="uid://63x2ldnuagja"]
 
 [ext_resource type="Script" uid="uid://d0f0hkms0jr0b" path="res://scenes/environments/POI/placeable_poi.gd" id="1_rnmuo"]
-[ext_resource type="TileSet" uid="uid://blu4c3vmuk83t" path="res://scenes/map/base_map_tileset.tres" id="2_u04a8"]
-[ext_resource type="Texture2D" uid="uid://c0veapujgrjjo" path="res://assets/map/wall_tileset.png" id="3_u04a8"]
+[ext_resource type="TileSet" uid="uid://bi1t15nj76caa" path="res://scenes/map/base_map_tileset.tres" id="2_u04a8"]
+[ext_resource type="Texture2D" uid="uid://c0veapujgrjjo" path="res://assets/map/placeholder_wall_tileset.png" id="3_u04a8"]
+[ext_resource type="TileSet" uid="uid://cfwd6tawm0jlk" path="res://scenes/environments/POI/base_wall_tileset.tres" id="4_il60d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_il60d"]
 texture = ExtResource("3_u04a8")
@@ -33,7 +34,12 @@ tile_set = ExtResource("2_u04a8")
 y_sort_enabled = true
 
 [node name="WallTileMap" type="TileMapLayer" parent="Wall"]
+y_sort_enabled = true
 tile_set = SubResource("TileSet_rh8cv")
+
+[node name="WallTileMap2" type="TileMapLayer" parent="Wall"]
+tile_set = ExtResource("4_il60d")
+use_kinematic_bodies = true
 
 [node name="EnemyHolder" type="Node2D" parent="."]
 y_sort_enabled = true

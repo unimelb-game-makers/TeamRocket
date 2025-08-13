@@ -67,8 +67,6 @@ func _process(_delta):
 			aiming_line_1.points = new_aim_line_points
 			aiming_line_2.points = new_aim_line_points
 
-		# aiming_ui.queue_redraw()
-
 func reload():
 	if (reload_timer.is_stopped() and bullets < max_bullets):
 		reload_effect.play()
@@ -86,18 +84,6 @@ func fire(damage: int) -> void:
 		inst.global_position = global_position
 		inst.init(bullet_dir, damage)
 
-		# var target = raycast.get_collider()
-		# if (target):
-		# 	if target is EnemyHitbox:
-		# 		target.damage(damage)
-		# 	elif target.has_method("damage"):
-		# 		target.damage(damage)
-
-		# var hit_location = raycast.get_collision_point()
-		# var impact = impact_scene.instantiate()
-		# add_child(impact)
-		# impact.global_position = hit_location
-
 		fire_effect.play(0.3)
 		fired.emit()
 
@@ -106,7 +92,6 @@ func fire(damage: int) -> void:
 
 		# Add inaccuracy
 		inaccuracy = max_inaccuracy
-
 		create_muzzle_flash()
 
 func _on_reload_timer_timeout() -> void:

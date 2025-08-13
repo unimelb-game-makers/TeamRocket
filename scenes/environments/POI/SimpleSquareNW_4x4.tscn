@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://bwh4g2fpsfyjn"]
+[gd_scene load_steps=6 format=4 uid="uid://bwo8jsuqn8111"]
 
 [ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_t5u6y"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="2_tgnhl"]

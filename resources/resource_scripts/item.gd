@@ -17,7 +17,7 @@ enum Quality {
 }
 
 # Effects should have
-# - Effect Level 
+# - Effect Level
 # - Duration: X amount of seconds, Per Day, Permanent
 
 # Should be using straight StatusEffect Resource for this part but
@@ -34,11 +34,11 @@ enum Effects {
 	SPEED_TEMP,
 	DASH_COOLDOWN,
 	SILENCE,
-	
+
 	# Eldritch Effects
 	UNKNOWN1,
 	UNKNOWN2,
-	
+
 	# Bad Effects
 	SLOW,
 	POISON,
@@ -50,7 +50,7 @@ enum Effects {
 # Do we need an item id if we just save the whole thing?
 @export var description: String
 @export var weight: float
-# On UI display, we can convert quality into Common, Uncommon, Rare, etc 
+# On UI display, we can convert quality into Common, Uncommon, Rare, etc
 @export var rarity: Rarity
 # Quality ranging from 0 to 100
 # If quality is 0, do not need to display or save
@@ -62,11 +62,11 @@ func save() -> Dictionary:
 	item_dict["item_resource_path"] = resource_path
 	item_dict["item_type"] = ItemType.ITEM
 	return item_dict
-	
+
 func equals(other_item: Item):
 	if (other_item.item_name == item_name):
 		return true
-	
+
 static func load_item(dict: Dictionary) -> Item:
 	match int(dict["item_type"]):
 		ItemType.ITEM:

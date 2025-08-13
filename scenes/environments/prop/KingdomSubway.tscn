@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1m6i57pl0dc1"]
+
+[ext_resource type="Texture2D" uid="uid://bngahd354uokj" path="res://assets/map/POI/the kingdom exterior.png" id="1_85rot"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_85rot"]
+size = Vector2(528, 288)
+
+[node name="KingdomSubway" type="StaticBody2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -384)
+texture = ExtResource("1_85rot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -216)
+shape = SubResource("RectangleShape2D_85rot")

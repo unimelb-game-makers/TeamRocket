@@ -19,6 +19,7 @@ signal aim_mode_exit
 signal death
 signal channel_complete
 signal sound_created(location, loudness)
+signal hidden_status_changed
 
 const DODGE_SPEED: int = 1000
 const DODGE_DURATION: float = 0.5
@@ -26,6 +27,7 @@ const DODGE_COOLDOWN: float = 0.5
 const WALK_FOOTSTEP_SFX_FREQUENCY = 0.75
 const SPRINT_FOOTSTEP_SFX_FREQUENCY = 0.5
 const AFTER_HURT_INVULNERABLE_DURATION = 1.0
+const VIGNETTE_ALPHA_WHEN_HIDDEN = 0.7
 
 var can_move: bool = true
 var can_interact: bool = true
@@ -56,11 +58,19 @@ var fired = false
 var animation_locked = false
 
 # Status effect
-# TODO: Should have a separate system to track
-var is_slowed
-var is_unable_to_dash
 var is_invulnerable_after_hurt = false
 var stamina_regen = false
+var is_hidden_count = 0: # Use count instead of bool for stability when using multiple hidden bushes
+	set(value):
+		if value != is_hidden_count:
+			if value > 0:
+				anim_sprite.self_modulate = Color(0.5, 0.5, 0.5, 0.5)
+				hidden_status_changed.emit()
+			else:
+				anim_sprite.self_modulate = Color(1, 1, 1, 1)
+				hidden_status_changed.emit()
+		is_hidden_count = value
+
 
 # ----- Node References -----
 @onready var interact_radius: Area2D = $InteractRadius
@@ -105,7 +115,7 @@ func _process(_delta: float) -> void:
 
 	if (not channel_timer.is_stopped()):
 		channeling_particles.emitting = true
-		
+
 	if Input.is_action_just_pressed("reload"):
 		rifle.reload()
 
@@ -145,7 +155,7 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 		is_moving = velocity.length_squared() >= 0.005
 	else:
 		is_moving = false # BUG: IDK how to stop the walking animation, this just disable audio.
-		
+
 	# Handle Motion State
 	if not is_moving: # To Idle
 		statechart.send_event("wasd_release") # Sprint to Idle, Walk to Idle
@@ -170,13 +180,13 @@ func _on_basic_state_physics_processing(delta: float) -> void:
 		statechart.send_event("enter_aiming_mode")
 	if Input.is_action_just_released("aim"):
 		statechart.send_event("exit_aiming_mode")
-		
-		
+
+
 # Polling (single key presses)
 func _on_basic_state_input(event: InputEvent) -> void:
 	if !can_move:
 		return
-		
+
 	# Rolling supercedes all states
 	if event.is_action_pressed("roll") and can_roll and player_stats.stamina >= dodge_stamina_cost:
 		player_stats.stamina -= dodge_stamina_cost
@@ -241,12 +251,12 @@ func _on_run_state_entered() -> void:
 	footstep_timer.start(SPRINT_FOOTSTEP_SFX_FREQUENCY)
 	curr_speed = Globals.player_stats.run_speed
 	curr_accel = Globals.player_stats.run_accel
-	
+
 	stamina_regen = false
-	
+
 func _on_run_state_exited() -> void:
 	stamina_delay_timer.start()
-	
+
 func _on_crouched_state_entered() -> void:
 	enemy_noise_rader.visible = true
 	is_crouching = true
@@ -265,7 +275,7 @@ func _on_aiming_state_exited() -> void:
 	aim_mode_exit.emit()
 	curr_speed = curr_speed * 2
 	is_aiming = false
-	
+
 
 func _on_channel_timer_timeout() -> void:
 	channel_complete.emit()
@@ -287,7 +297,7 @@ func _on_unarmed_state_physics_processing(delta: float) -> void:
 			handle_direction_anim("move", direction, "", animation_speed)
 		else:
 			handle_animation("idle")
-			
+
 	# Stamina regen (in walking/aiming state only)
 	if (stamina_regen):
 		player_stats.stamina += player_stats.stamina_regen * delta
@@ -301,11 +311,14 @@ func _on_aiming_state_physics_processing(delta: float) -> void:
 		var mouse_direction = (mouse_pos - global_position).normalized()
 		if (mouse_direction.length() > 0.1):
 			handle_direction_anim("stand", mouse_direction, "aim")
-			
+
 	if Input.is_action_just_pressed("fire"):
 		rifle.fire(Globals.player_stats.damage)
-		sound_created.emit(global_position, gun_loudness)
-		
+		var rand_x = randf_range(0.75, 1.25)
+		var rand_y = randf_range(0.75, 1.25)
+		var general_gun_position = global_position * Vector2(rand_x, rand_y) # Varied it a bit so the location is not exactly where player is
+		sound_created.emit(general_gun_position, gun_loudness)
+
 	# Stamina regen (in walking/aiming state only)
 	if (stamina_regen):
 		player_stats.stamina += player_stats.stamina_regen * delta
@@ -317,7 +330,7 @@ func _on_run_state_physics_processing(delta: float) -> void:
 	var animation_speed = curr_speed / (Globals.player_stats.speed)
 	if (direction.length() > 0.1):
 		handle_direction_anim("move", direction, "run", animation_speed)
-		
+
 	player_stats.stamina -= run_stamina_cost * delta
 	if (player_stats.stamina <= 0):
 		print("Player Stamina 0")
@@ -349,27 +362,27 @@ func handle_animation(action: String, _direction: String = "", secondary_action:
 	# Will automatically scale the player (cuz some of the animations are missized)
 	if animation_locked:
 		return
-	
+
 	var base_scale: float = 0.12
 	var side_scale: float = 1.16
 	# Have to scale because specifically the left and right movement for walking is smaller than the other animations
 	var sprite_scale = base_scale
 	if ((_direction == "left" or _direction == "right") and action == "move" and secondary_action != "run"):
 		sprite_scale = base_scale * side_scale
-	
+
 	var anim_array = [action]
 	if _direction != "":
 		anim_array.append(_direction)
 	if secondary_action != "":
 		anim_array.append(secondary_action)
-	
+
 	var joined_anim = "_".join(anim_array)
 	if not joined_anim in anim_sprite.sprite_frames.get_animation_names():
 		return
-	
+
 	if (action == "shoot"):
 		animation_locked = true
-	
+
 	anim_sprite.scale = Vector2(sprite_scale, sprite_scale)
 	anim_sprite.play(joined_anim)
 

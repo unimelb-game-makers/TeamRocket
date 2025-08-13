@@ -31,11 +31,14 @@ const DOOR = "B" # There is a door in this direction.
 @export var doors: Array[Area2D] = [] # Door scenes, cant get by get_tree
 
 @export_group("Point of Interest")
+@export var unique_poi_chance_perc: int = 10 # 10%. Must be less than 100
+@export var unique_poi_dict: Dictionary[PlaceablePOI.UniquePoiEnum, PackedScene]
 @export var select_first_medium_poi: bool = false ## When true, generate the POI in the 0th index, for debugging.
 @export var possible_medium_poi_spawn: Array[PackedScene]
 @export var select_first_large_poi: bool = false ## When true, generate the POI in the 0th index, for debugging.
 @export var possible_large_poi_spawn: Array[PackedScene]
 @export var player_spawn: Marker2D
+@export var unique_poi_spawn: Marker2D
 @export var medium_poi_spawn: Marker2D
 @export var large_poi_spawn: Marker2D
 
@@ -74,10 +77,18 @@ func has_poi_markers():
 	return false
 
 func spawn_poi():
-	var room_data = Globals.map_generator.get_current_room_data()
+	var room_data: RoomData = Globals.map_generator.get_current_room_data()
 
 	# Load existing data
 	if not room_data.is_new:
+		if room_data.unique_poi_scene:
+			var inst = room_data.unique_poi_scene.instantiate()
+			add_child(inst)
+			inst.global_position = room_data.unique_poi_location
+			inst.map_room = self
+			spawned_pois.append(inst)
+			Globals.spawn_unique_pois.append(room_data.unique_poi_id)
+
 		if room_data.medium_poi_scene:
 			var inst = room_data.medium_poi_scene.instantiate()
 			add_child(inst)
@@ -95,10 +106,40 @@ func spawn_poi():
 		return
 
 	# Spawn new
+	# Unique POI, roll for chance first
+	var roll = randi_range(0, 100)
+	if roll < unique_poi_chance_perc and unique_poi_spawn != null:
+		# Check for duplicated by remove spawned PoI from dict
+		var pois_to_remove = []
+		for key in unique_poi_dict.keys():
+			if Globals.spawn_unique_pois.has(key):
+				pois_to_remove.append(key)
+		for key in pois_to_remove:
+			unique_poi_dict.erase(key)
+
+		if unique_poi_dict.size() > 0:
+			# Pick random a unique poi
+			var keys = unique_poi_dict.keys()
+			var chosen_unique_poi_id = keys.pick_random()
+			var chosen_unique_poi = unique_poi_dict[chosen_unique_poi_id]
+				
+			var inst = chosen_unique_poi.instantiate()
+			add_child(inst)
+			inst.global_position = unique_poi_spawn.global_position
+			inst.map_room = self
+			spawned_pois.append(inst)
+			# Save room data
+			room_data.unique_poi_scene = chosen_unique_poi
+			room_data.unique_poi_location = unique_poi_spawn.global_position
+			room_data.unique_poi_id = chosen_unique_poi_id
+			Globals.spawn_unique_pois.append(chosen_unique_poi_id)
+
+	# Medium POI
 	if medium_poi_spawn != null and possible_medium_poi_spawn.size() > 0:
 		var chosen_medium_poi = possible_medium_poi_spawn.pick_random()
 		if select_first_medium_poi: ## Overrides
 			push_warning("DEBUG OVERRIDE SELECTION ON IN ", self)
+			chosen_medium_poi = possible_medium_poi_spawn[0]
 			
 		var inst = chosen_medium_poi.instantiate()
 		add_child(inst)
@@ -108,7 +149,8 @@ func spawn_poi():
 		# Save room data
 		room_data.medium_poi_scene = chosen_medium_poi
 		room_data.medium_poi_location = medium_poi_spawn.global_position
-
+		
+	# Large POI
 	if large_poi_spawn != null and possible_large_poi_spawn.size() > 0:
 		var chosen_large_poi = possible_large_poi_spawn.pick_random()
 		if select_first_large_poi: ## Overrides

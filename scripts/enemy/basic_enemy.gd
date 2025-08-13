@@ -13,6 +13,7 @@ class_name BasicEnemy
 @onready var elite_effects: Node2D = $EliteEffects
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_sfx_player: AudioStreamPlayer2D = $HitSfxPlayer2D
+@onready var alert_status_label: Label = $AlertStatusLabel
 
 const ELITE_HP_MULT = 1.5
 const ELITE_DMG_MULT = 1.5
@@ -23,6 +24,7 @@ var navigation_region: NavigationRegion2D
 var movement_speed: float
 var movement_target_position: Vector2
 var target_creature: CharacterBody2D
+var hidden_target_creature: CharacterBody2D # When player is hidden, hold the player node here incase player reappear
 var map
 var path = []
 var last_known_position: Vector2 # Last known position of player
@@ -51,17 +53,19 @@ func _ready():
 
 	movement_speed = passive_speed
 	original_position = Vector2(position)
-	
+
 	var elite_chance = randi_range(1, 5)
 	if (elite_chance == 1):
 		is_elite = true
-	
+
 	if (is_elite):
 		elite_effects.show()
 		max_health = int(max_health * ELITE_HP_MULT)
 		health = int(health * ELITE_HP_MULT)
 		base_damage = int(base_damage * ELITE_DMG_MULT)
 		active_speed *= ELITE_SPEED_MULT
+
+	alert_status_label.visible = false
 
 func alerted(sound_position: Vector2):
 	super (sound_position)
@@ -105,15 +109,15 @@ func damage(value: int, _damage_source_position: Vector2 = Vector2.ZERO):
 	tween2.tween_property(anim_sprite, "scale", before_hit_scale * HIT_SHRINK_AMOUNT, 0.1)
 	tween2.tween_property(anim_sprite, "scale", before_hit_scale, 0.1)
 	hit_sfx_player.play()
-	
+
 	target_creature = Globals.player
 	statechart.send_event("to_chase")
-	
+
 func die():
 	if (is_elite):
 		drop_item()
 	super ()
-	
+
 # FIXME: Enemy's speed when using this function is not consistent
 func move_along_path(delta):
 	if path.is_empty():
@@ -138,15 +142,30 @@ func _on_recalculate_path_timeout() -> void:
 
 func _on_detection_radius_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
-		target_creature = area.get_parent();
+		var new_target = area.get_parent()
+
+		if new_target is Player:
+			var player: Player = new_target
+			if player.is_hidden_count > 0 and target_creature == null:
+				hidden_target_creature = player
+				return
+
+		target_creature = new_target
 		statechart.send_event("player_detected") # Triggers To Chase State
 
 func _on_chase_radius_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Player"):
-		target_creature = area.get_parent();
+		var new_target = area.get_parent()
+
+		if new_target is Player:
+			var player: Player = new_target
+			if player.is_hidden_count > 0 and target_creature == null:
+				hidden_target_creature = player
+				return
 
 		# When this enemy is searching for the player,
 		# if they are still in the chase radius, then continue chasing.
+		target_creature = new_target
 		statechart.send_event("to_chase_from_search") # Triggers To Chase
 
 func _on_chase_radius_area_exited(area: Area2D) -> void:
@@ -154,9 +173,11 @@ func _on_chase_radius_area_exited(area: Area2D) -> void:
 		# When chasing, take note of last known position.
 		# This enemy will travel to this position to search,
 		# only after path has no more points.
-		last_known_position = target_creature.position
+		if target_creature != null:
+			last_known_position = target_creature.position
 
 		target_creature = null
+		hidden_target_creature = null
 		statechart.send_event("to_search_from_chase") # Triggers To Search
 
 
@@ -166,7 +187,13 @@ func _on_idle_state_entered() -> void:
 	statechart.send_event("wander")
 
 func _on_passive_state_entered() -> void:
+	alert_status_label.visible = false
 	movement_speed = passive_speed
+
+func _on_passive_state_exited() -> void:
+	alert_status_label.text = "!!!"
+	alert_status_label.visible = true
+
 
 ### Active States (Chasing, Searching or Running away)
 
@@ -175,14 +202,20 @@ func _on_active_state_entered() -> void:
 
 ## Chase
 
+func _on_chase_state_entered() -> void:
+	alert_status_label.text = "!!!"
+
 func _on_chase_state_physics_processing(delta: float) -> void:
 	# Travels along points in path.
 	move_along_path(delta)
 	move_and_slide()
 
+## Search
+func _on_search_state_entered() -> void:
+	alert_status_label.text = "?"
+
 
 ## Search Last Seen Position
-
 func _on_search_last_seen_position_state_physics_processing(delta: float) -> void:
 	# Finish walking along path first
 	if path.size():
