@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://c7ikkerlqq6g6"]
+[gd_scene load_steps=17 format=3 uid="uid://c7ikkerlqq6g6"]
 
 [ext_resource type="Script" uid="uid://dqw377e8ohg76" path="res://scripts/cooking/bake_activity.gd" id="1_bekao"]
 [ext_resource type="Resource" uid="uid://gjo0mjdr5tpi" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_1.tres" id="2_bekao"]
 [ext_resource type="Script" uid="uid://crq6pfgaslrgu" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_resource.gd" id="2_huds3"]
-[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="3_62bgj"]
 [ext_resource type="PackedScene" uid="uid://b7bgjj0x4lljg" path="res://scenes/cooking/workbenches/oven/OvenTracingLine.tscn" id="4_mvfxb"]
 [ext_resource type="Resource" uid="uid://cn6dlpgedwdov" path="res://scenes/cooking/workbenches/oven/oven_lines/oven_line_2.tres" id="4_rjy6u"]
 [ext_resource type="Texture2D" uid="uid://bjfcakcjjsl7s" path="res://assets/placeholder/star.png" id="5_cv35t"]
@@ -41,22 +40,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("13_rjy6u")
 expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.14278, 0.301469, 0.168023, 1)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -200.0
-offset_right = 200.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_62bgj")
 
 [node name="OvenTracingLine" parent="." instance=ExtResource("4_mvfxb")]
 
@@ -99,3 +82,26 @@ offset_left = -100.0
 offset_bottom = 27.0
 grow_horizontal = 0
 value = 100.0
+
+[node name="InfoTipLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.0
+offset_top = -160.0
+offset_right = 223.0
+offset_bottom = -90.2083
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Steady Your Hand!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoTipTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="InfoTipTimer" to="." method="_on_info_tip_timer_timeout"]

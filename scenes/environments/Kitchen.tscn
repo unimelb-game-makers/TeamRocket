@@ -165,17 +165,15 @@ z_index = 1
 position = Vector2(521, 503)
 
 [node name="Pot" parent="InteractableHandler/InteractableHolder" index="4" instance=ExtResource("14_l7h17")]
-position = Vector2(712, 244)
+position = Vector2(713, 231)
 
 [node name="Fridge" parent="InteractableHandler/InteractableHolder" index="5" instance=ExtResource("14_12asn")]
 position = Vector2(1030, 195)
 
 [node name="Oven_NotUsedYet" parent="InteractableHandler/InteractableHolder" index="6" instance=ExtResource("13_8r8q0")]
-visible = false
-position = Vector2(98, 1078)
+position = Vector2(258, 726)
 
 [node name="FryingPan_NotUsedYet" parent="InteractableHandler/InteractableHolder" index="7" instance=ExtResource("14_gr436")]
-visible = false
 position = Vector2(241, 1078)
 
 [node name="Player" parent="." index="7"]
