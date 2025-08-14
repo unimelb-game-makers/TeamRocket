@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_tmi6h"]
 [ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="2_mshpf"]
-[ext_resource type="PackedScene" uid="uid://bdrwyr3m3l6gx" path="res://scenes/environments/prop/Tree.tscn" id="3_jx7rc"]
+[ext_resource type="PackedScene" uid="uid://bdrwyr3m3l6gx" path="res://scenes/environments/prop/TreeType1.tscn" id="3_jx7rc"]
 [ext_resource type="PackedScene" uid="uid://bxhx21f0uymat" path="res://scenes/environments/prop/BigBush.tscn" id="4_eohn2"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="5_vcho0"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="6_xgicb"]
@@ -73,7 +73,6 @@ position = Vector2(217, 622)
 position = Vector2(337, 636)
 
 [node name="Tree" parent="InteractableHolder" index="19" instance=ExtResource("3_jx7rc")]
-z_index = 1
 position = Vector2(1051, 853)
 
 [node name="BigBush2" parent="InteractableHolder" index="20" instance=ExtResource("4_eohn2")]
@@ -110,8 +109,7 @@ position = Vector2(439, 220)
 position = Vector2(1090, 111)
 
 [node name="Crate2" parent="InteractableHolder" index="31" instance=ExtResource("5_vcho0")]
-z_index = 1
-position = Vector2(912, 851)
+position = Vector2(963, 814)
 
 [node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("6_xgicb")]
 position = Vector2(766, 620)

@@ -61,7 +61,7 @@ z_index = 1
 position = Vector2(1482, 269)
 
 [node name="Crate" parent="InteractableHolder" index="13" instance=ExtResource("4_dla86")]
-position = Vector2(316, 1218)
+position = Vector2(309, 1218)
 
 [node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("5_l5spf")]
 position = Vector2(1469, 759)
