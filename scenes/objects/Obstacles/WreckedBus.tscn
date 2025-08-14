@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://yvpj7pw7acau"]
+
+[ext_resource type="Texture2D" uid="uid://brd0dapgva4yk" path="res://assets/map/city/bus.png" id="1_4mpe8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8bqy"]
+size = Vector2(1385, 291)
+
+[node name="WreckedBus" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4mpe8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 119)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-12.5, -0.5)
+shape = SubResource("RectangleShape2D_b8bqy")
