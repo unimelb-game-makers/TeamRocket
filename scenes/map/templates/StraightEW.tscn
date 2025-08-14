@@ -8,8 +8,8 @@ vertices = PackedVector2Array(5006.04, 2166.01, -141.867, 2173.98, -102.117, -11
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-112, -1136, 5032, -1136, 5016, 2176, -152, 2184)])
 
-[node name="Straight" node_paths=PackedStringArray("doors") instance=ExtResource("1_46ymu")]
-room_name = "Straight"
+[node name="StraightEW" node_paths=PackedStringArray("doors") instance=ExtResource("1_46ymu")]
+room_name = "StraightEW"
 doors = [null, NodePath("DoorArea"), null, NodePath("DoorArea2")]
 
 [node name="TileMap" parent="." index="0"]

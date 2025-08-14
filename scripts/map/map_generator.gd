@@ -37,28 +37,24 @@ var just_teleported2 = false
 @onready var enemy_handler: EnemyHandler = $EnemyHandler
 @onready var interactable_handler: InteractableHandler = $InteractableHandler
 
-var straight: PackedScene = preload("res://scenes/map/templates/Straight.tscn")
-var deadend: PackedScene = preload("res://scenes/map/templates/DeadEnd.tscn")
-var bend: Array[PackedScene] = [
-	preload("res://scenes/map/templates/TurnNE.tscn"),
-	preload("res://scenes/map/templates/TurnNW.tscn"),
+var deadend_N: Array[PackedScene] = [
+	preload("res://scenes/map/templates/DeadEndN.tscn")
 ]
-var threeway: Array[PackedScene] = [
-	preload("res://scenes/map/templates/Threeway.tscn"),
+var deadend_E: Array[PackedScene] = [
+	preload("res://scenes/map/templates/DeadEndE.tscn")
 ]
-
-var deadend_N: Array[PackedScene] = []
-var deadend_E: Array[PackedScene] = []
 var deadend_S: Array[PackedScene] = [
-	preload("res://scenes/map/templates/DeadEnd.tscn")
+	preload("res://scenes/map/templates/DeadEndS.tscn")
 ]
-var deadend_W: Array[PackedScene] = []
+var deadend_W: Array[PackedScene] = [
+	preload("res://scenes/map/templates/DeadEndW.tscn")
+]
 
 var straight_NS: Array[PackedScene] = [
-	preload("res://scenes/map/templates/Straight.tscn")
+	preload("res://scenes/map/templates/StraightNS.tscn")
 ]
 var straight_EW: Array[PackedScene] = [
-	preload("res://scenes/map/templates/Straight.tscn")
+	preload("res://scenes/map/templates/StraightEW.tscn")
 ]
 
 var bend_NE: Array[PackedScene] = [
@@ -67,14 +63,25 @@ var bend_NE: Array[PackedScene] = [
 var bend_NW: Array[PackedScene] = [
 	preload("res://scenes/map/templates/TurnNW.tscn"),
 ]
-var bend_SE: Array[PackedScene] = []
-var bend_SW: Array[PackedScene] = []
+var bend_SE: Array[PackedScene] = [
+	preload("res://scenes/map/templates/TurnSE.tscn"),
+]
+var bend_SW: Array[PackedScene] = [
+	preload("res://scenes/map/templates/TurnSW.tscn"),
+]
 
-var threeway_noN: Array[PackedScene] = []
-var threeway_noE: Array[PackedScene] = []
-var threeway_noS: Array[PackedScene] = []
+# Means "Threeway no North direction"
+var threeway_noN: Array[PackedScene] = [
+	preload("res://scenes/map/templates/ThreewayNoN.tscn"),
+]
+var threeway_noE: Array[PackedScene] = [
+	preload("res://scenes/map/templates/ThreewayNoE.tscn"),
+]
+var threeway_noS: Array[PackedScene] = [
+	preload("res://scenes/map/templates/ThreewayNoS.tscn"),
+]
 var threeway_noW: Array[PackedScene] = [
-	preload("res://scenes/map/templates/Threeway.tscn"),
+	preload("res://scenes/map/templates/ThreewayNoW.tscn"),
 ]
 var fulls: Array[PackedScene] = [
 	preload("res://scenes/map/templates/Fullroom.tscn"),
