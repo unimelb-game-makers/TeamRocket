@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://spuhih5te5ck"]
 
-[ext_resource type="Texture2D" uid="uid://bq023t7kr6wbr" path="res://assets/Park/Objects/streetlight left.png" id="1_8ekiq"]
+[ext_resource type="Texture2D" uid="uid://bq023t7kr6wbr" path="res://assets/map/city/streetlight left.png" id="1_8ekiq"]
 [ext_resource type="Texture2D" uid="uid://digqpopb1qno3" path="res://assets/light_cone.jpg" id="2_2akhm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oktnb"]

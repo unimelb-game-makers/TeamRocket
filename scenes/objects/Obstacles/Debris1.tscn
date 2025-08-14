@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://vk8s3qx7g5vu"]
 
-[ext_resource type="Texture2D" uid="uid://dmt3obw43vw4n" path="res://assets/Park/Objects/debris 1.png" id="1_m8u4t"]
+[ext_resource type="Texture2D" uid="uid://dmt3obw43vw4n" path="res://assets/map/city/debris 1.png" id="1_m8u4t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgr28"]
 size = Vector2(352, 107)

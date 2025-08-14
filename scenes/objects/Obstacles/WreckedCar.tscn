@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://br568ky0qtqak"]
 
-[ext_resource type="Texture2D" uid="uid://b71my56q2ykfi" path="res://assets/Park/Objects/car 1.png" id="1_1etd7"]
+[ext_resource type="Texture2D" uid="uid://b71my56q2ykfi" path="res://assets/map/city/car 1.png" id="1_1etd7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8bqy"]
 size = Vector2(610, 162)

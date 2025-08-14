@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://kv30bbcxclw0"]
 
-[ext_resource type="Texture2D" uid="uid://dloba4qo6a1ma" path="res://assets/Park/Objects/slide.png" id="1_qttkh"]
+[ext_resource type="Texture2D" uid="uid://dloba4qo6a1ma" path="res://assets/map/city/slide.png" id="1_qttkh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgr28"]
 size = Vector2(207, 141)

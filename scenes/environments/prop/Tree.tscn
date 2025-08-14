@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0ec481wqpia1" path="res://scripts/objects/tree.gd" id="1_1nc4i"]
 [ext_resource type="Shader" uid="uid://bn08f646aj0p3" path="res://scripts/shader/2d_wind_sway.gdshader" id="1_q4ll3"]
-[ext_resource type="Texture2D" uid="uid://bnv88tnrwasp4" path="res://assets/map/prop/tree_1.png" id="2_1nc4i"]
+[ext_resource type="Texture2D" uid="uid://bnv88tnrwasp4" path="res://assets/map/park/tree_1.png" id="2_1nc4i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_de5tg"]
 shader = ExtResource("1_q4ll3")
