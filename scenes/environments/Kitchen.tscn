@@ -153,30 +153,31 @@ metadata/_edit_use_anchors_ = true
 [node name="Altar" parent="InteractableHandler/InteractableHolder" index="0" instance=ExtResource("16_7km4m")]
 position = Vector2(88, 454)
 
-[node name="PrototypeDiagram" parent="InteractableHandler/InteractableHolder" index="1" instance=ExtResource("10_0g7fq")]
-position = Vector2(528, 224)
+[node name="FryingPan_NotUsedYet" parent="InteractableHandler/InteractableHolder" index="1" instance=ExtResource("14_gr436")]
+z_index = 1
+position = Vector2(549, 231)
 
-[node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("20_twwyk")]
+[node name="PrototypeDiagram" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("10_0g7fq")]
+z_index = 1
+position = Vector2(461, 507)
+
+[node name="AssemblyPlate" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("20_twwyk")]
 z_index = 1
 position = Vector2(832, 492)
 
-[node name="ChoppingBoard" parent="InteractableHandler/InteractableHolder" index="3" instance=ExtResource("13_y6d8o")]
+[node name="ChoppingBoard" parent="InteractableHandler/InteractableHolder" index="4" instance=ExtResource("13_y6d8o")]
 z_index = 1
-position = Vector2(521, 503)
+position = Vector2(626, 503)
 
-[node name="Pot" parent="InteractableHandler/InteractableHolder" index="4" instance=ExtResource("14_l7h17")]
-position = Vector2(712, 244)
+[node name="Pot" parent="InteractableHandler/InteractableHolder" index="5" instance=ExtResource("14_l7h17")]
+position = Vector2(795, 231)
 
-[node name="Fridge" parent="InteractableHandler/InteractableHolder" index="5" instance=ExtResource("14_12asn")]
+[node name="Fridge" parent="InteractableHandler/InteractableHolder" index="6" instance=ExtResource("14_12asn")]
 position = Vector2(1030, 195)
 
-[node name="Oven_NotUsedYet" parent="InteractableHandler/InteractableHolder" index="6" instance=ExtResource("13_8r8q0")]
-visible = false
-position = Vector2(98, 1078)
-
-[node name="FryingPan_NotUsedYet" parent="InteractableHandler/InteractableHolder" index="7" instance=ExtResource("14_gr436")]
-visible = false
-position = Vector2(241, 1078)
+[node name="Oven" parent="InteractableHandler/InteractableHolder" index="7" instance=ExtResource("13_8r8q0")]
+position = Vector2(676, 347)
+scale = Vector2(0.303124, 0.303124)
 
 [node name="Player" parent="." index="7"]
 position = Vector2(269, 549)

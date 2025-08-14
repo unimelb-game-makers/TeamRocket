@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://ci0itvpy7kfy5" path="res://resources/cooking/recipes/ingredients/stock_rec.tres" id="10_ymnrm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r2mod"]
-size = Vector2(73, 59)
+size = Vector2(73, 73)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oc6qi"]
 resource_local_to_scene = true
@@ -47,7 +47,7 @@ metadata/_custom_type_script = "uid://c0shkqininnkd"
 [node name="Pot" instance=ExtResource("1_j278a")]
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0.5, -4.5)
+position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_r2mod")
 
 [node name="Sprite2D" parent="." index="1"]

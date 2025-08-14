@@ -17,9 +17,12 @@ Baking activity
 @onready var player_cursor: Area2D = $PlayerCursor
 @onready var countdown_label: Label = $"CountDown"
 @onready var time_bar: ProgressBar = $"TimeBar"
+@onready var info_tip_label: Label = $InfoTipLabel
 
 var is_playing: bool = false
 var remaining_time: float
+var info_tip_counter: int = 1
+var info_tip_msg: Array[String] = ["Steady Your Hand!", "Stay in the Line!"]
 
 func _ready() -> void:
 	if !oven_tracing_line:
@@ -42,6 +45,7 @@ func _ready() -> void:
 		
 		# Countdown to orient the player before starting
 		countdown_label.visible = true
+		info_tip_label.visible = true
 		await run_countdown()
 		
 		start_game()
@@ -117,6 +121,7 @@ func run_countdown():
 		await get_tree().create_timer(1.0).timeout
 
 	countdown_label.visible = false
+	info_tip_label.visible = false
 
 func _determine_oven_tracing_line() -> void:
 	if force_selected:
@@ -164,3 +169,8 @@ func _convert_score_to_quality(final_score: float) -> Item.Quality:
 		return Item.Quality.EXCELLENT
 	else:
 		return Item.Quality.PERFECT
+
+
+func _on_info_tip_timer_timeout() -> void:
+	info_tip_label.text = info_tip_msg[info_tip_counter]
+	info_tip_counter = (info_tip_counter + 1)%len(info_tip_msg)
