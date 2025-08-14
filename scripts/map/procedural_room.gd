@@ -76,7 +76,6 @@ func connect_doors(directions: Array):
 	for i in range(len(doors)):
 		if (doors[i] == null):
 			continue
-		print("Connect incoming direction: " + str(directions[i]))
 		doors[i].door_direction = directions[i]
 
 func get_door_by_direction(incoming: Vector2):

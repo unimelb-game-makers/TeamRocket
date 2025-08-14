@@ -102,7 +102,6 @@ func _ready() -> void:
 	start_gen() # only grid explored here
 
 	# Debug stuff
-	print(curr_rooms)
 	var _count = 0
 	for i in range(DIM_Y):
 		var row = ""
@@ -181,8 +180,8 @@ func get_num_neighbors(_grid, current_pos: Vector2) -> int:
 
 # Room gen
 
-func get_neighbors_array(_grid, current_pos: Vector2) -> Array:
-	var arr = []
+func get_neighbors_array(_grid, current_pos: Vector2) -> Array[bool]:
+	var arr: Array[bool] = []
 	for d in DIRECTION_UNIT:
 		var neighbor = current_pos + d
 		# Door
@@ -222,7 +221,7 @@ func initialize_room(coord: Vector2, outgoing_direction: Vector2 = Vector2.ZERO)
 				# new_room_data.room_scene = fulls.pick_random()
 				room_type = RoomTypeEnum.FULL
 
-		
+
 		# Now choose the right room scene to use
 		match room_type:
 			RoomTypeEnum.DEADEND:
@@ -278,29 +277,6 @@ func initialize_room(coord: Vector2, outgoing_direction: Vector2 = Vector2.ZERO)
 	selected_room = curr_room_data.room_scene.instantiate()
 	selected_room.coord = coord
 
-	# FIXME: Replace rotate with manual rotated map
-	# Rotate room to match selected_room.sockets with neighbors_array
-	# var sockets: Array[ProceduralRoom.RoomSocketEnum] = selected_room.get_sockets()
-	# var doors = selected_room.doors
-	# var _total_rotations = 0
-	# print("Fresh Sockets: " + str(sockets))
-	# while sockets != neighbors_array:
-	# 	var temp = sockets.pop_front()
-	# 	sockets.append(temp)
-
-	# 	var temp2 = doors.pop_front()
-	# 	doors.append(temp2)
-
-	# 	selected_room.rotate(-PI / 2)
-	# 	_total_rotations += -PI / 2
-
-	# selected_room.doors = doors
-	# selected_room.sockets = sockets
-
-	# print("Aligned Sockets: " + str(sockets))
-	# print("Neighbors array: " + str(neighbors_array))
-
-	#print("Assigning DIRECTION_UNIT to doors: " + str(d))
 	selected_room.connect_doors(DIRECTION_UNIT)
 
 	# Connect the door signal to the direction
