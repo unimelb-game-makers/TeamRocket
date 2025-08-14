@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://8o63qiu2pu61" path="res://resources/cooking/recipes/ingredients/cabbage_cut_rec.tres" id="9_rub52"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdbv1"]
-size = Vector2(160, 88)
+size = Vector2(125, 88)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kdbv1"]
 resource_local_to_scene = true
@@ -41,7 +41,7 @@ metadata/_custom_type_script = "uid://c0shkqininnkd"
 y_sort_enabled = true
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, 4)
+position = Vector2(1.5, 4)
 shape = SubResource("RectangleShape2D_kdbv1")
 
 [node name="Sprite2D" parent="." index="1"]

@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="5_1byrj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlym8"]
-size = Vector2(120, 79)
+size = Vector2(87, 79)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hkfie"]
 resource_local_to_scene = true
@@ -28,7 +28,7 @@ collision_mask = 64
 script = ExtResource("2_piy3k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 0.5)
+position = Vector2(-12.5, 0.5)
 shape = SubResource("RectangleShape2D_vlym8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

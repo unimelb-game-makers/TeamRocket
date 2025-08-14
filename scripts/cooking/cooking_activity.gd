@@ -30,4 +30,5 @@ func minigame_complete() -> void:
 func finish(rating: Item.Quality):
 	complete.emit(rating)
 	is_playing_minigame.emit(false)
-	Globals.kitchen.toggle_music_theme(false)
+	if Globals.kitchen:
+		Globals.kitchen.toggle_music_theme(false)
