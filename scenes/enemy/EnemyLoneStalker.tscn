@@ -173,6 +173,9 @@ debug_color = Color(0.701961, 0.00392157, 0.0196078, 0.25098)
 [node name="StopRunTimer" type="Timer" parent="." index="11"]
 one_shot = true
 
+[node name="AlertStatusLabel" parent="." index="14"]
+self_modulate = Color(1, 1, 1, 0)
+
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Active/Chase" to="." method="_on_chase_state_exited"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Active/Runaway" to="." method="_on_runaway_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Active/Runaway" to="." method="_on_runaway_state_exited"]
