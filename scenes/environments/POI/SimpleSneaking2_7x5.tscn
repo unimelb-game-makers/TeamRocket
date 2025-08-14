@@ -73,7 +73,6 @@ position = Vector2(217, 622)
 position = Vector2(337, 636)
 
 [node name="Tree" parent="InteractableHolder" index="19" instance=ExtResource("3_jx7rc")]
-z_index = 1
 position = Vector2(1051, 853)
 
 [node name="BigBush2" parent="InteractableHolder" index="20" instance=ExtResource("4_eohn2")]
@@ -111,7 +110,7 @@ position = Vector2(1090, 111)
 
 [node name="Crate2" parent="InteractableHolder" index="31" instance=ExtResource("5_vcho0")]
 z_index = 1
-position = Vector2(912, 851)
+position = Vector2(928, 944)
 
 [node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("6_xgicb")]
 position = Vector2(766, 620)

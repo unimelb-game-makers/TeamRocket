@@ -15,5 +15,6 @@ tile_set = ExtResource("2_t0uyp")
 position = Vector2(232, -24)
 
 [node name="InteractableHolder" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
