@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=4 uid="uid://cvns6xeirhb6f"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_njro4"]
+[ext_resource type="PackedScene" uid="uid://0uavytjespo" path="res://scenes/objects/Obstacles/FoodTruck.tscn" id="2_ifaih"]
+[ext_resource type="PackedScene" uid="uid://bn0h4ghumvrgf" path="res://scenes/objects/Interactables/ExplosiveBarrel.tscn" id="3_hw8hr"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="4_3p5ea"]
+[ext_resource type="PackedScene" uid="uid://bli2y1gxqfdxi" path="res://scenes/objects/Obstacles/FoodStallTable.tscn" id="5_3d0o1"]
+[ext_resource type="PackedScene" uid="uid://bli2y1gxqfdxi" path="res://scenes/objects/Obstacles/FoodStallStool.tscn" id="6_cihtc"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="7_of5p4"]
+[ext_resource type="PackedScene" uid="uid://c6jq64hs6hvtm" path="res://scenes/enemy/EnemySpider.tscn" id="8_xd36h"]
+[ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/EnemyDasher.tscn" id="9_8yfms"]
+[ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="10_4i60q"]
+
+[node name="City1_variant_4x9" instance=ExtResource("1_njro4")]
+potential_enter_direction = 3
+
+[node name="TileMap" parent="." index="0"]
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAIAAAABAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAEAAgAAAAIAAAACAAIAAgAAAAIAAAACAAMAAgAAAAIAAAAAAAEAAgAAAAIAAAAAAAIAAgAAAAIAAAAAAAMAAgAAAAIAAAABAAMAAgAAAAIAAAADAAMAAgAAAAIAAAAEAAMAAgAAAAIAAAAFAAMAAgAAAAIAAAAGAAMAAgAAAAIAAAAGAAIAAgAAAAIAAAAFAAIAAgAAAAIAAAAEAAIAAgAAAAIAAAADAAIAAgAAAAIAAAABAAIAAgAAAAIAAAABAAEAAgAAAAIAAAADAAEAAgAAAAIAAAAEAAEAAgAAAAIAAAAFAAEAAgAAAAIAAAAGAAEAAgAAAAIAAAAGAAAAAgAAAAIAAAAFAAAAAgAAAAIAAAAEAAAAAgAAAAIAAAAHAAAAAgAAAAIAAAAHAAEAAgAAAAIAAAAHAAIAAgAAAAIAAAAHAAMAAgAAAAIAAAADAAAAAgAAAAIAAAAIAAMAAgAAAAIAAAAIAAIAAgAAAAIAAAAIAAEAAgAAAAIAAAAIAAAAAgAAAAIAAAA=")
+
+[node name="FoodTruck" parent="InteractableHolder" index="0" instance=ExtResource("2_ifaih")]
+position = Vector2(638, 657)
+
+[node name="ExplosiveBarrel" parent="InteractableHolder" index="1" instance=ExtResource("3_hw8hr")]
+position = Vector2(1296, 859)
+
+[node name="Crate" parent="InteractableHolder" index="2" instance=ExtResource("4_3p5ea")]
+position = Vector2(319, 254)
+
+[node name="FoodStallTable" parent="InteractableHolder" index="3" instance=ExtResource("5_3d0o1")]
+position = Vector2(1592, 233)
+
+[node name="FoodStallTable2" parent="InteractableHolder" index="4" instance=ExtResource("5_3d0o1")]
+position = Vector2(2046, 450)
+
+[node name="FoodStallTable3" parent="InteractableHolder" index="5" instance=ExtResource("5_3d0o1")]
+position = Vector2(1569, 664)
+
+[node name="FoodStallTable4" parent="InteractableHolder" index="6" instance=ExtResource("6_cihtc")]
+position = Vector2(1530, 160)
+
+[node name="FoodStallTable5" parent="InteractableHolder" index="7" instance=ExtResource("6_cihtc")]
+position = Vector2(1673, 160)
+
+[node name="FoodStallTable6" parent="InteractableHolder" index="8" instance=ExtResource("6_cihtc")]
+position = Vector2(2095, 546)
+
+[node name="FoodStallTable7" parent="InteractableHolder" index="9" instance=ExtResource("6_cihtc")]
+position = Vector2(1998, 345)
+
+[node name="FoodStallTable8" parent="InteractableHolder" index="10" instance=ExtResource("6_cihtc")]
+position = Vector2(1488, 582)
+
+[node name="FoodStallTable9" parent="InteractableHolder" index="11" instance=ExtResource("6_cihtc")]
+position = Vector2(1685, 734)
+
+[node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("7_of5p4")]
+position = Vector2(955, 138)
+allowed_enemies = Array[PackedScene]([ExtResource("8_xd36h"), ExtResource("9_8yfms"), ExtResource("10_4i60q")])
+radius = 20.0
+
+[node name="SpawnArea2D2" parent="SpawnHolder" index="1" instance=ExtResource("7_of5p4")]
+position = Vector2(2025, 860)
+allowed_enemies = Array[PackedScene]([ExtResource("8_xd36h"), ExtResource("10_4i60q")])
+radius = 20.0

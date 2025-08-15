@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=4 uid="uid://d2wx8w6dc3lom"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_vsjy2"]
+[ext_resource type="PackedScene" uid="uid://p6jrdiqo23p1" path="res://scenes/objects/Obstacles/WreckedCar3.tscn" id="2_0gc30"]
+[ext_resource type="PackedScene" uid="uid://dq24gg2b0ikv0" path="res://scenes/objects/Obstacles/TrashBinSpilled.tscn" id="4_chdx8"]
+[ext_resource type="PackedScene" uid="uid://b0jgd5d73o3ch" path="res://scenes/objects/misc/Fire.tscn" id="5_wjq10"]
+
+[node name="City2_3x3" instance=ExtResource("1_vsjy2")]
+
+[node name="TileMap" parent="." index="0"]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAIAAAAAAAEAAgAAAAIAAAAAAAIAAgAAAAIAAAABAAIAAgAAAAIAAAABAAEAAgAAAAIAAAABAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAEAAgAAAAIAAAACAAIAAgAAAAIAAAA=")
+
+[node name="WreckedCar" parent="InteractableHolder" index="0" instance=ExtResource("2_0gc30")]
+position = Vector2(453, 498)
+
+[node name="Fire" parent="InteractableHolder" index="1" instance=ExtResource("5_wjq10")]
+position = Vector2(369, 363)
+
+[node name="TrashBinSpilled" parent="InteractableHolder" index="2" instance=ExtResource("4_chdx8")]
+position = Vector2(185, 330)
+rotation = 3.14159
+scale = Vector2(1, -1)

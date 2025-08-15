@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b0mj75rlxuyqm" path="res://scenes/environments/POI/Medium4x3_2.tscn" id="3_amx0r"]
 [ext_resource type="PackedScene" uid="uid://dtrm38nc0yg62" path="res://scenes/environments/POI/SneakHalf_6x7.tscn" id="3_ar6wf"]
 [ext_resource type="PackedScene" uid="uid://cuqeayjyckxv7" path="res://scenes/environments/POI/SimpleSneaking_7x5.tscn" id="3_bn5q2"]
-[ext_resource type="PackedScene" uid="uid://bfrnhnbh0r6vl" path="res://scenes/environments/POI/ParkAndTrees_11x8.tscn" id="3_jjk7w"]
 [ext_resource type="PackedScene" uid="uid://cn1ed6h771p76" path="res://scenes/environments/POI/SimpleSneaking2_7x5.tscn" id="3_ns1uk"]
 [ext_resource type="PackedScene" uid="uid://bwh4g2fpsfyjn" path="res://scenes/environments/POI/SimpleSquareNE_4x4.tscn" id="5_3rjle"]
 [ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="5_amx0r"]
@@ -31,7 +30,7 @@ unique_poi_chance_perc = 100
 unique_poi_dict = Dictionary[int, PackedScene]({
 1: ExtResource("10_3rjle")
 })
-possible_medium_poi_spawn = Array[PackedScene]([ExtResource("3_jjk7w"), ExtResource("3_ns1uk"), ExtResource("3_bn5q2"), ExtResource("3_ar6wf"), ExtResource("2_ar6wf"), ExtResource("2_cvc7y"), ExtResource("2_3rjle"), ExtResource("5_3rjle"), ExtResource("3_amx0r"), ExtResource("5_3rjle"), ExtResource("7_bn5q2")])
+possible_medium_poi_spawn = Array[PackedScene]([ExtResource("3_ns1uk"), ExtResource("3_bn5q2"), ExtResource("3_ar6wf"), ExtResource("2_ar6wf"), ExtResource("2_cvc7y"), ExtResource("2_3rjle"), ExtResource("5_3rjle"), ExtResource("3_amx0r"), ExtResource("5_3rjle"), ExtResource("7_bn5q2")])
 unique_poi_spawn = NodePath("UniquePoiMarker")
 medium_poi_spawn = NodePath("MediumPOISpawn")
 metadata/_edit_horizontal_guides_ = [738.0]
@@ -57,7 +56,7 @@ rotation = -1.57079
 [node name="MediumPOISpawn" type="Marker2D" parent="." index="5"]
 position = Vector2(-2032, -496)
 
-[node name="PlayerSpawn" parent="." index="6"]
+[node name="PlayerSpawn" parent="." index="7"]
 position = Vector2(712, -160)
 
 [node name="Bush" parent="InteractableHolder" index="0" instance=ExtResource("5_amx0r")]
@@ -72,19 +71,11 @@ position = Vector2(-1048, 2520)
 [node name="Bush4" parent="InteractableHolder" index="3" instance=ExtResource("5_amx0r")]
 position = Vector2(1928, 2440)
 
-[node name="WreckedCar" parent="InteractableHolder" index="4" instance=ExtResource("15_elmd0")]
-position = Vector2(804, 1671)
-
-[node name="NavigationRegion2D" parent="." index="8"]
-navigation_polygon = SubResource("NavigationPolygon_dq2p3")
-
 [node name="UniquePoiMarker" type="Marker2D" parent="." index="9"]
 position = Vector2(1408, -304)
 
-[node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("16_mj8h1")]
-position = Vector2(784, 2680)
-allowed_enemies = Array[PackedScene]([ExtResource("17_g0804")])
-radius = 200.0
+[node name="NavigationRegion2D" parent="." index="10"]
+navigation_polygon = SubResource("NavigationPolygon_dq2p3")
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]

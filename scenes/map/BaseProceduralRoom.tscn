@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnqxqnaid3q3a"]
+[gd_scene load_steps=4 format=3 uid="uid://dnqxqnaid3q3a"]
 
 [ext_resource type="Script" uid="uid://chbh13wl1vyn6" path="res://scripts/map/procedural_room.gd" id="1_t0uyp"]
 [ext_resource type="TileSet" uid="uid://bi1t15nj76caa" path="res://scenes/map/base_map_tileset.tres" id="2_t0uyp"]
+[ext_resource type="TileSet" uid="uid://w07deg4gthkr" path="res://scenes/environments/POI/base_wall_tileset.tres" id="3_hdygl"]
 
 [node name="BaseProceduralRoom" type="Node2D" node_paths=PackedStringArray("player_spawn")]
 script = ExtResource("1_t0uyp")
@@ -10,6 +11,11 @@ player_spawn = NodePath("PlayerSpawn")
 [node name="TileMap" type="TileMapLayer" parent="."]
 z_index = -1
 tile_set = ExtResource("2_t0uyp")
+
+[node name="SuppTileMap" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("3_hdygl")
+use_kinematic_bodies = true
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(232, -24)

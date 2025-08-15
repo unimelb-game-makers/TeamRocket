@@ -2,8 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_brl46"]
 [ext_resource type="Script" uid="uid://caq8ki1bk05u5" path="res://scripts/map/map_generator.gd" id="2_v5udi"]
-[ext_resource type="PackedScene" uid="uid://blinvj234kwwq" path="res://scenes/map/map_tile_variations/DeadEndCity.tscn" id="3_tgqyt"]
+[ext_resource type="PackedScene" uid="uid://dxgkngfxhj1cm" path="res://scenes/map/map_tile_variations/FullroomGreenCity2.tscn" id="3_tgqyt"]
 
 [node name="CityGeneratedMap" instance=ExtResource("1_brl46")]
 script = ExtResource("2_v5udi")
+is_debug = true
 debug_map_room_scene = ExtResource("3_tgqyt")
