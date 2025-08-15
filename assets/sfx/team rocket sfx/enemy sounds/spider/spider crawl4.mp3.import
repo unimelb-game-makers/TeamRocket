@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://duwj84byumqwd"
+path="res://.godot/imported/spider crawl4.mp3-bb41bd3c7357d9196344689645b03c26.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/spider/spider crawl4.mp3"
+dest_files=["res://.godot/imported/spider crawl4.mp3-bb41bd3c7357d9196344689645b03c26.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

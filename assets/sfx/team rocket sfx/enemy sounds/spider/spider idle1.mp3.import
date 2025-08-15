@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0fgxkj2bifyr"
+path="res://.godot/imported/spider idle1.mp3-877e7ad467a31d6f730099c4dfd9f594.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/spider/spider idle1.mp3"
+dest_files=["res://.godot/imported/spider idle1.mp3-877e7ad467a31d6f730099c4dfd9f594.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

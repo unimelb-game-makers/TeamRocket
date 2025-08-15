@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://war51j67jorw"
+path="res://.godot/imported/raven a-1.mp3-e9cda70ea4179ee94c0ecfe2415b532e.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/raven/mp3 files/raven a-1.mp3"
+dest_files=["res://.godot/imported/raven a-1.mp3-e9cda70ea4179ee94c0ecfe2415b532e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

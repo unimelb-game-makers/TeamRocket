@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bpvrpwnplmiys"
+path="res://.godot/imported/rat monarch death2.ogg-d5b7c741a5e884fdd7917aa1287ef364.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch death2.ogg"
+dest_files=["res://.godot/imported/rat monarch death2.ogg-d5b7c741a5e884fdd7917aa1287ef364.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

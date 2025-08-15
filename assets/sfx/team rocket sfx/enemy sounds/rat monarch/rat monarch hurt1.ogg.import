@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://3ddb70o0fa85"
+path="res://.godot/imported/rat monarch hurt1.ogg-9270a57b93f87b222686752a9b887047.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch hurt1.ogg"
+dest_files=["res://.godot/imported/rat monarch hurt1.ogg-9270a57b93f87b222686752a9b887047.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

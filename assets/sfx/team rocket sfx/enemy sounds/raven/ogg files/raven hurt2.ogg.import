@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://3pvfx36xwdgr"
+path="res://.godot/imported/raven hurt2.ogg-2e723386b167580329e0572581048f23.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/raven/ogg files/raven hurt2.ogg"
+dest_files=["res://.godot/imported/raven hurt2.ogg-2e723386b167580329e0572581048f23.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
