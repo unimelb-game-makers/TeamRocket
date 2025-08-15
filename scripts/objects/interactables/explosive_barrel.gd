@@ -4,13 +4,22 @@ extends StaticBody2D
 @export var explosion_damage: int = 100
 
 @onready var explosion_range: Area2D = $ExplosionRange
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func damage(_value: int, _damage_source_position: Vector2 = Vector2.ZERO):
 	var fire_inst = fire_scene.instantiate()
 	get_tree().get_root().call_deferred("add_child", fire_inst)
 	fire_inst.global_position = global_position
-	# TODO: Play explosive VFX and SFX here
+	audio_player.play()
+	# TODO: Play explosive VFX here
 	call_deferred("explosion")
+	visible = false
+	for child in get_children():
+		if child is CollisionShape2D:
+			child.set_deferred("disabled", true)
+		elif child is Area2D:
+			child.set_deferred("disabled", true)
+	await get_tree().create_timer(3).timeout
 	call_deferred("queue_free")
 
 func _on_environment_hitbox_damaged(value: int, damage_source_position: Vector2) -> void:
