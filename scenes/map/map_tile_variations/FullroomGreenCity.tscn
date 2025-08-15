@@ -27,7 +27,7 @@ vertices = PackedVector2Array(3445.95, -614.047, 3430.04, 3182.04, -2205.97, 320
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-2208, -656, 3456, -624, 3440, 3192, -2216, 3216)])
 
-[node name="FullRoomCityIntersection" node_paths=PackedStringArray("doors", "medium_poi_spawn") instance=ExtResource("1_uymnt")]
+[node name="FullRoomGreenCity" node_paths=PackedStringArray("doors", "medium_poi_spawn") instance=ExtResource("1_uymnt")]
 y_sort_enabled = true
 room_name = "Fullroom"
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]

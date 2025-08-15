@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://0uavytjespo"]
+
+[ext_resource type="Texture2D" uid="uid://cvdag7blllh8" path="res://assets/map/city/food_truck.png" id="1_76xxx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgr28"]
+size = Vector2(1039.5, 130.5)
+
+[node name="FoodTruck" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, -26)
+texture = ExtResource("1_76xxx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-0.5, -26)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, 196)
+shape = SubResource("RectangleShape2D_sgr28")

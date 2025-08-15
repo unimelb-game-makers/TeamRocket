@@ -137,6 +137,7 @@ position = Vector2(2186, -56)
 
 [node name="Fire3" parent="InteractableHolder" index="22" instance=ExtResource("24_sw2kn")]
 position = Vector2(2277, 45)
+is_permanent = true
 
 [node name="UniquePoiMarker" type="Marker2D" parent="." index="9"]
 position = Vector2(1408, -304)

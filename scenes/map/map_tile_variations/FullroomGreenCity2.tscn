@@ -1,0 +1,194 @@
+[gd_scene load_steps=33 format=4 uid="uid://dxgkngfxhj1cm"]
+
+[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_nwmmy"]
+[ext_resource type="PackedScene" uid="uid://bwh4g2fpsfyjn" path="res://scenes/environments/POI/SimpleSquareNE_4x4.tscn" id="2_lj5tp"]
+[ext_resource type="PackedScene" uid="uid://dtrm38nc0yg62" path="res://scenes/environments/POI/SneakHalf_6x7.tscn" id="2_p7k7w"]
+[ext_resource type="PackedScene" uid="uid://dsttkpncwxmpe" path="res://scenes/environments/POI/SneakHalf_6x7_mirrored.tscn" id="3_774rc"]
+[ext_resource type="PackedScene" uid="uid://bwo8jsuqn8111" path="res://scenes/environments/POI/SimpleSquareNW_4x4.tscn" id="3_fuobv"]
+[ext_resource type="PackedScene" uid="uid://b2xxuuinc0yrn" path="res://scenes/environments/POI/SimpleSquareSE_4x4.tscn" id="4_tbttm"]
+[ext_resource type="PackedScene" uid="uid://cvg4v5goggodd" path="res://scenes/environments/POI/SimpleSquareSW_4x4.tscn" id="5_x6em2"]
+[ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="8_84fou"]
+[ext_resource type="PackedScene" uid="uid://bn0h4ghumvrgf" path="res://scenes/objects/Interactables/ExplosiveBarrel.tscn" id="9_wa3pg"]
+[ext_resource type="PackedScene" uid="uid://g5jyjoj7evob" path="res://scenes/environments/prop/TreeType3.tscn" id="9_wo2iw"]
+[ext_resource type="PackedScene" uid="uid://dhcbhl751xhm" path="res://scenes/environments/prop/TreeType4.tscn" id="10_nwmmy"]
+[ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="11_lj5tp"]
+[ext_resource type="PackedScene" uid="uid://spuhih5te5ck" path="res://scenes/objects/Lights/StreetlightLeft.tscn" id="11_rg6er"]
+[ext_resource type="PackedScene" uid="uid://drxotm8osb7q0" path="res://scenes/objects/Lights/StreetlightRight.tscn" id="12_arets"]
+[ext_resource type="PackedScene" uid="uid://bxhx21f0uymat" path="res://scenes/environments/prop/BigBush.tscn" id="12_fuobv"]
+[ext_resource type="PackedScene" uid="uid://ctpickf81rn6t" path="res://scenes/objects/Lights/StreetlightDown.tscn" id="13_erc3k"]
+[ext_resource type="PackedScene" uid="uid://c0acap2jmh2f" path="res://scenes/objects/Lights/StreetlightUp.tscn" id="14_2ldee"]
+[ext_resource type="PackedScene" uid="uid://dkfjhisyc7nvq" path="res://scenes/environments/prop/TreeType2.tscn" id="14_bpiwv"]
+[ext_resource type="PackedScene" uid="uid://c5kibcifdpl41" path="res://scenes/objects/Obstacles/BusStop.tscn" id="15_4p6rr"]
+[ext_resource type="PackedScene" uid="uid://cca4vmq1qi27o" path="res://scenes/objects/Sandbox.tscn" id="18_l8x4e"]
+[ext_resource type="PackedScene" uid="uid://dq24gg2b0ikv0" path="res://scenes/objects/Obstacles/TrashBinSpilled.tscn" id="19_b3n0y"]
+[ext_resource type="PackedScene" uid="uid://kv30bbcxclw0" path="res://scenes/objects/Slide.tscn" id="19_jkf8e"]
+[ext_resource type="PackedScene" uid="uid://b0jgd5d73o3ch" path="res://scenes/objects/misc/Fire.tscn" id="20_et0jp"]
+[ext_resource type="PackedScene" uid="uid://dpnpt3tyed25k" path="res://scenes/objects/Swing.tscn" id="20_wo2iw"]
+[ext_resource type="PackedScene" uid="uid://dbhoxusajjmks" path="res://scenes/objects/Obstacles/RoadBlockV.tscn" id="21_d7y5b"]
+[ext_resource type="PackedScene" uid="uid://ddkuhf65ih2sw" path="res://scenes/objects/Obstacles/TrashBin.tscn" id="21_nwmmy"]
+[ext_resource type="PackedScene" uid="uid://bar28rmset6q3" path="res://scenes/objects/Obstacles/LogVertical.tscn" id="22_l8x4e"]
+[ext_resource type="PackedScene" uid="uid://clluqb6vkwv8p" path="res://scenes/objects/Obstacles/LogHorizontal.tscn" id="23_jkf8e"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="24_c6vmq"]
+[ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="25_fuobv"]
+[ext_resource type="PackedScene" uid="uid://bdrwyr3m3l6gx" path="res://scenes/environments/prop/TreeType1.tscn" id="31_11eio"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dq2p3"]
+vertices = PackedVector2Array(3445.95, -614.047, 3430.04, 3182.04, -2205.97, 3205.95, -2198.02, -645.938)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2208, -656, 3456, -624, 3440, 3192, -2216, 3216)])
+
+[node name="FullRoomGreenCity" node_paths=PackedStringArray("doors", "medium_poi_spawn", "large_poi_spawn") instance=ExtResource("1_nwmmy")]
+y_sort_enabled = true
+room_name = "Fullroom"
+doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
+unique_poi_chance_perc = 100
+possible_medium_poi_spawn = Array[PackedScene]([ExtResource("2_p7k7w"), ExtResource("3_774rc")])
+possible_large_poi_spawn = Array[PackedScene]([ExtResource("2_lj5tp"), ExtResource("3_fuobv"), ExtResource("4_tbttm"), ExtResource("5_x6em2")])
+medium_poi_spawn = NodePath("MediumPOISpawn")
+large_poi_spawn = NodePath("Med2POISpawn")
+metadata/_edit_horizontal_guides_ = [738.0]
+
+[node name="TileMap" parent="." index="0"]
+z_index = -10
+tile_map_data = PackedByteArray("AAAEAAMAAAAAAAEAAFADAAMAAAAAAAIAAFACAAMAAAAAAAIAAFABAAMAAAAAAAIAAFAFAAMAAAAAAAIAAFADAP7/AAAAAAIAAAADAP//AAAAAAIAAAADAAAAAAAAAAIAAAADAAEAAAAAAAEAAAADAAIAAAAAAAAAAGABAAIAAAAAAAIAAFACAP7/AAAAAAIAAAABAP7/AAAEAAEAAAABAP//AAAEAAEAAAABAAAAAAAEAAEAAAABAAEAAAAEAAIAAAAFAP7/AgAAAAIAAAAFAP//AgAAAAIAAAAFAAAAAgAAAAIAAAAFAAEAAAADAAIAAAAFAAIAAAAAAAIAAFD//wYAAAAAAAIAADAFAAQAAAADAAAAAAAFAAUAAAABAAIAAAAFAAYAAAABAAIAAAACAP//AAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAEAAAACAAIAAAAAAAAAADAEAAIAAAAAAAEAAFAEAAEAAAACAAIAAAAEAAAAAAACAAEAAAAEAP//AAACAAEAAAAEAP7/AAACAAEAAAD//wUAAAAAAAIAAAD7/wUAAAADAAIAAAD7/wYAAAAAAAIAAFAEAAUAAAABAAIAAAAEAAQAAAADAAAAAAADAAUAAAABAAIAAAADAAQAAAADAAAAAAACAAUAAAABAAIAAAACAAQAAAADAAAAAAABAAUAAAABAAIAAAABAAQAAAADAAAAAAAAAAUAAAACAAEAAAAEAAYAAAABAAIAAAADAAYAAAABAAIAAAACAAYAAAABAAIAAAABAAYAAAABAAIAAAAAAAYAAAACAAEAAAD+/wUAAAAAAAIAAAD9/wUAAAAEAAIAAAD8/wUAAAADAAIAAAD+/wYAAAAAAAAAADD9/wYAAAAAAAEAAFD8/wYAAAAAAAIAAFD//wkAAAAAAAIAADD//woAAAAAAAIAADD4/wUAAAADAAIAAAD4/wYAAAAAAAIAAFD4/wcAAAAAAAIAAFD4/wgAAAADAAAAAAD4/wkAAAADAAEAAAD5/wUAAAADAAIAAAD5/wYAAAAAAAIAAFD5/wcAAAAAAAIAAFD5/wgAAAADAAAAAAD5/wkAAAABAAIAAAD6/wUAAAADAAIAAAD6/wYAAAAAAAIAAFD6/wcAAAAAAAIAAFD6/wgAAAADAAAAAAD7/wcAAAAAAAIAAFD7/wgAAAADAAAAAAD7/wkAAAABAAIAAAD8/wcAAAAAAAIAAFD8/wgAAAADAAAAAAD8/wkAAAADAAEAAAD9/wcAAAAAAAEAAFD9/wgAAAAEAAAAAAD9/wkAAAAEAAEAAAD+/wcAAAAAAAAAAFD+/wgAAAAAAAEAAAD+/wkAAAAAAAIAADD//wcAAAAAAAIAADD//wgAAAAAAAEAAAAAAAcAAAACAAEAAAAAAAgAAAACAAEAAAAAAAkAAAACAAEAAAD4/woAAAADAAEAAAD4/wsAAAABAAIAAAD5/woAAAADAAEAAAD5/wsAAAADAAEAAAD6/woAAAADAAEAAAD8/woAAAABAAIAAAD8/wsAAAADAAEAAAD9/woAAAAEAAEAAAD9/wsAAAAEAAEAAAD+/woAAAAAAAIAADD+/wsAAAAAAAIAADD//wsAAAAAAAIAADAAAAoAAAACAAEAAAAAAAsAAAACAAEAAAABAAcAAAABAAIAAAABAAgAAAABAAIAAAABAAkAAAABAAIAAAABAAoAAAABAAIAAAABAAsAAAABAAIAAAACAAcAAAABAAIAAAACAAgAAAABAAIAAAACAAkAAAABAAIAAAACAAoAAAABAAIAAAACAAsAAAABAAIAAAADAAcAAAABAAIAAAADAAgAAAABAAIAAAADAAkAAAABAAIAAAADAAoAAAABAAIAAAADAAsAAAABAAIAAAAEAAcAAAABAAIAAAAEAAgAAAABAAIAAAAEAAkAAAABAAIAAAAEAAoAAAABAAIAAAAEAAsAAAABAAIAAAAFAAcAAAABAAIAAAAFAAgAAAABAAIAAAAFAAkAAAABAAIAAAAFAAoAAAABAAIAAAAFAAsAAAABAAIAAAAGAAEAAAADAAIAAAAGAAIAAAAAAAIAAFAGAAMAAAAAAAIAAFAGAAQAAAADAAAAAAAGAAUAAAABAAIAAAAGAAYAAAABAAIAAAAGAAcAAAABAAIAAAAGAAgAAAABAAIAAAAGAAkAAAABAAIAAAAGAAoAAAABAAIAAAAGAAsAAAABAAIAAAAHAAEAAAADAAIAAAAHAAIAAAAAAAIAAFAHAAMAAAAAAAIAAFAHAAQAAAADAAAAAAAHAAUAAAABAAIAAAAHAAYAAAABAAIAAAAHAAcAAAABAAIAAAAHAAgAAAABAAIAAAAHAAkAAAABAAIAAAAHAAoAAAABAAIAAAAHAAsAAAABAAIAAAAIAAEAAAADAAIAAAAIAAIAAAAAAAIAAFAIAAMAAAAAAAIAAFAIAAQAAAADAAAAAAAIAAUAAAABAAIAAAAIAAYAAAABAAIAAAAIAAcAAAABAAIAAAAIAAgAAAABAAIAAAAIAAkAAAABAAIAAAAIAAoAAAABAAIAAAAIAAsAAAABAAIAAAAJAAEAAAADAAIAAAAJAAIAAAAAAAIAAFAJAAMAAAAAAAIAAFAJAAQAAAADAAAAAAAJAAUAAAABAAIAAAAJAAYAAAABAAIAAAAJAAcAAAABAAIAAAAJAAgAAAABAAIAAAAJAAkAAAABAAIAAAAJAAoAAAABAAIAAAAJAAsAAAABAAIAAAAGAP7/AgAAAAIAAAAGAP//AgAAAAIAAAAGAAAAAgAAAAIAAAAHAP7/AgAAAAIAAAAHAP//AgAAAAIAAAAHAAAAAgAAAAIAAAAIAP7/AgAAAAIAAAAIAP//AgAAAAIAAAAIAAAAAgAAAAIAAAAJAP7/AgAAAAIAAAAJAP//AgAAAAIAAAAJAAAAAgAAAAIAAAD3//3/AAABAAEAAAD4//3/AAABAAEAAAD5//3/AAABAAEAAAD6//3/AAABAAEAAAD7//3/AAABAAEAAAD8//3/AAABAAEAAAD9//3/AAABAAEAAAD+//3/AAABAAEAAAD///3/AAABAAEAAAAAAP3/AAABAAEAAAABAP3/AAABAAEAAAACAP3/AAABAAEAAAADAP3/AAABAAEAAAAEAP3/AAABAAEAAAAFAP3/AAABAAEAAAAGAP3/AAABAAEAAAAHAP3/AAABAAEAAAAIAP3/AAABAAEAAAAJAP3/AAABAAEAAAAKAP3/AAABAAEAAAAKAP7/AgAAAAIAAAAKAP//AgAAAAIAAAAKAAAAAgAAAAIAAAAKAAEAAAADAAIAAAAKAAIAAAAAAAIAAFAKAAMAAAAAAAIAAFAKAAQAAAADAAAAAAAKAAUAAAABAAIAAAAKAAYAAAABAAIAAAAKAAcAAAABAAIAAAAKAAgAAAABAAIAAAAKAAkAAAABAAIAAAAKAAoAAAABAAIAAAAKAAsAAAABAAIAAAAKAAwAAAABAAEAAAD3/wwAAAABAAEAAAD4/wwAAAABAAEAAAD5/wwAAAABAAEAAAD6/wwAAAABAAEAAAD7/wwAAAABAAEAAAD8/wwAAAABAAEAAAD9/wwAAAABAAEAAAD+/wwAAAABAAEAAAD//wwAAAABAAEAAAAAAAwAAAABAAEAAAABAAwAAAABAAEAAAACAAwAAAABAAEAAAADAAwAAAABAAEAAAAEAAwAAAABAAEAAAAFAAwAAAABAAEAAAAGAAwAAAABAAEAAAAHAAwAAAABAAEAAAAIAAwAAAABAAEAAAAJAAwAAAABAAEAAAD3//7/AAABAAEAAAD3////AAABAAEAAAD3/wAAAAABAAEAAAD3/wEAAAABAAEAAAD3/wIAAAABAAEAAAD3/wMAAAABAAEAAAD3/wQAAAABAAEAAAD3/wUAAAABAAEAAAD3/wYAAAABAAEAAAD3/wcAAAABAAEAAAD3/wgAAAABAAEAAAD3/wkAAAABAAEAAAD3/woAAAABAAEAAAD3/wsAAAABAAEAAAALAAUAAAABAAEAAAALAAQAAAABAAEAAAALAP7/AAABAAEAAAALAAIAAAABAAEAAAALAAEAAAABAAEAAAALAAAAAAABAAEAAAALAP//AAABAAEAAAALAAMAAAABAAEAAAALAP3/AAABAAEAAAALAAwAAAABAAEAAAALAAgAAAABAAEAAAALAAkAAAABAAEAAAALAAsAAAABAAEAAAALAAoAAAABAAEAAAALAAYAAAABAAEAAAALAAcAAAABAAEAAAD6/wkAAAABAAIAAAD7/woAAAABAAIAAAD7/wsAAAABAAIAAAD6/wsAAAABAAIAAAD4//7/AAABAAIAAAD4////AAABAAIAAAD4/wAAAAABAAIAAAD4/wEAAAABAAIAAAD4/wIAAAABAAIAAAD4/wMAAAABAAIAAAD4/wQAAAABAAIAAAD5//7/AAABAAIAAAD5////AAABAAIAAAD5/wAAAAABAAIAAAD5/wEAAAADAAEAAAD5/wIAAAABAAIAAAD5/wMAAAADAAEAAAD5/wQAAAABAAIAAAD6//7/AAABAAIAAAD6////AAABAAIAAAD6/wAAAAABAAIAAAD6/wEAAAABAAIAAAD6/wIAAAABAAIAAAD6/wMAAAABAAIAAAD6/wQAAAABAAIAAAD7//7/AAABAAIAAAD7////AAABAAIAAAD7/wAAAAADAAEAAAD7/wEAAAABAAIAAAD7/wIAAAABAAIAAAD7/wMAAAABAAIAAAD7/wQAAAABAAIAAAD8//7/AAABAAIAAAD8////AAABAAIAAAD8/wAAAAABAAIAAAD8/wEAAAABAAIAAAD8/wIAAAADAAEAAAD8/wMAAAADAAEAAAD8/wQAAAABAAIAAAD9//7/AAABAAIAAAD9////AAADAAEAAAD9/wAAAAABAAIAAAD9/wEAAAAFAAAAAAD9/wIAAAAEAAEAAAD9/wMAAAAEAAEAAAD9/wQAAAAEAAEAAAD+//7/AAADAAEAAAD+////AAABAAIAAAD+/wAAAAABAAIAAAD+/wEAAAADAAIAAAD+/wIAAAAAAAAAAAD+/wMAAAAAAAIAAAD+/wQAAAAAAAIAAAD///7/AAABAAIAAAD/////AAABAAIAAAD//wAAAAABAAIAAAD//wEAAAADAAIAAAD//wIAAAAAAAIAAFD//wMAAAAAAAAAAAD//wQAAAAAAAIAAAAAAP7/AAABAAIAAAAAAP//AAABAAIAAAAAAAAAAAABAAIAAAAAAAEAAAADAAIAAAAAAAIAAAAAAAIAAFAAAAMAAAAAAAIAAFAAAAQAAAACAAAAAAA=")
+
+[node name="DoorArea" parent="." index="1" instance=ExtResource("8_84fou")]
+position = Vector2(768, -448)
+
+[node name="DoorArea2" parent="." index="2" instance=ExtResource("8_84fou")]
+position = Vector2(2747, 769)
+rotation = 1.5708
+
+[node name="DoorArea3" parent="." index="3" instance=ExtResource("8_84fou")]
+position = Vector2(-248, 3008)
+
+[node name="DoorArea4" parent="." index="4" instance=ExtResource("8_84fou")]
+position = Vector2(-1976, 1800)
+rotation = -1.57079
+
+[node name="Med2POISpawn" type="Marker2D" parent="." index="5"]
+position = Vector2(704, 1444)
+
+[node name="MediumPOISpawn" type="Marker2D" parent="." index="6"]
+position = Vector2(-1974, 101)
+
+[node name="PlayerSpawn" parent="." index="8"]
+position = Vector2(712, -160)
+
+[node name="Streetlight" parent="InteractableHolder" index="0" instance=ExtResource("13_erc3k")]
+position = Vector2(-780, 1424)
+
+[node name="Streetlight2" parent="InteractableHolder" index="1" instance=ExtResource("14_2ldee")]
+position = Vector2(-780, 2163)
+
+[node name="Streetlight3" parent="InteractableHolder" index="2" instance=ExtResource("11_rg6er")]
+position = Vector2(1146, 221)
+
+[node name="Streetlight5" parent="InteractableHolder" index="3" instance=ExtResource("14_2ldee")]
+position = Vector2(1426, 1141)
+
+[node name="Streetlight4" parent="InteractableHolder" index="4" instance=ExtResource("12_arets")]
+position = Vector2(390, 203)
+
+[node name="Streetlight6" parent="InteractableHolder" index="5" instance=ExtResource("13_erc3k")]
+position = Vector2(1422, 417)
+
+[node name="Streetlight7" parent="InteractableHolder" index="6" instance=ExtResource("11_rg6er")]
+position = Vector2(92, 2316)
+
+[node name="Streetlight8" parent="InteractableHolder" index="7" instance=ExtResource("12_arets")]
+position = Vector2(-620, 2312)
+
+[node name="Tree" parent="InteractableHolder" index="8" instance=ExtResource("10_nwmmy")]
+position = Vector2(-1307, -23)
+
+[node name="Tree2" parent="InteractableHolder" index="9" instance=ExtResource("14_bpiwv")]
+position = Vector2(-609, -236)
+
+[node name="Tree3" parent="InteractableHolder" index="10" instance=ExtResource("9_wo2iw")]
+position = Vector2(-213, 102)
+
+[node name="BigBush" parent="InteractableHolder" index="11" instance=ExtResource("12_fuobv")]
+position = Vector2(-1125, -63)
+
+[node name="BigBush2" parent="InteractableHolder" index="12" instance=ExtResource("12_fuobv")]
+position = Vector2(-702, -143)
+
+[node name="Bush" parent="InteractableHolder" index="13" instance=ExtResource("11_lj5tp")]
+position = Vector2(-560, 53)
+
+[node name="BigBush3" parent="InteractableHolder" index="14" instance=ExtResource("12_fuobv")]
+position = Vector2(-97, -63)
+
+[node name="Sandbox" parent="InteractableHolder" index="15" instance=ExtResource("18_l8x4e")]
+position = Vector2(-1242, 2899)
+
+[node name="Slide" parent="InteractableHolder" index="16" instance=ExtResource("19_jkf8e")]
+position = Vector2(-1630, 2461)
+
+[node name="Slide2" parent="InteractableHolder" index="17" instance=ExtResource("20_wo2iw")]
+position = Vector2(-1039, 2490)
+
+[node name="TrashBin" parent="InteractableHolder" index="18" instance=ExtResource("21_nwmmy")]
+position = Vector2(-833, 2352)
+
+[node name="LogVertical" parent="InteractableHolder" index="19" instance=ExtResource("22_l8x4e")]
+position = Vector2(-1876, -187)
+
+[node name="LogHorizontal" parent="InteractableHolder" index="20" instance=ExtResource("23_jkf8e")]
+position = Vector2(-1019, -389)
+
+[node name="EnemySpawnArea2D" parent="InteractableHolder" index="21" instance=ExtResource("24_c6vmq")]
+position = Vector2(-1137, 2877)
+allowed_enemies = Array[PackedScene]([ExtResource("25_fuobv")])
+
+[node name="BusStop" parent="InteractableHolder" index="22" instance=ExtResource("15_4p6rr")]
+position = Vector2(2094, -17)
+
+[node name="TrashBinSpilled" parent="InteractableHolder" index="23" instance=ExtResource("19_b3n0y")]
+position = Vector2(2612, 185)
+
+[node name="ExplosiveBarrel" parent="InteractableHolder" index="24" instance=ExtResource("9_wa3pg")]
+position = Vector2(1839, -44)
+
+[node name="Fire" parent="InteractableHolder" index="25" instance=ExtResource("20_et0jp")]
+position = Vector2(2614, 227)
+
+[node name="RoadBlockV" parent="InteractableHolder" index="26" instance=ExtResource("21_d7y5b")]
+position = Vector2(2291, -443)
+
+[node name="RoadBlockV2" parent="InteractableHolder" index="27" instance=ExtResource("21_d7y5b")]
+position = Vector2(2288, -193)
+
+[node name="Tree4" parent="InteractableHolder" index="28" instance=ExtResource("10_nwmmy")]
+position = Vector2(2657, 1827)
+
+[node name="Tree5" parent="InteractableHolder" index="29" instance=ExtResource("31_11eio")]
+position = Vector2(410, 2981)
+
+[node name="Bush2" parent="InteractableHolder" index="30" instance=ExtResource("11_lj5tp")]
+position = Vector2(356, 2895)
+
+[node name="BigBush4" parent="InteractableHolder" index="31" instance=ExtResource("12_fuobv")]
+position = Vector2(2476, 1409)
+
+[node name="Tree6" parent="InteractableHolder" index="32" instance=ExtResource("14_bpiwv")]
+position = Vector2(2304, 1302)
+
+[node name="Tree7" parent="InteractableHolder" index="33" instance=ExtResource("14_bpiwv")]
+position = Vector2(623, 1693)
+
+[node name="Bush3" parent="InteractableHolder" index="34" instance=ExtResource("11_lj5tp")]
+position = Vector2(521, 1766)
+
+[node name="UniquePoiMarker" type="Marker2D" parent="." index="10"]
+position = Vector2(1408, -304)
+
+[node name="NavigationRegion2D" parent="." index="11"]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_dq2p3")
+
+[connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea3" to="DoorArea3" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea4" to="DoorArea4" method="_on_area_entered"]
