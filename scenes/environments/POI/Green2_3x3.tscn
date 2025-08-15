@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1ml7stht3vip"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_p13ge"]
+[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="2_p13ge"]
+[ext_resource type="PackedScene" uid="uid://g5jyjoj7evob" path="res://scenes/environments/prop/TreeType3.tscn" id="2_q30q4"]
+[ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="4_b54mx"]
+[ext_resource type="PackedScene" uid="uid://bxhx21f0uymat" path="res://scenes/environments/prop/BigBush.tscn" id="5_ndkme"]
+
+[node name="BasePOI" instance=ExtResource("1_p13ge")]
+
+[node name="TileMap" parent="." index="0"]
+visible = false
+
+[node name="EnemyChicken" parent="EnemyHolder" index="0" instance=ExtResource("2_p13ge")]
+position = Vector2(676, 299)
+
+[node name="Tree" parent="InteractableHolder" index="0" instance=ExtResource("2_q30q4")]
+position = Vector2(385, 391)
+
+[node name="BigBush" parent="InteractableHolder" index="1" instance=ExtResource("5_ndkme")]
+position = Vector2(374, 529)
+
+[node name="BigBush2" parent="InteractableHolder" index="2" instance=ExtResource("5_ndkme")]
+position = Vector2(343, 275)
+
+[node name="Bush" parent="InteractableHolder" index="3" instance=ExtResource("4_b54mx")]
+position = Vector2(175, 404)
+
+[node name="Bush2" parent="InteractableHolder" index="4" instance=ExtResource("4_b54mx")]
+position = Vector2(573, 357)
+
+[node name="Bush3" parent="InteractableHolder" index="5" instance=ExtResource("4_b54mx")]
+position = Vector2(595, 440)

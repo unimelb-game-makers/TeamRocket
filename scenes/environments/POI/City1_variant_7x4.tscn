@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=4 uid="uid://ov4f0qjehp6g"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_ocruq"]
+[ext_resource type="PackedScene" uid="uid://cpgph16jrde8r" path="res://scenes/objects/Obstacles/RoadBlockH.tscn" id="2_lpnfy"]
+[ext_resource type="PackedScene" uid="uid://b0jgd5d73o3ch" path="res://scenes/objects/misc/Fire.tscn" id="3_6krud"]
+[ext_resource type="PackedScene" uid="uid://dq24gg2b0ikv0" path="res://scenes/objects/Obstacles/TrashBinSpilled.tscn" id="4_ytymt"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="5_q2nla"]
+[ext_resource type="PackedScene" uid="uid://bn0h4ghumvrgf" path="res://scenes/objects/Interactables/ExplosiveBarrel.tscn" id="6_fo7ws"]
+[ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="7_o0bio"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="8_0i5v6"]
+[ext_resource type="PackedScene" uid="uid://c6jq64hs6hvtm" path="res://scenes/enemy/EnemySpider.tscn" id="9_d2pis"]
+
+[node name="City1_variant_7x4" instance=ExtResource("1_ocruq")]
+potential_enter_direction = 4
+
+[node name="TileMap" parent="." index="0"]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAIAAAAAAAEAAgAAAAIAAAAAAAIAAgAAAAIAAAABAAIAAgAAAAIAAAABAAEAAgAAAAIAAAABAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAEAAgAAAAIAAAACAAIAAgAAAAIAAAAAAAMAAgAAAAIAAAAAAAQAAgAAAAIAAAAAAAUAAgAAAAIAAAAAAAYAAgAAAAIAAAABAAYAAgAAAAIAAAACAAYAAgAAAAIAAAACAAUAAgAAAAIAAAACAAQAAgAAAAIAAAACAAMAAgAAAAIAAAABAAMAAgAAAAIAAAABAAQAAgAAAAIAAAABAAUAAgAAAAIAAAA=")
+
+[node name="WallTileMap2" parent="Wall" index="0"]
+tile_map_data = PackedByteArray("AAAAAAAAAQAAAAMAAAAAAAEAAQAAAAQAAAAAAAIAAQAAAAQAAAAAAAMAAQAAAAQAAAAAAAUAAQAAAAQAAAAAAAYAAQAAAAUAAAABAAYAAQABAAMAAAABAAAAAQABAAMAAAADAAEAAQAAAAQAAAADAAAAAQACAAMAAAACAAAAAQABAAMAAAADAAYAAQABAAUAAAACAAYAAQABAAMAAAADAAIAAQAAAAQAAAADAAMAAQAAAAQAAAAAAAQAAQAAAAQAAAADAAQAAQACAAQAAAA=")
+
+[node name="RoadBlockH" parent="InteractableHolder" index="0" instance=ExtResource("2_lpnfy")]
+position = Vector2(321, 1327)
+
+[node name="Fire" parent="InteractableHolder" index="1" instance=ExtResource("3_6krud")]
+position = Vector2(279, 421)
+is_permanent = true
+
+[node name="Fire2" parent="InteractableHolder" index="2" instance=ExtResource("3_6krud")]
+position = Vector2(460, 1436)
+is_permanent = true
+
+[node name="TrashBinSpilled" parent="InteractableHolder" index="3" instance=ExtResource("4_ytymt")]
+position = Vector2(315, 381)
+
+[node name="Crate" parent="InteractableHolder" index="4" instance=ExtResource("5_q2nla")]
+position = Vector2(699, 418)
+
+[node name="ExplosiveBarrel" parent="InteractableHolder" index="5" instance=ExtResource("6_fo7ws")]
+position = Vector2(778, 652)
+
+[node name="WreckedCar" parent="InteractableHolder" index="6" instance=ExtResource("7_o0bio")]
+position = Vector2(678, 1472)
+scale = Vector2(-1, 1)
+
+[node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("8_0i5v6")]
+position = Vector2(403, 729)
+allowed_enemies = Array[PackedScene]([ExtResource("9_d2pis")])

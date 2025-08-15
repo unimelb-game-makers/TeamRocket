@@ -1,20 +1,20 @@
 [gd_scene load_steps=3 format=3 uid="uid://bli2y1gxqfdxi"]
 
-[ext_resource type="Texture2D" uid="uid://c65hd2y2yfe86" path="res://assets/map/city/table.png" id="1_jrqrc"]
+[ext_resource type="Texture2D" uid="uid://q3yjvraqkplf" path="res://assets/map/city/stool.png" id="1_pke0a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sgr28"]
-size = Vector2(147, 71)
+size = Vector2(76, 35)
 
 [node name="FoodStallStool" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.5, -26)
-texture = ExtResource("1_jrqrc")
+texture = ExtResource("1_pke0a")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-0.5, -26)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 31.5)
+position = Vector2(0, 39.5)
 shape = SubResource("RectangleShape2D_sgr28")
