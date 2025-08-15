@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://boqcaiyk1nc6n"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_5vund"]
+[ext_resource type="PackedScene" uid="uid://bwrb05nb0u0rs" path="res://scenes/enemy/EnemyChicken.tscn" id="2_7lrma"]
+[ext_resource type="PackedScene" uid="uid://bxhx21f0uymat" path="res://scenes/environments/prop/BigBush.tscn" id="3_7lrma"]
+[ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="4_jf7fy"]
+[ext_resource type="PackedScene" uid="uid://clluqb6vkwv8p" path="res://scenes/objects/Obstacles/LogHorizontal.tscn" id="4_kp250"]
+[ext_resource type="PackedScene" uid="uid://bar28rmset6q3" path="res://scenes/objects/Obstacles/LogVertical.tscn" id="5_7lrma"]
+
+[node name="BasePOI" instance=ExtResource("1_5vund")]
+
+[node name="TileMap" parent="." index="0"]
+visible = false
+
+[node name="EnemyChicken" parent="EnemyHolder" index="0" instance=ExtResource("2_7lrma")]
+position = Vector2(330, 300)
+
+[node name="Bush3" parent="InteractableHolder" index="0" instance=ExtResource("4_jf7fy")]
+position = Vector2(595, 440)
+
+[node name="BigBush" parent="InteractableHolder" index="1" instance=ExtResource("3_7lrma")]
+position = Vector2(222, 675)
+
+[node name="Bush" parent="InteractableHolder" index="2" instance=ExtResource("4_jf7fy")]
+position = Vector2(417, 642)
+
+[node name="LogHorizontal" parent="InteractableHolder" index="3" instance=ExtResource("4_kp250")]
+position = Vector2(221, 490)
+
+[node name="LogVertical" parent="InteractableHolder" index="4" instance=ExtResource("5_7lrma")]
+position = Vector2(689, 338)

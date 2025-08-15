@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=4 uid="uid://boejl8eg6kl3h"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_h3gjv"]
+[ext_resource type="PackedScene" uid="uid://bli2y1gxqfdxi" path="res://scenes/objects/Obstacles/FoodStallStool.tscn" id="2_l87ll"]
+[ext_resource type="PackedScene" uid="uid://bli2y1gxqfdxi" path="res://scenes/objects/Obstacles/FoodStallTable.tscn" id="3_23oe2"]
+[ext_resource type="PackedScene" uid="uid://0uavytjespo" path="res://scenes/objects/Obstacles/FoodTruck.tscn" id="4_opet2"]
+[ext_resource type="PackedScene" uid="uid://bn0h4ghumvrgf" path="res://scenes/objects/Interactables/ExplosiveBarrel.tscn" id="5_23oe2"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="6_opet2"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="7_rdrwq"]
+[ext_resource type="PackedScene" uid="uid://c6jq64hs6hvtm" path="res://scenes/enemy/EnemySpider.tscn" id="8_3o8l5"]
+[ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="9_0raq3"]
+[ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/EnemyDasher.tscn" id="9_3o8l5"]
+
+[node name="City1_4x9" instance=ExtResource("1_h3gjv")]
+potential_enter_direction = 3
+
+[node name="TileMap" parent="." index="0"]
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAIAAAABAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAEAAgAAAAIAAAACAAIAAgAAAAIAAAACAAMAAgAAAAIAAAAAAAEAAgAAAAIAAAAAAAIAAgAAAAIAAAAAAAMAAgAAAAIAAAABAAMAAgAAAAIAAAADAAMAAgAAAAIAAAAEAAMAAgAAAAIAAAAFAAMAAgAAAAIAAAAGAAMAAgAAAAIAAAAGAAIAAgAAAAIAAAAFAAIAAgAAAAIAAAAEAAIAAgAAAAIAAAADAAIAAgAAAAIAAAABAAIAAgAAAAIAAAABAAEAAgAAAAIAAAADAAEAAgAAAAIAAAAEAAEAAgAAAAIAAAAFAAEAAgAAAAIAAAAGAAEAAgAAAAIAAAAGAAAAAgAAAAIAAAAFAAAAAgAAAAIAAAAEAAAAAgAAAAIAAAAHAAAAAgAAAAIAAAAHAAEAAgAAAAIAAAAHAAIAAgAAAAIAAAAHAAMAAgAAAAIAAAADAAAAAgAAAAIAAAAIAAMAAgAAAAIAAAAIAAIAAgAAAAIAAAAIAAEAAgAAAAIAAAAIAAAAAgAAAAIAAAA=")
+
+[node name="FoodTruck" parent="InteractableHolder" index="0" instance=ExtResource("4_opet2")]
+position = Vector2(1142, 182)
+
+[node name="ExplosiveBarrel" parent="InteractableHolder" index="1" instance=ExtResource("5_23oe2")]
+position = Vector2(1787, 264)
+
+[node name="Crate" parent="InteractableHolder" index="2" instance=ExtResource("6_opet2")]
+position = Vector2(997, 491)
+
+[node name="FoodStallTable" parent="InteractableHolder" index="3" instance=ExtResource("3_23oe2")]
+position = Vector2(216, 319)
+
+[node name="FoodStallTable2" parent="InteractableHolder" index="4" instance=ExtResource("3_23oe2")]
+position = Vector2(333, 852)
+
+[node name="FoodStallTable3" parent="InteractableHolder" index="5" instance=ExtResource("3_23oe2")]
+position = Vector2(1319, 863)
+
+[node name="FoodStallTable4" parent="InteractableHolder" index="6" instance=ExtResource("3_23oe2")]
+position = Vector2(2056, 513)
+
+[node name="FoodStallStool" parent="InteractableHolder" index="7" instance=ExtResource("2_l87ll")]
+position = Vector2(2116, 420)
+
+[node name="FoodStallStool2" parent="InteractableHolder" index="8" instance=ExtResource("2_l87ll")]
+position = Vector2(2136, 596)
+
+[node name="FoodStallStool3" parent="InteractableHolder" index="9" instance=ExtResource("2_l87ll")]
+position = Vector2(1219, 911)
+
+[node name="FoodStallStool4" parent="InteractableHolder" index="10" instance=ExtResource("2_l87ll")]
+position = Vector2(1419, 935)
+
+[node name="FoodStallStool6" parent="InteractableHolder" index="11" instance=ExtResource("2_l87ll")]
+position = Vector2(289, 754)
+
+[node name="FoodStallStool7" parent="InteractableHolder" index="12" instance=ExtResource("2_l87ll")]
+position = Vector2(435, 784)
+
+[node name="FoodStallStool8" parent="InteractableHolder" index="13" instance=ExtResource("2_l87ll")]
+position = Vector2(224, 905)
+
+[node name="FoodStallStool9" parent="InteractableHolder" index="14" instance=ExtResource("2_l87ll")]
+position = Vector2(136, 255)
+
+[node name="FoodStallStool10" parent="InteractableHolder" index="15" instance=ExtResource("2_l87ll")]
+position = Vector2(259, 408)
+
+[node name="FoodStallStool5" parent="InteractableHolder" index="16" instance=ExtResource("2_l87ll")]
+position = Vector2(1282, 762)
+
+[node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("7_rdrwq")]
+position = Vector2(668, 669)
+allowed_enemies = Array[PackedScene]([ExtResource("8_3o8l5"), ExtResource("9_3o8l5"), ExtResource("9_0raq3")])
+radius = 20.0
+
+[node name="SpawnArea2D2" parent="SpawnHolder" index="1" instance=ExtResource("7_rdrwq")]
+position = Vector2(2025, 860)
+allowed_enemies = Array[PackedScene]([ExtResource("8_3o8l5"), ExtResource("9_0raq3")])
+radius = 20.0

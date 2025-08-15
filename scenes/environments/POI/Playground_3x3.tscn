@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxrqd07lrevlg"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_7ubx4"]
+[ext_resource type="PackedScene" uid="uid://dpnpt3tyed25k" path="res://scenes/objects/Swing.tscn" id="2_7ubx4"]
+[ext_resource type="PackedScene" uid="uid://cca4vmq1qi27o" path="res://scenes/objects/Sandbox.tscn" id="3_y635d"]
+[ext_resource type="PackedScene" uid="uid://dkfjhisyc7nvq" path="res://scenes/environments/prop/TreeType2.tscn" id="4_gyocn"]
+
+[node name="Playground_3x3" instance=ExtResource("1_7ubx4")]
+
+[node name="TileMap" parent="." index="0"]
+visible = false
+
+[node name="Slide" parent="InteractableHolder" index="0" instance=ExtResource("2_7ubx4")]
+position = Vector2(290, 451)
+
+[node name="Sandbox" parent="InteractableHolder" index="1" instance=ExtResource("3_y635d")]
+position = Vector2(599, 368)
+
+[node name="Tree" parent="InteractableHolder" index="2" instance=ExtResource("4_gyocn")]
+position = Vector2(269, 59)

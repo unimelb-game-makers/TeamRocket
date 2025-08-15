@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=4 uid="uid://d35203e8k7142"]
+
+[ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_hj2mt"]
+[ext_resource type="PackedScene" uid="uid://id6e3hwthctu" path="res://scenes/objects/Obstacles/Debris3.tscn" id="2_ahrf6"]
+[ext_resource type="PackedScene" uid="uid://di1iud0i6uaou" path="res://scenes/objects/Obstacles/Debris2.tscn" id="3_y086c"]
+[ext_resource type="PackedScene" uid="uid://dq24gg2b0ikv0" path="res://scenes/objects/Obstacles/TrashBinSpilled.tscn" id="4_01sj7"]
+[ext_resource type="PackedScene" uid="uid://b0jgd5d73o3ch" path="res://scenes/objects/misc/Fire.tscn" id="5_1brxb"]
+[ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="6_cuwnv"]
+
+[node name="City1_3x3" instance=ExtResource("1_hj2mt")]
+
+[node name="TileMap" parent="." index="0"]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAIAAAAAAAEAAgAAAAIAAAAAAAIAAgAAAAIAAAABAAIAAgAAAAIAAAABAAEAAgAAAAIAAAABAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAEAAgAAAAIAAAACAAIAAgAAAAIAAAA=")
+
+[node name="Debris" parent="InteractableHolder" index="0" instance=ExtResource("2_ahrf6")]
+position = Vector2(355, 477)
+
+[node name="Debris2" parent="InteractableHolder" index="1" instance=ExtResource("3_y086c")]
+position = Vector2(535, 370)
+
+[node name="TrashBinSpilled" parent="InteractableHolder" index="2" instance=ExtResource("4_01sj7")]
+position = Vector2(272, 429)
+
+[node name="Fire" parent="InteractableHolder" index="3" instance=ExtResource("5_1brxb")]
+position = Vector2(611, 329)
+is_permanent = true
+
+[node name="WreckedCar" parent="InteractableHolder" index="4" instance=ExtResource("6_cuwnv")]
+position = Vector2(364, 244)
