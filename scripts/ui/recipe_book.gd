@@ -12,6 +12,7 @@ extends Control
 @onready var ingredient_list: GridContainer = $RightPage/IngredientList
 @onready var recipe_grid: GridContainer = $LeftPage/RecipeGrid
 @onready var crafting_station_name: Label = $RightPage/CraftingStationName
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var sample_ingredients: Dictionary[Ingredient.IngredientType, Item]
 @export var sample_ingredients_category: Dictionary[Ingredient.IngredientCategory, Item]
@@ -30,9 +31,20 @@ extends Control
 	"Preparation": assembly_recipes
 }
 
+var open = false
+
 func _ready() -> void:
 	update_selected_recipe()
 	update_recipe_book()
+
+func _input(event: InputEvent) -> void:
+	if (Input.is_action_just_pressed("recipe_book")):
+		if not open:
+			show()
+			open = true
+		else:
+			hide()
+			open = false
 
 func update_recipe_book():
 	for recipe in recipe_grid.get_children():
