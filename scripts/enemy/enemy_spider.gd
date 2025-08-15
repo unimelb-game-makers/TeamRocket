@@ -8,6 +8,12 @@ extends BasicEnemy
 @onready var dash_atk_area: Area2D = $DashAttackArea
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var dodged_label: Label = $DodgedLabel
+@onready var idle_effect: AudioStreamPlayer2D = $SoundEffects/IdleEffect
+@onready var attack_effect: AudioStreamPlayer2D = $SoundEffects/AttackEffect
+@onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
+@onready var death_effect: AudioStreamPlayer2D = $SoundEffects/DeathEffect
+@onready var crawl_effect: AudioStreamPlayer2D = $SoundEffects/CrawlEffect
+
 
 const DEFENDING_MOVESPEED_COEFFICIENT = 0.25
 const AIM_THRESHOLD_IN_DEGREE = 90
@@ -50,6 +56,16 @@ func _process(_delta: float) -> void:
 	elif anim_sprite.flip_h and velocity.x < -0.1:
 		anim_sprite.flip_h = false
 
+
+func _on_idle_state_entered() -> void:
+	super ()
+	idle_effect.play()
+
+
+func _on_chase_state_entered() -> void:
+	super ()
+	crawl_effect.play()
+
 func _on_chase_state_physics_processing(delta: float) -> void:
 	if target_creature != null and not is_attacking:
 		if player_is_aiming_at_enemy():
@@ -75,6 +91,7 @@ func damage(value: int, damage_source_position: Vector2 = Vector2.ZERO) -> void:
 		tween_dodge.tween_property(dodged_label, "self_modulate:a", 0, 1)
 		play_jump_effect()
 	else:
+		hurt_effect.play()
 		super (value, damage_source_position)
 
 func play_jump_effect():
@@ -100,6 +117,7 @@ func _on_chase_radius_area_exited(area: Area2D) -> void:
 		super (area)
 
 func _on_attack_state_entered() -> void:
+	attack_effect.play()
 	is_attacking = true
 
 
