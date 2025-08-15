@@ -2,18 +2,20 @@
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_jvckg"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_i84du"]
-[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="5_q4uk5"]
+[ext_resource type="PackedScene" uid="uid://4o0bd3yaeuy4" path="res://scenes/environments/POI/ConvenientAlcovePoI7x5.tscn" id="2_o8ps8"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7d6pv"]
 vertices = PackedVector2Array(3973.91, -870.031, 3950.08, 1846.05, -125.852, 1869.94, -86.1406, -885.961)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-96, -896, 3984, -880, 3960, 1856, -136, 1880)])
 
-[node name="Threeway" node_paths=PackedStringArray("doors", "unique_poi_spawn") instance=ExtResource("1_jvckg")]
-room_name = "Threeway"
-sockets = Array[String](["B", "B", "A", "B"])
+[node name="ThreewayNoS" node_paths=PackedStringArray("doors", "unique_poi_spawn") instance=ExtResource("1_jvckg")]
+room_name = "ThreewayNoS"
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), null, NodePath("DoorArea3")]
-unique_poi_chance_perc = 25
+unique_poi_chance_perc = 50
+unique_poi_dict = Dictionary[int, PackedScene]({
+2: ExtResource("2_o8ps8")
+})
 unique_poi_spawn = NodePath("UniquePoISpawn")
 
 [node name="TileMap" parent="." index="0"]
@@ -30,9 +32,6 @@ rotation = 1.5708
 [node name="DoorArea3" parent="." index="3" instance=ExtResource("2_i84du")]
 position = Vector2(104, 776)
 rotation = 1.5708
-
-[node name="Crate" parent="InteractableHolder" index="0" instance=ExtResource("5_q4uk5")]
-position = Vector2(1768, 288)
 
 [node name="NavigationRegion2D" parent="." index="6"]
 navigation_polygon = SubResource("NavigationPolygon_7d6pv")

@@ -98,11 +98,9 @@ position = Vector2(2146, 622)
 position = Vector2(2025, 517)
 
 [node name="Tree3" parent="InteractableHolder" index="28" instance=ExtResource("3_148uh")]
-z_index = 1
 position = Vector2(2617, 1746)
 
 [node name="Tree2" parent="InteractableHolder" index="29" instance=ExtResource("3_148uh")]
-z_index = 1
 position = Vector2(577, 1540)
 
 [node name="Crate2" parent="InteractableHolder" index="30" instance=ExtResource("4_8tm0f")]
@@ -110,7 +108,6 @@ z_index = 1
 position = Vector2(1579, 1150)
 
 [node name="Tree" parent="InteractableHolder" index="31" instance=ExtResource("3_148uh")]
-z_index = 1
 position = Vector2(1573, 1056)
 
 [node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("5_fvkxd")]

@@ -1,9 +1,19 @@
 extends Node
 class_name MapGenerator
 
+enum RoomTypeEnum {
+	NONE,
+	DEADEND,
+	STRAIGHT,
+	BEND,
+	THREEWAY,
+	FULL
+}
+
 var grid: Array[Array] = [] # 2D Array for generation
 const DIM_X = 7
 const DIM_Y = 7
+const DIRECTION_UNIT: Array[Vector2] = [Vector2(0, -1), Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0)]
 
 var all_room_data = []
 
@@ -27,19 +37,57 @@ var just_teleported2 = false
 @onready var enemy_handler: EnemyHandler = $EnemyHandler
 @onready var interactable_handler: InteractableHandler = $InteractableHandler
 
-const straight: PackedScene = preload("res://scenes/map/templates/Straight.tscn")
-const deadend: PackedScene = preload("res://scenes/map/templates/DeadEnd.tscn")
-const bend: Array[PackedScene] = [
-	preload("res://scenes/map/templates/Turn.tscn"),
+var deadend_N: Array[PackedScene] = [
+	preload("res://scenes/map/templates/DeadEndN.tscn")
 ]
-const threeway: Array[PackedScene] = [
-	preload("res://scenes/map/templates/Threeway.tscn"),
+var deadend_E: Array[PackedScene] = [
+	preload("res://scenes/map/templates/DeadEndE.tscn")
 ]
-const fulls: Array[PackedScene] = [
+var deadend_S: Array[PackedScene] = [
+	preload("res://scenes/map/templates/DeadEndS.tscn")
+]
+var deadend_W: Array[PackedScene] = [
+	preload("res://scenes/map/templates/DeadEndW.tscn")
+]
+
+var straight_NS: Array[PackedScene] = [
+	preload("res://scenes/map/templates/StraightNS.tscn")
+]
+var straight_EW: Array[PackedScene] = [
+	preload("res://scenes/map/templates/StraightEW.tscn")
+]
+
+var bend_NE: Array[PackedScene] = [
+	preload("res://scenes/map/templates/TurnNE.tscn"),
+]
+var bend_NW: Array[PackedScene] = [
+	preload("res://scenes/map/templates/TurnNW.tscn"),
+]
+var bend_SE: Array[PackedScene] = [
+	preload("res://scenes/map/templates/TurnSE.tscn"),
+]
+var bend_SW: Array[PackedScene] = [
+	preload("res://scenes/map/templates/TurnSW.tscn"),
+]
+
+# Means "Threeway no North direction"
+var threeway_noN: Array[PackedScene] = [
+	preload("res://scenes/map/templates/ThreewayNoN.tscn"),
+]
+var threeway_noE: Array[PackedScene] = [
+	preload("res://scenes/map/templates/ThreewayNoE.tscn"),
+]
+var threeway_noS: Array[PackedScene] = [
+	preload("res://scenes/map/templates/ThreewayNoS.tscn"),
+]
+var threeway_noW: Array[PackedScene] = [
+	preload("res://scenes/map/templates/ThreewayNoW.tscn"),
+]
+var fulls: Array[PackedScene] = [
 	preload("res://scenes/map/templates/Fullroom.tscn"),
 ]
 
-var currplayer: Player
+var curr_player: Player
 
 func _ready() -> void:
 	Globals.map_generator = self
@@ -54,7 +102,6 @@ func _ready() -> void:
 	start_gen() # only grid explored here
 
 	# Debug stuff
-	print(curr_rooms)
 	var _count = 0
 	for i in range(DIM_Y):
 		var row = ""
@@ -109,7 +156,6 @@ func start_gen():
 			curr_rooms += 1
 			generation_queue.append(neighbor)
 
-const directions = [Vector2(0, -1), Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0)]
 
 func check_bounds(pos: Vector2):
 	if pos.x >= 0 and pos.x < DIM_X and pos.y >= 0 and pos.y < DIM_Y:
@@ -117,7 +163,7 @@ func check_bounds(pos: Vector2):
 
 func get_neighbors(current_pos: Vector2) -> Array:
 	var neighbors = []
-	for d in directions:
+	for d in DIRECTION_UNIT:
 		var pos: Vector2 = current_pos + d
 		if check_bounds(pos):
 			neighbors.append(pos)
@@ -126,7 +172,7 @@ func get_neighbors(current_pos: Vector2) -> Array:
 
 func get_num_neighbors(_grid, current_pos: Vector2) -> int:
 	var num = 0
-	for d in directions:
+	for d in DIRECTION_UNIT:
 		var neighbor: Vector2 = current_pos + d
 		if check_bounds(neighbor) and _grid[neighbor.x][neighbor.y] == 1:
 			num += 1
@@ -134,16 +180,16 @@ func get_num_neighbors(_grid, current_pos: Vector2) -> int:
 
 # Room gen
 
-func get_neighbors_array(_grid, current_pos: Vector2) -> Array:
-	var arr = []
-	for d in directions:
+func get_neighbors_array(_grid, current_pos: Vector2) -> Array[bool]:
+	var arr: Array[bool] = []
+	for d in DIRECTION_UNIT:
 		var neighbor = current_pos + d
 		# Door
 		if check_bounds(neighbor) and _grid[neighbor.x][neighbor.y] == 1:
-			arr.append("B")
+			arr.append(true)
 		# Empty
 		else:
-			arr.append("A")
+			arr.append(false)
 	return arr
 
 func initialize_room(coord: Vector2, outgoing_direction: Vector2 = Vector2.ZERO):
@@ -156,17 +202,69 @@ func initialize_room(coord: Vector2, outgoing_direction: Vector2 = Vector2.ZERO)
 	if curr_room_data == null:
 		var new_room_data = RoomData.new()
 		new_room_data.coord = coord
+		var room_type: RoomTypeEnum = RoomTypeEnum.NONE
 		match num_neighbors:
 			1:
-				new_room_data.room_scene = deadend
+				# new_room_data.room_scene = deadend
+				room_type = RoomTypeEnum.DEADEND
 			2:
-				if neighbors_array == ["A", "B", "A", "B"] or neighbors_array == ["B", "A", "B", "A"]:
-					new_room_data.room_scene = straight
+				if neighbors_array == [true, false, true, false] or neighbors_array == [false, true, false, true]:
+					# new_room_data.room_scene = straight
+					room_type = RoomTypeEnum.STRAIGHT
 				else:
-					new_room_data.room_scene = bend.pick_random()
+					# new_room_data.room_scene = bend.pick_random()
+					room_type = RoomTypeEnum.BEND
 			3:
-				new_room_data.room_scene = threeway.pick_random()
+				# new_room_data.room_scene = threeway.pick_random()
+				room_type = RoomTypeEnum.THREEWAY
 			4:
+				# new_room_data.room_scene = fulls.pick_random()
+				room_type = RoomTypeEnum.FULL
+
+
+		# Now choose the right room scene to use
+		match room_type:
+			RoomTypeEnum.DEADEND:
+				# If only 1 neighbor at the North, use the deadend_N, which mean
+				# deadend map room with door at North. And so on.
+				if check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[0]):
+					new_room_data.room_scene = deadend_N.pick_random()
+				elif check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[1]):
+					new_room_data.room_scene = deadend_E.pick_random()
+				elif check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[2]):
+					new_room_data.room_scene = deadend_S.pick_random()
+				elif check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[3]):
+					new_room_data.room_scene = deadend_W.pick_random()
+			RoomTypeEnum.STRAIGHT:
+				if check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[0]) and \
+					check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[2]):
+					new_room_data.room_scene = straight_NS.pick_random()
+				elif check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[1]) and \
+					check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[3]):
+					new_room_data.room_scene = straight_EW.pick_random()
+			RoomTypeEnum.BEND:
+				if check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[0]) and \
+					check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[1]):
+					new_room_data.room_scene = bend_NE.pick_random()
+				elif check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[1]) and \
+					check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[2]):
+					new_room_data.room_scene = bend_SE.pick_random()
+				elif check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[2]) and \
+					check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[3]):
+					new_room_data.room_scene = bend_SW.pick_random()
+				elif check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[0]) and \
+					check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[3]):
+					new_room_data.room_scene = bend_NW.pick_random()
+			RoomTypeEnum.THREEWAY:
+				if not check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[0]):
+					new_room_data.room_scene = threeway_noN.pick_random()
+				elif not check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[1]):
+					new_room_data.room_scene = threeway_noE.pick_random()
+				elif not check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[2]):
+					new_room_data.room_scene = threeway_noS.pick_random()
+				elif not check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[3]):
+					new_room_data.room_scene = threeway_noW.pick_random()
+			RoomTypeEnum.FULL:
 				new_room_data.room_scene = fulls.pick_random()
 
 		new_room_data.is_new = true
@@ -175,33 +273,11 @@ func initialize_room(coord: Vector2, outgoing_direction: Vector2 = Vector2.ZERO)
 	else:
 		curr_room_data.is_new = false
 
+
 	selected_room = curr_room_data.room_scene.instantiate()
 	selected_room.coord = coord
 
-	# FIXME: Replace rotate with manual rotated map
-	# Rotate room to match selected_room.sockets with neighbors_array
-	var sockets: Array[String] = selected_room.sockets
-	var doors = selected_room.doors
-	var _total_rotations = 0
-	print("Fresh Sockets: " + str(sockets))
-	while sockets != neighbors_array:
-		var temp = sockets.pop_front()
-		sockets.append(temp)
-
-		var temp2 = doors.pop_front()
-		doors.append(temp2)
-
-		selected_room.rotate(-PI / 2)
-		_total_rotations += -PI / 2
-
-	selected_room.doors = doors
-	selected_room.sockets = sockets
-
-	print("Aligned Sockets: " + str(sockets))
-	print("Neighbors array: " + str(neighbors_array))
-
-	#print("Assigning directions to doors: " + str(d))
-	selected_room.connect_doors(directions)
+	selected_room.connect_doors(DIRECTION_UNIT)
 
 	# Connect the door signal to the direction
 	for i in range(len(selected_room.doors)):
@@ -227,14 +303,14 @@ func initialize_room(coord: Vector2, outgoing_direction: Vector2 = Vector2.ZERO)
 	# Spawn player and camera
 	player.camera.temporarily_disable_smooth_for_scene_change()
 	player.global_position = selected_room.get_player_spawn_pos()
-	currplayer = player
+	curr_player = player
 
 	# Spawn player at incoming door
 	var incoming_direction = Vector2.ZERO - outgoing_direction
 	if incoming_direction != Vector2.ZERO:
 		assert(incoming_direction.is_normalized())
-		var _door_index = directions.find(incoming_direction)
-		currplayer.global_position = selected_room.get_door_by_direction(incoming_direction).global_position
+		var _door_index = DIRECTION_UNIT.find(incoming_direction)
+		curr_player.global_position = selected_room.get_door_by_direction(incoming_direction).global_position
 
 	# Spawn POI
 	selected_room.spawn_poi()
@@ -309,3 +385,12 @@ func clear_unused_node():
 func get_current_room_data() -> RoomData:
 	var current_room_data = all_room_data[current_room_coord.x][current_room_coord.y] as RoomData
 	return current_room_data
+
+
+func check_room_socket_at_dir(sockets: Array[ProceduralRoom.RoomSocketEnum], dir: Vector2) -> ProceduralRoom.RoomSocketEnum:
+	var dir_index = DIRECTION_UNIT.find(dir)
+	return sockets[dir_index]
+
+func check_neighbor_arr_at_dir(neighbors_array: Array[bool], dir: Vector2) -> bool:
+	var dir_index = DIRECTION_UNIT.find(dir)
+	return neighbors_array[dir_index]

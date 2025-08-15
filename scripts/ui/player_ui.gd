@@ -67,4 +67,3 @@ func create_minimap(map_grid: Array[Array], current_room_coord: Vector2):
 			var inst: MinimapSquare = minimap_square_prefab.instantiate()
 			minimap_grid.add_child(inst)
 			inst.init_minimap(map_grid, Vector2(j, i), current_room_coord)
-	print(map_grid)
