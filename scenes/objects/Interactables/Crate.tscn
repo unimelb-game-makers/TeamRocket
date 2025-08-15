@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8ni7apwy8dyx"]
+[gd_scene load_steps=10 format=3 uid="uid://c8ni7apwy8dyx"]
 
 [ext_resource type="Texture2D" uid="uid://fw7m087mo0ka" path="res://assets/map/prop/crate.png" id="1_0l3g5"]
 [ext_resource type="Script" uid="uid://20jjgwta05xw" path="res://scripts/objects/interactables/storage.gd" id="1_td6ss"]
 [ext_resource type="PackedScene" uid="uid://fe4uunjh2r4a" path="res://scenes/cooking/ui/FoodSlot.tscn" id="3_uyd3e"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="4_ajerb"]
+[ext_resource type="AudioStream" uid="uid://b4vohmf5qetym" path="res://assets/sfx/team rocket sfx/environment sfx/crate open.ogg" id="5_cepph"]
+[ext_resource type="AudioStream" uid="uid://3hcyerk7ues" path="res://assets/sfx/team rocket sfx/environment sfx/crate close.ogg" id="6_eod3m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a64qg"]
 radius = 153.506
@@ -68,6 +70,14 @@ offset_right = 235.0
 offset_bottom = -50.0
 scale = Vector2(1.5, 1.5)
 columns = 3
+
+[node name="OpenSfxPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_cepph")
+bus = &"Effects"
+
+[node name="CloseSfxPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_eod3m")
+bus = &"Effects"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
