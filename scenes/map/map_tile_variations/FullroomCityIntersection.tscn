@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://kr5dg84sfpck"]
+[gd_scene load_steps=26 format=4 uid="uid://kr5dg84sfpck"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_rlvso"]
 [ext_resource type="PackedScene" uid="uid://bwo8jsuqn8111" path="res://scenes/environments/POI/SimpleSquareNW_4x4.tscn" id="3_y5gj0"]
@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://id6e3hwthctu" path="res://scenes/objects/Obstacles/Debris3.tscn" id="21_y5gj0"]
 [ext_resource type="PackedScene" uid="uid://di1iud0i6uaou" path="res://scenes/objects/Obstacles/Debris2.tscn" id="22_qhxib"]
 [ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="23_qhxib"]
-[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="24_dyod3"]
 [ext_resource type="PackedScene" uid="uid://b0jgd5d73o3ch" path="res://scenes/objects/misc/Fire.tscn" id="24_sw2kn"]
 [ext_resource type="PackedScene" uid="uid://djgvayx5wpdta" path="res://scenes/enemy/EnemyRatMonarch.tscn" id="25_bt6so"]
 [ext_resource type="PackedScene" uid="uid://dbhoxusajjmks" path="res://scenes/objects/Obstacles/RoadBlockV.tscn" id="25_sw2kn"]
@@ -146,9 +145,8 @@ position = Vector2(1408, -304)
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_dq2p3")
 
-[node name="EnemySpawnArea2D" parent="." index="11" instance=ExtResource("24_dyod3")]
-position = Vector2(1771, 123)
-allowed_enemies = Array[PackedScene]([ExtResource("25_bt6so")])
+[node name="EnemyRatMonarch" parent="EnemyHolder" index="0" instance=ExtResource("25_bt6so")]
+position = Vector2(1606, 173)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]

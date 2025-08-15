@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://dxgkngfxhj1cm"]
+[gd_scene load_steps=32 format=4 uid="uid://dxgkngfxhj1cm"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_nwmmy"]
 [ext_resource type="PackedScene" uid="uid://bwh4g2fpsfyjn" path="res://scenes/environments/POI/SimpleSquareNE_4x4.tscn" id="2_lj5tp"]
@@ -28,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://ddkuhf65ih2sw" path="res://scenes/objects/Obstacles/TrashBin.tscn" id="21_nwmmy"]
 [ext_resource type="PackedScene" uid="uid://bar28rmset6q3" path="res://scenes/objects/Obstacles/LogVertical.tscn" id="22_l8x4e"]
 [ext_resource type="PackedScene" uid="uid://clluqb6vkwv8p" path="res://scenes/objects/Obstacles/LogHorizontal.tscn" id="23_jkf8e"]
-[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="24_c6vmq"]
 [ext_resource type="PackedScene" uid="uid://jymq8qvrgg6f" path="res://scenes/enemy/EnemyRaven.tscn" id="25_fuobv"]
 [ext_resource type="PackedScene" uid="uid://bdrwyr3m3l6gx" path="res://scenes/environments/prop/TreeType1.tscn" id="31_11eio"]
 
@@ -67,10 +66,10 @@ position = Vector2(-1976, 1800)
 rotation = -1.57079
 
 [node name="Med2POISpawn" type="Marker2D" parent="." index="5"]
-position = Vector2(704, 1444)
+position = Vector2(-1953, 142)
 
 [node name="MediumPOISpawn" type="Marker2D" parent="." index="6"]
-position = Vector2(-1974, 101)
+position = Vector2(676, 1469)
 
 [node name="PlayerSpawn" parent="." index="8"]
 position = Vector2(712, -160)
@@ -138,47 +137,43 @@ position = Vector2(-1876, -187)
 [node name="LogHorizontal" parent="InteractableHolder" index="20" instance=ExtResource("23_jkf8e")]
 position = Vector2(-1019, -389)
 
-[node name="EnemySpawnArea2D" parent="InteractableHolder" index="21" instance=ExtResource("24_c6vmq")]
-position = Vector2(-1137, 2877)
-allowed_enemies = Array[PackedScene]([ExtResource("25_fuobv")])
-
-[node name="BusStop" parent="InteractableHolder" index="22" instance=ExtResource("15_4p6rr")]
+[node name="BusStop" parent="InteractableHolder" index="21" instance=ExtResource("15_4p6rr")]
 position = Vector2(2094, -17)
 
-[node name="TrashBinSpilled" parent="InteractableHolder" index="23" instance=ExtResource("19_b3n0y")]
+[node name="TrashBinSpilled" parent="InteractableHolder" index="22" instance=ExtResource("19_b3n0y")]
 position = Vector2(2612, 185)
 
-[node name="ExplosiveBarrel" parent="InteractableHolder" index="24" instance=ExtResource("9_wa3pg")]
+[node name="ExplosiveBarrel" parent="InteractableHolder" index="23" instance=ExtResource("9_wa3pg")]
 position = Vector2(1839, -44)
 
-[node name="Fire" parent="InteractableHolder" index="25" instance=ExtResource("20_et0jp")]
+[node name="Fire" parent="InteractableHolder" index="24" instance=ExtResource("20_et0jp")]
 position = Vector2(2614, 227)
 
-[node name="RoadBlockV" parent="InteractableHolder" index="26" instance=ExtResource("21_d7y5b")]
+[node name="RoadBlockV" parent="InteractableHolder" index="25" instance=ExtResource("21_d7y5b")]
 position = Vector2(1976, -443)
 
-[node name="RoadBlockV2" parent="InteractableHolder" index="27" instance=ExtResource("21_d7y5b")]
+[node name="RoadBlockV2" parent="InteractableHolder" index="26" instance=ExtResource("21_d7y5b")]
 position = Vector2(1975, -193)
 
-[node name="Tree4" parent="InteractableHolder" index="28" instance=ExtResource("10_nwmmy")]
+[node name="Tree4" parent="InteractableHolder" index="27" instance=ExtResource("10_nwmmy")]
 position = Vector2(2657, 1827)
 
-[node name="Tree5" parent="InteractableHolder" index="29" instance=ExtResource("31_11eio")]
+[node name="Tree5" parent="InteractableHolder" index="28" instance=ExtResource("31_11eio")]
 position = Vector2(410, 2981)
 
-[node name="Bush2" parent="InteractableHolder" index="30" instance=ExtResource("11_lj5tp")]
+[node name="Bush2" parent="InteractableHolder" index="29" instance=ExtResource("11_lj5tp")]
 position = Vector2(356, 2895)
 
-[node name="BigBush4" parent="InteractableHolder" index="31" instance=ExtResource("12_fuobv")]
+[node name="BigBush4" parent="InteractableHolder" index="30" instance=ExtResource("12_fuobv")]
 position = Vector2(2476, 1409)
 
-[node name="Tree6" parent="InteractableHolder" index="32" instance=ExtResource("14_bpiwv")]
+[node name="Tree6" parent="InteractableHolder" index="31" instance=ExtResource("14_bpiwv")]
 position = Vector2(2304, 1302)
 
-[node name="Tree7" parent="InteractableHolder" index="33" instance=ExtResource("14_bpiwv")]
+[node name="Tree7" parent="InteractableHolder" index="32" instance=ExtResource("14_bpiwv")]
 position = Vector2(623, 1693)
 
-[node name="Bush3" parent="InteractableHolder" index="34" instance=ExtResource("11_lj5tp")]
+[node name="Bush3" parent="InteractableHolder" index="33" instance=ExtResource("11_lj5tp")]
 position = Vector2(521, 1766)
 
 [node name="UniquePoiMarker" type="Marker2D" parent="." index="10"]
@@ -187,6 +182,9 @@ position = Vector2(1408, -304)
 [node name="NavigationRegion2D" parent="." index="11"]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_dq2p3")
+
+[node name="EnemyRaven" parent="EnemyHolder" index="0" instance=ExtResource("25_fuobv")]
+position = Vector2(-1217, 2706)
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
