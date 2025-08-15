@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfrnhnbh0r6vl"]
+[gd_scene load_steps=7 format=3 uid="uid://bfrnhnbh0r6vl"]
 
 [ext_resource type="PackedScene" uid="uid://63x2ldnuagja" path="res://scenes/environments/POI/BasePOI.tscn" id="1_7kr7t"]
 [ext_resource type="PackedScene" uid="uid://bxhx21f0uymat" path="res://scenes/environments/prop/BigBush.tscn" id="2_kypdj"]
 [ext_resource type="PackedScene" uid="uid://bdrwyr3m3l6gx" path="res://scenes/environments/prop/TreeType1.tscn" id="3_148uh"]
 [ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="4_8tm0f"]
 [ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="5_fvkxd"]
-[ext_resource type="PackedScene" uid="uid://br568ky0qtqak" path="res://scenes/objects/Obstacles/WreckedCar.tscn" id="5_kypdj"]
 [ext_resource type="PackedScene" uid="uid://cymv5i72rdk4v" path="res://scenes/enemy/EnemyLoneStalker.tscn" id="6_n2ryr"]
 
 [node name="BasePOI" instance=ExtResource("1_7kr7t")]
@@ -111,15 +110,17 @@ position = Vector2(1579, 1150)
 [node name="Tree" parent="InteractableHolder" index="31" instance=ExtResource("3_148uh")]
 position = Vector2(1573, 1056)
 
-[node name="WreckedCar" parent="InteractableHolder" index="32" instance=ExtResource("5_kypdj")]
-position = Vector2(3158, 1045)
-
 [node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("5_fvkxd")]
-position = Vector2(1705, 1451)
+position = Vector2(2360, 996)
 allowed_enemies = Array[PackedScene]([ExtResource("6_n2ryr")])
-radius = 800.0
+radius = 600.0
 
 [node name="SpawnArea2D2" parent="SpawnHolder" index="1" instance=ExtResource("5_fvkxd")]
-position = Vector2(1112, 975)
+position = Vector2(968, 554)
 allowed_enemies = Array[PackedScene]([ExtResource("6_n2ryr")])
-radius = 2.0
+radius = 500.0
+
+[node name="SpawnArea2D3" parent="SpawnHolder" index="2" instance=ExtResource("5_fvkxd")]
+position = Vector2(1299, 1683)
+allowed_enemies = Array[PackedScene]([ExtResource("6_n2ryr")])
+radius = 400.0
