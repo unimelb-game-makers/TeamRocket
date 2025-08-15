@@ -8,9 +8,8 @@ vertices = PackedVector2Array(2174, 870.07, -1149.96, 893.922, -1134.03, -3158.0
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1144, -3168, 2184, -3200, 2184, 880, -1160, 904)])
 
-[node name="DeadEnd" node_paths=PackedStringArray("doors") instance=ExtResource("1_1x1qf")]
-room_name = "DeadEnd"
-sockets = Array[String](["A", "A", "B", "A"])
+[node name="DeadEndS" node_paths=PackedStringArray("doors") instance=ExtResource("1_1x1qf")]
+room_name = "DeadEndS"
 doors = [null, null, NodePath("DoorArea"), null]
 
 [node name="TileMap" parent="." index="0"]

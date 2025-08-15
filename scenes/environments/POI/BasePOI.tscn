@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://63x2ldnuagja"]
+[gd_scene load_steps=4 format=3 uid="uid://63x2ldnuagja"]
 
 [ext_resource type="Script" uid="uid://d0f0hkms0jr0b" path="res://scenes/environments/POI/placeable_poi.gd" id="1_rnmuo"]
 [ext_resource type="TileSet" uid="uid://bi1t15nj76caa" path="res://scenes/map/base_map_tileset.tres" id="2_u04a8"]
@@ -32,10 +32,6 @@ tile_set = ExtResource("2_u04a8")
 
 [node name="Wall" type="Node2D" parent="."]
 y_sort_enabled = true
-
-[node name="WallTileMap" type="TileMapLayer" parent="Wall"]
-y_sort_enabled = true
-tile_set = SubResource("TileSet_rh8cv")
 
 [node name="WallTileMap2" type="TileMapLayer" parent="Wall"]
 y_sort_enabled = true

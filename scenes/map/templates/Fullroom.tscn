@@ -24,7 +24,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-2208, -656, 3456, -624
 [node name="FullRoom" node_paths=PackedStringArray("doors", "unique_poi_spawn", "medium_poi_spawn") instance=ExtResource("1_bbnrc")]
 y_sort_enabled = true
 room_name = "Fullroom"
-sockets = Array[String](["B", "B", "B", "B"])
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
 unique_poi_chance_perc = 100
 unique_poi_dict = Dictionary[int, PackedScene]({

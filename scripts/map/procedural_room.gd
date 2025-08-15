@@ -13,22 +13,29 @@ const WEST = 3
 const BLANK = "A" # No room can be attached to this socket.
 const DOOR = "B" # There is a door in this direction.
 
+# Help with attaching rooms together
+enum RoomSocketEnum {
+	NONE,
+	EMPTY,
+	DOOR
+}
+
 @export var room_name: String
 
 @export_group("Generation setting")
 ## In the order of NESW, enter the appropriate socket in the array in the Inspector.
 ## For example, if this room has 1 door in the South and 2 doors in the West,
-## then replace "A" with one "B" in '2' and '3' each.
-@export var sockets: Array[String] = [
-	"A",
-	"A", # Do not replace the value here! Select the node with this script attached
-	"A", # and enter the value in the Inspector
-	"A"
-]
+## then replace "EMPTY" with "DOOR"s in '2' and '3' each. Do not use 'NONE'.
+# @export var sockets: Array[RoomSocketEnum] = [
+# 	RoomSocketEnum.EMPTY,
+# 	RoomSocketEnum.EMPTY, # Do not replace the value here! Select the node with this script attached
+# 	RoomSocketEnum.EMPTY, # and replace the value in the Inspector
+# 	RoomSocketEnum.EMPTY
+# ]
 ## Chance of this room appearing in the map. 1 = least likely, 5 = most likely.
 @export_range(1, 5) var room_weighting: int = 1
 ## 4 items max, in North, East, South, West order
-@export var doors: Array[Area2D] = [] # Door scenes, cant get by get_tree
+@export var doors: Array[Area2D] = [null, null, null, null] # Door scenes, cant get by get_tree
 
 @export_group("Point of Interest")
 @export var unique_poi_chance_perc: int = 10 # 10%. Must be less than 100
@@ -54,14 +61,21 @@ var coord: Vector2
 func _ready() -> void:
 	# Verify each socket only has 1 character
 	print("This room is ", room_name)
-	for i in sockets:
-		assert(len(i) <= 1, "Socket must have 1 character")
+
+
+func get_sockets():
+	var socket_arr = []
+	for i in range(doors.size()):
+		if doors[i] == null:
+			socket_arr.append(RoomSocketEnum.EMPTY)
+		else:
+			socket_arr.append(RoomSocketEnum.DOOR)
+	return socket_arr
 
 func connect_doors(directions: Array):
 	for i in range(len(doors)):
 		if (doors[i] == null):
 			continue
-		print("Connect incoming direction: " + str(directions[i]))
 		doors[i].door_direction = directions[i]
 
 func get_door_by_direction(incoming: Vector2):

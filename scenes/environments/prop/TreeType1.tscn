@@ -28,6 +28,7 @@ position = Vector2(0, -184)
 texture = ExtResource("3_v45um")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+y_sort_enabled = true
 collision_layer = 4
 collision_mask = 0
 
