@@ -18,3 +18,7 @@ position = Vector2(232, -24)
 y_sort_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+
+[node name="EnemyHolder" type="Node2D" parent="."]
+
+[node name="SpawnHolder" type="Node2D" parent="."]

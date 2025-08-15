@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cjwia1b4w5ipa"]
+[gd_scene load_steps=19 format=4 uid="uid://cjwia1b4w5ipa"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_bbnrc"]
 [ext_resource type="PackedScene" uid="uid://c2papvqiw0puj" path="res://scenes/environments/POI/InevitableEncounter_4x4.tscn" id="2_3rjle"]
@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cvg4v5goggodd" path="res://scenes/environments/POI/SimpleSquareSW_4x4.tscn" id="7_bn5q2"]
 [ext_resource type="PackedScene" uid="uid://b73fb6d80sq5y" path="res://scenes/environments/POI/RestaurantPoI7x6.tscn" id="10_3rjle"]
 [ext_resource type="PackedScene" uid="uid://yvpj7pw7acau" path="res://scenes/objects/Obstacles/WreckedBus.tscn" id="15_elmd0"]
+[ext_resource type="PackedScene" uid="uid://d0ojokxokewku" path="res://scenes/enemy/Areas/SpawnArea2D.tscn" id="16_mj8h1"]
+[ext_resource type="PackedScene" uid="uid://bysb5hk8pdva0" path="res://scenes/enemy/EnemyDasher.tscn" id="17_g0804"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dq2p3"]
 vertices = PackedVector2Array(3445.95, -614.047, 3430.04, 3182.04, -2205.97, 3205.95, -2198.02, -645.938)
@@ -79,6 +81,11 @@ navigation_polygon = SubResource("NavigationPolygon_dq2p3")
 
 [node name="UniquePoiMarker" type="Marker2D" parent="." index="9"]
 position = Vector2(1408, -304)
+
+[node name="SpawnArea2D" parent="SpawnHolder" index="0" instance=ExtResource("16_mj8h1")]
+position = Vector2(784, 2680)
+allowed_enemies = Array[PackedScene]([ExtResource("17_g0804")])
+radius = 200.0
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
