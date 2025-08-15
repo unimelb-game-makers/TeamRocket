@@ -192,12 +192,6 @@ position = Vector2(0, -144)
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_o87wb")
 
-[node name="ChaseModeLabel" parent="." index="12"]
-offset_left = -104.0
-offset_top = -392.0
-offset_right = -54.0
-offset_bottom = -308.25
-
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack/Wind Up" to="." method="_on_wind_up_state_entered"]
