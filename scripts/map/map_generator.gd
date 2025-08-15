@@ -10,8 +10,13 @@ enum RoomTypeEnum {
 	FULL
 }
 
+@export_group("Debug")
 @export var is_debug: bool = false
 @export var debug_map_room_scene: PackedScene
+@export_group("Unique PoI")
+@export var convenient_alcove_interior: PackedScene
+@export var the_kingdom_interior: PackedScene
+
 
 @onready var navigation_region_2d: NavigationRegion2D = $NavigationRegion2D
 @onready var game_handler: GameHandler = $GameHandler
@@ -48,8 +53,8 @@ var deadend_E: Array[PackedScene] = [
 ]
 var deadend_S: Array[PackedScene] = [
 	preload("res://scenes/map/templates/DeadEndS.tscn"),
-	preload("res://scenes/map/map_tile_variations/DeadEndCity.tscn"),
-	preload("res://scenes/map/map_tile_variations/DeadEndPark.tscn")
+	preload("res://scenes/map/map_tile_variations/DeadEndCityS.tscn"),
+	preload("res://scenes/map/map_tile_variations/DeadEndParkS.tscn")
 ]
 var deadend_W: Array[PackedScene] = [
 	preload("res://scenes/map/templates/DeadEndW.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://blinvj234kwwq"]
+[gd_scene load_steps=14 format=4 uid="uid://by7bkyworkepr"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_84xhp"]
 [ext_resource type="PackedScene" uid="uid://bwo8jsuqn8111" path="res://scenes/environments/POI/SimpleSquareNW_4x4.tscn" id="2_xwxso"]
@@ -18,9 +18,9 @@ vertices = PackedVector2Array(2174, 870.07, -1149.96, 893.922, -1134.03, -3158.0
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1144, -3168, 2184, -3200, 2184, 880, -1160, 904)])
 
-[node name="DeadEndCity" node_paths=PackedStringArray("doors", "medium_poi_spawn") instance=ExtResource("1_84xhp")]
+[node name="DeadEndCityS" node_paths=PackedStringArray("doors", "medium_poi_spawn") instance=ExtResource("1_84xhp")]
 y_sort_enabled = true
-room_name = "DeadEndCity"
+room_name = "DeadEndCityS"
 doors = [null, null, NodePath("DoorArea"), null]
 possible_medium_poi_spawn = Array[PackedScene]([ExtResource("2_xwxso")])
 medium_poi_spawn = NodePath("MediumPOIMarker")

@@ -13,7 +13,8 @@ enum UniquePoiEnum {
 	NONE,
 	RESTAURANT,
 	ALCOVE,
-	KINGDOM
+	KINGDOM,
+	CONSTELLATIONS
 }
 
 @export var potential_enter_direction: EnterDirectionEnum
