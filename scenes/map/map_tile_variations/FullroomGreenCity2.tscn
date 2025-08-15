@@ -155,10 +155,10 @@ position = Vector2(1839, -44)
 position = Vector2(2614, 227)
 
 [node name="RoadBlockV" parent="InteractableHolder" index="26" instance=ExtResource("21_d7y5b")]
-position = Vector2(2291, -443)
+position = Vector2(1976, -443)
 
 [node name="RoadBlockV2" parent="InteractableHolder" index="27" instance=ExtResource("21_d7y5b")]
-position = Vector2(2288, -193)
+position = Vector2(1975, -193)
 
 [node name="Tree4" parent="InteractableHolder" index="28" instance=ExtResource("10_nwmmy")]
 position = Vector2(2657, 1827)
