@@ -10,6 +10,15 @@ enum RoomTypeEnum {
 	FULL
 }
 
+@export var is_debug: bool = false
+@export var debug_map_room_scene: PackedScene
+
+@onready var navigation_region_2d: NavigationRegion2D = $NavigationRegion2D
+@onready var game_handler: GameHandler = $GameHandler
+@onready var player: Player = $Player
+@onready var enemy_handler: EnemyHandler = $EnemyHandler
+@onready var interactable_handler: InteractableHandler = $InteractableHandler
+
 var grid: Array[Array] = [] # 2D Array for generation
 const DIM_X = 7
 const DIM_Y = 7
@@ -30,11 +39,6 @@ var generation_queue = []
 var just_teleported1 = false
 var just_teleported2 = false
 
-@onready var navigation_region_2d: NavigationRegion2D = $NavigationRegion2D
-@onready var game_handler: GameHandler = $GameHandler
-@onready var player: Player = $Player
-@onready var enemy_handler: EnemyHandler = $EnemyHandler
-@onready var interactable_handler: InteractableHandler = $InteractableHandler
 
 var deadend_N: Array[PackedScene] = [
 	preload("res://scenes/map/templates/DeadEndN.tscn")
@@ -100,7 +104,10 @@ func _ready() -> void:
 			grid[i].append(0)
 			all_room_data[i].append(null)
 
-	start_gen() # only grid explored here
+	if not is_debug:
+		start_gen() # only grid explored here
+	else:
+		grid[starting_room.x][starting_room.y] = 1
 
 	# Debug stuff
 	var _count = 0
@@ -267,6 +274,9 @@ func initialize_room(coord: Vector2, outgoing_direction: Vector2 = Vector2.ZERO)
 					new_room_data.room_scene = threeway_noW.pick_random()
 			RoomTypeEnum.FULL:
 				new_room_data.room_scene = fulls.pick_random()
+
+		if is_debug:
+			new_room_data.room_scene = debug_map_room_scene
 
 		new_room_data.is_new = true
 		curr_room_data = new_room_data

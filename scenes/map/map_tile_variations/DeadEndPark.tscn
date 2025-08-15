@@ -31,9 +31,6 @@ tile_map_data = PackedByteArray("AAABAAEAAAAAAAIAAAABAAIAAAAAAAIAAAABAAAAAAAAAAE
 [node name="DoorArea" parent="." index="1" instance=ExtResource("2_mkcme")]
 position = Vector2(504, 664)
 
-[node name="InteractableHolder" parent="." index="3"]
-y_sort_enabled = true
-
 [node name="Bush" parent="InteractableHolder" index="0" instance=ExtResource("6_v4ee6")]
 y_sort_enabled = false
 position = Vector2(-603, 488)

@@ -32,8 +32,8 @@ tile_map_data = PackedByteArray("AAABAAEAAAAAAAIAAAABAAIAAAAAAAIAAAABAAAAAAAAAAA
 [node name="DoorArea" parent="." index="1" instance=ExtResource("3_ug08m")]
 position = Vector2(504, 664)
 
-[node name="InteractableHolder" parent="." index="3"]
-y_sort_enabled = true
+[node name="PlayerSpawn" parent="." index="2"]
+position = Vector2(416, 368)
 
 [node name="Streetlight2" parent="InteractableHolder" index="0" instance=ExtResource("4_vv1aa")]
 position = Vector2(141, 480)
