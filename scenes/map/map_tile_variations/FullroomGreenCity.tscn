@@ -1,0 +1,153 @@
+[gd_scene load_steps=23 format=4 uid="uid://co37vv8n3nnwu"]
+
+[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_uymnt"]
+[ext_resource type="PackedScene" uid="uid://bwh4g2fpsfyjn" path="res://scenes/environments/POI/SimpleSquareNE_4x4.tscn" id="2_44slx"]
+[ext_resource type="PackedScene" uid="uid://cu51txwabxhgh" path="res://scenes/environments/POI/Medium4x3_1.tscn" id="2_x24jb"]
+[ext_resource type="PackedScene" uid="uid://b0mj75rlxuyqm" path="res://scenes/environments/POI/Medium4x3_2.tscn" id="3_yxkqy"]
+[ext_resource type="PackedScene" uid="uid://cuqeayjyckxv7" path="res://scenes/environments/POI/SimpleSneaking_7x5.tscn" id="4_v7rmu"]
+[ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="8_50ec5"]
+[ext_resource type="PackedScene" uid="uid://g5jyjoj7evob" path="res://scenes/environments/prop/TreeType3.tscn" id="9_0yxpf"]
+[ext_resource type="PackedScene" uid="uid://bn0h4ghumvrgf" path="res://scenes/objects/Interactables/ExplosiveBarrel.tscn" id="9_q8te1"]
+[ext_resource type="PackedScene" uid="uid://dhcbhl751xhm" path="res://scenes/environments/prop/TreeType4.tscn" id="10_wmhaq"]
+[ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="11_npok7"]
+[ext_resource type="PackedScene" uid="uid://bxhx21f0uymat" path="res://scenes/environments/prop/BigBush.tscn" id="12_pglb5"]
+[ext_resource type="PackedScene" uid="uid://ctpickf81rn6t" path="res://scenes/objects/Lights/StreetlightDown.tscn" id="13_sfnoh"]
+[ext_resource type="PackedScene" uid="uid://cxqyl5m3yie2u" path="res://scenes/objects/Buildings/Building3.tscn" id="13_wmhaq"]
+[ext_resource type="PackedScene" uid="uid://c0acap2jmh2f" path="res://scenes/objects/Lights/StreetlightUp.tscn" id="14_7mtoh"]
+[ext_resource type="PackedScene" uid="uid://yvpj7pw7acau" path="res://scenes/objects/Obstacles/WreckedBus.tscn" id="15_pglb5"]
+[ext_resource type="PackedScene" uid="uid://cfpsvidalrjjs" path="res://scenes/objects/Obstacles/WreckedCar2.tscn" id="16_y16d7"]
+[ext_resource type="PackedScene" uid="uid://id6e3hwthctu" path="res://scenes/objects/Obstacles/Debris3.tscn" id="17_pfgm3"]
+[ext_resource type="PackedScene" uid="uid://di1iud0i6uaou" path="res://scenes/objects/Obstacles/Debris2.tscn" id="18_8wcif"]
+[ext_resource type="PackedScene" uid="uid://dq24gg2b0ikv0" path="res://scenes/objects/Obstacles/TrashBinSpilled.tscn" id="19_yxkqy"]
+[ext_resource type="PackedScene" uid="uid://b0jgd5d73o3ch" path="res://scenes/objects/misc/Fire.tscn" id="20_ju37q"]
+[ext_resource type="PackedScene" uid="uid://cpgph16jrde8r" path="res://scenes/objects/Obstacles/RoadBlockH.tscn" id="22_55r1s"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dq2p3"]
+vertices = PackedVector2Array(3445.95, -614.047, 3430.04, 3182.04, -2205.97, 3205.95, -2198.02, -645.938)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2208, -656, 3456, -624, 3440, 3192, -2216, 3216)])
+
+[node name="FullRoomCityIntersection" node_paths=PackedStringArray("doors", "medium_poi_spawn") instance=ExtResource("1_uymnt")]
+y_sort_enabled = true
+room_name = "Fullroom"
+doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
+unique_poi_chance_perc = 100
+possible_medium_poi_spawn = Array[PackedScene]([ExtResource("2_x24jb"), ExtResource("3_yxkqy"), ExtResource("4_v7rmu"), ExtResource("2_44slx")])
+medium_poi_spawn = NodePath("MediumPOISpawn")
+metadata/_edit_horizontal_guides_ = [738.0]
+
+[node name="TileMap" parent="." index="0"]
+z_index = -10
+tile_map_data = PackedByteArray("AAAEAAMAAAACAAEAAAADAAMAAAAAAAIAAAACAAMAAAAAAAIAAAABAAMAAAAEAAEAAAAFAAMAAgAAAAIAAAADAP7/AAAAAAIAAAADAP//AAAAAAIAAAADAAAAAAAAAAIAAAADAAEAAAAAAAIAAAADAAIAAAAAAAIAAAABAAIAAAAEAAEAAAACAP7/AAAAAAIAAAABAP7/AAAEAAEAAAABAP//AAAEAAEAAAABAAAAAAAEAAEAAAABAAEAAAAEAAEAAAAFAP7/AgAAAAIAAAAFAP//AgAAAAIAAAAFAAAAAgAAAAIAAAAFAAEAAgAAAAIAAAAFAAIAAgAAAAIAAAD//wYAAAAAAAIAAFAFAAQAAgAAAAIAAAAFAAUAAAADAAIAAAAFAAYAAAAAAAIAAFACAP//AAAAAAIAAAACAAAAAAAAAAIAAAACAAEAAAAAAAIAAAACAAIAAAAAAAIAAAAEAAIAAAACAAEAAAAEAAEAAAACAAEAAAAEAAAAAAACAAEAAAAEAP//AAACAAEAAAAEAP7/AAACAAEAAAD//wUAAAADAAIAAAD7/wUAAAADAAIAAAD7/wYAAAAAAAIAAFAEAAUAAAACAAIAAAAEAAQAAAACAAEAAAADAAUAAAAAAAEAADADAAQAAAAAAAIAAAACAAUAAAAAAAEAADACAAQAAAAAAAIAAAABAAUAAAAEAAIAAAABAAQAAAAEAAEAAAAAAAUAAAADAAIAAAAEAAYAAAAAAAEAAGADAAYAAAAAAAAAAGACAAYAAAAAAAAAADABAAYAAAAAAAIAAFAAAAYAAAAAAAIAAFD+/wUAAAADAAIAAAD9/wUAAAADAAIAAAD8/wUAAAADAAIAAAD+/wYAAAAAAAIAAFD9/wYAAAAAAAEAAFD8/wYAAAAAAAIAAFD//wkAAAAAAAIAADD//woAAAAAAAIAADD4/wUAAAADAAIAAAD4/wYAAAAAAAIAAFD4/wcAAAAAAAIAAFD4/wgAAAADAAAAAAD4/wkAAAADAAEAAAD5/wUAAAADAAIAAAD5/wYAAAAAAAIAAFD5/wcAAAAAAAIAAFD5/wgAAAADAAAAAAD5/wkAAAABAAIAAAD6/wUAAAADAAIAAAD6/wYAAAAAAAIAAFD6/wcAAAAAAAIAAFD6/wgAAAADAAAAAAD7/wcAAAAAAAIAAFD7/wgAAAADAAAAAAD7/wkAAAABAAIAAAD8/wcAAAAAAAIAAFD8/wgAAAADAAAAAAD8/wkAAAADAAEAAAD9/wcAAAAAAAEAAFD9/wgAAAAEAAAAAAD9/wkAAAAEAAEAAAD+/wcAAAAAAAAAAFD+/wgAAAAAAAEAAAD+/wkAAAAAAAIAADD//wcAAAAAAAAAAAD//wgAAAAAAAEAAAAAAAcAAAAAAAIAAFAAAAgAAAACAAAAAAAAAAkAAAACAAEAAAD4/woAAAADAAEAAAD4/wsAAAABAAIAAAD5/woAAAADAAEAAAD5/wsAAAADAAEAAAD6/woAAAADAAEAAAD8/woAAAABAAIAAAD8/wsAAAADAAEAAAD9/woAAAAEAAEAAAD9/wsAAAAEAAEAAAD+/woAAAAAAAIAADD+/wsAAAAAAAIAADD//wsAAAAAAAIAADAAAAoAAAACAAEAAAAAAAsAAAACAAEAAAABAAcAAAAAAAIAAFABAAgAAAADAAAAAAABAAkAAgAAAAIAAAABAAoAAgAAAAIAAAABAAsAAgAAAAIAAAACAAcAAAAAAAIAAFACAAgAAAADAAAAAAACAAkAAgAAAAIAAAACAAoAAgAAAAIAAAACAAsAAgAAAAIAAAADAAcAAAAAAAIAAFADAAgAAAADAAAAAAADAAkAAgAAAAIAAAADAAoAAgAAAAIAAAADAAsAAgAAAAIAAAAEAAcAAAAAAAEAAGAEAAgAAAADAAAAAAAEAAkAAgAAAAIAAAAEAAoAAgAAAAIAAAAEAAsAAgAAAAIAAAAFAAcAAAAAAAIAAFAFAAgAAAADAAAAAAAFAAkAAgAAAAIAAAAFAAoAAgAAAAIAAAAFAAsAAgAAAAIAAAAGAAEAAgAAAAIAAAAGAAIAAgAAAAIAAAAGAAMAAgAAAAIAAAAGAAQAAgAAAAIAAAAGAAUAAAADAAIAAAAGAAYAAAAAAAIAAFAGAAcAAAAAAAIAAFAGAAgAAAADAAAAAAAGAAkAAgAAAAIAAAAGAAoAAgAAAAIAAAAGAAsAAgAAAAIAAAAHAAEAAgAAAAIAAAAHAAIAAgAAAAIAAAAHAAMAAgAAAAIAAAAHAAQAAgAAAAIAAAAHAAUAAAADAAIAAAAHAAYAAAAAAAIAAFAHAAcAAAAAAAIAAFAHAAgAAAADAAAAAAAHAAkAAgAAAAIAAAAHAAoAAgAAAAIAAAAHAAsAAgAAAAIAAAAIAAEAAgAAAAIAAAAIAAIAAgAAAAIAAAAIAAMAAgAAAAIAAAAIAAQAAgAAAAIAAAAIAAUAAAADAAIAAAAIAAYAAAAAAAIAAFAIAAcAAAAAAAIAAFAIAAgAAAADAAAAAAAIAAkAAgAAAAIAAAAIAAoAAgAAAAIAAAAIAAsAAgAAAAIAAAAJAAEAAgAAAAIAAAAJAAIAAgAAAAIAAAAJAAMAAgAAAAIAAAAJAAQAAgAAAAIAAAAJAAUAAAADAAIAAAAJAAYAAAAAAAIAAFAJAAcAAAAAAAIAAFAJAAgAAAADAAAAAAAJAAkAAgAAAAIAAAAJAAoAAgAAAAIAAAAJAAsAAgAAAAIAAAAGAP7/AgAAAAIAAAAGAP//AgAAAAIAAAAGAAAAAgAAAAIAAAAHAP7/AgAAAAIAAAAHAP//AgAAAAIAAAAHAAAAAgAAAAIAAAAIAP7/AgAAAAIAAAAIAP//AgAAAAIAAAAIAAAAAgAAAAIAAAAJAP7/AgAAAAIAAAAJAP//AgAAAAIAAAAJAAAAAgAAAAIAAAD3//3/AAABAAEAAAD4//3/AAABAAEAAAD5//3/AAABAAEAAAD6//3/AAABAAEAAAD7//3/AAABAAEAAAD8//3/AAABAAEAAAD9//3/AAABAAEAAAD+//3/AAABAAEAAAD///3/AAABAAEAAAAAAP3/AAABAAEAAAABAP3/AAABAAEAAAACAP3/AAABAAEAAAADAP3/AAABAAEAAAAEAP3/AAABAAEAAAAFAP3/AAABAAEAAAAGAP3/AAABAAEAAAAHAP3/AAABAAEAAAAIAP3/AAABAAEAAAAJAP3/AAABAAEAAAAKAP3/AAABAAEAAAAKAP7/AgAAAAIAAAAKAP//AgAAAAIAAAAKAAAAAgAAAAIAAAAKAAEAAgAAAAIAAAAKAAIAAgAAAAIAAAAKAAMAAgAAAAIAAAAKAAQAAgAAAAIAAAAKAAUAAAADAAIAAAAKAAYAAAAAAAIAAFAKAAcAAAAAAAIAAFAKAAgAAAADAAAAAAAKAAkAAgAAAAIAAAAKAAoAAgAAAAIAAAAKAAsAAgAAAAIAAAAKAAwAAAABAAEAAAD3/wwAAAABAAEAAAD4/wwAAAABAAEAAAD5/wwAAAABAAEAAAD6/wwAAAABAAEAAAD7/wwAAAABAAEAAAD8/wwAAAABAAEAAAD9/wwAAAABAAEAAAD+/wwAAAABAAEAAAD//wwAAAABAAEAAAAAAAwAAAABAAEAAAABAAwAAAABAAEAAAACAAwAAAABAAEAAAADAAwAAAABAAEAAAAEAAwAAAABAAEAAAAFAAwAAAABAAEAAAAGAAwAAAABAAEAAAAHAAwAAAABAAEAAAAIAAwAAAABAAEAAAAJAAwAAAABAAEAAAD3//7/AAABAAEAAAD3////AAABAAEAAAD3/wAAAAABAAEAAAD3/wEAAAABAAEAAAD3/wIAAAABAAEAAAD3/wMAAAABAAEAAAD3/wQAAAABAAEAAAD3/wUAAAABAAEAAAD3/wYAAAABAAEAAAD3/wcAAAABAAEAAAD3/wgAAAABAAEAAAD3/wkAAAABAAEAAAD3/woAAAABAAEAAAD3/wsAAAABAAEAAAALAAUAAAABAAEAAAALAAQAAAABAAEAAAALAP7/AAABAAEAAAALAAIAAAABAAEAAAALAAEAAAABAAEAAAALAAAAAAABAAEAAAALAP//AAABAAEAAAALAAMAAAABAAEAAAALAP3/AAABAAEAAAALAAwAAAABAAEAAAALAAgAAAABAAEAAAALAAkAAAABAAEAAAALAAsAAAABAAEAAAALAAoAAAABAAEAAAALAAYAAAABAAEAAAALAAcAAAABAAEAAAD6/wkAAAABAAIAAAD7/woAAAABAAIAAAD7/wsAAAABAAIAAAD6/wsAAAABAAIAAAD4//7/AAABAAIAAAD4////AAABAAIAAAD4/wAAAAABAAIAAAD4/wEAAAABAAIAAAD4/wIAAAABAAIAAAD4/wMAAAABAAIAAAD4/wQAAAABAAIAAAD5//7/AAABAAIAAAD5////AAABAAIAAAD5/wAAAAABAAIAAAD5/wEAAAADAAEAAAD5/wIAAAABAAIAAAD5/wMAAAADAAEAAAD5/wQAAAABAAIAAAD6//7/AAABAAIAAAD6////AAABAAIAAAD6/wAAAAABAAIAAAD6/wEAAAABAAIAAAD6/wIAAAABAAIAAAD6/wMAAAABAAIAAAD6/wQAAAABAAIAAAD7//7/AAABAAIAAAD7////AAABAAIAAAD7/wAAAAADAAEAAAD7/wEAAAABAAIAAAD7/wIAAAABAAIAAAD7/wMAAAABAAIAAAD7/wQAAAABAAIAAAD8//7/AAABAAIAAAD8////AAABAAIAAAD8/wAAAAABAAIAAAD8/wEAAAABAAIAAAD8/wIAAAADAAEAAAD8/wMAAAADAAEAAAD8/wQAAAABAAIAAAD9//7/AAABAAIAAAD9////AAADAAEAAAD9/wAAAAABAAIAAAD9/wEAAAADAAEAAAD9/wIAAAABAAIAAAD9/wMAAAABAAIAAAD9/wQAAAABAAIAAAD+//7/AAADAAEAAAD+////AAABAAIAAAD+/wAAAAABAAIAAAD+/wEAAAABAAIAAAD+/wIAAAABAAIAAAD+/wMAAAABAAIAAAD+/wQAAAABAAIAAAD///7/AAABAAIAAAD/////AAABAAIAAAD//wAAAAABAAIAAAD//wEAAAABAAIAAAD//wIAAAABAAIAAAD//wMAAAADAAEAAAD//wQAAAABAAIAAAAAAP7/AAABAAIAAAAAAP//AAABAAIAAAAAAAAAAAABAAIAAAAAAAEAAAABAAIAAAAAAAIAAAADAAEAAAAAAAMAAAABAAIAAAAAAAQAAAABAAIAAAA=")
+
+[node name="DoorArea" parent="." index="1" instance=ExtResource("8_50ec5")]
+position = Vector2(768, -448)
+
+[node name="DoorArea2" parent="." index="2" instance=ExtResource("8_50ec5")]
+position = Vector2(2747, 1800)
+rotation = 1.5708
+
+[node name="DoorArea3" parent="." index="3" instance=ExtResource("8_50ec5")]
+position = Vector2(-248, 3008)
+
+[node name="DoorArea4" parent="." index="4" instance=ExtResource("8_50ec5")]
+position = Vector2(-1976, 1800)
+rotation = -1.57079
+
+[node name="MediumPOISpawn" type="Marker2D" parent="." index="5"]
+position = Vector2(-1875, -464)
+
+[node name="PlayerSpawn" parent="." index="7"]
+position = Vector2(712, -160)
+
+[node name="Streetlight" parent="InteractableHolder" index="0" instance=ExtResource("13_sfnoh")]
+position = Vector2(-280, 1412)
+
+[node name="Streetlight2" parent="InteractableHolder" index="1" instance=ExtResource("14_7mtoh")]
+position = Vector2(785, 2151)
+
+[node name="Tree" parent="InteractableHolder" index="2" instance=ExtResource("9_0yxpf")]
+position = Vector2(-1565, 2554)
+
+[node name="Tree2" parent="InteractableHolder" index="3" instance=ExtResource("10_wmhaq")]
+position = Vector2(-1124, 2845)
+
+[node name="Bush" parent="InteractableHolder" index="4" instance=ExtResource("11_npok7")]
+position = Vector2(-1744, 2629)
+
+[node name="BigBush" parent="InteractableHolder" index="5" instance=ExtResource("12_pglb5")]
+position = Vector2(-1555, 2480)
+
+[node name="Bush2" parent="InteractableHolder" index="6" instance=ExtResource("11_npok7")]
+position = Vector2(-1579, 2715)
+
+[node name="Bush3" parent="InteractableHolder" index="7" instance=ExtResource("11_npok7")]
+position = Vector2(-1020, 2859)
+
+[node name="Building4" parent="InteractableHolder" index="8" instance=ExtResource("13_wmhaq")]
+position = Vector2(2055, -489)
+
+[node name="RoadBlockH4" parent="InteractableHolder" index="9" instance=ExtResource("22_55r1s")]
+position = Vector2(1232, 2887)
+
+[node name="RoadBlockH6" parent="InteractableHolder" index="10" instance=ExtResource("22_55r1s")]
+position = Vector2(883, 2887)
+
+[node name="RoadBlockH7" parent="InteractableHolder" index="11" instance=ExtResource("22_55r1s")]
+position = Vector2(537, 2887)
+
+[node name="RoadBlockH3" parent="InteractableHolder" index="12" instance=ExtResource("22_55r1s")]
+position = Vector2(1938, 2886)
+
+[node name="RoadBlockH2" parent="InteractableHolder" index="13" instance=ExtResource("22_55r1s")]
+position = Vector2(1581, 2886)
+
+[node name="RoadBlockH" parent="InteractableHolder" index="14" instance=ExtResource("22_55r1s")]
+position = Vector2(2294, 2882)
+
+[node name="RoadBlockH5" parent="InteractableHolder" index="15" instance=ExtResource("22_55r1s")]
+position = Vector2(2647, 2882)
+
+[node name="ExplosiveBarrel" parent="InteractableHolder" index="16" instance=ExtResource("9_q8te1")]
+position = Vector2(1071, 2001)
+
+[node name="Streetlight3" parent="InteractableHolder" index="17" instance=ExtResource("13_sfnoh")]
+position = Vector2(2558, 1427)
+
+[node name="WreckedBus" parent="InteractableHolder" index="18" instance=ExtResource("15_pglb5")]
+position = Vector2(1607, 1666)
+
+[node name="Debris" parent="InteractableHolder" index="19" instance=ExtResource("17_pfgm3")]
+position = Vector2(681, 2544)
+
+[node name="Debris2" parent="InteractableHolder" index="20" instance=ExtResource("18_8wcif")]
+position = Vector2(754, 2511)
+
+[node name="TrashBinSpilled" parent="InteractableHolder" index="21" instance=ExtResource("19_yxkqy")]
+position = Vector2(611, 2651)
+
+[node name="WreckedCar" parent="InteractableHolder" index="22" instance=ExtResource("16_y16d7")]
+position = Vector2(1876, 2019)
+
+[node name="Debris3" parent="InteractableHolder" index="23" instance=ExtResource("17_pfgm3")]
+position = Vector2(2236, 2456)
+
+[node name="Fire" parent="InteractableHolder" index="24" instance=ExtResource("20_ju37q")]
+position = Vector2(2171, 2532)
+is_permanent = true
+
+[node name="Fire2" parent="InteractableHolder" index="25" instance=ExtResource("20_ju37q")]
+position = Vector2(2175, 1970)
+is_permanent = true
+
+[node name="UniquePoiMarker" type="Marker2D" parent="." index="9"]
+position = Vector2(1408, -304)
+
+[node name="NavigationRegion2D" parent="." index="10"]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_dq2p3")
+
+[connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea3" to="DoorArea3" method="_on_area_entered"]
+[connection signal="area_entered" from="DoorArea4" to="DoorArea4" method="_on_area_entered"]

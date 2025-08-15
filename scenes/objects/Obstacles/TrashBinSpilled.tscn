@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq24gg2b0ikv0"]
+
+[ext_resource type="Texture2D" uid="uid://bnw4oyu2lr6l0" path="res://assets/map/prop/trash 2.png" id="1_k6ot2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgr28"]
+size = Vector2(112.5, 26.5)
+
+[node name="TrashBinSpilled" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, -13)
+texture = ExtResource("1_k6ot2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-88.75, 12.75)
+shape = SubResource("RectangleShape2D_sgr28")
