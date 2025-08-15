@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Dish" load_steps=4 format=3 uid="uid://wi0meth03fww"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_s23qa"]
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_0l0o4"]
+[ext_resource type="Texture2D" uid="uid://dy8yjsic3vb5h" path="res://assets/food/jelly.png" id="3_0l0o4"]
+
+[resource]
+script = ExtResource("2_0l0o4")
+effects = Array[int]([])
+ingredients = Array[ExtResource("1_s23qa")]([])
+texture = ExtResource("3_0l0o4")
+item_id = "jelly"
+item_name = "Jelly"
+description = "You can almost see something inside..."
+weight = 0.2
+rarity = 2
+quality = 2
+metadata/_custom_type_script = "uid://dqqa8ydotiigx"

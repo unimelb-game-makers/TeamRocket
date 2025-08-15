@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://chda2i2d28xvk"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_386yx"]
+[ext_resource type="Texture2D" uid="uid://bouk52psuj0v6" path="res://assets/food/win cheese.png" id="2_yduc3"]
+
+[resource]
+script = ExtResource("1_386yx")
+ingredient_type = 0
+ingredient_category = 0
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_yduc3")
+item_id = "cheese"
+item_name = "WIN Cheese"
+description = "what is now?"
+weight = 0.2
+rarity = 3
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

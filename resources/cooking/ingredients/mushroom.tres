@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://b1cf3rlm51v62"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_1td3n"]
+[ext_resource type="Texture2D" uid="uid://btaopu3w85t0x" path="res://assets/food/dozing shroom.png" id="2_8odip"]
+
+[resource]
+script = ExtResource("1_1td3n")
+ingredient_type = 0
+ingredient_category = 0
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_8odip")
+item_id = "mushroom"
+item_name = "Dozing Shroom"
+description = "Just being near it makes your drowsy"
+weight = 0.2
+rarity = 1
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

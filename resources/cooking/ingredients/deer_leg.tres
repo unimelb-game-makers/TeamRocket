@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://c7l5a6h48si31"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_r7qa1"]
+[ext_resource type="Texture2D" uid="uid://vqg85fa6q5s5" path="res://assets/food/deer leg.png" id="2_kr8ku"]
+
+[resource]
+script = ExtResource("1_r7qa1")
+ingredient_type = 0
+ingredient_category = 0
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_kr8ku")
+item_id = ""
+item_name = "Deer Leg"
+description = ""
+weight = 0.0
+rarity = 0
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

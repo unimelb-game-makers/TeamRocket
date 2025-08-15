@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://dr8eqhsrfeqda"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_vg3ij"]
+[ext_resource type="Texture2D" uid="uid://de50ed3nsyym6" path="res://assets/food/dark talons.png" id="2_y3km2"]
+
+[resource]
+script = ExtResource("1_vg3ij")
+ingredient_type = 0
+ingredient_category = 0
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_y3km2")
+item_id = "dark_talons"
+item_name = "Dark Talons"
+description = "Talons of a dark mutated bird"
+weight = 0.1
+rarity = 3
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

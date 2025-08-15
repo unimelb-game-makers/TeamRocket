@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bjqtf5oq44h6f"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_nunno"]
+[ext_resource type="Texture2D" uid="uid://pqampit2yc04" path="res://assets/food/wing raven.png" id="2_dtk5n"]
+
+[resource]
+script = ExtResource("1_nunno")
+ingredient_type = 0
+ingredient_category = 0
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_dtk5n")
+item_id = "raven_wing"
+item_name = "Raven Wing"
+description = "A dark wing of a bird"
+weight = 0.2
+rarity = 0
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

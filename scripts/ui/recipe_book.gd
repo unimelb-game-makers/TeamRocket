@@ -1,4 +1,5 @@
 extends Control
+class_name RecipeBook
 
 @export var unlocked_recipes: Array[Recipe]
 
@@ -34,6 +35,7 @@ extends Control
 var open = false
 
 func _ready() -> void:
+	Globals.recipe_book = self
 	update_selected_recipe()
 	update_recipe_book()
 
