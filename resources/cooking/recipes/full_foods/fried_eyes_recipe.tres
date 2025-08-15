@@ -10,5 +10,5 @@ swappable_ingredients = Array[int]([])
 dishes = Array[ExtResource("1_3du4b")]([ExtResource("2_5kjyk")])
 recipe_name = "Fried Spider Eyes"
 effects = Array[int]([])
-base_ingredients = Array[int]([0])
+base_ingredients = Array[int]([409])
 metadata/_custom_type_script = "uid://dbchi3jhl5d0x"

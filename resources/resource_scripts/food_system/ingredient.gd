@@ -11,6 +11,7 @@ enum IngredientType {
 	STOCK = 3,
 	WHEAT = 4,
 	GELATIN = 5,
+	EGG = 6,
 	# Veges
 	POTATO = 100,
 	CARROT = 101,
@@ -32,7 +33,7 @@ enum IngredientType {
 	RICE = 300,
 	BREAD = 302,
 	NOODLE = 301,
-	
+	TORTILLA = 303,
 	# RAW FOODS
 	RAW_POTATO = 401,
 	RAW_CARROT = 402,
@@ -45,6 +46,7 @@ enum IngredientType {
 	
 	RAW_SPIDER_EYES = 409,
 	RAW_RAVEN_WING = 410,
+	RAW_DEER = 411,
 	
 	# ELDRITCH
 	GRAIN_MOSS = 501,

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DishRecipe" load_steps=5 format=3 uid="uid://brweejkk2cgof"]
+
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="1_r67tn"]
+[ext_resource type="Script" uid="uid://dbchi3jhl5d0x" path="res://resources/resource_scripts/food_system/recipe_scripts/dish_recipe.gd" id="2_mkfmy"]
+[ext_resource type="Resource" uid="uid://c08ak807mihu" path="res://resources/cooking/foods/kebab.tres" id="2_tqdjq"]
+[ext_resource type="Resource" uid="uid://cnlpqgj2nb7ak" path="res://resources/cooking/foods/deer_kebab.tres" id="3_nva25"]
+
+[resource]
+script = ExtResource("2_mkfmy")
+swappable_ingredients = Array[int]([2, 3])
+dishes = Array[ExtResource("1_r67tn")]([ExtResource("2_tqdjq"), ExtResource("3_nva25")])
+recipe_name = "Kebab"
+effects = Array[int]([1, 0])
+base_ingredients = Array[int]([1])
+metadata/_custom_type_script = "uid://dbchi3jhl5d0x"

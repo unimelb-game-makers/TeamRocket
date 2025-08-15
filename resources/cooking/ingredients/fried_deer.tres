@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bg03ilokor630"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_fh6ar"]
+[ext_resource type="Texture2D" uid="uid://c77q4xreiy8tj" path="res://assets/food/deer meat fried.png" id="2_djghr"]
+
+[resource]
+script = ExtResource("1_fh6ar")
+ingredient_type = 204
+ingredient_category = 0
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_djghr")
+item_id = "fried_deer"
+item_name = "Fried Deer Meat"
+description = ""
+weight = 0.2
+rarity = 1
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"
