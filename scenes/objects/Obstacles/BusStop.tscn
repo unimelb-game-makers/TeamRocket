@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5kibcifdpl41"]
+
+[ext_resource type="Texture2D" uid="uid://cyt85386ai4aa" path="res://assets/map/city/bus stop.png" id="1_rqih7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgr28"]
+size = Vector2(487.25, 29.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8m1w"]
+size = Vector2(232.625, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqih7"]
+size = Vector2(26, 373)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rh7o"]
+size = Vector2(35, 29.75)
+
+[node name="BusStop" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rqih7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(64.375, 74)
+shape = SubResource("RectangleShape2D_sgr28")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-10.3125, 115)
+shape = SubResource("RectangleShape2D_t8m1w")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(300, 59.5)
+shape = SubResource("RectangleShape2D_rqih7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-172, 59.5)
+shape = SubResource("RectangleShape2D_rqih7")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-242, 229.875)
+shape = SubResource("RectangleShape2D_0rh7o")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpgph16jrde8r"]
+
+[ext_resource type="Texture2D" uid="uid://kcuskxpbd165" path="res://assets/map/city/roadblock horizontal.png" id="1_30mey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgr28"]
+size = Vector2(334.625, 68.75)
+
+[node name="RoadBlockH" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_30mey")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2.3125, 68.375)
+shape = SubResource("RectangleShape2D_sgr28")

@@ -14,6 +14,7 @@ var grid: Array[Array] = [] # 2D Array for generation
 const DIM_X = 7
 const DIM_Y = 7
 const DIRECTION_UNIT: Array[Vector2] = [Vector2(0, -1), Vector2(1, 0), Vector2(0, 1), Vector2(-1, 0)]
+const MAX_NEIGHBORS = 2
 
 var all_room_data = []
 
@@ -25,8 +26,6 @@ var curr_rooms = 0
 var num_rooms = 20
 
 var generation_queue = []
-
-var max_neighbors = 2
 
 var just_teleported1 = false
 var just_teleported2 = false
@@ -44,7 +43,9 @@ var deadend_E: Array[PackedScene] = [
 	preload("res://scenes/map/templates/DeadEndE.tscn")
 ]
 var deadend_S: Array[PackedScene] = [
-	preload("res://scenes/map/templates/DeadEndS.tscn")
+	preload("res://scenes/map/templates/DeadEndS.tscn"),
+	preload("res://scenes/map/map_tile_variations/DeadEndCity.tscn"),
+	preload("res://scenes/map/map_tile_variations/DeadEndPark.tscn")
 ]
 var deadend_W: Array[PackedScene] = [
 	preload("res://scenes/map/templates/DeadEndW.tscn")
@@ -139,8 +140,8 @@ func start_gen():
 			# If room already occupied, exit
 			if grid[neighbor.x][neighbor.y] == 1:
 				continue
-			# If more than max_neighbors, exit
-			if get_num_neighbors(grid, neighbor) > max_neighbors:
+			# If more than MAX_NEIGHBORS, exit
+			if get_num_neighbors(grid, neighbor) > MAX_NEIGHBORS:
 				#if randi_range(0, 1):
 					#continue
 				continue

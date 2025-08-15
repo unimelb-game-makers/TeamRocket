@@ -119,7 +119,6 @@ radius = 92.0
 height = 416.0
 
 [node name="BigBush" type="Node2D" node_paths=PackedStringArray("sprites")]
-y_sort_enabled = true
 script = ExtResource("1_m1804")
 sprites = [NodePath("Sprite2D2"), NodePath("Sprite2D3"), NodePath("Sprite2D4"), NodePath("Sprite2D5"), NodePath("Sprite2D")]
 

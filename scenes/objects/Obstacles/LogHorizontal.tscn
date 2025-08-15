@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://clluqb6vkwv8p"]
+
+[ext_resource type="Texture2D" uid="uid://bt4k5ov0euclj" path="res://assets/map/park/log horizontal.png" id="1_nue5q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgr28"]
+size = Vector2(362, 56)
+
+[node name="LogHorizontal" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nue5q")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 19)
+shape = SubResource("RectangleShape2D_sgr28")

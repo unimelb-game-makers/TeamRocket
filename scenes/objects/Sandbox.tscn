@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cca4vmq1qi27o"]
 
-[ext_resource type="Texture2D" uid="uid://qbpil3m45e80" path="res://assets/Park/Objects/sandbox.png" id="1_8cxui"]
+[ext_resource type="Texture2D" uid="uid://qbpil3m45e80" path="res://assets/map/city/sandbox.png" id="1_8cxui"]
 
 [node name="Sandbox" type="Node2D"]
 

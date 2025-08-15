@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dpnpt3tyed25k"]
 
-[ext_resource type="Texture2D" uid="uid://dgk2wogad4fpl" path="res://assets/Park/Objects/swings.png" id="1_beww4"]
+[ext_resource type="Texture2D" uid="uid://dgk2wogad4fpl" path="res://assets/map/city/swings.png" id="1_beww4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxwfd"]
 size = Vector2(193.75, 88)

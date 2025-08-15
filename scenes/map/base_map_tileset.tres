@@ -1,14 +1,15 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bi1t15nj76caa"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bi1t15nj76caa"]
 
 [ext_resource type="Texture2D" uid="uid://xrhly4rowkk2" path="res://assets/map/map_tileset.png" id="1_ojsbj"]
+[ext_resource type="Texture2D" uid="uid://ceagkhti0cmdy" path="res://assets/map/city/concrete.png" id="2_7eefk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ta5ng"]
 texture = ExtResource("1_ojsbj")
 texture_region_size = Vector2i(256, 256)
-0:0/0 = 0
-0:0/0/y_sort_origin = 127
+0:1/next_alternative_id = 2
 0:1/0 = 0
 0:1/0/y_sort_origin = 127
+0:2/next_alternative_id = 2
 0:2/0 = 0
 0:2/0/y_sort_origin = 127
 1:0/0 = 0
@@ -132,6 +133,14 @@ texture_region_size = Vector2i(256, 256)
 6:0/0/terrains_peering_bit/top_left_corner = 0
 6:0/0/terrains_peering_bit/top_side = 0
 6:0/0/terrains_peering_bit/top_right_corner = 0
+5:2/0 = 0
+0:0/next_alternative_id = 5
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xrilm"]
+texture = ExtResource("2_7eefk")
+texture_region_size = Vector2i(256, 256)
+0:2/0 = 0
 
 [resource]
 tile_size = Vector2i(256, 256)
@@ -141,3 +150,4 @@ terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "pavement"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_ta5ng")
+sources/2 = SubResource("TileSetAtlasSource_xrilm")
