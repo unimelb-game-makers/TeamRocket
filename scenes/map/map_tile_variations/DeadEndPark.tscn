@@ -19,8 +19,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1144, -3168, 2184, -32
 
 [node name="DeadEndPark" node_paths=PackedStringArray("doors", "large_poi_spawn") instance=ExtResource("1_pfuus")]
 y_sort_enabled = true
-room_name = "DeadEnd"
-sockets = Array[String](["A", "A", "B", "A"])
+room_name = "DeadEndPark"
 doors = [null, null, NodePath("DoorArea"), null]
 possible_large_poi_spawn = Array[PackedScene]([ExtResource("2_mp1hj")])
 large_poi_spawn = NodePath("LargePOIMarker")
