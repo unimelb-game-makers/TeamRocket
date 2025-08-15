@@ -53,6 +53,8 @@ enum RoomSocketEnum {
 @export var map_loot_table: Array[Item] = []
 
 @onready var navigation_region: NavigationRegion2D = $NavigationRegion2D
+@onready var enemy_holder: Node2D = $EnemyHolder
+@onready var spawn_holder: Node2D = $SpawnHolder
 @onready var interactable_holder: Node2D = $InteractableHolder
 
 var spawned_pois: Array[PlaceablePOI] = []
@@ -189,8 +191,7 @@ func generate_loot_for_container():
 		elem.generate_loot_for_container()
 
 func get_enemy_spawns():
-	# TODO: Add spawns from map room too
-	var res = []
+	var res = spawn_holder.get_children()
 	for elem in spawned_pois:
 		res.append_array(elem.get_enemy_spawns())
 	return res
@@ -202,8 +203,7 @@ func get_interactables():
 	return res
 
 func get_enemies():
-	# TODO: Add enemies from map room too
-	var res = []
+	var res = enemy_holder.get_children()
 	for elem in spawned_pois:
 		res.append_array(elem.get_enemies())
 	return res
