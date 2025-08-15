@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bw4ib6qh6c8j0"
+path="res://.godot/imported/dog bite2.ogg-662426ee8a8a40012147444955568f50.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/dog/dog bite2.ogg"
+dest_files=["res://.godot/imported/dog bite2.ogg-662426ee8a8a40012147444955568f50.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

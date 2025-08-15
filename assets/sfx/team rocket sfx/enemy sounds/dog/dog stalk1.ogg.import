@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://5iedwpgwxdqt"
+path="res://.godot/imported/dog stalk1.ogg-dddd53ab0487b522331e2baea78b1923.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/dog/dog stalk1.ogg"
+dest_files=["res://.godot/imported/dog stalk1.ogg-dddd53ab0487b522331e2baea78b1923.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

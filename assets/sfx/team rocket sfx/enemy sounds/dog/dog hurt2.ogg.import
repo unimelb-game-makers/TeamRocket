@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://db8n8evn7rhfq"
+path="res://.godot/imported/dog hurt2.ogg-833863558a71dda671104da12cb10e6f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/dog/dog hurt2.ogg"
+dest_files=["res://.godot/imported/dog hurt2.ogg-833863558a71dda671104da12cb10e6f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

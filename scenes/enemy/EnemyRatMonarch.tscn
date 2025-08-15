@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://djgvayx5wpdta"]
+[gd_scene load_steps=35 format=3 uid="uid://djgvayx5wpdta"]
 
 [ext_resource type="PackedScene" uid="uid://c0dgri14uuw70" path="res://scenes/enemy/BasicEnemy.tscn" id="1_1omva"]
 [ext_resource type="Script" uid="uid://247cdk3k6pqh" path="res://scripts/enemy/enemy_rat_monarch.gd" id="2_1omva"]
@@ -7,6 +7,21 @@
 [ext_resource type="Script" uid="uid://bff788jqvq01w" path="res://addons/godot_state_charts/transition.gd" id="6_7kjy8"]
 [ext_resource type="Script" uid="uid://0t6twnwvvru2" path="res://addons/godot_state_charts/compound_state.gd" id="7_2w7o7"]
 [ext_resource type="Script" uid="uid://cvj8mufd2xs1u" path="res://addons/godot_state_charts/atomic_state.gd" id="8_5hs4b"]
+[ext_resource type="AudioStream" uid="uid://fovyeavs7037" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch 1a.ogg" id="8_s7rwb"]
+[ext_resource type="AudioStream" uid="uid://ddvhas0kfyvof" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch death1.ogg" id="9_b58ax"]
+[ext_resource type="AudioStream" uid="uid://beu2fgrcjvao6" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch 1b.ogg" id="9_xy5u8"]
+[ext_resource type="AudioStream" uid="uid://yjhm2d7ir1n2" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch attack1.ogg" id="10_7kjy8"]
+[ext_resource type="AudioStream" uid="uid://d3jkt1p7vkh4w" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch 2a.ogg" id="10_hcb5t"]
+[ext_resource type="AudioStream" uid="uid://ds6m3drgy51gl" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch 2b.ogg" id="11_1gi8t"]
+[ext_resource type="AudioStream" uid="uid://l8xk5ns4e1d3" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch attack2.ogg" id="11_2w7o7"]
+[ext_resource type="AudioStream" uid="uid://bfdajq8ipxkii" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch 3a.ogg" id="12_00l4n"]
+[ext_resource type="AudioStream" uid="uid://3ddb70o0fa85" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch hurt1.ogg" id="12_qg1u3"]
+[ext_resource type="AudioStream" uid="uid://bpvrpwnplmiys" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch death2.ogg" id="13_7kjy8"]
+[ext_resource type="AudioStream" uid="uid://c068cdutosowr" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch hurt2.ogg" id="13_e0r6m"]
+[ext_resource type="AudioStream" uid="uid://cu45s56aps6ae" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch 3b.ogg" id="13_e1sbm"]
+[ext_resource type="AudioStream" uid="uid://jftvsfviie1q" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch hurt3.ogg" id="14_hcb5t"]
+[ext_resource type="AudioStream" uid="uid://wm0yj57wimw" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch 3c.ogg" id="14_snteb"]
+[ext_resource type="AudioStream" uid="uid://6yxxwnqo1apa" path="res://assets/sfx/team rocket sfx/enemy sounds/rat monarch/rat monarch 3d.ogg" id="15_a4b77"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s7rwb"]
 animations = [{
@@ -33,6 +48,39 @@ size = Vector2(424, 224)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_omm2d"]
 size = Vector2(408, 80)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5hs4b"]
+streams_count = 2
+stream_0/stream = ExtResource("8_s7rwb")
+stream_1/stream = ExtResource("9_xy5u8")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_btmby"]
+streams_count = 2
+stream_0/stream = ExtResource("10_hcb5t")
+stream_1/stream = ExtResource("11_1gi8t")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sy7ma"]
+streams_count = 4
+stream_0/stream = ExtResource("12_00l4n")
+stream_1/stream = ExtResource("13_e1sbm")
+stream_2/stream = ExtResource("14_snteb")
+stream_3/stream = ExtResource("15_a4b77")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qg1u3"]
+streams_count = 2
+stream_0/stream = ExtResource("10_7kjy8")
+stream_1/stream = ExtResource("11_2w7o7")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xy5u8"]
+streams_count = 3
+stream_0/stream = ExtResource("12_qg1u3")
+stream_1/stream = ExtResource("13_e0r6m")
+stream_2/stream = ExtResource("14_hcb5t")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2w7o7"]
+streams_count = 2
+stream_0/stream = ExtResource("9_b58ax")
+stream_1/stream = ExtResource("13_7kjy8")
 
 [node name="EnemyRatMonarch" instance=ExtResource("1_1omva")]
 collision_mask = 4
@@ -123,11 +171,32 @@ position = Vector2(-4, 140)
 shape = SubResource("RectangleShape2D_omm2d")
 debug_color = Color(0.701961, 0.00392157, 0.0196078, 0.25098)
 
-[node name="ChaseModeLabel" parent="." index="12"]
-offset_left = -120.0
-offset_top = -152.0
-offset_right = -70.0
-offset_bottom = -68.25
+[node name="SoundEffects" type="Node2D" parent="." index="13"]
+position = Vector2(0, -140)
+
+[node name="IdleLargeEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="0"]
+stream = SubResource("AudioStreamRandomizer_5hs4b")
+bus = &"Effects"
+
+[node name="IdleMediumEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="1"]
+stream = SubResource("AudioStreamRandomizer_btmby")
+bus = &"Effects"
+
+[node name="IdleSmallEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="2"]
+stream = SubResource("AudioStreamRandomizer_sy7ma")
+bus = &"Effects"
+
+[node name="AttackEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="3"]
+stream = SubResource("AudioStreamRandomizer_qg1u3")
+bus = &"Effects"
+
+[node name="HurtEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="4"]
+stream = SubResource("AudioStreamRandomizer_xy5u8")
+bus = &"Effects"
+
+[node name="DeathEffect" type="AudioStreamPlayer2D" parent="SoundEffects" index="5"]
+stream = SubResource("AudioStreamRandomizer_2w7o7")
+bus = &"Effects"
 
 [connection signal="state_entered" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_entered"]
 [connection signal="state_exited" from="StateChart/EnemyBehaviour/Attack" to="." method="_on_attack_state_exited"]

@@ -8,8 +8,8 @@ class_name Storage
 
 @onready var item_containers: GridContainer = %ItemContainers
 @onready var sprite: Sprite2D = $Sprite2D
-
-signal get_item(item, amount)
+@onready var open_sfx_player: AudioStreamPlayer2D = $OpenSfxPlayer
+@onready var close_sfx_player: AudioStreamPlayer2D = $CloseSfxPlayer
 
 var open_state = false
 var items: Array[Item] = []
@@ -54,6 +54,10 @@ func load_loot_from_save(contained_items_data):
 func interact():
 	storage_ui.visible = not storage_ui.visible
 	Globals.inventory_ui.can_open = not storage_ui.visible
+	if storage_ui.visible:
+		open_sfx_player.play()
+	else:
+		close_sfx_player.play()
 
 func add_item(new_item: Item):
 	for i in range(len(items)):
@@ -75,6 +79,8 @@ func update_display():
 		slots[i].set_ingredient(items[i])
 
 func _on_body_exited(_body: Node2D) -> void:
+	if storage_ui.visible:
+		close_sfx_player.play()
 	storage_ui.hide()
 	sprite.material.set_shader_parameter("thickness", 0)
 

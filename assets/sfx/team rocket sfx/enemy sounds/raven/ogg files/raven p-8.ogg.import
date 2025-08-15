@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://d2f5vmxx3cx7a"
+path="res://.godot/imported/raven p-8.ogg-72ef70e2c10dcff726b3e67d1ec6c971.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/enemy sounds/raven/ogg files/raven p-8.ogg"
+dest_files=["res://.godot/imported/raven p-8.ogg-72ef70e2c10dcff726b3e67d1ec6c971.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -6,6 +6,13 @@ extends BasicEnemy
 @onready var dash_atk_area: Area2D = $DashAttackArea
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var stop_run_timer: Timer = $StopRunTimer
+@onready var idle_effect: AudioStreamPlayer2D = $SoundEffects/IdleEffect
+@onready var attack_effect: AudioStreamPlayer2D = $SoundEffects/AttackEffect
+@onready var hurt_effect: AudioStreamPlayer2D = $SoundEffects/HurtEffect
+@onready var stalk_effect: AudioStreamPlayer2D = $SoundEffects/StalkEffect
+@onready var runaway_effect: AudioStreamPlayer2D = $SoundEffects/RunawayEffect
+@onready var aggro_effect: AudioStreamPlayer2D = $SoundEffects/AggroEffect
+
 
 const AIM_THRESHOLD_IN_DEGREE = 90
 const RUNAWAY_SPEED_MULT = 5.0
@@ -27,6 +34,8 @@ var max_pounce_distance = 1000
 # If this is true, lone stalker won't run when shot anymore
 var committed_to_attack = false
 
+var just_damaged = false
+
 func _ready() -> void:
 	super ()
 	anim_sprite_original_pos = anim_sprite.position
@@ -38,8 +47,13 @@ func _process(_delta: float) -> void:
 		anim_sprite.flip_h = false
 
 
+func _on_idle_state_entered() -> void:
+	super ()
+	idle_effect.play()
+	
 func _on_chase_state_entered() -> void:
 	super ()
+	aggro_effect.play()
 	var tween = create_tween()
 	tween.tween_property(anim_sprite, "self_modulate:a", transparency_when_stalk, 1)
 	# anim_sprite.self_modulate = Color(1, 1, 1, transparency_when_stalk)
@@ -89,10 +103,11 @@ func check_player_moving() -> bool:
 
 func damage(value: int, damage_source_position: Vector2 = Vector2.ZERO) -> void:
 	super (value, damage_source_position)
-	# hurt_effect.play()
+	hurt_effect.play()
 	var tween = create_tween()
 	tween.tween_property(anim_sprite, "self_modulate:a", 1, 1)
 	if not committed_to_attack:
+		just_damaged = true
 		statechart.send_event("to_runaway")
 
 func _on_chase_radius_area_exited(area: Area2D) -> void:
@@ -102,6 +117,7 @@ func _on_chase_radius_area_exited(area: Area2D) -> void:
 func _on_attack_state_entered() -> void:
 	is_attacking = true
 	committed_to_attack = true
+	attack_effect.play()
 
 func _on_attack_state_exited() -> void:
 	is_attacking = false
@@ -134,6 +150,10 @@ func _on_dash_attack_area_body_entered(body: Node2D) -> void:
 		body.damage(base_damage)
 
 func _on_runaway_state_entered() -> void:
+	if just_damaged:
+		runaway_effect.play()
+	else:
+		stalk_effect.play()
 	movement_speed = active_speed
 	anim_sprite.speed_scale = FAST_ANIM_SPEED_SCALE
 	stop_run_timer.start(runaway_duration)
@@ -151,6 +171,7 @@ func _on_runaway_state_physics_processing(_delta: float) -> void:
 
 func _on_runaway_state_exited() -> void:
 	anim_sprite.speed_scale = 1
+	just_damaged = false
 
 func _on_stop_run_timer_timeout() -> void:
 	statechart.send_event("to_chase")

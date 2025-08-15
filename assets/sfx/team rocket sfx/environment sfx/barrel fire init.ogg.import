@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://br5ins6dh6tny"
+path="res://.godot/imported/barrel fire init.ogg-64a86993a9ccdea568ca50ee44be3acd.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/sfx/team rocket sfx/environment sfx/barrel fire init.ogg"
+dest_files=["res://.godot/imported/barrel fire init.ogg-64a86993a9ccdea568ca50ee44be3acd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
