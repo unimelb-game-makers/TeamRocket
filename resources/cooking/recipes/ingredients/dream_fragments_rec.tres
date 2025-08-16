@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="IngredientRecipe" load_steps=3 format=3 uid="uid://ckl8n60sw3sp5"]
+
+[ext_resource type="Script" uid="uid://bgf04urpx4mx5" path="res://resources/resource_scripts/food_system/recipe_scripts/ingredient_recipe.gd" id="1_2c8le"]
+[ext_resource type="Resource" uid="uid://du0b8ikv6db6d" path="res://resources/cooking/ingredients/dream_fragments.tres" id="1_608re"]
+
+[resource]
+script = ExtResource("1_2c8le")
+output_ingredient = ExtResource("1_608re")
+recipe_name = "Dream Fragments"
+effects = Array[int]([])
+base_ingredients = Array[int]([108])
+metadata/_custom_type_script = "uid://bgf04urpx4mx5"

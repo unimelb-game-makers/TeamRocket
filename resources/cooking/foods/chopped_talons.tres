@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Dish" load_steps=3 format=3 uid="uid://cnrcoaipx2qg"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_bmkmw"]
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_qjlxg"]
+
+[resource]
+script = ExtResource("2_qjlxg")
+effects = Array[int]([])
+ingredients = Array[ExtResource("1_bmkmw")]([])
+item_id = ""
+item_name = ""
+description = ""
+weight = 0.0
+rarity = 0
+quality = 2
+metadata/_custom_type_script = "uid://dqqa8ydotiigx"

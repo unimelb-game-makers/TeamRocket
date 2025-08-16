@@ -6,9 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c7ikkerlqq6g6" path="res://scenes/cooking/activities/BakeActivity.tscn" id="4_2lhxp"]
 [ext_resource type="Texture2D" uid="uid://duu3gq420suf2" path="res://assets/interiors/kitchen/oven background.png" id="5_4d5bw"]
 [ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="6_4d5bw"]
-[ext_resource type="Resource" uid="uid://be78atnjt45hp" path="res://resources/cooking/recipes/ingredients/potato_cut_rec.tres" id="7_rjpw4"]
-[ext_resource type="Resource" uid="uid://cm8t0wikoaret" path="res://resources/cooking/recipes/ingredients/cooked_rice_rec.tres" id="8_jwrei"]
-[ext_resource type="Resource" uid="uid://d3b5yu03lwb2b" path="res://resources/cooking/recipes/ingredients/carrot_cut_rec.tres" id="9_n3jwe"]
+[ext_resource type="Resource" uid="uid://bqg4f1jg48pyf" path="res://resources/cooking/recipes/ingredients/bread_rec.tres" id="7_b4550"]
+[ext_resource type="Resource" uid="uid://bqhh5yefrvegj" path="res://resources/cooking/recipes/ingredients/grain_moss_baked_rec.tres" id="8_4d5bw"]
+[ext_resource type="Resource" uid="uid://c2qa2meyd1tm0" path="res://resources/cooking/recipes/full_foods/fried_wings.tres" id="10_jwrei"]
 [ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="10_s6kex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lhxp"]
@@ -32,7 +32,7 @@ frame_0/texture = ExtResource("5_4d5bw")
 
 [sub_resource type="Resource" id="Resource_ycff0"]
 script = ExtResource("10_s6kex")
-recipes = Array[ExtResource("6_4d5bw")]([ExtResource("7_rjpw4"), ExtResource("8_jwrei"), ExtResource("9_n3jwe")])
+recipes = Array[ExtResource("6_4d5bw")]([ExtResource("7_b4550"), ExtResource("8_4d5bw"), ExtResource("10_jwrei")])
 max_ingredients = 5
 metadata/_custom_type_script = "uid://c0shkqininnkd"
 

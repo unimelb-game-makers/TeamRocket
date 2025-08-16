@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://6rfwlj84fg5q"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_muu5g"]
+[ext_resource type="Texture2D" uid="uid://b5wu65ui378fn" path="res://assets/food/strawberry.png" id="2_qpwmx"]
+
+[resource]
+script = ExtResource("1_muu5g")
+ingredient_type = 0
+ingredient_category = 0
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_qpwmx")
+item_id = "strawberry"
+item_name = "Strawberry"
+description = ""
+weight = 0.1
+rarity = 3
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

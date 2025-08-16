@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bovibv7jeufpw"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_0s2gc"]
+[ext_resource type="Texture2D" uid="uid://c7ysekjajufy6" path="res://assets/food/skewers.png" id="2_1s863"]
+
+[resource]
+script = ExtResource("1_0s2gc")
+ingredient_type = 1
+ingredient_category = 1
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_1s863")
+item_id = "skewer"
+item_name = "Wooden Skewers"
+description = "Caution: Don't eat"
+weight = 0.1
+rarity = 0
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

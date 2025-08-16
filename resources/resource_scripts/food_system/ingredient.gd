@@ -9,6 +9,9 @@ enum IngredientType {
 	SKEWER = 1,
 	SPICE_POWDER = 2,
 	STOCK = 3,
+	WHEAT = 4,
+	GELATIN = 5,
+	EGG = 6,
 	# Veges
 	POTATO = 100,
 	CARROT = 101,
@@ -18,16 +21,19 @@ enum IngredientType {
 	GARLIC = 105,
 	GINGER = 106,
 	CABBAGE = 107,
+	DOZING_SHROOM = 108,
+	STRAWBERRY = 109,
 	# Meats
 	BEEF = 200,
 	PORK = 201,
 	FISH = 202,
 	CHICKEN = 203,
+	DEER_LEG = 204,
 	# CARBS
 	RICE = 300,
 	BREAD = 302,
 	NOODLE = 301,
-	
+	TORTILLA = 303,
 	# RAW FOODS
 	RAW_POTATO = 401,
 	RAW_CARROT = 402,
@@ -37,6 +43,10 @@ enum IngredientType {
 	RAW_GARLIC = 406,
 	RAW_GINGER = 407,
 	RAW_CABBAGE = 408,
+	
+	RAW_SPIDER_EYES = 409,
+	RAW_RAVEN_WING = 410,
+	RAW_DEER = 411,
 	
 	# ELDRITCH
 	GRAIN_MOSS = 501,

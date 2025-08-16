@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DishRecipe" load_steps=4 format=3 uid="uid://c7bmht88y2pt"]
+
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="1_cmlca"]
+[ext_resource type="Script" uid="uid://dbchi3jhl5d0x" path="res://resources/resource_scripts/food_system/recipe_scripts/dish_recipe.gd" id="2_75pby"]
+[ext_resource type="Resource" uid="uid://c202h8h5o7ygm" path="res://resources/cooking/foods/omelette.tres" id="2_x8ytu"]
+
+[resource]
+script = ExtResource("2_75pby")
+swappable_ingredients = Array[int]([2, 2])
+dishes = Array[ExtResource("1_cmlca")]([ExtResource("2_x8ytu")])
+recipe_name = "Omelette"
+effects = Array[int]([4, 3])
+base_ingredients = Array[int]([6])
+metadata/_custom_type_script = "uid://dbchi3jhl5d0x"

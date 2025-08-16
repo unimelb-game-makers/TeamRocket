@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://tkkmf2337k3u"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_xcjdt"]
+[ext_resource type="Texture2D" uid="uid://738u8t7u887w" path="res://assets/food/glass egg.png" id="2_gk1p3"]
+
+[resource]
+script = ExtResource("1_xcjdt")
+ingredient_type = 0
+ingredient_category = 6
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_gk1p3")
+item_id = "egg"
+item_name = "Glass Egg"
+description = "An egg with seemingly no yolk."
+weight = 0.1
+rarity = 1
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

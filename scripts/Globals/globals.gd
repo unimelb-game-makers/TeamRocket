@@ -21,6 +21,7 @@ var map_generator: MapGenerator
 var main_ui: MainUI
 var inventory_ui: InventoryUI
 var player_ui: PlayerUI
+var recipe_book: RecipeBook
 
 var chosen_slot_id = -1 # For saving
 var start_record_timestamp = 0

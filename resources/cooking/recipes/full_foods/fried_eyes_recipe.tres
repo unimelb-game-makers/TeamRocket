@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DishRecipe" load_steps=4 format=3 uid="uid://cv6ik5iyd3d2h"]
+
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="1_3du4b"]
+[ext_resource type="Resource" uid="uid://drafwdjbh05c" path="res://resources/cooking/foods/fried_eyes.tres" id="2_5kjyk"]
+[ext_resource type="Script" uid="uid://dbchi3jhl5d0x" path="res://resources/resource_scripts/food_system/recipe_scripts/dish_recipe.gd" id="2_anejd"]
+
+[resource]
+script = ExtResource("2_anejd")
+swappable_ingredients = Array[int]([])
+dishes = Array[ExtResource("1_3du4b")]([ExtResource("2_5kjyk")])
+recipe_name = "Fried Spider Eyes"
+effects = Array[int]([])
+base_ingredients = Array[int]([409])
+metadata/_custom_type_script = "uid://dbchi3jhl5d0x"
