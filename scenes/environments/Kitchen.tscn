@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://cqct262req4c7" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchentheme_day1.ogg" id="16_gi2r0"]
 [ext_resource type="AudioStream" uid="uid://bkpjmmw6pl077" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_minigame.ogg" id="17_dp8sv"]
 [ext_resource type="PackedScene" uid="uid://bhlarqiey25gc" path="res://scenes/cooking/workbenches/AssemblyPlate.tscn" id="20_twwyk"]
+[ext_resource type="Shader" uid="uid://ndf5f71lgwr6" path="res://scripts/shader/scrolling_line.gdshader" id="22_thoby"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5vy8l"]
 
@@ -49,13 +50,16 @@ size = Vector2(1840, 533.334)
 size = Vector2(556.667, 951.666)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvgon"]
-size = Vector2(332, 395)
+size = Vector2(600, 395)
 
-[sub_resource type="Gradient" id="Gradient_wmmsd"]
-colors = PackedColorArray(0, 0, 0, 1, 0.176419, 0.176419, 0.176419, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dupnr"]
-gradient = SubResource("Gradient_wmmsd")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etjgy"]
+shader = ExtResource("22_thoby")
+shader_parameter/color_one = Color(1, 0.966244, 0.0137048, 0.5)
+shader_parameter/color_two = Color(0, 0, 0, 0.5)
+shader_parameter/angle = 75.0
+shader_parameter/line_count = 80.0
+shader_parameter/speed = 1.0
+shader_parameter/blur = 0.0
 
 [node name="Kitchen" instance=ExtResource("1_4boqu")]
 script = ExtResource("2_1q6r3")
@@ -146,17 +150,32 @@ position = Vector2(-216, 780)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/ExitArea" index="0"]
-position = Vector2(-274, -204.5)
+position = Vector2(-140, -204.5)
 shape = SubResource("RectangleShape2D_jvgon")
 
-[node name="TextureRect" type="TextureRect" parent="NavigationRegion2D/Map/ExitArea" index="1"]
-z_index = 5
-offset_left = -435.0
-offset_top = -406.0
-offset_right = 219.0
-offset_bottom = 10.0
-texture = SubResource("GradientTexture1D_dupnr")
-metadata/_edit_use_anchors_ = true
+[node name="Label" type="Label" parent="NavigationRegion2D/Map/ExitArea" index="1"]
+z_index = 1
+offset_left = 112.0
+offset_top = -4.0
+offset_right = 368.0
+offset_bottom = 80.0
+rotation = -1.57079
+theme_override_colors/font_color = Color(0.972866, 1, 0.0597371, 0.75)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.608)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 60
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/Map/ExitArea" index="2"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_etjgy")
+position = Vector2(184, -124)
+rotation = -1.57079
+scale = Vector2(4, 0.875)
+texture = ExtResource("8_sh0d3")
 
 [node name="Altar" parent="InteractableHandler/InteractableHolder" index="0" instance=ExtResource("16_7km4m")]
 position = Vector2(88, 454)

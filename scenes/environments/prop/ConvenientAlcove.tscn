@@ -1,13 +1,72 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg6uw05hver41"]
+[gd_scene load_steps=13 format=3 uid="uid://dg6uw05hver41"]
 
 [ext_resource type="Texture2D" uid="uid://dot63hem1vf1s" path="res://assets/map/POI/convenient alcove exterior.png" id="1_ni1fl"]
+[ext_resource type="Script" uid="uid://j434tfapt5np" path="res://scripts/map/enterable_unique_poi_building.gd" id="1_op5ja"]
 [ext_resource type="Texture2D" uid="uid://c2td7omrl6sqn" path="res://assets/textures/basic_light.webp" id="2_egtbm"]
+[ext_resource type="PackedScene" uid="uid://b7xggodclmhth" path="res://scenes/map/unique_poi_interior/ConvenientAlcoveInteriorRoom.tscn" id="2_sr077"]
+[ext_resource type="Shader" uid="uid://ndf5f71lgwr6" path="res://scripts/shader/scrolling_line.gdshader" id="3_6vnhv"]
+[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="4_op5ja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ni1fl"]
 size = Vector2(1120, 352)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vnhv"]
+size = Vector2(256, 112)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_op5ja"]
+shader = ExtResource("3_6vnhv")
+shader_parameter/color_one = Color(0.042778, 1, 0.0377613, 0.5)
+shader_parameter/color_two = Color(0, 0, 0, 0.5)
+shader_parameter/angle = 75.0
+shader_parameter/line_count = 80.0
+shader_parameter/speed = 1.0
+shader_parameter/blur = 0.0
+
+[sub_resource type="Animation" id="Animation_2r7h2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-128, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_38rk5"]
+resource_name = "hover"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 2.5, 3),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(-128, -48), Vector2(-128, -60), Vector2(-128, -60), Vector2(-128, -48), Vector2(-128, -48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2r7h2"]
+_data = {
+&"RESET": SubResource("Animation_2r7h2"),
+&"hover": SubResource("Animation_38rk5")
+}
+
 [node name="ConvenientAlcove" type="StaticBody2D"]
 y_sort_enabled = true
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_op5ja")
+poi_id = 2
+interior_scene = ExtResource("2_sr077")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -384)
@@ -30,3 +89,42 @@ scale = Vector2(2.48438, 2.48438)
 color = Color(0.945098, 0.8, 0.588235, 1)
 shadow_enabled = true
 texture = ExtResource("2_egtbm")
+
+[node name="Entry" type="Area2D" parent="."]
+position = Vector2(152, -8)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entry"]
+shape = SubResource("RectangleShape2D_6vnhv")
+
+[node name="Sprite2D" type="Sprite2D" parent="Entry"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_op5ja")
+position = Vector2(1.90735e-06, 28)
+scale = Vector2(4, 0.875)
+texture = ExtResource("4_op5ja")
+
+[node name="Label" type="Label" parent="Entry"]
+z_index = 1
+offset_left = -128.0
+offset_top = -48.0
+offset_right = 128.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.0397135, 1, 0.0309665, 0.75)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.608)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 60
+text = "ENTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Entry"]
+libraries = {
+&"": SubResource("AnimationLibrary_2r7h2")
+}
+autoplay = "hover"
+
+[connection signal="body_entered" from="Entry" to="." method="_on_entry_body_entered"]
+[connection signal="body_exited" from="Entry" to="." method="_on_entry_body_exited"]

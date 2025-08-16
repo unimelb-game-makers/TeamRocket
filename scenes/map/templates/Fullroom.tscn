@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bd53jainhf535" path="res://scenes/environments/POI/InevitableEncounterMirrored_4x4.tscn" id="2_ar6wf"]
 [ext_resource type="PackedScene" uid="uid://cu51txwabxhgh" path="res://scenes/environments/POI/Medium4x3_1.tscn" id="2_cvc7y"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="2_hawl3"]
+[ext_resource type="PackedScene" uid="uid://4o0bd3yaeuy4" path="res://scenes/environments/POI/ConvenientAlcovePoI7x5.tscn" id="2_ns1uk"]
 [ext_resource type="PackedScene" uid="uid://b0mj75rlxuyqm" path="res://scenes/environments/POI/Medium4x3_2.tscn" id="3_amx0r"]
 [ext_resource type="PackedScene" uid="uid://dtrm38nc0yg62" path="res://scenes/environments/POI/SneakHalf_6x7.tscn" id="3_ar6wf"]
 [ext_resource type="PackedScene" uid="uid://cuqeayjyckxv7" path="res://scenes/environments/POI/SimpleSneaking_7x5.tscn" id="3_bn5q2"]
@@ -12,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://bwh4g2fpsfyjn" path="res://scenes/environments/POI/SimpleSquareNE_4x4.tscn" id="5_3rjle"]
 [ext_resource type="PackedScene" uid="uid://rboxdmiw52pa" path="res://scenes/environments/prop/Bush.tscn" id="5_amx0r"]
 [ext_resource type="PackedScene" uid="uid://cvg4v5goggodd" path="res://scenes/environments/POI/SimpleSquareSW_4x4.tscn" id="7_bn5q2"]
-[ext_resource type="PackedScene" uid="uid://b73fb6d80sq5y" path="res://scenes/environments/POI/RestaurantPoI7x6.tscn" id="10_3rjle"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dq2p3"]
 vertices = PackedVector2Array(3445.95, -614.047, 3430.04, 3182.04, -2205.97, 3205.95, -2198.02, -645.938)
@@ -25,7 +25,7 @@ room_name = "Fullroom"
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
 unique_poi_chance_perc = 100
 unique_poi_dict = Dictionary[int, PackedScene]({
-1: ExtResource("10_3rjle")
+2: ExtResource("2_ns1uk")
 })
 possible_medium_poi_spawn = Array[PackedScene]([ExtResource("3_ns1uk"), ExtResource("3_bn5q2"), ExtResource("3_ar6wf"), ExtResource("2_ar6wf"), ExtResource("2_cvc7y"), ExtResource("2_3rjle"), ExtResource("5_3rjle"), ExtResource("3_amx0r"), ExtResource("5_3rjle"), ExtResource("7_bn5q2")])
 unique_poi_spawn = NodePath("UniquePoiMarker")
@@ -53,7 +53,7 @@ rotation = -1.57079
 [node name="MediumPOISpawn" type="Marker2D" parent="." index="5"]
 position = Vector2(-2032, -496)
 
-[node name="PlayerSpawn" parent="." index="6"]
+[node name="PlayerSpawn" parent="." index="7"]
 position = Vector2(712, -160)
 
 [node name="Bush" parent="InteractableHolder" index="0" instance=ExtResource("5_amx0r")]
@@ -68,11 +68,12 @@ position = Vector2(-1048, 2520)
 [node name="Bush4" parent="InteractableHolder" index="3" instance=ExtResource("5_amx0r")]
 position = Vector2(1928, 2440)
 
-[node name="NavigationRegion2D" parent="." index="8"]
-navigation_polygon = SubResource("NavigationPolygon_dq2p3")
-
 [node name="UniquePoiMarker" type="Marker2D" parent="." index="9"]
 position = Vector2(1408, -304)
+
+[node name="NavigationRegion2D" parent="." index="10"]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_dq2p3")
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]
 [connection signal="area_entered" from="DoorArea2" to="DoorArea2" method="_on_area_entered"]

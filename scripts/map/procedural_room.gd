@@ -21,7 +21,9 @@ enum RoomSocketEnum {
 }
 
 @export var room_name: String
-
+@export_group("Unique room setting")
+@export var is_unique_poi_interior: bool = false
+@export var related_poi_id: PlaceablePOI.UniquePoiEnum
 @export_group("Generation setting")
 ## In the order of NESW, enter the appropriate socket in the array in the Inspector.
 ## For example, if this room has 1 door in the South and 2 doors in the West,
@@ -138,7 +140,7 @@ func spawn_poi():
 			var keys = unique_poi_dict.keys()
 			var chosen_unique_poi_id = keys.pick_random()
 			var chosen_unique_poi = unique_poi_dict[chosen_unique_poi_id]
-				
+
 			var inst = chosen_unique_poi.instantiate()
 			add_child(inst)
 			inst.global_position = unique_poi_spawn.global_position
@@ -156,7 +158,7 @@ func spawn_poi():
 		if select_first_medium_poi: ## Overrides
 			push_warning("DEBUG OVERRIDE SELECTION ON IN ", self)
 			chosen_medium_poi = possible_medium_poi_spawn[0]
-			
+
 		var inst = chosen_medium_poi.instantiate()
 		add_child(inst)
 		inst.global_position = medium_poi_spawn.global_position
@@ -165,7 +167,7 @@ func spawn_poi():
 		# Save room data
 		room_data.medium_poi_scene = chosen_medium_poi
 		room_data.medium_poi_location = medium_poi_spawn.global_position
-		
+
 	# Large POI
 	if large_poi_spawn != null and possible_large_poi_spawn.size() > 0:
 		var chosen_large_poi = possible_large_poi_spawn.pick_random()
@@ -207,3 +209,12 @@ func get_enemies():
 	for elem in spawned_pois:
 		res.append_array(elem.get_enemies())
 	return res
+
+
+# From Unique PoI
+func _on_unique_poi_exit_body_entered(_body: Node2D) -> void:
+	Globals.map_generator.exit_unique_poi_room(related_poi_id)
+
+
+func _on_unique_poi_exit_body_exited(_body: Node2D) -> void:
+	return

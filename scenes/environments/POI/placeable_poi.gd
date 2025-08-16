@@ -19,6 +19,7 @@ enum UniquePoiEnum {
 
 @export var potential_enter_direction: EnterDirectionEnum
 @export var poi_loot_table: Array[Item] = []
+@export var is_unique_poi: bool = false
 
 @onready var enemy_holder: Node2D = $EnemyHolder
 @onready var spawn_holder: Node2D = $SpawnHolder
