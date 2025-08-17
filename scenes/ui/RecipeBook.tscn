@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="2_ardhh"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_2fixo"]
 [ext_resource type="Resource" uid="uid://cekv3gsqq857k" path="res://resources/cooking/recipes/full_foods/chicken_curry_rec.tres" id="3_enp5i"]
-[ext_resource type="PackedScene" uid="uid://cik7cck2oky1w" path="res://scenes/ui/ItemInventoryButton.tscn" id="4_eix7w"]
 [ext_resource type="Resource" uid="uid://d3b5yu03lwb2b" path="res://resources/cooking/recipes/ingredients/carrot_cut_rec.tres" id="5_1f1hc"]
 [ext_resource type="PackedScene" uid="uid://btx7xwf52mffb" path="res://scenes/ui/RecipeButtonScene.tscn" id="6_3d2tt"]
 [ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="6_g75hg"]
@@ -13,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://cr060faldn0rx" path="res://resources/cooking/ingredients/soup_stock.tres" id="8_nywro"]
 [ext_resource type="Resource" uid="uid://denvbscfcf0it" path="res://resources/cooking/ingredients/potato_cut.tres" id="9_j1a1v"]
 [ext_resource type="Resource" uid="uid://4rndf4mnu11g" path="res://resources/cooking/ingredients/carrot_cut.tres" id="10_l1lxc"]
+[ext_resource type="PackedScene" uid="uid://cik7cck2oky1w" path="res://scenes/ui/ItemInventoryButton.tscn" id="10_ve6j7"]
 [ext_resource type="Resource" uid="uid://d4jd37d2hc0b" path="res://resources/cooking/ingredients/onion_cut.tres" id="11_uhfp2"]
 [ext_resource type="Resource" uid="uid://bgerkoono7uhm" path="res://resources/cooking/ingredients/suspicious_bean.tres" id="12_vpon3"]
 [ext_resource type="Resource" uid="uid://1uk2iowxbyl2" path="res://resources/cooking/ingredients/garlic_cut.tres" id="13_yxb4e"]
@@ -26,11 +26,11 @@
 [ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="21_yxb4e"]
 [ext_resource type="Resource" uid="uid://birn1wyb2g5bv" path="res://resources/cooking/ingredients/onion.tres" id="22_vd31q"]
 [ext_resource type="Resource" uid="uid://djfvdkf82lpn7" path="res://resources/cooking/ingredients/rice.tres" id="23_girm1"]
-[ext_resource type="Resource" uid="uid://cwfjd2rnpe473" path="res://resources/cooking/ingredients/garlic.tres" id="24_wth1l"]
-[ext_resource type="Resource" uid="uid://uk4o31ltqopm" path="res://resources/cooking/ingredients/ginger.tres" id="25_lgx6u"]
+[ext_resource type="Resource" uid="uid://b0bodcb6ki3vp" path="res://resources/cooking/ingredients/garlic.tres" id="24_wth1l"]
+[ext_resource type="Resource" uid="uid://cmop208037eit" path="res://resources/cooking/ingredients/ginger.tres" id="25_lgx6u"]
 [ext_resource type="Resource" uid="uid://btg8ekd7ovrcu" path="res://resources/cooking/ingredients/cabbage.tres" id="26_b4725"]
 [ext_resource type="Resource" uid="uid://djws883kmg1sy" path="res://resources/cooking/ingredients/grain_moss.tres" id="27_kxhg0"]
-[ext_resource type="Resource" uid="uid://cfgt0433t5duq" path="res://resources/cooking/recipes/ingredients/onion_cut_rec.tres" id="28_g4v7v"]
+[ext_resource type="Resource" uid="uid://cvm6a38d6cooc" path="res://resources/cooking/recipes/ingredients/onion_cut_rec.tres" id="28_g4v7v"]
 [ext_resource type="Resource" uid="uid://cwusiicbnq7ml" path="res://resources/cooking/recipes/ingredients/garlic_cut_rec.tres" id="29_4jjm1"]
 [ext_resource type="Resource" uid="uid://cn5fl78oqf62e" path="res://resources/cooking/ingredients/wisp_wheat.tres" id="30_fu4gn"]
 [ext_resource type="Resource" uid="uid://guh1wg0140xx" path="res://resources/cooking/recipes/ingredients/ginger_cut_rec.tres" id="30_qgk21"]
@@ -51,7 +51,7 @@
 [ext_resource type="Resource" uid="uid://bqg4f1jg48pyf" path="res://resources/cooking/recipes/ingredients/bread_rec.tres" id="38_2ooby"]
 [ext_resource type="Resource" uid="uid://bb0yw5j0n7lqa" path="res://resources/cooking/ingredients/spider_eye.tres" id="38_dgrpc"]
 [ext_resource type="Resource" uid="uid://c3wxrvr6j6xy" path="res://resources/cooking/recipes/ingredients/fried_deer_rec.tres" id="39_16gsm"]
-[ext_resource type="Resource" uid="uid://bqhh5yefrvegj" path="res://resources/cooking/recipes/ingredients/grain_moss_baked_rec.tres" id="39_ahhds"]
+[ext_resource type="Resource" path="res://resources/cooking/recipes/ingredients/grain_moss_baked_rec.tres" id="39_ahhds"]
 [ext_resource type="Resource" uid="uid://bjqtf5oq44h6f" path="res://resources/cooking/ingredients/raven_wing.tres" id="39_s2avr"]
 [ext_resource type="Resource" uid="uid://c2qa2meyd1tm0" path="res://resources/cooking/recipes/full_foods/fried_wings.tres" id="40_16gsm"]
 [ext_resource type="Resource" uid="uid://cv6ik5iyd3d2h" path="res://resources/cooking/recipes/full_foods/fried_eyes_recipe.tres" id="40_rs2jy"]
@@ -73,10 +73,10 @@ offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ocwx")
-unlocked_recipes = Array[ExtResource("2_ardhh")]([ExtResource("28_g4v7v"), ExtResource("36_g75hg"), ExtResource("45_1oo46"), ExtResource("29_4jjm1"), ExtResource("30_qgk21"), ExtResource("31_vkxgx"), ExtResource("28_g4v7v"), ExtResource("5_1f1hc")])
-item_button_scene = ExtResource("4_eix7w")
+unlocked_recipes = Array[ExtResource("2_ardhh")]([ExtResource("28_g4v7v"), ExtResource("31_vkxgx"), ExtResource("5_1f1hc"), ExtResource("29_4jjm1"), ExtResource("30_qgk21"), ExtResource("33_vkxgx"), ExtResource("36_g75hg"), ExtResource("3_enp5i")])
+item_button_scene = ExtResource("10_ve6j7")
 recipe_button_scene = ExtResource("6_3d2tt")
-selected_recipe = ExtResource("5_1f1hc")
+selected_recipe = ExtResource("28_g4v7v")
 sample_ingredients = Dictionary[int, ExtResource("6_g75hg")]({
 2: ExtResource("7_j6jej"),
 3: ExtResource("8_nywro"),

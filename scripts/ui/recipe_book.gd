@@ -13,7 +13,7 @@ class_name RecipeBook
 @onready var ingredient_list: GridContainer = $RightPage/IngredientList
 @onready var recipe_grid: GridContainer = $LeftPage/RecipeGrid
 @onready var crafting_station_name: Label = $RightPage/CraftingStationName
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+# @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var sample_ingredients: Dictionary[Ingredient.IngredientType, Item]
 @export var sample_ingredients_category: Dictionary[Ingredient.IngredientCategory, Item]
@@ -40,7 +40,7 @@ func _ready() -> void:
 	update_recipe_book()
 
 func _input(event: InputEvent) -> void:
-	if (Input.is_action_just_pressed("recipe_book")):
+	if (event.is_action_pressed("recipe_book")):
 		if not open:
 			show()
 			open = true

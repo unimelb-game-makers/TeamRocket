@@ -4,15 +4,13 @@
 [ext_resource type="Resource" uid="uid://dcedm8ygr7cfd" path="res://resources/cooking/ingredients/cabbage_cut.tres" id="2_7i2iu"]
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_x1g3p"]
 [ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="3_eetpe"]
-
-[sub_resource type="Resource" id="Resource_j6fo8"]
-metadata/__load_path__ = "res://assets/food/chicken_cabbage_noodle_soup.png"
+[ext_resource type="Texture2D" uid="uid://dd6l5fcaip8is" path="res://assets/food/broth chicken.png" id="5_3bvqp"]
 
 [resource]
 script = ExtResource("2_x1g3p")
 effects = Array[int]([1, 2])
 ingredients = Array[ExtResource("1_0q1ou")]([ExtResource("2_7i2iu"), ExtResource("3_eetpe")])
-texture = SubResource("Resource_j6fo8")
+texture = ExtResource("5_3bvqp")
 item_id = "chicken_soup"
 item_name = "Chicken Noodle Soup"
 description = "Chicken noodle soup!"

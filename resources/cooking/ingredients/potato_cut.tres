@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://denvbscfcf0it"]
 
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_6wjtc"]
-[ext_resource type="Texture2D" uid="uid://c2tg8cpfbfr04" path="res://assets/food/potato_cut.png" id="2_af5mu"]
+[ext_resource type="Texture2D" uid="uid://b14whqpskktgq" path="res://assets/food/potato cut.png" id="2_af5mu"]
 
 [resource]
 script = ExtResource("1_6wjtc")
@@ -15,4 +15,5 @@ item_name = "Cut Potato"
 description = "Cubed Potatoes"
 weight = 0.2
 rarity = 0
+quality = 2
 metadata/_custom_type_script = "uid://c27juqwadg5ol"

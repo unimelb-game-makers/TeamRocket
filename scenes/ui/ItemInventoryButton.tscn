@@ -58,6 +58,6 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 text = "x1"
 
-[connection signal="mouse_entered" from="ItemButton" to="." method="play_button_hover_sfx"]
 [connection signal="mouse_entered" from="ItemButton" to="." method="_on_item_button_mouse_entered"]
+[connection signal="mouse_entered" from="ItemButton" to="." method="play_button_hover_sfx"]
 [connection signal="pressed" from="ItemButton" to="." method="_on_name_button_pressed"]

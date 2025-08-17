@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://djfvdkf82lpn7"]
 
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_3417i"]
-[ext_resource type="Texture2D" uid="uid://88373xm28qh0" path="res://assets/food/rice.png" id="2_nstvt"]
+[ext_resource type="Texture2D" uid="uid://c3ft56mcbbte4" path="res://assets/food/rice.png" id="2_nstvt"]
 
 [resource]
 script = ExtResource("1_3417i")
