@@ -74,22 +74,23 @@ func update_selected_recipe():
 	if (selected_recipe is DishRecipe):
 		recipe_texture.texture = selected_recipe.dishes[0].texture
 		for ingredient_category: Ingredient.IngredientCategory in selected_recipe.swappable_ingredients:
-			var ingredient = item_button_scene.instantiate()
-			ingredient.item = sample_ingredients_category[ingredient_category]
-			ingredient_list.add_child(ingredient)
-			ingredient.count_label.hide()
+			var ingredient_button: ItemInventoryButton = item_button_scene.instantiate()
+			ingredient_button.item = sample_ingredients_category[ingredient_category]
+			ingredient_list.add_child(ingredient_button)
+			ingredient_button.count_label.hide()
+			ingredient_button.set_secondary_text(Ingredient.IngredientCategory.keys()[ingredient_category])
 		for ingredient_type: Ingredient.IngredientType in selected_recipe.base_ingredients:
-			var ingredient = item_button_scene.instantiate()
-			ingredient.item = sample_ingredients[ingredient_type]
-			ingredient_list.add_child(ingredient)
-			ingredient.count_label.hide()
+			var ingredient_button: ItemInventoryButton = item_button_scene.instantiate()
+			ingredient_button.item = sample_ingredients[ingredient_type]
+			ingredient_list.add_child(ingredient_button)
+			ingredient_button.count_label.hide()
 	elif (selected_recipe is IngredientRecipe):
 		recipe_texture.texture = selected_recipe.output_ingredient.texture
 		for ingredient_type: Ingredient.IngredientType in selected_recipe.base_ingredients:
-			var ingredient = item_button_scene.instantiate()
-			ingredient.item = sample_ingredients[ingredient_type]
-			ingredient_list.add_child(ingredient)
-			ingredient.count_label.hide()
+			var ingredient_button: ItemInventoryButton = item_button_scene.instantiate()
+			ingredient_button.item = sample_ingredients[ingredient_type]
+			ingredient_list.add_child(ingredient_button)
+			ingredient_button.count_label.hide()
 
 	for crafting_station in crafting_stations:
 		if selected_recipe in crafting_stations[crafting_station]:

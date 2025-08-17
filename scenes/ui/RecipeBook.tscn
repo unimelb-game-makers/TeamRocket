@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bcde5fosbcqr5"]
+[gd_scene load_steps=62 format=3 uid="uid://bcde5fosbcqr5"]
 
 [ext_resource type="Script" uid="uid://cnc7mdbpslcw8" path="res://scripts/ui/recipe_book.gd" id="1_0ocwx"]
 [ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="1_1ppsf"]
@@ -60,6 +60,7 @@
 [ext_resource type="Resource" uid="uid://brweejkk2cgof" path="res://resources/cooking/recipes/full_foods/kebab_rec.tres" id="45_1oo46"]
 [ext_resource type="Resource" uid="uid://bo4cixelnmt64" path="res://resources/cooking/recipes/full_foods/wrap_rec.tres" id="46_tw8l1"]
 [ext_resource type="Resource" uid="uid://cug31p5hjyjym" path="res://resources/cooking/recipes/full_foods/salad.tres" id="47_lok2h"]
+[ext_resource type="Resource" uid="uid://bovibv7jeufpw" path="res://resources/cooking/ingredients/skewer.tres" id="47_ttqg6"]
 
 [node name="RecipeBook" type="Control"]
 layout_mode = 3
@@ -73,11 +74,12 @@ offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ocwx")
-unlocked_recipes = Array[ExtResource("2_ardhh")]([ExtResource("28_g4v7v"), ExtResource("31_vkxgx"), ExtResource("5_1f1hc"), ExtResource("29_4jjm1"), ExtResource("30_qgk21"), ExtResource("33_vkxgx"), ExtResource("36_g75hg"), ExtResource("3_enp5i")])
+unlocked_recipes = Array[ExtResource("2_ardhh")]([ExtResource("28_g4v7v"), ExtResource("31_vkxgx"), ExtResource("5_1f1hc"), ExtResource("29_4jjm1"), ExtResource("30_qgk21"), ExtResource("33_vkxgx"), ExtResource("36_g75hg"), ExtResource("3_enp5i"), ExtResource("45_1oo46")])
 item_button_scene = ExtResource("10_ve6j7")
 recipe_button_scene = ExtResource("6_3d2tt")
 selected_recipe = ExtResource("28_g4v7v")
 sample_ingredients = Dictionary[int, ExtResource("6_g75hg")]({
+1: ExtResource("47_ttqg6"),
 2: ExtResource("7_j6jej"),
 3: ExtResource("8_nywro"),
 4: ExtResource("30_fu4gn"),

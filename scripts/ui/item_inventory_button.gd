@@ -1,7 +1,10 @@
 extends Control
+class_name ItemInventoryButton
 
 @onready var count_label: Label = $ItemButton/CountLabel
+@onready var secondary_label: Label = $ItemButton/SecondaryLabel
 @onready var item_sprite: TextureRect = $ItemButton/ItemSprite
+
 
 var item: Item
 var amount: int
@@ -10,6 +13,7 @@ signal item_selected(item, amount)
 signal item_hovered(item, amount)
 
 func _ready() -> void:
+	secondary_label.text = ""
 	set_displays()
 
 func set_displays() -> void:
@@ -19,6 +23,9 @@ func set_displays() -> void:
 	# weight_label.text = str(amount * item.weight) + "kg"
 	count_label.text = " x" + str(amount)
 	item_sprite.texture = item.texture
+
+func set_secondary_text(content: String) -> void:
+	secondary_label.text = content
 
 func _on_name_button_pressed() -> void:
 	SoundManager.play_button_click_sfx()
