@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Dish" load_steps=5 format=3 uid="uid://bqrxxmbcp5q1j"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_hx8k3"]
+[ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="2_8s43t"]
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="4_aldig"]
+[ext_resource type="Texture2D" uid="uid://bhl2vtp8sr1lj" path="res://assets/food/curry homely.png" id="5_hx8k3"]
+
+[resource]
+script = ExtResource("4_aldig")
+effects = Array[int]([3, 7])
+ingredients = Array[ExtResource("1_hx8k3")]([ExtResource("2_8s43t")])
+texture = ExtResource("5_hx8k3")
+item_id = "chicken_curry"
+item_name = "Chicken Curry"
+description = "Curry with potato and carrot"
+weight = 0.4
+rarity = 0
+quality = 0
+metadata/_custom_type_script = "uid://dqqa8ydotiigx"

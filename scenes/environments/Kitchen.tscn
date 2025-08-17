@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://8o3mlc7okpi7"]
+[gd_scene load_steps=34 format=3 uid="uid://8o3mlc7okpi7"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_4boqu"]
 [ext_resource type="Script" uid="uid://b1wfbphngxipb" path="res://scenes/environments/kitchen.gd" id="2_1q6r3"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://c5luyg7buxvk3" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchentheme_dayfinal.ogg" id="5_thoby"]
 [ext_resource type="Texture2D" uid="uid://dx3pon7fgvfo7" path="res://assets/interiors/kitchen/bench.png" id="5_uiv4g"]
 [ext_resource type="Texture2D" uid="uid://bihajik64fli4" path="res://assets/interiors/kitchen/fryer.png" id="6_47cob"]
+[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="8_sh0d3"]
 [ext_resource type="PackedScene" uid="uid://bp3xwcc5hld8c" path="res://scenes/cooking/workbenches/RecipeBook.tscn" id="10_0g7fq"]
 [ext_resource type="PackedScene" uid="uid://bpx5ay6gfltel" path="res://scenes/cooking/workbenches/oven/Oven.tscn" id="13_8r8q0"]
 [ext_resource type="PackedScene" uid="uid://dj4u0n4uqbwvg" path="res://scenes/cooking/workbenches/chopping_board/ChoppingBoard.tscn" id="13_y6d8o"]
@@ -20,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://cqct262req4c7" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchentheme_day1.ogg" id="16_gi2r0"]
 [ext_resource type="AudioStream" uid="uid://bkpjmmw6pl077" path="res://assets/sfx/team rocket sfx/area themes/kitchen/kitchen_minigame.ogg" id="17_dp8sv"]
 [ext_resource type="PackedScene" uid="uid://bhlarqiey25gc" path="res://scenes/cooking/workbenches/AssemblyPlate.tscn" id="20_twwyk"]
+[ext_resource type="Shader" uid="uid://ndf5f71lgwr6" path="res://scripts/shader/scrolling_line.gdshader" id="22_thoby"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5vy8l"]
 
@@ -48,13 +50,16 @@ size = Vector2(1840, 533.334)
 size = Vector2(556.667, 951.666)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvgon"]
-size = Vector2(332, 395)
+size = Vector2(600, 395)
 
-[sub_resource type="Gradient" id="Gradient_wmmsd"]
-colors = PackedColorArray(0, 0, 0, 1, 0.176419, 0.176419, 0.176419, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_dupnr"]
-gradient = SubResource("Gradient_wmmsd")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_etjgy"]
+shader = ExtResource("22_thoby")
+shader_parameter/color_one = Color(1, 0.966244, 0.0137048, 0.5)
+shader_parameter/color_two = Color(0, 0, 0, 0.5)
+shader_parameter/angle = 75.0
+shader_parameter/line_count = 80.0
+shader_parameter/speed = 1.0
+shader_parameter/blur = 0.0
 
 [node name="Kitchen" instance=ExtResource("1_4boqu")]
 script = ExtResource("2_1q6r3")
@@ -70,7 +75,14 @@ fade_to_black = NodePath("../GameHandler/CanvasLayer/FadeToBlack")
 [node name="NavigationRegion2D" parent="." index="5"]
 navigation_polygon = SubResource("NavigationPolygon_5vy8l")
 
-[node name="KitchenFloor" type="Sprite2D" parent="NavigationRegion2D/Map" index="0"]
+[node name="BlackBackground" type="Sprite2D" parent="NavigationRegion2D/Map" index="0"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -2
+position = Vector2(552, 392)
+scale = Vector2(59.75, 34.25)
+texture = ExtResource("8_sh0d3")
+
+[node name="KitchenFloor" type="Sprite2D" parent="NavigationRegion2D/Map" index="1"]
 z_index = -1
 position = Vector2(696, 392)
 scale = Vector2(0.3, 0.3)
@@ -108,7 +120,7 @@ position = Vector2(2026.67, 1133.33)
 scale = Vector2(3.33333, 3.33333)
 shape = SubResource("RectangleShape2D_1q6r3")
 
-[node name="Bench" type="Sprite2D" parent="NavigationRegion2D/Map" index="1"]
+[node name="Bench" type="Sprite2D" parent="NavigationRegion2D/Map" index="2"]
 y_sort_enabled = true
 position = Vector2(684, 578)
 scale = Vector2(0.3, 0.3)
@@ -121,7 +133,7 @@ collision_layer = 4
 position = Vector2(-13.3335, 126.667)
 shape = SubResource("RectangleShape2D_gk1kv")
 
-[node name="Fryer" type="Sprite2D" parent="NavigationRegion2D/Map" index="2"]
+[node name="Fryer" type="Sprite2D" parent="NavigationRegion2D/Map" index="3"]
 position = Vector2(1282, 484)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_47cob")
@@ -133,22 +145,37 @@ collision_layer = 4
 position = Vector2(100, 142.5)
 shape = SubResource("RectangleShape2D_c4v1f")
 
-[node name="ExitArea" type="Area2D" parent="NavigationRegion2D/Map" index="3"]
+[node name="ExitArea" type="Area2D" parent="NavigationRegion2D/Map" index="4"]
 position = Vector2(-216, 780)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/Map/ExitArea" index="0"]
-position = Vector2(-274, -204.5)
+position = Vector2(-140, -204.5)
 shape = SubResource("RectangleShape2D_jvgon")
 
-[node name="TextureRect" type="TextureRect" parent="NavigationRegion2D/Map/ExitArea" index="1"]
-z_index = 5
-offset_left = -435.0
-offset_top = -406.0
-offset_right = 219.0
-offset_bottom = 10.0
-texture = SubResource("GradientTexture1D_dupnr")
-metadata/_edit_use_anchors_ = true
+[node name="Label" type="Label" parent="NavigationRegion2D/Map/ExitArea" index="1"]
+z_index = 1
+offset_left = 112.0
+offset_top = -4.0
+offset_right = 368.0
+offset_bottom = 80.0
+rotation = -1.57079
+theme_override_colors/font_color = Color(0.972866, 1, 0.0597371, 0.75)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.608)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 60
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="NavigationRegion2D/Map/ExitArea" index="2"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_etjgy")
+position = Vector2(184, -124)
+rotation = -1.57079
+scale = Vector2(4, 0.875)
+texture = ExtResource("8_sh0d3")
 
 [node name="Altar" parent="InteractableHandler/InteractableHolder" index="0" instance=ExtResource("16_7km4m")]
 position = Vector2(88, 454)

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://cwfjd2rnpe473"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://b0bodcb6ki3vp"]
 
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_sgjvv"]
-[ext_resource type="Texture2D" uid="uid://dsvhygo8y3ckh" path="res://assets/food/garlic.png" id="2_pdgjr"]
+[ext_resource type="Texture2D" uid="uid://exa0ikbjprip" path="res://assets/food/garlic.png" id="2_pdgjr"]
 
 [resource]
 script = ExtResource("1_sgjvv")

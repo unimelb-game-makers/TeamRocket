@@ -1,12 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://cechawbdt2tet"]
+[gd_scene load_steps=9 format=4 uid="uid://cx425pjjvy0x0"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_5l5ex"]
 [ext_resource type="PackedScene" uid="uid://4o0bd3yaeuy4" path="res://scenes/environments/POI/ConvenientAlcovePoI7x5.tscn" id="2_7675b"]
 [ext_resource type="PackedScene" uid="uid://he20mbvfu5em" path="res://scenes/map/DoorArea.tscn" id="3_kr82b"]
-[ext_resource type="PackedScene" uid="uid://d1ml7stht3vip" path="res://scenes/environments/POI/Green2_3x3.tscn" id="3_scvnx"]
-[ext_resource type="PackedScene" uid="uid://boqcaiyk1nc6n" path="res://scenes/environments/POI/Green3_3x3.tscn" id="4_ft38p"]
-[ext_resource type="PackedScene" uid="uid://cv32a0yy6kejr" path="res://scenes/environments/POI/Green_3x3.tscn" id="5_lg84x"]
-[ext_resource type="PackedScene" uid="uid://bxrqd07lrevlg" path="res://scenes/environments/POI/Playground_3x3.tscn" id="6_uscbb"]
+[ext_resource type="PackedScene" path="res://scenes/environments/POI/Green2_3x3.tscn" id="3_scvnx"]
+[ext_resource type="PackedScene" path="res://scenes/environments/POI/Green3_3x3.tscn" id="4_ft38p"]
+[ext_resource type="PackedScene" path="res://scenes/environments/POI/Green_3x3.tscn" id="5_lg84x"]
+[ext_resource type="PackedScene" path="res://scenes/environments/POI/Playground_3x3.tscn" id="6_uscbb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7d6pv"]
 vertices = PackedVector2Array(3973.91, -870.031, 3950.08, 1846.05, -125.852, 1869.94, -86.1406, -885.961)
@@ -16,7 +16,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-96, -896, 3984, -880, 
 [node name="ThreewayNoS" node_paths=PackedStringArray("doors", "unique_poi_spawn", "medium_poi_spawn") instance=ExtResource("1_5l5ex")]
 room_name = "ThreewayNoS"
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), null, NodePath("DoorArea3")]
-unique_poi_chance_perc = 50
+unique_poi_chance_perc = 75
 unique_poi_dict = Dictionary[int, PackedScene]({
 2: ExtResource("2_7675b")
 })

@@ -1,0 +1,268 @@
+[gd_scene load_steps=28 format=3 uid="uid://b7xggodclmhth"]
+
+[ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_b4188"]
+[ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="2_knhx2"]
+[ext_resource type="Texture2D" uid="uid://dns6nb5wqavn1" path="res://assets/map/Convenient Alcove/convenient alcove floor.png" id="3_ftn1k"]
+[ext_resource type="Texture2D" uid="uid://wmmigx0f1rnq" path="res://assets/map/Convenient Alcove/convenient alcove wall.png" id="4_3gk7m"]
+[ext_resource type="Texture2D" uid="uid://caknqhlgifbu3" path="res://assets/map/Convenient Alcove/shelf 1.png" id="5_wejd3"]
+[ext_resource type="Texture2D" uid="uid://brahbw8h0ixrn" path="res://assets/map/Convenient Alcove/shelf 2.png" id="6_o7uw6"]
+[ext_resource type="Texture2D" uid="uid://cvt0mhvegmxyp" path="res://assets/map/Convenient Alcove/shelf 3.png" id="7_nr2w5"]
+[ext_resource type="Texture2D" uid="uid://bqj2v0unlbmc0" path="res://assets/map/Convenient Alcove/sales counter.png" id="8_0a5kl"]
+[ext_resource type="Texture2D" uid="uid://dqgwoy4d1j7mf" path="res://assets/map/Convenient Alcove/magazines 2.png" id="9_hu5ta"]
+[ext_resource type="Texture2D" uid="uid://c0q23ktn0e4el" path="res://assets/map/Convenient Alcove/magazines 1.png" id="10_wj7dq"]
+[ext_resource type="Shader" uid="uid://ndf5f71lgwr6" path="res://scripts/shader/scrolling_line.gdshader" id="11_ftn1k"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="12_3gk7m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3gk7m"]
+size = Vector2(256, 112)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wejd3"]
+shader = ExtResource("11_ftn1k")
+shader_parameter/color_one = Color(0.042778, 1, 0.0377613, 0.5)
+shader_parameter/color_two = Color(0, 0, 0, 0.5)
+shader_parameter/angle = 75.0
+shader_parameter/line_count = 80.0
+shader_parameter/speed = 1.0
+shader_parameter/blur = 0.0
+
+[sub_resource type="Animation" id="Animation_2r7h2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-128, -48)]
+}
+
+[sub_resource type="Animation" id="Animation_38rk5"]
+resource_name = "hover"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5, 2.5, 3),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(-128, -48), Vector2(-128, -60), Vector2(-128, -60), Vector2(-128, -48), Vector2(-128, -48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2r7h2"]
+_data = {
+&"RESET": SubResource("Animation_2r7h2"),
+&"hover": SubResource("Animation_38rk5")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cf22"]
+size = Vector2(506, 2301)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_moks1"]
+size = Vector2(3952, 416)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx1kq"]
+size = Vector2(2288, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6pef"]
+size = Vector2(1672, 224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxvhv"]
+size = Vector2(176, 816)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efumg"]
+size = Vector2(280, 336)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xna54"]
+size = Vector2(188, 296)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uw0xc"]
+size = Vector2(478, 948)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_468jo"]
+points = PackedVector2Array(-176, 688, -576, 320, -576, 0, 32, -432, 416, -256, 416, -16)
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_knhx2"]
+vertices = PackedVector2Array(471, 362, 730, 362, 951.5, 518, 370, 518, -830, 482, 8.92188, 366.438, -202, 172.391, -334.5, 362, -334.5, -132, -202, 2.84375, 314, 3.64844, 314, -126.422, 471, -132, 951.5, -124, 847, -124, -593.5, 362, -830, 314, -742, 290, 730, -132, 847, -292, 951.5, -358, 951.5, -292, -951.5, -358, 370, 542, 170, 542, 170, 518, -951.5, 518, -944, 482, -951.5, 290, -944, 314, -593.5, -132, -742, -138, -850, -138, -850, 102, -951.5, 102, 110.922, -219.5)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 5, 7), PackedInt32Array(6, 7, 8, 9), PackedInt32Array(10, 11, 12, 0), PackedInt32Array(13, 2, 1, 14), PackedInt32Array(5, 10, 0), PackedInt32Array(7, 5, 4, 15), PackedInt32Array(15, 4, 16, 17), PackedInt32Array(14, 1, 18, 19), PackedInt32Array(20, 21, 19, 22), PackedInt32Array(3, 23, 24, 25), PackedInt32Array(4, 3, 25), PackedInt32Array(4, 25, 26, 27), PackedInt32Array(27, 26, 28, 29), PackedInt32Array(29, 28, 17, 16), PackedInt32Array(30, 15, 17, 31), PackedInt32Array(32, 33, 34, 22), PackedInt32Array(31, 32, 22, 19, 35), PackedInt32Array(35, 9, 8), PackedInt32Array(19, 18, 12, 35), PackedInt32Array(12, 11, 35), PackedInt32Array(31, 35, 8, 30)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-976, -552, 984, -560, 984, 552, -976, 552)])
+
+[node name="ConvenientAlcoveInteriorRoom" instance=ExtResource("1_b4188")]
+room_name = "Convenient Alcove Interior"
+is_unique_poi_interior = true
+related_poi_id = 2
+
+[node name="PlayerSpawn" parent="." index="2"]
+position = Vector2(272, 448)
+
+[node name="UniquePoiExit" type="Area2D" parent="InteractableHolder" index="0"]
+position = Vector2(264, 560)
+collision_layer = 0
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableHolder/UniquePoiExit" index="0"]
+shape = SubResource("RectangleShape2D_3gk7m")
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractableHolder/UniquePoiExit" index="1"]
+z_index = 1
+texture_filter = 1
+material = SubResource("ShaderMaterial_wejd3")
+position = Vector2(1.90735e-06, 28)
+scale = Vector2(4, 0.875)
+texture = ExtResource("2_knhx2")
+
+[node name="Label" type="Label" parent="InteractableHolder/UniquePoiExit" index="2"]
+z_index = 1
+offset_left = -128.0
+offset_top = -48.0
+offset_right = 128.0
+offset_bottom = 36.0
+theme_override_colors/font_color = Color(0.0397135, 1, 0.0309665, 0.75)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.608)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 60
+text = "EXIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InteractableHolder/UniquePoiExit" index="3"]
+libraries = {
+&"": SubResource("AnimationLibrary_2r7h2")
+}
+autoplay = "hover"
+
+[node name="BlackBackground" type="Sprite2D" parent="InteractableHolder" index="1"]
+self_modulate = Color(0, 0, 0, 1)
+z_index = -2
+position = Vector2(200, 80)
+scale = Vector2(68.25, 43)
+texture = ExtResource("2_knhx2")
+
+[node name="Floor" type="Sprite2D" parent="InteractableHolder" index="2"]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ftn1k")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="InteractableHolder/Floor" index="0"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="0"]
+position = Vector2(-2176, 1.5)
+shape = SubResource("RectangleShape2D_4cf22")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="1"]
+position = Vector2(2176, 1.5)
+shape = SubResource("RectangleShape2D_4cf22")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="2"]
+position = Vector2(-8, -944)
+shape = SubResource("RectangleShape2D_moks1")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="3"]
+position = Vector2(-824, 1168)
+shape = SubResource("RectangleShape2D_wx1kq")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="4"]
+position = Vector2(1596, 1168)
+shape = SubResource("RectangleShape2D_n6pef")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="5"]
+position = Vector2(560, 1392)
+shape = SubResource("RectangleShape2D_n6pef")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="6"]
+position = Vector2(-1592, 152)
+shape = SubResource("RectangleShape2D_oxvhv")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="7"]
+position = Vector2(-1788, 392)
+shape = SubResource("RectangleShape2D_efumg")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="8"]
+position = Vector2(-1774, 796)
+shape = SubResource("RectangleShape2D_xna54")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="9"]
+position = Vector2(1808, -416)
+shape = SubResource("RectangleShape2D_xna54")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="10"]
+position = Vector2(1201, 230)
+shape = SubResource("RectangleShape2D_uw0xc")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="11"]
+position = Vector2(-928, 230)
+shape = SubResource("RectangleShape2D_uw0xc")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="InteractableHolder/Floor/StaticBody2D" index="12"]
+position = Vector2(192, 16)
+shape = SubResource("ConvexPolygonShape2D_468jo")
+
+[node name="Wall" type="Sprite2D" parent="InteractableHolder" index="3"]
+z_index = -1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_3gk7m")
+
+[node name="Shelf" type="Sprite2D" parent="InteractableHolder" index="4"]
+position = Vector2(-464, 64)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_wejd3")
+
+[node name="Shelf2" type="Sprite2D" parent="InteractableHolder" index="5"]
+position = Vector2(600, 64)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_o7uw6")
+
+[node name="Shelf3" type="Sprite2D" parent="InteractableHolder" index="6"]
+position = Vector2(64, 40)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_nr2w5")
+
+[node name="Counter" type="Node2D" parent="InteractableHolder" index="7"]
+position = Vector2(-856, 256)
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractableHolder/Counter" index="0"]
+position = Vector2(0, -224)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_0a5kl")
+
+[node name="Magazine2" type="Node2D" parent="InteractableHolder" index="8"]
+position = Vector2(904, -160)
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractableHolder/Magazine2" index="0"]
+position = Vector2(0, -176)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_hu5ta")
+
+[node name="Magazine" type="Node2D" parent="InteractableHolder" index="9"]
+position = Vector2(-888, 448)
+
+[node name="Sprite2D" type="Sprite2D" parent="InteractableHolder/Magazine" index="0"]
+position = Vector2(0, -176)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_wj7dq")
+
+[node name="Crate" parent="InteractableHolder" index="10" instance=ExtResource("12_3gk7m")]
+position = Vector2(-464, -288)
+
+[node name="Crate2" parent="InteractableHolder" index="11" instance=ExtResource("12_3gk7m")]
+position = Vector2(568, -152)
+
+[node name="Crate3" parent="InteractableHolder" index="12" instance=ExtResource("12_3gk7m")]
+position = Vector2(216, 232)
+
+[node name="NavigationRegion2D" parent="." index="4"]
+navigation_polygon = SubResource("NavigationPolygon_knhx2")
+
+[connection signal="body_entered" from="InteractableHolder/UniquePoiExit" to="." method="_on_unique_poi_exit_body_entered"]
+[connection signal="body_exited" from="InteractableHolder/UniquePoiExit" to="." method="_on_unique_poi_exit_body_exited"]

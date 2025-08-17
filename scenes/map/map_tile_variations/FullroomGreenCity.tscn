@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://co37vv8n3nnwu"]
+[gd_scene load_steps=23 format=4 uid="uid://d0c17per6ky45"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_uymnt"]
 [ext_resource type="PackedScene" uid="uid://bwh4g2fpsfyjn" path="res://scenes/environments/POI/SimpleSquareNE_4x4.tscn" id="2_44slx"]
@@ -29,9 +29,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-2208, -656, 3456, -624
 
 [node name="FullRoomGreenCity" node_paths=PackedStringArray("doors", "medium_poi_spawn") instance=ExtResource("1_uymnt")]
 y_sort_enabled = true
-room_name = "Fullroom"
+room_name = "FullroomGreenCity"
 doors = [NodePath("DoorArea"), NodePath("DoorArea2"), NodePath("DoorArea3"), NodePath("DoorArea4")]
-unique_poi_chance_perc = 100
 possible_medium_poi_spawn = Array[PackedScene]([ExtResource("2_x24jb"), ExtResource("3_yxkqy"), ExtResource("4_v7rmu"), ExtResource("2_44slx")])
 medium_poi_spawn = NodePath("MediumPOISpawn")
 metadata/_edit_horizontal_guides_ = [738.0]
@@ -140,10 +139,7 @@ is_permanent = true
 position = Vector2(2175, 1970)
 is_permanent = true
 
-[node name="UniquePoiMarker" type="Marker2D" parent="." index="9"]
-position = Vector2(1408, -304)
-
-[node name="NavigationRegion2D" parent="." index="10"]
+[node name="NavigationRegion2D" parent="." index="9"]
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_dq2p3")
 

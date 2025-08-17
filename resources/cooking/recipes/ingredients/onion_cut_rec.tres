@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="IngredientRecipe" load_steps=3 format=3 uid="uid://cfgt0433t5duq"]
+[gd_resource type="Resource" script_class="IngredientRecipe" load_steps=3 format=3 uid="uid://cvm6a38d6cooc"]
 
 [ext_resource type="Resource" uid="uid://d4jd37d2hc0b" path="res://resources/cooking/ingredients/onion_cut.tres" id="1_yssyd"]
 [ext_resource type="Script" uid="uid://bgf04urpx4mx5" path="res://resources/resource_scripts/food_system/recipe_scripts/ingredient_recipe.gd" id="2_4xu0m"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://kr5dg84sfpck"]
+[gd_scene load_steps=26 format=4 uid="uid://do6d11b4gx0g0"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_rlvso"]
 [ext_resource type="PackedScene" uid="uid://bwo8jsuqn8111" path="res://scenes/environments/POI/SimpleSquareNW_4x4.tscn" id="3_y5gj0"]

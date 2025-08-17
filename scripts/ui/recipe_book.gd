@@ -13,7 +13,7 @@ class_name RecipeBook
 @onready var ingredient_list: GridContainer = $RightPage/IngredientList
 @onready var recipe_grid: GridContainer = $LeftPage/RecipeGrid
 @onready var crafting_station_name: Label = $RightPage/CraftingStationName
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+# @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var sample_ingredients: Dictionary[Ingredient.IngredientType, Item]
 @export var sample_ingredients_category: Dictionary[Ingredient.IngredientCategory, Item]
@@ -40,7 +40,7 @@ func _ready() -> void:
 	update_recipe_book()
 
 func _input(event: InputEvent) -> void:
-	if (Input.is_action_just_pressed("recipe_book")):
+	if (event.is_action_pressed("recipe_book")):
 		if not open:
 			show()
 			open = true
@@ -74,23 +74,24 @@ func update_selected_recipe():
 	if (selected_recipe is DishRecipe):
 		recipe_texture.texture = selected_recipe.dishes[0].texture
 		for ingredient_category: Ingredient.IngredientCategory in selected_recipe.swappable_ingredients:
-			var ingredient = item_button_scene.instantiate()
-			ingredient.item = sample_ingredients_category[ingredient_category]
-			ingredient_list.add_child(ingredient)
-			ingredient.count_label.hide()
+			var ingredient_button: ItemInventoryButton = item_button_scene.instantiate()
+			ingredient_button.item = sample_ingredients_category[ingredient_category]
+			ingredient_list.add_child(ingredient_button)
+			ingredient_button.count_label.hide()
+			ingredient_button.set_secondary_text(Ingredient.IngredientCategory.keys()[ingredient_category])
 		for ingredient_type: Ingredient.IngredientType in selected_recipe.base_ingredients:
-			var ingredient = item_button_scene.instantiate()
-			ingredient.item = sample_ingredients[ingredient_type]
-			ingredient_list.add_child(ingredient)
-			ingredient.count_label.hide()
+			var ingredient_button: ItemInventoryButton = item_button_scene.instantiate()
+			ingredient_button.item = sample_ingredients[ingredient_type]
+			ingredient_list.add_child(ingredient_button)
+			ingredient_button.count_label.hide()
 	elif (selected_recipe is IngredientRecipe):
 		recipe_texture.texture = selected_recipe.output_ingredient.texture
 		for ingredient_type: Ingredient.IngredientType in selected_recipe.base_ingredients:
-			var ingredient = item_button_scene.instantiate()
-			ingredient.item = sample_ingredients[ingredient_type]
-			ingredient_list.add_child(ingredient)
-			ingredient.count_label.hide()
-	
+			var ingredient_button: ItemInventoryButton = item_button_scene.instantiate()
+			ingredient_button.item = sample_ingredients[ingredient_type]
+			ingredient_list.add_child(ingredient_button)
+			ingredient_button.count_label.hide()
+
 	for crafting_station in crafting_stations:
 		if selected_recipe in crafting_stations[crafting_station]:
 			crafting_station_name.text = crafting_station
