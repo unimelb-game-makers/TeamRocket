@@ -33,6 +33,7 @@ const MAX_NEIGHBORS = 2
 var all_room_data = []
 var all_unique_room_data = []
 
+var just_init = true
 var starting_room = Vector2(2, 2)
 var current_room_coord: Vector2
 var current_selected_room: ProceduralRoom
@@ -45,6 +46,9 @@ var generation_queue = []
 var just_teleported1 = false
 var just_teleported2 = false
 
+# For unique PoI interior
+var is_in_unique_room = false
+var current_unique_room_id: PlaceablePOI.UniquePoiEnum = PlaceablePOI.UniquePoiEnum.NONE
 var last_room_data: RoomData
 var last_room_coord: Vector2
 var last_room_player_pos: Vector2
@@ -139,6 +143,7 @@ func _ready() -> void:
 
 	# Initialize starting room and put player in it
 	initialize_room(starting_room)
+	just_init = false
 
 	await get_tree().process_frame
 	await get_tree().process_frame
@@ -362,21 +367,23 @@ func spawn_stuff_post_room_init(curr_room_data: RoomData, is_unique_poi: bool = 
 	player.camera.temporarily_disable_smooth_for_scene_change()
 	player.global_position = current_selected_room.get_player_spawn_pos()
 	curr_player = player
+	print("POS 1", curr_player.global_position)
 
 	# Spawn player at right position
 	if is_unique_poi:
 		# Player enter unique PoI
 		curr_player.global_position = current_selected_room.player_spawn.global_position
 	else:
-		if outgoing_direction == Vector2.ZERO:
+		if outgoing_direction == Vector2.ZERO and not just_init:
 			# Player just left unique PoI
 			curr_player.global_position = last_room_player_pos
 		else:
-			#Normal case
 			var incoming_direction = Vector2.ZERO - outgoing_direction
 			if incoming_direction != Vector2.ZERO:
 				assert(incoming_direction.is_normalized())
 				curr_player.global_position = current_selected_room.get_door_by_direction(incoming_direction).global_position
+
+	print("POS", curr_player.global_position)
 
 	# Spawn POI
 	current_selected_room.spawn_poi()
@@ -437,6 +444,8 @@ func go_to_room(direction: Vector2):
 
 func enter_unique_poi_room(unique_poi_scene: PackedScene, unique_room_id: PlaceablePOI.UniquePoiEnum):
 	var current_room_data = all_room_data[current_room_coord.x][current_room_coord.y] as RoomData
+	is_in_unique_room = true
+	current_unique_room_id = unique_room_id
 	last_room_data = current_room_data
 	last_room_coord = current_room_coord
 	last_room_player_pos = curr_player.global_position
@@ -456,7 +465,7 @@ func enter_unique_poi_room(unique_poi_scene: PackedScene, unique_room_id: Placea
 
 func exit_unique_poi_room(unique_room_id: PlaceablePOI.UniquePoiEnum):
 	var current_room_data = all_unique_room_data[int(unique_room_id) - 1] as RoomData
-
+	is_in_unique_room = false
 	current_room_data.save_room_data()
 	enemy_handler.clear_room()
 	interactable_handler.clear_room()
@@ -483,7 +492,11 @@ func clear_unused_node():
 	navigation_region_2d.get_node("Map").queue_free()
 
 func get_current_room_data() -> RoomData:
-	var current_room_data = all_room_data[current_room_coord.x][current_room_coord.y] as RoomData
+	var current_room_data: RoomData = null
+	if is_in_unique_room:
+		current_room_data = all_unique_room_data[int(current_unique_room_id) - 1]
+	else:
+		current_room_data = all_room_data[current_room_coord.x][current_room_coord.y]
 	return current_room_data
 
 
