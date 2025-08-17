@@ -1,7 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgq65qqynjm2q"]
+[gd_scene load_steps=15 format=3 uid="uid://cgq65qqynjm2q"]
 
 [ext_resource type="PackedScene" uid="uid://cass2bjp3d6eq" path="res://scenes/environments/Base.tscn" id="1_brl46"]
 [ext_resource type="Script" uid="uid://caq8ki1bk05u5" path="res://scripts/map/map_generator.gd" id="2_v5udi"]
+[ext_resource type="Script" uid="uid://dgsdh555bgcxd" path="res://resources/resource_scripts/item.gd" id="3_gndxq"]
+[ext_resource type="Resource" uid="uid://ewky67btqhie" path="res://resources/cooking/ingredients/carrot.tres" id="4_syktj"]
+[ext_resource type="Resource" uid="uid://1s1f33gnef5m" path="res://resources/cooking/ingredients/potato.tres" id="5_re4ch"]
+[ext_resource type="Resource" uid="uid://db0wvxc5c18p0" path="res://resources/cooking/ingredients/bread.tres" id="6_0xgin"]
+[ext_resource type="Resource" uid="uid://btg8ekd7ovrcu" path="res://resources/cooking/ingredients/cabbage.tres" id="7_m8eqb"]
+[ext_resource type="Resource" uid="uid://chda2i2d28xvk" path="res://resources/cooking/ingredients/cheese.tres" id="8_w1eym"]
+[ext_resource type="Resource" uid="uid://b0bodcb6ki3vp" path="res://resources/cooking/ingredients/garlic.tres" id="9_exlj8"]
+[ext_resource type="Resource" uid="uid://cmop208037eit" path="res://resources/cooking/ingredients/ginger.tres" id="10_tiua7"]
+[ext_resource type="Resource" uid="uid://birn1wyb2g5bv" path="res://resources/cooking/ingredients/onion.tres" id="11_dyce0"]
+[ext_resource type="Resource" uid="uid://djfvdkf82lpn7" path="res://resources/cooking/ingredients/rice.tres" id="12_raiep"]
+[ext_resource type="Resource" uid="uid://bovibv7jeufpw" path="res://resources/cooking/ingredients/skewer.tres" id="13_moh7y"]
+[ext_resource type="Resource" uid="uid://bgerkoono7uhm" path="res://resources/cooking/ingredients/suspicious_bean.tres" id="14_g71m5"]
 
 [node name="CityGeneratedMap" instance=ExtResource("1_brl46")]
 script = ExtResource("2_v5udi")
+
+[node name="InteractableHandler" parent="." index="5"]
+global_loot_table = Array[ExtResource("3_gndxq")]([ExtResource("4_syktj"), ExtResource("5_re4ch"), ExtResource("6_0xgin"), ExtResource("7_m8eqb"), ExtResource("8_w1eym"), ExtResource("9_exlj8"), ExtResource("10_tiua7"), ExtResource("11_dyce0"), ExtResource("12_raiep"), ExtResource("13_moh7y"), ExtResource("14_g71m5")])

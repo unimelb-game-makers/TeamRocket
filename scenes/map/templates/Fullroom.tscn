@@ -54,7 +54,7 @@ rotation = -1.57079
 position = Vector2(-2032, -496)
 
 [node name="PlayerSpawn" parent="." index="7"]
-position = Vector2(2312, 1368)
+position = Vector2(2312, 1200)
 
 [node name="Bush" parent="InteractableHolder" index="0" instance=ExtResource("5_amx0r")]
 position = Vector2(136, 280)
