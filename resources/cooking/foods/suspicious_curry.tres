@@ -3,15 +3,13 @@
 [ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_m5eeu"]
 [ext_resource type="Resource" uid="uid://bgerkoono7uhm" path="res://resources/cooking/ingredients/suspicious_bean.tres" id="2_pb6hu"]
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_y6gln"]
-
-[sub_resource type="Resource" id="Resource_y6gln"]
-metadata/__load_path__ = "res://assets/food/curry_suspicious.png"
+[ext_resource type="Texture2D" uid="uid://br5rp32vnnhc1" path="res://assets/food/curry suspicious.png" id="4_br4ty"]
 
 [resource]
 script = ExtResource("2_y6gln")
 effects = Array[int]([0, 6])
 ingredients = Array[ExtResource("1_m5eeu")]([ExtResource("2_pb6hu")])
-texture = SubResource("Resource_y6gln")
+texture = ExtResource("4_br4ty")
 item_id = "sus_curry"
 item_name = "Suspicious Curry"
 description = "Kinda Sussy"

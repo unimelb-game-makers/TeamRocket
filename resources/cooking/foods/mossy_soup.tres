@@ -4,15 +4,13 @@
 [ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_2syev"]
 [ext_resource type="Resource" uid="uid://bdn1bbor2u47y" path="res://resources/cooking/ingredients/grain_moss_baked.tres" id="2_skgkn"]
 [ext_resource type="Resource" uid="uid://dngkboivj2d5n" path="res://resources/cooking/ingredients/chicken.tres" id="3_db2ya"]
-
-[sub_resource type="Resource" id="Resource_p51ts"]
-metadata/__load_path__ = "res://assets/food/mossy_chicken_noodle_soup.png"
+[ext_resource type="Texture2D" uid="uid://c6b6fy4g0fuwq" path="res://assets/food/chicken noodle soup mossy.png" id="5_skgkn"]
 
 [resource]
 script = ExtResource("2_2syev")
 effects = Array[int]([9, 0])
 ingredients = Array[ExtResource("1_1hx8q")]([ExtResource("2_skgkn"), ExtResource("3_db2ya")])
-texture = SubResource("Resource_p51ts")
+texture = ExtResource("5_skgkn")
 item_id = "mossy_chicken_soup"
 item_name = "Mossy Chicken Soup"
 description = "mm algaaah"
