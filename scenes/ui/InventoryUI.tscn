@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cpwdv7vvm7kdc"]
+[gd_scene load_steps=15 format=3 uid="uid://cpwdv7vvm7kdc"]
 
 [ext_resource type="Script" uid="uid://ns46i1pet5jg" path="res://scripts/ui/inventory_ui.gd" id="1_yv1id"]
 [ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="3_drynj"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://g2hvel1efrhg" path="res://assets/Player/sprite/alex_eyeless_portrait.png" id="5_nx3sc"]
 [ext_resource type="Texture2D" uid="uid://cfcjjxfbtvw5x" path="res://assets/Player/sprite/alex_eye_only_portrait.png" id="6_q7x8x"]
 [ext_resource type="Script" uid="uid://djgoyymxhkgsw" path="res://scripts/ui/portrait_eye_follow_mouse.gd" id="7_3ewop"]
-[ext_resource type="Texture2D" uid="uid://bhlhjslv1m71q" path="res://assets/food/tomato_raw.png" id="7_hffay"]
 [ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="9_et0cm"]
 [ext_resource type="PackedScene" uid="uid://daf7ugxaslerh" path="res://scenes/ui/StatusPanelSlot.tscn" id="10_a8p5k"]
 [ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="11_dycha"]
@@ -299,7 +298,6 @@ offset_right = -12.0
 offset_bottom = -2.0
 grow_horizontal = 0
 grow_vertical = 0
-texture = ExtResource("7_hffay")
 expand_mode = 1
 
 [node name="ItemName" type="Label" parent="VBoxContainer/ItemDescriptionBackground"]

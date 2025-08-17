@@ -90,7 +90,7 @@ func update_selected_recipe():
 			ingredient.item = sample_ingredients[ingredient_type]
 			ingredient_list.add_child(ingredient)
 			ingredient.count_label.hide()
-	
+
 	for crafting_station in crafting_stations:
 		if selected_recipe in crafting_stations[crafting_station]:
 			crafting_station_name.text = crafting_station
