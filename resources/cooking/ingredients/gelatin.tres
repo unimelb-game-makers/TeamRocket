@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bq7chm1y0ymgs"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_7glb8"]
+[ext_resource type="Texture2D" uid="uid://ceti7ie2xjpev" path="res://assets/food/gelatin.png" id="2_owcsh"]
+
+[resource]
+script = ExtResource("1_7glb8")
+ingredient_type = 0
+ingredient_category = 0
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_owcsh")
+item_id = "gelatin"
+item_name = "Gelatin"
+description = ""
+weight = 0.2
+rarity = 0
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

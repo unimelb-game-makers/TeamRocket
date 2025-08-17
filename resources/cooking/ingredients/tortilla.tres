@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://b0urdsdjwkam6"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_mp8ph"]
+[ext_resource type="Texture2D" uid="uid://cnxpp1y3fle6o" path="res://assets/food/tortilla.png" id="2_5220t"]
+
+[resource]
+script = ExtResource("1_mp8ph")
+ingredient_type = 0
+ingredient_category = 0
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_5220t")
+item_id = "tortilla"
+item_name = "Tortilla"
+description = ""
+weight = 0.2
+rarity = 0
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

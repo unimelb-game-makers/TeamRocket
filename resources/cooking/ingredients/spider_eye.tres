@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://bb0yw5j0n7lqa"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_ldoo8"]
+[ext_resource type="Texture2D" uid="uid://bw75pswys2hgk" path="res://assets/food/spider eyes.png" id="2_nydlg"]
+
+[resource]
+script = ExtResource("1_ldoo8")
+ingredient_type = 0
+ingredient_category = 0
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_nydlg")
+item_id = "spider_eyes"
+item_name = "Spider Eyes"
+description = "A set of eight spider eyes. They look poppable."
+weight = 0.1
+rarity = 0
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

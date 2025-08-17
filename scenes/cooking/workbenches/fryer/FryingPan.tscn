@@ -1,12 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://dk6a5jgkvuwwt"]
+[gd_scene load_steps=15 format=3 uid="uid://dk6a5jgkvuwwt"]
 
 [ext_resource type="PackedScene" uid="uid://d0wrkas2vs7rm" path="res://scenes/cooking/workbenches/WorkbenchBase.tscn" id="1_kib3k"]
 [ext_resource type="Shader" uid="uid://csfqjshwv3t2q" path="res://scripts/shader/2d_outline.gdshader" id="2_rk4q0"]
 [ext_resource type="PackedScene" uid="uid://dw0k3wxf1ktoo" path="res://scenes/cooking/activities/FryActivity.tscn" id="3_cs31w"]
 [ext_resource type="Texture2D" uid="uid://djutcdtyknxtt" path="res://assets/interiors/kitchen/frying_pan_small.png" id="3_pcjm3"]
 [ext_resource type="Script" uid="uid://b37fy8oy4lu22" path="res://resources/resource_scripts/food_system/recipe_scripts/recipe.gd" id="6_gfqvr"]
-[ext_resource type="Resource" uid="uid://d3b5yu03lwb2b" path="res://resources/cooking/recipes/ingredients/carrot_cut_rec.tres" id="7_jeu8f"]
+[ext_resource type="Resource" uid="uid://cv6ik5iyd3d2h" path="res://resources/cooking/recipes/full_foods/fried_eyes_recipe.tres" id="6_klmmd"]
+[ext_resource type="Resource" uid="uid://c3wxrvr6j6xy" path="res://resources/cooking/recipes/ingredients/fried_deer_rec.tres" id="7_pcjm3"]
 [ext_resource type="Script" uid="uid://c0shkqininnkd" path="res://resources/resource_scripts/food_system/crafting_station.gd" id="8_081lw"]
+[ext_resource type="Resource" uid="uid://buqb5d5245el4" path="res://resources/cooking/recipes/ingredients/tortilla_rec.tres" id="8_m1o86"]
+[ext_resource type="Resource" uid="uid://c2qa2meyd1tm0" path="res://resources/cooking/recipes/full_foods/fried_wings.tres" id="9_28sch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvo21"]
 size = Vector2(53, 52.5)
@@ -29,7 +32,7 @@ frame_0/texture = ExtResource("3_pcjm3")
 
 [sub_resource type="Resource" id="Resource_b2due"]
 script = ExtResource("8_081lw")
-recipes = Array[ExtResource("6_gfqvr")]([ExtResource("7_jeu8f")])
+recipes = Array[ExtResource("6_gfqvr")]([ExtResource("6_klmmd"), ExtResource("7_pcjm3"), ExtResource("8_m1o86"), ExtResource("9_28sch")])
 max_ingredients = 5
 metadata/_custom_type_script = "uid://c0shkqininnkd"
 

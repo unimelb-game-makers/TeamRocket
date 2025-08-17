@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DishRecipe" load_steps=4 format=3 uid="uid://cug31p5hjyjym"]
+
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="1_gtocn"]
+[ext_resource type="Resource" uid="uid://dxy0r0u11etp2" path="res://resources/cooking/foods/salad.tres" id="2_ih4gi"]
+[ext_resource type="Script" uid="uid://dbchi3jhl5d0x" path="res://resources/resource_scripts/food_system/recipe_scripts/dish_recipe.gd" id="2_m5ddx"]
+
+[resource]
+script = ExtResource("2_m5ddx")
+swappable_ingredients = Array[int]([2, 2, 2])
+dishes = Array[ExtResource("1_gtocn")]([ExtResource("2_ih4gi")])
+recipe_name = "Salad"
+effects = Array[int]([2])
+base_ingredients = Array[int]([])
+metadata/_custom_type_script = "uid://dbchi3jhl5d0x"

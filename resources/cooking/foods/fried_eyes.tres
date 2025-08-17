@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Dish" load_steps=4 format=3 uid="uid://drafwdjbh05c"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_oa5tw"]
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_8yt8i"]
+[ext_resource type="Texture2D" uid="uid://fyjsyt3uu44o" path="res://assets/food/spider eyes fried.png" id="3_8yt8i"]
+
+[resource]
+script = ExtResource("2_8yt8i")
+effects = Array[int]([])
+ingredients = Array[ExtResource("1_oa5tw")]([])
+texture = ExtResource("3_8yt8i")
+item_id = "fried_eyes"
+item_name = "Fried Spider Eyes"
+description = ""
+weight = 0.2
+rarity = 0
+quality = 2
+metadata/_custom_type_script = "uid://dqqa8ydotiigx"

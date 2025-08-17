@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=3 format=3 uid="uid://du0b8ikv6db6d"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_0ypef"]
+[ext_resource type="Texture2D" uid="uid://dxfbux1m6xqia" path="res://assets/food/dream fragments.png" id="2_ssrfi"]
+
+[resource]
+script = ExtResource("1_0ypef")
+ingredient_type = 0
+ingredient_category = 2
+effects = Array[int]([])
+name_modifiers = Array[String]([])
+texture = ExtResource("2_ssrfi")
+item_id = "dream_fragments"
+item_name = "Dream Fragments"
+description = ""
+weight = 0.1
+rarity = 2
+quality = 2
+metadata/_custom_type_script = "uid://c27juqwadg5ol"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Dish" load_steps=4 format=3 uid="uid://tuckicgafq4d"]
+
+[ext_resource type="Script" uid="uid://c27juqwadg5ol" path="res://resources/resource_scripts/food_system/ingredient.gd" id="1_e0q32"]
+[ext_resource type="Script" uid="uid://dqqa8ydotiigx" path="res://resources/resource_scripts/food_system/dish.gd" id="2_tk1w0"]
+[ext_resource type="Texture2D" uid="uid://c7ku7jnl6sxm1" path="res://assets/food/noodles.png" id="3_tk1w0"]
+
+[resource]
+script = ExtResource("2_tk1w0")
+effects = Array[int]([])
+ingredients = Array[ExtResource("1_e0q32")]([])
+texture = ExtResource("3_tk1w0")
+item_id = "cup_noodles"
+item_name = "Cup Noodles"
+description = "A cup of noodles you made in two minutes"
+weight = 0.3
+rarity = 0
+quality = 2
+metadata/_custom_type_script = "uid://dqqa8ydotiigx"
