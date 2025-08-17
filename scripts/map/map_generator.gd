@@ -91,18 +91,29 @@ var bend_SW: Array[PackedScene] = [
 # Means "Threeway no North direction"
 var threeway_noN: Array[PackedScene] = [
 	preload("res://scenes/map/templates/ThreewayNoN.tscn"),
+	preload("res://scenes/map/map_tile_variations/ThreewayCityNoN.tscn"),
+	preload("res://scenes/map/map_tile_variations/ThreewayCityGreenNoN.tscn")
 ]
 var threeway_noE: Array[PackedScene] = [
 	preload("res://scenes/map/templates/ThreewayNoE.tscn"),
+	preload("res://scenes/map/map_tile_variations/ThreewayCityNoE.tscn"),
+	preload("res://scenes/map/map_tile_variations/ThreewayCityGreenNoE.tscn")
 ]
 var threeway_noS: Array[PackedScene] = [
 	preload("res://scenes/map/templates/ThreewayNoS.tscn"),
+	preload("res://scenes/map/map_tile_variations/ThreewayCityGreenNoS.tscn")
 ]
 var threeway_noW: Array[PackedScene] = [
 	preload("res://scenes/map/templates/ThreewayNoW.tscn"),
+	preload("res://scenes/map/map_tile_variations/ThreewayCityNoW.tscn"),
+	preload("res://scenes/map/map_tile_variations/ThreewayCityGreenNoW.tscn")
 ]
 var fulls: Array[PackedScene] = [
 	preload("res://scenes/map/templates/Fullroom.tscn"),
+	preload("res://scenes/map/map_tile_variations/FullroomCityIntersection.tscn"),
+	preload("res://scenes/map/map_tile_variations/FullroomGreenCity2.tscn"),
+	preload("res://scenes/map/map_tile_variations/FullroomGreenCity.tscn"),
+
 ]
 
 var curr_player: Player
@@ -230,20 +241,15 @@ func initialize_room(coord: Vector2, outgoing_direction: Vector2 = Vector2.ZERO)
 		var room_type: RoomTypeEnum = RoomTypeEnum.NONE
 		match num_neighbors:
 			1:
-				# new_room_data.room_scene = deadend
 				room_type = RoomTypeEnum.DEADEND
 			2:
 				if neighbors_array == [true, false, true, false] or neighbors_array == [false, true, false, true]:
-					# new_room_data.room_scene = straight
 					room_type = RoomTypeEnum.STRAIGHT
 				else:
-					# new_room_data.room_scene = bend.pick_random()
 					room_type = RoomTypeEnum.BEND
 			3:
-				# new_room_data.room_scene = threeway.pick_random()
 				room_type = RoomTypeEnum.THREEWAY
 			4:
-				# new_room_data.room_scene = fulls.pick_random()
 				room_type = RoomTypeEnum.FULL
 
 
@@ -290,7 +296,10 @@ func initialize_room(coord: Vector2, outgoing_direction: Vector2 = Vector2.ZERO)
 				elif not check_neighbor_arr_at_dir(neighbors_array, DIRECTION_UNIT[3]):
 					new_room_data.room_scene = threeway_noW.pick_random()
 			RoomTypeEnum.FULL:
-				new_room_data.room_scene = fulls.pick_random()
+				if just_init:
+					new_room_data.room_scene = fulls[0]
+				else:
+					new_room_data.room_scene = fulls.pick_random()
 
 		if is_debug:
 			new_room_data.room_scene = debug_map_room_scene
