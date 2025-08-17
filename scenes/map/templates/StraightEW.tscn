@@ -24,7 +24,7 @@ rotation = 1.5708
 position = Vector2(112, 528)
 rotation = 1.5708
 
-[node name="NavigationRegion2D" parent="." index="5"]
+[node name="NavigationRegion2D" parent="." index="6"]
 navigation_polygon = SubResource("NavigationPolygon_46ymu")
 
 [connection signal="area_entered" from="DoorArea" to="DoorArea" method="_on_area_entered"]

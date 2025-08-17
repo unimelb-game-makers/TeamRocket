@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b7xggodclmhth"]
+[gd_scene load_steps=28 format=3 uid="uid://b7xggodclmhth"]
 
 [ext_resource type="PackedScene" uid="uid://dnqxqnaid3q3a" path="res://scenes/map/BaseProceduralRoom.tscn" id="1_b4188"]
 [ext_resource type="Texture2D" uid="uid://uq1uagwh18vv" path="res://assets/placeholder/square.png" id="2_knhx2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dqgwoy4d1j7mf" path="res://assets/map/Convenient Alcove/magazines 2.png" id="9_hu5ta"]
 [ext_resource type="Texture2D" uid="uid://c0q23ktn0e4el" path="res://assets/map/Convenient Alcove/magazines 1.png" id="10_wj7dq"]
 [ext_resource type="Shader" uid="uid://ndf5f71lgwr6" path="res://scripts/shader/scrolling_line.gdshader" id="11_ftn1k"]
+[ext_resource type="PackedScene" uid="uid://c8ni7apwy8dyx" path="res://scenes/objects/Interactables/Crate.tscn" id="12_3gk7m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3gk7m"]
 size = Vector2(256, 112)
@@ -121,9 +122,9 @@ texture = ExtResource("2_knhx2")
 [node name="Label" type="Label" parent="InteractableHolder/UniquePoiExit" index="2"]
 z_index = 1
 offset_left = -128.0
-offset_top = -60.0
+offset_top = -48.0
 offset_right = 128.0
-offset_bottom = 24.0
+offset_bottom = 36.0
 theme_override_colors/font_color = Color(0.0397135, 1, 0.0309665, 0.75)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.608)
 theme_override_constants/shadow_offset_x = 2
@@ -250,6 +251,15 @@ position = Vector2(-888, 448)
 position = Vector2(0, -176)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_wj7dq")
+
+[node name="Crate" parent="InteractableHolder" index="10" instance=ExtResource("12_3gk7m")]
+position = Vector2(-464, -288)
+
+[node name="Crate2" parent="InteractableHolder" index="11" instance=ExtResource("12_3gk7m")]
+position = Vector2(568, -152)
+
+[node name="Crate3" parent="InteractableHolder" index="12" instance=ExtResource("12_3gk7m")]
+position = Vector2(216, 232)
 
 [node name="NavigationRegion2D" parent="." index="4"]
 navigation_polygon = SubResource("NavigationPolygon_knhx2")

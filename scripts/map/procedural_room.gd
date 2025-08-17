@@ -189,6 +189,14 @@ func get_player_spawn_pos() -> Vector2:
 
 
 func generate_loot_for_container():
+	var combined_loot_table = Globals.interactable_handler.global_loot_table
+	combined_loot_table.append_array(map_loot_table)
+	for elem in interactable_holder.get_children():
+		if elem is Storage:
+			var crate = elem as Storage
+			if crate.randomized_loot:
+				crate.generate_loot(combined_loot_table)
+
 	for elem in spawned_pois:
 		elem.generate_loot_for_container()
 
