@@ -1,5 +1,6 @@
 extends Node
 
+@export var allow_debug_tool: bool = false
 @export var default_player_stats: PlayerStatsResource
 @export var requested_dish_list: Array[Dish]
 ## Check Enemy.EnemyEnumId for order

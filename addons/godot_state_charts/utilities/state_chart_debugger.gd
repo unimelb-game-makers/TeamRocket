@@ -4,7 +4,7 @@ extends Control
 const DebuggerHistory = preload("debugger_history.gd")
 
 ## Whether or not the debugger is enabled.
-@export var enabled:bool = true:
+@export var enabled: bool = true:
 	set(value):
 		enabled = value
 		if not Engine.is_editor_hint():
@@ -14,52 +14,52 @@ const DebuggerHistory = preload("debugger_history.gd")
 ## The initial node that should be watched. Optional, if not set
 ## then no node will be watched. You can set the node that should
 ## be watched at runtime by calling debug_node().
-@export var initial_node_to_watch:NodePath
+@export var initial_node_to_watch: NodePath
 
 ## Maximum lines to display in the history. Keep at 300 or below
 ## for best performance.
-@export var maximum_lines:int = 300
+@export var maximum_lines: int = 300
 
 ## If set to true, events will not be printed in the history panel.
 ## If you send a large amount of events then this may clutter the
 ## output so you can disable it here.
-@export var ignore_events:bool = false
+@export var ignore_events: bool = false
 
 ## If set to true, state changes will not be printed in the history 
 ## panel. If you have a large amount of state changes, this may clutter
 ## the output so you can disable it here.
-@export var ignore_state_changes:bool = false
+@export var ignore_state_changes: bool = false
 
 ## If set to true, transitions will not be printed in the history.
-@export var ignore_transitions:bool = false
+@export var ignore_transitions: bool = false
 
 ## The tree that shows the state chart.
-@onready var _tree:Tree = %Tree
+@onready var _tree: Tree = %Tree
 ## The text field with the history.
-@onready var _history_edit:TextEdit = %HistoryEdit
+@onready var _history_edit: TextEdit = %HistoryEdit
 
 # the state chart we track
-var _state_chart:StateChart
-var _root:Node
+var _state_chart: StateChart
+var _root: Node
 
 # the states we are currently connected to
-var _connected_states:Array[StateChartState] = []
+var _connected_states: Array[StateChartState] = []
 
 # the transitions we are currently connected to
 # key is the transition, value is the callable
-var _connected_transitions:Dictionary = {}
+var _connected_transitions: Dictionary = {}
 
 # the debugger history in text form
-var _history:DebuggerHistory = null
+var _history: DebuggerHistory = null
 
 func _ready():
 	# always run, even if the game is paused
-	process_mode = Node.PROCESS_MODE_ALWAYS	
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	# initialize the buffer
 	_history = DebuggerHistory.new(maximum_lines)
 
-	%CopyToClipboardButton.pressed.connect(func (): DisplayServer.clipboard_set(_history_edit.text))
+	%CopyToClipboardButton.pressed.connect(func(): DisplayServer.clipboard_set(_history_edit.text))
 	%ClearButton.pressed.connect(_clear_history)
 
 	var to_watch = get_node_or_null(initial_node_to_watch)
@@ -72,15 +72,14 @@ func _ready():
 	%IgnoreTransitionsCheckbox.set_pressed_no_signal(ignore_transitions)
 		
 	
-
 ## Adds an item to the history list.
-func add_history_entry(text:String):
+func add_history_entry(text: String):
 	_history.add_history_entry(Engine.get_process_frames(), text)
 
 ## Sets up the debugger to track the given state chart. If the given node is not 
 ## a state chart, it will search the children for a state chart. If no state chart
 ## is found, the debugger will be disabled.
-func debug_node(root:Node) -> bool:
+func debug_node(root: Node) -> bool:
 	# if we are not enabled, we do nothing
 	if not enabled:
 		return false
@@ -107,7 +106,7 @@ func debug_node(root:Node) -> bool:
 	return success
 
 
-func _debug_node(root:Node) -> bool:
+func _debug_node(root: Node) -> bool:
 	# if we have no root, we use the scene root
 	if not is_instance_valid(root):
 		return false
@@ -126,7 +125,7 @@ func _debug_node(root:Node) -> bool:
 	return false
 
 
-func _setup_processing(enabled:bool):
+func _setup_processing(enabled: bool):
 	process_mode = Node.PROCESS_MODE_ALWAYS if enabled else Node.PROCESS_MODE_DISABLED
 
 
@@ -148,7 +147,6 @@ func _disconnect_all_signals():
 			transition.taken.disconnect(_connected_transitions.get(transition))
 
 
-
 ## Connects all signals from the currently processing state chart
 func _connect_all_signals():
 	_connected_states.clear()
@@ -165,7 +163,7 @@ func _connect_all_signals():
 			_connect_signals(child)
 
 
-func _connect_signals(state:StateChartState):
+func _connect_signals(state: StateChartState):
 	state.state_entered.connect(_on_state_entered.bind(state))
 	state.state_exited.connect(_on_state_exited.bind(state))
 	_connected_states.append(state)
@@ -181,8 +179,7 @@ func _connect_signals(state:StateChartState):
 
 
 func _process(delta):
-	
-	if (Input.is_action_just_pressed("debug")):
+	if Input.is_action_just_pressed("debug") and Globals.allow_debug_tool:
 		visible = not visible
 	
 	# Clear contents
@@ -195,7 +192,7 @@ func _process(delta):
 	root.set_text(0, _root.name)
 
 	# walk over the state chart and find all active states
-	_collect_active_states(_state_chart, root )
+	_collect_active_states(_state_chart, root)
 	
 	# also show the values of all variables
 	var items = _state_chart._expression_properties.keys()
@@ -216,11 +213,11 @@ func _process(delta):
 		property_line.set_text(0, "%s = %s" % [item, value])
 	
 
-func _collect_active_states(root:Node, parent:TreeItem):
+func _collect_active_states(root: Node, parent: TreeItem):
 	for child in root.get_children():
 		if child is StateChartState:
 			if child.active:
-				var state_item:TreeItem = _tree.create_item(parent)
+				var state_item: TreeItem = _tree.create_item(parent)
 				state_item.set_text(0, child.name)
 
 				if is_instance_valid(child._pending_transition):
@@ -234,28 +231,28 @@ func _clear_history():
 	_history_edit.text = ""
 	_history.clear()
 
-func _on_before_transition(transition:Transition, source:StateChartState):
+func _on_before_transition(transition: Transition, source: StateChartState):
 	if ignore_transitions:
 		return
 
 	_history.add_transition(Engine.get_process_frames(), transition.name, _state_chart.get_path_to(source), _state_chart.get_path_to(transition.resolve_target()))
 
 
-func _on_event_received(event:StringName):
+func _on_event_received(event: StringName):
 	if ignore_events:
 		return
 
-	_history.add_event(Engine.get_process_frames(), event)	
+	_history.add_event(Engine.get_process_frames(), event)
 
 	
-func _on_state_entered(state:StateChartState):
+func _on_state_entered(state: StateChartState):
 	if ignore_state_changes:
 		return
 		
 	_history.add_state_entered(Engine.get_process_frames(), state.name)
 
 
-func _on_state_exited(state:StateChartState):
+func _on_state_exited(state: StateChartState):
 	if ignore_state_changes:
 		return
 		
@@ -265,7 +262,7 @@ func _on_state_exited(state:StateChartState):
 func _on_timer_timeout():
 	# ignore the timer if the history edit isn't visible
 	if not _history_edit.visible or not _history.dirty:
-		return 
+		return
 	
 	# fill the history field
 	_history_edit.text = _history.get_history_text()
