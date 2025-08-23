@@ -245,10 +245,11 @@ offset_top = -20.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 14
-text = "v0.01 (Prototype)"
+text = "v1.0"
 horizontal_alignment = 1
 
 [node name="Disclaimer" type="Label" parent="CanvasLayer"]
+visible = false
 self_modulate = Color(0.609375, 0.609375, 0.609375, 1)
 anchors_preset = 7
 anchor_left = 0.5

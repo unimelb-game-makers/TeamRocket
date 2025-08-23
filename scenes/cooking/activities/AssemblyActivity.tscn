@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d3g8curcdikcq" path="res://scripts/cooking/assembly_activity.gd" id="1_kpauk"]
 [ext_resource type="FontFile" uid="uid://iqracr2sqomh" path="res://assets/fonts/Jaro-Regular-VariableFont_opsz.ttf" id="2_hfk1h"]
-[ext_resource type="Texture2D" uid="uid://baecuvxkgnpcq" path="res://assets/food/salt.png" id="3_udm5u"]
+[ext_resource type="Texture2D" uid="uid://b7ibi7s8jjp8d" path="res://assets/food/salt.png" id="3_udm5u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0k2hl"]
 font = ExtResource("2_hfk1h")
