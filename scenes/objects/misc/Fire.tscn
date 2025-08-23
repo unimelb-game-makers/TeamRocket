@@ -32,17 +32,17 @@ collision_mask = 129
 script = ExtResource("1_fe1fc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -88)
+position = Vector2(0, -96)
 sprite_frames = SubResource("SpriteFrames_yvxoa")
 autoplay = "default"
 frame_progress = 0.391804
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -24)
 shape = SubResource("RectangleShape2D_x2vq1")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, -64)
+position = Vector2(0, -72)
 scale = Vector2(2, 2)
 color = Color(1, 0.633142, 0.0406199, 1)
 energy = 2.0
