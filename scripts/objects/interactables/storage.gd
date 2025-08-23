@@ -53,7 +53,7 @@ func load_loot_from_save(contained_items_data):
 
 func interact():
 	storage_ui.visible = not storage_ui.visible
-	Globals.inventory_ui.can_open = not storage_ui.visible
+	Globals.inventory_ui.visible = not storage_ui.visible
 	if storage_ui.visible:
 		open_sfx_player.play()
 	else:

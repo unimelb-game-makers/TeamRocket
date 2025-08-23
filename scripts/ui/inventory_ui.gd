@@ -30,8 +30,8 @@ func _ready() -> void:
 	inventory_container.update_inventory_list()
 	reset_data()
 
-func _process(_delta: float) -> void:
-	if (Input.is_action_just_pressed("inventory") and can_open):
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory") and can_open:
 		toggle_inventory(not is_open)
 
 func update_weight_label():
