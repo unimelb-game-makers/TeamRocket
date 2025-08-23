@@ -103,7 +103,8 @@ func damage(value: int, damage_source_position: Vector2 = Vector2.ZERO) -> void:
 
 func split():
 	for i in range(n_rat_after_split):
-		var rat_inst = rat_monarch_packed_scene.instantiate()
+		var rat_inst: BasicEnemy = rat_monarch_packed_scene.instantiate()
+		rat_inst.is_elite = is_elite
 		Globals.enemy_handler.call_deferred("add_child", rat_inst)
 		Globals.enemy_handler.call_deferred("add_enemy_to_list", rat_inst)
 		# Set up the stat for the splitted rat
@@ -189,3 +190,24 @@ func _on_passive_state_entered() -> void:
 		idle_medium_effect.play()
 	else:
 		idle_small_effect.play()
+
+
+func load_splitted_form(_splitted_time: int):
+	splitted_time = _splitted_time
+	var new_base_damage = base_damage
+	var new_scale = scale
+	var new_max_health = max_health
+	for i in range(splitted_time):
+		new_base_damage = int(new_base_damage / 2.0)
+		new_scale = new_scale / 2
+		new_max_health = new_max_health * 0.66
+	splitted_rat_init(new_max_health, new_base_damage, splitted_time, global_position, new_scale)
+
+func get_save_data():
+	return {
+		"id": enemy_id,
+		"global_position": global_position,
+		"original_position": original_position,
+		"is_elite": is_elite,
+		"splitted_time": splitted_time
+	}

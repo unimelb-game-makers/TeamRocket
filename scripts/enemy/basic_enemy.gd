@@ -36,8 +36,6 @@ var search_min_duration: float = 0.3
 var search_max_duration: float = 0.8
 var search_direction: Vector2
 
-# Pause duration set in state chart
-var original_position: Vector2
 
 func _ready():
 	super ()

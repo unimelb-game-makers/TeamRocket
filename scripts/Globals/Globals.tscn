@@ -13,6 +13,7 @@
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_om560")
+allow_debug_tool = true
 default_player_stats = ExtResource("2_jb3i0")
 requested_dish_list = Array[ExtResource("3_jcdkj")]([ExtResource("4_rd5xv"), ExtResource("4_rd5xv"), ExtResource("4_rd5xv")])
 enemy_scene_database = Array[PackedScene]([ExtResource("5_rd5xv"), ExtResource("6_h0d7b"), ExtResource("7_taqoc"), ExtResource("8_oxuie"), ExtResource("9_c4f4s"), ExtResource("10_hj4wi")])

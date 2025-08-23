@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-## This start at 1 instead of 0
+## This start at 1 instead of 0. 0 is for catching errors
 @export var slot_id: int = 0
 
 @onready var load_button_label: RichTextLabel = $MarginContainer/MarginContainer/LoadButtonLabel

@@ -47,6 +47,12 @@ func spawn_enemies():
 
 			var enemy_inst: Enemy = enemy_scene.instantiate()
 			enemy_inst.is_elite = enemy_is_elite
+
+			# Rat monarch
+			if elem.has("splitted_time"):
+				enemy_inst.load_splitted_form(elem["splitted_time"])
+
+
 			# Add child to root node
 			add_child(enemy_inst)
 			add_enemy_to_list(enemy_inst)
