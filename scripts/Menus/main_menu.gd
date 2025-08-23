@@ -6,7 +6,6 @@ class_name MainMenu
 @export var player_stats: PlayerStatsResource
 
 @onready var camera_2d: Camera2D = $BackgroundMap/Camera2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var title_anim_player: AnimationPlayer = $TitleAnimPlayer
 @onready var main_menu_buttons: HBoxContainer = $CanvasLayer/MainMenuButtons
 @onready var setting_menu: Control = $CanvasLayer/SettingMenu
@@ -61,8 +60,6 @@ func reset_camera():
 	camera_2d.position_smoothing_enabled = true
 	camera_2d.position = Vector2(randi_range(500, 4500), randi_range(500, 3500))
 
-func _on_camera_timer_timeout() -> void:
-	animation_player.play("fade_out_and_in")
 
 func play_button_hover_sfx():
 	SoundManager.play_button_hover_sfx()
