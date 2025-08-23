@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn0h4ghumvrgf"]
+[gd_scene load_steps=10 format=3 uid="uid://bn0h4ghumvrgf"]
 
 [ext_resource type="Script" uid="uid://bolnp6gbjndcy" path="res://scripts/objects/interactables/explosive_barrel.gd" id="1_pv02h"]
 [ext_resource type="Texture2D" uid="uid://bmbkegykx1q5n" path="res://assets/map/prop/fire_barrel.png" id="1_pwrhi"]
 [ext_resource type="PackedScene" uid="uid://b0jgd5d73o3ch" path="res://scenes/objects/misc/Fire.tscn" id="2_ejkbn"]
+[ext_resource type="Texture2D" uid="uid://dyiw8h6enxqb3" path="res://assets/placeholder/circle_hires.png" id="3_531ji"]
 [ext_resource type="Script" uid="uid://ltt3ftwnn813" path="res://scripts/objects/interactables/environment_hitbox.gd" id="4_vcjdq"]
 [ext_resource type="AudioStream" uid="uid://br5ins6dh6tny" path="res://assets/sfx/team rocket sfx/environment sfx/barrel fire init.ogg" id="5_5ekia"]
 
@@ -13,13 +14,20 @@ size = Vector2(129, 64.5)
 size = Vector2(112, 192)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vcjdq"]
-radius = 384.083
+radius = 360.0
 
 [node name="ExplosiveBarrel" type="StaticBody2D"]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_pv02h")
 fire_scene = ExtResource("2_ejkbn")
+
+[node name="ExplosionLight" type="PointLight2D" parent="."]
+visible = false
+scale = Vector2(2.88281, 2.88281)
+color = Color(1, 0.411707, 0, 1)
+energy = 4.0
+texture = ExtResource("3_531ji")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 0.350161, 0, 1)
