@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://3hcyerk7ues" path="res://assets/sfx/team rocket sfx/environment sfx/crate close.ogg" id="6_eod3m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a64qg"]
-radius = 153.506
+radius = 113.508
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ordb"]
 resource_local_to_scene = true
@@ -79,5 +79,5 @@ bus = &"Effects"
 stream = ExtResource("6_eod3m")
 bus = &"Effects"
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

@@ -53,7 +53,7 @@ func load_loot_from_save(contained_items_data):
 
 func interact():
 	storage_ui.visible = not storage_ui.visible
-	Globals.inventory_ui.visible = not storage_ui.visible
+	Globals.inventory_ui.visible = false
 	if storage_ui.visible:
 		open_sfx_player.play()
 	else:
@@ -78,11 +78,6 @@ func update_display():
 	for i in range(slots.size()):
 		slots[i].set_ingredient(items[i])
 
-func _on_body_exited(_body: Node2D) -> void:
-	if storage_ui.visible:
-		close_sfx_player.play()
-	storage_ui.hide()
-	sprite.material.set_shader_parameter("thickness", 0)
 
 func _on_body_entered(_body: Node2D) -> void:
 	sprite.material.set_shader_parameter("thickness", 5)
@@ -100,3 +95,13 @@ func get_save_data():
 		"global_position": global_position,
 		"contained_items_data": contained_items_data
 	}
+
+func _on_area_entered(_area: Area2D) -> void:
+	sprite.material.set_shader_parameter("thickness", 5)
+
+
+func _on_area_exited(_area: Area2D) -> void:
+	if storage_ui.visible:
+		close_sfx_player.play()
+	storage_ui.hide()
+	sprite.material.set_shader_parameter("thickness", 0)
