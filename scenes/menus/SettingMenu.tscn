@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://j00qr7dcyhv4"]
 
 [ext_resource type="PackedScene" uid="uid://hoiacky4452m" path="res://scenes/menus/VolumeContainer.tscn" id="1_ponht"]
-[ext_resource type="Script" uid="uid://ji01xbctic27" path="res://scripts/Menus/setting_menu.gd" id="1_q578m"]
+[ext_resource type="Script" uid="uid://ji01xbctic27" path="res://scripts/menus/setting_menu.gd" id="1_q578m"]
 [ext_resource type="PackedScene" uid="uid://cnuglobw5ctj7" path="res://scenes/ui/KeybindButton.tscn" id="2_x2dvv"]
 [ext_resource type="Texture2D" uid="uid://dn5yiou0pop44" path="res://assets/textures/kenney_borders/default/Border/panel-border-004.png" id="3_vo66s"]
 [ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="4_jri27"]
@@ -66,11 +66,10 @@ offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 tabs_visible = false
 
 [node name="Game" type="Control" parent="BG/TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -115,14 +114,17 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="PlaceholderToggle" type="CheckButton" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Placeholder option 1"
 
 [node name="PlaceholderToggle2" type="CheckButton" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Placeholder option 2"
 
 [node name="PlaceholderToggle3" type="CheckButton" parent="BG/TabContainer/Game/ScrollContainer/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Placeholder option 3"
 
@@ -312,6 +314,7 @@ popup/item_5/text = "1024x768"
 popup/item_5/id = 5
 
 [node name="Audio" type="Control" parent="BG/TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
