@@ -24,11 +24,10 @@ var keybindable_action_list = {
 	"fire": "Shoot",
 	"aim": "Aim",
 	"reload": "Reload",
-	"channel": "Channel return",
 	"interact": "Interact",
 	"inventory": "Inventory",
 	"pause": "Pause",
-	"debug": "[DEBUG] Debug UI",
+	"recipe_book": "Open recipe book"
 }
 var is_remapping = false
 var action_to_remap = null

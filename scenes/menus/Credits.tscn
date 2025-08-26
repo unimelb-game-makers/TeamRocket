@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bacf4n55kn6yy"]
 
-[ext_resource type="Script" uid="uid://bv0fl7y4nurka" path="res://scripts/Menus/credits.gd" id="1_4g6ph"]
-[ext_resource type="Theme" uid="uid://b7phgjo3xdlh0" path="res://resources/font.tres" id="2_s4hms"]
+[ext_resource type="Script" uid="uid://bv0fl7y4nurka" path="res://scripts/menus/credits.gd" id="1_4g6ph"]
+[ext_resource type="PackedScene" uid="uid://bwmc16eui1kh1" path="res://scenes/ui/TemplateButton.tscn" id="2_10m5x"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -12,21 +12,62 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4g6ph")
 
-[node name="Button" type="Button" parent="."]
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -86.0
+offset_top = 16.0
+offset_right = 86.0
+offset_bottom = 85.7917
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Credits"
+
+[node name="CreditContent" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = 151.0
-offset_right = 21.0
-offset_bottom = 182.0
+offset_left = -512.0
+offset_top = -256.0
+offset_right = 512.0
+offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_s4hms")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 24
+text = "Producer
+
+Programmers
+
+Artists
+
+Designers
+
+Musician
+
+QA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" parent="." instance=ExtResource("2_10m5x")]
+custom_minimum_size = Vector2(140, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -80.0
+offset_right = 76.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Back"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="BackButton" to="." method="play_button_hover_sfx"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
