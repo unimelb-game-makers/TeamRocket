@@ -7,7 +7,6 @@ minigame extending class CookingActivity.
 CookingActivity minigame is passed into CookingScene as an export
 """
 @export var activity_to_run: PackedScene
-
 @export var activity_name: String
 @export var activity_animated_texture: AnimatedTexture
 @export var crafting_station: CraftingStation

@@ -22,7 +22,7 @@
 [ext_resource type="Resource" uid="uid://b2hblfh2nloyp" path="res://scenes/cooking/workbenches/chopping_board/chopping_board_settings/chop_board_settings_8.tres" id="10_x1xsa"]
 [ext_resource type="AudioStream" uid="uid://blu8awnkvfphq" path="res://assets/sfx/team rocket sfx/kitchen minigames sfx 1/cut7.ogg" id="11_cdwm0"]
 [ext_resource type="Resource" uid="uid://46v0fog77l88" path="res://scenes/cooking/workbenches/chopping_board/chopping_board_settings/chop_board_settings_9.tres" id="11_vguec"]
-[ext_resource type="Texture2D" uid="uid://baecuvxkgnpcq" path="res://assets/food/salt.png" id="12_ihp6r"]
+[ext_resource type="Texture2D" uid="uid://b7ibi7s8jjp8d" path="res://assets/food/salt.png" id="12_ihp6r"]
 [ext_resource type="Resource" uid="uid://br4i6r5ewid8" path="res://scenes/cooking/workbenches/chopping_board/chopping_board_settings/default_chopping_board_settings.tres" id="12_lkwrr"]
 [ext_resource type="PackedScene" uid="uid://det5518ijalkn" path="res://scenes/cooking/workbenches/chopping_board/ChoppingTrack.tscn" id="25_ov5ga"]
 

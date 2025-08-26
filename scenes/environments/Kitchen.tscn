@@ -181,8 +181,9 @@ texture = ExtResource("8_sh0d3")
 position = Vector2(88, 454)
 
 [node name="FryingPan_NotUsedYet" parent="InteractableHandler/InteractableHolder" index="1" instance=ExtResource("14_gr436")]
+visible = false
 z_index = 1
-position = Vector2(549, 231)
+position = Vector2(280, -96)
 
 [node name="PrototypeDiagram" parent="InteractableHandler/InteractableHolder" index="2" instance=ExtResource("10_0g7fq")]
 z_index = 1
