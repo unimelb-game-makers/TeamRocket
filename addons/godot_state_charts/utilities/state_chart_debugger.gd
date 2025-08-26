@@ -179,7 +179,7 @@ func _connect_signals(state: StateChartState):
 
 
 func _process(delta):
-	if Input.is_action_just_pressed("debug") and Globals.allow_debug_tool:
+	if Input.is_action_just_pressed("debug") and OS.is_debug_build():
 		visible = not visible
 	
 	# Clear contents

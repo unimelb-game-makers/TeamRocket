@@ -263,3 +263,26 @@ layout_mode = 1
 [node name="RecipeBook" parent="." instance=ExtResource("13_mjmcw")]
 visible = false
 layout_mode = 1
+
+[node name="ControlText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -167.0
+offset_right = -8.0
+offset_bottom = -71.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.713)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.713)
+theme_override_font_sizes/font_size = 12
+text = "Shift - Run
+Space - Dodge
+E - Interact
+I - Inventory
+B - Recipe Book"
+horizontal_alignment = 2
